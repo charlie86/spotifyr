@@ -1,7 +1,7 @@
 #' Get features and popularity for all of a user's playlists on Spotify
 #'
 #' This function returns the popularity and audio features for every song for all of a given user's playlists on Spotify
-#' @param username String of Spotify username. Can be found on the Spotify app
+#' @param username String of Spotify username. Can be found on the Spotify app. (See http://rcharlie.net/sentify/user_uri.gif for example)
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @keywords track audio features playlists
 #' @export

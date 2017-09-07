@@ -7,7 +7,7 @@
 get_user_audio_features(username, access_token = get_spotify_access_token())
 }
 \arguments{
-\item{username}{String of Spotify username. Can be found on the Spotify app}
+\item{username}{String of Spotify username. Can be found on the Spotify app. (See http://rcharlie.net/sentify/user_uri.gif for example)}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }
