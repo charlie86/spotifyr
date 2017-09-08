@@ -1,10 +1,22 @@
 Package: spotifyr
-Title: What the Package Does (one line, title case)
+Title: A fast and scalable wrapper for extracting track audio features from the Spotify Web API
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Charlie", "Thompson", email = "charles.thompson@barcelonagse.eu", role = c("aut", "cre"))
+Description: A fast and scalable wrapper for extracting track audio features 
+  from the Spotify Web API. By automatically batching API requests, it allows 
+  you to enter an artist's name and retrieve their entire discography in 
+  seconds, along with Spotify's audio features and track/album popularity 
+  metrics. You can also pull song and playlist information for a given Spotify 
+  User (including yourself!).
 Depends: R (>= 3.3.3)
-License: What license is it under?
+Imports:
+  purrr,
+  dplyr,
+  tidyr,
+  httr,
+  stringr,
+  lubridate
+License: MIT License
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
