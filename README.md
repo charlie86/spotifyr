@@ -1,1 +1,1 @@
-# spotifyr: A scalable wrapper for Spotify's Web API
+# spotifyr: A scalable R wrapper for Spotify's Web API
