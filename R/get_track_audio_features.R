@@ -19,12 +19,18 @@
 
 get_track_audio_features <- function(tracks, access_token = get_spotify_access_token()) {
   
-  audio_features <- c('danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 
-                      'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature')
+  access_token <- get_spotify_access_token()
+  
+  audio_feature_vars <- c('danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 
+                          'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature')
+  
+  # create lookup to classify key: https://developer.spotify.com/web-api/get-audio-features/
+  pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
   
   num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
   
   map_df(1:num_loops, function(x) {
+    x = 1
     uris <- tracks %>%
       filter(!duplicated(track_uri)) %>%
       slice(((x*100) - 99):(x*100)) %>%
@@ -35,14 +41,20 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
     res <- GET(paste0('https://api.spotify.com/v1/audio-features/?ids=', uris),
                query = list(access_token = access_token)) %>% content %>% .$audio_features
     
-    df <- unlist(res) %>%
+    audio_features_df <- unlist(res) %>%
       matrix(nrow = length(res), byrow = T) %>%
       as.data.frame(stringsAsFactors = F)
-    names(df) <- names(res[[1]])
+    names(audio_features_df) <- names(res[[1]])
     
-    return(df)
+    return(audio_features_df)
     
   }) %>% select(-c(type, uri, track_href, analysis_url)) %>%
     rename(track_uri = id) %>% 
-    mutate_at(audio_features, funs(as.numeric(gsub('[^0-9.-]+', '', as.character(.)))))
+    mutate_at(audio_feature_vars, as.numeric) %>% 
+    mutate(key = pitch_class_lookup[key+1],
+           mode = case_when(mode == 1 ~ 'major',
+                            mode == 0 ~ 'minor',
+                            TRUE ~ as.character(NA)),
+           key_mode = paste(key, mode)) %>% 
+    ungroup
 }

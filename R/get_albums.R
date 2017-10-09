@@ -34,10 +34,10 @@ get_albums <- function(artist_uri, access_token = get_spotify_access_token()) {
   
   if (nrow(df) > 0) {
     df <- df %>% filter(!duplicated(tolower(album_name))) %>%
-      mutate(base_album_name = str_replace_all(tolower(album_name), ' \\(.*(deluxe|international|anniversary|version|edition|remaster|live|mono|stereo).*\\)', ''),
-             base_album_name = str_replace_all(base_album_name, ' \\[.*(deluxe|international|anniversary|version|edition|remaster|live|mono|stereo).*\\]', ''),
-             base_album_name = str_replace_all(base_album_name, ':.*(deluxe|international|anniversary|version|edition|remaster|live|mono|stereo).*', ''),
-             base_album_name = str_replace_all(base_album_name, ' - .*(deluxe|international|anniversary|version|edition|remaster|live|mono|stereo).*', '')) %>% 
+      mutate(base_album_name = gsub(' \\(.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\)', '', tolower(album_name)),
+             base_album_name = gsub(' \\[.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\]', '', base_album_name),
+             base_album_name = gsub(':.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*', '', base_album_name),
+             base_album_name = gsub(' - .*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*', '', base_album_name)) %>% 
       group_by(base_album_name) %>% 
       filter(album_release_year == min(album_release_year)) %>% 
       mutate(base_album = tolower(album_name) == base_album_name,
