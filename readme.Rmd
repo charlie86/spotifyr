@@ -44,15 +44,17 @@ beatles <- get_artist_audio_features('the beatles')
 count(beatles, key_mode, sort = T)
 ```
 
-### What's the most danceable Joy Division song?
+### What's the most joyful Joy Division song?
+My favorite audio feature has to be "valence," a measure of musical positivity.
 ```{r}
 joy <- get_artist_audio_features('joy division')
 
 joy %>% 
- arrange(-danceability) %>% 
- select(track_name, danceability) %>% 
+ arrange(-valence) %>% 
+ select(track_name, valence) %>% 
  head(10)
 ```
+Now if only there was some way to plot joy...
 
 ### Joyplot of the emotional rollercoasters that are Joy Division's albums
 ```{r}

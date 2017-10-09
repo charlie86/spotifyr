@@ -55,28 +55,30 @@ count(beatles, key_mode, sort = T)
 #> # ... with 12 more rows
 ```
 
-### What's the most danceable Joy Division song?
+### What's the most joyful Joy Division song?
+
+My favorite audio feature has to be "valence," a measure of musical positivity.
 
 ``` r
 joy <- get_artist_audio_features('joy division')
 
 joy %>% 
- arrange(-danceability) %>% 
- select(track_name, danceability) %>% 
+ arrange(-valence) %>% 
+ select(track_name, valence) %>% 
  head(10)
 #> # A tibble: 10 x 2
-#>                                       track_name danceability
-#>                                            <chr>        <dbl>
-#>  1            Passover - 2007 Remastered Version        0.773
-#>  2   A Means To An End - 2007 Remastered Version        0.655
-#>  3      Heart And Soul - 2007 Remastered Version        0.640
-#>  4             Insight - 2007 Remastered Version        0.636
-#>  5              Colony - 2007 Remastered Version        0.600
-#>  6           Candidate - 2007 Remastered Version        0.586
-#>  7          Wilderness - 2007 Remastered Version        0.584
-#>  8             Decades - 2007 Remastered Version        0.572
-#>  9 Atrocity Exhibition - 2007 Remastered Version        0.565
-#> 10           Isolation - 2007 Remastered Version        0.544
+#>                                       track_name valence
+#>                                            <chr>   <dbl>
+#>  1                                    These Days   0.949
+#>  2            Passover - 2007 Remastered Version   0.946
+#>  3              Colony - 2007 Remastered Version   0.816
+#>  4 Atrocity Exhibition - 2007 Remastered Version   0.790
+#>  5                                    Wilderness   0.779
+#>  6                             Twenty Four Hours   0.764
+#>  7   A Means To An End - 2007 Remastered Version   0.750
+#>  8           Interzone - 2007 Remastered Version   0.739
+#>  9  She's Lost Control - 2007 Remastered Version   0.731
+#> 10            Disorder - 2007 Remastered Version   0.728
 ```
 
 ### Joyplot of the emotional rollercoasters that are Joy Division's albums
