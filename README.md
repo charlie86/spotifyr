@@ -33,7 +33,6 @@ Usage
 
 ``` r
 library(spotifyr)
-#> Warning: package 'dplyr' was built under R version 3.4.2
 ```
 
 ``` r
@@ -79,3 +78,23 @@ joy %>%
 #>  9 Atrocity Exhibition - 2007 Remastered Version        0.565
 #> 10           Isolation - 2007 Remastered Version        0.544
 ```
+
+### Joyplot of the emotional rollercoasters that are Joy Division's albums
+
+``` r
+library(ggjoy)
+#> Loading required package: ggplot2
+#> Loading required package: ggridges
+#> The ggjoy package has been deprecated. Please switch over to the
+#> ggridges package, which provides the same functionality. Porting
+#> guidelines can be found here:
+#> https://github.com/clauswilke/ggjoy/blob/master/README.md
+
+ggplot(joy, aes(x = valence, y = album_name)) + 
+  geom_joy() + 
+  theme_joy() +
+  ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
+#> Picking joint bandwidth of 0.113
+```
+
+![](README-unnamed-chunk-4-1.png)

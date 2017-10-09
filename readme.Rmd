@@ -34,7 +34,7 @@ access_token <- get_spotify_access_token(client_id = Sys.getenv('SPOTIFY_CLIENT_
 
 ## Usage
 ### What was The Beatles' favorite key?
-```{r load_packages, message = F}
+```{r load_packages, message = F, warning = F}
 library(spotifyr)
 ```
 
@@ -53,3 +53,15 @@ joy %>%
  select(track_name, danceability) %>% 
  head(10)
 ```
+
+### Joyplot of the emotional rollercoasters that are Joy Division's albums
+```{r}
+library(ggjoy)
+
+ggplot(joy, aes(x = valence, y = album_name)) + 
+  geom_joy() + 
+  theme_joy() +
+  ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
+```
+
+
