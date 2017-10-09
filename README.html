@@ -123,16 +123,16 @@ $(document).ready(function () {
 </div>
 
 
-<div id="overview" class="section level4">
-<h4>Overview</h4>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
 <p>spotifyr is a quick and easy wrapper for pulling track audio features from Spotify’s Web API in bulk. By automatically batching API requests, it allows you to enter an artist’s name and retrieve their entire discography in seconds, along with Spotify’s audio features and track/album popularity metrics. You can also pull song and playlist information for a given Spotify User (including yourself!).</p>
 </div>
-<div id="installation" class="section level4">
-<h4>Installation</h4>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
 <pre class="r"><code>devtools::install_github('charlie86/spotifyr')</code></pre>
 </div>
-<div id="authenication" class="section level4">
-<h4>Authenication</h4>
+<div id="authenication" class="section level2">
+<h2>Authenication</h2>
 <p>You’ll have to set up a Dev account with Spotify to access their Web API <a href="https://developer.spotify.com/my-applications/#!/applications">here</a>. This will give you your <code>Client ID</code> and <code>Client Secret</code>. Once you have those, you can pull your access token into R with <code>get_spotify_access_token</code>.</p>
 <p>The easiest way to authenticate is to set your credentials to the System Environment variables <code>SPOTIFY_CLIENT_ID</code> and <code>SPOTIFY_CLIENT_SECRET</code>. The default arguments to <code>get_spotify_access_token</code> (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.</p>
 <pre class="r"><code>Sys.setenv(SPOTIFY_CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx')
@@ -140,78 +140,52 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 
 access_token &lt;- get_spotify_access_token(client_id = Sys.getenv('SPOTIFY_CLIENT_ID'), client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET'))</code></pre>
 </div>
-<div id="usage" class="section level4">
-<h4>Usage</h4>
-</div>
-<div id="what-was-the-beatles-favorite-key" class="section level2">
-<h2>What was The Beatles’ favorite key?</h2>
+<div id="usage" class="section level2">
+<h2>Usage</h2>
+<div id="what-was-the-beatles-favorite-key" class="section level3">
+<h3>What was The Beatles’ favorite key?</h3>
 <pre class="r"><code>library(spotifyr)</code></pre>
 <pre><code>## Warning: package 'dplyr' was built under R version 3.4.2</code></pre>
 <pre class="r"><code>beatles &lt;- get_artist_audio_features('the beatles')
 
-beatles %&gt;%
-  count(key_mode, sort = T)</code></pre>
-<pre><code>## # A tibble: 20 x 2
+count(beatles, key_mode, sort = T)</code></pre>
+<pre><code>## # A tibble: 22 x 2
 ##    key_mode     n
 ##       &lt;chr&gt; &lt;int&gt;
-##  1     &lt;NA&gt;   147
-##  2  A major    54
-##  3  E major    48
-##  4  G major    42
-##  5  D major    39
-##  6  C major    33
-##  7 C# minor    15
-##  8  F major    15
-##  9 F# minor     9
-## 10  B minor     6
-## 11 C# major     6
-## 12  E minor     6
-## 13  F minor     6
-## 14  A minor     3
-## 15 A# major     3
-## 16  B major     3
-## 17  D minor     3
-## 18 D# major     3
-## 19 F# major     3
-## 20 G# minor     3</code></pre>
-<p>What about per album?</p>
-<pre class="r"><code>beatles %&gt;% 
-  count(album_name, key_mode)</code></pre>
-<pre><code>## # A tibble: 65 x 3
-##                        album_name key_mode     n
-##                             &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;
-##  1                 1 (Remastered)     &lt;NA&gt;    20
-##  2 A Hard Days Night (Remastered)  A major     3
-##  3 A Hard Days Night (Remastered)  A minor     3
-##  4 A Hard Days Night (Remastered)  B minor     3
-##  5 A Hard Days Night (Remastered)  C major     9
-##  6 A Hard Days Night (Remastered) C# minor     3
-##  7 A Hard Days Night (Remastered)  D major     6
-##  8 A Hard Days Night (Remastered)  D minor     3
-##  9 A Hard Days Night (Remastered) F# minor     3
-## 10 A Hard Days Night (Remastered)  G major     6
-## # ... with 55 more rows</code></pre>
+##  1  C major    40
+##  2  D major    38
+##  3  A major    33
+##  4  G major    33
+##  5  E major    20
+##  6  F major    13
+##  7  B minor     9
+##  8  A minor     8
+##  9 C# minor     8
+## 10 F# minor     8
+## # ... with 12 more rows</code></pre>
+</div>
+<div id="whats-the-most-danceable-joy-division-song" class="section level3">
+<h3>What’s the most danceable Joy Division song?</h3>
 <pre class="r"><code>joy &lt;- get_artist_audio_features('joy division')
 
 joy %&gt;% 
- arrange(danceability) %&gt;% 
+ arrange(-danceability) %&gt;% 
  select(track_name, danceability) %&gt;% 
  head(10)</code></pre>
 <pre><code>## # A tibble: 10 x 2
-##                                 track_name danceability
-##                                      &lt;chr&gt;        &lt;dbl&gt;
-##  1                Tell Me Why - Remastered        0.267
-##  2                Tell Me Why - Remastered        0.267
-##  3                Tell Me Why - Remastered        0.267
-##  4 Here, There And Everywhere - Remastered        0.290
-##  5 Here, There And Everywhere - Remastered        0.290
-##  6 Here, There And Everywhere - Remastered        0.290
-##  7   Lucy In The Sky With Diamonds - Remix        0.318
-##  8   Lucy In The Sky With Diamonds - Remix        0.318
-##  9   Lucy In The Sky With Diamonds - Remix        0.318
-## 10          She Said She Said - Remastered        0.329</code></pre>
-<pre class="r"><code># There ya have it, Passover</code></pre>
-<p>What’s</p>
+##                                       track_name danceability
+##                                            &lt;chr&gt;        &lt;dbl&gt;
+##  1            Passover - 2007 Remastered Version        0.773
+##  2   A Means To An End - 2007 Remastered Version        0.655
+##  3      Heart And Soul - 2007 Remastered Version        0.640
+##  4             Insight - 2007 Remastered Version        0.636
+##  5              Colony - 2007 Remastered Version        0.600
+##  6           Candidate - 2007 Remastered Version        0.586
+##  7          Wilderness - 2007 Remastered Version        0.584
+##  8             Decades - 2007 Remastered Version        0.572
+##  9 Atrocity Exhibition - 2007 Remastered Version        0.565
+## 10           Isolation - 2007 Remastered Version        0.544</code></pre>
+</div>
 </div>
 
 
