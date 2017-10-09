@@ -30,7 +30,7 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
   num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
   
   map_df(1:num_loops, function(x) {
-    x = 1
+    # x = 1
     uris <- tracks %>%
       filter(!duplicated(track_uri)) %>%
       slice(((x*100) - 99):(x*100)) %>%

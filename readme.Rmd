@@ -19,10 +19,10 @@ You'll have to set up a Dev account with Spotify to access their Web API [here](
 The easiest way to authenticate is to set your credentials to the System Environment variables `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`. The default arguments to `get_spotify_access_token` (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.
 
 ```r
-client_id <- 'xxxxxxxxxxxxxxxxxxxxx'
-client_secret <- 'xxxxxxxxxxxxxxxxxxxxx'
+Sys.setenv(SPOTIFY_CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx')
+Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 
-access_token <- get_spotify_access_token(client_id = client_id, client_secret = client_secret)
+access_token <- get_spotify_access_token(client_id = Sys.getenv('SPOTIFY_CLIENT_ID'), client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET'))
 ```
 
 #### Usage

@@ -10,8 +10,6 @@
 
 get_artist_audio_features <- function(artist_name, access_token = get_spotify_access_token()) {
   
-  artist_name <- 'the beatles'
-  
   ### grabs first result using spotifyr::get_artists()
   artist <- get_artists(artist_name) %>% 
     slice(1) %>% 
@@ -30,7 +28,5 @@ get_artist_audio_features <- function(artist_name, access_token = get_spotify_ac
     left_join(track_features, by = 'track_uri') %>% 
     left_join(track_popularity, by = 'track_uri')
   
-  tots %>% count(key_mode)
-  track_features %>% count(key_mode)
   return(tots)
 }
