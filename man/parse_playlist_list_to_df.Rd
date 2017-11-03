@@ -7,7 +7,7 @@
 parse_playlist_list_to_df(playlist_list)
 }
 \arguments{
-\item{artist_name}{String of Spotify username. Can be found within the Spotify App}
+\item{username}{String of Spotify username. Can be found within the Spotify App}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }
