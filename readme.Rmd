@@ -66,4 +66,5 @@ ggplot(joy, aes(x = valence, y = album_name)) +
   ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
 ```
 
-
+## Sentify: A Shiny app
+This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.

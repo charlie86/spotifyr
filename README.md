@@ -81,6 +81,8 @@ joy %>%
 #> 10            Disorder - 2007 Remastered Version   0.728
 ```
 
+Now if only there was some way to plot joy...
+
 ### Joyplot of the emotional rollercoasters that are Joy Division's albums
 
 ``` r
@@ -100,3 +102,8 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 ```
 
 ![](README-unnamed-chunk-4-1.png)
+
+Sentify: A Shiny app
+--------------------
+
+This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.
