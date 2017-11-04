@@ -3,6 +3,7 @@
 #' Helper function for spotifyr::get_user_playlists()
 #' @param username String of Spotify username. Can be found within the Spotify App
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @param echo Boolean for whether or not to print number of playlists for the given username. Defaults to \code{FALSE}
 #' @keywords username
 #' @export
 #' @examples

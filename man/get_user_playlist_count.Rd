@@ -11,6 +11,8 @@ get_user_playlist_count(username, access_token = get_spotify_access_token(),
 \item{username}{String of Spotify username. Can be found within the Spotify App}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+
+\item{echo}{Boolean for whether or not to print number of playlists for the given username. Defaults to \code{FALSE}}
 }
 \description{
 Helper function for spotifyr::get_user_playlists()

@@ -14,12 +14,6 @@ Depends: R (>= 3.3.3),
   tidyr,
   httr,
   lubridate
-Imports:
-  purrr,
-  dplyr,
-  tidyr,
-  httr,
-  lubridate
 License: MIT License
 Encoding: UTF-8
 LazyData: true
