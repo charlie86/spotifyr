@@ -29,26 +29,35 @@
 #'     return(content)
 #' })
 #'
-#'
 #' playlist_df <- parse_playlist_list_to_df(playlist_list)
 
 parse_playlist_list_to_df <- function(playlist_list) {
     playlists_df <- map_df(1:length(playlist_list), function(this_playlist) {
+
         tmp <- playlist_list[[this_playlist]]
         map_df(1:length(tmp), function(this_row) {
+
             tmp2 <- tmp[[this_row]]
 
             if (!is.null(tmp2)) {
                 name <- ifelse(is.null(tmp2$name), NA, tmp2$name)
                 uri <- ifelse(is.null(tmp2$id), NA, tmp2$id)
+                snapshot_id <- ifelse(is.null(tmp2$snapshot_id), NA, tmp2$snapshot_id)
+
+                has_img <- ifelse(length(tmp2$images) > 0, TRUE, FALSE)
+                if (has_img == TRUE) {
+                    img <- tmp2$images[[1]]$url
+                } else {
+                    img <- NA
+                }
 
                 list(
                     playlist_name = name,
                     playlist_uri = uri,
                     playlist_tracks_url = tmp2$tracks$href,
                     playlist_num_tracks = tmp2$tracks$total,
-                    snapshot_id = tmp2$snapshot_id,
-                    playlist_img = tmp2$images[[1]]$url
+                    snapshot_id = snapshot_id,
+                    playlist_img = img
                 )
             } else {
                 return(tibble())
