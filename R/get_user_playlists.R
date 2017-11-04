@@ -8,44 +8,6 @@
 #' @examples
 #' get_user_playlists('barackobama')
 
-## helper functions
-parse_playlist_list_to_df <- function(playlist_list) {
-  playlists_df <- map_df(1:length(playlist_list), function(this_playlist) {
-    tmp <- playlist_list[[this_playlist]]
-    map_df(1:length(tmp), function(y) {
-      tmp2 <- tmp[[y]]
-
-      if (!is.null(tmp2)) {
-        name <- ifelse(is.null(tmp2$name), NA, tmp2$name)
-        uri <- ifelse(is.null(tmp2$id), NA, tmp2$id)
-
-        list(
-          playlist_name = name,
-          playlist_uri = uri,
-          playlist_tracks_url = tmp2$tracks$href,
-          playlist_num_tracks = tmp2$tracks$total,
-          snapshot_id = tmp2$snapshot_id,
-          playlist_img = tmp2$images[[1]]$url
-        )
-      } else {
-        return(tibble())
-      }
-    })
-  }) %>% filter(!is.na(playlist_uri))
-}
-
-get_user_playlist_count <- function(username, access_token = get_spotify_access_token(), echo = F) {
-  endpoint <- paste0('https://api.spotify.com/v1/users/', username, '/playlists')
-  total <- GET(endpoint, query = list(access_token = access_token, limit = 1)) %>% content %>% .$total
-
-  if (echo) {
-    print(paste0('Found ', total, ' playlists from ', username))
-  }
-
-  return(total)
-}
-
-
 get_user_playlists <- function(username, access_token = get_spotify_access_token()) {
 
   playlist_count <- get_user_playlist_count(username)
@@ -56,10 +18,18 @@ get_user_playlists <- function(username, access_token = get_spotify_access_token
 
   playlists_list <- map(1:ceiling(num_loops), function(x) {
     endpoint <- paste0('https://api.spotify.com/v1/users/', username, '/playlists')
-    res <- GET(endpoint, query = list(access_token = access_token, offset = offset, limit = 50)) %>% content %>% .$items
+    res <- GET(endpoint, query = list(access_token = access_token, offset = offset, limit = 50)) %>% content
+
+    if (!is.null(res$error)) {
+        stop(paste0(res$error$message, ' (', res$error$status, ')'))
+    }
+
+    content <- res$items
+
+    total <- content$total
     offset <<- offset + 50
     setTxtProgressBar(pb, x)
-    return(res)
+    return(content)
   })
 
   playlists_df <- parse_playlist_list_to_df(playlists_list)

@@ -11,38 +11,47 @@
 
 
 get_playlist_tracks <- function(playlists, access_token = get_spotify_access_token()) {
-  
-  pb <- txtProgressBar(min = 0, max = nrow(playlists), style = 3)
-  
-  playlist_tracks_df <- map_df(1:nrow(playlists), function(x) {
-    
-    num_loops <- ceiling(playlists$playlist_num_tracks[x] / 100)
-    
-    df <- map_df(1:num_loops, function(y) {
-      
-      res <- GET(playlists$playlist_tracks_url[x], query = list(access_token = access_token, limit = 100, offset = (100 * y) - 100)) %>% content %>% .$items
-      
-      if (length(res) == 0) {
-        track_info <- tibble()
-      } else {
-        track_info <- map_df(1:length(res), function(z) {
-          if (!is.null(res[[z]]$track$id)) {
-            list(
-              playlist_name = playlists$playlist_name[x],
-              playlist_img = playlists$playlist_img[x],
-              track_name = res[[z]]$track$name,
-              track_uri = res[[z]]$track$id,
-              artist_name = res[[z]]$track$artists[[1]]$name,
-              album_name = res[[z]]$track$album$name,
-              album_img = ifelse(length(res[[z]]$track$album$images) > 0, res[[z]]$track$album$images[[1]]$url, '')
-            )
-          }
+
+    pb <- txtProgressBar(min = 0, max = nrow(playlists), style = 3)
+
+    playlist_tracks_df <- map_df(1:nrow(playlists), function(this_playlist) {
+
+        num_loops <- ceiling(playlists$playlist_num_tracks[this_playlist] / 100)
+
+        df <- map_df(1:num_loops, function(this_loop) {
+
+            res <- GET(playlists$playlist_tracks_url[this_playlist], query = list(access_token = access_token, limit = 100, offset = (100 * this_loop) - 100)) %>% content
+
+            if (!is.null(res$error)) {
+                stop(paste0(res$error$message, ' (', res$error$status, ')'))
+            }
+
+            content <- res$items
+
+            if (length(content) == 0) {
+                track_info <- tibble()
+            } else {
+                track_info <- map_df(1:length(content), function(this_row) {
+
+                    this_track <- content[[this_row]]
+
+                    if (!is.null(this_track$track$id)) {
+                        list(
+                            playlist_name = playlists$playlist_name[this_playlist],
+                            playlist_img = playlists$playlist_img[this_playlist],
+                            track_name = this_track$track$name,
+                            track_uri = this_track$track$id,
+                            artist_name = this_track$track$artists[[1]]$name,
+                            album_name = this_track$track$album$name,
+                            album_img = ifelse(length(this_track$track$album$images) > 0, this_track$track$album$images[[1]]$url, '')
+                        )
+                    }
+                })
+            }
         })
-      }
+        setTxtProgressBar(pb, this_playlist)
+        return(df)
     })
-    setTxtProgressBar(pb, x)
-    return(df)
-  })
-  
-  return(playlist_tracks_df)
+
+    return(playlist_tracks_df)
 }

@@ -11,25 +11,34 @@
 #' get_album_tracks(albums)
 
 get_album_tracks <- function(albums, access_token = get_spotify_access_token()) {
-  
-  map_df(1:nrow(albums), function(x) {
-    
-    url <- paste0('https://api.spotify.com/v1/albums/', albums$album_uri[x], '/tracks')
-    
-    res <- GET(url, query = list(access_token = access_token)) %>% content %>% .$items
-    
-    if (length(res) == 0) {
-      track_info <- tibble()
-    } else {
-      track_info <- map_df(1:length(res), function(z) {
-        if (!is.null(res[[z]]$id)) {
-          list(
-            album_name = albums$album_name[x],
-            track_name = res[[z]]$name,
-            track_uri = res[[z]]$id
-          )
+
+    map_df(1:nrow(albums), function(this_album) {
+
+        url <- paste0('https://api.spotify.com/v1/albums/', albums$album_uri[this_album], '/tracks')
+
+        res <- GET(url, query = list(access_token = access_token)) %>% content
+
+        if (!is.null(res$error)) {
+            stop(paste0(res$error$message, ' (', res$error$status, ')'))
         }
-      })
-    }
-  })
+
+        content <- res$items
+
+        if (length(content) == 0) {
+            track_info <- tibble()
+        } else {
+            track_info <- map_df(1:length(content), function(this_row) {
+
+                this_track <- content[[this_row]]
+
+                if (!is.null(this_track$id)) {
+                    list(
+                        album_name = albums$album_name[this_album],
+                        track_name = this_track$name,
+                        track_uri = this_track$id
+                    )
+                }
+            })
+        }
+    })
 }

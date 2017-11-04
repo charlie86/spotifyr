@@ -27,36 +27,42 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
 
   num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
 
-  track_audio_features <- map_df(1:num_loops, function(x) {
+  track_audio_features <- map_df(1:num_loops, function(this_loop) {
 
     uris <- tracks %>%
       filter(!duplicated(track_uri)) %>%
-      slice(((x*100) - 99):(x*100)) %>%
+      slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
       select(track_uri) %>%
       .[[1]] %>%
       paste0(collapse = ',')
 
     res <- GET(paste0('https://api.spotify.com/v1/audio-features/?ids=', uris),
-               query = list(access_token = access_token)) %>% content %>% .$audio_features
+               query = list(access_token = access_token)) %>% content
+
+    if (!is.null(res$error)) {
+        stop(paste0(res$error$message, ' (', res$error$status, ')'))
+    }
+
+    content <- res$audio_features
 
     # replace nulls with NA and convert to character
-    res <- map(res, function(row) {
+    content <- map(content, function(row) {
       map(row, function(element) {
         ifelse(is.null(element), as.character(NA), as.character(element))
       })
     })
 
-    audio_features_df <- unlist(res) %>%
-      matrix(nrow = length(res), byrow = T) %>%
+    audio_features_df <- unlist(content) %>%
+      matrix(nrow = length(content), byrow = T) %>%
       as.data.frame(stringsAsFactors = F)
-    names(audio_features_df) <- names(res[[1]])
+    names(audio_features_df) <- names(content[[1]])
 
     return(audio_features_df)
 
   }) %>% select(-c(type, uri, track_href, analysis_url)) %>%
     rename(track_uri = id) %>%
     mutate_at(audio_feature_vars, as.numeric) %>%
-    mutate(key = pitch_class_lookup[key+1],
+    mutate(key = pitch_class_lookup[key + 1],
            mode = case_when(mode == 1 ~ 'major',
                             mode == 0 ~ 'minor',
                             TRUE ~ as.character(NA)),
