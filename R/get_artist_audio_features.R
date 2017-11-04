@@ -10,7 +10,6 @@
 
 get_artist_audio_features <- function(artist_name, access_token = get_spotify_access_token()) {
 
-    artist_name <- 'radiohead'
     artists <- get_artists(artist_name)
 
     if (nrow(artists) > 0) {
