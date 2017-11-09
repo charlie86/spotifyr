@@ -32,7 +32,8 @@ get_user_playlists <- function(username, access_token = get_spotify_access_token
     return(content)
   })
 
-  playlists_df <- parse_playlist_list_to_df(playlists_list)
+  playlists_df <- parse_playlist_list_to_df(playlists_list) %>%
+      filter(!is.na(playlist_name))
 
   return(playlists_df)
 

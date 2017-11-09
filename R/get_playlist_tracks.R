@@ -16,7 +16,10 @@ get_playlist_tracks <- function(playlists, access_token = get_spotify_access_tok
 
     playlist_tracks_df <- map_df(1:nrow(playlists), function(this_playlist) {
 
+
         num_loops <- ceiling(playlists$playlist_num_tracks[this_playlist] / 100)
+
+        access_token <- get_spotify_access_token()
 
         df <- map_df(1:num_loops, function(this_loop) {
 
