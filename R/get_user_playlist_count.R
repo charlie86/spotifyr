@@ -7,7 +7,9 @@
 #' @keywords username
 #' @export
 #' @examples
+#' \dontrun{
 #' obama_playlist_count <- get_user_playlist_count('barackobama')
+#' }
 
 get_user_playlist_count <- function(username, access_token = get_spotify_access_token(), echo = F) {
     endpoint <- paste0('https://api.spotify.com/v1/users/', username, '/playlists')

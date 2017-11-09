@@ -6,9 +6,11 @@
 #' @keywords album tracks
 #' @export
 #' @examples
+#' \dontrun{
 #' artists <- get_artists('radiohead')
 #' albums <- get_albums(artists$artist_uri[1])
 #' get_album_tracks(albums)
+#' }
 
 get_album_tracks <- function(albums, access_token = get_spotify_access_token()) {
 

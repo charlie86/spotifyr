@@ -15,6 +15,7 @@ get_track_audio_features(tracks, access_token = get_spotify_access_token())
 This function returns audio features from a dataframe of tracks on Spotify
 }
 \examples{
+\dontrun{
 ##### Get tracks for all of Radiohead's albums
 artists <- get_artists('radiohead')
 albums <- get_albums(artists$artist_uri[1])
@@ -25,6 +26,7 @@ radiohead_audio_features <- get_track_audio_features(tracks)
 playlists <- get_user_playlists('barackobama')
 tracks <- get_playlist_tracks(playlists)
 obama_audio_features <- get_track_audio_features(tracks)
+}
 }
 \keyword{audio}
 \keyword{features}

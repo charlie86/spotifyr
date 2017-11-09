@@ -6,7 +6,9 @@
 #' @keywords artists
 #' @export
 #' @examples
+#' \dontrun{
 #' get_artists('radiohead')
+#' }
 
 get_artists <- function(artist_name, access_token = get_spotify_access_token()) {
 

@@ -5,7 +5,7 @@
 #' @keywords username
 #' @export
 #' @examples
-#'
+#' \dontrun{
 #' username <- 'barackobama'
 #' playlist_count <- get_user_playlist_count(username)
 #' num_loops <- ceiling(playlist_count / 50)
@@ -30,6 +30,7 @@
 #' })
 #'
 #' playlist_df <- parse_playlist_list_to_df(playlist_list)
+#' }
 
 parse_playlist_list_to_df <- function(playlist_list) {
     playlists_df <- map_df(1:length(playlist_list), function(this_playlist) {

@@ -15,6 +15,8 @@ get_artists(artist_name, access_token = get_spotify_access_token())
 This function searches Spotify's library for artists by name
 }
 \examples{
+\dontrun{
 get_artists('radiohead')
+}
 }
 \keyword{artists}

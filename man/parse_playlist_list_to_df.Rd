@@ -13,7 +13,7 @@ parse_playlist_list_to_df(playlist_list)
 Helper function for spotifyr::get_user_playlists()
 }
 \examples{
-
+\dontrun{
 username <- 'barackobama'
 playlist_count <- get_user_playlist_count(username)
 num_loops <- ceiling(playlist_count / 50)
@@ -38,5 +38,6 @@ playlist_list <- map(1:ceiling(num_loops), function(this_loop) {
 })
 
 playlist_df <- parse_playlist_list_to_df(playlist_list)
+}
 }
 \keyword{username}

@@ -6,7 +6,9 @@
 #' @keywords auth
 #' @export
 #' @examples
+#' \dontrun{
 #' get_spotify_access_token()
+#' }
 
 get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID'), client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET')) {
 

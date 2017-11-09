@@ -15,6 +15,8 @@ get_user_playlists(username, access_token = get_spotify_access_token())
 This function returns a dataframe of playlists for a given Spotify username
 }
 \examples{
+\dontrun{
 get_user_playlists('barackobama')
+}
 }
 \keyword{username}

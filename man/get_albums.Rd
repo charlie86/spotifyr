@@ -15,7 +15,9 @@ get_albums(artist_uri, access_token = get_spotify_access_token())
 This function returns an artist's discography on Spotify
 }
 \examples{
+\dontrun{
 artists <- get_artists('radiohead')
 albums <- get_albums(artists$artist_uri[1])
+}
 }
 \keyword{albums}

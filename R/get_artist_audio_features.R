@@ -6,7 +6,9 @@
 #' @keywords track audio features discography
 #' @export
 #' @examples
+#' \dontrun{
 #' radiohead_features <- get_artist_audio_features('radiohead')
+#' }
 
 get_artist_audio_features <- function(artist_name, access_token = get_spotify_access_token()) {
 

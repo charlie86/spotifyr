@@ -6,6 +6,7 @@
 #' @keywords track audio features
 #' @export
 #' @examples
+#' \dontrun{
 #' ##### Get tracks for all of Radiohead's albums
 #' artists <- get_artists('radiohead')
 #' albums <- get_albums(artists$artist_uri[1])
@@ -16,6 +17,7 @@
 #' playlists <- get_user_playlists('barackobama')
 #' tracks <- get_playlist_tracks(playlists)
 #' obama_audio_features <- get_track_audio_features(tracks)
+#' }
 
 get_track_audio_features <- function(tracks, access_token = get_spotify_access_token()) {
 

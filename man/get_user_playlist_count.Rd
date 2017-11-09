@@ -18,6 +18,8 @@ get_user_playlist_count(username, access_token = get_spotify_access_token(),
 Helper function for spotifyr::get_user_playlists()
 }
 \examples{
+\dontrun{
 obama_playlist_count <- get_user_playlist_count('barackobama')
+}
 }
 \keyword{username}

@@ -6,10 +6,12 @@
 #' @keywords track audio features
 #' @export
 #' @examples
+#' \dontrun{
 #' artists <- get_artists('radiohead')
 #' albums <- get_albums(artists$artist_uri[1])
 #' tracks <- get_album_tracks(albums)
 #' track_popularity <- get_track_popularity(tracks)
+#' }
 
 
 get_track_popularity <- function(tracks, access_token = get_spotify_access_token()) {

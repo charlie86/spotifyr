@@ -15,8 +15,10 @@ get_album_popularity(albums, access_token = get_spotify_access_token())
 This function returns popularity of albums on Spotify
 }
 \examples{
+\dontrun{
 artists <- get_artists('radiohead')
 albums <- get_albums(artists$artist_uri[1])
 get_album_popularity(albums)
+}
 }
 \keyword{albums}

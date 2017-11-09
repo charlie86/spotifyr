@@ -6,8 +6,10 @@
 #' @keywords album tracks
 #' @export
 #' @examples
+#' \dontrun{
 #' playlists <- get_user_playlists('barackobama')
 #' playlist_tracks <- get_playlist_tracks(playlists)
+#' }
 
 
 get_playlist_tracks <- function(playlists, access_token = get_spotify_access_token()) {

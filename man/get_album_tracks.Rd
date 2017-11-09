@@ -15,9 +15,11 @@ get_album_tracks(albums, access_token = get_spotify_access_token())
 This function returns tracks from a dataframe of albums on Spotify
 }
 \examples{
+\dontrun{
 artists <- get_artists('radiohead')
 albums <- get_albums(artists$artist_uri[1])
 get_album_tracks(albums)
+}
 }
 \keyword{album}
 \keyword{tracks}

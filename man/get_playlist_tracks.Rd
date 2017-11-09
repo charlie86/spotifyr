@@ -15,8 +15,10 @@ get_playlist_tracks(playlists, access_token = get_spotify_access_token())
 This function returns tracks from a dataframe of playlists on Spotify
 }
 \examples{
+\dontrun{
 playlists <- get_user_playlists('barackobama')
 playlist_tracks <- get_playlist_tracks(playlists)
+}
 }
 \keyword{album}
 \keyword{tracks}

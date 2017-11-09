@@ -16,7 +16,9 @@ get_artist_audio_features(artist_name,
 This function returns the popularity and audio features for every song and album for a given artist on Spotify
 }
 \examples{
+\dontrun{
 radiohead_features <- get_artist_audio_features('radiohead')
+}
 }
 \keyword{audio}
 \keyword{discography}

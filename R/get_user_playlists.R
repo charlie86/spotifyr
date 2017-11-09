@@ -6,7 +6,9 @@
 #' @keywords username
 #' @export
 #' @examples
+#' \dontrun{
 #' get_user_playlists('barackobama')
+#' }
 
 get_user_playlists <- function(username, access_token = get_spotify_access_token()) {
 

@@ -15,7 +15,9 @@ get_user_audio_features(username, access_token = get_spotify_access_token())
 This function returns the popularity and audio features for every song for all of a given user's playlists on Spotify
 }
 \examples{
+\dontrun{
 obama_track_features <- get_user_audio_features('barackobama')
+}
 }
 \keyword{audio}
 \keyword{features}

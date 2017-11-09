@@ -16,6 +16,8 @@ get_spotify_access_token(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
 This function creates a Spotify access token.
 }
 \examples{
+\dontrun{
 get_spotify_access_token()
+}
 }
 \keyword{auth}
