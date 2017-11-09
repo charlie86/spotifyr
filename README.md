@@ -44,14 +44,14 @@ count(beatles, key_mode, sort = T)
 #>       <chr> <int>
 #>  1  C major    40
 #>  2  D major    38
-#>  3  A major    33
-#>  4  G major    33
+#>  3  G major    34
+#>  4  A major    33
 #>  5  E major    20
 #>  6  F major    13
 #>  7  B minor     9
-#>  8  A minor     8
-#>  9 C# minor     8
-#> 10 F# minor     8
+#>  8 C# minor     8
+#>  9 F# minor     8
+#> 10  A minor     7
 #> # ... with 12 more rows
 ```
 
@@ -101,7 +101,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 #> Picking joint bandwidth of 0.113
 ```
 
-![](/man/figures/README-unnamed-chunk-4-1.png)
+![](man/figures/README-unnamed-chunk-4-1.png)
 
 Sentify: A Shiny app
 --------------------
