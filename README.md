@@ -101,7 +101,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 #> Picking joint bandwidth of 0.113
 ```
 
-![](README-unnamed-chunk-4-1.png)
+![](/inst/image/README-unnamed-chunk-4-1.png)
 
 Sentify: A Shiny app
 --------------------
