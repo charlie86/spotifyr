@@ -15,7 +15,9 @@
 #'
 #' playlist_list <- map(1:ceiling(num_loops), function(this_loop) {
 #'     endpoint <- paste0('https://api.spotify.com/v1/users/', username, '/playlists')
-#'     res <- GET(endpoint, query = list(access_token = get_spotify_access_token(), offset = offset, limit = 50)) %>% content
+#'     res <- GET(endpoint, query = list(access_token = get_spotify_access_token(),
+#'                                       offset = offset,
+#'                                       limit = 50)) %>% content
 #'
 #'     if (!is.null(res$error)) {
 #'         stop(paste0(res$error$message, ' (', res$error$status, ')'))
@@ -64,5 +66,5 @@ parse_playlist_list_to_df <- function(playlist_list) {
                 return(tibble())
             }
         })
-    }) %>% filter(!is.na(playlist_uri))
+    }) %>% dplyr::filter(!is.na(playlist_uri))
 }

@@ -47,17 +47,17 @@ get_albums <- function(artist_uri, access_token = get_spotify_access_token()) {
     })
 
     if (nrow(df) > 0) {
-        df <- df %>% filter(!duplicated(tolower(album_name))) %>%
+        df <- df %>% dplyr::filter(!duplicated(tolower(album_name))) %>%
             mutate(base_album_name = gsub(' \\(.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\)', '', tolower(album_name)),
                    base_album_name = gsub(' \\[.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\]', '', base_album_name),
                    base_album_name = gsub(':.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*', '', base_album_name),
                    base_album_name = gsub(' - .*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*', '', base_album_name)) %>%
             group_by(base_album_name) %>%
-            filter(album_release_year == min(album_release_year)) %>%
+            dplyr::filter(album_release_year == min(album_release_year)) %>%
             mutate(base_album = tolower(album_name) == base_album_name,
                    num_albums = n(),
                    num_base_albums = sum(base_album)) %>%
-            filter((num_base_albums == 1 & base_album == 1) | ((num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)) %>%
+            dplyr::filter((num_base_albums == 1 & base_album == 1) | ((num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)) %>%
             ungroup %>%
             arrange(album_release_year) %>%
             mutate(album_rank = row_number())

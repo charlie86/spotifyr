@@ -19,7 +19,7 @@ get_album_popularity <- function(albums, access_token = get_spotify_access_token
     map_df(1:num_loops, function(this_loop) {
 
         uris <- albums %>%
-            filter(!duplicated(album_uri)) %>%
+            dplyr::filter(!duplicated(album_uri)) %>%
             slice(((this_loop * 20) - 19):(this_loop * 20)) %>%
             select(album_uri) %>%
             .[[1]] %>%

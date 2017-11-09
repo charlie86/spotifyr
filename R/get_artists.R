@@ -32,7 +32,7 @@ get_artists <- function(artist_name, access_token = get_spotify_access_token()) 
             artist_uri = gsub('spotify:artist:', '', this_artist$uri), # remove meta info from the uri string
             artist_img = ifelse(length(this_artist$images) > 0, this_artist$images[[1]]$url, NA) # we'll grab this just for fun
         )
-    }) %>% filter(!duplicated(tolower(artist_name)))
+    }) %>% dplyr::filter(!duplicated(tolower(artist_name)))
 
     return(artists)
 }

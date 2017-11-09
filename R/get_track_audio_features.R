@@ -32,7 +32,7 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
   track_audio_features <- map_df(1:num_loops, function(this_loop) {
 
     uris <- tracks %>%
-      filter(!duplicated(track_uri)) %>%
+      dplyr::filter(!duplicated(track_uri)) %>%
       slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
       select(track_uri) %>%
       .[[1]] %>%

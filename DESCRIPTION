@@ -1,5 +1,5 @@
 Package: spotifyr
-Title: A quick and easy wrapper for pulling track audio features from Spotify's Web API in bulk
+Title: A Quick and Easy Wrapper for Pulling Track Audio Features from Spotify's Web API in Bulk
 Version: 0.0.0.9000
 Authors@R: person("Charlie", "Thompson", email = "charles.thompson@barcelonagse.eu", role = c("aut", "cre"))
 Description: A quick and easy wrapper for pulling track audio features from 
@@ -8,19 +8,14 @@ Description: A quick and easy wrapper for pulling track audio features from
   seconds, along with Spotify's audio features and track/album popularity 
   metrics. You can also pull song and playlist information for a given Spotify 
   User (including yourself!).
-Depends: R (>= 3.3.3),
-  purrr,
-  dplyr,
-  tidyr,
-  httr,
-  lubridate
+Depends: R (>= 3.3.3)
 Imports:
-  purrr,
   dplyr,
+  purrr,
   tidyr,
   httr,
   lubridate
-License: MIT License
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

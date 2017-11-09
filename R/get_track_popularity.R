@@ -16,11 +16,11 @@
 
 get_track_popularity <- function(tracks, access_token = get_spotify_access_token()) {
 
-    num_loops <- ceiling(nrow(tracks %>% filter(!duplicated(track_uri))) / 50)
+    num_loops <- ceiling(nrow(tracks %>% dplyr::filter(!duplicated(track_uri))) / 50)
 
     map_df(1:num_loops, function(this_loop) {
         uris <- tracks %>%
-            filter(!duplicated(track_uri)) %>%
+            dplyr::filter(!duplicated(track_uri)) %>%
             slice(((this_loop * 50) - 49):(this_loop * 50)) %>%
             select(track_uri) %>% .[[1]] %>% paste0(collapse = ',')
 
