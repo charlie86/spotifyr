@@ -3,7 +3,7 @@ Title: A Quick and Easy Wrapper for Pulling Track Audio Features from Spotify's 
 Version: 1.0.0
 Authors@R: person("Charlie", "Thompson", email = "charles.thompson@barcelonagse.eu", role = c("aut", "cre"))
 Description: A quick and easy wrapper for pulling track audio features from
-  Spotify's <a href=https://developer.spotify.com/web-api/>Web API</a> in bulk. By automatically batching API requests, it allows 
+  Spotify's Web API in bulk. By automatically batching API requests, it allows 
   you to enter an artist's name and retrieve their entire discography in 
   seconds, along with Spotify's audio features and track/album popularity 
   metrics. You can also pull song and playlist information for a given Spotify 
@@ -20,3 +20,5 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat
+URL: https://github.com/charlie86/spotifyr, <https://developer.spotify.com/web-api/>
+BugReports: https://github.com/charlie86/spotifyr/issues
