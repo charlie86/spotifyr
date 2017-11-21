@@ -8,6 +8,14 @@ spotifyr is a quick and easy wrapper for pulling track audio features from Spoti
 Installation
 ------------
 
+Stable version 1.0.0 on CRAN
+
+``` r
+install.packages('spotifyr')
+```
+
+Development version
+
 ``` r
 devtools::install_github('charlie86/spotifyr')
 ```
@@ -37,7 +45,18 @@ library(spotifyr)
 
 ``` r
 beatles <- get_artist_audio_features('the beatles')
+#> Warning in strptime(x, fmt, tz = "GMT"): unknown timezone 'default/America/
+#> New_York'
 
+library(tidyverse)
+#> ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.0 ──
+#> ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+#> ✔ tibble  1.3.4     ✔ dplyr   0.7.4
+#> ✔ tidyr   0.7.2     ✔ stringr 1.2.0
+#> ✔ readr   1.1.1     ✔ forcats 0.2.0
+#> ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
 count(beatles, key_mode, sort = T)
 #> # A tibble: 22 x 2
 #>    key_mode     n
@@ -70,15 +89,15 @@ joy %>%
 #>                                       track_name valence
 #>                                            <chr>   <dbl>
 #>  1                                    These Days   0.949
-#>  2            Passover - 2007 Remastered Version   0.946
-#>  3              Colony - 2007 Remastered Version   0.816
-#>  4 Atrocity Exhibition - 2007 Remastered Version   0.790
-#>  5                                    Wilderness   0.779
-#>  6                             Twenty Four Hours   0.764
-#>  7   A Means To An End - 2007 Remastered Version   0.750
-#>  8           Interzone - 2007 Remastered Version   0.739
-#>  9  She's Lost Control - 2007 Remastered Version   0.731
-#> 10            Disorder - 2007 Remastered Version   0.728
+#>  2            Passover - 2007 Remastered Version   0.941
+#>  3              Colony - 2007 Remastered Version   0.808
+#>  4 Atrocity Exhibition - 2007 Remastered Version   0.787
+#>  5                                    Wilderness   0.775
+#>  6                             Twenty Four Hours   0.773
+#>  7   A Means To An End - 2007 Remastered Version   0.752
+#>  8           Interzone - 2007 Remastered Version   0.746
+#>  9  She's Lost Control - 2007 Remastered Version   0.743
+#> 10            Disorder - 2007 Remastered Version   0.740
 ```
 
 Now if only there was some way to plot joy...
@@ -87,7 +106,6 @@ Now if only there was some way to plot joy...
 
 ``` r
 library(ggjoy)
-#> Loading required package: ggplot2
 #> Loading required package: ggridges
 #> The ggjoy package has been deprecated. Please switch over to the
 #> ggridges package, which provides the same functionality. Porting
@@ -98,7 +116,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
   geom_joy() + 
   theme_joy() +
   ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
-#> Picking joint bandwidth of 0.113
+#> Picking joint bandwidth of 0.112
 ```
 
 ![](man/figures/README-unnamed-chunk-4-1.png)

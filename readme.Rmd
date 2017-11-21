@@ -46,7 +46,8 @@ library(spotifyr)
 ```{r}
 beatles <- get_artist_audio_features('the beatles')
 
-dplyr::count(beatles, key_mode, sort = T)
+library(tidyverse)
+count(beatles, key_mode, sort = T)
 ```
 
 ### What's the most joyful Joy Division song?
