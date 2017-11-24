@@ -3,6 +3,7 @@
 #' This function returns the popularity and audio features for every song and album for a given artist on Spotify
 #' @param artist_name String of artist name
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @param return_closest_artist Boolean for using string distance to select the artist result with the closest match to the given string. Defaults to \code{TRUE}.
 #' @keywords track audio features discography
 #' @export
 #' @examples
@@ -10,17 +11,19 @@
 #' radiohead_features <- get_artist_audio_features('radiohead')
 #' }
 
-get_artist_audio_features <- function(artist_name, access_token = get_spotify_access_token()) {
+get_artist_audio_features <- function(artist_name, access_token = get_spotify_access_token(), return_closest_artist = TRUE) {
 
     artists <- get_artists(artist_name)
 
     if (nrow(artists) > 0) {
-
-        if (interactive()) {
+        if (return_closest_artist == TRUE) {
+            string_distances <- stringdist(artist_name, artists$artist_name, method = 'cosine')
+            min_distance_index <- which(string_distances == min(string_distances))
+            selected_artist <- artists$artist_name[min_distance_index]
+            message(paste0('Selecting artist "', selected_artist, '"', '. Choose return_closest_artist = FALSE to interactively choose from all the artist matches on Spotify.'))
+        } else {
             cat(paste0('We found the following artists on Spotify matching "', artist_name, '":\n\n\t', paste(artists$artist_name, collapse = '\n\t'), '\n\nPlease type the name of the artist you would like:'), sep  = '')
             selected_artist <- readline()
-        } else {
-            selected_artist <- artists$artist_name[1]
         }
 
         artist_uri <- artists$artist_uri[artists$artist_name == selected_artist]
