@@ -13,12 +13,12 @@
 #' track_popularity <- get_track_popularity(tracks)
 #' }
 
-
 get_track_popularity <- function(tracks, access_token = get_spotify_access_token()) {
 
     num_loops <- ceiling(nrow(tracks %>% dplyr::filter(!duplicated(track_uri))) / 50)
 
     map_df(1:num_loops, function(this_loop) {
+
         uris <- tracks %>%
             dplyr::filter(!duplicated(track_uri)) %>%
             slice(((this_loop * 50) - 49):(this_loop * 50)) %>%
@@ -37,9 +37,14 @@ get_track_popularity <- function(tracks, access_token = get_spotify_access_token
 
             this_track <- content[[this_row]]
 
+            open_spotify_url <- ifelse(is.null(this_track$external_urls$spotify), NA, this_track$external_urls$spotify)
+            preview_url <- ifelse(is.null(this_track$preview_url), NA, this_track$preview_url)
+
             list(
                 track_uri = this_track$id,
-                track_popularity = this_track$popularity
+                track_popularity = this_track$popularity,
+                track_preview_url = preview_url,
+                track_open_spotify_url = open_spotify_url
             )
         })
 
