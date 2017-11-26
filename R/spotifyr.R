@@ -11,6 +11,7 @@
 #' @import dplyr
 #' @import tidyr
 #' @import httr
+#' @import stringdist
 #' @importFrom lubridate year
 #' @importFrom utils setTxtProgressBar txtProgressBar
 NULL

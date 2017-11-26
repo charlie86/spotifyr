@@ -14,6 +14,7 @@ Imports:
   purrr,
   tidyr,
   httr,
+  stringdist,
   lubridate
 License: MIT + file LICENSE
 Encoding: UTF-8
