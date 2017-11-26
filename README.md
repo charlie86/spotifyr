@@ -31,7 +31,7 @@ The easiest way to authenticate is to set your credentials to the System Environ
 Sys.setenv(SPOTIFY_CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx')
 Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 
-access_token <- get_spotify_access_token(client_id = Sys.getenv('SPOTIFY_CLIENT_ID'), client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET'))
+access_token <- get_spotify_access_token()
 ```
 
 Usage
@@ -45,32 +45,22 @@ library(spotifyr)
 
 ``` r
 beatles <- get_artist_audio_features('the beatles')
-#> Warning in strptime(x, fmt, tz = "GMT"): unknown timezone 'default/America/
-#> New_York'
 
 library(tidyverse)
-#> ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.0 ──
-#> ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-#> ✔ tibble  1.3.4     ✔ dplyr   0.7.4
-#> ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-#> ✔ readr   1.1.1     ✔ forcats 0.2.0
-#> ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
 count(beatles, key_mode, sort = T)
 #> # A tibble: 22 x 2
 #>    key_mode     n
 #>       <chr> <int>
 #>  1  C major    40
 #>  2  D major    38
-#>  3  G major    34
-#>  4  A major    33
-#>  5  E major    20
+#>  3  A major    33
+#>  4  G major    33
+#>  5  E major    19
 #>  6  F major    13
 #>  7  B minor     9
-#>  8 C# minor     8
-#>  9 F# minor     8
-#> 10  A minor     7
+#>  8 C# minor     9
+#>  9  A minor     8
+#> 10 F# minor     8
 #> # ... with 12 more rows
 ```
 
@@ -80,6 +70,7 @@ My favorite audio feature has to be "valence," a measure of musical positivity.
 
 ``` r
 joy <- get_artist_audio_features('joy division')
+#> Selecting artist "Joy Division". Choose return_closest_artist = FALSE to interactively choose from all the artist matches on Spotify.
 
 joy %>% 
  arrange(-valence) %>% 
@@ -119,7 +110,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 #> Picking joint bandwidth of 0.112
 ```
 
-![](man/figures/README-unnamed-chunk-4-1.png)
+![](man/figures/README-unnamed-chunk-5-1.png)
 
 Sentify: A Shiny app
 --------------------
