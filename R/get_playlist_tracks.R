@@ -3,6 +3,7 @@
 #' This function returns tracks from a dataframe of playlists on Spotify
 #' @param playlists Dataframe containing the columns `playlist_num_tracks`, `playlist_tracks_url`, `playlist_name`, and `playlist_img`, corresponding to Spotify playlists. Can be output from spotifyr::get_user_playlists()
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @param show_progress Boolean determining to show progress bar or not. Defaults to \code{FALSE}.
 #' @keywords album tracks
 #' @export
 #' @examples
@@ -11,9 +12,11 @@
 #' playlist_tracks <- get_playlist_tracks(playlists)
 #' }
 
-get_playlist_tracks <- function(playlists, access_token = get_spotify_access_token()) {
+get_playlist_tracks <- function(playlists, access_token = get_spotify_access_token(), show_progress = TRUE) {
 
-    pb <- txtProgressBar(min = 0, max = nrow(playlists), style = 3)
+    if (show_progress == TRUE & nrow(playlists) > 1) {
+      pb <- txtProgressBar(min = 0, max = nrow(playlists), style = 3)
+    }
 
     playlist_tracks_df <- map_df(1:nrow(playlists), function(this_playlist) {
 
@@ -52,7 +55,11 @@ get_playlist_tracks <- function(playlists, access_token = get_spotify_access_tok
                 })
             }
         })
-        setTxtProgressBar(pb, this_playlist)
+
+        if (exists('pb')) {
+          setTxtProgressBar(pb, this_playlist)
+        }
+
         return(df)
     })
 
