@@ -16,7 +16,8 @@
 #' @importFrom utils setTxtProgressBar txtProgressBar
 NULL
 
-globalVars <- c("album_name",
+globalVars <- c(
+"album_name",
 "album_rank",
 "album_release_date",
 "album_release_year",

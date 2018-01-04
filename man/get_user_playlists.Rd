@@ -4,12 +4,15 @@
 \alias{get_user_playlists}
 \title{Get user playlists}
 \usage{
-get_user_playlists(username, access_token = get_spotify_access_token())
+get_user_playlists(username, access_token = get_spotify_access_token(),
+  show_progress = TRUE)
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found within the Spotify App}
 
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{access_token}{Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.}
+
+\item{show_progress}{Boolean determining to show progress bar or not. Defaults to \code{FALSE}.}
 }
 \description{
 This function returns a dataframe of playlists for a given Spotify username

@@ -5,12 +5,14 @@
 \title{Get features and popularity for an artist's entire discography on Spotify}
 \usage{
 get_artist_audio_features(artist_name,
-  access_token = get_spotify_access_token())
+  access_token = get_spotify_access_token(), return_closest_artist = TRUE)
 }
 \arguments{
 \item{artist_name}{String of artist name}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+
+\item{return_closest_artist}{Boolean for using string distance to select the artist result with the closest match to the given string. Defaults to \code{TRUE}.}
 }
 \description{
 This function returns the popularity and audio features for every song and album for a given artist on Spotify
