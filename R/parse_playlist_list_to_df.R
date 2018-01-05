@@ -67,4 +67,5 @@ parse_playlist_list_to_df <- function(playlist_list) {
             }
         })
     }) %>% dplyr::filter(!is.na(playlist_uri))
+    return(playlists_df)
 }
