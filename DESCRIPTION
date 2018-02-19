@@ -1,7 +1,7 @@
 Package: spotifyr
 Title: Pull Track Audio Features from the 'Spotify' Web API
-Version: 1.0.0
-Authors@R: person("Charlie", "Thompson", email = "charles.thompson@barcelonagse.eu", role = c("aut", "cre"))
+Version: 1.1.0
+Authors@R: person("Charlie", "Thompson", email = "chuck@rcharlie.com", role = c("aut", "cre"))
 Description: A wrapper for pulling track audio features from the
   'Spotify' Web API <http://developer.spotify.com/web-api> in bulk. 
   By automatically batching API requests, it allows you to enter an artist's 

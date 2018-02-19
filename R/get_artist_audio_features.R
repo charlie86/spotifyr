@@ -19,7 +19,7 @@ get_artist_audio_features <- function(artist_name, access_token = get_spotify_ac
         if (return_closest_artist == TRUE) {
             string_distances <- stringdist(artist_name, artists$artist_name, method = 'cosine')
             min_distance_index <- which(string_distances == min(string_distances))
-            selected_artist <- artists$artist_name[min_distance_index]
+            selected_artist <- artists$artist_name[min_distance_index][1]
             message(paste0('Selecting artist "', selected_artist, '"', '. Choose return_closest_artist = FALSE to interactively choose from all the artist matches on Spotify.'))
         } else {
             cat(paste0('We found the following artists on Spotify matching "', artist_name, '":\n\n\t', paste(artists$artist_name, collapse = '\n\t'), '\n\nPlease type the name of the artist you would like:'), sep  = '')
