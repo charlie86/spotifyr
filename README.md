@@ -1,6 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr) ![](http://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/last-week/spotifyr?color=green)
+spotifyr
+========
+
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr) ![](http://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/last-week/spotifyr?color=green)
 
 Overview
 --------
