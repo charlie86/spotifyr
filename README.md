@@ -1,5 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr) ![](http://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/last-week/spotifyr?color=green)
+
 Overview
 --------
 
@@ -50,17 +52,17 @@ library(tidyverse)
 count(beatles, key_mode, sort = T)
 #> # A tibble: 22 x 2
 #>    key_mode     n
-#>       <chr> <int>
-#>  1  C major    40
-#>  2  D major    38
-#>  3  A major    33
-#>  4  G major    33
-#>  5  E major    19
-#>  6  F major    13
-#>  7  B minor     9
-#>  8 C# minor     9
-#>  9  A minor     8
-#> 10 F# minor     8
+#>    <chr>    <int>
+#>  1 C major     40
+#>  2 D major     38
+#>  3 G major     34
+#>  4 A major     33
+#>  5 E major     20
+#>  6 F major     13
+#>  7 B minor      9
+#>  8 C# minor     8
+#>  9 F# minor     8
+#> 10 A minor      7
 #> # ... with 12 more rows
 ```
 
@@ -77,18 +79,18 @@ joy %>%
  select(track_name, valence) %>% 
  head(10)
 #> # A tibble: 10 x 2
-#>                                       track_name valence
-#>                                            <chr>   <dbl>
-#>  1                                    These Days   0.949
-#>  2            Passover - 2007 Remastered Version   0.941
-#>  3              Colony - 2007 Remastered Version   0.808
+#>    track_name                                    valence
+#>    <chr>                                           <dbl>
+#>  1 These Days                                      0.949
+#>  2 Passover - 2007 Remastered Version              0.941
+#>  3 Colony - 2007 Remastered Version                0.808
 #>  4 Atrocity Exhibition - 2007 Remastered Version   0.787
-#>  5                                    Wilderness   0.775
-#>  6                             Twenty Four Hours   0.773
-#>  7   A Means To An End - 2007 Remastered Version   0.752
-#>  8           Interzone - 2007 Remastered Version   0.746
-#>  9  She's Lost Control - 2007 Remastered Version   0.743
-#> 10            Disorder - 2007 Remastered Version   0.740
+#>  5 Wilderness                                      0.775
+#>  6 Twenty Four Hours                               0.773
+#>  7 A Means To An End - 2007 Remastered Version     0.752
+#>  8 Interzone - 2007 Remastered Version             0.746
+#>  9 She's Lost Control - 2007 Remastered Version    0.743
+#> 10 Disorder - 2007 Remastered Version              0.740
 ```
 
 Now if only there was some way to plot joy...
