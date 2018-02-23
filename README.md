@@ -8,7 +8,7 @@ spotifyr
 Overview
 --------
 
-spotifyr is a quick and easy wrapper for pulling track audio features from Spotify's Web API in bulk. By automatically batching API requests, it allows you to enter an artist's name and retrieve their entire discography in seconds, along with Spotify's audio features and track/album popularity metrics. You can also pull song and playlist information for a given Spotify User (including yourself!).
+spotifyr is a wrapper for pulling track audio features and other information from Spotify's Web API in bulk. By automatically batching API requests, it allows you to enter an artist's name and retrieve their entire discography in seconds, along with Spotify's audio features and track/album popularity metrics. You can also pull song and playlist information for a given Spotify User (including yourself!).
 
 Installation
 ------------
@@ -58,14 +58,14 @@ count(beatles, key_mode, sort = T)
 #>    <chr>    <int>
 #>  1 C major     40
 #>  2 D major     38
-#>  3 G major     34
-#>  4 A major     33
-#>  5 E major     20
+#>  3 A major     33
+#>  4 G major     33
+#>  5 E major     19
 #>  6 F major     13
 #>  7 B minor      9
-#>  8 C# minor     8
-#>  9 F# minor     8
-#> 10 A minor      7
+#>  8 C# minor     9
+#>  9 A minor      8
+#> 10 F# minor     8
 #> # ... with 12 more rows
 ```
 
@@ -75,7 +75,6 @@ My favorite audio feature has to be "valence," a measure of musical positivity.
 
 ``` r
 joy <- get_artist_audio_features('joy division')
-#> Selecting artist "Joy Division". Choose return_closest_artist = FALSE to interactively choose from all the artist matches on Spotify.
 
 joy %>% 
  arrange(-valence) %>% 

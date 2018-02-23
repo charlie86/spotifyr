@@ -2,6 +2,7 @@
 #'
 #' This function searches Spotify's library for artists by name
 #' @param artist_name String of artist name
+#' @param return_closest_artist Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @keywords artists
 #' @export
@@ -10,7 +11,7 @@
 #' get_artists('radiohead')
 #' }
 
-get_artists <- function(artist_name, access_token = get_spotify_access_token()) {
+get_artists <- function(artist_name, return_closest_artist = FALSE, access_token = get_spotify_access_token()) {
 
     # Search Spotify API for artist name
     res <- GET('https://api.spotify.com/v1/search', query = list(q = artist_name, type = 'artist', access_token = access_token)) %>%
@@ -22,8 +23,14 @@ get_artists <- function(artist_name, access_token = get_spotify_access_token()) 
 
     content <- res$artists %>% .$items
 
+    if (return_closest_artist == TRUE) {
+        num_loops <- 1
+    } else {
+        num_loops <- length(content)
+    }
+
     # Clean response and combine all returned artists into a dataframe
-    artists <- map_df(seq_len(length(content)), function(this_row) {
+    artists <- map_df(seq_len(num_loops), function(this_row) {
 
         this_artist <- content[[this_row]]
 

@@ -8,13 +8,12 @@ Description: A wrapper for pulling track audio features from the
   name and retrieve their entire discography in seconds, along with audio 
   features and track/album popularity metrics. You can also pull song and 
   playlist information for a given 'Spotify' user (including yourself!).
-Depends: R (>= 3.3.3)
+Depends: R (>= 3.3.0)
 Imports:
   dplyr,
   purrr,
   tidyr,
   httr,
-  stringdist,
   lubridate
 License: MIT + file LICENSE
 Encoding: UTF-8
