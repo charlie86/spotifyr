@@ -120,3 +120,8 @@ Sentify: A Shiny app
 --------------------
 
 This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.
+
+Dope stuff other people have done with spotifyr
+-----------------------------------------------
+
+[Sentiment analysis of musical taste: a cross-European comparison](http://paulelvers.com/post/emotionsineuropeanmusic/) - Paul Elvers [Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin Hudon [KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing
