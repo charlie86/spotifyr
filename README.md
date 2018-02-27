@@ -3,7 +3,7 @@
 spotifyr
 ========
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr) ![](http://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=green) ![](http://cranlogs.r-pkg.org/badges/last-week/spotifyr?color=green)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr) ![](http://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=green)
 
 Overview
 --------
@@ -124,4 +124,10 @@ This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to vis
 Dope stuff other people have done with spotifyr
 -----------------------------------------------
 
-[Sentiment analysis of musical taste: a cross-European comparison](http://paulelvers.com/post/emotionsineuropeanmusic/) - Paul Elvers [Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin Hudon [KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing
+The coolest thing about making this package has definitely been seeing all the awesome stuff other people have done with it. Here are a few examples:
+
+[Sentiment analysis of musical taste: a cross-European comparison](http://paulelvers.com/post/emotionsineuropeanmusic/) - Paul Elvers
+
+[Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin Hudon
+
+[KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing

@@ -8,8 +8,6 @@ output: github_document
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=green)
-![](http://cranlogs.r-pkg.org/badges/spotifyr?color=green)
-![](http://cranlogs.r-pkg.org/badges/last-week/spotifyr?color=green)
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
