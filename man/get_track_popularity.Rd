@@ -16,8 +16,7 @@ This function returns the popularity of tracks on Spotify
 }
 \examples{
 \dontrun{
-artists <- get_artists('radiohead')
-albums <- get_albums(artists$artist_uri[1])
+albums <- get_artist_albums('radiohead')
 tracks <- get_album_tracks(albums)
 track_popularity <- get_track_popularity(tracks)
 }

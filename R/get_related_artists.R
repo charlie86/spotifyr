@@ -8,6 +8,7 @@
 #' @param message Boolean for printing the name of artist matched when using \code{return_closest_artist = TRUE}. Defaults to \code{FALSE}.
 #' @param access_token Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.
 #' @keywords artists related
+#' @export
 #' @examples
 #' \dontrun{
 #' get_related_artists('radiohead')

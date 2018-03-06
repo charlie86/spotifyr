@@ -7,7 +7,7 @@
 get_album_tracks(albums, access_token = get_spotify_access_token())
 }
 \arguments{
-\item{albums}{Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_albums()}
+\item{albums}{Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_artist_albums()}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }
@@ -16,8 +16,7 @@ This function returns tracks from a dataframe of albums on Spotify
 }
 \examples{
 \dontrun{
-artists <- get_artists('radiohead')
-albums <- get_artist_albums(artists$artist_uri[1])
+albums <- get_artist_albums('radiohead')
 get_album_tracks(albums)
 }
 }

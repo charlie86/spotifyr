@@ -4,11 +4,16 @@
 \alias{get_artist_albums}
 \title{Get Artist Albums}
 \usage{
-get_artist_albums(artist_uri, studio_albums_only = TRUE,
-  access_token = get_spotify_access_token())
+get_artist_albums(artist_name = NULL, artist_uri = NULL,
+  use_artist_uri = FALSE, return_closest_artist = TRUE, message = FALSE,
+  studio_albums_only = TRUE, access_token = get_spotify_access_token())
 }
 \arguments{
-\item{artist_uri}{String identifier for an artist on Spotify. Can be found within the Spotify app or with spotifyr::get_artists()}
+\item{artist_name}{String of artist name}
+
+\item{artist_uri}{String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling related artists in bulk and allows for more accurate matching since Spotify URIs are unique.}
+
+\item{use_artist_uri}{Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.}
 
 \item{studio_albums_only}{Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to \code{TRUE}}
 
@@ -19,8 +24,7 @@ This function returns an artist's discography on Spotify
 }
 \examples{
 \dontrun{
-artists <- get_artists('radiohead')
-albums <- get_artist_albums(artists$artist_uri[1])
+albums <- get_artist_albums('radiohead')
 }
 }
 \keyword{albums}

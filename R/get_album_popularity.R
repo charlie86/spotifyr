@@ -1,14 +1,13 @@
 #' Get Album Popularity
 #'
 #' This function returns popularity of albums on Spotify
-#' @param albums Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_albums()
+#' @param albums Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_artist_albums()
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @keywords albums
 #' @export
 #' @examples
 #' \dontrun{
-#' artists <- get_artists('radiohead')
-#' albums <- get_albums(artists$artist_uri[1])
+#' albums <- get_artist_albums('radiohead')
 #' get_album_popularity(albums)
 #' }
 

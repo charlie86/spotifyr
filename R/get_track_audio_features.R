@@ -8,8 +8,7 @@
 #' @examples
 #' \dontrun{
 #' ##### Get tracks for all of Radiohead's albums
-#' artists <- get_artists('radiohead')
-#' albums <- get_albums(artists$artist_uri[1])
+#' albums <- get_artist_albums('radiohead')
 #' tracks <- get_album_tracks(albums)
 #' radiohead_audio_features <- get_track_audio_features(tracks)
 #'
