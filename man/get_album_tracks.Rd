@@ -17,7 +17,7 @@ This function returns tracks from a dataframe of albums on Spotify
 \examples{
 \dontrun{
 artists <- get_artists('radiohead')
-albums <- get_albums(artists$artist_uri[1])
+albums <- get_artist_albums(artists$artist_uri[1])
 get_album_tracks(albums)
 }
 }

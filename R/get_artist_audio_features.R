@@ -5,16 +5,16 @@
 #' @param artist_uri String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling related artists in bulk and allows for more accurate matching since Spotify URIs are unique.
 #' @param use_artist_uri Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.
 #' @param return_closest_artist Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.
+#' @param studio_albums_only Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to \code{TRUE}
 #' @param message Boolean for printing the name of artist matched when using \code{return_closest_artist = TRUE}. Defaults to \code{FALSE}.
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @keywords track audio features discography
-#' @export
 #' @examples
 #' \dontrun{
 #' radiohead_features <- get_artist_audio_features(artist_name = 'radiohead')
 #' }
 
-get_artist_audio_features <- function(artist_name = NULL, artist_uri = NULL, use_artist_uri = FALSE, return_closest_artist = TRUE, message = FALSE, access_token = get_spotify_access_token()) {
+get_artist_audio_features <- function(artist_name = NULL, artist_uri = NULL, use_artist_uri = FALSE, return_closest_artist = TRUE, studio_albums_only = TRUE, message = FALSE, access_token = get_spotify_access_token()) {
 
     if (use_artist_uri == FALSE) {
 
@@ -46,7 +46,7 @@ get_artist_audio_features <- function(artist_name = NULL, artist_uri = NULL, use
         }
     }
 
-    albums <- get_albums(artist_uri)
+    albums <- get_artist_albums(artist_uri, studio_albums_only = studio_albums_only)
 
     if (nrow(albums) > 0) {
         albums <- select(albums, -c(base_album_name, base_album, num_albums, num_base_albums, album_rank))

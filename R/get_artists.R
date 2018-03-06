@@ -31,9 +31,7 @@ get_artists <- function(artist_name, return_closest_artist = FALSE, access_token
 
     # Clean response and combine all returned artists into a dataframe
     artists <- map_df(seq_len(num_loops), function(this_row) {
-
         this_artist <- content[[this_row]]
-
         list(
             artist_name = this_artist$name,
             artist_uri = gsub('spotify:artist:', '', this_artist$uri), # remove meta info from the uri string

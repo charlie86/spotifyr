@@ -4,10 +4,13 @@
 \alias{get_artists}
 \title{Get Artists}
 \usage{
-get_artists(artist_name, access_token = get_spotify_access_token())
+get_artists(artist_name, return_closest_artist = FALSE,
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{artist_name}{String of artist name}
+
+\item{return_closest_artist}{Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }

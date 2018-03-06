@@ -8,13 +8,12 @@
 #' @param message Boolean for printing the name of artist matched when using \code{return_closest_artist = TRUE}. Defaults to \code{FALSE}.
 #' @param access_token Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.
 #' @keywords artists related
-#' @export
 #' @examples
 #' \dontrun{
 #' get_related_artists('radiohead')
 #'
 #' ## If you know the Spotify URI for the artist (or more likely, artists) you're looking for,
-#' set use_artist_uri to TRUE and use artist_uri.
+#' ## set use_artist_uri to TRUE and use artist_uri.
 #' purrr::map_df(bunch_of_artist_uris, function(this_artist_uri) {
 #'     get_related_artists(artist_uri = this_artist_uri, use_artist_uri = TRUE)
 #' })
@@ -25,7 +24,7 @@ get_related_artists <- function(artist_name = NULL, artist_uri = NULL, use_artis
     if (use_artist_uri == FALSE) {
 
         if (is.null(artist_name)) {
-            stop('You must enter an artist name if use_artist_uri = FALSE.')
+            stop('You must enter an artist name if use_artist_uri == FALSE.')
         }
 
         artists <- get_artists(artist_name, access_token = access_token)
@@ -49,7 +48,7 @@ get_related_artists <- function(artist_name = NULL, artist_uri = NULL, use_artis
         if (!is.null(artist_uri)) {
             artist_uri <- artist_uri
         } else {
-            stop('You must enter an artist_uri if use_artist_uri = TRUE.')
+            stop('You must enter an artist_uri if use_artist_uri == TRUE.')
         }
     }
 
