@@ -89,4 +89,4 @@ The coolest thing about making this package has definitely been seeing all the a
 
 [KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing
 
-[Vilken är Kents mest deprimerande låt? (Swedish: What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/) - Filip Wästberg
+[Vilken är Kents mest deprimerande låt? (What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/) - Filip Wästberg
