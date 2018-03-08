@@ -58,14 +58,14 @@ count(beatles, key_mode, sort = T)
 #>    <chr>    <int>
 #>  1 C major     40
 #>  2 D major     38
-#>  3 A major     33
-#>  4 G major     33
+#>  3 G major     34
+#>  4 A major     33
 #>  5 E major     19
 #>  6 F major     13
 #>  7 B minor      9
 #>  8 C# minor     9
-#>  9 A minor      8
-#> 10 F# minor     8
+#>  9 F# minor     8
+#> 10 A minor      7
 #> # ... with 12 more rows
 ```
 
@@ -131,3 +131,5 @@ The coolest thing about making this package has definitely been seeing all the a
 [Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin Hudon
 
 [KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing
+
+[Vilken är Kents mest deprimerande låt? (Swedish: What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/) - Filip Wästberg
