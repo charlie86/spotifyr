@@ -39,6 +39,12 @@ get_playlist_tracks <- function(playlists, access_token = get_spotify_access_tok
 
                     this_track <- content[[this_row]]
 
+                    if (is.null(this_track$added_at)) {
+                        track_added_at <- NA
+                    } else {
+                        track_added_at <- this_track$added_at
+                    }
+
                     if (!is.null(this_track$track$id)) {
 
                         list(
@@ -49,7 +55,7 @@ get_playlist_tracks <- function(playlists, access_token = get_spotify_access_tok
                             artist_name = this_track$track$artists[[1]]$name,
                             album_name = this_track$track$album$name,
                             album_img = ifelse(length(this_track$track$album$images) > 0, this_track$track$album$images[[1]]$url, ''),
-                            track_added_at = as.POSIXct(this_track$added_at, format = '%Y-%m-%dT%H:%M:%SZ')
+                            track_added_at = as.POSIXct(track_added_at, format = '%Y-%m-%dT%H:%M:%SZ')
                         )
                     }
                 })
