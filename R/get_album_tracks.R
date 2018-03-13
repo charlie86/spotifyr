@@ -17,29 +17,39 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token()) 
 
         url <- paste0('https://api.spotify.com/v1/albums/', albums$album_uri[this_album], '/tracks')
 
-        res <- GET(url, query = list(access_token = access_token)) %>% content
+        track_check <- GET(url, query = list(limit = 50, access_token = access_token)) %>% content
 
-        if (!is.null(res$error)) {
-            stop(paste0(res$error$message, ' (', res$error$status, ')'))
+        if (!is.null(track_check$error)) {
+            stop(paste0(track_check$error$message, ' (', track_check$error$status, ')'))
         }
 
-        content <- res$items
+        track_count <- track_check$total
+        num_loops <- ceiling(track_count / 50)
+        offset <- 0
 
-        if (length(content) == 0) {
-            track_info <- tibble()
-        } else {
-            track_info <- map_df(1:length(content), function(this_row) {
+        map_df(1:num_loops, function(this_loop) {
+            res <- GET(url, query = list(limit = 50, access_token = access_token), offset = offset) %>% content
 
-                this_track <- content[[this_row]]
+            content <- res$items
 
-                if (!is.null(this_track$id)) {
-                    list(
-                        album_name = albums$album_name[this_album],
-                        track_name = this_track$name,
-                        track_uri = this_track$id
-                    )
-                }
-            })
-        }
+            if (length(content) == 0) {
+                track_info <- tibble()
+            } else {
+                track_info <- map_df(1:length(content), function(this_row) {
+
+                    this_track <- content[[this_row]]
+
+                    if (!is.null(this_track$id)) {
+                        list(
+                            album_name = albums$album_name[this_album],
+                            track_name = this_track$name,
+                            track_uri = this_track$id
+                        )
+                    }
+                })
+            }
+            offset <<- offset + 50
+            track_info
+        })
     })
 }
