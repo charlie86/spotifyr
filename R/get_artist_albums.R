@@ -2,7 +2,7 @@
 #'
 #' This function returns an artist's discography on Spotify
 #' @param artist_name String of artist name
-#' @param artist_uri String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling related artists in bulk and allows for more accurate matching since Spotify URIs are unique.
+#' @param artist_uri String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling artists in bulk and allows for more accurate matching since Spotify URIs are unique.
 #' @param use_artist_uri Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.
 #' @param studio_albums_only Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to \code{TRUE}
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
@@ -25,7 +25,15 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
 
         if (nrow(artists) > 0) {
             if (return_closest_artist == TRUE) {
-                selected_artist <- artists$artist_name[1]
+
+                exact_matches <- artists$artist_name[tolower(artists$artist_name) == tolower(artist_name)]
+
+                if (length(exact_matches) > 0) {
+                    selected_artist <- exact_matches[1]
+                } else {
+                    selected_artist <- artists$artist_name[1]
+                }
+
                 if (message) {
                     message(paste0('Selecting artist "', selected_artist, '"', '. Choose return_closest_artist = FALSE to interactively choose from all the artist matches on Spotify.'))
                 }
@@ -79,7 +87,9 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
                     stop(paste0(res$error$message, ' (', res$error$status, ')'))
                 }
 
-                df <- tibble(album_uri = this_album$uri %>% gsub('spotify:album:', '', .),
+                df <- tibble(artist_name = this_album$artists[[1]]$name,
+                             artist_uri = this_album$artists[[1]]$id,
+                             album_uri = this_album$uri %>% gsub('spotify:album:', '', .),
                              album_name = gsub('\'', '', this_album$name),
                              album_img = ifelse(length(this_album$images) > 0, this_album$images[[1]]$url, NA),
                              album_type = this_album$album_type,

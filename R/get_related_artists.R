@@ -15,7 +15,7 @@
 #'
 #' ## If you know the Spotify URI for the artist (or more likely, artists) you're looking for,
 #' ## set use_artist_uri to TRUE and use artist_uri.
-#' purrr::map_df(bunch_of_artist_uris, function(this_artist_uri) {
+#' purrr::map_df(vector_of_artist_uris, function(this_artist_uri) {
 #'     get_related_artists(artist_uri = this_artist_uri, use_artist_uri = TRUE)
 #' })
 #' }
@@ -32,10 +32,19 @@ get_related_artists <- function(artist_name = NULL, artist_uri = NULL, use_artis
 
         if (nrow(artists) > 0) {
             if (return_closest_artist == TRUE) {
-                selected_artist <- artists$artist_name[1]
+
+                exact_matches <- artists$artist_name[tolower(artists$artist_name) == tolower(artist_name)]
+
+                if (length(exact_matches) > 0) {
+                    selected_artist <- exact_matches$artist_name[1]
+                } else {
+                    selected_artist <- artists$artist_name[1]
+                }
+
                 if (message) {
                     message(paste0('Selecting artist "', selected_artist, '"', '. Choose return_closest_artist = FALSE to interactively choose from all the artist matches on Spotify.'))
                 }
+
             } else {
                 cat(paste0('We found the following artists on Spotify matching "', artist_name, '":\n\n\t', paste(artists$artist_name, collapse = "\n\t"), '\n\nPlease type the name of the artist you would like:'), sep  = '')
                 selected_artist <- readline()
