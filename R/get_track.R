@@ -14,7 +14,7 @@
 #' }
 
 get_track <- function(artist_name, track_name, access_token = get_spotify_access_token()) {
-    string_search <- paste(artist, track)
+    string_search <- paste(artist_name, track_name)
     # Search Spotify API for track name
     res <- GET('https://api.spotify.com/v1/search',
                query = list(q = string_search,
