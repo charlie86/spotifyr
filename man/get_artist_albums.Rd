@@ -11,7 +11,7 @@ get_artist_albums(artist_name = NULL, artist_uri = NULL,
 \arguments{
 \item{artist_name}{String of artist name}
 
-\item{artist_uri}{String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling related artists in bulk and allows for more accurate matching since Spotify URIs are unique.}
+\item{artist_uri}{String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling artists in bulk and allows for more accurate matching since Spotify URIs are unique.}
 
 \item{use_artist_uri}{Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.}
 
