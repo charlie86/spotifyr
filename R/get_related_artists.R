@@ -36,7 +36,7 @@ get_related_artists <- function(artist_name = NULL, artist_uri = NULL, use_artis
                 exact_matches <- artists$artist_name[tolower(artists$artist_name) == tolower(artist_name)]
 
                 if (length(exact_matches) > 0) {
-                    selected_artist <- exact_matches$artist_name[1]
+                    selected_artist <- exact_matches[1]
                 } else {
                     selected_artist <- artists$artist_name[1]
                 }
