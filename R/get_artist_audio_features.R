@@ -19,9 +19,7 @@ get_artist_audio_features <- function(artist_name = NULL, artist_uri = NULL, use
 
     albums <- get_artist_albums(artist_name = artist_name, artist_uri = artist_uri, use_artist_uri = use_artist_uri, return_closest_artist = return_closest_artist, message = message, studio_albums_only = studio_albums_only, access_token = access_token)
 
-    if (nrow(albums) > 0) {
-        albums <- select(albums, -c(base_album_name, base_album, num_albums, num_base_albums, album_rank))
-    } else {
+    if (nrow(albums) == 0) {
         stop(paste0('Cannot find any albums for "', selected_artist, '" on Spotify'))
     }
 
