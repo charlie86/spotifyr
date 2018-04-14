@@ -100,7 +100,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
 
         })
 
-        if (nrow(df) > 0) {
+        if (nrow(df) > 0 & studio_albums_only) {
             df <- df %>% dplyr::filter(!duplicated(tolower(album_name))) %>%
                 mutate(base_album_name = gsub(' \\(.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\)', '', tolower(album_name)),
                        base_album_name = gsub(' \\[.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\]', '', base_album_name),
@@ -114,7 +114,8 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
                 dplyr::filter((num_base_albums == 1 & base_album == 1) | ((num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)) %>%
                 ungroup %>%
                 arrange(album_release_year) %>%
-                mutate(album_rank = row_number())
+                mutate(album_rank = row_number()) %>%
+                select(-c(base_album_name, base_album, num_albums, num_base_albums, album_rank))
         }
         offset <<- offset + 50
         df
