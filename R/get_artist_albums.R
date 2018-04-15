@@ -54,7 +54,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
         }
     }
 
-    album_check <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri,'/albums'), query = list(limit = 50, access_token = access_token), quiet = TRUE) %>% content
+    album_check <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri,'/albums'), query = list(limit = 50, access_token = access_token), quiet = TRUE, times = 10) %>% content
 
     album_count <- album_check$total
     num_loops <- ceiling(album_count / 50)
@@ -62,7 +62,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
 
     map_df(1:ceiling(num_loops), function(this_loop) {
 
-        albums <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri, '/albums'), query = list(limit = 50, access_token = access_token, offset = offset), quiet = TRUE) %>% content
+        albums <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri, '/albums'), query = list(limit = 50, access_token = access_token, offset = offset), quiet = TRUE, times = 10) %>% content
 
         df <- map_df(1:length(albums$items), function(this_row) {
 
@@ -73,7 +73,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
             if (studio_albums_only & (is_collaboration | this_album$album_type != 'album')) {
                 df <- tibble()
             } else {
-                res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/albums/', this_album$uri %>% gsub('spotify:album:', '', .)), query = list(access_token = access_token), quiet = TRUE) %>% content
+                res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/albums/', this_album$uri %>% gsub('spotify:album:', '', .)), query = list(access_token = access_token), quiet = TRUE, times = 10) %>% content
 
                 df <- tibble(artist_name = this_album$artists[[1]]$name,
                              artist_uri = this_album$artists[[1]]$id,
@@ -103,7 +103,10 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
                 ungroup %>%
                 arrange(album_release_year) %>%
                 mutate(album_rank = row_number()) %>%
-                select(-c(base_album_name, base_album, num_albums, num_base_albums, album_rank))
+                select(-c(base_album_name, base_album, num_albums, num_base_albums, album_rank)) %>%
+                group_by(album_name, artist_uri, is_collaboration, album_type) %>%
+                slice(1) %>%
+                ungroup
         }
         offset <<- offset + 50
         df
