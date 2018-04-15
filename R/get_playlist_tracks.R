@@ -24,7 +24,7 @@ get_playlist_tracks <- function(playlists, access_token = get_spotify_access_tok
 
         df <- map_df(1:num_loops, function(this_loop) {
 
-            res <- GET(playlists$playlist_tracks_url[this_playlist], query = list(access_token = access_token, limit = 100, offset = (100 * this_loop) - 100)) %>% content
+            res <- RETRY('GET', url = playlists$playlist_tracks_url[this_playlist], query = list(access_token = access_token, limit = 100, offset = (100 * this_loop) - 100), quiet = TRUE) %>% content
 
             if (!is.null(res$error)) {
                 stop(paste0(res$error$message, ' (', res$error$status, ')'))

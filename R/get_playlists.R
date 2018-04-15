@@ -25,7 +25,7 @@ get_playlists <- function(username, playlist_uris, access_token = get_spotify_ac
     map_df(playlist_uris, function(this_playlist) {
         url <- paste0('https://api.spotify.com/v1/users/', username, '/playlists/', this_playlist)
 
-        content <- GET(url, query = list(access_token = access_token)) %>% content
+        content <- RETRY('GET', url, query = list(access_token = access_token), quiet = TRUE) %>% content
 
         if (!is.null(content$error)) {
             stop(paste0(content$error$message, ' (', content$error$status, ')'))

@@ -23,7 +23,7 @@ get_user_playlists <- function(username, access_token = get_spotify_access_token
 
   playlists_list <- map(1:ceiling(num_loops), function(x) {
     endpoint <- paste0('https://api.spotify.com/v1/users/', username, '/playlists')
-    res <- GET(endpoint, query = list(access_token = access_token, offset = offset, limit = 50)) %>% content
+    res <- RETRY('GET', url = endpoint, query = list(access_token = access_token, offset = offset, limit = 50), quiet = TRUE) %>% content
 
     if (!is.null(res$error)) {
         stop(paste0(res$error$message, ' (', res$error$status, ')'))

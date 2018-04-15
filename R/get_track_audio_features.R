@@ -37,8 +37,8 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
       .[[1]] %>%
       paste0(collapse = ',')
 
-    res <- GET(paste0('https://api.spotify.com/v1/audio-features/?ids=', uris),
-               query = list(access_token = access_token)) %>% content
+    res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/audio-features/?ids=', uris),
+               query = list(access_token = access_token), quiet = TRUE) %>% content
 
     if (!is.null(res$error)) {
         stop(paste0(res$error$message, ' (', res$error$status, ')'))

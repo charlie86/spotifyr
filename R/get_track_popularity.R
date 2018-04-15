@@ -23,12 +23,7 @@ get_track_popularity <- function(tracks, access_token = get_spotify_access_token
             slice(((this_loop * 50) - 49):(this_loop * 50)) %>%
             select(track_uri) %>% .[[1]] %>% paste0(collapse = ',')
 
-        res <- GET(paste0('https://api.spotify.com/v1/tracks/?ids=', uris),
-                   query = list(access_token = access_token)) %>% content
-
-        if (!is.null(res$error)) {
-            stop(paste0(res$error$message, ' (', res$error$status, ')'))
-        }
+        res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/tracks/?ids=', uris), query = list(access_token = access_token), quiet = TRUE) %>% content
 
         content <- res$tracks
 

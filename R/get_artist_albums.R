@@ -66,11 +66,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
 
     map_df(1:ceiling(num_loops), function(this_loop) {
 
-        albums <- GET(paste0('https://api.spotify.com/v1/artists/', artist_uri, '/albums'), query = list(limit = 50, access_token = access_token, offset = offset)) %>% content
-
-        if (!is.null(albums$error)) {
-            stop(paste0(albums$error$message, ' (', albums$error$status, ')'))
-        }
+        albums <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri, '/albums'), query = list(limit = 50, access_token = access_token, offset = offset), quiet = TRUE) %>% content
 
         df <- map_df(1:length(albums$items), function(this_row) {
 
@@ -81,11 +77,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
             if (studio_albums_only & (is_collaboration | this_album$album_type != 'album')) {
                 df <- tibble()
             } else {
-                res <- GET(paste0('https://api.spotify.com/v1/albums/', this_album$uri %>% gsub('spotify:album:', '', .)), query = list(access_token = access_token)) %>% content
-
-                if (!is.null(res$error)) {
-                    stop(paste0(res$error$message, ' (', res$error$status, ')'))
-                }
+                res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/albums/', this_album$uri %>% gsub('spotify:album:', '', .)), query = list(access_token = access_token), quiet = TRUE) %>% content
 
                 df <- tibble(artist_name = this_album$artists[[1]]$name,
                              artist_uri = this_album$artists[[1]]$id,

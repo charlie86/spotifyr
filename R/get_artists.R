@@ -14,7 +14,7 @@
 get_artists <- function(artist_name, return_closest_artist = FALSE, access_token = get_spotify_access_token()) {
 
     # Search Spotify API for artist name
-    res <- GET('https://api.spotify.com/v1/search', query = list(q = artist_name, type = 'artist', access_token = access_token)) %>%
+    res <- RETRY('GET', url = 'https://api.spotify.com/v1/search', query = list(q = artist_name, type = 'artist', access_token = access_token), quiet = TRUE) %>%
         content
 
     if (!is.null(res$error)) {

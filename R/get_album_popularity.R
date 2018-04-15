@@ -26,11 +26,7 @@ get_album_popularity <- function(albums, access_token = get_spotify_access_token
 
         url <- paste0('https://api.spotify.com/v1/albums/?ids=', uris)
 
-        res <- GET(url, query = list(access_token = access_token)) %>% content
-
-        if (!is.null(res$error)) {
-            stop(paste0(res$error$message, ' (', res$error$status, ')'))
-        }
+        res <- RETRY('GET', url, query = list(access_token = access_token), quiet = TRUE) %>% content
 
         content <- res$albums
 

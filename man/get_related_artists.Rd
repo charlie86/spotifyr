@@ -30,7 +30,7 @@ get_related_artists('radiohead')
 
 ## If you know the Spotify URI for the artist (or more likely, artists) you're looking for,
 ## set use_artist_uri to TRUE and use artist_uri.
-purrr::map_df(bunch_of_artist_uris, function(this_artist_uri) {
+purrr::map_df(vector_of_artist_uris, function(this_artist_uri) {
     get_related_artists(artist_uri = this_artist_uri, use_artist_uri = TRUE)
 })
 }

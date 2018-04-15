@@ -62,11 +62,7 @@ get_related_artists <- function(artist_name = NULL, artist_uri = NULL, use_artis
         }
     }
 
-    res <- GET(paste0('https://api.spotify.com/v1/artists/', artist_uri, '/related-artists'), query = list(access_token = access_token)) %>% content
-
-    if (!is.null(res$error)) {
-        stop(paste0(res$error$message, ' (', res$error$status, ')'))
-    }
+    res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri, '/related-artists'), query = list(access_token = access_token), quiet = TRUE) %>% content
 
     content <- res$artists
 
