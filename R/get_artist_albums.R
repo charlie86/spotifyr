@@ -15,6 +15,14 @@
 
 get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_uri = FALSE, return_closest_artist = TRUE, message = FALSE, studio_albums_only = TRUE, access_token = get_spotify_access_token()) {
 
+    # artist_name = 'run the jewels'
+    # artist_uri = NULL
+    # use_artist_uri = FALSE
+    # return_closest_artist = TRUE
+    # message = FALSE
+    # studio_albums_only = FALSE
+    # access_token = get_spotify_access_token()
+
     if (use_artist_uri == FALSE) {
 
         if (is.null(artist_name)) {
@@ -93,13 +101,18 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
                 mutate(base_album_name = gsub(' \\(.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\)', '', tolower(album_name)),
                        base_album_name = gsub(' \\[.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*\\]', '', base_album_name),
                        base_album_name = gsub(':.*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*', '', base_album_name),
-                       base_album_name = gsub(' - .*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*', '', base_album_name)) %>%
+                       base_album_name = gsub(' - .*(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo).*', '', base_album_name),
+                       base_album = tolower(album_name) == base_album_name) %>%
                 group_by(base_album_name) %>%
-                dplyr::filter(album_release_year == min(album_release_year)) %>%
-                mutate(base_album = tolower(album_name) == base_album_name,
-                       num_albums = n(),
+                dplyr::filter((album_release_year == min(album_release_year)) | base_album) %>%
+                mutate(num_albums = n(),
                        num_base_albums = sum(base_album)) %>%
-                dplyr::filter((num_base_albums == 1 & base_album == 1) | ((num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)) %>%
+                dplyr::filter(
+                    (base_album == 1) |
+                        (
+                            (num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)
+
+                    ) %>%
                 ungroup %>%
                 arrange(album_release_year) %>%
                 mutate(album_rank = row_number()) %>%
