@@ -27,10 +27,6 @@ get_playlists <- function(username, playlist_uris, access_token = get_spotify_ac
 
         content <- RETRY('GET', url, query = list(access_token = access_token), quiet = TRUE) %>% content
 
-        if (!is.null(content$error)) {
-            stop(paste0(content$error$message, ' (', content$error$status, ')'))
-        }
-
         playlist_df <- content %>%
             list %>%
             list %>%

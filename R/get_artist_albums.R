@@ -54,11 +54,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
         }
     }
 
-    album_check <- GET(paste0('https://api.spotify.com/v1/artists/', artist_uri,'/albums'), query = list(limit = 50, access_token = access_token)) %>% content
-
-    if (!is.null(album_check$error)) {
-        stop(paste0(album_check$error$message, ' (', album_check$error$status, ')'))
-    }
+    album_check <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri,'/albums'), query = list(limit = 50, access_token = access_token), quiet = TRUE) %>% content
 
     album_count <- album_check$total
     num_loops <- ceiling(album_count / 50)

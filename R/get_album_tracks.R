@@ -17,7 +17,7 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token()) 
 
         url <- paste0('https://api.spotify.com/v1/albums/', albums$album_uri[this_album], '/tracks')
 
-        track_check <- RETRY('GET', url, query = list(limit = 50, access_token = access_token), quiet = TRUE) %>% content
+        track_check <- RETRY('GET', url, query = list(limit = 50, access_token = access_token), quiet = TRUE, times = 10) %>% content
 
         if (!is.null(track_check$error)) {
             stop(paste0(track_check$error$message, ' (', track_check$error$status, ')'))
@@ -28,7 +28,7 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token()) 
         offset <- 0
 
         map_df(1:num_loops, function(this_loop) {
-            res <- RETRY('GET', url, query = list(limit = 50, access_token = access_token), offset = offset, quiet = TRUE) %>% content
+            res <- RETRY('GET', url, query = list(limit = 50, access_token = access_token), offset = offset, quiet = TRUE, times = 10) %>% content
 
             content <- res$items
 
