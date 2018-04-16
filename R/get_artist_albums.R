@@ -107,21 +107,18 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
                 dplyr::filter((album_release_year == min(album_release_year)) | base_album) %>%
                 mutate(num_albums = n(),
                        num_base_albums = sum(base_album)) %>%
-                dplyr::filter(
-                    (base_album == 1) |
-                        (
-                            (num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)
-
-                    ) %>%
+                dplyr::filter((base_album == 1) |((num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)) %>%
                 ungroup %>%
                 arrange(album_release_year) %>%
                 mutate(album_rank = row_number()) %>%
-                select(-c(base_album_name, base_album, num_albums, num_base_albums, album_rank)) %>%
-                group_by(album_name, artist_uri, is_collaboration, album_type) %>%
-                slice(1) %>%
-                ungroup
+                select(-c(base_album_name, base_album, num_albums, num_base_albums, album_rank))
         }
         offset <<- offset + 50
-        df
+
+        df %>%
+            group_by(album_name_lower = tolower(album_name), artist_uri, is_collaboration, album_type) %>%
+            slice(1) %>%
+            ungroup %>%
+            select(-album_name_lower)
     })
 }
