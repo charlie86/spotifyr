@@ -1,20 +1,21 @@
-#' Get track uri:s from a string search on Spotify
+#' Get track uris from a string search on Spotify
 #'
 #' This function takes a string and returns a data frame with track information
 #' from Spotify's search endpoint
 #' @param track_name A string with track name
 #' @param artist_name Optional. A string with artist name
 #' @param album_name Optional. A string with album name
+#' @param return_closest_track Optional. A string with album name
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @keywords track uri string search
 #' @export
 #' @examples
 #' \dontrun{
 #' ##### Get track uri for Radiohead - Kid A
-#' kid_a <- get_track(artist_name = "Radiohead", track_name = "Kid A")
+#' kid_a <- get_tracks(artist_name = "Radiohead", track_name = "Kid A", return_closest_track = TRUE)
 #' }
 
-get_track <- function(track_name, artist_name = NULL, album_name = NULL, access_token = get_spotify_access_token()) {
+get_tracks <- function(track_name, artist_name = NULL, album_name = NULL, return_closest_track = FALSE, access_token = get_spotify_access_token()) {
 
     string_search <- track_name
 
@@ -46,8 +47,14 @@ get_track <- function(track_name, artist_name = NULL, album_name = NULL, access_
                 album_id = res[[x]]$album$id
             )
         })
+
+        if (return_closest_track == TRUE) {
+            tracks <- slice(tracks, 1)
+        }
+
     } else {
         tracks <- tibble()
     }
+
     return(tracks)
 }
