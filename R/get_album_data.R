@@ -18,6 +18,11 @@
 
 get_album_data <- function(artist, albums = character()) {
 
+    artist <- 'radiohead'
+    albums <- c('kid a', 'in rainbows')
+    library(tidyverse)
+    library(geniusR)
+
     # Identify All Albums for a single artist
     artist_albums <- get_artist_albums(artist) %>% as_tibble()
     # Acquire all tracks for each album
@@ -34,7 +39,6 @@ get_album_data <- function(artist, albums = character()) {
     # Get the audio features for each song
     disco_audio_feats <- get_track_audio_features(artist_disco) %>% as_tibble()
 
-
     # Identify each unique album name and artist pairing
     album_list <- artist_disco %>%
         distinct(album_name) %>%
@@ -42,14 +46,16 @@ get_album_data <- function(artist, albums = character()) {
     # Create possible_album for potential error handling
     possible_album <- possibly(genius_album, otherwise = as_tibble())
 
-    # Acquire the lyrics for each track
-    album_lyrics <- album_list %>%
-        mutate(tracks = map2(artist, album_name, possible_album)) %>%
-        unnest(tracks) %>%
-        left_join(artist_disco, by = c("album_name", "track_n")) %>%
-        inner_join(disco_audio_feats) %>%
-        nest(-artist, -album_name, -track_title)
+    album_lyrics <- map2(album_list$artist, album_list$album_name, function(x, y) possible_album(x, y) %>% mutate(album_name = y)) %>%
+        map_df(function(x) nest(x, -c(track_title, track_n, album_name))) %>%
+        rename(lyrics = data) %>%
+        select(-track_title)
 
-    return(album_lyrics)
+    # Acquire the lyrics for each track
+    album_data <- artist_disco %>%
+        left_join(disco_audio_feats, by = 'track_uri') %>%
+        left_join(album_lyrics, by = c('album_name', 'track_n'))
+
+    return(album_data)
 }
 
