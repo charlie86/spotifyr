@@ -18,11 +18,6 @@
 
 get_album_data <- function(artist, albums = character()) {
 
-    artist <- 'radiohead'
-    albums <- c('kid a', 'in rainbows')
-    library(tidyverse)
-    library(geniusR)
-
     # Identify All Albums for a single artist
     artist_albums <- get_artist_albums(artist) %>% as_tibble()
     # Acquire all tracks for each album
