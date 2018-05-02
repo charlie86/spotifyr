@@ -56,16 +56,16 @@ count(beatles, key_mode, sort = T)
 #> # A tibble: 22 x 2
 #>    key_mode     n
 #>    <chr>    <int>
-#>  1 C major     40
-#>  2 D major     38
-#>  3 G major     34
-#>  4 A major     33
-#>  5 E major     19
-#>  6 F major     13
-#>  7 B minor      9
-#>  8 C# minor     9
-#>  9 F# minor     8
-#> 10 A minor      7
+#>  1 C major     46
+#>  2 D major     41
+#>  3 G major     39
+#>  4 A major     36
+#>  5 E major     21
+#>  6 F major     18
+#>  7 A minor     10
+#>  8 B minor     10
+#>  9 E minor     10
+#> 10 C# minor     9
 #> # ... with 12 more rows
 ```
 
@@ -133,3 +133,5 @@ The coolest thing about making this package has definitely been seeing all the a
 [KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing
 
 [Vilken är Kents mest deprimerande låt? (What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/) - Filip Wästberg
+
+[Чёрное зеркало Arcade Fire (Black Mirror Arcade Fire)](http://thesociety.ru/arcadefire) - TheSociety
