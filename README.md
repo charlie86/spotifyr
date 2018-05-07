@@ -58,11 +58,11 @@ count(beatles, key_mode, sort = T)
 #>    <chr>    <int>
 #>  1 C major     46
 #>  2 D major     41
-#>  3 G major     39
+#>  3 G major     38
 #>  4 A major     36
 #>  5 E major     21
 #>  6 F major     18
-#>  7 A minor     10
+#>  7 A minor     11
 #>  8 B minor     10
 #>  9 E minor     10
 #> 10 C# minor     9
@@ -135,3 +135,5 @@ The coolest thing about making this package has definitely been seeing all the a
 [Vilken är Kents mest deprimerande låt? (What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/) - Filip Wästberg
 
 [Чёрное зеркало Arcade Fire (Black Mirror Arcade Fire)](http://thesociety.ru/arcadefire) - TheSociety
+
+[Sente-se triste quando ouve "Amar pelos dois"? Não é o único (Do you feel sad when you hear "Love for both?" You're not alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico) - Rui Barros, Renascença
