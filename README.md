@@ -13,22 +13,30 @@ spotifyr is a wrapper for pulling track audio features and other information fro
 Installation
 ------------
 
-Stable version 1.0.0 on CRAN
-
-``` r
-install.packages('spotifyr')
-```
-
-Development version
+Development version (recommended)
 
 ``` r
 devtools::install_github('charlie86/spotifyr')
 ```
 
+The development version now imports the `geniusR` package from [Josiah Parry](https://github.com/JosiahParry/geniusR), which you can install with:
+
+``` r
+devtools::install_github('JosiahParry/geniusR')
+```
+
+(Note that this is separate from the `geniusr` package currently on CRAN)
+
+CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra time to submit and pass CRAN checks)
+
+``` r
+install.packages('spotifyr')
+```
+
 Authenication
 -------------
 
-You'll have to set up a Dev account with Spotify to access their Web API [here](https://developer.spotify.com/my-applications/#!/applications). This will give you your `Client ID` and `Client Secret`. Once you have those, you can pull your access token into R with `get_spotify_access_token`.
+First, set up a Dev account with Spotify to access their Web API [here](https://developer.spotify.com/my-applications/#!/applications). This will give you your `Client ID` and `Client Secret`. Once you have those, you can pull your access token into R with `get_spotify_access_token`.
 
 The easiest way to authenticate is to set your credentials to the System Environment variables `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`. The default arguments to `get_spotify_access_token` (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.
 
@@ -56,16 +64,16 @@ count(beatles, key_mode, sort = T)
 #> # A tibble: 22 x 2
 #>    key_mode     n
 #>    <chr>    <int>
-#>  1 C major     46
-#>  2 D major     41
-#>  3 G major     38
-#>  4 A major     36
-#>  5 E major     21
-#>  6 F major     18
-#>  7 A minor     11
-#>  8 B minor     10
-#>  9 E minor     10
-#> 10 C# minor     9
+#>  1 C major     40
+#>  2 D major     38
+#>  3 A major     33
+#>  4 G major     33
+#>  5 E major     19
+#>  6 F major     13
+#>  7 B minor      9
+#>  8 C# minor     9
+#>  9 A minor      8
+#> 10 F# minor     8
 #> # ... with 12 more rows
 ```
 
