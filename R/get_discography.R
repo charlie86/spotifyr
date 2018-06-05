@@ -10,7 +10,7 @@
 #'
 #' @export
 #' @import dplyr
-#' @import geniusR
+#' @import geniusr
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
 
