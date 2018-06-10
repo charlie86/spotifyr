@@ -64,17 +64,87 @@ count(beatles, key_mode, sort = T)
 #> # A tibble: 22 x 2
 #>    key_mode     n
 #>    <chr>    <int>
-#>  1 C major     40
-#>  2 D major     38
-#>  3 A major     33
-#>  4 G major     33
-#>  5 E major     19
-#>  6 F major     13
-#>  7 B minor      9
-#>  8 C# minor     9
-#>  9 A minor      8
-#> 10 F# minor     8
+#>  1 C major     46
+#>  2 D major     41
+#>  3 G major     38
+#>  4 A major     36
+#>  5 E major     21
+#>  6 F major     18
+#>  7 A minor     11
+#>  8 B minor     10
+#>  9 E minor     10
+#> 10 C# minor     9
 #> # ... with 12 more rows
+```
+
+### Thom Yorke dancing
+
+``` r
+library(magick)
+#> Linking to ImageMagick 6.9.9.39
+#> Enabled features: cairo, fontconfig, freetype, lcms, pango, rsvg, webp
+#> Disabled features: fftw, ghostscript, x11
+library(ggridges)
+library(spotifyr)
+library(tidyverse)
+library(lubridate)
+#> 
+#> Attaching package: 'lubridate'
+#> The following object is masked from 'package:base':
+#> 
+#>     date
+
+tots <- map_df(c('radiohead', 'thom yorke', 'atoms for peace'), get_artist_audio_features)
+
+non_studio_albums <- c('OK Computer OKNOTOK 1997 2017', 'TKOL RMX 1234567', 'In Rainbows Disk 2', 
+                       'Com Lag: 2+2=5', 'I Might Be Wrong', 'The Eraser Rmxs')
+
+tots <- filter(tots, !album_name %in% non_studio_albums)
+
+album_names_label <- tots %>% 
+    arrange(album_release_date) %>% 
+    mutate(label = str_glue('{album_name} ({year(album_release_year)})')) %>% 
+    pull(label) %>% 
+    unique
+
+plot_df <- tots %>% 
+    select(track_name, album_name, danceability, album_release_date) %>% 
+    gather(metric, value, -c(track_name, album_name, album_release_date))
+
+ggplot(plot_df, aes(x = value, y = album_release_date)) + 
+    geom_density_ridges(size = .1) +
+    theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
+    theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
+          plot.subtitle = element_text(size = 10, hjust = 1.1)) +
+    ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
+    labs(x = 'Song danceability', y = '') +
+    scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
+    scale_y_discrete(labels = album_names_label) +
+    ggsave(filename = 'img/danceplot.png', width = 5, height = 3)
+#> Picking joint bandwidth of 0.0714
+#> Picking joint bandwidth of 0.0714
+```
+
+![](man/figures/README-unnamed-chunk-4-2.png)
+
+``` r
+
+background <- image_read('img/danceplot.png')
+logo_raw <- image_read('img/thom_dance.gif')
+frames <- lapply(1:length(logo_raw), function(frame) {
+    hjust <- 200+(100*frame)
+    image_composite(background, logo_raw[frame], offset = str_glue('+{hjust}+400'))
+})
+# frames[10]
+
+animation <- image_animate(image_join(frames), fps = 5, loop = 0)
+animation
+```
+
+![](man/figures/README-unnamed-chunk-4-1.gif)
+
+``` r
+# image_write(animation, 'thom_dance.gif')
 ```
 
 ### What's the most joyful Joy Division song?
@@ -109,7 +179,6 @@ Now if only there was some way to plot joy...
 
 ``` r
 library(ggjoy)
-#> Loading required package: ggridges
 #> The ggjoy package has been deprecated. Please switch over to the
 #> ggridges package, which provides the same functionality. Porting
 #> guidelines can be found here:
@@ -122,7 +191,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 #> Picking joint bandwidth of 0.112
 ```
 
-![](man/figures/README-unnamed-chunk-5-1.png)
+![](man/figures/README-unnamed-chunk-6-1.png)
 
 Sentify: A Shiny app
 --------------------
