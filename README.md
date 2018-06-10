@@ -126,16 +126,38 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 
 ### Danceability of Thom Yorke albums
 
-    #> Linking to ImageMagick 6.9.9.39
-    #> Enabled features: cairo, fontconfig, freetype, lcms, pango, rsvg, webp
-    #> Disabled features: fftw, ghostscript, x11
-    #> 
-    #> Attaching package: 'lubridate'
-    #> The following object is masked from 'package:base':
-    #> 
-    #>     date
-    #> Picking joint bandwidth of 0.0714
-    #> Picking joint bandwidth of 0.0714
+``` r
+library(magick)
+library(lubridate)
+
+tots <- map_df(c('radiohead', 'thom yorke', 'atoms for peace'), get_artist_audio_features)
+
+non_studio_albums <- c('OK Computer OKNOTOK 1997 2017', 'TKOL RMX 1234567', 'In Rainbows Disk 2', 
+                       'Com Lag: 2+2=5', 'I Might Be Wrong', 'The Eraser Rmxs')
+
+tots <- filter(tots, !album_name %in% non_studio_albums)
+
+album_names_label <- tots %>% 
+    arrange(album_release_date) %>% 
+    mutate(label = str_glue('{album_name} ({year(album_release_year)})')) %>% 
+    pull(label) %>% 
+    unique
+
+plot_df <- tots %>% 
+    select(track_name, album_name, danceability, album_release_date) %>% 
+    gather(metric, value, -c(track_name, album_name, album_release_date))
+
+ggplot(plot_df, aes(x = value, y = album_release_date)) + 
+    geom_density_ridges(size = .1) +
+    theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
+    theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
+          plot.subtitle = element_text(size = 10, hjust = 1.1)) +
+    ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
+    labs(x = 'Song danceability', y = '') +
+    scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
+    scale_y_discrete(labels = album_names_label) +
+    ggsave(filename = 'img/danceplot.png', width = 5, height = 3)
+```
 
 ![](man/figures/README-unnamed-chunk-6-1.png)
 

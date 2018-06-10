@@ -84,7 +84,8 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 ```
 
 ### Danceability of Thom Yorke albums
-```{r, echo = FALSE}
+
+```{r, message = FALSE, results='hide'}
 library(magick)
 library(lubridate)
 
