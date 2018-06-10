@@ -117,9 +117,6 @@ p <- ggplot(plot_df, aes(x = value, y = album_release_date)) +
         scale_y_discrete(labels = album_names_label)
 
 ggsave(p, filename = 'img/danceplot.png', width = 5, height = 3)
-```
-
-```{r}
 background <- image_read('img/danceplot.png')
 logo_raw <- image_read('img/thom_dance.gif')
 frames <- lapply(1:length(logo_raw), function(frame) {
