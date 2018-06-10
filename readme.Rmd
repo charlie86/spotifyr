@@ -61,12 +61,31 @@ library(tidyverse)
 count(beatles, key_mode, sort = T)
 ```
 
-### Thom Yorke dancing
+### What's the most joyful Joy Division song?
+My favorite audio feature has to be "valence," a measure of musical positivity.
 ```{r}
+joy <- get_artist_audio_features('joy division')
+
+joy %>% 
+ arrange(-valence) %>% 
+ select(track_name, valence) %>% 
+ head(10)
+```
+Now if only there was some way to plot joy...
+
+### Joyplot of the emotional rollercoasters that are Joy Division's albums
+```{r}
+library(ggjoy)
+
+ggplot(joy, aes(x = valence, y = album_name)) + 
+  geom_joy() + 
+  theme_joy() +
+  ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
+```
+
+### Danceability of Thom Yorke albums
+```{r, echo = FALSE}
 library(magick)
-library(ggridges)
-library(spotifyr)
-library(tidyverse)
 library(lubridate)
 
 tots <- map_df(c('radiohead', 'thom yorke', 'atoms for peace'), get_artist_audio_features)
@@ -96,40 +115,17 @@ ggplot(plot_df, aes(x = value, y = album_release_date)) +
     scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
     scale_y_discrete(labels = album_names_label) +
     ggsave(filename = 'img/danceplot.png', width = 5, height = 3)
+```
 
+```{r}
 background <- image_read('img/danceplot.png')
 logo_raw <- image_read('img/thom_dance.gif')
 frames <- lapply(1:length(logo_raw), function(frame) {
     hjust <- 200+(100*frame)
     image_composite(background, logo_raw[frame], offset = str_glue('+{hjust}+400'))
 })
-# frames[10]
 
-animation <- image_animate(image_join(frames), fps = 5, loop = 0)
-animation
-# image_write(animation, 'thom_dance.gif')
-```
-
-### What's the most joyful Joy Division song?
-My favorite audio feature has to be "valence," a measure of musical positivity.
-```{r}
-joy <- get_artist_audio_features('joy division')
-
-joy %>% 
- arrange(-valence) %>% 
- select(track_name, valence) %>% 
- head(10)
-```
-Now if only there was some way to plot joy...
-
-### Joyplot of the emotional rollercoasters that are Joy Division's albums
-```{r}
-library(ggjoy)
-
-ggplot(joy, aes(x = valence, y = album_name)) + 
-  geom_joy() + 
-  theme_joy() +
-  ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
+image_animate(image_join(frames), fps = 5, loop = 0)
 ```
 
 ## Sentify: A Shiny app
