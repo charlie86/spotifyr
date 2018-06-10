@@ -11,9 +11,9 @@ output: github_document
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-"
+    collapse = TRUE,
+    comment = "#>",
+    fig.path = "man/figures/README-"
 )
 ```
 
@@ -67,9 +67,9 @@ My favorite audio feature has to be "valence," a measure of musical positivity.
 joy <- get_artist_audio_features('joy division')
 
 joy %>% 
- arrange(-valence) %>% 
- select(track_name, valence) %>% 
- head(10)
+    arrange(-valence) %>% 
+    select(track_name, valence) %>% 
+    head(10)
 ```
 Now if only there was some way to plot joy...
 
@@ -78,9 +78,9 @@ Now if only there was some way to plot joy...
 library(ggjoy)
 
 ggplot(joy, aes(x = valence, y = album_name)) + 
-  geom_joy() + 
-  theme_joy() +
-  ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
+    geom_joy() + 
+    theme_joy() +
+    ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
 ```
 
 ### Danceability of Thom Yorke albums
@@ -107,14 +107,14 @@ plot_df <- tots %>%
     gather(metric, value, -c(track_name, album_name, album_release_date))
 
 p <- ggplot(plot_df, aes(x = value, y = album_release_date)) + 
-        geom_density_ridges(size = .1) +
-        theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
-        theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
-              plot.subtitle = element_text(size = 10, hjust = 1.1)) +
-        ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
-        labs(x = 'Song danceability', y = '') +
-        scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
-        scale_y_discrete(labels = album_names_label)
+    geom_density_ridges(size = .1) +
+    theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
+    theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
+          plot.subtitle = element_text(size = 10, hjust = 1.1)) +
+    ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
+    labs(x = 'Song danceability', y = '') +
+    scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
+    scale_y_discrete(labels = album_names_label)
 
 ggsave(p, filename = 'img/danceplot.png', width = 5, height = 3)
 background <- image_read('img/danceplot.png')

@@ -85,9 +85,9 @@ My favorite audio feature has to be "valence," a measure of musical positivity.
 joy <- get_artist_audio_features('joy division')
 
 joy %>% 
- arrange(-valence) %>% 
- select(track_name, valence) %>% 
- head(10)
+    arrange(-valence) %>% 
+    select(track_name, valence) %>% 
+    head(10)
 #> # A tibble: 10 x 2
 #>    track_name                                    valence
 #>    <chr>                                           <dbl>
@@ -116,9 +116,9 @@ library(ggjoy)
 #> https://github.com/clauswilke/ggjoy/blob/master/README.md
 
 ggplot(joy, aes(x = valence, y = album_name)) + 
-  geom_joy() + 
-  theme_joy() +
-  ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
+    geom_joy() + 
+    theme_joy() +
+    ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
 #> Picking joint bandwidth of 0.112
 ```
 
@@ -148,19 +148,16 @@ plot_df <- tots %>%
     gather(metric, value, -c(track_name, album_name, album_release_date))
 
 p <- ggplot(plot_df, aes(x = value, y = album_release_date)) + 
-        geom_density_ridges(size = .1) +
-        theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
-        theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
-              plot.subtitle = element_text(size = 10, hjust = 1.1)) +
-        ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
-        labs(x = 'Song danceability', y = '') +
-        scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
-        scale_y_discrete(labels = album_names_label)
+    geom_density_ridges(size = .1) +
+    theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
+    theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
+          plot.subtitle = element_text(size = 10, hjust = 1.1)) +
+    ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
+    labs(x = 'Song danceability', y = '') +
+    scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
+    scale_y_discrete(labels = album_names_label)
 
 ggsave(p, filename = 'img/danceplot.png', width = 5, height = 3)
-```
-
-``` r
 background <- image_read('img/danceplot.png')
 logo_raw <- image_read('img/thom_dance.gif')
 frames <- lapply(1:length(logo_raw), function(frame) {
@@ -171,7 +168,7 @@ frames <- lapply(1:length(logo_raw), function(frame) {
 image_animate(image_join(frames), fps = 5, loop = 0)
 ```
 
-![](man/figures/README-unnamed-chunk-7-1.gif)
+![](man/figures/README-unnamed-chunk-6-1.gif)
 
 Sentify: A Shiny app
 --------------------
