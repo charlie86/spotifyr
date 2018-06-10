@@ -85,7 +85,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 
 ### Danceability of Thom Yorke albums
 
-```{r, message = FALSE, results='hide'}
+```{r, message = FALSE}
 library(magick)
 library(lubridate)
 
@@ -106,16 +106,17 @@ plot_df <- tots %>%
     select(track_name, album_name, danceability, album_release_date) %>% 
     gather(metric, value, -c(track_name, album_name, album_release_date))
 
-ggplot(plot_df, aes(x = value, y = album_release_date)) + 
-    geom_density_ridges(size = .1) +
-    theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
-    theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
-          plot.subtitle = element_text(size = 10, hjust = 1.1)) +
-    ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
-    labs(x = 'Song danceability', y = '') +
-    scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
-    scale_y_discrete(labels = album_names_label) +
-    ggsave(filename = 'img/danceplot.png', width = 5, height = 3)
+p <- ggplot(plot_df, aes(x = value, y = album_release_date)) + 
+        geom_density_ridges(size = .1) +
+        theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
+        theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
+              plot.subtitle = element_text(size = 10, hjust = 1.1)) +
+        ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
+        labs(x = 'Song danceability', y = '') +
+        scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
+        scale_y_discrete(labels = album_names_label)
+
+ggsave(p, filename = 'img/danceplot.png', width = 5, height = 3)
 ```
 
 ```{r}
