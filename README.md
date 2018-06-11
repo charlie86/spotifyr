@@ -124,7 +124,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 
 ![](man/figures/README-unnamed-chunk-5-1.png)
 
-### Danceability of Thom Yorke albums
+### Danceability of Thom Yorke
 
 ``` r
 library(magick)

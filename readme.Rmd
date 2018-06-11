@@ -83,7 +83,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
     ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
 ```
 
-### Danceability of Thom Yorke albums
+### Danceability of Thom Yorke
 
 ```{r, message = FALSE}
 library(magick)
