@@ -93,6 +93,10 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
             }
         )
 
+        if (parallelize) {
+            map_args <- c(map_args, .progress = TRUE)
+        }
+
         df <- do.call(map_function, map_args)
 
         if (nrow(df) > 0) {

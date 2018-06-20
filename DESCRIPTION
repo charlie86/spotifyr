@@ -1,5 +1,5 @@
 Package: spotifyr
-Title: Pull Track Audio Features from the 'Spotify' Web API
+Title: R wrapper for the 'Spotify' Web API
 Version: 1.1.0
 Authors@R: person("Charlie", "Thompson", email = "chuck@rcharlie.com", role = c("aut", "cre"))
 Description: A wrapper for pulling track audio features from the
