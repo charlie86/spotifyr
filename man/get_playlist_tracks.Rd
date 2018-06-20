@@ -5,14 +5,16 @@
 \title{Get tracks from one or more playlists}
 \usage{
 get_playlist_tracks(playlists, access_token = get_spotify_access_token(),
-  show_progress = TRUE)
+  parallelize = TRUE, future_plan = "multiprocess")
 }
 \arguments{
 \item{playlists}{Dataframe containing the columns `playlist_num_tracks`, `playlist_tracks_url`, `playlist_name`, and `playlist_img`, corresponding to Spotify playlists. Can be output from spotifyr::get_user_playlists()}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 
-\item{show_progress}{Boolean determining to show progress bar or not. Defaults to \code{FALSE}.}
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+
+\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }
 \description{
 This function returns tracks from a dataframe of playlists on Spotify

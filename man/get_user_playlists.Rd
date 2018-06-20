@@ -5,14 +5,16 @@
 \title{Get user playlists}
 \usage{
 get_user_playlists(username, access_token = get_spotify_access_token(),
-  show_progress = TRUE)
+  parallelize = TRUE, future_plan = "multiprocess")
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found within the Spotify App}
 
 \item{access_token}{Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.}
 
-\item{show_progress}{Boolean determining to show progress bar or not. Defaults to \code{FALSE}.}
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+
+\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }
 \description{
 This function returns a dataframe of playlists for a given Spotify username

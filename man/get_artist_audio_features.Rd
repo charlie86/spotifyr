@@ -6,8 +6,9 @@
 \usage{
 get_artist_audio_features(artist_name = NULL, artist_uri = NULL,
   use_artist_uri = FALSE, return_closest_artist = TRUE,
-  studio_albums_only = TRUE, message = FALSE,
-  access_token = get_spotify_access_token())
+  album_types = "album", message = FALSE,
+  access_token = get_spotify_access_token(), parallelize = TRUE,
+  future_plan = "multiprocess")
 }
 \arguments{
 \item{artist_name}{String of artist name}
@@ -18,11 +19,15 @@ get_artist_audio_features(artist_name = NULL, artist_uri = NULL,
 
 \item{return_closest_artist}{Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.}
 
-\item{studio_albums_only}{Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to \code{TRUE}}
+\item{album_types}{Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".}
 
 \item{message}{Boolean for printing the name of artist matched when using \code{return_closest_artist = TRUE}. Defaults to \code{FALSE}.}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+
+\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }
 \description{
 This function returns the popularity and audio features for every song and album for a given artist on Spotify

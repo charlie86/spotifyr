@@ -6,7 +6,8 @@
 \usage{
 get_artist_albums(artist_name = NULL, artist_uri = NULL,
   use_artist_uri = FALSE, return_closest_artist = TRUE, message = FALSE,
-  studio_albums_only = TRUE, access_token = get_spotify_access_token())
+  album_types = "album", access_token = get_spotify_access_token(),
+  parallelize = TRUE, future_plan = "multiprocess")
 }
 \arguments{
 \item{artist_name}{String of artist name}
@@ -15,9 +16,13 @@ get_artist_albums(artist_name = NULL, artist_uri = NULL,
 
 \item{use_artist_uri}{Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.}
 
-\item{studio_albums_only}{Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to \code{TRUE}}
+\item{album_types}{Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+
+\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }
 \description{
 This function returns an artist's discography on Spotify

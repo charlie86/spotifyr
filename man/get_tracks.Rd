@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_tracks.R
 \name{get_tracks}
 \alias{get_tracks}
-\title{Get track uri:s from a string search on Spotify}
+\title{Get track uris from a string search on Spotify}
 \usage{
 get_tracks(track_name, artist_name = NULL, album_name = NULL,
   return_closest_track = FALSE, access_token = get_spotify_access_token())
