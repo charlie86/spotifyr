@@ -33,8 +33,8 @@ CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra time to s
 install.packages('spotifyr')
 ```
 
-Authenication
--------------
+Authentication
+--------------
 
 First, set up a Dev account with Spotify to access their Web API [here](https://developer.spotify.com/my-applications/#!/applications). This will give you your `Client ID` and `Client Secret`. Once you have those, you can pull your access token into R with `get_spotify_access_token`.
 
