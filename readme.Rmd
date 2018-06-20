@@ -50,11 +50,8 @@ access_token <- get_spotify_access_token()
 
 ## Usage
 ### What was The Beatles' favorite key?
-```{r load_packages, message = F, warning = F}
+```{r load_packages, message = F, warning = F, results = 'hide'}
 library(spotifyr)
-```
-
-```{r, message = FALSE, warning = FALSE, results = 'hide'}
 beatles <- get_artist_audio_features('the beatles')
 ```
 ```{r, message = FALSE, warning = FALSE}
@@ -129,6 +126,9 @@ frames <- lapply(1:length(logo_raw), function(frame) {
 
 image_animate(image_join(frames), fps = 5, loop = 0)
 ```
+
+## Parallelization
+By default, `get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, and `get_playlist_tracks()` will run in parallel using the `furrr` package. To turn this feature off, set `parallel = FALSE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan` (defaults to `"multiprocess"`).
 
 ## Sentify: A Shiny app
 This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.

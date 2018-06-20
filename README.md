@@ -54,9 +54,6 @@ Usage
 
 ``` r
 library(spotifyr)
-```
-
-``` r
 beatles <- get_artist_audio_features('the beatles')
 ```
 
@@ -126,7 +123,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 #> Picking joint bandwidth of 0.112
 ```
 
-![](man/figures/README-unnamed-chunk-7-1.png)
+![](man/figures/README-unnamed-chunk-6-1.png)
 
 ### Danceability of Thom Yorke
 
@@ -175,7 +172,12 @@ frames <- lapply(1:length(logo_raw), function(frame) {
 image_animate(image_join(frames), fps = 5, loop = 0)
 ```
 
-![](man/figures/README-unnamed-chunk-9-1.gif)
+![](man/figures/README-unnamed-chunk-8-1.gif)
+
+Parallelization
+---------------
+
+By default, `get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, and `get_playlist_tracks()` will run in parallel using the `furrr` package. To turn this feature off, set `parallel = FALSE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan` (defaults to `"multiprocess"`).
 
 Sentify: A Shiny app
 --------------------
