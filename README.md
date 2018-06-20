@@ -3,7 +3,7 @@
 spotifyr
 ========
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr?color=brightgreen) ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr) ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
 
 Overview
 --------

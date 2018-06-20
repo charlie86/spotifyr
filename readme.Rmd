@@ -6,7 +6,7 @@ output: github_document
 
 # spotifyr
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=green)](https://cran.r-project.org/package=spotifyr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
 ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
 
 ```{r, echo = FALSE}
