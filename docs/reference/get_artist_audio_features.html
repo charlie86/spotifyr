@@ -110,8 +110,9 @@
 
     <pre class="usage"><span class='fu'>get_artist_audio_features</span>(<span class='kw'>artist_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>artist_uri</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>use_artist_uri</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>return_closest_artist</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>studio_albums_only</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>())</pre>
+  <span class='kw'>album_types</span> <span class='kw'>=</span> <span class='st'>"album"</span>, <span class='kw'>message</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>(), <span class='kw'>parallelize</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>future_plan</span> <span class='kw'>=</span> <span class='st'>"multiprocess"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,8 +134,8 @@
       <td><p>Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
-      <th>studio_albums_only</th>
-      <td><p>Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to <code>TRUE</code></p></td>
+      <th>album_types</th>
+      <td><p>Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".</p></td>
     </tr>
     <tr>
       <th>message</th>
@@ -143,6 +144,14 @@
     <tr>
       <th>access_token</th>
       <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
+    </tr>
+    <tr>
+      <th>parallelize</th>
+      <td><p>Boolean determining to run in parallel or not. Defaults to <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>future_plan</th>
+      <td><p>String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to <code>multiprocess</code>.</p></td>
     </tr>
     </table>
     

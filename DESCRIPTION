@@ -14,7 +14,9 @@ Imports:
   purrr,
   tidyr,
   httr,
-  lubridate
+  lubridate,
+  furrr,
+  future
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

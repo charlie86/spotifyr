@@ -109,7 +109,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_user_playlists</span>(<span class='no'>username</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>(),
-  <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>parallelize</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>future_plan</span> <span class='kw'>=</span> <span class='st'>"multiprocess"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -123,8 +123,12 @@
       <td><p>Spotify Web API token. Defaults to <code><a href='get_spotify_access_token.html'>spotifyr::get_spotify_access_token()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>show_progress</th>
-      <td><p>Boolean determining to show progress bar or not. Defaults to <code>FALSE</code>.</p></td>
+      <th>parallelize</th>
+      <td><p>Boolean determining to run in parallel or not. Defaults to <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>future_plan</th>
+      <td><p>String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to <code>multiprocess</code>.</p></td>
     </tr>
     </table>
     

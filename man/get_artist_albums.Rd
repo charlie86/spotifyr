@@ -5,9 +5,10 @@
 \title{Get Artist Albums}
 \usage{
 get_artist_albums(artist_name = NULL, artist_uri = NULL,
-  use_artist_uri = FALSE, return_closest_artist = TRUE, message = FALSE,
-  album_types = "album", access_token = get_spotify_access_token(),
-  parallelize = TRUE, future_plan = "multiprocess")
+  use_artist_uri = FALSE, return_closest_artist = TRUE,
+  album_types = "album", message = FALSE,
+  access_token = get_spotify_access_token(), parallelize = TRUE,
+  future_plan = "multiprocess")
 }
 \arguments{
 \item{artist_name}{String of artist name}

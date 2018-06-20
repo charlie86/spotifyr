@@ -54,18 +54,20 @@ access_token <- get_spotify_access_token()
 library(spotifyr)
 ```
 
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, results = 'hide'}
 beatles <- get_artist_audio_features('the beatles')
-
+```
+```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 count(beatles, key_mode, sort = T)
 ```
 
 ### What's the most joyful Joy Division song?
 My favorite audio feature has to be "valence," a measure of musical positivity.
-```{r}
+```{r, results = 'hide'}
 joy <- get_artist_audio_features('joy division')
-
+```
+```{r}
 joy %>% 
     arrange(-valence) %>% 
     select(track_name, valence) %>% 
@@ -85,12 +87,13 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 
 ### Danceability of Thom Yorke
 
-```{r, message = FALSE}
+```{r, message = FALSE, results = 'hide'}
 library(magick)
 library(lubridate)
 
 tots <- map_df(c('radiohead', 'thom yorke', 'atoms for peace'), get_artist_audio_features)
-
+```
+```{r}
 non_studio_albums <- c('OK Computer OKNOTOK 1997 2017', 'TKOL RMX 1234567', 'In Rainbows Disk 2', 
                        'Com Lag: 2+2=5', 'I Might Be Wrong', 'The Eraser Rmxs')
 

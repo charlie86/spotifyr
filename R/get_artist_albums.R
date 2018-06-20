@@ -15,7 +15,7 @@
 #' albums <- get_artist_albums('radiohead')
 #' }
 
-get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_uri = FALSE, return_closest_artist = TRUE, message = FALSE, album_types = 'album', access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
+get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_uri = FALSE, return_closest_artist = TRUE, album_types = 'album', message = FALSE, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
 
     if (use_artist_uri == FALSE) {
 
@@ -49,9 +49,7 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
             stop(paste0('Cannot find any artists on Spotify matching "', artist_name, '"'))
         }
     } else {
-        if (!is.null(artist_uri)) {
-            artist_uri <- artist_uri
-        } else {
+        if (is.null(artist_uri)) {
             stop('You must enter an artist_uri if use_artist_uri == TRUE.')
         }
     }
@@ -94,10 +92,6 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
 
             }
         )
-
-        if (parallelize) {
-            map_args <- c(map_args, .progress = TRUE)
-        }
 
         df <- do.call(map_function, map_args)
 

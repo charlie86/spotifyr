@@ -63,7 +63,6 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token(), 
         on.exit(plan(og_plan), add = TRUE)
         plan(future_plan)
         map_function <- 'future_map_dfr'
-        map_args <- c(map_args, .progress = TRUE)
     } else {
         map_function <- 'map_df'
     }

@@ -58,7 +58,9 @@ library(spotifyr)
 
 ``` r
 beatles <- get_artist_audio_features('the beatles')
+```
 
+``` r
 library(tidyverse)
 count(beatles, key_mode, sort = T)
 #> # A tibble: 22 x 2
@@ -83,7 +85,9 @@ My favorite audio feature has to be "valence," a measure of musical positivity.
 
 ``` r
 joy <- get_artist_audio_features('joy division')
+```
 
+``` r
 joy %>% 
     arrange(-valence) %>% 
     select(track_name, valence) %>% 
@@ -122,7 +126,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 #> Picking joint bandwidth of 0.112
 ```
 
-![](man/figures/README-unnamed-chunk-5-1.png)
+![](man/figures/README-unnamed-chunk-7-1.png)
 
 ### Danceability of Thom Yorke
 
@@ -131,7 +135,9 @@ library(magick)
 library(lubridate)
 
 tots <- map_df(c('radiohead', 'thom yorke', 'atoms for peace'), get_artist_audio_features)
+```
 
+``` r
 non_studio_albums <- c('OK Computer OKNOTOK 1997 2017', 'TKOL RMX 1234567', 'In Rainbows Disk 2', 
                        'Com Lag: 2+2=5', 'I Might Be Wrong', 'The Eraser Rmxs')
 
@@ -158,6 +164,7 @@ p <- ggplot(plot_df, aes(x = value, y = album_release_date)) +
     scale_y_discrete(labels = album_names_label)
 
 ggsave(p, filename = 'img/danceplot.png', width = 5, height = 3)
+#> Picking joint bandwidth of 0.0714
 background <- image_read('img/danceplot.png')
 logo_raw <- image_read('img/thom_dance.gif')
 frames <- lapply(1:length(logo_raw), function(frame) {
@@ -168,7 +175,7 @@ frames <- lapply(1:length(logo_raw), function(frame) {
 image_animate(image_join(frames), fps = 5, loop = 0)
 ```
 
-![](man/figures/README-unnamed-chunk-6-1.gif)
+![](man/figures/README-unnamed-chunk-9-1.gif)
 
 Sentify: A Shiny app
 --------------------
