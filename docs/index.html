@@ -76,7 +76,7 @@
 <div id="spotifyr" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#spotifyr" class="anchor"></a>spotifyr</h1></div>
-<p><a href="https://cran.r-project.org/package=spotifyr"><img src="http://www.r-pkg.org/badges/version/spotifyr?color=green" alt="CRAN_Status_Badge"></a> <img src="http://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=green"></p>
+<p><a href="https://cran.r-project.org/package=spotifyr"><img src="http://www.r-pkg.org/badges/version/spotifyr?color=green" alt="CRAN_Status_Badge"></a> <img src="http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen"></p>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
@@ -109,15 +109,9 @@ access_token &lt;-<span class="st"> </span><span class="kw"><a href="reference/g
 <div id="what-was-the-beatles-favorite-key" class="section level3">
 <h3 class="hasAnchor">
 <a href="#what-was-the-beatles-favorite-key" class="anchor"></a>What was The Beatles’ favorite key?</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spotifyr)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beatles &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span>(<span class="st">'the beatles'</span>)
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-
-<span class="kw">library</span>(tidyverse)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spotifyr)
+beatles &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span>(<span class="st">'the beatles'</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
 <span class="kw">count</span>(beatles, key_mode, <span class="dt">sort =</span> T)
 <span class="co">#&gt; # A tibble: 22 x 2</span>
 <span class="co">#&gt;    key_mode     n</span>
@@ -138,18 +132,8 @@ access_token &lt;-<span class="st"> </span><span class="kw"><a href="reference/g
 <h3 class="hasAnchor">
 <a href="#whats-the-most-joyful-joy-division-song" class="anchor"></a>What’s the most joyful Joy Division song?</h3>
 <p>My favorite audio feature has to be “valence,” a measure of musical positivity.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">joy &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span>(<span class="st">'joy division'</span>)
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>────────────────────────────────────────────────────────────────────────────────────────────────────────                      <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>────────────────────────────────────────────────────────────────────────────────────────────────────────                      <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>────────────────────────────────────────────────────────────────────────────────────────────────────────                      <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>────────────────────────────────────────────────────────────────────────────────────────────────────────                      <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-
-joy <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">joy &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span>(<span class="st">'joy division'</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">joy <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">arrange</span>(<span class="op">-</span>valence) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">select</span>(track_name, valence) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">head</span>(<span class="dv">10</span>)
@@ -183,7 +167,7 @@ joy <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggjoy/topics/ggjoy">theme_joy</a></span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">"Joyplot of Joy Division's joy distributions"</span>, <span class="dt">subtitle =</span> <span class="kw">paste0</span>(<span class="st">"Based on valence pulled from Spotify's Web API with spotifyr"</span>))
 <span class="co">#&gt; Picking joint bandwidth of 0.112</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="700"></p>
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="700"></p>
 </div>
 <div id="danceability-of-thom-yorke" class="section level3">
 <h3 class="hasAnchor">
@@ -191,40 +175,8 @@ joy <span class="op">%&gt;%</span><span class="st"> </span>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magick)
 <span class="kw">library</span>(lubridate)
 
-tots &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="kw">c</span>(<span class="st">'radiohead'</span>, <span class="st">'thom yorke'</span>, <span class="st">'atoms for peace'</span>), get_artist_audio_features)
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>────────────────────────────────────────────────────────────────────────────────────────────────────────────────────          <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────                   <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>────────────────────────────────────────────────────────────────────────────────────────────────────────────────────          <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────                                           <span class="dv">100</span>%
- Progress<span class="op">:</span><span class="st"> </span>───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── <span class="dv">100</span>%
-
-non_studio_albums &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'OK Computer OKNOTOK 1997 2017'</span>, <span class="st">'TKOL RMX 1234567'</span>, <span class="st">'In Rainbows Disk 2'</span>, 
+tots &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="kw">c</span>(<span class="st">'radiohead'</span>, <span class="st">'thom yorke'</span>, <span class="st">'atoms for peace'</span>), get_artist_audio_features)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">non_studio_albums &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'OK Computer OKNOTOK 1997 2017'</span>, <span class="st">'TKOL RMX 1234567'</span>, <span class="st">'In Rainbows Disk 2'</span>, 
                        <span class="st">'Com Lag: 2+2=5'</span>, <span class="st">'I Might Be Wrong'</span>, <span class="st">'The Eraser Rmxs'</span>)
 
 tots &lt;-<span class="st"> </span><span class="kw">filter</span>(tots, <span class="op">!</span>album_name <span class="op">%in%</span><span class="st"> </span>non_studio_albums)
@@ -250,16 +202,22 @@ p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(plot_df, <span cl
 <span class="st">    </span><span class="kw">scale_y_discrete</span>(<span class="dt">labels =</span> album_names_label)
 
 <span class="kw">ggsave</span>(p, <span class="dt">filename =</span> <span class="st">'img/danceplot.png'</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">3</span>)
-background &lt;-<span class="st"> </span><span class="kw">image_read</span>(<span class="st">'img/danceplot.png'</span>)
-logo_raw &lt;-<span class="st"> </span><span class="kw">image_read</span>(<span class="st">'img/thom_dance.gif'</span>)
+<span class="co">#&gt; Picking joint bandwidth of 0.0714</span>
+background &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(<span class="st">'img/danceplot.png'</span>)
+logo_raw &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/magick/topics/editing">image_read</a></span>(<span class="st">'img/thom_dance.gif'</span>)
 frames &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(logo_raw), <span class="cf">function</span>(frame) {
     hjust &lt;-<span class="st"> </span><span class="dv">200</span><span class="op">+</span>(<span class="dv">100</span><span class="op">*</span>frame)
-    <span class="kw">image_composite</span>(background, logo_raw[frame], <span class="dt">offset =</span> <span class="kw">str_glue</span>(<span class="st">'+{hjust}+400'</span>))
+    <span class="kw"><a href="http://www.rdocumentation.org/packages/magick/topics/composite">image_composite</a></span>(background, logo_raw[frame], <span class="dt">offset =</span> <span class="kw">str_glue</span>(<span class="st">'+{hjust}+400'</span>))
 })
 
-<span class="kw">image_animate</span>(<span class="kw">image_join</span>(frames), <span class="dt">fps =</span> <span class="dv">5</span>, <span class="dt">loop =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.gif"><!-- --></p>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/magick/topics/animation">image_animate</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/magick/topics/editing">image_join</a></span>(frames), <span class="dt">fps =</span> <span class="dv">5</span>, <span class="dt">loop =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-8-1.gif"><!-- --></p>
 </div>
+</div>
+<div id="parallelization" class="section level2">
+<h2 class="hasAnchor">
+<a href="#parallelization" class="anchor"></a>Parallelization</h2>
+<p>By default, <code><a href="reference/get_artist_audio_features.html">get_artist_audio_features()</a></code>, <code><a href="reference/get_artist_albums.html">get_artist_albums()</a></code>, <code><a href="reference/get_album_tracks.html">get_album_tracks()</a></code>, and <code><a href="reference/get_playlist_tracks.html">get_playlist_tracks()</a></code> will run in parallel using the <code>furrr</code> package. To turn this feature off, set <code>parallel = FALSE</code>. You can also adjust the evaluation strategy by setting <code>future_plan</code>, which accepts a string matching one of the strategies implemented in <code><a href="http://www.rdocumentation.org/packages/future/topics/plan">future::plan</a></code> (defaults to <code>"multiprocess"</code>).</p>
 </div>
 <div id="sentify-a-shiny-app" class="section level2">
 <h2 class="hasAnchor">
