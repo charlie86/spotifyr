@@ -19,7 +19,7 @@
 
 get_artist_audio_features <- function(artist_name = NULL, artist_uri = NULL, use_artist_uri = FALSE, return_closest_artist = TRUE, album_types = 'album', message = FALSE, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
 
-    albums <- get_artist_albums(artist_name = artist_name, artist_uri = artist_uri, use_artist_uri = use_artist_uri, return_closest_artist = return_closest_artist, message = message, album_types = album_types, access_token = access_token, parallelize = parallelize, future_plan = future_plan)
+    albums <- get_artist_albums(artist_name = artist_name, artist_uri = artist_uri, use_artist_uri = use_artist_uri, return_closest_artist = TRUE, message = message, album_types = album_types, access_token = access_token, parallelize = parallelize, future_plan = future_plan)
 
     if (nrow(albums) == 0) {
         stop(paste0('Cannot find any albums for "', selected_artist, '" on Spotify'))

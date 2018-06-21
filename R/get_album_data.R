@@ -4,25 +4,31 @@
 #'
 #' @param artist The quoted name of the artist. Spelling matters, capitalization does not.
 #' @param albums A character vector of album names. Spelling matters, capitalization does not
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{TRUE}.
+#' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #'
 #' @examples
 #' get_album_data("Wild child", "Expectations")
 #'
 #' @export
 #' @import dplyr
-#' @import geniusR
+#' @import furrr
+#' @import future
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
 
+get_album_data <- function(artist, albums = character(), parallelize = TRUE, future_plan = 'multiprocess') {
 
-
-get_album_data <- function(artist, albums = character()) {
+    if (length(albums) == 0) {
+        stop('Please enter at least one album name')
+    }
 
     # Identify All Albums for a single artist
-    artist_albums <- get_artist_albums(artist) %>% as_tibble()
+    artist_albums <- get_artist_albums(artist, parallelize = parallelize, future_plan = future_plan) %>% as_tibble()
     # Acquire all tracks for each album
     artist_disco <-  artist_albums %>%
-        get_album_tracks() %>% as_tibble() %>%
+        get_album_tracks(parallelize = parallelize, future_plan = future_plan) %>%
+        as_tibble() %>%
         group_by(album_name) %>%
         # There might be song title issues, we will just order by track number to prevent problems
         # we will join on track number
@@ -41,8 +47,19 @@ get_album_data <- function(artist, albums = character()) {
     # Create possible_album for potential error handling
     possible_album <- possibly(genius_album, otherwise = as_tibble())
 
-    album_lyrics <- map2(album_list$artist, album_list$album_name, function(x, y) possible_album(x, y) %>% mutate(album_name = y)) %>%
-        map_df(function(x) nest(x, -c(track_title, track_n, album_name))) %>%
+    if (parallelize) {
+        og_plan <- plan()
+        on.exit(plan(og_plan), add = TRUE)
+        plan(future_plan)
+
+        album_lyrics <- future_map2(album_list$artist, album_list$album_name, function(x, y) possible_album(x, y) %>% mutate(album_name = y), .progress = T) %>%
+            future_map_dfr(function(x) {if (nrow(x) > 0) nest(x, -c(track_title, track_n, album_name)) else tibble()}, .progress = T)
+    } else {
+        album_lyrics <- map(album_list$artist, album_list$album_name, function(x, y) possible_album(x, y) %>% mutate(album_name = y)) %>%
+            map_df(function(x) {if (nrow(x) > 0) nest(x, -c(track_title, track_n, album_name)) else tibble()})
+    }
+
+    album_lyrics <- album_lyrics %>%
         rename(lyrics = data) %>%
         select(-track_title)
 

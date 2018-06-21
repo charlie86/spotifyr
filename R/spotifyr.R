@@ -12,7 +12,10 @@
 #' @import tidyr
 #' @import httr
 #' @import furrr
+#' @import stringr
 #' @import future
+#' @importFrom rvest html_session html_node html_nodes html_text html_attr
+#' @importFrom readr read_lines
 #' @importFrom lubridate year
 #' @importFrom utils setTxtProgressBar txtProgressBar
 NULL
@@ -36,6 +39,18 @@ globalVars <- c(
 "track_uri",
 "type",
 "uri",
+"album_name_lower",
+"album_type",
+"data",
+"future_map_df",
+"is_collaboration",
+"lyrics",
+"na.omit",
+"parse_playlist_list_to_df",
+"selected_artist",
+"track_n",
+"track_title",
+"track_url",
 ".")
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines

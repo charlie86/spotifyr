@@ -17,7 +17,11 @@ get_artist_albums(artist_name = NULL, artist_uri = NULL,
 
 \item{use_artist_uri}{Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.}
 
+\item{return_closest_artist}{Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.}
+
 \item{album_types}{Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".}
+
+\item{message}{Boolean for printing the name of artist matched when using \code{return_closest_artist = TRUE}. Defaults to \code{FALSE}.}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 
