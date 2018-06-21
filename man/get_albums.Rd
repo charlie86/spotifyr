@@ -4,13 +4,10 @@
 \alias{get_albums}
 \title{Get Artist Albums}
 \usage{
-get_albums(artist_uri, studio_albums_only = TRUE,
-  access_token = get_spotify_access_token())
+get_albums(artist_uri, access_token = get_spotify_access_token())
 }
 \arguments{
 \item{artist_uri}{String identifier for an artist on Spotify. Can be found within the Spotify app or with spotifyr::get_artists()}
-
-\item{studio_albums_only}{Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to \code{TRUE}}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }

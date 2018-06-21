@@ -4,16 +4,21 @@
 \alias{get_discography}
 \title{Retrieve artist discography with song lyrics and audio info}
 \usage{
-get_discography(artist)
+get_discography(artist, parallelize = TRUE, future_plan = "multiprocess")
 }
 \arguments{
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization does not.}
+
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+
+\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }
 \description{
 Retrieve the entire discography of an artist with the lyrics of each song and the associated audio information. Returns the song data as a nested tibble. This way we can easily see each album, artist, and song title before expanding our data.
 }
 \examples{
+\dontrun{
 rex_orange <- get_discography("Rex Orange County")
-unnest(rex_orange, data)
-
+tidyr::unnest(rex_orange, lyrics)
+}
 }

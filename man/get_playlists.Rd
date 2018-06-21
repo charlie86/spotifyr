@@ -5,7 +5,7 @@
 \title{Get playlists}
 \usage{
 get_playlists(username, playlist_uris,
-  access_token = get_spotify_access_token(), show_progress = TRUE)
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found within the Spotify App}
@@ -13,8 +13,6 @@ get_playlists(username, playlist_uris,
 \item{playlist_uris}{Character vector of Spotify playlist uris associated with the given \code{username}. Can be found within the Spotify App}
 
 \item{access_token}{Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.}
-
-\item{show_progress}{Boolean determining to show progress bar or not. Defaults to \code{FALSE}.}
 }
 \description{
 This function returns a dataframe of playlists for a given Spotify username and a character vector of playlist uris
