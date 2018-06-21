@@ -193,8 +193,7 @@ genius_url <- function(url, info = "title") {
                    replacement = "\n",
                    html_node(session, ".lyrics")) %>%
         read_lines() %>%
-        na.omit() %>%
-        str_replace_all("’", "'")
+        na.omit()
 
     # Artist
     artist <- html_nodes(session, ".header_with_cover_art-primary_info-primary_artist") %>%
@@ -248,16 +247,8 @@ prep_info <- function(input) {
     str_replace_all(input,
                     c("\\s*\\(Ft.[^\\)]+\\)" = "",
                       "&" = "and",
-                      #"-" = " ",
-                      #"\\+" = " ",
                       "\\$" = " ",
-                      #"/" = " ",
-                      #":" = " ",
-                      #"'" = "",
-                      #"," = "",
-                      #### Note: having issues with CRAN and non-ascii characters
                       "[[:punct:]]" = " ",
                       "[[:blank:]]+" = " ")) %>%
-        str_trim() #%>%
-    # str_replace_all("[[:punct:]]", "")
+        str_trim()
 }
