@@ -34,8 +34,11 @@ get_artists <- function(artist_name, return_closest_artist = FALSE, access_token
         this_artist <- content[[this_row]]
         list(
             artist_name = this_artist$name,
-            artist_uri = gsub('spotify:artist:', '', this_artist$uri), # remove meta info from the uri string
-            artist_img = ifelse(length(this_artist$images) > 0, this_artist$images[[1]]$url, NA) # we'll grab this just for fun
+            artist_uri = gsub('spotify:artist:', '', this_artist$uri),
+            artist_img = ifelse(length(this_artist$images) > 0, this_artist$images[[1]]$url, NA),
+            artist_genres = list(unlist(this_artist$genres)),
+            artist_popularity = this_artist$popularity,
+            artist_num_followers = this_artist$followers$total
         )
     }) %>% dplyr::filter(!duplicated(tolower(artist_name)))
 
