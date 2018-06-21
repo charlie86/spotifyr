@@ -4,7 +4,6 @@
 #' @param username String of Spotify username. Can be found on the Spotify app. (See http://rcharlie.net/sentify/user_uri.gif for example)
 #' @param playlist_uris Character vector of Spotify playlist uris associated with the given \code{username}. Can be found within the Spotify App
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @param show_progress Boolean determining to show progress bar or not. Defaults to \code{FALSE}.
 #' @keywords track audio features playlists
 #' @export
 #' @examples
@@ -14,10 +13,10 @@
 #' my_playlist_audio_features <- get_playlist_audio_features('spotify', playlist_uris)
 #' }
 
-get_playlist_audio_features <- function(username, playlist_uris, access_token = get_spotify_access_token(), show_progress = TRUE) {
+get_playlist_audio_features <- function(username, playlist_uris, access_token = get_spotify_access_token()) {
 
-    playlists <- get_playlists(username, playlist_uris, show_progress = show_progress)
-    tracks <- get_playlist_tracks(playlists, show_progress = show_progress)
+    playlists <- get_playlists(username, playlist_uris)
+    tracks <- get_playlist_tracks(playlists)
     track_popularity <- get_track_popularity(tracks)
     track_audio_features <- get_track_audio_features(tracks)
 
