@@ -37,9 +37,9 @@ install.packages('spotifyr')
 ```
 
 ## Authentication
-First, set up a Dev account with Spotify to access their Web API [here](https://developer.spotify.com/my-applications/#!/applications). This will give you your `Client ID` and `Client Secret`. Once you have those, you can pull your access token into R with `get_spotify_access_token`. 
+First, set up a Dev account with Spotify to access their Web API [here](https://developer.spotify.com/my-applications/#!/applications). This will give you your `Client ID` and `Client Secret`. Once you have those, you can pull your access token into R with `get_spotify_access_token()`. 
 
-The easiest way to authenticate is to set your credentials to the System Environment variables `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`. The default arguments to `get_spotify_access_token` (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.
+The easiest way to authenticate is to set your credentials to the System Environment variables `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`. The default arguments to `get_spotify_access_token()` (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.
 
 ```{r, eval = FALSE}
 Sys.setenv(SPOTIFY_CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx')
@@ -50,13 +50,35 @@ access_token <- get_spotify_access_token()
 
 ## Usage
 ### What was The Beatles' favorite key?
-```{r load_packages, message = F, warning = F, results = 'hide'}
+```{r load_packages, message = FALSE, warning = FALSE, results = 'hide'}
 library(spotifyr)
 beatles <- get_artist_audio_features('the beatles')
 ```
 ```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
-count(beatles, key_mode, sort = T)
+library(knitr)
+beatles %>% 
+    count(key_mode, sort = TRUE) %>% 
+    kable()
+```
+
+### Get your most recently played tracks
+```{r}
+get_my_recently_played(limit = 10) %>% 
+    kable()
+```
+
+
+### Find your all time favorite artists
+```{r}
+get_my_top_artists(time_range = 'long_term', limit = 10) %>% 
+    kable()
+```
+
+### Find your favorite tracks at the moment
+```{r}
+get_my_top_tracks(time_range = 'short_term', limit = 10) %>% 
+    kable()
 ```
 
 ### What's the most joyful Joy Division song?
@@ -68,7 +90,8 @@ joy <- get_artist_audio_features('joy division')
 joy %>% 
     arrange(-valence) %>% 
     select(track_name, valence) %>% 
-    head(10)
+    head(10) %>% 
+    kable()
 ```
 Now if only there was some way to plot joy...
 
@@ -83,7 +106,6 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 ```
 
 ### Danceability of Thom Yorke
-
 ```{r, message = FALSE, results = 'hide'}
 library(magick)
 library(lubridate)
@@ -128,7 +150,7 @@ image_animate(image_join(frames), fps = 5, loop = 0)
 ```
 
 ## Parallelization
-By default, `get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, and `get_playlist_tracks()` will run in parallel using the `furrr` package. To turn this feature off, set `parallel = FALSE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan` (defaults to `"multiprocess"`).
+By default, `get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, `get_playlist_tracks()`, and `get_user_playlists()` will run in parallel using the `furrr` package. To turn this feature off, set `parallelize = FALSE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan()` (defaults to `"multiprocess"`).
 
 ## Sentify: A Shiny app
 This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.
