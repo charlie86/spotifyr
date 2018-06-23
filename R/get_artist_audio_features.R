@@ -19,7 +19,7 @@ get_artist_audio_features <- function(artist = NULL, album_types = 'album', retu
     albums <- get_artist_albums(artist = artist, album_types = album_types, return_closest_artist = return_closest_artist, access_token = access_token, parallelize = parallelize, future_plan = future_plan)
 
     if (nrow(albums) == 0) {
-        stop(paste0('Cannot find any albums for "', selected_artist, '" on Spotify'))
+        stop(str_glue('Cannot find any albums for "{selected_artist}" on Spotify'))
     }
 
     album_popularity <- get_album_popularity(albums)

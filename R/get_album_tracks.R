@@ -19,12 +19,12 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token(), 
         1:nrow(albums),
         function(this_album) {
 
-            url <- paste0('https://api.spotify.com/v1/albums/', albums$album_uri[this_album], '/tracks')
+            url <- str_glue('https://api.spotify.com/v1/albums/{albums$album_uri[this_album]}/tracks')
 
             track_check <- RETRY('GET', url, query = list(limit = 50, access_token = access_token), quiet = TRUE, times = 10) %>% content
 
             if (!is.null(track_check$error)) {
-                stop(paste0(track_check$error$message, ' (', track_check$error$status, ')'))
+                stop(str_glue('{track_check$error$message} ({track_check$error$status})'))
             }
 
             track_count <- track_check$total

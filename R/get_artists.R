@@ -18,7 +18,7 @@ get_artists <- function(artist_name, return_closest_artist = FALSE, access_token
         content
 
     if (!is.null(res$error)) {
-        stop(paste0(res$error$message, ' (', res$error$status, ')'))
+        stop(str_glue('{res$error$message} ({res$error$status})'))
     }
 
     content <- res$artists %>% .$items

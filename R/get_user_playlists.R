@@ -26,11 +26,11 @@ get_user_playlists <- function(username, access_token = get_spotify_access_token
     map_args <- list(
         1:ceiling(num_loops),
         function(x) {
-            endpoint <- paste0('https://api.spotify.com/v1/users/', username, '/playlists')
+            endpoint <- str_glue('https://api.spotify.com/v1/users/{username}/playlists')
             res <- RETRY('GET', url = endpoint, query = list(access_token = access_token, offset = offset, limit = 50), quiet = TRUE) %>% content
 
             if (!is.null(res$error)) {
-                stop(paste0(res$error$message, ' (', res$error$status, ')'))
+                stop(str_glue('{res$error$message} ({res$error$status})'))
             }
 
             content <- res$items
@@ -66,8 +66,7 @@ get_user_playlists <- function(username, access_token = get_spotify_access_token
                 uri <- ifelse(is.null(tmp2$id), NA, tmp2$id)
                 snapshot_id <- ifelse(is.null(tmp2$snapshot_id), NA, tmp2$snapshot_id)
 
-                has_img <- ifelse(length(tmp2$images) > 0, TRUE, FALSE)
-                if (has_img == TRUE) {
+                if (length(tmp2$images) > 0) {
                     img <- tmp2$images[[1]]$url
                 } else {
                     img <- NA

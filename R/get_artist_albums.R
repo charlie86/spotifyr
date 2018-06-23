@@ -45,17 +45,17 @@ get_artist_albums <- function(artist = NULL, album_types = 'album', return_close
                 }
 
             } else {
-                cat(paste0('We found the following artists on Spotify matching "', artist, '":\n\n\t', paste(artists$artist_name, collapse = "\n\t"), '\n\nPlease type the name of the artist you would like:'), sep  = '')
+                cat(str_glue('We found the following artists on Spotify matching "{artist}":\n\n\t{paste(artists$artist_name, collapse = "\n\t")}\n\nPlease type the name of the artist you would like:'), sep  = '')
                 selected_artist <- readline()
             }
 
             artist_uri <- artists$artist_uri[artists$artist_name == selected_artist]
         } else {
-            stop(paste0('Cannot find any artists on Spotify matching "', artist, '"'))
+            stop(str_glue('Cannot find any artists on Spotify matching "{artist}"'))
         }
     }
 
-    album_check <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri,'/albums'), query = list(limit = 50, access_token = access_token, include_groups = paste0(album_types, collapse = ',')), quiet = TRUE, times = 10) %>% content
+    album_check <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/artists/{artist_uri}/albums'), query = list(limit = 50, access_token = access_token, include_groups = paste0(album_types, collapse = ',')), quiet = TRUE, times = 10) %>% content
 
     album_count <- album_check$total
     num_loops <- ceiling(album_count / 50)
@@ -72,14 +72,14 @@ get_artist_albums <- function(artist = NULL, album_types = 'album', return_close
 
     map_df(1:ceiling(num_loops), function(this_loop) {
 
-        albums <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri, '/albums'), query = list(limit = 50, access_token = access_token, include_groups = paste0(album_types, collapse = ','), offset = offset), quiet = TRUE, times = 10) %>% content
+        albums <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/artists/{artist_uri}/albums'), query = list(limit = 50, access_token = access_token, include_groups = paste0(album_types, collapse = ','), offset = offset), quiet = TRUE, times = 10) %>% content
 
         map_args <- list(
             1:length(albums$items),
             function(this_row) {
                 this_album <- albums$items[[this_row]]
                 is_collaboration <- gsub('spotify:artist:', '', this_album$artists[[1]]$uri) != artist_uri | length(this_album$artists) > 1
-                res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/albums/', this_album$uri %>% gsub('spotify:album:', '', .)), query = list(access_token = access_token), quiet = TRUE, times = 10) %>% content
+                res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/albums/{gsub("spotify:album:", "", this_album$uri)}'), query = list(access_token = access_token), quiet = TRUE, times = 10) %>% content
 
                 tibble(artist_name = this_album$artists[[1]]$name,
                        artist_uri = this_album$artists[[1]]$id,
@@ -89,7 +89,7 @@ get_artist_albums <- function(artist = NULL, album_types = 'album', return_close
                        album_type = this_album$album_type,
                        is_collaboration = is_collaboration) %>%
                     mutate(album_release_date = res$release_date,
-                           album_release_year = as.Date(ifelse(nchar(album_release_date) == 4, as.Date(paste0(year(as.Date(album_release_date, '%Y')), '-01-01')), as.Date(album_release_date, '%Y-%m-%d')), origin = '1970-01-01'))
+                           album_release_year = as.Date(ifelse(nchar(album_release_date) == 4, as.Date(str_glue('{year(as.Date(album_release_date, "%Y"))}-01-01')), as.Date(album_release_date, '%Y-%m-%d')), origin = '1970-01-01'))
 
             }
         )

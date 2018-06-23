@@ -24,7 +24,7 @@ get_album_popularity <- function(albums, access_token = get_spotify_access_token
             .[[1]] %>%
             paste0(collapse = ',')
 
-        url <- paste0('https://api.spotify.com/v1/albums/?ids=', uris)
+        url <- str_glue('https://api.spotify.com/v1/albums/?ids={uris}')
 
         res <- RETRY('GET', url, query = list(access_token = access_token), quiet = TRUE) %>% content
 

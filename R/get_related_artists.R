@@ -48,17 +48,17 @@ get_related_artists <- function(artist = NULL, return_closest_artist = TRUE, acc
                 }
 
             } else {
-                cat(paste0('We found the following artists on Spotify matching "', artist, '":\n\n\t', paste(artists$artist_name, collapse = "\n\t"), '\n\nPlease type the name of the artist you would like:'), sep  = '')
+                cat(str_glue('We found the following artists on Spotify matching "{artist}":\n\n\t{paste(artists$artist_name, collapse = "\n\t")}\n\nPlease type the name of the artist you would like:'), sep  = '')
                 selected_artist <- readline()
             }
 
             artist_uri <- artists$artist_uri[artists$artist_name == selected_artist]
         } else {
-            stop(paste0('Cannot find any artists on Spotify matching "', artist, '"'))
+            stop(str_glue('Cannot find any artists on Spotify matching "{artist}"'))
         }
     }
 
-    res <- RETRY('GET', url = paste0('https://api.spotify.com/v1/artists/', artist_uri, '/related-artists'), query = list(access_token = access_token), quiet = TRUE) %>% content
+    res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/artists/{artist_uri}/related-artists'), query = list(access_token = access_token), quiet = TRUE) %>% content
 
     content <- res$artists
 

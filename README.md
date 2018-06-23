@@ -119,7 +119,7 @@ library(ggjoy)
 ggplot(joy, aes(x = valence, y = album_name)) + 
     geom_joy() + 
     theme_joy() +
-    ggtitle("Joyplot of Joy Division's joy distributions", subtitle = paste0("Based on valence pulled from Spotify's Web API with spotifyr"))
+    ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 #> Picking joint bandwidth of 0.112
 ```
 

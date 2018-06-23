@@ -18,7 +18,7 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
            encode = 'form', httr::config(http_version = 2)) %>% content
 
   if (!is.null(post$error)) {
-    stop(paste0('Could not authenticate with given Spotify credentials:\n\t', post$error_description))
+    stop(str_glue('Could not authenticate with given Spotify credentials:\n\t{post$error_description}'))
   }
 
   access_token <- post$access_token
