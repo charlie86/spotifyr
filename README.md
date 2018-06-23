@@ -64,9 +64,9 @@ library(kableExtra)
 
 beatles %>% 
     count(key_mode, sort = TRUE) %>% 
+    head(5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -121,152 +121,14 @@ E major
 21
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-F major
-</td>
-<td style="text-align:right;">
-18
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-A minor
-</td>
-<td style="text-align:right;">
-11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-B minor
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-E minor
-</td>
-<td style="text-align:right;">
-10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-C\# minor
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-F\# minor
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-A\# major
-</td>
-<td style="text-align:right;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-C\# major
-</td>
-<td style="text-align:right;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-D minor
-</td>
-<td style="text-align:right;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-D\# major
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-G\# major
-</td>
-<td style="text-align:right;">
-3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-B major
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-C minor
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-F minor
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-F\# major
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-G\# minor
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-G minor
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
 </tbody>
 </table>
-
 ### Get your most recently played tracks
 
 ``` r
-get_my_recently_played(limit = 10) %>% 
+get_my_recently_played(limit = 5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -609,296 +471,14 @@ NA
 <https://open.spotify.com/track/7CgOsQpzjHToqAfIUmWn4h>
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Ancestors
-</td>
-<td style="text-align:left;">
-Gonjasufi
-</td>
-<td style="text-align:left;">
-A Sufi And A Killer
-</td>
-<td style="text-align:left;">
-2018-06-23 22:07:09
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-album
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-29
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/2caf364598d6ba6f990a374216b4da48bbd42239>
-</td>
-<td style="text-align:left;">
-4M4pvnVwdpQnd7wPIQI3h4
-</td>
-<td style="text-align:left;">
-6pdYN3jOHWteVALy9sKGEf
-</td>
-<td style="text-align:left;">
-3FfW96Pt3UxQlchDVhkaFi
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/d1a4906c207f06cee6b3325e9333896fc7bb4920?cid=0cfbcde7a276401c891d1ba876c1ebb7>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/4M4pvnVwdpQnd7wPIQI3h4>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Labyrinth IV
-</td>
-<td style="text-align:left;">
-Kaitlyn Aurelia Smith
-</td>
-<td style="text-align:left;">
-Euclid
-</td>
-<td style="text-align:left;">
-2018-06-23 22:04:32
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-album
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/4384711ad2ff5af294861edd666d154ac8ba5330>
-</td>
-<td style="text-align:left;">
-7nEQLBGhMMyYuI3Cj0mv6F
-</td>
-<td style="text-align:left;">
-6P86FLVAK4sxu8OhyQJBvH
-</td>
-<td style="text-align:left;">
-37butxH4sLnzjHxjkOOfgE
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/6a0c35dcce2e80f63aac03dc39c4a46df4004565?cid=0cfbcde7a276401c891d1ba876c1ebb7>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/7nEQLBGhMMyYuI3Cj0mv6F>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Why Like This
-</td>
-<td style="text-align:left;">
-Teebs
-</td>
-<td style="text-align:left;">
-Ardour
-</td>
-<td style="text-align:left;">
-2018-06-23 22:02:10
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-album
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-28
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/8930dc1af7a726f1f28756c99a5cd7cfd201f354>
-</td>
-<td style="text-align:left;">
-2eo1Egv8l0JOupb7U0TGBb
-</td>
-<td style="text-align:left;">
-2L2unNFaPbDxjg3NqzpqhJ
-</td>
-<td style="text-align:left;">
-4NtIc6H8UadGHAYysXqzkc
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/73c44b156619c15b9540e079bf9798d55498d224?cid=0cfbcde7a276401c891d1ba876c1ebb7>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/2eo1Egv8l0JOupb7U0TGBb>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Four Years and One Day
-</td>
-<td style="text-align:left;">
-Mount Kimbie
-</td>
-<td style="text-align:left;">
-Love What Survives
-</td>
-<td style="text-align:left;">
-2018-06-23 21:59:12
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-album
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/591e987e8330ee7d91b5b3355d77e80062d62afd>
-</td>
-<td style="text-align:left;">
-7foBPPS22i7vZlvsxqYiLe
-</td>
-<td style="text-align:left;">
-3NUtpWpGDoffm3RCGhSHtl
-</td>
-<td style="text-align:left;">
-54FblbvyHNrWeAuEJqnyit
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/d812e547e453ca13b32c7d38c1ab273ebb471cc0?cid=0cfbcde7a276401c891d1ba876c1ebb7>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/7foBPPS22i7vZlvsxqYiLe>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Smoke Streams
-</td>
-<td style="text-align:left;">
-Lapalux
-</td>
-<td style="text-align:left;">
-The End Of Industry
-</td>
-<td style="text-align:left;">
-2018-06-23 21:55:54
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-album
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/d54c7cafc388af192a857488e0809731e12d5093>
-</td>
-<td style="text-align:left;">
-0L4hyppzNl7td9Zo4GPYuv
-</td>
-<td style="text-align:left;">
-46Ce0QmI1mE2bl5VQ4P9N8
-</td>
-<td style="text-align:left;">
-1jIoxByxgoUr7SJSsJgQct
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/656c3ee9bdf01249780bbd544e6088a63ae34dec?cid=0cfbcde7a276401c891d1ba876c1ebb7>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/0L4hyppzNl7td9Zo4GPYuv>
-</td>
-</tr>
 </tbody>
 </table>
-
 ### Find your all time favorite artists
 
 ``` r
-get_my_top_artists(time_range = 'long_term', limit = 10) %>% 
+get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -945,7 +525,7 @@ alternative rock, art rock, melancholia, modern rock, permanent wave, rock
 79
 </td>
 <td style="text-align:right;">
-3218618
+3218625
 </td>
 <td style="text-align:left;">
 <https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb>
@@ -991,7 +571,7 @@ alternative hip hop, chillwave, electronic, escape room, glitch, glitch hop, hip
 59
 </td>
 <td style="text-align:right;">
-360260
+360262
 </td>
 <td style="text-align:left;">
 <https://open.spotify.com/artist/29XOeO6KIWxGthejQqn793>
@@ -1043,131 +623,14 @@ alternative dance, chamber psych, electronic, indie r&b, indietronica, intellige
 <https://open.spotify.com/artist/7Eu1txygG6nJttLHbZdQOh>
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-J Dilla
-</td>
-<td style="text-align:left;">
-0IVcLMMbm05VIjnzPkGCyp
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/bf1bd61ca9468f0f6328f4095d376826380afe95>
-</td>
-<td style="text-align:left;">
-alternative hip hop, detroit hip hop, hip hop
-</td>
-<td style="text-align:right;">
-63
-</td>
-<td style="text-align:right;">
-228516
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/artist/0IVcLMMbm05VIjnzPkGCyp>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Aphex Twin
-</td>
-<td style="text-align:left;">
-6kBDZFXuLrZgHnvmPu9NsG
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/742a137a1b42a69c215fba62fe177ab470b47e53>
-</td>
-<td style="text-align:left;">
-acid techno, ambient, electronic, fourth world, intelligent dance music, trip hop
-</td>
-<td style="text-align:right;">
-65
-</td>
-<td style="text-align:right;">
-353017
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/artist/6kBDZFXuLrZgHnvmPu9NsG>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-The Black Angels
-</td>
-<td style="text-align:left;">
-0VNWuGf8SMVU2AerpdhMbP
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/f6de8cac7577646463b18f2df218348679ee8265>
-</td>
-<td style="text-align:left;">
-blues-rock, garage rock, neo-psychedelic, nu gaze, punk blues
-</td>
-<td style="text-align:right;">
-53
-</td>
-<td style="text-align:right;">
-124412
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/artist/0VNWuGf8SMVU2AerpdhMbP>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Siriusmo
-</td>
-<td style="text-align:left;">
-22680B8sUdq6bL6nQaJfwg
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/1bf301b7dc879c9b174eeae6d2939f59bdfe235f>
-</td>
-<td style="text-align:left;">
-alternative dance, dance-punk, filter house, new rave
-</td>
-<td style="text-align:right;">
-49
-</td>
-<td style="text-align:right;">
-43491
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/artist/22680B8sUdq6bL6nQaJfwg>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mount Kimbie
-</td>
-<td style="text-align:left;">
-3NUtpWpGDoffm3RCGhSHtl
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/d784215c4b003f30d5622912584f4d21a1030269>
-</td>
-<td style="text-align:left;">
-alternative dance, art pop, bass music, chamber psych, chillwave, electronic, future garage, indie r&b, indietronica, microhouse, new rave, trip hop, wonky
-</td>
-<td style="text-align:right;">
-58
-</td>
-<td style="text-align:right;">
-161596
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/artist/3NUtpWpGDoffm3RCGhSHtl>
-</td>
-</tr>
 </tbody>
 </table>
-
 ### Find your favorite tracks at the moment
 
 ``` r
-get_my_top_tracks(time_range = 'short_term', limit = 10) %>% 
+get_my_top_tracks(time_range = 'short_term', limit = 5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1438,229 +901,8 @@ NA
 <https://open.spotify.com/track/2EEjiKbE4pAjX49TrBzw1X>
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Fix It Together
-</td>
-<td style="text-align:left;">
-Fleece
-</td>
-<td style="text-align:left;">
-Voyager
-</td>
-<td style="text-align:left;">
-ALBUM
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-30
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-2017-01-19
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/158a2df106b819d5a72227e33d5fbfb51cef21ab>
-</td>
-<td style="text-align:left;">
-27Fayw7YOL3gTkxg7yfaiz
-</td>
-<td style="text-align:left;">
-3M8JKaNdIRChzvxVK1XxKm
-</td>
-<td style="text-align:left;">
-2PuXMzeWFG1N7meAXFVMoq
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/a2af20b463c2739b5b5470427845c113e4273324?cid=null>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/27Fayw7YOL3gTkxg7yfaiz>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Vordhosbn
-</td>
-<td style="text-align:left;">
-Aphex Twin
-</td>
-<td style="text-align:left;">
-Drukqs
-</td>
-<td style="text-align:left;">
-ALBUM
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-40
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-2001-10-22
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/0ecee6d7885e1e7cbe8ff5284706a3f0046d5748>
-</td>
-<td style="text-align:left;">
-3tWiIOPBJjgjA6PpozJqNO
-</td>
-<td style="text-align:left;">
-6kBDZFXuLrZgHnvmPu9NsG
-</td>
-<td style="text-align:left;">
-1maoQPAmw44bbkNOxKlwsx
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/a23964759032c954b9cda3b8b8a23de71bb72b45?cid=null>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/3tWiIOPBJjgjA6PpozJqNO>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-What You've Done
-</td>
-<td style="text-align:left;">
-Fleece
-</td>
-<td style="text-align:left;">
-Voyager
-</td>
-<td style="text-align:left;">
-ALBUM
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-24
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-2017-01-19
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/158a2df106b819d5a72227e33d5fbfb51cef21ab>
-</td>
-<td style="text-align:left;">
-7GLoVC2XBr1nfMfrX3odGt
-</td>
-<td style="text-align:left;">
-3M8JKaNdIRChzvxVK1XxKm
-</td>
-<td style="text-align:left;">
-2PuXMzeWFG1N7meAXFVMoq
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/233d3d117f2c1d83332f102662aab83abd302f50?cid=null>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/7GLoVC2XBr1nfMfrX3odGt>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Skip Divided (Modeselektor Remix)
-</td>
-<td style="text-align:left;">
-Thom Yorke
-</td>
-<td style="text-align:left;">
-The Eraser Rmxs
-</td>
-<td style="text-align:left;">
-ALBUM
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-29
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-2008
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/8fa0eb1c627ce67ebe1e3e82c019791ff4bfdb2f>
-</td>
-<td style="text-align:left;">
-0Aphl3uGYo7PCoVSGZjnAP
-</td>
-<td style="text-align:left;">
-4CvTDPKA6W06DRfBnZKrau
-</td>
-<td style="text-align:left;">
-0K78rF0ziljfWqb1BtXyFB
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/da8e38b528aa5695a7f3b3b0a21445c37fc6c513?cid=null>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/0Aphl3uGYo7PCoVSGZjnAP>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-On My Mind
-</td>
-<td style="text-align:left;">
-Fleece
-</td>
-<td style="text-align:left;">
-Voyager
-</td>
-<td style="text-align:left;">
-ALBUM
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-41
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:left;">
-2017-01-19
-</td>
-<td style="text-align:left;">
-<https://i.scdn.co/image/158a2df106b819d5a72227e33d5fbfb51cef21ab>
-</td>
-<td style="text-align:left;">
-0DbMOz6MrPJ9nfYXgGarLw
-</td>
-<td style="text-align:left;">
-3M8JKaNdIRChzvxVK1XxKm
-</td>
-<td style="text-align:left;">
-2PuXMzeWFG1N7meAXFVMoq
-</td>
-<td style="text-align:left;">
-<https://p.scdn.co/mp3-preview/14b68f0d16af9e5f9356ca0d25c3e4d35f3dc55a?cid=null>
-</td>
-<td style="text-align:left;">
-<https://open.spotify.com/track/0DbMOz6MrPJ9nfYXgGarLw>
-</td>
-</tr>
 </tbody>
 </table>
-
 ### What's the most joyful Joy Division song?
 
 My favorite audio feature has to be "valence," a measure of musical positivity.
@@ -1673,7 +915,7 @@ joy <- get_artist_audio_features('joy division')
 joy %>% 
     arrange(-valence) %>% 
     select(track_name, valence) %>% 
-    head(10) %>% 
+    head(5) %>% 
     kable()
 ```
 
@@ -1727,46 +969,6 @@ Wilderness
 </td>
 <td style="text-align:right;">
 0.775
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Twenty Four Hours
-</td>
-<td style="text-align:right;">
-0.773
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-A Means To An End - 2007 Remastered Version
-</td>
-<td style="text-align:right;">
-0.752
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Interzone - 2007 Remastered Version
-</td>
-<td style="text-align:right;">
-0.746
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-She's Lost Control - 2007 Remastered Version
-</td>
-<td style="text-align:right;">
-0.743
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Disorder - 2007 Remastered Version
-</td>
-<td style="text-align:right;">
-0.740
 </td>
 </tr>
 </tbody>

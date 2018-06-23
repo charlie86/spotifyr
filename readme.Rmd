@@ -62,34 +62,31 @@ library(kableExtra)
 
 beatles %>% 
     count(key_mode, sort = TRUE) %>% 
+    head(5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 ### Get your most recently played tracks
 ```{r}
-get_my_recently_played(limit = 10) %>% 
+get_my_recently_played(limit = 5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 
 ### Find your all time favorite artists
 ```{r}
-get_my_top_artists(time_range = 'long_term', limit = 10) %>% 
+get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 ### Find your favorite tracks at the moment
 ```{r}
-get_my_top_tracks(time_range = 'short_term', limit = 10) %>% 
+get_my_top_tracks(time_range = 'short_term', limit = 5) %>% 
     kable() %>% 
-    kable_styling() %>% 
-    scroll_box(height = '250px')
+    kable_styling()
 ```
 
 ### What's the most joyful Joy Division song?
@@ -101,7 +98,7 @@ joy <- get_artist_audio_features('joy division')
 joy %>% 
     arrange(-valence) %>% 
     select(track_name, valence) %>% 
-    head(10) %>% 
+    head(5) %>% 
     kable()
 ```
 Now if only there was some way to plot joy...
