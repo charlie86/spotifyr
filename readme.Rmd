@@ -1,6 +1,5 @@
 ---
 output: github_document
-always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -58,35 +57,30 @@ beatles <- get_artist_audio_features('the beatles')
 ```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(knitr)
-library(kableExtra)
 
 beatles %>% 
     count(key_mode, sort = TRUE) %>% 
     head(5) %>% 
-    kable() %>% 
-    kable_styling()
+    kable()
 ```
 
 ### Get your most recently played tracks
 ```{r}
 get_my_recently_played(limit = 5) %>% 
-    kable() %>% 
-    kable_styling()
+    kable()
 ```
 
 
 ### Find your all time favorite artists
 ```{r}
 get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
-    kable() %>% 
-    kable_styling()
+    kable()
 ```
 
 ### Find your favorite tracks at the moment
 ```{r}
 get_my_top_tracks(time_range = 'short_term', limit = 5) %>% 
-    kable() %>% 
-    kable_styling()
+    kable()
 ```
 
 ### What's the most joyful Joy Division song?
