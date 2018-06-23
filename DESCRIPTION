@@ -16,7 +16,8 @@ Imports:
   httr,
   lubridate,
   furrr,
-  future
+  future,
+  stringr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
