@@ -4,18 +4,12 @@
 \alias{get_artist_albums}
 \title{Get Artist Albums}
 \usage{
-get_artist_albums(artist_name = NULL, artist_uri = NULL,
-  use_artist_uri = FALSE, return_closest_artist = TRUE,
-  album_types = "album", message = FALSE,
-  access_token = get_spotify_access_token(), parallelize = TRUE,
-  future_plan = "multiprocess")
+get_artist_albums(artist = NULL, album_types = "album",
+  return_closest_artist = TRUE, access_token = get_spotify_access_token(),
+  parallelize = TRUE, future_plan = "multiprocess")
 }
 \arguments{
-\item{artist_name}{String of artist name}
-
-\item{artist_uri}{String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling artists in bulk and allows for more accurate matching since Spotify URIs are unique.}
-
-\item{use_artist_uri}{Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.}
+\item{artist}{String of artist name or Spotify artist URI}
 
 \item{album_types}{Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".}
 

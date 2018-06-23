@@ -13,6 +13,7 @@
 #' @import httr
 #' @import furrr
 #' @import future
+#' @importFrom stringr str_detect
 #' @importFrom lubridate year
 #' @importFrom utils setTxtProgressBar txtProgressBar
 NULL

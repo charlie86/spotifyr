@@ -1,9 +1,7 @@
 #' Get Artist Albums
 #'
 #' This function returns an artist's discography on Spotify
-#' @param artist_name String of artist name
-#' @param artist_uri String of Spotify artist URI. Will only be applied if \code{use_arist_uri} is set to \code{TRUE}. This is useful for pulling artists in bulk and allows for more accurate matching since Spotify URIs are unique.
-#' @param use_artist_uri Boolean determining whether to search by Spotify URI instead of an artist name. If \code{TRUE}, you must also enter an \code{artist_uri}. Defaults to \code{FALSE}.
+#' @param artist String of artist name or Spotify artist URI
 #' @param album_types Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{TRUE}.
@@ -15,20 +13,30 @@
 #' albums <- get_artist_albums('radiohead')
 #' }
 
-get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_uri = FALSE, return_closest_artist = TRUE, album_types = 'album', message = FALSE, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
+get_artist_albums <- function(artist = NULL, album_types = 'album', return_closest_artist = TRUE, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
 
-    if (use_artist_uri == FALSE) {
+    is_uri <- function(x) {
+        nchar(x) == 22 &
+            !str_detect(x, ' ') &
+            str_detect(x, '[[:digit:]]') &
+            str_detect(x, '[[:lower:]]') &
+            str_detect(x, '[[:upper:]]')
+    }
 
-        if (is.null(artist_name)) {
-            stop('You must enter an artist name if use_artist_uri == FALSE.')
-        }
+    if (is.null(artist)) {
+        stop('You must enter an artist name or URI.')
+    }
 
-        artists <- get_artists(artist_name, access_token = access_token)
+    if (is_uri(artist)) {
+        artist_uri <- artist
+    } else {
+
+        artists <- get_artists(artist, access_token = access_token)
 
         if (nrow(artists) > 0) {
             if (return_closest_artist == TRUE) {
 
-                exact_matches <- artists$artist_name[tolower(artists$artist_name) == tolower(artist_name)]
+                exact_matches <- artists$artist_name[tolower(artists$artist_name) == tolower(artist)]
 
                 if (length(exact_matches) > 0) {
                     selected_artist <- exact_matches[1]
@@ -36,21 +44,14 @@ get_artist_albums <- function(artist_name = NULL, artist_uri = NULL, use_artist_
                     selected_artist <- artists$artist_name[1]
                 }
 
-                if (message) {
-                    message(paste0('Selecting artist "', selected_artist, '"', '. Choose return_closest_artist = FALSE to interactively choose from all the artist matches on Spotify.'))
-                }
             } else {
-                cat(paste0('We found the following artists on Spotify matching "', artist_name, '":\n\n\t', paste(artists$artist_name, collapse = "\n\t"), '\n\nPlease type the name of the artist you would like:'), sep  = '')
+                cat(paste0('We found the following artists on Spotify matching "', artist, '":\n\n\t', paste(artists$artist_name, collapse = "\n\t"), '\n\nPlease type the name of the artist you would like:'), sep  = '')
                 selected_artist <- readline()
             }
 
             artist_uri <- artists$artist_uri[artists$artist_name == selected_artist]
         } else {
-            stop(paste0('Cannot find any artists on Spotify matching "', artist_name, '"'))
-        }
-    } else {
-        if (is.null(artist_uri)) {
-            stop('You must enter an artist_uri if use_artist_uri == TRUE.')
+            stop(paste0('Cannot find any artists on Spotify matching "', artist, '"'))
         }
     }
 
