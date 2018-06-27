@@ -5,7 +5,7 @@
 \title{Get playlists}
 \usage{
 get_playlists(username, playlist_uris,
-  access_token = get_spotify_access_token(), show_progress = TRUE)
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found within the Spotify App}
