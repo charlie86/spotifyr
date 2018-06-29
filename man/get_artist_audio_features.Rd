@@ -6,7 +6,7 @@
 \usage{
 get_artist_audio_features(artist = NULL, album_types = "album",
   return_closest_artist = TRUE, access_token = get_spotify_access_token(),
-  parallelize = TRUE, future_plan = "multiprocess")
+  parallelize = FALSE, future_plan = "multiprocess")
 }
 \arguments{
 \item{artist}{String of artist name or Spotify artist URI}
@@ -17,7 +17,7 @@ get_artist_audio_features(artist = NULL, album_types = "album",
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 
-\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{FALSE}.}
 
 \item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }

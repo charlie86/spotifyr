@@ -3,7 +3,7 @@
 #' This function returns tracks from a dataframe of albums on Spotify
 #' @param albums Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_artist_albums()
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{TRUE}.
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
 #' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #' @keywords album tracks
 #' @export
@@ -13,7 +13,7 @@
 #' get_album_tracks(albums)
 #' }
 
-get_album_tracks <- function(albums, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
+get_album_tracks <- function(albums, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
 
     map_args <- list(
         1:nrow(albums),

@@ -2,7 +2,8 @@
 #'
 #' Retrieve the entire discography of an artist with the lyrics of each song and the associated audio information. Returns the song data as a nested tibble. This way we can easily see each album, artist, and song title before expanding our data.
 #' @param artist The quoted name of the artist. Spelling matters, capitalization does not.
-#'
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
+#' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #'
 #' @examples
 #' rex_orange <- get_discography("Rex Orange County")
@@ -17,7 +18,7 @@
 get_discography <- function(artist) {
 
     # Identify All Albums for a single artist
-    artist_audio_features <- get_artist_audio_features(artist) %>%
+    artist_audio_features <- get_artist_audio_features(artist, parallelize = parallelize, future_plan = future_plan) %>%
         group_by(album_name) %>%
         mutate(track_n = row_number())
 

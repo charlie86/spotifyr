@@ -5,7 +5,7 @@
 #' @param album_types Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".
 #' @param return_closest_artist Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{TRUE}.
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
 #' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #' @keywords track audio features discography
 #' @export
@@ -14,7 +14,7 @@
 #' radiohead_features <- get_artist_audio_features(artist_name = 'radiohead')
 #' }
 
-get_artist_audio_features <- function(artist = NULL, album_types = 'album', return_closest_artist = TRUE, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
+get_artist_audio_features <- function(artist = NULL, album_types = 'album', return_closest_artist = TRUE, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
 
     albums <- get_artist_albums(artist = artist, album_types = album_types, return_closest_artist = return_closest_artist, access_token = access_token, parallelize = parallelize, future_plan = future_plan)
 

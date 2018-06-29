@@ -4,6 +4,8 @@
 #'
 #' @param artist The quoted name of the artist. Spelling matters, capitalization does not.
 #' @param albums A character vector of album names. Spelling matters, capitalization does not
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
+#' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #'
 #' @examples
 #' get_album_data("Wild child", "Expectations")
@@ -16,13 +18,13 @@
 
 
 
-get_album_data <- function(artist, albums = character()) {
+get_album_data <- function(artist, albums = character(), parallelize = FALSE, future_plan = 'multiprocess') {
 
     # Identify All Albums for a single artist
-    artist_albums <- get_artist_albums(artist) %>% as_tibble()
+    artist_albums <- get_artist_albums(artist, parallelize = parallelize, future_plan = future_plan) %>% as_tibble()
     # Acquire all tracks for each album
     artist_disco <-  artist_albums %>%
-        get_album_tracks() %>% as_tibble() %>%
+        get_album_tracks(parallelize = parallelize, future_plan = future_plan) %>% as_tibble() %>%
         group_by(album_name) %>%
         # There might be song title issues, we will just order by track number to prevent problems
         # we will join on track number

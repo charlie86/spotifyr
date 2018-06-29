@@ -4,7 +4,7 @@
 #' @param artist String of artist name or Spotify artist URI
 #' @param album_types Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{TRUE}.
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
 #' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #' @keywords albums
 #' @export
@@ -13,7 +13,7 @@
 #' albums <- get_artist_albums('radiohead')
 #' }
 
-get_artist_albums <- function(artist = NULL, album_types = 'album', return_closest_artist = TRUE, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
+get_artist_albums <- function(artist = NULL, album_types = 'album', return_closest_artist = TRUE, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
 
     is_uri <- function(x) {
         nchar(x) == 22 &

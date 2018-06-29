@@ -8,6 +8,10 @@ get_discography(artist)
 }
 \arguments{
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization does not.}
+
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{FALSE}.}
+
+\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }
 \description{
 Retrieve the entire discography of an artist with the lyrics of each song and the associated audio information. Returns the song data as a nested tibble. This way we can easily see each album, artist, and song title before expanding our data.

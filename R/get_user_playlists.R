@@ -3,7 +3,7 @@
 #' This function returns a dataframe of playlists for a given Spotify username
 #' @param username String of Spotify username. Can be found within the Spotify App
 #' @param access_token Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.
-#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{TRUE}.
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
 #' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #' @keywords username
 #' @export
@@ -12,7 +12,7 @@
 #' get_user_playlists('barackobama')
 #' }
 
-get_user_playlists <- function(username, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
+get_user_playlists <- function(username, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
 
     playlist_count <- get_user_playlist_count(username)
 

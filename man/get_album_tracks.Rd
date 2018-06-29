@@ -5,14 +5,14 @@
 \title{Get tracks from one or more albums on Spotify}
 \usage{
 get_album_tracks(albums, access_token = get_spotify_access_token(),
-  parallelize = TRUE, future_plan = "multiprocess")
+  parallelize = FALSE, future_plan = "multiprocess")
 }
 \arguments{
 \item{albums}{Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_artist_albums()}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 
-\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{FALSE}.}
 
 \item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 }
