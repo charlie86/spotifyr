@@ -13,7 +13,7 @@
 #' playlist_tracks <- get_playlist_tracks(playlists)
 #' }
 
-get_playlist_tracks <- function(playlists, access_token = get_spotify_access_token(), parallelize = TRUE, future_plan = 'multiprocess') {
+get_playlist_tracks <- function(playlists, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
 
     map_args <- list(
         1:nrow(playlists),

@@ -5,7 +5,7 @@
 \title{Get tracks from one or more playlists}
 \usage{
 get_playlist_tracks(playlists, access_token = get_spotify_access_token(),
-  parallelize = TRUE, future_plan = "multiprocess")
+  parallelize = FALSE, future_plan = "multiprocess")
 }
 \arguments{
 \item{playlists}{Dataframe containing the columns `playlist_num_tracks`, `playlist_tracks_url`, `playlist_name`, and `playlist_img`, corresponding to Spotify playlists. Can be output from spotifyr::get_user_playlists()}
