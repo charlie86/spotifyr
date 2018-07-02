@@ -2,6 +2,8 @@
 #'
 #' This function returns the popularity and audio features for every song for all of a given user's playlists on Spotify
 #' @param username String of Spotify username. Can be found on the Spotify app. (See http://rcharlie.net/sentify/user_uri.gif for example)
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{TRUE}.
+#' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @keywords track audio features playlists
 #' @export
@@ -10,12 +12,12 @@
 #' obama_track_features <- get_user_audio_features('barackobama')
 #' }
 
-get_user_audio_features <- function(username, access_token = get_spotify_access_token()) {
+get_user_audio_features <- function(username, parallelize = FALSE, future_plan = 'multiprocess', access_token = get_spotify_access_token()) {
 
-  playlists <- get_user_playlists(username)
-  tracks <- get_playlist_tracks(playlists)
-  track_popularity <- get_track_popularity(tracks)
-  track_audio_features <- get_track_audio_features(tracks)
+  playlists <- get_user_playlists(username, parallelize = parallelize, future_plan = future_plan, access_token = access_token)
+  tracks <- get_playlist_tracks(playlists, parallelize = parallelize, future_plan = future_plan, access_token = access_token)
+  track_popularity <- get_track_popularity(tracks, access_token = access_token)
+  track_audio_features <- get_track_audio_features(tracks, access_token = access_token)
 
   tots <- playlists %>%
     select(-playlist_img) %>%

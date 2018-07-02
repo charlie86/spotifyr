@@ -30,8 +30,9 @@ get_tracks <- function(track_name, artist_name = NULL, album_name = NULL, return
     # Search Spotify API for track name
     res <- GET('https://api.spotify.com/v1/search',
                query = list(q = string_search,
-                            type = 'track', access_token = access_token)) %>%
-        content
+                            type = 'track',
+                            access_token = access_token)
+               ) %>% content
 
     if (length(res$tracks$items) >= 0) {
 

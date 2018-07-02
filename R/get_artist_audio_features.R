@@ -22,10 +22,10 @@ get_artist_audio_features <- function(artist = NULL, album_types = 'album', retu
         stop(str_glue('Cannot find any albums for "{selected_artist}" on Spotify'))
     }
 
-    album_popularity <- get_album_popularity(albums)
-    tracks <- get_album_tracks(albums, parallelize = parallelize, future_plan = future_plan)
-    track_features <- get_track_audio_features(tracks)
-    track_popularity <- get_track_popularity(tracks)
+    album_popularity <- get_album_popularity(albums, access_token = access_token)
+    tracks <- get_album_tracks(albums, parallelize = parallelize, future_plan = future_plan, access_token = access_token)
+    track_features <- get_track_audio_features(tracks, access_token = access_token)
+    track_popularity <- get_track_popularity(tracks, access_token = access_token)
 
     albums %>%
         left_join(album_popularity, by = 'album_uri') %>%

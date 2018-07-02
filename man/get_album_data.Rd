@@ -5,7 +5,7 @@
 \title{Retrieve artist discography with song lyrics and audio info}
 \usage{
 get_album_data(artist, albums = character(), parallelize = FALSE,
-  future_plan = "multiprocess")
+  future_plan = "multiprocess", access_token = get_spotify_access_token())
 }
 \arguments{
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization does not.}

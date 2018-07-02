@@ -14,7 +14,7 @@
 
 get_user_playlists <- function(username, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
 
-    playlist_count <- get_user_playlist_count(username)
+    playlist_count <- get_user_playlist_count(username, access_token = access_token)
 
     if (playlist_count == 0) {
         stop('Can\'t find any playlists for this user on Spotify.')

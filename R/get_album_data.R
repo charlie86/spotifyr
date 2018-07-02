@@ -18,13 +18,13 @@
 
 
 
-get_album_data <- function(artist, albums = character(), parallelize = FALSE, future_plan = 'multiprocess') {
+get_album_data <- function(artist, albums = character(), parallelize = FALSE, future_plan = 'multiprocess', access_token = get_spotify_access_token()) {
 
     # Identify All Albums for a single artist
-    artist_albums <- get_artist_albums(artist, parallelize = parallelize, future_plan = future_plan) %>% as_tibble()
+    artist_albums <- get_artist_albums(artist, parallelize = parallelize, future_plan = future_plan, access_token = access_token) %>% as_tibble()
     # Acquire all tracks for each album
     artist_disco <-  artist_albums %>%
-        get_album_tracks(parallelize = parallelize, future_plan = future_plan) %>% as_tibble() %>%
+        get_album_tracks(parallelize = parallelize, future_plan = future_plan, access_token = access_token) %>% as_tibble() %>%
         group_by(album_name) %>%
         # There might be song title issues, we will just order by track number to prevent problems
         # we will join on track number
@@ -34,7 +34,7 @@ get_album_data <- function(artist, albums = character(), parallelize = FALSE, fu
 
 
     # Get the audio features for each song
-    disco_audio_feats <- get_track_audio_features(artist_disco) %>% as_tibble()
+    disco_audio_feats <- get_track_audio_features(artist_disco, access_token = access_token) %>% as_tibble()
 
     # Identify each unique album name and artist pairing
     album_list <- artist_disco %>%

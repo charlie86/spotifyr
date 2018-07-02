@@ -4,10 +4,15 @@
 \alias{get_user_audio_features}
 \title{Get features and popularity for all of a user's playlists on Spotify}
 \usage{
-get_user_audio_features(username, access_token = get_spotify_access_token())
+get_user_audio_features(username, parallelize = FALSE,
+  future_plan = "multiprocess", access_token = get_spotify_access_token())
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found on the Spotify app. (See http://rcharlie.net/sentify/user_uri.gif for example)}
+
+\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+
+\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }

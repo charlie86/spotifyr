@@ -4,7 +4,8 @@
 \alias{get_discography}
 \title{Retrieve artist discography with song lyrics and audio info}
 \usage{
-get_discography(artist)
+get_discography(artist, parallelize = FALSE, future_plan = "multiprocess",
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization does not.}
@@ -12,6 +13,8 @@ get_discography(artist)
 \item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{FALSE}.}
 
 \item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
+
+\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }
 \description{
 Retrieve the entire discography of an artist with the lyrics of each song and the associated audio information. Returns the song data as a nested tibble. This way we can easily see each album, artist, and song title before expanding our data.

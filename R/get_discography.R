@@ -4,6 +4,7 @@
 #' @param artist The quoted name of the artist. Spelling matters, capitalization does not.
 #' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
 #' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
+#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #'
 #' @examples
 #' rex_orange <- get_discography("Rex Orange County")
@@ -15,10 +16,10 @@
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
 
-get_discography <- function(artist) {
+get_discography <- function(artist, parallelize = FALSE, future_plan = 'multiprocess', access_token = get_spotify_access_token()) {
 
     # Identify All Albums for a single artist
-    artist_audio_features <- get_artist_audio_features(artist, parallelize = parallelize, future_plan = future_plan) %>%
+    artist_audio_features <- get_artist_audio_features(artist, parallelize = parallelize, future_plan = future_plan, access_token = access_token) %>%
         group_by(album_name) %>%
         mutate(track_n = row_number())
 
