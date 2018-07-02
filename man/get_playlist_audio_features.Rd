@@ -5,7 +5,7 @@
 \title{Get features and popularity for all of a given set of playlists on Spotify}
 \usage{
 get_playlist_audio_features(username, playlist_uris,
-  access_token = get_spotify_access_token(), show_progress = TRUE)
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found on the Spotify app. (See http://rcharlie.net/sentify/user_uri.gif for example)}
@@ -13,8 +13,6 @@ get_playlist_audio_features(username, playlist_uris,
 \item{playlist_uris}{Character vector of Spotify playlist uris associated with the given \code{username}. Can be found within the Spotify App}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
-
-\item{show_progress}{Boolean determining to show progress bar or not. Defaults to \code{FALSE}.}
 }
 \description{
 This function returns the popularity and audio features for every song for a given set of playlists on Spotify
