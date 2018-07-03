@@ -79,46 +79,49 @@ beatles %>%
 
 ``` r
 get_my_recently_played(limit = 5) %>% 
+    select(track_name, artist_name, album_name, played_at_utc) %>% 
     kable()
 ```
 
-| track\_name            | artist\_name | album\_name       | played\_at\_utc     | context\_type | context\_uri | context\_spotify\_url | album\_type |  track\_number|  track\_popularity| explicit | album\_release\_date | album\_img                                                         | track\_uri             | artist\_uri            | album\_uri             | track\_preview\_url                                                                                           | track\_spotify\_url                                     |
-|:-----------------------|:-------------|:------------------|:--------------------|:--------------|:-------------|:----------------------|:------------|--------------:|------------------:|:---------|:---------------------|:-------------------------------------------------------------------|:-----------------------|:-----------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|
-| HoursDaysMonthsSeasons | Nathan Fake  | Providence        | 2018-06-23 22:18:21 | NA            | NA           | NA                    | album       |              3|                 34| FALSE    | NA                   | <https://i.scdn.co/image/77560c6cccc524891f930353b98a7b5ff7ec38f3> | 3ahMheJQ0ukl1edNuTRSfr | 5rZVjGkZZI4TnpMHQwrxfG | 6m2Yw1xMhp90rwUnOdtBcp | <https://p.scdn.co/mp3-preview/cad8071ea845ea8e08462d0d0075c88ca7598a81?cid=0cfbcde7a276401c891d1ba876c1ebb7> | <https://open.spotify.com/track/3ahMheJQ0ukl1edNuTRSfr> |
-| Deceiver               | Loscil       | Monument Builders | 2018-06-23 22:13:38 | NA            | NA           | NA                    | album       |              5|                 36| FALSE    | NA                   | <https://i.scdn.co/image/b1fd8f0015767b736324feb28d8c4293b32dfbfd> | 5ziYoXutr7LlxWtJNDnRG4 | 3GM5cpCBadq2PMHjFoEvhK | 1anZBWOeghB5twG4CyJdoc | <https://p.scdn.co/mp3-preview/83bbf815785f71e51816d24d21aad9adb3458207?cid=0cfbcde7a276401c891d1ba876c1ebb7> | <https://open.spotify.com/track/5ziYoXutr7LlxWtJNDnRG4> |
-| Txt (MSGS)             | Mndsgn       | Yawn Zen          | 2018-06-23 22:11:11 | NA            | NA           | NA                    | album       |              9|                 33| FALSE    | NA                   | <https://i.scdn.co/image/b5a4c363b2cb30669e334f5b5a34d91ea904a8f6> | 6keqH1nqtS2j3DOovYwGFU | 4GcpBLY8g8NrmimWbssM26 | 5UNxfgrTnkQeVxFSdkAbCp | <https://p.scdn.co/mp3-preview/50c8bd2809482f479b55c6029b4e05756d7b4e86?cid=0cfbcde7a276401c891d1ba876c1ebb7> | <https://open.spotify.com/track/6keqH1nqtS2j3DOovYwGFU> |
-| A Grass Day            | Groundislava | Groundislava      | 2018-06-23 22:10:05 | NA            | NA           | NA                    | album       |              3|                  9| FALSE    | NA                   | <https://i.scdn.co/image/ce3c6e3d79195edbcca8734e3ddcac5f51f22cd5> | 7CgOsQpzjHToqAfIUmWn4h | 2Y2gruKUC2cAjhe0h2RpzV | 2tjaNznEZzzGHFZw6UiErj | <https://p.scdn.co/mp3-preview/c50bf0ab2f50f7740e7c451c20b7a3826234b648?cid=0cfbcde7a276401c891d1ba876c1ebb7> | <https://open.spotify.com/track/7CgOsQpzjHToqAfIUmWn4h> |
-| A Grass Day            | Groundislava | Groundislava      | 2018-06-23 22:09:27 | NA            | NA           | NA                    | album       |              3|                  9| FALSE    | NA                   | <https://i.scdn.co/image/ce3c6e3d79195edbcca8734e3ddcac5f51f22cd5> | 7CgOsQpzjHToqAfIUmWn4h | 2Y2gruKUC2cAjhe0h2RpzV | 2tjaNznEZzzGHFZw6UiErj | <https://p.scdn.co/mp3-preview/c50bf0ab2f50f7740e7c451c20b7a3826234b648?cid=0cfbcde7a276401c891d1ba876c1ebb7> | <https://open.spotify.com/track/7CgOsQpzjHToqAfIUmWn4h> |
+| track\_name                          | artist\_name     | album\_name             | played\_at\_utc     |
+|:-------------------------------------|:-----------------|:------------------------|:--------------------|
+| Hungeryears & Advanced Communication | Dimlite          | This Is Embracing       | 2018-07-03 13:26:33 |
+| Peacock Tail                         | Boards of Canada | The Campfire Headphase  | 2018-07-03 13:21:08 |
+| Zodiac Shit                          | Flying Lotus     | Cosmogramma             | 2018-07-03 13:18:23 |
+| Soul Searching                       | Shigeto          | No Better Time Than Now | 2018-07-03 13:12:52 |
+| Wake and Bake                        | Fleece           | Scavenger               | 2018-07-03 13:08:23 |
 
 ### Find your all time favorite artists
 
 ``` r
 get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
+    select(artist_name, artist_genres) %>% 
     kable()
 ```
 
-| artist\_name | artist\_uri            | artist\_img                                                        | artist\_genres                                                                                                                                |  artist\_popularity|  artist\_num\_followers| artist\_spotify\_url                                     |
-|:-------------|:-----------------------|:-------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|-------------------:|-----------------------:|:---------------------------------------------------------|
-| Radiohead    | 4Z8W4fKeB5YxbusRsdQVPb | <https://i.scdn.co/image/afcd616e1ef2d2786f47b3b4a8a6aeea24a72adc> | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                                    |                  79|                 3218634| <https://open.spotify.com/artist/4Z8W4fKeB5YxbusRsdQVPb> |
-| Onra         | 2sAlo7Fey5cqBk5WJILSd8 | <https://i.scdn.co/image/06280e94f233f6c49f5fdf980dd12d51ba11fa91> | alternative hip hop, chillhop, ninja, trip hop, wonky                                                                                         |                  53|                   70262| <https://open.spotify.com/artist/2sAlo7Fey5cqBk5WJILSd8> |
-| Flying Lotus | 29XOeO6KIWxGthejQqn793 | <https://i.scdn.co/image/96a2af0c3ea3654121a2bdc55731e6ef5034be87> | alternative hip hop, chillwave, electronic, escape room, glitch, glitch hop, hip hop, indie r&b, indietronica, intelligent dance music, wonky |                  59|                  360262| <https://open.spotify.com/artist/29XOeO6KIWxGthejQqn793> |
-| Teebs        | 2L2unNFaPbDxjg3NqzpqhJ | <https://i.scdn.co/image/9554a83f7f84e01a989c6633f5d0e1d174323986> | abstract beats, bass music, chillwave, wonky                                                                                                  |                  42|                   46614| <https://open.spotify.com/artist/2L2unNFaPbDxjg3NqzpqhJ> |
-| Four Tet     | 7Eu1txygG6nJttLHbZdQOh | <https://i.scdn.co/image/f96458025a0640bf1d3c8f764a42ec21d4db1eae> | alternative dance, chamber psych, electronic, indie r&b, indietronica, intelligent dance music, microhouse, new rave, nu jazz, trip hop       |                  63|                  246691| <https://open.spotify.com/artist/7Eu1txygG6nJttLHbZdQOh> |
+| artist\_name | artist\_genres                                                                                                                          |
+|:-------------|:----------------------------------------------------------------------------------------------------------------------------------------|
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                              |
+| Onra         | alternative hip hop, chillhop, ninja, trip hop, wonky                                                                                   |
+| Flying Lotus | alternative hip hop, chillwave, electronic, glitch, glitch hop, hip hop, indie r&b, indietronica, intelligent dance music, wonky        |
+| Teebs        | abstract beats, bass music, chillwave, indietronica, wonky                                                                              |
+| Four Tet     | alternative dance, chamber psych, electronic, indie r&b, indietronica, intelligent dance music, microhouse, new rave, nu jazz, trip hop |
 
 ### Find your favorite tracks at the moment
 
 ``` r
 get_my_top_tracks(time_range = 'short_term', limit = 5) %>% 
+    select(track_name, artist_name, album_name) %>% 
     kable()
 ```
 
-| track\_name     | artist\_name | album\_name | album\_type |  track\_number|  track\_popularity| explicit | album\_release\_date | album\_img                                                         | track\_uri             | artist\_uri            | album\_uri             | track\_preview\_url                                                               | track\_spotify\_url                                     |
-|:----------------|:-------------|:------------|:------------|--------------:|------------------:|:---------|:---------------------|:-------------------------------------------------------------------|:-----------------------|:-----------------------|:-----------------------|:----------------------------------------------------------------------------------|:--------------------------------------------------------|
-| Wake and Bake   | Fleece       | Scavenger   | ALBUM       |              2|                 39| TRUE     | 2015-01-20           | <https://i.scdn.co/image/beab03ac56f835bc228082d9b3709c1dcfb143b2> | 1ed5ib8UKeZsQaN2GFbmrS | 3M8JKaNdIRChzvxVK1XxKm | 2RaZ55erDzUKE0zstJ3T0x | <https://p.scdn.co/mp3-preview/cf6b19d95a0ca8fd33e882f8995c66ad0592a869?cid=null> | <https://open.spotify.com/track/1ed5ib8UKeZsQaN2GFbmrS> |
-| Riverside       | Fleece       | Voyager     | ALBUM       |              5|                 33| FALSE    | 2017-01-19           | <https://i.scdn.co/image/158a2df106b819d5a72227e33d5fbfb51cef21ab> | 5jBsnG7CPKNNKeR7DmT9FU | 3M8JKaNdIRChzvxVK1XxKm | 2PuXMzeWFG1N7meAXFVMoq | <https://p.scdn.co/mp3-preview/1306392012bd8f78fad728c38b3b4ddcf5987b65?cid=null> | <https://open.spotify.com/track/5jBsnG7CPKNNKeR7DmT9FU> |
-| Under the Light | Fleece       | Voyager     | ALBUM       |              1|                 38| FALSE    | 2017-01-19           | <https://i.scdn.co/image/158a2df106b819d5a72227e33d5fbfb51cef21ab> | 6HBSSVm0X3z178D6FaXj9d | 3M8JKaNdIRChzvxVK1XxKm | 2PuXMzeWFG1N7meAXFVMoq | <https://p.scdn.co/mp3-preview/858208e5482a9932b04c0f8270118fbd6813691a?cid=null> | <https://open.spotify.com/track/6HBSSVm0X3z178D6FaXj9d> |
-| Jynweythek      | Aphex Twin   | Drukqs      | ALBUM       |              1|                 40| FALSE    | 2001-10-22           | <https://i.scdn.co/image/0ecee6d7885e1e7cbe8ff5284706a3f0046d5748> | 7etelDpVxaPTzmeZrYo8Qy | 6kBDZFXuLrZgHnvmPu9NsG | 1maoQPAmw44bbkNOxKlwsx | <https://p.scdn.co/mp3-preview/4ca837c390dc6a05aae2f590bbc2aa6a5d495c10?cid=null> | <https://open.spotify.com/track/7etelDpVxaPTzmeZrYo8Qy> |
-| Vibras          | J Balvin     | Vibras      | ALBUM       |              1|                 70| FALSE    | 2018-05-25           | <https://i.scdn.co/image/cc56f48efc4285caaa8e895337846f5174bf3989> | 2EEjiKbE4pAjX49TrBzw1X | 1vyhD5VmyZ7KMfW5gqLgo5 | 5kprdYds6oZb4iSldfflOT | NA                                                                                | <https://open.spotify.com/track/2EEjiKbE4pAjX49TrBzw1X> |
+| track\_name     | artist\_name | album\_name              |
+|:----------------|:-------------|:-------------------------|
+| Tame            | Pixies       | Doolittle                |
+| I’ve Been Tired | Pixies       | Come On Pilgrim          |
+| Jynweythek      | Aphex Twin   | Drukqs                   |
+| Caribou         | Pixies       | Come On Pilgrim          |
+| Gigantic        | Pixies       | Surfer Rosa (Remastered) |
 
 ### What's the most joyful Joy Division song?
 
