@@ -96,8 +96,8 @@
 <div id="authentication" class="section level2">
 <h2 class="hasAnchor">
 <a href="#authentication" class="anchor"></a>Authentication</h2>
-<p>First, set up a Dev account with Spotify to access their Web API <a href="https://developer.spotify.com/my-applications/#!/applications">here</a>. This will give you your <code>Client ID</code> and <code>Client Secret</code>. Once you have those, you can pull your access token into R with <code>get_spotify_access_token</code>.</p>
-<p>The easiest way to authenticate is to set your credentials to the System Environment variables <code>SPOTIFY_CLIENT_ID</code> and <code>SPOTIFY_CLIENT_SECRET</code>. The default arguments to <code>get_spotify_access_token</code> (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.</p>
+<p>First, set up a Dev account with Spotify to access their Web API <a href="https://developer.spotify.com/my-applications/#!/applications">here</a>. This will give you your <code>Client ID</code> and <code>Client Secret</code>. Once you have those, you can pull your access token into R with <code><a href="reference/get_spotify_access_token.html">get_spotify_access_token()</a></code>.</p>
+<p>The easiest way to authenticate is to set your credentials to the System Environment variables <code>SPOTIFY_CLIENT_ID</code> and <code>SPOTIFY_CLIENT_SECRET</code>. The default arguments to <code><a href="reference/get_spotify_access_token.html">get_spotify_access_token()</a></code> (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.setenv</span>(<span class="dt">SPOTIFY_CLIENT_ID =</span> <span class="st">'xxxxxxxxxxxxxxxxxxxxx'</span>)
 <span class="kw">Sys.setenv</span>(<span class="dt">SPOTIFY_CLIENT_SECRET =</span> <span class="st">'xxxxxxxxxxxxxxxxxxxxx'</span>)
 
@@ -112,21 +112,163 @@ access_token &lt;-<span class="st"> </span><span class="kw"><a href="reference/g
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spotifyr)
 beatles &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span>(<span class="st">'the beatles'</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-<span class="kw">count</span>(beatles, key_mode, <span class="dt">sort =</span> T)
-<span class="co">#&gt; # A tibble: 22 x 2</span>
-<span class="co">#&gt;    key_mode     n</span>
-<span class="co">#&gt;    &lt;chr&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1 C major     46</span>
-<span class="co">#&gt;  2 D major     41</span>
-<span class="co">#&gt;  3 G major     38</span>
-<span class="co">#&gt;  4 A major     36</span>
-<span class="co">#&gt;  5 E major     21</span>
-<span class="co">#&gt;  6 F major     18</span>
-<span class="co">#&gt;  7 A minor     11</span>
-<span class="co">#&gt;  8 B minor     10</span>
-<span class="co">#&gt;  9 E minor     10</span>
-<span class="co">#&gt; 10 C# minor     9</span>
-<span class="co">#&gt; # ... with 12 more rows</span></code></pre></div>
+<span class="kw">library</span>(knitr)
+
+beatles <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">count</span>(key_mode, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">head</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">key_mode</th>
+<th align="right">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">C major</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="left">D major</td>
+<td align="right">41</td>
+</tr>
+<tr class="odd">
+<td align="left">G major</td>
+<td align="right">38</td>
+</tr>
+<tr class="even">
+<td align="left">A major</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">E major</td>
+<td align="right">21</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="get-your-most-recently-played-tracks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#get-your-most-recently-played-tracks" class="anchor"></a>Get your most recently played tracks</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/get_my_recently_played.html">get_my_recently_played</a></span>(<span class="dt">limit =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(track_name, artist_name, album_name, played_at_utc) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">track_name</th>
+<th align="left">artist_name</th>
+<th align="left">album_name</th>
+<th align="left">played_at_utc</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Hungeryears &amp; Advanced Communication</td>
+<td align="left">Dimlite</td>
+<td align="left">This Is Embracing</td>
+<td align="left">2018-07-03 13:26:33</td>
+</tr>
+<tr class="even">
+<td align="left">Peacock Tail</td>
+<td align="left">Boards of Canada</td>
+<td align="left">The Campfire Headphase</td>
+<td align="left">2018-07-03 13:21:08</td>
+</tr>
+<tr class="odd">
+<td align="left">Zodiac Shit</td>
+<td align="left">Flying Lotus</td>
+<td align="left">Cosmogramma</td>
+<td align="left">2018-07-03 13:18:23</td>
+</tr>
+<tr class="even">
+<td align="left">Soul Searching</td>
+<td align="left">Shigeto</td>
+<td align="left">No Better Time Than Now</td>
+<td align="left">2018-07-03 13:12:52</td>
+</tr>
+<tr class="odd">
+<td align="left">Wake and Bake</td>
+<td align="left">Fleece</td>
+<td align="left">Scavenger</td>
+<td align="left">2018-07-03 13:08:23</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="find-your-all-time-favorite-artists" class="section level3">
+<h3 class="hasAnchor">
+<a href="#find-your-all-time-favorite-artists" class="anchor"></a>Find your all time favorite artists</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/get_my_top_artists.html">get_my_top_artists</a></span>(<span class="dt">time_range =</span> <span class="st">'long_term'</span>, <span class="dt">limit =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(artist_name, artist_genres) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">artist_name</th>
+<th align="left">artist_genres</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Radiohead</td>
+<td align="left">alternative rock, art rock, melancholia, modern rock, permanent wave, rock</td>
+</tr>
+<tr class="even">
+<td align="left">Onra</td>
+<td align="left">alternative hip hop, chillhop, ninja, trip hop, wonky</td>
+</tr>
+<tr class="odd">
+<td align="left">Flying Lotus</td>
+<td align="left">alternative hip hop, chillwave, electronic, glitch, glitch hop, hip hop, indie r&amp;b, indietronica, intelligent dance music, wonky</td>
+</tr>
+<tr class="even">
+<td align="left">Teebs</td>
+<td align="left">abstract beats, bass music, chillwave, indietronica, wonky</td>
+</tr>
+<tr class="odd">
+<td align="left">Four Tet</td>
+<td align="left">alternative dance, chamber psych, electronic, indie r&amp;b, indietronica, intelligent dance music, microhouse, new rave, nu jazz, trip hop</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="find-your-favorite-tracks-at-the-moment" class="section level3">
+<h3 class="hasAnchor">
+<a href="#find-your-favorite-tracks-at-the-moment" class="anchor"></a>Find your favorite tracks at the moment</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/get_my_top_tracks.html">get_my_top_tracks</a></span>(<span class="dt">time_range =</span> <span class="st">'short_term'</span>, <span class="dt">limit =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(track_name, artist_name, album_name) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">track_name</th>
+<th align="left">artist_name</th>
+<th align="left">album_name</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Tame</td>
+<td align="left">Pixies</td>
+<td align="left">Doolittle</td>
+</tr>
+<tr class="even">
+<td align="left">I’ve Been Tired</td>
+<td align="left">Pixies</td>
+<td align="left">Come On Pilgrim</td>
+</tr>
+<tr class="odd">
+<td align="left">Jynweythek</td>
+<td align="left">Aphex Twin</td>
+<td align="left">Drukqs</td>
+</tr>
+<tr class="even">
+<td align="left">Caribou</td>
+<td align="left">Pixies</td>
+<td align="left">Come On Pilgrim</td>
+</tr>
+<tr class="odd">
+<td align="left">Gigantic</td>
+<td align="left">Pixies</td>
+<td align="left">Surfer Rosa (Remastered)</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="whats-the-most-joyful-joy-division-song" class="section level3">
 <h3 class="hasAnchor">
@@ -136,21 +278,40 @@ beatles &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_ar
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">joy <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">arrange</span>(<span class="op">-</span>valence) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">select</span>(track_name, valence) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">10</span>)
-<span class="co">#&gt; # A tibble: 10 x 2</span>
-<span class="co">#&gt;    track_name                                    valence</span>
-<span class="co">#&gt;    &lt;chr&gt;                                           &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 These Days                                      0.949</span>
-<span class="co">#&gt;  2 Passover - 2007 Remastered Version              0.941</span>
-<span class="co">#&gt;  3 Colony - 2007 Remastered Version                0.808</span>
-<span class="co">#&gt;  4 Atrocity Exhibition - 2007 Remastered Version   0.787</span>
-<span class="co">#&gt;  5 Wilderness                                      0.775</span>
-<span class="co">#&gt;  6 Twenty Four Hours                               0.773</span>
-<span class="co">#&gt;  7 A Means To An End - 2007 Remastered Version     0.752</span>
-<span class="co">#&gt;  8 Interzone - 2007 Remastered Version             0.746</span>
-<span class="co">#&gt;  9 She's Lost Control - 2007 Remastered Version    0.743</span>
-<span class="co">#&gt; 10 Disorder - 2007 Remastered Version              0.740</span></code></pre></div>
-<p>Now if only there was some way to plot joy…</p>
+<span class="st">    </span><span class="kw">head</span>(<span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>()</code></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">track_name</th>
+<th align="right">valence</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">These Days</td>
+<td align="right">0.949</td>
+</tr>
+<tr class="even">
+<td align="left">Passover - 2007 Remastered Version</td>
+<td align="right">0.941</td>
+</tr>
+<tr class="odd">
+<td align="left">Colony - 2007 Remastered Version</td>
+<td align="right">0.808</td>
+</tr>
+<tr class="even">
+<td align="left">Atrocity Exhibition - 2007 Remastered Version</td>
+<td align="right">0.787</td>
+</tr>
+<tr class="odd">
+<td align="left">Wilderness</td>
+<td align="right">0.775</td>
+</tr>
+<tr class="even">
+<td align="left">Now if only there was some way to plot joy…</td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="joyplot-of-the-emotional-rollercoasters-that-are-joy-divisions-albums" class="section level3">
 <h3 class="hasAnchor">
@@ -165,9 +326,9 @@ beatles &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_ar
 <span class="kw">ggplot</span>(joy, <span class="kw">aes</span>(<span class="dt">x =</span> valence, <span class="dt">y =</span> album_name)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggjoy/topics/ggjoy">geom_joy</a></span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggjoy/topics/ggjoy">theme_joy</a></span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">"Joyplot of Joy Division's joy distributions"</span>, <span class="dt">subtitle =</span> <span class="kw">paste0</span>(<span class="st">"Based on valence pulled from Spotify's Web API with spotifyr"</span>))
+<span class="st">    </span><span class="kw">ggtitle</span>(<span class="st">"Joyplot of Joy Division's joy distributions"</span>, <span class="dt">subtitle =</span> <span class="st">"Based on valence pulled from Spotify's Web API with spotifyr"</span>)
 <span class="co">#&gt; Picking joint bandwidth of 0.112</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="700"></p>
+<p><img src="reference/figures/README-unnamed-chunk-9-1.png" width="700"></p>
 </div>
 <div id="danceability-of-thom-yorke" class="section level3">
 <h3 class="hasAnchor">
@@ -211,13 +372,13 @@ frames &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class=
 })
 
 <span class="kw"><a href="http://www.rdocumentation.org/packages/magick/topics/animation">image_animate</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/magick/topics/editing">image_join</a></span>(frames), <span class="dt">fps =</span> <span class="dv">5</span>, <span class="dt">loop =</span> <span class="dv">0</span>)</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-8-1.gif"><!-- --></p>
+<p><img src="reference/figures/README-unnamed-chunk-11-1.gif"><!-- --></p>
 </div>
 </div>
 <div id="parallelization" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parallelization" class="anchor"></a>Parallelization</h2>
-<p>By default, <code><a href="reference/get_artist_audio_features.html">get_artist_audio_features()</a></code>, <code><a href="reference/get_artist_albums.html">get_artist_albums()</a></code>, <code><a href="reference/get_album_tracks.html">get_album_tracks()</a></code>, and <code><a href="reference/get_playlist_tracks.html">get_playlist_tracks()</a></code> will run in parallel using the <code>furrr</code> package. To turn this feature off, set <code>parallel = FALSE</code>. You can also adjust the evaluation strategy by setting <code>future_plan</code>, which accepts a string matching one of the strategies implemented in <code><a href="http://www.rdocumentation.org/packages/future/topics/plan">future::plan</a></code> (defaults to <code>"multiprocess"</code>).</p>
+<p>By default, <code><a href="reference/get_artist_audio_features.html">get_artist_audio_features()</a></code>, <code><a href="reference/get_artist_albums.html">get_artist_albums()</a></code>, <code><a href="reference/get_album_tracks.html">get_album_tracks()</a></code>, <code><a href="reference/get_playlist_tracks.html">get_playlist_tracks()</a></code>, and <code><a href="reference/get_user_playlists.html">get_user_playlists()</a></code> will run in parallel using the <code>furrr</code> package. To turn this feature off, set <code>parallelize = FALSE</code>. You can also adjust the evaluation strategy by setting <code>future_plan</code>, which accepts a string matching one of the strategies implemented in <code><a href="http://www.rdocumentation.org/packages/future/topics/plan">future::plan()</a></code> (defaults to <code>"multiprocess"</code>).</p>
 </div>
 <div id="sentify-a-shiny-app" class="section level2">
 <h2 class="hasAnchor">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Artist Albums — get_artist_albums • spotifyr</title>
+<title>Get Spotify Authorization Code — get_spotify_authorization_code • spotifyr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get Artist Albums — get_artist_albums" />
+<meta property="og:title" content="Get Spotify Authorization Code — get_spotify_authorization_code" />
 
-<meta property="og:description" content="This function returns an artist's discography on Spotify" />
+<meta property="og:description" content="This function creates a Spotify access token." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,50 +97,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Artist Albums</h1>
-    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/get_artist_albums.R'><code>R/get_artist_albums.R</code></a></small>
-    <div class="hidden name"><code>get_artist_albums.Rd</code></div>
+    <h1>Get Spotify Authorization Code</h1>
+    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/get_spotify_authorization_code.R'><code>R/get_spotify_authorization_code.R</code></a></small>
+    <div class="hidden name"><code>get_spotify_authorization_code.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function returns an artist's discography on Spotify</p>
+    <p>This function creates a Spotify access token.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_artist_albums</span>(<span class='kw'>artist</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>album_types</span> <span class='kw'>=</span> <span class='st'>"album"</span>,
-  <span class='kw'>return_closest_artist</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>(),
-  <span class='kw'>parallelize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>future_plan</span> <span class='kw'>=</span> <span class='st'>"multiprocess"</span>)</pre>
+    <pre class="usage"><span class='fu'>get_spotify_authorization_code</span>(<span class='kw'>client_id</span> <span class='kw'>=</span> <span class='fu'>Sys.getenv</span>(<span class='st'>"SPOTIFY_CLIENT_ID"</span>),
+  <span class='kw'>client_secret</span> <span class='kw'>=</span> <span class='fu'>Sys.getenv</span>(<span class='st'>"SPOTIFY_CLIENT_SECRET"</span>),
+  <span class='kw'>scope</span> <span class='kw'>=</span> <span class='st'>"user-library-read user-library-modify playlist-read-private playlist-modify-public playlist-modify-private playlist-read-collaborative user-read-recently-played user-top-read user-read-private user-read-email user-read-birthdate streaming user-modify-playback-state user-read-currently-playing user-read-playback-state user-follow-modify user-follow-read"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>artist</th>
-      <td><p>String of artist name or Spotify artist URI</p></td>
+      <th>client_id</th>
+      <td><p>Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"</p></td>
     </tr>
     <tr>
-      <th>album_types</th>
-      <td><p>Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".</p></td>
+      <th>client_secret</th>
+      <td><p>Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"</p></td>
     </tr>
     <tr>
-      <th>access_token</th>
-      <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
-    </tr>
-    <tr>
-      <th>parallelize</th>
-      <td><p>Boolean determining to run in parallel or not. Defaults to <code>FALSE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>future_plan</th>
-      <td><p>String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to <code>multiprocess</code>.</p></td>
+      <th>scope</th>
+      <td><p>Space delimited string of spotify scopes, found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>albums</span> <span class='kw'>&lt;-</span> <span class='fu'>get_artist_albums</span>(<span class='st'>'radiohead'</span>)
+<span class='fu'>get_spotify_authorization_code</span>()
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

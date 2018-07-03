@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Artist Albums — get_artist_albums • spotifyr</title>
+<title>Get track audio analysis by URI — get_track_audio_analysis • spotifyr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Get Artist Albums — get_artist_albums" />
+<meta property="og:title" content="Get track audio analysis by URI — get_track_audio_analysis" />
 
-<meta property="og:description" content="This function returns an artist's discography on Spotify" />
+<meta property="og:description" content="This function takes a track URI and returns a list containing an audio analysis object
+from Spotify's audio analysis endpoint" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,50 +98,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Artist Albums</h1>
-    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/get_artist_albums.R'><code>R/get_artist_albums.R</code></a></small>
-    <div class="hidden name"><code>get_artist_albums.Rd</code></div>
+    <h1>Get track audio analysis by URI</h1>
+    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/get_track_audio_analysis.R'><code>R/get_track_audio_analysis.R</code></a></small>
+    <div class="hidden name"><code>get_track_audio_analysis.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function returns an artist's discography on Spotify</p>
+    <p>This function takes a track URI and returns a list containing an audio analysis object
+from Spotify's audio analysis endpoint</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_artist_albums</span>(<span class='kw'>artist</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>album_types</span> <span class='kw'>=</span> <span class='st'>"album"</span>,
-  <span class='kw'>return_closest_artist</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>(),
-  <span class='kw'>parallelize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>future_plan</span> <span class='kw'>=</span> <span class='st'>"multiprocess"</span>)</pre>
+    <pre class="usage"><span class='fu'>get_track_audio_analysis</span>(<span class='no'>track_uri</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>artist</th>
-      <td><p>String of artist name or Spotify artist URI</p></td>
-    </tr>
-    <tr>
-      <th>album_types</th>
-      <td><p>Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".</p></td>
+      <th>track_uri</th>
+      <td><p>A string with a track URI</p></td>
     </tr>
     <tr>
       <th>access_token</th>
       <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
-    </tr>
-    <tr>
-      <th>parallelize</th>
-      <td><p>Boolean determining to run in parallel or not. Defaults to <code>FALSE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>future_plan</th>
-      <td><p>String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to <code>multiprocess</code>.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>albums</span> <span class='kw'>&lt;-</span> <span class='fu'>get_artist_albums</span>(<span class='st'>'radiohead'</span>)
+<span class='co'>##### Get track uri for Radiohead - Kid A</span>
+<span class='no'>kid_a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_tracks.html'>get_tracks</a></span>(<span class='kw'>artist_name</span> <span class='kw'>=</span> <span class='st'>"Radiohead"</span>, <span class='kw'>track_name</span> <span class='kw'>=</span> <span class='st'>"Kid A"</span>, <span class='kw'>return_closest_track</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>kid_a_audio_analysis</span> <span class='kw'>&lt;-</span> <span class='fu'>get_track_audio_analysis</span>(<span class='no'>kid_a</span>$<span class='no'>track_uri</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

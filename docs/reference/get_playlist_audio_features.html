@@ -108,8 +108,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_playlist_audio_features</span>(<span class='no'>username</span>, <span class='no'>playlist_uris</span>,
-  <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>(), <span class='kw'>show_progress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_playlist_audio_features</span>(<span class='no'>username</span>, <span class='no'>playlist_uris</span>, <span class='kw'>parallelize</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>future_plan</span> <span class='kw'>=</span> <span class='st'>"multiprocess"</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -123,12 +123,16 @@
       <td><p>Character vector of Spotify playlist uris associated with the given <code>username</code>. Can be found within the Spotify App</p></td>
     </tr>
     <tr>
-      <th>access_token</th>
-      <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
+      <th>parallelize</th>
+      <td><p>Boolean determining to run in parallel or not. Defaults to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
-      <th>show_progress</th>
-      <td><p>Boolean determining to show progress bar or not. Defaults to <code>FALSE</code>.</p></td>
+      <th>future_plan</th>
+      <td><p>String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to <code>multiprocess</code>.</p></td>
+    </tr>
+    <tr>
+      <th>access_token</th>
+      <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
     </tr>
     </table>
     
