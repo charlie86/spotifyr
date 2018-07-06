@@ -9,10 +9,10 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' get_my_top_tracks()
+#' get_my_recently_played()
 #' }
 
-get_my_recently_played <- function(limit = 50, after = NULL, before = NULL, auth_code = get_spotify_authorization_code()) {
+get_my_recently_played <- function(limit = 50, auth_code = get_spotify_authorization_code()) {
 
     res <- GET('https://api.spotify.com/v1/me/player/recently-played', config(token = auth_code), query = list(limit = limit)) %>% content %>% .$items
 
