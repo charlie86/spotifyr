@@ -12,10 +12,8 @@
 #'
 #' @export
 #' @import dplyr
-#' @import geniusR
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
-
 
 
 get_album_data <- function(artist, albums = character(), parallelize = FALSE, future_plan = 'multiprocess', access_token = get_spotify_access_token()) {

@@ -12,7 +12,6 @@
 #'
 #' @export
 #' @import dplyr
-#' @import geniusR
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
 

@@ -1,13 +1,12 @@
 Package: spotifyr
 Title: R wrapper for the 'Spotify' Web API
 Version: 1.1.0
-Authors@R: person("Charlie", "Thompson", email = "chuck@rcharlie.com", role = c("aut", "cre"))
-Description: A wrapper for pulling track audio features from the
-  'Spotify' Web API <http://developer.spotify.com/web-api> in bulk. 
-  By automatically batching API requests, it allows you to enter an artist's 
-  name and retrieve their entire discography in seconds, along with audio 
-  features and track/album popularity metrics. You can also pull song and 
-  playlist information for a given 'Spotify' user (including yourself!).
+Authors@R: c(person("Charlie", "Thompson", email = "chuck@rcharlie.com", role = c("aut", "cre")), person("Josiah", "Parry", email = "josiah.parry@yahoo.com", role = c("aut")))
+Description: An R wrapper for pulling data from the 'Spotify' Web API 
+  <http://developer.spotify.com/web-api> in bulk. It allows you to enter 
+  an artist's name and retrieve their entire discography in seconds, along 
+  with audio features and lyrics from Genius Lyrics <https://www.genius.com>. 
+  You can also pull song and playlist information for a given 'Spotify' user.
 Depends: R (>= 3.3.0)
 Imports:
   dplyr,
@@ -16,6 +15,8 @@ Imports:
   httr,
   lubridate,
   furrr,
+  readr,
+  rvest,
   future,
   stringr
 License: MIT + file LICENSE
