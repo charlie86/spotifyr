@@ -69,11 +69,11 @@ beatles %>%
 
 | key\_mode |    n|
 |:----------|----:|
-| C major   |   46|
-| D major   |   41|
-| G major   |   38|
-| A major   |   36|
-| E major   |   21|
+| D major   |   70|
+| A major   |   65|
+| C major   |   61|
+| G major   |   61|
+| E major   |   60|
 
 ### Get your most recently played tracks
 
@@ -81,15 +81,16 @@ beatles %>%
 get_my_recently_played(limit = 5) %>% 
     select(track_name, artist_name, album_name, played_at_utc) %>% 
     kable()
+#> Auto-refreshing stale OAuth token.
 ```
 
-| track\_name                          | artist\_name     | album\_name             | played\_at\_utc     |
-|:-------------------------------------|:-----------------|:------------------------|:--------------------|
-| Hungeryears & Advanced Communication | Dimlite          | This Is Embracing       | 2018-07-03 13:26:33 |
-| Peacock Tail                         | Boards of Canada | The Campfire Headphase  | 2018-07-03 13:21:08 |
-| Zodiac Shit                          | Flying Lotus     | Cosmogramma             | 2018-07-03 13:18:23 |
-| Soul Searching                       | Shigeto          | No Better Time Than Now | 2018-07-03 13:12:52 |
-| Wake and Bake                        | Fleece           | Scavenger               | 2018-07-03 13:08:23 |
+| track\_name      | artist\_name | album\_name              | played\_at\_utc     |
+|:-----------------|:-------------|:-------------------------|:--------------------|
+| Rubu             | letherette   | Last Night On The Planet | 2018-07-31 14:06:43 |
+| dartgun          | Samiyam      | Animals Have Feelings    | 2018-07-31 14:02:48 |
+| Dark Sea         | Onra         | Chinoiseries             | 2018-07-31 14:00:18 |
+| 54 Cymru Beats   | Aphex Twin   | Drukqs                   | 2018-07-31 13:58:29 |
+| A Paw In My Face | The Field    | From Here We Go Sublime  | 2018-07-31 13:49:06 |
 
 ### Find your all time favorite artists
 
@@ -99,13 +100,13 @@ get_my_top_artists(time_range = 'long_term', limit = 5) %>%
     kable()
 ```
 
-| artist\_name | artist\_genres                                                                                                                          |
-|:-------------|:----------------------------------------------------------------------------------------------------------------------------------------|
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                              |
-| Onra         | alternative hip hop, chillhop, ninja, trip hop, wonky                                                                                   |
-| Flying Lotus | alternative hip hop, chillwave, electronic, glitch, glitch hop, hip hop, indie r&b, indietronica, intelligent dance music, wonky        |
-| Teebs        | abstract beats, bass music, chillwave, indietronica, wonky                                                                              |
-| Four Tet     | alternative dance, chamber psych, electronic, indie r&b, indietronica, intelligent dance music, microhouse, new rave, nu jazz, trip hop |
+| artist\_name | artist\_genres                                                                                                                                          |
+|:-------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Radiohead    | c("alternative rock", "art rock", "melancholia", "modern rock", "permanent wave", "rock")                                                               |
+| Onra         | c("alternative hip hop", "chillhop", "trip hop", "wonky")                                                                                               |
+| Flying Lotus | c("alternative hip hop", "chillwave", "electronic", "glitch", "glitch hop", "hip hop", "indie r&b", "indietronica", "intelligent dance music", "wonky") |
+| Teebs        | c("abstract beats", "bass music", "chillwave", "indietronica", "wonky")                                                                                 |
+| Four Tet     | c("alternative dance", "chamber psych", "electronic", "indietronica", "intelligent dance music", "microhouse", "new rave", "nu jazz", "trip hop")       |
 
 ### Find your favorite tracks at the moment
 
@@ -115,13 +116,13 @@ get_my_top_tracks(time_range = 'short_term', limit = 5) %>%
     kable()
 ```
 
-| track\_name     | artist\_name | album\_name              |
-|:----------------|:-------------|:-------------------------|
-| Tame            | Pixies       | Doolittle                |
-| I’ve Been Tired | Pixies       | Come On Pilgrim          |
-| Jynweythek      | Aphex Twin   | Drukqs                   |
-| Caribou         | Pixies       | Come On Pilgrim          |
-| Gigantic        | Pixies       | Surfer Rosa (Remastered) |
+| track\_name    | artist\_name | album\_name                                   |
+|:---------------|:-------------|:----------------------------------------------|
+| Fellin' Myself | Mac Dre      | Ronald Dregan For President 2004: Dreganomics |
+| Daydreaming    | Radiohead    | A Moon Shaped Pool                            |
+| Not My Job     | Mac Dre      | The Genie Of The Lamp                         |
+| Myxomatosis    | Radiohead    | Hail To the Thief                             |
+| Not My Job     | Mac Dre      | The Genie Of The Lamp                         |
 
 ### What's the most joyful Joy Division song?
 
@@ -244,3 +245,5 @@ The coolest thing about making this package has definitely been seeing all the a
 [Sente-se triste quando ouve "Amar pelos dois"? Não é o único (Do you feel sad when you hear "Love for both?" You're not alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico) - Rui Barros, Renascença
 
 [Hierarchical clustering of David Bowie records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19) - Alyssa Goldberg
+
+[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3) - Simran Vatsa
