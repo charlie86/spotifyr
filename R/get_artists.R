@@ -4,6 +4,8 @@
 #' @param artist_name String of artist name
 #' @param return_closest_artist Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @param offset Integer indicating the offset of the first artist to return. Defaults to 0 (Spotify's API default value).
+#' @param limit Integer indicating the max number of artists to return. Defaults to 20 (Spotify's API default value).
 #' @keywords artists
 #' @export
 #' @examples
@@ -11,10 +13,10 @@
 #' get_artists('radiohead')
 #' }
 
-get_artists <- function(artist_name, return_closest_artist = FALSE, access_token = get_spotify_access_token()) {
+get_artists <- function(artist_name, return_closest_artist = FALSE, access_token = get_spotify_access_token(), offset = 0, limit = 20) {
 
     # Search Spotify API for artist name
-    res <- RETRY('GET', url = 'https://api.spotify.com/v1/search', query = list(q = artist_name, type = 'artist', access_token = access_token), quiet = TRUE) %>%
+    res <- RETRY('GET', url = 'https://api.spotify.com/v1/search', query = list(q = artist_name, type = 'artist', access_token = access_token, offset = offset, limit = limit), quiet = TRUE) %>%
         content
 
     if (!is.null(res$error)) {
