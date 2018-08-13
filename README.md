@@ -19,13 +19,7 @@ Development version (recommended)
 devtools::install_github('charlie86/spotifyr')
 ```
 
-The development version now imports the `geniusR` package from [Josiah Parry](https://github.com/JosiahParry/geniusR), which you can install with:
-
-``` r
-devtools::install_github('JosiahParry/geniusR')
-```
-
-(Note that this is separate from the `geniusr` package currently on CRAN)
+The development version now includes functions from the `geniusR` package from [Josiah Parry](https://github.com/JosiahParry/geniusR).
 
 CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra time to submit and pass CRAN checks)
 
@@ -69,11 +63,11 @@ beatles %>%
 
 | key\_mode |    n|
 |:----------|----:|
-| D major   |   70|
-| A major   |   65|
-| C major   |   61|
-| G major   |   61|
-| E major   |   60|
+| D major   |   64|
+| A major   |   63|
+| E major   |   58|
+| G major   |   57|
+| C major   |   49|
 
 ### Get your most recently played tracks
 
@@ -81,32 +75,34 @@ beatles %>%
 get_my_recently_played(limit = 5) %>% 
     select(track_name, artist_name, album_name, played_at_utc) %>% 
     kable()
-#> Auto-refreshing stale OAuth token.
 ```
 
-| track\_name      | artist\_name | album\_name              | played\_at\_utc     |
-|:-----------------|:-------------|:-------------------------|:--------------------|
-| Rubu             | letherette   | Last Night On The Planet | 2018-07-31 14:06:43 |
-| dartgun          | Samiyam      | Animals Have Feelings    | 2018-07-31 14:02:48 |
-| Dark Sea         | Onra         | Chinoiseries             | 2018-07-31 14:00:18 |
-| 54 Cymru Beats   | Aphex Twin   | Drukqs                   | 2018-07-31 13:58:29 |
-| A Paw In My Face | The Field    | From Here We Go Sublime  | 2018-07-31 13:49:06 |
+| track\_name                          | artist\_name | album\_name                                     | played\_at\_utc     |
+|:-------------------------------------|:-------------|:------------------------------------------------|:--------------------|
+| DISKPREPT1                           | Aphex Twin   | Computer Controlled Acoustic Instruments pt2 EP | 2018-08-13 21:50:35 |
+| disk prep calrec2 barn dance \[slo\] | Aphex Twin   | Computer Controlled Acoustic Instruments pt2 EP | 2018-08-13 21:49:38 |
+| hat 2b 2012b                         | Aphex Twin   | Computer Controlled Acoustic Instruments pt2 EP | 2018-08-13 21:44:40 |
+| DISKPREPT4                           | Aphex Twin   | Computer Controlled Acoustic Instruments pt2 EP | 2018-08-13 21:43:14 |
+| piano un1 arpej                      | Aphex Twin   | Computer Controlled Acoustic Instruments pt2 EP | 2018-08-13 21:41:22 |
 
 ### Find your all time favorite artists
 
 ``` r
 get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
     select(artist_name, artist_genres) %>% 
+    rowwise %>% 
+    mutate(artist_genres = paste(artist_genres, collapse = ', ')) %>% 
+    ungroup %>% 
     kable()
 ```
 
-| artist\_name | artist\_genres                                                                                                                                          |
-|:-------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Radiohead    | c("alternative rock", "art rock", "melancholia", "modern rock", "permanent wave", "rock")                                                               |
-| Onra         | c("alternative hip hop", "chillhop", "trip hop", "wonky")                                                                                               |
-| Flying Lotus | c("alternative hip hop", "chillwave", "electronic", "glitch", "glitch hop", "hip hop", "indie r&b", "indietronica", "intelligent dance music", "wonky") |
-| Teebs        | c("abstract beats", "bass music", "chillwave", "indietronica", "wonky")                                                                                 |
-| Four Tet     | c("alternative dance", "chamber psych", "electronic", "indietronica", "intelligent dance music", "microhouse", "new rave", "nu jazz", "trip hop")       |
+| artist\_name | artist\_genres                                                                                                                   |
+|:-------------|:---------------------------------------------------------------------------------------------------------------------------------|
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                       |
+| Onra         | alternative hip hop, chillhop, ninja, trip hop, wonky                                                                            |
+| Flying Lotus | alternative hip hop, chillwave, electronic, glitch, glitch hop, hip hop, indie r&b, indietronica, intelligent dance music, wonky |
+| Teebs        | abstract beats, bass music, chillwave, indietronica, wonky                                                                       |
+| Siriusmo     | dance-punk, filter house, new rave                                                                                               |
 
 ### Find your favorite tracks at the moment
 
@@ -116,13 +112,13 @@ get_my_top_tracks(time_range = 'short_term', limit = 5) %>%
     kable()
 ```
 
-| track\_name    | artist\_name | album\_name                                   |
-|:---------------|:-------------|:----------------------------------------------|
-| Fellin' Myself | Mac Dre      | Ronald Dregan For President 2004: Dreganomics |
-| Daydreaming    | Radiohead    | A Moon Shaped Pool                            |
-| Not My Job     | Mac Dre      | The Genie Of The Lamp                         |
-| Myxomatosis    | Radiohead    | Hail To the Thief                             |
-| Not My Job     | Mac Dre      | The Genie Of The Lamp                         |
+| track\_name     | artist\_name | album\_name                                   |
+|:----------------|:-------------|:----------------------------------------------|
+| Bella           | Wolfine      | Bella                                         |
+| Drogba (Joanna) | Afro B       | Drogba (Joanna)                               |
+| Fellin' Myself  | Mac Dre      | Ronald Dregan For President 2004: Dreganomics |
+| T69 collapse    | Aphex Twin   | T69 collapse                                  |
+| Not My Job      | Mac Dre      | The Genie Of The Lamp                         |
 
 ### What's the most joyful Joy Division song?
 
@@ -147,7 +143,8 @@ joy %>%
 | Colony - 2007 Remastered Version              |    0.808|
 | Atrocity Exhibition - 2007 Remastered Version |    0.787|
 | Wilderness                                    |    0.775|
-| Now if only there was some way to plot joy... |         |
+
+Now if only there was some way to plot joy...
 
 ### Joyplot of the emotional rollercoasters that are Joy Division's albums
 
@@ -168,59 +165,10 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 
 ![](man/figures/README-unnamed-chunk-9-1.png)
 
-### Danceability of Thom Yorke
-
-``` r
-library(magick)
-library(lubridate)
-
-tots <- map_df(c('radiohead', 'thom yorke', 'atoms for peace'), get_artist_audio_features)
-```
-
-``` r
-non_studio_albums <- c('OK Computer OKNOTOK 1997 2017', 'TKOL RMX 1234567', 'In Rainbows Disk 2', 
-                       'Com Lag: 2+2=5', 'I Might Be Wrong', 'The Eraser Rmxs')
-
-tots <- filter(tots, !album_name %in% non_studio_albums)
-
-album_names_label <- tots %>% 
-    arrange(album_release_date) %>% 
-    mutate(label = str_glue('{album_name} ({year(album_release_year)})')) %>% 
-    pull(label) %>% 
-    unique
-
-plot_df <- tots %>% 
-    select(track_name, album_name, danceability, album_release_date) %>% 
-    gather(metric, value, -c(track_name, album_name, album_release_date))
-
-p <- ggplot(plot_df, aes(x = value, y = album_release_date)) + 
-    geom_density_ridges(size = .1) +
-    theme_ridges(center_axis_labels = TRUE, grid = FALSE, font_size = 6) +
-    theme(plot.title = element_text(face = 'bold', size = 14, hjust = 1.25),
-          plot.subtitle = element_text(size = 10, hjust = 1.1)) +
-    ggtitle('Have we reached peak Thom Yorke danceability?', 'Song danceability by album - Radiohead, Thom Yorke, and Atoms for Peace') +
-    labs(x = 'Song danceability', y = '') +
-    scale_x_continuous(breaks = c(0,.25,.5,.75,1)) +
-    scale_y_discrete(labels = album_names_label)
-
-ggsave(p, filename = 'img/danceplot.png', width = 5, height = 3)
-#> Picking joint bandwidth of 0.0714
-background <- image_read('img/danceplot.png')
-logo_raw <- image_read('img/thom_dance.gif')
-frames <- lapply(1:length(logo_raw), function(frame) {
-    hjust <- 200+(100*frame)
-    image_composite(background, logo_raw[frame], offset = str_glue('+{hjust}+400'))
-})
-
-image_animate(image_join(frames), fps = 5, loop = 0)
-```
-
-![](man/figures/README-unnamed-chunk-11-1.gif)
-
 Parallelization
 ---------------
 
-By default, `get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, `get_playlist_tracks()`, and `get_user_playlists()` will run in parallel using the `furrr` package. To turn this feature off, set `parallelize = FALSE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan()` (defaults to `"multiprocess"`).
+`get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, `get_playlist_tracks()`, and `get_user_playlists()` can run in parallel using the `furrr` package. To enable this feature, set `parallelize = TRUE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan()` (defaults to `"multiprocess"`).
 
 Sentify: A Shiny app
 --------------------
