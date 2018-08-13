@@ -5,7 +5,7 @@
 \title{Get Artists}
 \usage{
 get_artists(artist_name, return_closest_artist = FALSE,
-  access_token = get_spotify_access_token())
+  access_token = get_spotify_access_token(), offset = 0, limit = 20)
 }
 \arguments{
 \item{artist_name}{String of artist name}
@@ -13,6 +13,10 @@ get_artists(artist_name, return_closest_artist = FALSE,
 \item{return_closest_artist}{Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+
+\item{offset}{Integer indicating the offset of the first artist to return. Defaults to 0 (Spotify's API default value).}
+
+\item{limit}{Integer indicating the max number of artists to return. Defaults to 20 (Spotify's API default value).}
 }
 \description{
 This function searches Spotify's library for artists by name
