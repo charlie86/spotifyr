@@ -126,3 +126,116 @@ get_artist_albums <- function(artist = NULL, album_types = 'album', return_close
         return(df)
     })
 }
+
+#' Get Related Artists
+#'
+#' This function searches Spotify's library for artists by name or Spotify URI and returns related artists using Spotify's "Related Artists" API endpoint.
+#' @param artist String of artist name or Spotify artist URI
+#' @param return_closest_artist Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.
+#' @param access_token Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.
+#' @keywords artists related
+#' @export
+#' @examples
+#' \dontrun{
+#' get_related_artists('radiohead')
+#'
+#' purrr::map_df(vector_of_artist_uris, function(this_artist_uri) {
+#'     get_related_artists(artist = this_artist_uri)
+#' })
+#' }
+
+get_related_artists <- function(artist = NULL, return_closest_artist = TRUE, access_token = get_spotify_access_token()) {
+
+    is_uri <- function(x) {
+        nchar(x) == 22 &
+            !str_detect(x, ' ') &
+            str_detect(x, '[[:digit:]]') &
+            str_detect(x, '[[:lower:]]') &
+            str_detect(x, '[[:upper:]]')
+    }
+
+    if (is.null(artist)) {
+        stop('You must enter an artist name or URI.')
+    }
+
+
+    if (is_uri(artist)) {
+        artist_uri <- artist
+    } else {
+
+        artists <- get_artists(artist, access_token = access_token)
+
+        if (nrow(artists) > 0) {
+            if (return_closest_artist == TRUE) {
+
+                exact_matches <- artists$artist_name[tolower(artists$artist_name) == tolower(artist)]
+
+                if (length(exact_matches) > 0) {
+                    selected_artist <- exact_matches[1]
+                } else {
+                    selected_artist <- artists$artist_name[1]
+                }
+
+            } else {
+                cat(str_glue('We found the following artists on Spotify matching "{artist}":\n\n\t{paste(artists$artist_name, collapse = "\n\t")}\n\nPlease type the name of the artist you would like:'), sep  = '')
+                selected_artist <- readline()
+            }
+
+            artist_uri <- artists$artist_uri[artists$artist_name == selected_artist]
+        } else {
+            stop(str_glue('Cannot find any artists on Spotify matching "{artist}"'))
+        }
+    }
+
+    res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/artists/{artist_uri}/related-artists'), query = list(access_token = access_token), quiet = TRUE) %>% content
+
+    content <- res$artists
+
+    related_artists <- purrr::map_df(1:length(content), function(this_artist) {
+        this_artist_info <- content[[this_artist]]
+        list(
+            artist_name = this_artist_info$name,
+            artist_uri = this_artist_info$id,
+            popularity = this_artist_info$popularity,
+            num_followers = this_artist_info$followers$total
+        )
+    })
+
+    return(related_artists)
+}
+
+#' Get features and popularity for an artist's entire discography on Spotify
+#'
+#' This function returns the popularity and audio features for every song and album for a given artist on Spotify
+#' @param artist String of artist name or Spotify artist URI
+#' @param album_types Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".
+#' @param return_closest_artist Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.
+#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
+#' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
+#' @keywords track audio features discography
+#' @export
+#' @examples
+#' \dontrun{
+#' radiohead_features <- get_artist_audio_features(artist_name = 'radiohead')
+#' }
+
+get_artist_audio_features <- function(artist = NULL, album_types = 'album', return_closest_artist = TRUE, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
+
+    albums <- get_artist_albums(artist = artist, album_types = album_types, return_closest_artist = return_closest_artist, access_token = access_token, parallelize = parallelize, future_plan = future_plan)
+
+    if (nrow(albums) == 0) {
+        stop(str_glue('Cannot find any albums for "{selected_artist}" on Spotify'))
+    }
+
+    album_popularity <- get_album_popularity(albums, access_token = access_token)
+    tracks <- get_album_tracks(albums, parallelize = parallelize, future_plan = future_plan, access_token = access_token)
+    track_features <- get_track_audio_features(tracks, access_token = access_token)
+    track_popularity <- get_track_popularity(tracks, access_token = access_token)
+
+    albums %>%
+        left_join(album_popularity, by = 'album_uri') %>%
+        left_join(tracks, by = 'album_name') %>%
+        left_join(track_features, by = 'track_uri') %>%
+        left_join(track_popularity, by = 'track_uri')
+}

@@ -1,3 +1,39 @@
+#' Get track audio analysis by URI
+#'
+#' This function takes a track URI and returns a list containing an audio analysis object
+#' from Spotify's audio analysis endpoint
+#' @param track_uri A string with a track URI
+#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @keywords track uri string search
+#' @export
+#' @examples
+#' \dontrun{
+#' ##### Get track uri for Radiohead - Kid A
+#' kid_a <- get_tracks(artist_name = "Radiohead", track_name = "Kid A", return_closest_track = TRUE)
+#' kid_a_audio_analysis <- get_track_audio_analysis(kid_a$track_uri)
+#' }
+
+get_track_audio_analysis <- function(track_uri, access_token = get_spotify_access_token()) {
+
+    is_uri <- function(x) {
+        nchar(x) == 22 &
+            !str_detect(x, ' ') &
+            str_detect(x, '[[:digit:]]') &
+            str_detect(x, '[[:lower:]]') &
+            str_detect(x, '[[:upper:]]')
+    }
+
+    track_uri <- gsub('spotify:track:', '', track_uri)
+
+    if (!is_uri(track_uri)) {
+        stop('Error: Must enter a valid uri')
+    }
+
+    GET(str_glue('https://api.spotify.com/v1/audio-analysis/{track_uri}'), query = list(
+        access_token = get_spotify_access_token()
+    )) %>% content
+}
+
 #' Get audio features from one or more tracks on Spotify
 #'
 #' This function returns audio features from a dataframe of tracks on Spotify
@@ -71,4 +107,52 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
                key_mode = paste(key, mode))
 
     return(track_audio_features)
+}
+
+#' Get popularity of one or more tracks on Spotify
+#'
+#' This function returns the popularity of tracks on Spotify
+#' @param tracks Dataframe containing a column `track_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_album_tracks or spotifyr::get_playlist_tracks()
+#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @keywords track audio features
+#' @export
+#' @examples
+#' \dontrun{
+#' albums <- get_artist_albums('radiohead')
+#' tracks <- get_album_tracks(albums)
+#' track_popularity <- get_track_popularity(tracks)
+#' }
+
+get_track_popularity <- function(tracks, access_token = get_spotify_access_token()) {
+
+    num_loops <- ceiling(nrow(tracks %>% dplyr::filter(!duplicated(track_uri))) / 50)
+
+    map_df(1:num_loops, function(this_loop) {
+
+        uris <- tracks %>%
+            dplyr::filter(!duplicated(track_uri)) %>%
+            slice(((this_loop * 50) - 49):(this_loop * 50)) %>%
+            select(track_uri) %>% .[[1]] %>% paste0(collapse = ',')
+
+        res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/tracks/?ids={uris}'), query = list(access_token = access_token), quiet = TRUE) %>% content
+
+        content <- res$tracks
+
+        df <- map_df(1:length(content), function(this_row) {
+
+            this_track <- content[[this_row]]
+
+            open_spotify_url <- ifelse(is.null(this_track$external_urls$spotify), NA, this_track$external_urls$spotify)
+            preview_url <- ifelse(is.null(this_track$preview_url), NA, this_track$preview_url)
+
+            list(
+                track_uri = this_track$id,
+                track_popularity = this_track$popularity,
+                track_preview_url = preview_url,
+                track_open_spotify_url = open_spotify_url
+            )
+        })
+
+        return(df)
+    })
 }
