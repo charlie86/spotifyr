@@ -20,7 +20,7 @@ get_label_albums <- function(label = character(), album_types = 'album', offset 
         content <- RETRY('GET', url,
                          query = list(q = str_glue('label:"{label}"'),
                                       type = album_types,
-                                      offest = offset,
+                                      offset = offset,
                                       limit = limit,
                                       access_token = access_token),
                          encode = "json") %>% content()
