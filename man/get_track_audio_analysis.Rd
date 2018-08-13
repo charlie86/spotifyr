@@ -4,8 +4,7 @@
 \alias{get_track_audio_analysis}
 \title{Get track audio analysis by URI}
 \usage{
-get_track_audio_analysis(track_uri,
-  access_token = get_spotify_access_token())
+get_track_audio_analysis(track_uri, access_token = get_spotify_access_token())
 }
 \arguments{
 \item{track_uri}{A string with a track URI}

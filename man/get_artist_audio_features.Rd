@@ -5,9 +5,8 @@
 \title{Get features and popularity for an artist's entire discography on Spotify}
 \usage{
 get_artist_audio_features(artist = NULL, album_types = "album",
-  return_closest_artist = TRUE,
-  access_token = get_spotify_access_token(), parallelize = FALSE,
-  future_plan = "multiprocess")
+  return_closest_artist = TRUE, access_token = get_spotify_access_token(),
+  parallelize = FALSE, future_plan = "multiprocess")
 }
 \arguments{
 \item{artist}{String of artist name or Spotify artist URI}

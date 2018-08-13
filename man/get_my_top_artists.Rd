@@ -4,8 +4,8 @@
 \alias{get_my_top_artists}
 \title{Get top artists for Current User}
 \usage{
-get_my_top_artists(time_range = "medium_term", limit = 50,
-  offset = 0, auth_code = get_spotify_authorization_code())
+get_my_top_artists(time_range = "medium_term", limit = 50, offset = 0,
+  auth_code = get_spotify_authorization_code())
 }
 \arguments{
 \item{time_range}{String indicating the time frame over which the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), medium_term (approximately last 6 months), short_term (approximately last 4 weeks). Default: medium_term.}

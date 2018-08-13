@@ -2,6 +2,7 @@
 % Please edit documentation in R/geniusR.R
 \name{prep_info}
 \alias{prep_info}
+\alias{prep_info}
 \title{Prepares input strings for `gen_song_url()`}
 \usage{
 prep_info(input)

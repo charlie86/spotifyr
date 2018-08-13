@@ -2,25 +2,23 @@
 % Please edit documentation in R/get_albums.R
 \name{get_albums}
 \alias{get_albums}
-\title{Get Artist Albums}
+\title{Get album metadata}
 \usage{
-get_albums(artist_uri, studio_albums_only = TRUE,
-  access_token = get_spotify_access_token())
+get_albums(albums = character(), access_token = get_spotify_access_token())
 }
 \arguments{
-\item{artist_uri}{String identifier for an artist on Spotify. Can be found within the Spotify app or with spotifyr::get_artists()}
-
-\item{studio_albums_only}{Logical for whether to remove album types "single" and "compilation" and albums with mulitple artists. Defaults to \code{TRUE}}
+\item{albums}{A character vector containing the ids of one or several albums to retrieve information for}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 }
+\value{
+Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
+}
 \description{
-This function returns an artist's discography on Spotify
+Get album metadata
 }
 \examples{
-\dontrun{
-artists <- get_artists('radiohead')
-albums <- get_artist_albums(artists$artist_uri[1])
+
+met_albums <- get_artist_albums(artist = "Metallica")
+met_meta <- get_album_meta(albums = met_albums$album_uri)
 }
-}
-\keyword{albums}

@@ -5,8 +5,7 @@
 \title{Get features and popularity for all of a given set of playlists on Spotify}
 \usage{
 get_playlist_audio_features(username, playlist_uris, parallelize = FALSE,
-  future_plan = "multiprocess",
-  access_token = get_spotify_access_token())
+  future_plan = "multiprocess", access_token = get_spotify_access_token())
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found on the Spotify app. (See http://rcharlie.net/sentify/user_uri.gif for example)}

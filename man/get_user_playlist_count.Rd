@@ -4,8 +4,7 @@
 \alias{get_user_playlist_count}
 \title{Get count of Spotify playlists for a given user}
 \usage{
-get_user_playlist_count(username,
-  access_token = get_spotify_access_token())
+get_user_playlist_count(username, access_token = get_spotify_access_token())
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found within the Spotify App}
