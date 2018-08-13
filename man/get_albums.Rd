@@ -20,5 +20,5 @@ Get album metadata
 \examples{
 
 met_albums <- get_artist_albums(artist = "Metallica")
-met_meta <- get_album_meta(albums = met_albums$album_uri)
+met_meta <- get_albums(albums = met_albums$album_uri)
 }
