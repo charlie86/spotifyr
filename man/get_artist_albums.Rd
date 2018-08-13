@@ -5,8 +5,9 @@
 \title{Get Artist Albums}
 \usage{
 get_artist_albums(artist = NULL, album_types = "album",
-  return_closest_artist = TRUE, access_token = get_spotify_access_token(),
-  parallelize = FALSE, future_plan = "multiprocess")
+  return_closest_artist = TRUE,
+  access_token = get_spotify_access_token(), parallelize = FALSE,
+  future_plan = "multiprocess")
 }
 \arguments{
 \item{artist}{String of artist name or Spotify artist URI}

@@ -4,7 +4,8 @@
 \alias{get_track_audio_features}
 \title{Get audio features from one or more tracks on Spotify}
 \usage{
-get_track_audio_features(tracks, access_token = get_spotify_access_token())
+get_track_audio_features(tracks,
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{tracks}{Dataframe containing a column `track_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_album_tracks or spotifyr::get_playlist_tracks()}
