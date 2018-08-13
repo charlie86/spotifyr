@@ -1,7 +1,7 @@
 #' Get tracks from one or more albums on Spotify
 #'
 #' This function returns tracks from a dataframe of albums on Spotify
-#' @param albums Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_artist_albums()
+#' @param albums A character vector containing the ids of one or several albums to retrieve information for OR a dataframe containing a column `album_uri`, corresponding to Spotify Album URIs (Can be output from spotifyr::get_artist_albums())
 #' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
 #' @param parallelize Boolean determining to run in parallel or not. Defaults to \code{FALSE}.
 #' @param future_plan String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.
@@ -15,11 +15,19 @@
 
 get_album_tracks <- function(albums, access_token = get_spotify_access_token(), parallelize = FALSE, future_plan = 'multiprocess') {
 
+    if (is.data.frame(albums)) {
+        album_uris <- albums$album_uri
+    } else {
+        album_uris <- albums
+    }
+
+    album_info <- get_albums(album_uris)
+
     map_args <- list(
-        1:nrow(albums),
+        1:length(album_uris),
         function(this_album) {
 
-            url <- str_glue('https://api.spotify.com/v1/albums/{albums$album_uri[this_album]}/tracks')
+            url <- str_glue('https://api.spotify.com/v1/albums/{album_uris[this_album]}/tracks')
 
             track_check <- RETRY('GET', url, query = list(limit = 50, access_token = access_token), quiet = TRUE, times = 10) %>% content
 
@@ -32,6 +40,7 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token(), 
             offset <- 0
 
             map_df(1:num_loops, function(this_loop) {
+
                 res <- RETRY('GET', url, query = list(limit = 50, access_token = access_token), offset = offset, quiet = TRUE, times = 10) %>% content
 
                 content <- res$items
@@ -45,9 +54,11 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token(), 
 
                         if (!is.null(this_track$id)) {
                             list(
-                                album_name = albums$album_name[this_album],
+                                album_name = album_info$name[album_info$id == album_uris[this_album]],
                                 track_name = this_track$name,
-                                track_uri = this_track$id
+                                track_uri = this_track$id,
+                                track_number = this_track$track_number,
+                                disc_number = this_track$disc_number
                             )
                         }
                     })

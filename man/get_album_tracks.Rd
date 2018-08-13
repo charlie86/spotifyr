@@ -8,7 +8,7 @@ get_album_tracks(albums, access_token = get_spotify_access_token(),
   parallelize = FALSE, future_plan = "multiprocess")
 }
 \arguments{
-\item{albums}{Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_artist_albums()}
+\item{albums}{A character vector containing the ids of one or several albums to retrieve information for OR a dataframe containing a column `album_uri`, corresponding to Spotify Album URIs (Can be output from spotifyr::get_artist_albums())}
 
 \item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
 
