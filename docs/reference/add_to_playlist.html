@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Artists — get_artists • spotifyr</title>
+<title>Add tracks to a playlist — add_to_playlist • spotifyr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get Artists — get_artists" />
+<meta property="og:title" content="Add tracks to a playlist — add_to_playlist" />
 
-<meta property="og:description" content="This function searches Spotify's library for artists by name" />
+<meta property="og:description" content="This function adds new tracks to a user's playlist." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,49 +97,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Artists</h1>
-    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/artists.R'><code>R/artists.R</code></a></small>
-    <div class="hidden name"><code>get_artists.Rd</code></div>
+    <h1>Add tracks to a playlist</h1>
+    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/playlists.R'><code>R/playlists.R</code></a></small>
+    <div class="hidden name"><code>add_to_playlist.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function searches Spotify's library for artists by name</p>
+    <p>This function adds new tracks to a user's playlist.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_artists</span>(<span class='no'>artist_name</span>, <span class='kw'>return_closest_artist</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>())</pre>
+    <pre class="usage"><span class='fu'>add_to_playlist</span>(<span class='no'>username</span>, <span class='no'>playlist_id</span>, <span class='no'>tracks</span>, <span class='kw'>position</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>auth_code</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>artist_name</th>
-      <td><p>String of artist name</p></td>
+      <th>username</th>
+      <td><p>String of Spotify username. Can be found within the Spotify App</p></td>
     </tr>
     <tr>
-      <th>return_closest_artist</th>
-      <td><p>Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to <code>TRUE</code>.</p></td>
+      <th>playlist_id</th>
+      <td><p>The id of the playlist to add the tracks to. Can be obtained via either create_playlist() or get_playlists()</p></td>
     </tr>
     <tr>
-      <th>offset</th>
-      <td><p>Integer indicating the offset of the first artist to return. Defaults to 0 (Spotify's API default value).</p></td>
+      <th>tracks</th>
+      <td><p>A character vector of track uris</p></td>
     </tr>
     <tr>
-      <th>limit</th>
-      <td><p>Integer indicating the max number of artists to return. Defaults to 20 (Spotify's API default value), max of 50.</p></td>
+      <th>position</th>
+      <td><p>(Optional) The position to insert the tracks, a zero-based index. If omitted, the tracks will be appended to the playlist</p></td>
     </tr>
     <tr>
-      <th>access_token</th>
-      <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
+      <th>auth_code</th>
+      <td><p>Authorization code with proper scopes. Calls get_spotify_authorization_code() by default.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>get_artists</span>(<span class='st'>'radiohead'</span>)
+<span class='no'>hello_fromr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='create_playlist.html'>create_playlist</a></span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='st'>'rstats'</span>, <span class='kw'>playlist_name</span> <span class='kw'>=</span>  <span class='st'>'hello from spotifyr!'</span>)
+<span class='no'>my_top_tracks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_my_top_tracks.html'>get_my_top_tracks</a></span>(<span class='kw'>time_range</span> <span class='kw'>=</span> <span class='st'>'long_term'</span>)
+<span class='no'>my_added_tracks</span> <span class='kw'>&lt;-</span> <span class='fu'>add_to_playlist</span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='st'>'rstats'</span>, <span class='kw'>playlist_id</span> <span class='kw'>=</span> <span class='no'>hello_fromr</span>$<span class='no'>id</span>, <span class='kw'>tracks</span> <span class='kw'>=</span>  <span class='no'>my_top_tracks</span>$<span class='no'>track_uri</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

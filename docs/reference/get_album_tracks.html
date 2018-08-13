@@ -98,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get tracks from one or more albums on Spotify</h1>
-    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/get_album_tracks.R'><code>R/get_album_tracks.R</code></a></small>
+    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/albums.R'><code>R/albums.R</code></a></small>
     <div class="hidden name"><code>get_album_tracks.Rd</code></div>
     </div>
 
@@ -116,7 +116,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>albums</th>
-      <td><p>Dataframe containing a column `album_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_artist_albums()</p></td>
+      <td><p>A character vector containing the ids of one or several albums to retrieve information for OR a dataframe containing a column `album_uri`, corresponding to Spotify Album URIs (Can be output from spotifyr::get_artist_albums())</p></td>
     </tr>
     <tr>
       <th>access_token</th>
@@ -152,7 +152,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Charlie Thompson.</p>
+  <p>Developed by Charlie Thompson, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">

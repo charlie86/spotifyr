@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Artists — get_artists • spotifyr</title>
+<title>Form of genius_album that can handle errors — possible_album • spotifyr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get Artists — get_artists" />
+<meta property="og:title" content="Form of genius_album that can handle errors — possible_album" />
 
-<meta property="og:description" content="This function searches Spotify's library for artists by name" />
+<meta property="og:description" content="Form of genius_album that can handle errors" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,58 +97,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Artists</h1>
-    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/artists.R'><code>R/artists.R</code></a></small>
-    <div class="hidden name"><code>get_artists.Rd</code></div>
+    <h1>Form of genius_album that can handle errors</h1>
+    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/geniusR.R'><code>R/geniusR.R</code></a></small>
+    <div class="hidden name"><code>possible_album.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function searches Spotify's library for artists by name</p>
+    <p>Form of genius_album that can handle errors</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_artists</span>(<span class='no'>artist_name</span>, <span class='kw'>return_closest_artist</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>())</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>artist_name</th>
-      <td><p>String of artist name</p></td>
-    </tr>
-    <tr>
-      <th>return_closest_artist</th>
-      <td><p>Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to <code>TRUE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>offset</th>
-      <td><p>Integer indicating the offset of the first artist to return. Defaults to 0 (Spotify's API default value).</p></td>
-    </tr>
-    <tr>
-      <th>limit</th>
-      <td><p>Integer indicating the max number of artists to return. Defaults to 20 (Spotify's API default value), max of 50.</p></td>
-    </tr>
-    <tr>
-      <th>access_token</th>
-      <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
-    </tr>
-    </table>
-    
+    <pre class="usage"><span class='fu'>possible_album</span>(<span class='no'>...</span>)</pre>
+        
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>get_artists</span>(<span class='st'>'radiohead'</span>)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

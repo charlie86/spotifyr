@@ -98,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Retrieve artist discography with song lyrics and audio info</h1>
-    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/get_album_data.R'><code>R/get_album_data.R</code></a></small>
+    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/geniusR.R'><code>R/geniusR.R</code></a></small>
     <div class="hidden name"><code>get_album_data.Rd</code></div>
     </div>
 
@@ -134,25 +134,25 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_album_data</span>(<span class='st'>"Wild child"</span>, <span class='st'>"Expectations"</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("track_title", "track_n", "track_url")</span></div><div class='output co'>#&gt; # A tibble: 12 x 19
-#&gt;    album_name  track_name track_uri  track_n danceability energy key   loudness
-#&gt;    &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;        &lt;int&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
-#&gt;  1 Expectatio… Alex       3SgSloOID…       1        0.622 0.720  A       - 8.59
-#&gt;  2 Expectatio… Eggshells  6n22ZSLAR…       2        0.408 0.369  F       -10.2 
-#&gt;  3 Expectatio… Back &amp; Fo… 3FpsbToUN…       3        0.749 0.694  F       - 7.20
-#&gt;  4 Expectatio… Think It … 7jyEUpROt…       4        0.783 0.419  D       - 8.52
-#&gt;  5 Expectatio… Follow Me  1jCfkIVUw…       5        0.648 0.369  C       -13.6 
-#&gt;  6 Expectatio… Expectati… 6l6vgauYD…       6        0.689 0.643  B       - 6.50
-#&gt;  7 Expectatio… Sinking S… 6QzpfDKRj…       7        0.514 0.180  E       -19.3 
-#&gt;  8 Expectatio… My Town    1WCB6YXOU…       8        0.543 0.339  A       - 8.00
-#&gt;  9 Expectatio… The One    1qLVOZKRL…       9        0.563 0.0722 A       -20.7 
-#&gt; 10 Expectatio… Break You… 4fpse93GT…      10        0.709 0.511  F       -10.5 
-#&gt; 11 Expectatio… Leave It … 5KYmcAfpQ…      11        0.637 0.446  C       - 9.56
-#&gt; 12 Expectatio… Goodbye G… 5oMReIKx6…      12        0.466 0.461  C       - 5.18
-#&gt; # ... with 11 more variables: mode &lt;chr&gt;, speechiness &lt;dbl&gt;,
-#&gt; #   acousticness &lt;dbl&gt;, instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;,
-#&gt; #   tempo &lt;dbl&gt;, duration_ms &lt;dbl&gt;, time_signature &lt;dbl&gt;, key_mode &lt;chr&gt;,
-#&gt; #   lyrics &lt;list&gt;</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>get_album_data</span>(<span class='st'>"Wild child"</span>, <span class='st'>"Expectations"</span>)</div><div class='output co'>#&gt; # A tibble: 12 x 21
+#&gt;    album_name   track_name    track_uri        track_number disc_number track_n
+#&gt;    &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;                   &lt;int&gt;       &lt;int&gt;   &lt;int&gt;
+#&gt;  1 Expectations Alex          3SgSloOIDIYUaKj…            1           1       1
+#&gt;  2 Expectations Eggshells     6n22ZSLARfoafUq…            2           1       2
+#&gt;  3 Expectations Back &amp; Forth  3FpsbToUNtrQBRW…            3           1       3
+#&gt;  4 Expectations Think It Over 7jyEUpROtvKSVlM…            4           1       4
+#&gt;  5 Expectations Follow Me     1jCfkIVUwdHAne3…            5           1       5
+#&gt;  6 Expectations Expectations  6l6vgauYDMbKOfg…            6           1       6
+#&gt;  7 Expectations Sinking Ship  6QzpfDKRjHmWA6U…            7           1       7
+#&gt;  8 Expectations My Town       1WCB6YXOU4za1H1…            8           1       8
+#&gt;  9 Expectations The One       1qLVOZKRLjkmSQG…            9           1       9
+#&gt; 10 Expectations Break You Do… 4fpse93GTPXn4dJ…           10           1      10
+#&gt; 11 Expectations Leave It Alo… 5KYmcAfpQxBeyiR…           11           1      11
+#&gt; 12 Expectations Goodbye Good… 5oMReIKx6z2ZvKt…           12           1      12
+#&gt; # ... with 15 more variables: danceability &lt;dbl&gt;, energy &lt;dbl&gt;, key &lt;chr&gt;,
+#&gt; #   loudness &lt;dbl&gt;, mode &lt;chr&gt;, speechiness &lt;dbl&gt;, acousticness &lt;dbl&gt;,
+#&gt; #   instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;, tempo &lt;dbl&gt;,
+#&gt; #   duration_ms &lt;dbl&gt;, time_signature &lt;dbl&gt;, key_mode &lt;chr&gt;, lyrics &lt;list&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -168,7 +168,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Charlie Thompson.</p>
+  <p>Developed by Charlie Thompson, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">

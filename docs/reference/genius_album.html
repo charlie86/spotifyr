@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Artists — get_artists • spotifyr</title>
+<title>Retrieve song lyrics for an album — genius_album • spotifyr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Get Artists — get_artists" />
+<meta property="og:title" content="Retrieve song lyrics for an album — genius_album" />
 
-<meta property="og:description" content="This function searches Spotify's library for artists by name" />
+<meta property="og:description" content="Obtain the lyrics to an album in a tidy format." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,50 +97,67 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Artists</h1>
-    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/artists.R'><code>R/artists.R</code></a></small>
-    <div class="hidden name"><code>get_artists.Rd</code></div>
+    <h1>Retrieve song lyrics for an album</h1>
+    <small class="dont-index">Source: <a href='http://github.com/charlie86/spotifyr/blob/master/R/geniusR.R'><code>R/geniusR.R</code></a></small>
+    <div class="hidden name"><code>genius_album.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function searches Spotify's library for artists by name</p>
+    <p>Obtain the lyrics to an album in a tidy format.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_artists</span>(<span class='no'>artist_name</span>, <span class='kw'>return_closest_artist</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>access_token</span> <span class='kw'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span>())</pre>
+    <pre class="usage"><span class='fu'>genius_album</span>(<span class='kw'>artist</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>album</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='st'>"simple"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>artist_name</th>
-      <td><p>String of artist name</p></td>
+      <th>artist</th>
+      <td><p>The quoted name of the artist. Spelling matters, capitalization does not.</p></td>
     </tr>
     <tr>
-      <th>return_closest_artist</th>
-      <td><p>Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to <code>TRUE</code>.</p></td>
+      <th>album</th>
+      <td><p>The quoted name of the album Spelling matters, capitalization does not.</p></td>
     </tr>
     <tr>
-      <th>offset</th>
-      <td><p>Integer indicating the offset of the first artist to return. Defaults to 0 (Spotify's API default value).</p></td>
-    </tr>
-    <tr>
-      <th>limit</th>
-      <td><p>Integer indicating the max number of artists to return. Defaults to 20 (Spotify's API default value), max of 50.</p></td>
-    </tr>
-    <tr>
-      <th>access_token</th>
-      <td><p>Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()</p></td>
+      <th>info</th>
+      <td><p>Return extra information about each song. Default `"simple"` returns `title`, `track_n`, and `text`. Set `info = "artist"` for artist and track title. See args to `genius_lyrics()`.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>get_artists</span>(<span class='st'>'radiohead'</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'>
+<span class='fu'>genius_album</span>(<span class='kw'>artist</span> <span class='kw'>=</span> <span class='st'>"Petal"</span>, <span class='kw'>album</span> <span class='kw'>=</span> <span class='st'>"Comfort EP"</span>)</div><div class='output co'>#&gt; # A tibble: 81 x 4
+#&gt;    track_title track_n lyric                                          line
+#&gt;    &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;                                         &lt;int&gt;
+#&gt;  1 Comfort           1 And I see the way you look                        1
+#&gt;  2 Comfort           1 When you think I'm not looking forward            2
+#&gt;  3 Comfort           1 That I'm lying in a trap of scared assumption     3
+#&gt;  4 Comfort           1 It's a certain kind of sickness                   4
+#&gt;  5 Comfort           1 A wrong turn of conversation                      5
+#&gt;  6 Comfort           1 A kiss on the trembling hand of our love          6
+#&gt;  7 Comfort           1 And you could barely drive when I said            7
+#&gt;  8 Comfort           1 "\"I don't fucking care anymore"                  8
+#&gt;  9 Comfort           1 I don't see the point of lying for                9
+#&gt; 10 Comfort           1 "What I am only tearing apart.\""                10
+#&gt; # ... with 71 more rows</div><div class='input'><span class='fu'>genius_album</span>(<span class='kw'>artist</span> <span class='kw'>=</span> <span class='st'>"Fit For A King"</span>, <span class='kw'>album</span> <span class='kw'>=</span> <span class='st'>"Deathgrip"</span>)</div><div class='output co'>#&gt; # A tibble: 404 x 4
+#&gt;    track_title         track_n lyric                                line
+#&gt;    &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt;                               &lt;int&gt;
+#&gt;  1 The End's Beginning       1 &lt;NA&gt;                                   NA
+#&gt;  2 Pissed Off                2 Everyday is another war                 1
+#&gt;  3 Pissed Off                2 We live and die in a hopeless world     2
+#&gt;  4 Pissed Off                2 Laying waste to the innocent            3
+#&gt;  5 Pissed Off                2 With no regret, I'm sick of it          4
+#&gt;  6 Pissed Off                2 We create, we destroy                   5
+#&gt;  7 Pissed Off                2 The descendants blade                   6
+#&gt;  8 Pissed Off                2 Will pierce the flesh                   7
+#&gt;  9 Pissed Off                2 We attack and deploy                    8
+#&gt; 10 Pissed Off                2 We are slaves to nothing                9
+#&gt; # ... with 394 more rows</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
