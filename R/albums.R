@@ -78,7 +78,7 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
 #' Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
 #'
 #' @param id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the album.
-#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param limit Optional. \cr
 #' Maximum number of results to return. \cr
 #' Default: 20 \cr
@@ -95,7 +95,7 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
 #' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
+#' Returns a data frame of results containing album data. See the official API \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-several-albums/}{documentation} for more information.
 #' @export
 #'
 #' @examples
