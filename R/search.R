@@ -31,14 +31,14 @@
 #' Possible values: audio \cr
 #' If \code{include_external = "audio"} is specified the response will include any relevant audio content that is hosted externally. \cr
 #' By default external content is filtered out from responses.
-#' @param access_token Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search
 #' @export
 #' @examples
 #' \dontrun{
 #' search_spotify('radiohead', 'artist')
 #' }
-search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, access_token = get_spotify_access_token()) {
+search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, Authorization = get_spotify_access_token()) {
 
     base_url <- 'https://api.spotify.com/v1/search'
 
@@ -47,7 +47,7 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
     }
 
     if (!is.null(market)) {
-        if (str_detect(market, '^[[:alpha:]]{2}$')) {
+        if (!str_detect(market, '^[[:alpha:]]{2}$')) {
             stop('"market" must be an ISO 3166-1 alpha-2 country code')
         }
     }
@@ -77,7 +77,7 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
         limit = limit,
         offset = offset,
         include_external = include_external,
-        access_token = access_token
+        access_token = Authorization
     )
     res <- GET(base_url, query = params, encode = 'json')
     stop_for_status(res)
@@ -86,8 +86,6 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
 
     if (length(type) == 1) {
         res <- res[[str_glue('{type}s')]]$items %>% as_tibble
-        new_names <- gsub('\\.', '_', colnames(res))
-        res <- set_names(res, new_names)
     }
 
     return(res)

@@ -2,28 +2,39 @@
 % Please edit documentation in R/albums.R
 \name{get_album_tracks}
 \alias{get_album_tracks}
-\title{Get tracks from one or more albums on Spotify}
+\title{Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.}
 \usage{
-get_album_tracks(albums, access_token = get_spotify_access_token(),
-  parallelize = FALSE, future_plan = "multiprocess")
+get_album_tracks(id, limit = 20, offset = 0, market = NULL,
+  Authorization = get_spotify_access_token())
 }
 \arguments{
-\item{albums}{A character vector containing the ids of one or several albums to retrieve information for OR a dataframe containing a column `album_uri`, corresponding to Spotify Album URIs (Can be output from spotifyr::get_artist_albums())}
+\item{id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the album.}
 
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{limit}{Optional. \cr
+Maximum number of results to return. \cr
+Default: 20 \cr
+Minimum: 1 \cr
+Maximum: 50 \cr
+Note: The limit is applied within each type, not on the total response. \cr
+For example, if the limit value is 3 and the type is \code{c("artist", "album")}, the response contains 3 artists and 3 albums.}
 
-\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{FALSE}.}
+\item{offset}{Optional. \cr
+The index of the first result to return. \cr
+Default: 0 (the first result). \cr
+Maximum offset (including limit): 10,000. \cr
+Use with limit to get the next page of search results.}
 
-\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
+\item{market}{Optional. \cr
+An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
+
+\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+}
+\value{
+Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
 }
 \description{
-This function returns tracks from a dataframe of albums on Spotify
+Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
 }
 \examples{
-\dontrun{
-albums <- get_artist_albums('radiohead')
-get_album_tracks(albums)
+
 }
-}
-\keyword{album}
-\keyword{tracks}

@@ -2,28 +2,21 @@
 % Please edit documentation in R/artists.R
 \name{get_artists}
 \alias{get_artists}
-\title{Get Artists}
+\title{Get Spotify catalog information for multiple artists identified by their Spotify IDs.}
 \usage{
-get_artists(artist_name, return_closest_artist = FALSE, offset = 0,
-  limit = 20, access_token = get_spotify_access_token())
+get_artists(ids, Authorization = get_spotify_access_token())
 }
 \arguments{
-\item{artist_name}{String of artist name}
+\item{ids}{Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the artists. Maximum: 50 IDs.}
 
-\item{return_closest_artist}{Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.}
-
-\item{offset}{Integer indicating the offset of the first artist to return. Defaults to 0 (Spotify's API default value).}
-
-\item{limit}{Integer indicating the max number of artists to return. Defaults to 20 (Spotify's API default value), max of 50.}
-
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+}
+\value{
+Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
 }
 \description{
-This function searches Spotify's library for artists by name
+Get Spotify catalog information for multiple artists identified by their Spotify IDs.
 }
 \examples{
-\dontrun{
-get_artists('radiohead')
+
 }
-}
-\keyword{artists}

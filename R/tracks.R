@@ -1,221 +1,126 @@
-
-#' Get track uris from a string search on Spotify
+#' Get a detailed audio analysis for a single track identified by its unique Spotify ID.
 #'
-#' This function takes a string and returns a data frame with track information
-#' from Spotify's search endpoint
-#' @param track_name A string with track name
-#' @param artist_name Optional. A string with artist name
-#' @param album_name Optional. A string with album name
-#' @param return_closest_track Optional. A string with album name
-#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @keywords track uri string search
+#' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @return
+#' Returns a data frame of results containing track audio analysis data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis//} for more information.
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' ##### Get track uri for Radiohead - Kid A
-#' kid_a <- get_tracks(artist_name = "Radiohead", track_name = "Kid A", return_closest_track = TRUE)
-#' }
+#'
 
-get_tracks <- function(track_name, artist_name = NULL, album_name = NULL, return_closest_track = FALSE, access_token = get_spotify_access_token()) {
+get_track_audio_analysis <- function(id, Authorization = get_spotify_access_token()) {
 
-    string_search <- track_name
+    base_url <- 'https://api.spotify.com/v1/audio-analysis'
 
-    if (!is.null(artist_name)) {
-        string_search <- paste(string_search, artist_name)
-    }
+    params <- list(
+        access_token = Authorization
+    )
+    url <- str_glue('{base_url}/{id}')
+    res <- GET(url, query = params, encode = 'json')
+    stop_for_status(res)
 
-    if (!is.null(album_name)) {
-        string_search <- paste(string_search, album_name)
-    }
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    # Search Spotify API for track name
-    res <- GET('https://api.spotify.com/v1/search',
-               query = list(q = string_search,
-                            type = 'track',
-                            access_token = access_token)
-    ) %>% content
+    return(res)
+}
 
-    if (length(res$tracks$items) >= 0) {
+#' Get audio feature information for a single track identified by its unique Spotify ID.
+#'
+#' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @return
+#' Returns a data frame of results containing track audio features data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis//} for more information.
+#' @export
+#'
+#' @examples
+#'
 
-        res <- res %>% .$tracks %>% .$items
+get_track_audio_features <- function(id, Authorization = get_spotify_access_token()) {
 
-        tracks <- map_df(seq_len(length(res)), function(x) {
-            list(
-                track_name = res[[x]]$name,
-                track_uri = gsub('spotify:track:', '', res[[x]]$uri),
-                artist_name = res[[x]]$artists[[1]]$name,
-                artist_uri = res[[x]]$artists[[1]]$id,
-                album_name = res[[x]]$album$name,
-                album_id = res[[x]]$album$id
-            )
-        })
+    base_url <- 'https://api.spotify.com/v1/audio-features'
 
-        if (return_closest_track == TRUE) {
-            tracks <- slice(tracks, 1)
+    params <- list(
+        access_token = Authorization
+    )
+    url <- str_glue('{base_url}/{id}')
+    res <- GET(url, query = params, encode = 'json')
+    stop_for_status(res)
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
+        as_tibble()
+
+    return(res)
+}
+
+#' Get Spotify catalog information for a single track identified by its unique Spotify ID.
+#'
+#' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.
+#' @param market Optional. \cr
+#' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @return
+#' Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
+#' @export
+#'
+#' @examples
+#'
+
+get_track <- function(id, market = NULL, Authorization = get_spotify_access_token()) {
+
+    base_url <- 'https://api.spotify.com/v1/tracks'
+
+    if (!is.null(market)) {
+        if (!str_detect(market, '^[[:alpha:]]{2}$')) {
+            stop('"market" must be an ISO 3166-1 alpha-2 country code')
         }
-
-    } else {
-        tracks <- tibble()
     }
 
-    return(tracks)
+    params <- list(
+        market = market,
+        access_token = Authorization
+    )
+    url <- str_glue('{base_url}/{id}')
+    res <- GET(url, query = params, encode = 'json')
+    stop_for_status(res)
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    return(res)
 }
 
-#' Get track audio analysis by URI
+#' Get Spotify catalog information for a single track identified by its unique Spotify ID.
 #'
-#' This function takes a track URI and returns a list containing an audio analysis object
-#' from Spotify's audio analysis endpoint
-#' @param track_uri A string with a track URI
-#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @keywords track uri string search
+#' @param ids The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.
+#' @param market Optional. \cr
+#' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @return
+#' Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
 #' @export
-#' @examples
-#' \dontrun{
-#' ##### Get track uri for Radiohead - Kid A
-#' kid_a <- get_tracks(artist_name = "Radiohead", track_name = "Kid A", return_closest_track = TRUE)
-#' kid_a_audio_analysis <- get_track_audio_analysis(kid_a$track_uri)
-#' }
-
-get_track_audio_analysis <- function(track_uri, access_token = get_spotify_access_token()) {
-
-    is_uri <- function(x) {
-        nchar(x) == 22 &
-            !str_detect(x, ' ') &
-            str_detect(x, '[[:digit:]]') &
-            str_detect(x, '[[:lower:]]') &
-            str_detect(x, '[[:upper:]]')
-    }
-
-    track_uri <- gsub('spotify:track:', '', track_uri)
-
-    if (!is_uri(track_uri)) {
-        stop('Error: Must enter a valid uri')
-    }
-
-    GET(str_glue('https://api.spotify.com/v1/audio-analysis/{track_uri}'), query = list(
-        access_token = get_spotify_access_token()
-    )) %>% content
-}
-
-#' Get audio features from one or more tracks on Spotify
 #'
-#' This function returns audio features from a dataframe of tracks on Spotify
-#' @param tracks Dataframe containing a column `track_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_album_tracks or spotifyr::get_playlist_tracks()
-#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @keywords track audio features
-#' @export
 #' @examples
-#' \dontrun{
-#' ##### Get tracks for all of Radiohead's albums
-#' albums <- get_artist_albums('radiohead')
-#' tracks <- get_album_tracks(albums)
-#' radiohead_audio_features <- get_track_audio_features(tracks)
 #'
-#' ##### Get tracks for all of Barack Obama's playlists
-#' playlists <- get_user_playlists('barackobama')
-#' tracks <- get_playlist_tracks(playlists)
-#' obama_audio_features <- get_track_audio_features(tracks)
-#' }
 
-get_track_audio_features <- function(tracks, access_token = get_spotify_access_token()) {
+get_tracks <- function(ids, market = NULL, Authorization = get_spotify_access_token()) {
 
-    audio_feature_vars <- c('danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness',
-                            'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature')
+    base_url <- 'https://api.spotify.com/v1/tracks'
 
-    # create lookup to classify key: https://developer.spotify.com/web-api/get-audio-features/
-    pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
-
-    num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
-
-    track_audio_features <- map_df(1:num_loops, function(this_loop) {
-
-        uris <- tracks %>%
-            dplyr::filter(!duplicated(track_uri)) %>%
-            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
-            select(track_uri) %>%
-            .[[1]] %>%
-            paste0(collapse = ',')
-
-        res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/audio-features/?ids={uris}'),
-                     query = list(access_token = access_token), quiet = TRUE, times = 10) %>% content
-
-        content <- res$audio_features
-
-        # replace nulls with NA and convert to character
-        content <- map(content, function(row) {
-            map(row, function(element) {
-                ifelse(is.null(element), as.character(NA), as.character(element))
-            })
-        })
-
-        null_results <- which(map_int(content, length) == 0)
-        if (length(null_results) > 0) {
-            content <- content[-null_results]
+    if (!is.null(market)) {
+        if (!str_detect(market, '^[[:alpha:]]{2}$')) {
+            stop('"market" must be an ISO 3166-1 alpha-2 country code')
         }
+    }
 
-        audio_features_df <- unlist(content) %>%
-            matrix(nrow = length(content), byrow = T) %>%
-            as.data.frame(stringsAsFactors = F)
-        names(audio_features_df) <- names(content[[1]])
+    params <- list(
+        ids = paste(ids, collapse = ','),
+        market = market,
+        access_token = Authorization
+    )
+    res <- GET(base_url, query = params, encode = 'json')
+    stop_for_status(res)
 
-        return(audio_features_df)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    }) %>% select(-c(type, uri, track_href, analysis_url)) %>%
-        rename(track_uri = id) %>%
-        mutate_at(audio_feature_vars, as.numeric) %>%
-        mutate(key = pitch_class_lookup[key + 1],
-               mode = case_when(mode == 1 ~ 'major',
-                                mode == 0 ~ 'minor',
-                                TRUE ~ as.character(NA)),
-               key_mode = paste(key, mode))
-
-    return(track_audio_features)
-}
-
-#' Get popularity of one or more tracks on Spotify
-#'
-#' This function returns the popularity of tracks on Spotify
-#' @param tracks Dataframe containing a column `track_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_album_tracks or spotifyr::get_playlist_tracks()
-#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
-#' @keywords track audio features
-#' @export
-#' @examples
-#' \dontrun{
-#' albums <- get_artist_albums('radiohead')
-#' tracks <- get_album_tracks(albums)
-#' track_popularity <- get_track_popularity(tracks)
-#' }
-
-get_track_popularity <- function(tracks, access_token = get_spotify_access_token()) {
-
-    num_loops <- ceiling(nrow(tracks %>% dplyr::filter(!duplicated(track_uri))) / 50)
-
-    map_df(1:num_loops, function(this_loop) {
-
-        uris <- tracks %>%
-            dplyr::filter(!duplicated(track_uri)) %>%
-            slice(((this_loop * 50) - 49):(this_loop * 50)) %>%
-            select(track_uri) %>% .[[1]] %>% paste0(collapse = ',')
-
-        res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/tracks/?ids={uris}'), query = list(access_token = access_token), quiet = TRUE) %>% content
-
-        content <- res$tracks
-
-        df <- map_df(1:length(content), function(this_row) {
-
-            this_track <- content[[this_row]]
-
-            open_spotify_url <- ifelse(is.null(this_track$external_urls$spotify), NA, this_track$external_urls$spotify)
-            preview_url <- ifelse(is.null(this_track$preview_url), NA, this_track$preview_url)
-
-            list(
-                track_uri = this_track$id,
-                track_popularity = this_track$popularity,
-                track_preview_url = preview_url,
-                track_open_spotify_url = open_spotify_url
-            )
-        })
-
-        return(df)
-    })
+    return(res$tracks)
 }

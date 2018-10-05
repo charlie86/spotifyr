@@ -1,0 +1,38 @@
+#' Get the current user’s top artists or tracks based on calculated affinity.
+#'
+#' @param type Required. The type of entity to return. Valid values: \code{artists} or \code{tracks}.
+#' @param limit Optional. \cr
+#' Maximum number of results to return. \cr
+#' Default: 20 \cr
+#' Minimum: 1 \cr
+#' Maximum: 50 \cr
+#' @param offset Optional. \cr
+#' The index of the first entity to return. \cr
+#' Default: 0 (i.e., the first track). \cr
+#' Use with limit to get the next set of entities.
+#' @param time_range Optional. Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), \code{medium_term} (approximately last 6 months), \code{short_term} (approximately last 4 weeks). Default: \code{medium_term}.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @return
+#' Returns a data frame of results containing track or album data. See \url{https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/} for more information.
+#' @export
+#'
+#' @examples
+#'
+
+get_my_top_artists_or_tracks <- function(type = NULL, limit = 20, offset = 0, time_range = 'medium_term', Authorization = get_spotify_authorization_code()) {
+
+    base_url <- 'https://api.spotify.com/v1/me/top'
+
+    params <- list(
+        limit = limit,
+        offset = offset,
+        time_range = time_range
+    )
+    url <- str_glue('{base_url}/{type}')
+    res <- GET(url, config(token = Authorization), query = params, encode = 'json')
+    stop_for_status(res)
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    return(res$items)
+}

@@ -6,7 +6,7 @@
 \usage{
 search_spotify(q, type = c("album", "artist", "playlist", "track"),
   market = NULL, limit = 20, offset = 0, include_external = NULL,
-  access_token = get_spotify_access_token())
+  Authorization = get_spotify_access_token())
 }
 \arguments{
 \item{q}{Required. \cr
@@ -45,7 +45,7 @@ Possible values: audio \cr
 If \code{include_external = "audio"} is specified the response will include any relevant audio content that is hosted externally. \cr
 By default external content is filtered out from responses.}
 
-\item{access_token}{Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \description{
 Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string. For more information see the official \href{https://developer.spotify.com/documentation/web-api/reference/search/search/}{documentation}.
