@@ -4,7 +4,8 @@
 \alias{get_discography}
 \title{Retrieve artist discography with song lyrics and audio info}
 \usage{
-get_discography(artist, parallelize = FALSE, future_plan = "multiprocess",
+get_discography(artist, parallelize = FALSE,
+  future_plan = "multiprocess",
   access_token = get_spotify_access_token())
 }
 \arguments{
