@@ -4,8 +4,7 @@
 \alias{get_artist}
 \title{Get Spotify catalog information for a single artist identified by their unique Spotify ID.}
 \usage{
-get_artist(id, market = NULL,
-  Authorization = get_spotify_access_token())
+get_artist(id, Authorization = get_spotify_access_token())
 }
 \arguments{
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.}

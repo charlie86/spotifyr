@@ -40,6 +40,7 @@ get_album <- function(id, market = NULL, Authorization = get_spotify_access_toke
 #' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param market Optional. \cr
 #' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
+#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
 #' @export
@@ -47,7 +48,7 @@ get_album <- function(id, market = NULL, Authorization = get_spotify_access_toke
 #' @examples
 #'
 
-get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_token()) {
+get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_token(), include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/albums'
 
@@ -67,7 +68,11 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    return(res$albums)
+    if (!include_meta_info) {
+        res <- res$albums
+    }
+
+    return(res)
 }
 
 #' Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
@@ -82,12 +87,13 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
 #' Note: The limit is applied within each type, not on the total response. \cr
 #' For example, if the limit value is 3 and the type is \code{c("artist", "album")}, the response contains 3 artists and 3 albums.
 #' @param offset Optional. \cr
-#' The index of the first result to return. \cr
-#' Default: 0 (the first result). \cr
+#' The index of the first album to return. \cr
+#' Default: 0 (the first album). \cr
 #' Maximum offset (including limit): 10,000. \cr
-#' Use with limit to get the next page of search results.
+#' Use with limit to get the next page of albums.
 #' @param market Optional. \cr
 #' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
+#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
 #' @export
@@ -95,7 +101,7 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
 #' @examples
 #'
 
-get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, Authorization = get_spotify_access_token()) {
+get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, Authorization = get_spotify_access_token(), include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/albums'
 
@@ -115,7 +121,9 @@ get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, Authoriz
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    df <- res$items
+    if (!include_meta_info) {
+        res <- res$items
+    }
 
-    return(df)
+    return(res)
 }

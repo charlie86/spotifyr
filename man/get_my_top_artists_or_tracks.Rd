@@ -6,7 +6,8 @@
 \usage{
 get_my_top_artists_or_tracks(type = NULL, limit = 20, offset = 0,
   time_range = "medium_term",
-  Authorization = get_spotify_authorization_code())
+  Authorization = get_spotify_authorization_code(),
+  include_meta_info = FALSE)
 }
 \arguments{
 \item{type}{Required. The type of entity to return. Valid values: \code{artists} or \code{tracks}.}
@@ -25,6 +26,8 @@ Use with limit to get the next set of entities.}
 \item{time_range}{Optional. Over what time frame the affinities are computed. Valid values: long_term (calculated from several years of data and including all new data as it becomes available), \code{medium_term} (approximately last 6 months), \code{short_term} (approximately last 4 weeks). Default: \code{medium_term}.}
 
 \item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
 Returns a data frame of results containing track or album data. See \url{https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/} for more information.
