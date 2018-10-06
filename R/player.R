@@ -90,7 +90,7 @@ get_my_current_playback <- function(market = NULL, Authorization = get_spotify_a
 #' @examples
 #'
 
-pause_my_current_playback <- function(device_id = NULL, Authorization = get_spotify_authorization_code()) {
+pause_my_playback <- function(device_id = NULL, Authorization = get_spotify_authorization_code()) {
     base_url <- 'https://api.spotify.com/v1/me/player/pause'
     params <- list(device_id = device_id)
     res <- PUT(base_url, config(token = Authorization), query = params, encode = 'json')
@@ -147,6 +147,103 @@ set_my_repeat_mode <- function(state, device_id = NULL, Authorization = get_spot
         device_id = device_id
     )
     res <- PUT(base_url, config(token = Authorization), query = params, encode = 'json')
+    stop_for_status(res)
+    return(res)
+}
+
+#' Set the volume for the user’s current playback device.
+#'
+#' @param volume_percent Required. Integer. The volume to set. Must be a value from 0 to 100 inclusive.
+#' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @export
+#'
+#' @examples
+#'
+
+set_my_volume <- function(volume_percent, device_id = NULL, Authorization = get_spotify_authorization_code()) {
+    stopifnot(is.numeric(volume_percent))
+    stopifnot(volume %in% seq(0, 100))
+    stopifnot(length(volume) == 1)
+    base_url <- 'https://api.spotify.com/v1/me/player/volume'
+    params <- list(
+        volume_percent = volume_percent,
+        device_id = device_id
+    )
+    res <- PUT(base_url, config(token = Authorization), query = params, encode = 'json')
+    stop_for_status(res)
+    return(res)
+}
+
+#' Skips to next track in the user’s queue.
+#'
+#' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @export
+#'
+#' @examples
+#'
+
+skip_my_playback <- function(device_id = NULL, Authorization = get_spotify_authorization_code()) {
+    base_url <- 'https://api.spotify.com/v1/me/player/next'
+    params <- list(
+        device_id = device_id
+    )
+    res <- POST(base_url, config(token = Authorization), query = params, encode = 'json')
+    stop_for_status(res)
+    return(res)
+}
+
+#' Skips to previous track in the user’s queue.
+#'
+#' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @export
+#'
+#' @examples
+#'
+
+skip_my_playback_previous <- function(device_id = NULL, Authorization = get_spotify_authorization_code()) {
+    base_url <- 'https://api.spotify.com/v1/me/player/previous'
+    params <- list(
+        device_id = device_id
+    )
+    res <- POST(base_url, config(token = Authorization), query = params, encode = 'json')
+    stop_for_status(res)
+    return(res)
+}
+
+#' Skips to previous track in the user’s queue.
+#'
+#' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
+#' @param context_uri Optional. String of the Spotify URI of the context to play. Valid contexts are albums, artists, playlists. Example \code{context_uri = "spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}.
+#' @param uris Optional. A character vector of the Spotify track URIs to play. For example: \code{"uris": c("spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M")}.
+#' @param offset Optional. A named list indicating from where the context playback should start. Only available when \code{context_uri} corresponds to an album or playlist object, or when the \code{uris} parameter is used. \cr
+#' \code{"position"} is zero based and can't be negative. Example: \code{"offset" = list("position" = 5)}. \cr
+#' \code{"uri"} is a string representing the uri of the item to start at. Example: \code{"offset" = list("uri" = "spotify:track:1301WleyT98MSxVHPZCA6M")}.
+#' @param position_ms Optional. Integer indicating from what position to start playback. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @export
+#'
+#' @examples
+#'
+
+start_my_playback <- function(device_id = NULL, context_uri = NULL, uris = NULL, offset = NULL, position_ms = NULL, Authorization = get_spotify_authorization_code()) {
+    base_url <- 'https://api.spotify.com/v1/me/player/play'
+    query_params = list(
+        device_id = device_id
+    )
+    body_params <- list(
+        context_uri = context_uri,
+        uris = uris,
+        offset = offset,
+        position_ms = position_ms
+    )
+    res <- PUT(base_url, query = query_params, config(token = Authorization), body = body_params, encode = 'json')
     stop_for_status(res)
     return(res)
 }
