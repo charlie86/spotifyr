@@ -12,10 +12,11 @@
 #' @import tidyr
 #' @import httr
 #' @import furrr
-#' @import stringr
 #' @import future
 #' @importFrom rvest html_session html_node html_nodes html_text html_attr
 #' @importFrom readr read_lines
+#' @importFrom stringr str_glue
+#' @importFrom jsonlite fromJSON
 #' @importFrom lubridate year as_datetime
 #' @importFrom utils setTxtProgressBar txtProgressBar
 NULL
