@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_recommendations}
 \alias{get_recommendations}
-\title{Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).}
+\title{Create a playlist-style listening experience based on seed artists, tracks and genres.}
 \usage{
 get_recommendations(limit = 20, market = NULL, seed_artists = NULL,
   seed_genres = NULL, seed_tracks = NULL, max_acousticness = NULL,
@@ -51,7 +51,7 @@ get_recommendations(limit = 20, market = NULL, seed_artists = NULL,
 Returns a data frame of results recommendations. See the official \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{Spotify Web API documentation} for more information.
 }
 \description{
-Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).
+Create a playlist-style listening experience based on seed artists, tracks and genres.
 }
 \examples{
 \dontrun{
