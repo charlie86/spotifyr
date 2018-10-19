@@ -39,7 +39,7 @@ get_user_profile <- function(user_id, Authorization = get_spotify_access_token()
     base_url <- 'https://api.spotify.com/v1/users'
     url <- str_glue('{base_url}/{user_id}')
     params = list(access_token = Authorization)
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
         unlist() %>%

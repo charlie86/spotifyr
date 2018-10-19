@@ -23,7 +23,8 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, Authorizatio
         market = market,
         access_token = Authorization
     )
-    res <- GET(url, query = params, encode = 'json')
+    # res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     return(res)
@@ -142,7 +143,7 @@ get_user_playlists <- function(user_id, limit = 20, offset = 0, Authorization = 
         limit = limit,
         offset = offset
     )
-    res <- GET(url, query = params, config(token = Authorization), encode = 'json')
+    res <- RETRY('GET', url, query = params, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     if (!include_meta_info) {
