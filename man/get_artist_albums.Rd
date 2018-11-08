@@ -13,10 +13,10 @@ get_artist_albums(id, include_groups = c("album", "single", "appears_on",
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.}
 
 \item{include_groups}{Optional. A character vector of keywords that will be used to filter the response. If not supplied, all album types will be returned. Valid values are: \cr
-- \code{album}
-- \code{single}
-- \code{appears_on}
-- \code{compilation}
+\code{"album"} \cr
+\code{"single"} \cr
+\code{"appears_on"} \cr
+\code{"compilation"} \cr
 For example: \code{include_groups = c("album", "single")}}
 
 \item{market}{Optional. \cr

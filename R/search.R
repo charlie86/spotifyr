@@ -79,7 +79,7 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
         include_external = include_external,
         access_token = Authorization
     )
-    res <- GET(base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)

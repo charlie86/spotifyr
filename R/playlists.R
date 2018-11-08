@@ -1,10 +1,11 @@
 #' Get a playlist owned by a Spotify user.
 #'
 #' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
-#' @param fields Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s description and URI: \code{fields = c("description", "uri")}. A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
-#' \code{fields = "tracks.items(added_at,added_by.id)"}. Use multiple parentheses to drill down into nested objects, for example: \cr
-#' \code{fields = "tracks.items(track(name,href,album(name,href)))"}. Fields can be excluded by prefixing them with an exclamation mark, for example: \cr
-#' \code{fields = "tracks.items(track(name,href,album(!name,href)))"}.
+#' @param fields Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s description and URI: \cr
+#' \code{fields = c("description", "uri")} \cr A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
+#' \code{fields = "tracks.items(added_at,added_by.id)"} \cr Use multiple parentheses to drill down into nested objects, for example: \cr
+#' \code{fields = "tracks.items(track(name,href,album(name,href)))"} \cr Fields can be excluded by prefixing them with an exclamation mark, for example: \cr
+#' \code{fields = "tracks.items(track(name,href,album(!name,href)))"}
 #' @param market Optional. \cr
 #' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
 #' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to \code{spotifyr::get_spotify_access_token()}
@@ -23,7 +24,6 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, Authorizatio
         market = market,
         access_token = Authorization
     )
-    # res <- GET(url, query = params, encode = 'json')
     res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -66,7 +66,7 @@ get_playlist_tracks <- function(playlist_id, fields = NULL, limit = 100, offset 
         market = market,
         access_token = Authorization
     )
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
@@ -104,7 +104,7 @@ get_my_playlists <- function(limit = 20, offset = 0, Authorization = get_spotify
         limit = limit,
         offset = offset
     )
-    res <- GET(base_url, query = params, config(token = Authorization), encode = 'json')
+    res <- RETRY('GET', base_url, query = params, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
@@ -167,7 +167,7 @@ get_user_playlists <- function(user_id, limit = 20, offset = 0, Authorization = 
 get_playlist_cover_image <- function(playlist_id, Authorization = get_spotify_authorization_code()) {
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/images')
-    res <- GET(url, config(token = Authorization), encode = 'json')
+    res <- RETRY('GET', url, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     return(res)
@@ -196,7 +196,7 @@ create_playlist <- function(user_id, name, public = TRUE, collaborative = FALSE,
         collaborative  = collaborative,
         description = description
     )
-    res <- POST(url, body = params, config(token = Authorization), encode = 'json')
+    res <- RETRY('POST', url, body = params, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     return(res)
@@ -223,7 +223,7 @@ add_tracks_to_playlist <- function(playlist_id, uris, position = NULL, Authoriza
         uris = uris,
         position = position
     )
-    res <- POST(url, body = params, config(token = Authorization), encode = 'json')
+    res <- RETRY('POST', url, body = params, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     return(res)
@@ -252,7 +252,7 @@ change_playlist_details <- function(playlist_id, name = NULL, public = NULL, col
         collaborative  = collaborative,
         description = description
     )
-    res <- PUT(url, body = params, config(token = Authorization), encode = 'json')
+    res <- RETRY('PUT', url, body = params, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     return(res)
 }

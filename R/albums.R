@@ -26,7 +26,7 @@ get_album <- function(id, market = NULL, Authorization = get_spotify_access_toke
         access_token = Authorization
     )
     url <- str_glue('{base_url}/{id}')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -63,7 +63,7 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
         market = market,
         access_token = Authorization
     )
-    res <- GET(base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -116,7 +116,7 @@ get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, Authoriz
         access_token = Authorization
     )
     url <- str_glue('{base_url}/{id}/tracks')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)

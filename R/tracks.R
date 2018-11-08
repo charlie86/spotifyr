@@ -17,7 +17,7 @@ get_track_audio_analysis <- function(id, Authorization = get_spotify_access_toke
         access_token = Authorization
     )
     url <- str_glue('{base_url}/{id}')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -27,7 +27,7 @@ get_track_audio_analysis <- function(id, Authorization = get_spotify_access_toke
 
 #' Get audio feature information for a single track identified by its unique Spotify ID.
 #'
-#' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.
+#' @param id Required. A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} of the tracks. Maximum: 100 IDs.
 #' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing track audio features data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis//} for more information.
@@ -36,18 +36,22 @@ get_track_audio_analysis <- function(id, Authorization = get_spotify_access_toke
 #' @examples
 #'
 
-get_track_audio_features <- function(id, Authorization = get_spotify_access_token()) {
+get_track_audio_features <- function(ids, Authorization = get_spotify_access_token()) {
+
+    stopifnot(length(ids) <= 100)
 
     base_url <- 'https://api.spotify.com/v1/audio-features'
 
     params <- list(
-        access_token = Authorization
+        access_token = Authorization,
+        ids = paste0(ids, collapse = ',')
     )
-    url <- str_glue('{base_url}/{id}')
-    res <- GET(url, query = params, encode = 'json')
+
+    res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
+        .$audio_features %>%
         as_tibble()
 
     return(res)
@@ -81,7 +85,7 @@ get_track <- function(id, market = NULL, Authorization = get_spotify_access_toke
         access_token = Authorization
     )
     url <- str_glue('{base_url}/{id}')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -118,7 +122,7 @@ get_tracks <- function(ids, market = NULL, Authorization = get_spotify_access_to
         market = market,
         access_token = Authorization
     )
-    res <- GET(base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)

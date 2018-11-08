@@ -46,7 +46,7 @@ get_my_top_artists_or_tracks <- function(type = NULL, limit = 20, offset = 0, ti
         time_range = time_range
     )
     url <- str_glue('{base_url}/{type}')
-    res <- GET(url, config(token = Authorization), query = params, encode = 'json')
+    res <- RETRY('GET', url, config(token = Authorization), query = params, encode = 'json')
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)

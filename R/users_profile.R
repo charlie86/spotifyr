@@ -10,12 +10,9 @@
 #'
 
 get_my_profile <- function(Authorization = get_spotify_authorization_code()) {
-
     base_url <- 'https://api.spotify.com/v1/me/'
-
-    res <- GET(base_url, config(token = Authorization), encode = 'json')
+    res <- RETRY('GET', base_url, config(token = Authorization), encode = 'json')
     stop_for_status(res)
-
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
         unlist() %>%
         t() %>%

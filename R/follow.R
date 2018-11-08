@@ -1,23 +1,20 @@
-#' Add the current user as a follower of a playlist.
+#' Add the current user as a follower of one or more artists or other Spotify users.
 #'
 #' @param type Required. The ID type: either \code{"artist"} or \code{"user"}.
-#' @param ids Optional. A character of the artist or the user \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs}. For example: \code{ids = c("74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q")}. A maximum of 50 IDs can be sent in one request.
+#' @param ids Optional. A character vector of the artist or the user \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs}. For example: \code{ids = c("74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q")}. A maximum of 50 IDs can be sent in one request.
 #' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. Modifying the list of artists or users the current user follows requires authorization of the \code{user-follow-modify} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @export
 #'
 #' @examples
 #'
 
-follow_artist_or_user <- function(type, ids, Authorization = get_spotify_authorization_code()) {
+follow_artists_or_users <- function(type, ids, Authorization = get_spotify_authorization_code()) {
     base_url <- 'https://api.spotify.com/v1/me/following'
     query_params <- list(
         type = type,
-        ids = ids
+        ids = paste0(ids, collapse = ',')
     )
-    body_params <- list(
-        ids = ids
-    )
-    res <- PUT(base_url, config(token = Authorization), query = query_params, body = body_params, encode = 'json')
+    res <- RETRY('PUT', base_url, config(token = Authorization), query = query_params, encode = 'json')
     stop_for_status(res)
     return(res)
 }
@@ -40,7 +37,7 @@ follow_playlist <- function(playlist_id, public = FALSE, Authorization = get_spo
     params <- list(
         public = public
     )
-    res <- PUT(url, config(token = Authorization), body = params, encode = 'json')
+    res <- RETRY('PUT', url, config(token = Authorization), body = params, encode = 'json')
     stop_for_status(res)
     return(res)
 }
@@ -59,7 +56,7 @@ follow_playlist <- function(playlist_id, public = FALSE, Authorization = get_spo
 unfollow_playlist <- function(playlist_id, Authorization = get_spotify_authorization_code()) {
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/followers')
-    res <- DELETE(url, config(token = Authorization), encode = 'json')
+    res <- RETRY('DELETE', url, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     return(res)
 }
@@ -82,7 +79,7 @@ get_my_followed_artists <- function(limit = 20, after = NULL, Authorization = ge
         limit = limit,
         after = after
     )
-    res <- GET(base_url, query = params, config(token = Authorization), encode = 'json')
+    res <- RETRY('GET', base_url, query = params, config(token = Authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
         .$artists
@@ -90,4 +87,66 @@ get_my_followed_artists <- function(limit = 20, after = NULL, Authorization = ge
         res <- res$items
     }
     return(res)
+}
+
+#' Check if Current User Follows Artists or Users
+#'
+#' @param type Required. String of the ID type: either \code{"artist"} or \code{"user"}.
+#' @param ids Required. A character vector of the artist or the user \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} to check. For example: \code{ids = c("74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q")}. A maximum of 50 IDs can be sent in one request.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. Getting details of the artists or users the current user follows requires authorization of the \code{user-follow-read} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @export
+#'
+#' @examples
+#'
+
+check_me_following <- function(type, ids, Authorization = get_spotify_authorization_code()) {
+
+    base_url <- 'https://api.spotify.com/v1/me/following/contains'
+    params <- list(
+        type = type,
+        ids = paste0(ids, collapse = ',')
+    )
+    res <- RETRY('GET', base_url, query = params, config(token = Authorization), encode = 'json')
+    stop_for_status(res)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    tibble(type = type,
+           id = ids,
+           is_following = res)
+
+}
+
+#' Check if Users Follow a Playlist
+#'
+#' @param type Required. String of the ID type: either \code{"artist"} or \code{"user"}.
+#' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist.
+#' @param ids Required. \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify User IDs}; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.
+#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. \cr
+#' Following a playlist can be done publicly or privately. Checking if a user publicly follows a playlist doesn’t require any scopes; if the user is publicly following the playlist, this endpoint returns \code{TRUE}. \cr
+#' Checking if the user is privately following a playlist is only possible for the current user when that user has granted access to the \code{playlist-read-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @export
+#'
+#' @examples
+#'
+
+check_users_following <- function(playlist_id, ids, Authorization = get_spotify_authorization_code()) {
+
+    playlist_id = '2v3iNvBX8Ay1Gt2uXtUKUT'
+    ids = c('possan', 'elogain')
+    Authorization = get_spotify_authorization_code()
+
+    base_url <- 'https://api.spotify.com/v1/playlists'
+    params <- list(
+        playlist_id = playlist_id,
+        ids = paste0(ids, collapse = ',')
+    )
+    url <- str_glue('{base_url}/{playlist_id}/followers/contains')
+    res <- RETRY('GET', url, query = params, config(token = Authorization), encode = 'json')
+    stop_for_status(res)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    tibble(user_id = ids,
+           playlist_id = playlist_id,
+           is_following = res)
+
 }

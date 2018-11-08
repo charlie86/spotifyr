@@ -19,7 +19,7 @@ get_category <- function(category_id, country = NULL, locale = NULL, Authorizati
         locale = locale,
         access_token = Authorization
     )
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
         as.data.frame(stringsAsFactors = FALSE)
@@ -54,7 +54,7 @@ get_category_playlists <- function(category_id, country = NULL, limit = 20, offs
         offset = offset,
         access_token = Authorization
     )
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>% .$playlists
     if (!include_meta_info) {
@@ -87,7 +87,7 @@ get_new_releases <- function(country = NULL, limit = 20, offset = 0, Authorizati
         offset = offset,
         access_token = Authorization
     )
-    res <- GET(base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>% .$albums
     if (!include_meta_info) {
@@ -125,7 +125,7 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
         offset = offset,
         access_token = Authorization
     )
-    res <- GET(base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     res$playlists$message <- res$message
@@ -264,7 +264,7 @@ get_recommendations <- function(limit = 20,
         access_token = Authorization
     )
 
-    res <- GET(base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     if (!include_seeds_in_response) {

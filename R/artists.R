@@ -41,12 +41,6 @@ get_artists <- function(ids, Authorization = get_spotify_access_token(), include
 
     base_url <- 'https://api.spotify.com/v1/artists'
 
-    if (!is.null(market)) {
-        if (!str_detect(market, '^[[:alpha:]]{2}$')) {
-            stop('"market" must be an ISO 3166-1 alpha-2 country code')
-        }
-    }
-
     params <- list(
         ids = paste(ids, collapse = ','),
         access_token = Authorization
@@ -67,10 +61,10 @@ get_artists <- function(ids, Authorization = get_spotify_access_token(), include
 #'
 #' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.
 #' @param include_groups Optional. A character vector of keywords that will be used to filter the response. If not supplied, all album types will be returned. Valid values are: \cr
-#' - \code{album}
-#' - \code{single}
-#' - \code{appears_on}
-#' - \code{compilation}
+#' \code{"album"} \cr
+#' \code{"single"} \cr
+#' \code{"appears_on"} \cr
+#' \code{"compilation"} \cr
 #' For example: \code{include_groups = c("album", "single")}
 #' @param market Optional. \cr
 #' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
