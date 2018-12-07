@@ -223,8 +223,7 @@ David K. Laing
 song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/)
 - Filip Wästberg
 
-[???????????? ?????????????? Arcade Fire (Black Mirror Arcade
-Fire)](http://thesociety.ru/arcadefire) - TheSociety
+[Black Mirror Arcade Fire](http://thesociety.ru/arcadefire) - TheSociety
 
 [Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you
 feel sad when you hear “Love for both?” You’re not
