@@ -88,16 +88,15 @@ beatles %>%
 get_my_recently_played(limit = 5) %>% 
     select(track_name, artist_name, album_name, played_at_utc) %>% 
     kable()
-#> Auto-refreshing stale OAuth token.
 ```
 
-| track\_name                                     | artist\_name  | album\_name                                     | played\_at\_utc     |
-| :---------------------------------------------- | :------------ | :---------------------------------------------- | :------------------ |
-| And She Was                                     | Talking Heads | Little Creatures                                | 2018-12-07 15:40:14 |
-| Homewards                                       | Mndsgn        | Yawn Zen                                        | 2018-12-07 15:36:34 |
-| Mr. Tambourine Man                              | Bob Dylan     | Bringing It All Back Home                       | 2018-12-07 15:35:52 |
-| Subterranean Homesick Blues                     | Bob Dylan     | Bringing It All Back Home                       | 2018-12-07 15:34:38 |
-| Subterranean Homesick Blues (feat. Andrew Bird) | The Lumineers | Subterranean Homesick Blues (feat. Andrew Bird) | 2018-12-07 15:32:16 |
+| track\_name        | artist\_name           | album\_name                                                | played\_at\_utc     |
+| :----------------- | :--------------------- | :--------------------------------------------------------- | :------------------ |
+| How Do I Know      | Here We Go Magic       | A Different Ship                                           | 2018-12-07 15:50:25 |
+| Pale Blue Eyes     | The Velvet Underground | The Velvet Underground (45th Anniversary / Deluxe Edition) | 2018-12-07 15:45:54 |
+| And She Was        | Talking Heads          | Little Creatures                                           | 2018-12-07 15:40:14 |
+| Homewards          | Mndsgn                 | Yawn Zen                                                   | 2018-12-07 15:36:34 |
+| Mr. Tambourine Man | Bob Dylan              | Bringing It All Back Home                                  | 2018-12-07 15:35:52 |
 
 ### Find your all time favorite artists
 
@@ -220,18 +219,17 @@ Hudon
 LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) -
 David K. Laing
 
-[Vilken Ã¤r Kents mest deprimerande lÃ¥t? (What is Kent’s most
-depressing
+[Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
 song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/)
-- Filip WÃ¤stberg
+- Filip Wästberg
 
-[Ð§ÑÑÐ½Ð¾Ðµ Ð·ÐµÑÐºÐ°Ð»Ð¾ Arcade Fire (Black Mirror Arcade
+[???????????? ?????????????? Arcade Fire (Black Mirror Arcade
 Fire)](http://thesociety.ru/arcadefire) - TheSociety
 
-[Sente-se triste quando ouve “Amar pelos dois”? NÃ£o Ã© o Ãºnico (Do you
+[Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you
 feel sad when you hear “Love for both?” You’re not
 alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico)
-- Rui Barros, RenascenÃ§a
+- Rui Barros, Rádio Renascença
 
 [Hierarchical clustering of David Bowie
 records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19)
