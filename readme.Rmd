@@ -134,3 +134,5 @@ The coolest thing about making this package has definitely been seeing all the a
 [Hierarchical clustering of David Bowie records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19) - Alyssa Goldberg
 
 [tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3) - Simran Vatsa
+
+[Long Distance Calling: Data Science meets Post-Rock...](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/) - Sebastian Kuhn
