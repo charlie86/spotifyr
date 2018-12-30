@@ -152,6 +152,7 @@ get_album_tracks <- function(albums, access_token = get_spotify_access_token(), 
                         if (!is.null(this_track$id)) {
                             list(
                                 album_name = album_info$name[album_info$id == album_uris[this_album]],
+                                album_uri = album_info$id[album_info$id == album_uris[this_album]],
                                 track_name = this_track$name,
                                 track_uri = this_track$id,
                                 track_number = this_track$track_number,

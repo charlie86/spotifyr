@@ -211,7 +211,7 @@ get_artist_albums <- function(artist = NULL, album_types = 'album', return_close
                 tibble(artist_name = this_album$artists[[1]]$name,
                        artist_uri = this_album$artists[[1]]$id,
                        album_uri = this_album$uri %>% gsub('spotify:album:', '', .),
-                       album_name = gsub('\'', '', this_album$name),
+                       album_name = this_album$name,
                        album_img = ifelse(length(this_album$images) > 0, this_album$images[[1]]$url, NA),
                        album_type = this_album$album_type,
                        is_collaboration = is_collaboration) %>%
@@ -362,7 +362,7 @@ get_artist_audio_features <- function(artist = NULL, album_types = 'album', retu
 
     albums %>%
         left_join(album_popularity, by = 'album_uri') %>%
-        left_join(tracks, by = 'album_name') %>%
+        left_join(select(tracks, -album_name), by = 'album_uri') %>%
         left_join(track_features, by = 'track_uri') %>%
         left_join(track_popularity, by = 'track_uri')
 }
