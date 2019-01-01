@@ -5,7 +5,7 @@
 \title{Get Spotify catalog information for a single track identified by its unique Spotify ID.}
 \usage{
 get_track(id, market = NULL,
-  Authorization = get_spotify_access_token())
+  authorization = get_spotify_access_token())
 }
 \arguments{
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.}
@@ -13,14 +13,11 @@ get_track(id, market = NULL,
 \item{market}{Optional. \cr
 An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
 Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
 }
 \description{
 Get Spotify catalog information for a single track identified by its unique Spotify ID.
-}
-\examples{
-
 }

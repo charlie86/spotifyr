@@ -6,7 +6,7 @@
 \usage{
 get_artist_albums(id, include_groups = c("album", "single", "appears_on",
   "compilation"), market = NULL, limit = 20, offset = 0,
-  Authorization = get_spotify_access_token(),
+  authorization = get_spotify_access_token(),
   include_meta_info = FALSE)
 }
 \arguments{
@@ -35,7 +35,7 @@ The index of the first album to return. \cr
 Default: 0 (i.e., the first album). \cr
 Use with limit to get the next set of albums.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
@@ -44,7 +44,4 @@ Returns a data frame of results containing artist data. See \url{https://develop
 }
 \description{
 Get Spotify catalog information for multiple artists identified by their Spotify IDs.
-}
-\examples{
-
 }

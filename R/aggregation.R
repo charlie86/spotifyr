@@ -10,29 +10,26 @@
 #' @param return_closest_artist Optional. Boolean
 #' @param parallelize Optional. Boolean
 #' @param future_plan Optional. String
-#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
 #' @export
-#'
-#' @examples
-#'
 
 get_artist_audio_features <- function(artist = NULL, include_groups = "album", return_closest_artist = TRUE,
-                                      Authorization = get_spotify_access_token(), parallelize = FALSE,
+                                      authorization = get_spotify_access_token(), parallelize = FALSE,
                                       future_plan = "multiprocess") {
 
-    artist_ids <- search_spotify(artist, 'artist', Authorization = Authorization)
+    artist_ids <- search_spotify(artist, 'artist', authorization = authorization)
 
     if (return_closest_artist == TRUE) {
         artist_id <- artist_ids$id[1]
     }
 
-    artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, Authorization = Authorization)
+    artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, authorization = authorization)
     num_loops_artist_albums <- floor(artist_albums$total / 20)
     if (num_loops_artist_albums > 1) {
         res <- map_df(1:num_loops_artist_albums, function(this_loop) {
-            get_artist_albums(artist_id, include_groups = include_groups, offset = this_loop * 20, Authorization = Authorization)
+            get_artist_albums(artist_id, include_groups = include_groups, offset = this_loop * 20, authorization = authorization)
         })
         artist_albums <- rbind(artist_albums$items, res)
     } else {
@@ -44,11 +41,11 @@ get_artist_audio_features <- function(artist = NULL, include_groups = "album", r
                album_name = name)
 
     album_tracks <- map_df(artist_albums$album_id, function(this_album_id) {
-        album_tracks <- get_album_tracks(this_album_id, include_meta_info = TRUE, Authorization = Authorization)
+        album_tracks <- get_album_tracks(this_album_id, include_meta_info = TRUE, authorization = authorization)
         num_loops_album_tracks <- floor(album_tracks$total / 20)
         if (num_loops_album_tracks > 1) {
             res <- map_df(1:num_loops_album_tracks, function(this_loop) {
-                get_album_tracks(this_album_id, offset = this_loop * 20, Authorization = Authorization)
+                get_album_tracks(this_album_id, offset = this_loop * 20, authorization = authorization)
             })
             album_tracks <- rbind(album_tracks$items, res)
         } else {
@@ -69,7 +66,7 @@ get_artist_audio_features <- function(artist = NULL, include_groups = "album", r
 
     num_loops_tracks <- ceiling(nrow(album_tracks) / 100)
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
-        get_track_audio_features(album_tracks$track_id[((this_loop * 100) - 99):(this_loop * 100)], Authorization = Authorization)
+        get_track_audio_features(album_tracks$track_id[((this_loop * 100) - 99):(this_loop * 100)], authorization = authorization)
     }) %>%
         select(-dupe_columns) %>%
         rename(track_id = id) %>%
@@ -78,7 +75,12 @@ get_artist_audio_features <- function(artist = NULL, include_groups = "album", r
     artist_albums %>%
         select(album_id, album_type, album_images = images, album_release_date = release_date,
                album_release_date_precision = release_date_precision) %>%
-        left_join(track_audio_features, by = 'album_id')
-
+        left_join(track_audio_features, by = 'album_id') %>%
+        mutate(key_name = pitch_class_lookup[key + 1],
+               mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
+               key_mode = paste(key_name, mode_name),
+               album_release_year = case_when(album_release_date_precision == 'year' ~ as.numeric(album_release_date),
+                                              album_release_date_precision == 'day' ~ year(as.Date(album_release_date, '%Y-%m-%d', origin = '1970-01-01')),
+                                              TRUE ~ as.numeric(NA)))
 }
 

@@ -5,7 +5,7 @@
 \title{Transfer playback to a new device and determine if it should start playing.}
 \usage{
 transfer_my_playback(device_ids, play = FALSE,
-  Authorization = get_spotify_authorization_code())
+  authorization = get_spotify_authorization_code())
 }
 \arguments{
 \item{device_ids}{Required. A character vector containing the ID of the device this on which playback should be started/transferred. Note: only a single device_id is currently supported.}
@@ -15,12 +15,9 @@ transfer_my_playback(device_ids, play = FALSE,
 \code{FALSE} (default): keep the current playback state \cr
 Note that a value of \code{FALSE} for the \code{play} parameter when also transferring to another \code{device_id} will not pause playback. To ensure that playback is paused on the new device you should send a pause command to the currently active device before transferring to the new \code{device_id}.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
 }
 \description{
 Transfer playback to a new device and determine if it should start playing.
-}
-\examples{
-
 }

@@ -5,7 +5,7 @@
 \title{Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).}
 \usage{
 get_new_releases(country = NULL, limit = 20, offset = 0,
-  Authorization = get_spotify_access_token(),
+  authorization = get_spotify_access_token(),
   include_meta_info = FALSE)
 }
 \arguments{
@@ -15,7 +15,9 @@ get_new_releases(country = NULL, limit = 20, offset = 0,
 
 \item{offset}{Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"country"}, \code{"offset"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
 Returns a data frame of results containing new releases. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.

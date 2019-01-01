@@ -5,7 +5,7 @@
 \title{Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.}
 \usage{
 set_my_repeat_mode(state, device_id = NULL,
-  Authorization = get_spotify_authorization_code())
+  authorization = get_spotify_authorization_code())
 }
 \arguments{
 \item{state}{Required. \cr
@@ -16,12 +16,9 @@ set_my_repeat_mode(state, device_id = NULL,
 
 \item{device_id}{Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
 }
 \description{
 Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.
-}
-\examples{
-
 }

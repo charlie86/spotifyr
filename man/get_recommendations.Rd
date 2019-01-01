@@ -23,7 +23,7 @@ get_recommendations(limit = 20, market = NULL, seed_artists = NULL,
   target_liveness = NULL, target_loudness = NULL, target_mode = NULL,
   target_popularity = NULL, target_speechiness = NULL,
   target_tempo = NULL, target_time_signature = NULL,
-  target_valence = NULL, Authorization = get_spotify_access_token(),
+  target_valence = NULL, authorization = get_spotify_access_token(),
   include_seeds_in_response = FALSE)
 }
 \arguments{
@@ -37,15 +37,93 @@ get_recommendations(limit = 20, market = NULL, seed_artists = NULL,
 
 \item{seed_tracks}{A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for a seed track. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{max_acousticness}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' acousticness.}
+
+\item{max_danceability}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' danceability.}
+
+\item{max_duration_ms}{Optional. Integer indicating a hard ceiling on recommended tracks' duration in milliseconds.}
+
+\item{max_energy}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' energy.}
+
+\item{max_instrumentalness}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' instrumentalness.}
+
+\item{max_key}{Optional. Integer ranging from 1 to 12 indicating a hard ceiling on recommended tracks' key.}
+
+\item{max_liveness}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' liveness.}
+
+\item{max_loudness}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' loudness.}
+
+\item{max_mode}{Optional. Integer ranging from 0 to 1 indicating a hard ceiling on recommended tracks' mode.}
+
+\item{max_popularity}{Optional. Integer ranging between 0 and 100 indicating a hard ceiling on recommended tracks' popularity.}
+
+\item{max_speechiness}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' speechiness.}
+
+\item{max_tempo}{Optional. Numeric value indicating a hard ceiling on recommended tracks' tempo.}
+
+\item{max_time_signature}{Optional. Integer indicating a hard ceiling on recommended tracks' time signature.}
+
+\item{max_valence}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' valence.}
+
+\item{min_acousticness}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' acousticness.}
+
+\item{min_danceability}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' danceability.}
+
+\item{min_duration_ms}{Optional. Integer indicating a hard floor on recommended tracks' duration in milliseconds.}
+
+\item{min_energy}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' energy.}
+
+\item{min_instrumentalness}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' instrumentalness.}
+
+\item{min_key}{Optional. Integer ranging from 1 to 12 indicating a hard floor on recommended tracks' key.}
+
+\item{min_liveness}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' liveness.}
+
+\item{min_loudness}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' loudness.}
+
+\item{min_mode}{Optional. Integer ranging from 0 to 1 indicating a hard floor on recommended tracks' mode.}
+
+\item{min_popularity}{Optional. Integer ranging between 0 and 100 indicating a hard floor on recommended tracks' popularity.}
+
+\item{min_speechiness}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' speechiness.}
+
+\item{min_tempo}{Optional. Numeric value indicating a hard floor on recommended tracks' tempo.}
+
+\item{min_time_signature}{Optional. Integer indicating a hard floor on recommended tracks' time signature.}
+
+\item{min_valence}{Optional. Numeric value between 0 and 1 indicating a hard floor on recommended tracks' valence.}
+
+\item{target_acousticness}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' acousticness. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_danceability}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' danceability. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_duration_ms}{Optional. Integer indicating a target value for recommended tracks' duration in milliseconds. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_energy}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' energy. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_instrumentalness}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' instrumentalness. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_key}{Optional. Integer ranging from 1 to 12 indicating a target value for recommended tracks' key. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_liveness}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' liveness. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_loudness}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' loudness. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_mode}{Optional. Integer ranging from 0 to 1 indicating a target value for recommended tracks' mode. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_popularity}{Optional. Integer ranging between 0 and 100 indicating a target value for recommended tracks' popularity. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_speechiness}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' speechiness. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_tempo}{Optional. Numeric value indicating a target value for recommended tracks' tempo. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_time_signature}{Optional. Integer indicating a target value for recommended tracks' time signature. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{target_valence}{Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' valence. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
+
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_seeds_in_response}{Optional. Boolean for whether to include seed object in response. Defaults to \code{FALSE}.}
-
-\item{max_*}{Optional. Multiple values. For each \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{tunable track attribute}, a hard ceiling on the selected track attribute’s value can be provided. For example, \code{max_instrumentalness = 0.35} would filter out most tracks that are likely to be instrumental.}
-
-\item{min_*}{Optional. Multiple values. For each \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{tunable track attribute}, a hard floor on the selected track attribute’s value can be provided. For example, \code{min_tempo = 140} would restrict results to only those tracks with a tempo of greater than 140 beats per minute.}
-
-\item{target_*}{Optional. Multiplie Values. For each of the tunable \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{track attributes} a target value may be provided. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.}
 }
 \value{
 Returns a data frame of results recommendations. See the official \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{Spotify Web API documentation} for more information.

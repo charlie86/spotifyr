@@ -6,7 +6,7 @@
 \usage{
 change_playlist_details(playlist_id, name = NULL, public = NULL,
   collaborative = NULL, description = NULL,
-  Authorization = get_spotify_authorization_code())
+  authorization = get_spotify_authorization_code())
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}
@@ -19,12 +19,9 @@ change_playlist_details(playlist_id, name = NULL, public = NULL,
 
 \item{description}{Optional. String containing the playlist description as displayed in Spotify Clients and in the Web API.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 Changing a public playlist for a user requires authorization of the \code{playlist-modify-public} scope; changing a private playlist requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
 }
 \description{
 Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)
-}
-\examples{
-
 }

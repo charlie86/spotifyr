@@ -15,7 +15,7 @@
 #' @import future
 #' @importFrom rvest html_session html_node html_nodes html_text html_attr
 #' @importFrom readr read_lines
-#' @importFrom stringr str_glue
+#' @importFrom stringr str_glue str_detect str_replace_all
 #' @importFrom jsonlite fromJSON
 #' @importFrom lubridate year as_datetime
 #' @importFrom utils setTxtProgressBar txtProgressBar
@@ -31,11 +31,18 @@ globalVars <- c(
 "base_album",
 "base_album_name",
 "key",
+"name",
 "num_albums",
 "num_base_albums",
 "playlist_img",
 "playlist_name",
 "playlist_uri",
+"preview_url",
+"href",
+"album_id",
+"images",
+"release_date",
+"release_date_precision",
 "track_href",
 "track_uri",
 "type",
@@ -45,13 +52,17 @@ globalVars <- c(
 "data",
 "future_map_df",
 "is_collaboration",
+"key_name",
+"mode_name",
 "lyrics",
 "na.omit",
 "parse_playlist_to_df",
+"release_date",
 "selected_artist",
 "track_n",
 "track_title",
 "track_url",
+"volume",
 ".")
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines

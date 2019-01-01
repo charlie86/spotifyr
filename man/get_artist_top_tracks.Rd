@@ -5,7 +5,7 @@
 \title{Get Spotify catalog information about an artist’s top tracks by country.}
 \usage{
 get_artist_top_tracks(id, market = "US",
-  Authorization = get_spotify_access_token(),
+  authorization = get_spotify_access_token(),
   include_meta_info = FALSE)
 }
 \arguments{
@@ -15,7 +15,7 @@ get_artist_top_tracks(id, market = "US",
 An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}.
 Defaults to \code{"US"}.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
@@ -24,7 +24,4 @@ Returns a data frame of results containing artist data. See \url{https://develop
 }
 \description{
 Get Spotify catalog information about an artist’s top tracks by country.
-}
-\examples{
-
 }

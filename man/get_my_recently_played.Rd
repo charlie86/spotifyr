@@ -2,22 +2,27 @@
 % Please edit documentation in R/player.R
 \name{get_my_recently_played}
 \alias{get_my_recently_played}
-\title{Get the object currently being played on the user’s Spotify account.}
+\title{Get Current User's Recently Played Tracks}
 \usage{
-get_my_recently_played(Authorization = get_spotify_authorization_code())
+get_my_recently_played(limit = 20, after = NULL, before = NULL,
+  authorization = get_spotify_authorization_code(),
+  include_meta_info = FALSE)
 }
 \arguments{
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-The access token must have the \code{user-read-currently-playing} and/or \code{user-read-playback-state} scope authorized in order to read information.}
+\item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}
 
-\item{market}{An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
+\item{after}{Optional. A Unix timestamp in milliseconds. Returns all items after (but not including) this cursor position. If \code{after} is specified, \code{before} must not be specified.}
+
+\item{before}{Optional. A Unix timestamp in milliseconds. Returns all items before (but not including) this cursor position. If \code{before} is specified, \code{after} must not be specified.}
+
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr}
+
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"before"}, \code{"after"}, and \code{"limit"}. Defaults to \code{FALSE}.
+The access token must have the \code{user-read-recently-played} scope authorized in order to read the user's recently played tracks.}
 }
 \value{
-Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a list or data frame of results containing the most recently played tracks for the current user.
 }
 \description{
-Get the object currently being played on the user’s Spotify account.
-}
-\examples{
-
+Get Current User's Recently Played Tracks
 }

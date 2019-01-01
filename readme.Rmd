@@ -62,26 +62,29 @@ beatles %>%
 
 ### Get your most recently played tracks
 ```{r}
-get_my_recently_played(limit = 5) %>% 
-    select(track_name, artist_name, album_name, played_at_utc) %>% 
+get_my_recently_played(limit = 20) %>% 
+    mutate(artist.name = map_chr(track.artists, function(x) x$name[1]),
+           played_at = as_datetime(played_at)) %>% 
+    select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
 ```
 
 
 ### Find your all time favorite artists
 ```{r}
-get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
-    select(artist_name, artist_genres) %>% 
+get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit = 5) %>% 
+    select(name, genres) %>% 
     rowwise %>% 
-    mutate(artist_genres = paste(artist_genres, collapse = ', ')) %>% 
+    mutate(genres = paste(genres, collapse = ', ')) %>% 
     ungroup %>% 
     kable()
 ```
 
 ### Find your favorite tracks at the moment
 ```{r}
-get_my_top_tracks(time_range = 'short_term', limit = 5) %>% 
-    select(track_name, artist_name, album_name) %>% 
+get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit = 5) %>% 
+    mutate(artist.name = map_chr(artists, function(x) x$name[1])) %>% 
+    select(name, artist.name, album.name) %>% 
     kable()
 ```
 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/authenticate.R
 \name{get_spotify_authorization_code}
 \alias{get_spotify_authorization_code}
-\title{Get Spotify Authorization Code}
+\title{Get Spotify authorization Code}
 \usage{
 
   get_spotify_authorization_code(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
   client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
-  scope = "user-library-read user-library-modify playlist-read-private playlist-modify-public playlist-modify-private playlist-read-collaborative user-read-recently-played user-top-read user-read-private user-read-email user-read-birthdate streaming user-modify-playback-state user-read-currently-playing user-read-playback-state user-follow-modify user-follow-read")
+  scope = spotifyr::scopes)
 }
 \arguments{
 \item{client_id}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"}

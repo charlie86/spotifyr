@@ -6,7 +6,7 @@
 \usage{
 start_my_playback(device_id = NULL, context_uri = NULL, uris = NULL,
   offset = NULL, position_ms = NULL,
-  Authorization = get_spotify_authorization_code())
+  authorization = get_spotify_authorization_code())
 }
 \arguments{
 \item{device_id}{Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.}
@@ -21,12 +21,9 @@ start_my_playback(device_id = NULL, context_uri = NULL, uris = NULL,
 
 \item{position_ms}{Optional. Integer indicating from what position to start playback. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
 }
 \description{
 Skips to previous track in the user’s queue.
-}
-\examples{
-
 }

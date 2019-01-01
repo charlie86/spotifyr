@@ -4,19 +4,16 @@
 \alias{get_track_audio_features}
 \title{Get audio feature information for a single track identified by its unique Spotify ID.}
 \usage{
-get_track_audio_features(ids, Authorization = get_spotify_access_token())
+get_track_audio_features(ids, authorization = get_spotify_access_token())
 }
 \arguments{
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{ids}{Required. A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} of the tracks. Maximum: 100 IDs.}
 
-\item{id}{Required. A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} of the tracks. Maximum: 100 IDs.}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
 Returns a data frame of results containing track audio features data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis//} for more information.
 }
 \description{
 Get audio feature information for a single track identified by its unique Spotify ID.
-}
-\examples{
-
 }

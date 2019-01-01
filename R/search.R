@@ -31,14 +31,14 @@
 #' Possible values: audio \cr
 #' If \code{include_external = "audio"} is specified the response will include any relevant audio content that is hosted externally. \cr
 #' By default external content is filtered out from responses.
-#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search
 #' @export
 #' @examples
 #' \dontrun{
 #' search_spotify('radiohead', 'artist')
 #' }
-search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, Authorization = get_spotify_access_token()) {
+search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, authorization = get_spotify_access_token()) {
 
     base_url <- 'https://api.spotify.com/v1/search'
 
@@ -77,7 +77,7 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
         limit = limit,
         offset = offset,
         include_external = include_external,
-        access_token = Authorization
+        access_token = authorization
     )
     res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)

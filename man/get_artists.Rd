@@ -4,13 +4,13 @@
 \alias{get_artists}
 \title{Get Spotify catalog information for multiple artists identified by their Spotify IDs.}
 \usage{
-get_artists(ids, Authorization = get_spotify_access_token(),
+get_artists(ids, authorization = get_spotify_access_token(),
   include_meta_info = FALSE)
 }
 \arguments{
 \item{ids}{Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the artists. Maximum: 50 IDs.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
@@ -19,7 +19,4 @@ Returns a data frame of results containing artist data. See \url{https://develop
 }
 \description{
 Get Spotify catalog information for multiple artists identified by their Spotify IDs.
-}
-\examples{
-
 }

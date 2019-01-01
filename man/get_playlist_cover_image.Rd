@@ -5,12 +5,12 @@
 \title{Get the current image associated with a specific playlist.}
 \usage{
 get_playlist_cover_image(playlist_id,
-  Authorization = get_spotify_authorization_code())
+  authorization = get_spotify_authorization_code())
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 Current playlist image for both Public and Private playlists of any user are retrievable on provision of a valid access token.}
 }
 \value{
@@ -18,7 +18,4 @@ Returns a data frame of results containing playlist cover image information. See
 }
 \description{
 Get the current image associated with a specific playlist.
-}
-\examples{
-
 }

@@ -1,17 +1,14 @@
 #' Get Spotify catalog information for a single album.
 #'
 #' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the album.
-#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param market Optional. \cr
 #' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
 #' @return
 #' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
 #' @export
-#'
-#' @examples
-#'
 
-get_album <- function(id, market = NULL, Authorization = get_spotify_access_token()) {
+get_album <- function(id, market = NULL, authorization = get_spotify_access_token()) {
 
     base_url <- 'https://api.spotify.com/v1/albums'
 
@@ -23,7 +20,7 @@ get_album <- function(id, market = NULL, Authorization = get_spotify_access_toke
 
     params <- list(
         market = market,
-        access_token = Authorization
+        access_token = authorization
     )
     url <- str_glue('{base_url}/{id}')
     res <- RETRY('GET', url, query = params, encode = 'json')
@@ -37,18 +34,15 @@ get_album <- function(id, market = NULL, Authorization = get_spotify_access_toke
 #' Get Spotify catalog information for multiple albums identified by their Spotify IDs.
 #'
 #' @param ids Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 20 IDs.
-#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API Authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param market Optional. \cr
 #' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
 #' @export
-#'
-#' @examples
-#'
 
-get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_albums <- function(ids, market = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/albums'
 
@@ -61,7 +55,7 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
     params <- list(
         ids = paste(ids, collapse = ','),
         market = market,
-        access_token = Authorization
+        access_token = authorization
     )
     res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
@@ -78,7 +72,7 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
 #' Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
 #'
 #' @param id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the album.
-#' @param Authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param limit Optional. \cr
 #' Maximum number of results to return. \cr
 #' Default: 20 \cr
@@ -97,11 +91,8 @@ get_albums <- function(ids, market = NULL, Authorization = get_spotify_access_to
 #' @return
 #' Returns a data frame of results containing album data. See the official API \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-several-albums/}{documentation} for more information.
 #' @export
-#'
-#' @examples
-#'
 
-get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, Authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/albums'
 
@@ -113,7 +104,7 @@ get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, Authoriz
 
     params <- list(
         market = market,
-        access_token = Authorization
+        access_token = authorization
     )
     url <- str_glue('{base_url}/{id}/tracks')
     res <- RETRY('GET', url, query = params, encode = 'json')

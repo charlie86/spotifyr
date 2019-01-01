@@ -5,12 +5,12 @@
 \title{Get information about the user’s current playback state, including track, track progress, and active device.}
 \usage{
 get_my_current_playback(market = NULL,
-  Authorization = get_spotify_authorization_code())
+  authorization = get_spotify_authorization_code())
 }
 \arguments{
 \item{market}{An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 The access token must have the \code{user-read-playback-state} scope authorized in order to read information.}
 }
 \value{
@@ -18,7 +18,4 @@ Returns a list containing user playback information. See the official Spotify We
 }
 \description{
 Get information about the user’s current playback state, including track, track progress, and active device.
-}
-\examples{
-
 }

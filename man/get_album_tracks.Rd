@@ -5,7 +5,7 @@
 \title{Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.}
 \usage{
 get_album_tracks(id, limit = 20, offset = 0, market = NULL,
-  Authorization = get_spotify_access_token(),
+  authorization = get_spotify_access_token(),
   include_meta_info = FALSE)
 }
 \arguments{
@@ -28,7 +28,7 @@ Use with limit to get the next page of albums.}
 \item{market}{Optional. \cr
 An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
-\item{Authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API Authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
@@ -37,7 +37,4 @@ Returns a data frame of results containing album data. See the official API \hre
 }
 \description{
 Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
-}
-\examples{
-
 }
