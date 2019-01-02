@@ -62,6 +62,8 @@ beatles %>%
 
 ### Get your most recently played tracks
 ```{r}
+library(lubridate)
+
 get_my_recently_played(limit = 20) %>% 
     mutate(artist.name = map_chr(track.artists, function(x) x$name[1]),
            played_at = as_datetime(played_at)) %>% 
