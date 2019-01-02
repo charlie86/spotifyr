@@ -318,15 +318,20 @@ get_related_artists <- function(artist = NULL, return_closest_artist = TRUE, acc
 
     content <- res$artists
 
-    related_artists <- purrr::map_df(1:length(content), function(this_artist) {
-        this_artist_info <- content[[this_artist]]
-        list(
-            artist_name = this_artist_info$name,
-            artist_uri = this_artist_info$id,
-            popularity = this_artist_info$popularity,
-            num_followers = this_artist_info$followers$total
-        )
-    })
+    if (length(content) > 0 ) {
+        related_artists <- purrr::map_df(1:length(content), function(this_artist) {
+            this_artist_info <- content[[this_artist]]
+            list(
+                artist_name = this_artist_info$name,
+                artist_uri = this_artist_info$id,
+                popularity = this_artist_info$popularity,
+                num_followers = this_artist_info$followers$total
+            )
+        })
+    } else {
+        related_artists <- tibble()
+    }
+
 
     return(related_artists)
 }
