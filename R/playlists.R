@@ -252,6 +252,11 @@ get_user_playlists <- function(username, access_token = get_spotify_access_token
 
 get_user_audio_features <- function(username, parallelize = FALSE, future_plan = 'multiprocess', access_token = get_spotify_access_token()) {
 
+    username = '1261352697'
+    parallelize = FALSE
+    future_plan = 'multiprocess'
+    access_token = get_spotify_access_token()
+
     playlists <- get_user_playlists(username, parallelize = parallelize, future_plan = future_plan, access_token = access_token)
     tracks <- get_playlist_tracks(playlists, parallelize = parallelize, future_plan = future_plan, access_token = access_token)
     track_popularity <- get_track_popularity(tracks, access_token = access_token)
@@ -286,50 +291,52 @@ get_playlist_tracks <- function(playlists, access_token = get_spotify_access_tok
     map_args <- list(
         1:nrow(playlists),
         function(this_playlist) {
-            print(this_playlist)
+
             num_loops <- ceiling(playlists$playlist_num_tracks[this_playlist] / 100)
 
-            map_df(1:num_loops, function(this_loop) {
-                print(this_loop)
+            if (num_loops == 0) {
+                df <- tibble()
+            } else {
+                df <- map_df(1:num_loops, function(this_loop) {
+                    res <- RETRY('GET', url = playlists$playlist_tracks_url[this_playlist], query = list(access_token = access_token, limit = 100, offset = (100 * this_loop) - 100), quiet = TRUE, times = 10) %>% content
 
-                res <- RETRY('GET', url = playlists$playlist_tracks_url[this_playlist], query = list(access_token = access_token, limit = 100, offset = (100 * this_loop) - 100), quiet = TRUE, times = 10) %>% content
+                    if (!is.null(res$error)) {
+                        stop(str_glue('{res$error$message} ({res$error$status})'))
+                    }
 
-                if (!is.null(res$error)) {
-                    stop(str_glue('{res$error$message} ({res$error$status})'))
-                }
+                    content <- res$items
 
-                content <- res$items
+                    if (length(content) == 0) {
+                        track_info <- tibble()
+                    } else {
+                        track_info <- map_df(1:length(content), function(this_row) {
 
-                if (length(content) == 0) {
-                    track_info <- tibble()
-                } else {
-                    track_info <- map_df(1:length(content), function(this_row) {
+                            this_track <- content[[this_row]]
 
-                        this_track <- content[[this_row]]
+                            if (is.null(this_track$added_at)) {
+                                track_added_at <- NA
+                            } else {
+                                track_added_at <- this_track$added_at
+                            }
 
-                        if (is.null(this_track$added_at)) {
-                            track_added_at <- NA
-                        } else {
-                            track_added_at <- this_track$added_at
-                        }
+                            if (!is.null(this_track$track$id)) {
 
-                        if (!is.null(this_track$track$id)) {
-
-                            list(
-                                playlist_name = playlists$playlist_name[this_playlist],
-                                playlist_img = playlists$playlist_img[this_playlist],
-                                track_name = this_track$track$name,
-                                track_uri = this_track$track$id,
-                                artist_name = this_track$track$artists[[1]]$name,
-                                album_name = this_track$track$album$name,
-                                album_img = ifelse(length(this_track$track$album$images) > 0, this_track$track$album$images[[1]]$url, ''),
-                                track_added_at = as.POSIXct(track_added_at, format = '%Y-%m-%dT%H:%M:%SZ')
-                            )
-                        }
-                    })
-                }
-            })
-
+                                list(
+                                    playlist_name = playlists$playlist_name[this_playlist],
+                                    playlist_img = playlists$playlist_img[this_playlist],
+                                    track_name = this_track$track$name,
+                                    track_uri = this_track$track$id,
+                                    artist_name = this_track$track$artists[[1]]$name,
+                                    album_name = this_track$track$album$name,
+                                    album_img = ifelse(length(this_track$track$album$images) > 0, this_track$track$album$images[[1]]$url, ''),
+                                    track_added_at = as.POSIXct(track_added_at, format = '%Y-%m-%dT%H:%M:%SZ')
+                                )
+                            }
+                        })
+                    }
+                })
+            }
+            return(df)
         }
     )
 
