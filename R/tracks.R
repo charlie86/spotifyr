@@ -137,6 +137,8 @@ get_track_audio_analysis <- function(track_uri, access_token = get_spotify_acces
 #' or alternatively as a character vector of valid URIs.
 #' @param access_token Spotify Web API token. Defaults to \code{\link{get_spotify_access_token()}}
 #' @keywords track audio features
+#' @importFrom stringr str_glue
+#' @importFrom dplyr select slice filter mutate mutate_at rename
 #' @export
 #' @examples
 #' \dontrun{
@@ -174,16 +176,19 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
         } else {
             uris <- tracks %>%
                 dplyr::filter(!duplicated(track_uri)) %>%
-                slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
-                select(track_uri) %>%
+                dplyr::slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
+                dplyr::select(track_uri) %>%
                 .[[1]] %>%
                 paste0(collapse = ',')
         }
 
 
 
-        res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/audio-features/?ids={uris}'),
-                     query = list(access_token = access_token), quiet = TRUE, times = 10) %>% content
+        res <- RETRY('GET',
+                     url = stringr::str_glue('https://api.spotify.com/v1/audio-features/?ids={uris}'),
+                     query = list(access_token = access_token),
+                     quiet = TRUE, times = 10) %>%
+            content
 
         content <- res$audio_features
 
@@ -207,9 +212,9 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
         return(audio_features_df)
 
     }) %>% select(-c(type, uri, track_href, analysis_url)) %>%
-        rename(track_uri = id) %>%
-        mutate_at(audio_feature_vars, as.numeric) %>%
-        mutate(key = pitch_class_lookup[key + 1],
+        dplyr::rename(track_uri = id) %>%
+        dplyr::mutate_at(audio_feature_vars, as.numeric) %>%
+        dplyr::mutate(key = pitch_class_lookup[key + 1],
                mode = case_when(mode == 1 ~ 'major',
                                 mode == 0 ~ 'minor',
                                 TRUE ~ as.character(NA)),
