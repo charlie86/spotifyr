@@ -139,6 +139,7 @@ get_track_audio_analysis <- function(track_uri, access_token = get_spotify_acces
 #' @keywords track audio features
 #' @importFrom stringr str_glue
 #' @importFrom dplyr select slice filter mutate mutate_at rename
+#' @importFrom purrr map_df
 #' @export
 #' @examples
 #' \dontrun{
@@ -171,7 +172,7 @@ get_track_audio_features <- function(tracks,
       num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
     }
 
-    track_audio_features <- map_df(1:num_loops, function(this_loop) {
+    track_audio_features <- purrr::map_df(1:num_loops, function(this_loop) {
 
         if ( ! class (tracks) %in% 'data.frame' ) {
             uris <- paste0(tracks, collapse = ',')
