@@ -5,7 +5,8 @@
 \title{Get track uris from a string search on Spotify}
 \usage{
 get_tracks(track_name, artist_name = NULL, album_name = NULL,
-  return_closest_track = FALSE, access_token = get_spotify_access_token())
+  return_closest_track = FALSE,
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{track_name}{A string with track name}

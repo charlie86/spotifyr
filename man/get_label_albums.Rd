@@ -4,8 +4,8 @@
 \alias{get_label_albums}
 \title{Get albums by label}
 \usage{
-get_label_albums(label = character(), album_types = "album", offset = 0,
-  limit = 20, access_token = get_spotify_access_token())
+get_label_albums(label = character(), album_types = "album",
+  offset = 0, limit = 20, access_token = get_spotify_access_token())
 }
 \arguments{
 \item{label}{String of label name to search for}
