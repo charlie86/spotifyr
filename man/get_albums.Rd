@@ -4,7 +4,8 @@
 \alias{get_albums}
 \title{Get album metadata}
 \usage{
-get_albums(albums = character(), access_token = get_spotify_access_token())
+get_albums(albums = character(),
+  access_token = get_spotify_access_token())
 }
 \arguments{
 \item{albums}{A character vector containing the ids of one or several albums to retrieve information for}

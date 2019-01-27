@@ -61,6 +61,36 @@ get_tracks <- function(track_name, artist_name = NULL, album_name = NULL, return
     return(tracks)
 }
 
+
+#' Check track URI validity
+#'
+#' This function takes a track URI and returns a list containing an audio analysis object
+#' from Spotify's audio analysis endpoint
+#' @param track_uri A string with a track URI, either in form
+#' \code{'3qZCK4Fg655xHnlgHK6H63'} or \code{'spotify:track:3qZCK4Fg655xHnlgHK6H63'}
+#' @keywords track uri string search
+#' @examples
+#' \dontrun{
+#' check_uri ( track_uri ='3qZCK4Fg655xHnlgHK6H63')
+#' check_uri ( track_uri = '3qZCK4Fg655xHnlgHK6H6') #one character missing
+#' }
+
+check_uri <- function ( track_uri ) {
+    is_uri <- function(x) {
+        nchar(x) == 22 &
+            !str_detect(x, ' ') &
+            str_detect(x, '[[:digit:]]') &
+            str_detect(x, '[[:lower:]]') &
+            str_detect(x, '[[:upper:]]')
+    }
+
+    track_uri <- gsub('spotify:track:', '', track_uri)
+
+    if (!is_uri(track_uri)) {
+        stop('Error: Must enter a valid uri')
+    }
+}
+
 #' Get track audio analysis by URI
 #'
 #' This function takes a track URI and returns a list containing an audio analysis object
@@ -75,6 +105,8 @@ get_tracks <- function(track_name, artist_name = NULL, album_name = NULL, return
 #' kid_a <- get_tracks(artist_name = "Radiohead", track_name = "Kid A", return_closest_track = TRUE)
 #' kid_a_audio_analysis <- get_track_audio_analysis(kid_a$track_uri)
 #' }
+
+
 
 get_track_audio_analysis <- function(track_uri, access_token = get_spotify_access_token()) {
 
@@ -100,8 +132,10 @@ get_track_audio_analysis <- function(track_uri, access_token = get_spotify_acces
 #' Get audio features from one or more tracks on Spotify
 #'
 #' This function returns audio features from a dataframe of tracks on Spotify
-#' @param tracks Dataframe containing a column `track_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_album_tracks or spotifyr::get_playlist_tracks()
-#' @param access_token Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()
+#' @param tracks May be directly given as a ataframe containing a column `track_uri`, corresponding to Spotify Album URIs.
+#' Can be output from \code{\link{get_album_tracks}} or \code{\link{get_playlist_tracks}},
+#' or alternatively as a character vector of valid URIs.
+#' @param access_token Spotify Web API token. Defaults to \code{\link{get_spotify_access_token()}}
 #' @keywords track audio features
 #' @export
 #' @examples
@@ -125,16 +159,28 @@ get_track_audio_features <- function(tracks, access_token = get_spotify_access_t
     # create lookup to classify key: https://developer.spotify.com/web-api/get-audio-features/
     pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
 
-    num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
+    if ( ! class (tracks) %in% 'data.frame' ) {
+        sapply ( tracks, check_uri) #internal functin uri checker
+        num_loops <- ceiling(sum(!duplicated(tracks) / 100)) #if a character vector is inputed
+
+   } else {
+      num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
+    }
 
     track_audio_features <- map_df(1:num_loops, function(this_loop) {
 
-        uris <- tracks %>%
-            dplyr::filter(!duplicated(track_uri)) %>%
-            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
-            select(track_uri) %>%
-            .[[1]] %>%
-            paste0(collapse = ',')
+        if ( ! class (tracks) %in% 'data.frame' ) {
+            uris <- paste0(tracks, collapse = ',')
+        } else {
+            uris <- tracks %>%
+                dplyr::filter(!duplicated(track_uri)) %>%
+                slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
+                select(track_uri) %>%
+                .[[1]] %>%
+                paste0(collapse = ',')
+        }
+
+
 
         res <- RETRY('GET', url = str_glue('https://api.spotify.com/v1/audio-features/?ids={uris}'),
                      query = list(access_token = access_token), quiet = TRUE, times = 10) %>% content

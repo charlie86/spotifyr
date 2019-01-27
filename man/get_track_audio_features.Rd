@@ -4,12 +4,15 @@
 \alias{get_track_audio_features}
 \title{Get audio features from one or more tracks on Spotify}
 \usage{
-get_track_audio_features(tracks, access_token = get_spotify_access_token())
+get_track_audio_features(tracks,
+  access_token = get_spotify_access_token())
 }
 \arguments{
-\item{tracks}{Dataframe containing a column `track_uri`, corresponding to Spotify Album URIs. Can be output from spotifyr::get_album_tracks or spotifyr::get_playlist_tracks()}
+\item{tracks}{May be directly given as a ataframe containing a column `track_uri`, corresponding to Spotify Album URIs.
+Can be output from \code{\link{get_album_tracks}} or \code{\link{get_playlist_tracks}},
+or alternatively as a character vector of valid URIs.}
 
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{access_token}{Spotify Web API token. Defaults to \code{\link{get_spotify_access_token()}}}
 }
 \description{
 This function returns audio features from a dataframe of tracks on Spotify
