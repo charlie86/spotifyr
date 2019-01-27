@@ -153,7 +153,9 @@ get_track_audio_analysis <- function(track_uri, access_token = get_spotify_acces
 #' obama_audio_features <- get_track_audio_features(tracks)
 #' }
 
-get_track_audio_features <- function(tracks, access_token = get_spotify_access_token()) {
+get_track_audio_features <- function(tracks,
+                                     access_token = get_spotify_access_token()
+                                     ) {
 
     audio_feature_vars <- c('danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness',
                             'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature')
