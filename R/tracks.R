@@ -164,17 +164,16 @@ get_track_audio_features <- function(tracks,
     # create lookup to classify key: https://developer.spotify.com/web-api/get-audio-features/
     pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
 
-    if ( ! class (tracks) %in% 'data.frame' ) {
-        sapply ( tracks, check_uri) #internal functin uri checker
+    if (!'data.frame' %in% class(tracks)) {
+        sapply(tracks, check_uri) #internal function uri checker
         num_loops <- ceiling(sum(!duplicated(tracks) / 100)) #if a character vector is inputed
-
    } else {
       num_loops <- ceiling(sum(!duplicated(tracks$track_uri)) / 100)
-    }
+   }
 
     track_audio_features <- purrr::map_df(1:num_loops, function(this_loop) {
 
-        if ( ! class (tracks) %in% 'data.frame' ) {
+        if (!'data.frame' %in% class(tracks)) {
             uris <- paste0(tracks, collapse = ',')
         } else {
             uris <- tracks %>%
