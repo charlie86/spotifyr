@@ -76,11 +76,11 @@ beatles %>%
 
 | key\_mode |  n |
 | :-------- | -: |
-| D major   | 77 |
-| G major   | 76 |
-| A major   | 67 |
-| E major   | 67 |
-| C major   | 52 |
+| G major   | 92 |
+| D major   | 89 |
+| C major   | 81 |
+| E major   | 77 |
+| A major   | 72 |
 
 ### Get your most recently played tracks
 
@@ -90,13 +90,13 @@ get_my_recently_played(limit = 5) %>%
     kable()
 ```
 
-| track\_name        | artist\_name           | album\_name                                                | played\_at\_utc     |
-| :----------------- | :--------------------- | :--------------------------------------------------------- | :------------------ |
-| How Do I Know      | Here We Go Magic       | A Different Ship                                           | 2018-12-07 15:50:25 |
-| Pale Blue Eyes     | The Velvet Underground | The Velvet Underground (45th Anniversary / Deluxe Edition) | 2018-12-07 15:45:54 |
-| And She Was        | Talking Heads          | Little Creatures                                           | 2018-12-07 15:40:14 |
-| Homewards          | Mndsgn                 | Yawn Zen                                                   | 2018-12-07 15:36:34 |
-| Mr. Tambourine Man | Bob Dylan              | Bringing It All Back Home                                  | 2018-12-07 15:35:52 |
+| track\_name                                 | artist\_name  | album\_name                                          | played\_at\_utc     |
+| :------------------------------------------ | :------------ | :--------------------------------------------------- | :------------------ |
+| Call Me                                     | Blondie       | Call Me                                              | 2019-02-17 17:21:00 |
+| Biggest Part Of Me (45 Version)             | Ambrosia      | Biggest Part Of Me / Livin’ On My Own \[Digital 45\] | 2019-02-17 02:15:22 |
+| Let’s Dance - Single Version \[Remastered\] | David Bowie   | Legacy                                               | 2019-02-17 02:12:27 |
+| Everywhere - 2017 Remaster                  | Fleetwood Mac | Tango In the Night (Deluxe)                          | 2019-02-17 02:11:11 |
+| Heart Of Glass - Special Mix                | Blondie       | Greatest Hits                                        | 2019-02-17 02:07:19 |
 
 ### Find your all time favorite artists
 
@@ -109,13 +109,13 @@ get_my_top_artists(time_range = 'long_term', limit = 5) %>%
     kable()
 ```
 
-| artist\_name | artist\_genres                                                                                                                                           |
-| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                                               |
-| Onra         | alternative hip hop, chillhop, ninja, trip hop, wonky                                                                                                    |
-| Flying Lotus | alternative hip hop, chillwave, electronic, escape room, glitch, glitch hop, hip hop, indie r\&b, indietronica, intelligent dance music, trip hop, wonky |
-| Teebs        | abstract beats, bass music, chillwave, indietronica, wonky                                                                                               |
-| Aphex Twin   | acid techno, ambient, drill and bass, electronic, fourth world, intelligent dance music, microhouse, trip hop                                            |
+| artist\_name | artist\_genres                                                                                                                     |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                         |
+| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                     |
+| Flying Lotus | alternative hip hop, chillwave, electronic, escape room, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
+| Teebs        | abstract beats, bass music, chillwave, wonky                                                                                       |
+| Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, trip hop                                                               |
 
 ### Find your favorite tracks at the moment
 
@@ -125,13 +125,13 @@ get_my_top_tracks(time_range = 'short_term', limit = 5) %>%
     kable()
 ```
 
-| track\_name                | artist\_name    | album\_name    |
-| :------------------------- | :-------------- | :------------- |
-| Shattered Dreams           | Earl Sweatshirt | Some Rap Songs |
-| Nowhere2go                 | Earl Sweatshirt | Some Rap Songs |
-| Peanut                     | Earl Sweatshirt | Some Rap Songs |
-| The Mint (feat. Navy Blue) | Earl Sweatshirt | Some Rap Songs |
-| Red Water                  | Earl Sweatshirt | Some Rap Songs |
+| track\_name                                       | artist\_name | album\_name |
+| :------------------------------------------------ | :----------- | :---------- |
+| Spanish Pipedream                                 | John Prine   | John Prine  |
+| Illegal Smile                                     | John Prine   | John Prine  |
+| Your Flag Decal Won’t Get You Into Heaven Anymore | John Prine   | John Prine  |
+| Holocene                                          | Bon Iver     | Bon Iver    |
+| Pretty Good                                       | John Prine   | John Prine  |
 
 ### What’s the most joyful Joy Division song?
 
@@ -150,13 +150,13 @@ joy %>%
     kable()
 ```
 
-| track\_name                                   | valence |
-| :-------------------------------------------- | ------: |
-| These Days - Live                             |   0.949 |
-| Passover - 2007 Remastered Version            |   0.941 |
-| Colony - 2007 Remastered Version              |   0.808 |
-| Atrocity Exhibition - 2007 Remastered Version |   0.787 |
-| Incubation - Live                             |   0.785 |
+| track\_name                         | valence |
+| :---------------------------------- | ------: |
+| Passover - 2007 Remaster            |   0.941 |
+| Colony - 2007 Remaster              |   0.808 |
+| Atrocity Exhibition - 2007 Remaster |   0.787 |
+| A Means to an End - 2007 Remaster   |   0.752 |
+| Interzone - 2007 Remastered Version |   0.746 |
 
 Now if only there was some way to plot
 joy…
@@ -180,7 +180,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
     geom_joy() + 
     theme_joy() +
     ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
-#> Picking joint bandwidth of 0.0979
+#> Picking joint bandwidth of 0.106
 ```
 
 ![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
@@ -207,36 +207,44 @@ The coolest thing about making this package has definitely been seeing
 all the awesome stuff other people have done with it. Here are a few
 examples:
 
+[Exploring the Spotify API with R: A tutorial for beginners, by a
+beginner](https://msmith7161.github.io/what-is-speechiness/), Mia Smith
+
 [Sentiment analysis of musical taste: a cross-European
-comparison](http://paulelvers.com/post/emotionsineuropeanmusic/) - Paul
+comparison](http://paulelvers.com/post/emotionsineuropeanmusic/), Paul
 Elvers
 
 [Blue Christmas: A data-driven search for the most depressing Christmas
-song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin
+song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
 
 [KendRick
-LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) -
+LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/),
 David K. Laing
 
 [Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
-song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/)
-- Filip Wästberg
+song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/),
+Filip Wästberg
 
-[Black Mirror Arcade Fire](http://thesociety.ru/arcadefire) - TheSociety
+[Чёрное зеркало Arcade Fire (Black Mirror Arcade
+Fire)](http://thesociety.ru/arcadefire), TheSociety
 
 [Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you
 feel sad when you hear “Love for both?” You’re not
-alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico)
-- Rui Barros, Rádio Renascença
+alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico),
+Rui Barros, Rádio Renascença
+
+[Using Data to Find the Angriest Death Grips
+Song](https://towardsdatascience.com/angriest-death-grips-data-anger-502168c1c2f0),
+Evan Oppenheimer
 
 [Hierarchical clustering of David Bowie
-records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19)
-- Alyssa Goldberg
+records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19),
+Alyssa Goldberg
 
-[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3) - Simran
+[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3), Simran
 Vatsa
 
 [Long Distance Calling: Data Science meets
-Post-Rock…](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/)
-- Sebastian Kuhn
+Post-Rock…](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/),
+Sebastian Kuhn

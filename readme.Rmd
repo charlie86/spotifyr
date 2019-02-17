@@ -119,20 +119,24 @@ This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to vis
 ## Dope stuff other people have done with spotifyr
 The coolest thing about making this package has definitely been seeing all the awesome stuff other people have done with it. Here are a few examples:
 
-[Sentiment analysis of musical taste: a cross-European comparison](http://paulelvers.com/post/emotionsineuropeanmusic/) - Paul Elvers
+[Exploring the Spotify API with R: A tutorial for beginners, by a beginner](https://msmith7161.github.io/what-is-speechiness/), Mia Smith
 
-[Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin Hudon
+[Sentiment analysis of musical taste: a cross-European comparison](http://paulelvers.com/post/emotionsineuropeanmusic/), Paul Elvers
 
-[KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing
+[Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin Hudon
 
-[Vilken �r Kents mest deprimerande l�t? (What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/) - Filip W�stberg
+[KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/), David K. Laing
 
-[Black Mirror Arcade Fire](http://thesociety.ru/arcadefire) - TheSociety
+[Vilken är Kents mest deprimerande låt? (What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/), Filip Wästberg
 
-[Sente-se triste quando ouve "Amar pelos dois"? N�o � o �nico (Do you feel sad when you hear "Love for both?" You're not alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico) - Rui Barros, R�dio Renascen�a
+[Чёрное зеркало Arcade Fire (Black Mirror Arcade Fire)](http://thesociety.ru/arcadefire), TheSociety
 
-[Hierarchical clustering of David Bowie records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19) - Alyssa Goldberg
+[Sente-se triste quando ouve "Amar pelos dois"? Não é o único (Do you feel sad when you hear "Love for both?" You're not alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico), Rui Barros, Rádio Renascença
 
-[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3) - Simran Vatsa
+[Using Data to Find the Angriest Death Grips Song](https://towardsdatascience.com/angriest-death-grips-data-anger-502168c1c2f0), Evan Oppenheimer
 
-[Long Distance Calling: Data Science meets Post-Rock...](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/) - Sebastian Kuhn
+[Hierarchical clustering of David Bowie records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19), Alyssa Goldberg
+
+[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3), Simran Vatsa
+
+[Long Distance Calling: Data Science meets Post-Rock...](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/), Sebastian Kuhn
