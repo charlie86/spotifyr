@@ -8,20 +8,18 @@
 #' \code{"compilation"} \cr
 #' For example: \code{include_groups = c("album", "single")}
 #' @param return_closest_artist Optional. Boolean
-#' @param parallelize Optional. Boolean
-#' @param future_plan Optional. String
+#' @param dedupe_albums Optional. Boolean
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
 #' @export
 
-get_artist_audio_features <- function(artist = NULL, include_groups = "album", return_closest_artist = TRUE,
-                                      authorization = get_spotify_access_token(), parallelize = FALSE,
-                                      future_plan = "multiprocess") {
+get_artist_audio_features <- function(artist = NULL, include_groups = 'album', return_closest_artist = TRUE,
+                                      dedupe_albums = TRUE, authorization = get_spotify_access_token()) {
 
     artist_ids <- search_spotify(artist, 'artist', authorization = authorization)
 
-    if (return_closest_artist == TRUE) {
+    if (return_closest_artist) {
         artist_id <- artist_ids$id[1]
     }
 
@@ -38,7 +36,14 @@ get_artist_audio_features <- function(artist = NULL, include_groups = "album", r
 
     artist_albums <- artist_albums %>%
         rename(album_id = id,
-               album_name = name)
+               album_name = name) %>%
+        mutate(album_release_year = case_when(release_date_precision == 'year' ~ suppressWarnings(as.numeric(release_date)),
+                                              release_date_precision == 'day' ~ year(as.Date(release_date, '%Y-%m-%d', origin = '1970-01-01')),
+                                              TRUE ~ as.numeric(NA)))
+
+    if (dedupe_albums) {
+        artist_albums <- dedupe_album_names(artist_albums)
+    }
 
     album_tracks <- map_df(artist_albums$album_id, function(this_album_id) {
         album_tracks <- get_album_tracks(this_album_id, include_meta_info = TRUE, authorization = authorization)
@@ -74,13 +79,10 @@ get_artist_audio_features <- function(artist = NULL, include_groups = "album", r
 
     artist_albums %>%
         select(album_id, album_type, album_images = images, album_release_date = release_date,
-               album_release_date_precision = release_date_precision) %>%
+               album_release_year, album_release_date_precision = release_date_precision) %>%
         left_join(track_audio_features, by = 'album_id') %>%
         mutate(key_name = pitch_class_lookup[key + 1],
                mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
-               key_mode = paste(key_name, mode_name),
-               album_release_year = case_when(album_release_date_precision == 'year' ~ as.numeric(album_release_date),
-                                              album_release_date_precision == 'day' ~ year(as.Date(album_release_date, '%Y-%m-%d', origin = '1970-01-01')),
-                                              TRUE ~ as.numeric(NA)))
+               key_mode = paste(key_name, mode_name))
 }
 

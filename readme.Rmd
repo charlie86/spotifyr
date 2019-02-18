@@ -25,7 +25,6 @@ Development version (recommended)
 ```r
 devtools::install_github('charlie86/spotifyr')
 ```
-The development version now includes functions from the `geniusR` package from [Josiah Parry](https://github.com/JosiahParry/geniusR).
 
 CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra time to submit and pass CRAN checks)
 ```r
@@ -115,27 +114,30 @@ ggplot(joy, aes(x = valence, y = album_name)) +
     ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 ```
 
-## Parallelization
-`get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, `get_playlist_tracks()`, and `get_user_playlists()` can run in parallel using the `furrr` package. To enable this feature, set `parallelize = TRUE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan()` (defaults to `"multiprocess"`).
-
 ## Sentify: A Shiny app
 This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.
 
 ## Dope stuff other people have done with spotifyr
 The coolest thing about making this package has definitely been seeing all the awesome stuff other people have done with it. Here are a few examples:
 
-[Sentiment analysis of musical taste: a cross-European comparison](http://paulelvers.com/post/emotionsineuropeanmusic/) - Paul Elvers
+[Exploring the Spotify API with R: A tutorial for beginners, by a beginner](https://msmith7161.github.io/what-is-speechiness/), Mia Smith
 
-[Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin Hudon
+[Sentiment analysis of musical taste: a cross-European comparison](http://paulelvers.com/post/emotionsineuropeanmusic/), Paul Elvers
 
-[KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) - David K. Laing
+[Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin Hudon
 
-[Vilken är Kents mest deprimerande låt? (What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/) - Filip Wästberg
+[KendRick LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/), David K. Laing
 
-[Чёрное зеркало Arcade Fire (Black Mirror Arcade Fire)](http://thesociety.ru/arcadefire) - TheSociety
+[Vilken är Kents mest deprimerande låt? (What is Kent's most depressing song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/), Filip Wästberg
 
-[Sente-se triste quando ouve "Amar pelos dois"? Não é o único (Do you feel sad when you hear "Love for both?" You're not alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico) - Rui Barros, Renascença
+[Чёрное зеркало Arcade Fire (Black Mirror Arcade Fire)](http://thesociety.ru/arcadefire), TheSociety
 
-[Hierarchical clustering of David Bowie records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19) - Alyssa Goldberg
+[Sente-se triste quando ouve "Amar pelos dois"? Não é o único (Do you feel sad when you hear "Love for both?" You're not alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico), Rui Barros, Rádio Renascença
 
-[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3) - Simran Vatsa
+[Using Data to Find the Angriest Death Grips Song](https://towardsdatascience.com/angriest-death-grips-data-anger-502168c1c2f0), Evan Oppenheimer
+
+[Hierarchical clustering of David Bowie records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19), Alyssa Goldberg
+
+[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3), Simran Vatsa
+
+[Long Distance Calling: Data Science meets Post-Rock...](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/), Sebastian Kuhn

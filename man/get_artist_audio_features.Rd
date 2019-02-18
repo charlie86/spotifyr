@@ -5,9 +5,8 @@
 \title{Get audio feature information for all or part of an artists' discography.}
 \usage{
 get_artist_audio_features(artist = NULL, include_groups = "album",
-  return_closest_artist = TRUE,
-  authorization = get_spotify_access_token(), parallelize = FALSE,
-  future_plan = "multiprocess")
+  return_closest_artist = TRUE, dedupe_albums = TRUE,
+  authorization = get_spotify_access_token())
 }
 \arguments{
 \item{artist}{Required. String of either an artist name or an artist Spotify ID. If an artist name is provided, \code{search_spotify()} will be used to find a Spotify ID matching the name provided.}
@@ -21,11 +20,9 @@ For example: \code{include_groups = c("album", "single")}}
 
 \item{return_closest_artist}{Optional. Boolean}
 
+\item{dedupe_albums}{Optional. Boolean}
+
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
-
-\item{parallelize}{Optional. Boolean}
-
-\item{future_plan}{Optional. String}
 }
 \value{
 Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.

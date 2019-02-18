@@ -66,10 +66,6 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
         }
     }
 
-    if (!type %in% c('album', 'artist', 'playlist', 'track')) {
-        stop('"type" must be one or multiple of "album", "artist", "playlist", or "track"')
-    }
-
     params <- list(
         q = str_replace_all(q, ' ', '+'),
         type = paste(type, collapse = ','),

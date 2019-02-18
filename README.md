@@ -23,9 +23,6 @@ Development version (recommended)
 devtools::install_github('charlie86/spotifyr')
 ```
 
-The development version now includes functions from the `geniusR`
-package from [Josiah Parry](https://github.com/JosiahParry/geniusR).
-
 CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra
 time to submit and pass CRAN checks)
 
@@ -76,11 +73,11 @@ beatles %>%
 
 | key\_mode |   n |
 | :-------- | --: |
-| D major   | 313 |
-| C major   | 244 |
-| G major   | 238 |
-| A major   | 195 |
-| A\# major | 139 |
+| D major   | 184 |
+| G major   | 113 |
+| A major   |  76 |
+| C major   |  76 |
+| A minor   |  72 |
 
 ### Get your most recently played tracks
 
@@ -99,28 +96,28 @@ get_my_recently_played(limit = 20) %>%
     kable()
 ```
 
-| track.name                                        | artist.name     | track.album.name             | played\_at          |
-| :------------------------------------------------ | :-------------- | :--------------------------- | :------------------ |
-| Simple Reminder                                   | TOKiMONSTA      | Midnight Menu                | 2018-12-31 23:28:08 |
-| Solitary Joy (feat. Shuanise)                     | TOKiMONSTA      | Midnight Menu                | 2018-12-31 23:23:10 |
-| Lucid Waking                                      | TOKiMONSTA      | Midnight Menu                | 2018-12-31 23:19:50 |
-| Cheese Smoothie                                   | TOKiMONSTA      | Midnight Menu                | 2018-12-31 23:16:44 |
-| Look-a-Like                                       | TOKiMONSTA      | Midnight Menu                | 2018-12-31 23:13:15 |
-| Death by Disco                                    | TOKiMONSTA      | Midnight Menu                | 2018-12-31 23:10:04 |
-| Sa Mo Jung                                        | TOKiMONSTA      | Midnight Menu                | 2018-12-31 23:06:07 |
-| Bibimbap                                          | TOKiMONSTA      | Lune Rouge                   | 2018-12-31 23:02:32 |
-| Amore Napolitano                                  | Mario Lanza     | In Popular Songs             | 2018-12-31 22:59:05 |
-| Time To Say Goodbye (Con Te Partirò)              | Sarah Brightman | Diva: The Singles Collection | 2018-12-30 21:33:05 |
-| Flashback Blues                                   | John Prine      | John Prine                   | 2018-12-30 01:22:11 |
-| Six O’Clock News                                  | John Prine      | John Prine                   | 2018-12-30 01:19:39 |
-| Donald And Lydia                                  | John Prine      | John Prine                   | 2018-12-30 01:16:48 |
-| Quiet Man                                         | John Prine      | John Prine                   | 2018-12-30 01:12:17 |
-| Angel From Montgomery                             | John Prine      | John Prine                   | 2018-12-30 01:09:25 |
-| Far From Me                                       | John Prine      | John Prine                   | 2018-12-30 01:05:40 |
-| Your Flag Decal Won’t Get You Into Heaven Anymore | John Prine      | John Prine                   | 2018-12-30 01:01:59 |
-| Pretty Good                                       | John Prine      | John Prine                   | 2018-12-30 00:59:07 |
-| Paradise                                          | John Prine      | John Prine                   | 2018-12-30 00:55:30 |
-| Sam Stone                                         | John Prine      | John Prine                   | 2018-12-30 00:52:14 |
+| track.name                                  | artist.name        | track.album.name                                     | played\_at          |
+| :------------------------------------------ | :----------------- | :--------------------------------------------------- | :------------------ |
+| Spanish Pipedream                           | John Prine         | John Prine                                           | 2019-02-18 00:28:32 |
+| Call Me                                     | Blondie            | Call Me                                              | 2019-02-17 17:21:00 |
+| Biggest Part Of Me (45 Version)             | Ambrosia           | Biggest Part Of Me / Livin’ On My Own \[Digital 45\] | 2019-02-17 02:15:22 |
+| Let’s Dance - Single Version \[Remastered\] | David Bowie        | Legacy                                               | 2019-02-17 02:12:27 |
+| Everywhere - 2017 Remaster                  | Fleetwood Mac      | Tango In the Night (Deluxe)                          | 2019-02-17 02:11:11 |
+| Heart Of Glass - Special Mix                | Blondie            | Greatest Hits                                        | 2019-02-17 02:07:19 |
+| I Wanna Dance with Somebody (Who Loves Me)  | Whitney Houston    | Whitney                                              | 2019-02-17 02:03:20 |
+| Fly Around My Pretty Little Miss            | Built To Spill     | Ancient Melodies Of The Future                       | 2019-02-17 01:58:22 |
+| The Line                                    | Noah And The Whale | Last Night On Earth                                  | 2019-02-17 01:53:33 |
+| Jolene                                      | Ray LaMontagne     | Trouble                                              | 2019-02-17 01:50:07 |
+| Teen Age Riot (Album Version)               | Sonic Youth        | Daydream Nation (Deluxe Edition)                     | 2019-02-17 01:46:59 |
+| Heartbreaks + Setbacks                      | Thundercat         | Apocalypse                                           | 2019-02-16 22:45:13 |
+| Parisian Goldfish                           | Flying Lotus       | Los Angeles                                          | 2019-02-16 22:42:33 |
+| Putty Boy Strut                             | Flying Lotus       | Until The Quiet Comes                                | 2019-02-16 21:32:14 |
+| Ancestors                                   | Gonjasufi          | A Sufi And A Killer                                  | 2019-02-16 21:29:19 |
+| Jethro                                      | Thundercat         | Drunk                                                | 2019-02-16 21:26:42 |
+| Galaxy In Janaki                            | Flying Lotus       | Cosmogramma                                          | 2019-02-16 21:25:07 |
+| Dear Winter                                 | Smoke Dza          | Sweet Baby Kushed God                                | 2019-02-16 21:22:39 |
+| Beginners Falafel                           | Flying Lotus       | Los Angeles                                          | 2019-02-16 21:20:59 |
+| Descent Into Madness                        | Flying Lotus       | You’re Dead\! (Deluxe)                               | 2019-02-16 21:18:31 |
 
 ### Find your all time favorite artists
 
@@ -133,13 +130,13 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
     kable()
 ```
 
-| name         | genres                                                                                                                |
-| :----------- | :-------------------------------------------------------------------------------------------------------------------- |
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                            |
-| Onra         | alternative hip hop, chillhop, ninja, trip hop, wonky                                                                 |
-| Flying Lotus | alternative hip hop, chillwave, electronic, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
-| Teebs        | abstract beats, bass music, chillwave, indietronica, wonky                                                            |
-| Aphex Twin   | acid techno, ambient, electronic, fourth world, intelligent dance music, trip hop                                     |
+| name         | genres                                                                                                                             |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                         |
+| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                     |
+| Flying Lotus | alternative hip hop, chillwave, electronic, escape room, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
+| Teebs        | abstract beats, bass music, chillwave, wonky                                                                                       |
+| Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, trip hop                                                               |
 
 ### Find your favorite tracks at the moment
 
@@ -150,13 +147,13 @@ get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit =
     kable()
 ```
 
-| name                       | artist.name     | album.name     |
-| :------------------------- | :-------------- | :------------- |
-| Nowhere2go                 | Earl Sweatshirt | Some Rap Songs |
-| Shattered Dreams           | Earl Sweatshirt | Some Rap Songs |
-| The Mint (feat. Navy Blue) | Earl Sweatshirt | Some Rap Songs |
-| The Bends                  | Earl Sweatshirt | Some Rap Songs |
-| December 24                | Earl Sweatshirt | Some Rap Songs |
+| name                                              | artist.name | album.name |
+| :------------------------------------------------ | :---------- | :--------- |
+| Spanish Pipedream                                 | John Prine  | John Prine |
+| Illegal Smile                                     | John Prine  | John Prine |
+| Your Flag Decal Won’t Get You Into Heaven Anymore | John Prine  | John Prine |
+| Holocene                                          | Bon Iver    | Bon Iver   |
+| Pretty Good                                       | John Prine  | John Prine |
 
 ### What’s the most joyful Joy Division song?
 
@@ -165,7 +162,6 @@ positivity.
 
 ``` r
 joy <- get_artist_audio_features('joy division')
-#> Warning in eval_bare(f[[3]], env): NAs introduced by coercion
 ```
 
 ``` r
@@ -176,13 +172,13 @@ joy %>%
     kable()
 ```
 
-| track\_name                        | valence |
-| :--------------------------------- | ------: |
-| These Days - Live                  |   0.949 |
-| Passover - 2007 Remastered Version |   0.941 |
-| Passover - 2007 Remastered Version |   0.941 |
-| Colony - 2007 Remastered Version   |   0.808 |
-| Colony - 2007 Remastered Version   |   0.808 |
+| track\_name                         | valence |
+| :---------------------------------- | ------: |
+| Passover - 2007 Remaster            |   0.941 |
+| Colony - 2007 Remaster              |   0.808 |
+| Atrocity Exhibition - 2007 Remaster |   0.787 |
+| A Means to an End - 2007 Remaster   |   0.752 |
+| Interzone - 2007 Remastered Version |   0.746 |
 
 Now if only there was some way to plot
 joy…
@@ -206,20 +202,10 @@ ggplot(joy, aes(x = valence, y = album_name)) +
     geom_joy() + 
     theme_joy() +
     ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
-#> Picking joint bandwidth of 0.0969
+#> Picking joint bandwidth of 0.106
 ```
 
 ![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
-
-## Parallelization
-
-`get_artist_audio_features()`, `get_artist_albums()`,
-`get_album_tracks()`, `get_playlist_tracks()`, and
-`get_user_playlists()` can run in parallel using the `furrr` package. To
-enable this feature, set `parallelize = TRUE`. You can also adjust the
-evaluation strategy by setting `future_plan`, which accepts a string
-matching one of the strategies implemented in `future::plan()` (defaults
-to `"multiprocess"`).
 
 ## Sentify: A Shiny app
 
@@ -233,33 +219,44 @@ The coolest thing about making this package has definitely been seeing
 all the awesome stuff other people have done with it. Here are a few
 examples:
 
+[Exploring the Spotify API with R: A tutorial for beginners, by a
+beginner](https://msmith7161.github.io/what-is-speechiness/), Mia Smith
+
 [Sentiment analysis of musical taste: a cross-European
-comparison](http://paulelvers.com/post/emotionsineuropeanmusic/) - Paul
+comparison](http://paulelvers.com/post/emotionsineuropeanmusic/), Paul
 Elvers
 
 [Blue Christmas: A data-driven search for the most depressing Christmas
-song](https://caitlinhudon.com/2017/12/22/blue-christmas/) - Caitlin
+song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
 
 [KendRick
-LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/) -
+LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/),
 David K. Laing
 
 [Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
-song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/)
-- Filip Wästberg
+song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/),
+Filip Wästberg
 
 [Чёрное зеркало Arcade Fire (Black Mirror Arcade
-Fire)](http://thesociety.ru/arcadefire) - TheSociety
+Fire)](http://thesociety.ru/arcadefire), TheSociety
 
 [Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you
 feel sad when you hear “Love for both?” You’re not
-alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico)
-- Rui Barros, Renascença
+alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico),
+Rui Barros, Rádio Renascença
+
+[Using Data to Find the Angriest Death Grips
+Song](https://towardsdatascience.com/angriest-death-grips-data-anger-502168c1c2f0),
+Evan Oppenheimer
 
 [Hierarchical clustering of David Bowie
-records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19)
-- Alyssa Goldberg
+records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19),
+Alyssa Goldberg
 
-[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3) - Simran
+[tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3), Simran
 Vatsa
+
+[Long Distance Calling: Data Science meets
+Post-Rock…](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/),
+Sebastian Kuhn
