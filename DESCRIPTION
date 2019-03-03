@@ -15,10 +15,8 @@ Imports:
   httr,
   lubridate,
   jsonlite,
-  furrr,
   readr,
   rvest,
-  future,
   stringr,
   tibble
 License: MIT + file LICENSE

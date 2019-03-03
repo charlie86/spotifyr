@@ -11,9 +11,8 @@
 #' @import dplyr
 #' @import tidyr
 #' @import httr
-#' @import furrr
-#' @import future
 #' @importFrom rvest html_session html_node html_nodes html_text html_attr
+#' @importFrom tibble tribble
 #' @importFrom readr read_lines
 #' @importFrom stringr str_glue str_detect str_replace_all
 #' @importFrom jsonlite fromJSON
@@ -51,6 +50,9 @@ globalVars <- c(
 "uri",
 "album_name_lower",
 "album_type",
+"possible_album",
+"possible_lyrics",
+"disco_audio_feats",
 "data",
 "future_map_df",
 "is_collaboration",
