@@ -2,28 +2,41 @@
 % Please edit documentation in R/playlists.R
 \name{get_playlist_tracks}
 \alias{get_playlist_tracks}
-\title{Get tracks from one or more playlists}
+\title{Get full details of the tracks of a playlist owned by a Spotify user.}
 \usage{
-get_playlist_tracks(playlists, access_token = get_spotify_access_token(),
-  parallelize = FALSE, future_plan = "multiprocess")
+get_playlist_tracks(playlist_id, fields = NULL, limit = 100,
+  offset = 0, market = NULL,
+  authorization = get_spotify_access_token(),
+  include_meta_info = FALSE)
 }
 \arguments{
-\item{playlists}{Dataframe containing the columns `playlist_num_tracks`, `playlist_tracks_url`, `playlist_name`, and `playlist_img`, corresponding to Spotify playlists. Can be output from spotifyr::get_user_playlists()}
+\item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}
 
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{fields}{Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s description and URI: \code{fields = c("description", "uri")}. A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
+\code{fields = "tracks.items(added_at,added_by.id)"}. Use multiple parentheses to drill down into nested objects, for example: \cr
+\code{fields = "tracks.items(track(name,href,album(name,href)))"}. Fields can be excluded by prefixing them with an exclamation mark, for example: \cr
+\code{fields = "tracks.items(track(name,href,album(!name,href)))"}.}
 
-\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{TRUE}.}
+\item{limit}{Optional. \cr
+Maximum number of tracks to return. \cr
+Default: 100 \cr
+Minimum: 1 \cr
+Maximum: 100 \cr}
 
-\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
+\item{offset}{Optional. \cr
+The index of the first track to return. \cr
+Default: 0 (the first object). \cr}
+
+\item{market}{Optional. \cr
+An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
+
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to \code{spotifyr::get_spotify_access_token()}}
+
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+}
+\value{
+Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
-This function returns tracks from a dataframe of playlists on Spotify
+Get full details of the tracks of a playlist owned by a Spotify user.
 }
-\examples{
-\dontrun{
-playlists <- get_user_playlists('barackobama')
-playlist_tracks <- get_playlist_tracks(playlists)
-}
-}
-\keyword{album}
-\keyword{tracks}

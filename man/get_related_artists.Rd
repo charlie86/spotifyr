@@ -2,29 +2,21 @@
 % Please edit documentation in R/artists.R
 \name{get_related_artists}
 \alias{get_related_artists}
-\title{Get Related Artists}
+\title{Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.}
 \usage{
-get_related_artists(artist = NULL, return_closest_artist = TRUE,
-  access_token = get_spotify_access_token())
+get_related_artists(id, authorization = get_spotify_access_token(),
+  include_meta_info = FALSE)
 }
 \arguments{
-\item{artist}{String of artist name or Spotify artist URI}
+\item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.}
 
-\item{return_closest_artist}{Boolean for selecting the artist result with the closest match on Spotify's Search endpoint. Defaults to \code{TRUE}.}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
-\item{access_token}{Spotify Web API token. Defaults to \code{spotifyr::get_spotify_access_token()}.}
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+}
+\value{
+Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
 }
 \description{
-This function searches Spotify's library for artists by name or Spotify URI and returns related artists using Spotify's "Related Artists" API endpoint.
+Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.
 }
-\examples{
-\dontrun{
-get_related_artists('radiohead')
-
-purrr::map_df(vector_of_artist_uris, function(this_artist_uri) {
-    get_related_artists(artist = this_artist_uri)
-})
-}
-}
-\keyword{artists}
-\keyword{related}

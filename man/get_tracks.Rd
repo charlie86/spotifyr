@@ -2,34 +2,25 @@
 % Please edit documentation in R/tracks.R
 \name{get_tracks}
 \alias{get_tracks}
-\title{Get track uris from a string search on Spotify}
+\title{Get Spotify catalog information for a single track identified by its unique Spotify ID.}
 \usage{
-get_tracks(track_name, artist_name = NULL, album_name = NULL,
-  return_closest_track = FALSE,
-  access_token = get_spotify_access_token())
+get_tracks(ids, market = NULL,
+  authorization = get_spotify_access_token(),
+  include_meta_info = FALSE)
 }
 \arguments{
-\item{track_name}{A string with track name}
+\item{ids}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.}
 
-\item{artist_name}{Optional. A string with artist name}
+\item{market}{Optional. \cr
+An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
-\item{album_name}{Optional. A string with album name}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
-\item{return_closest_track}{Optional. A string with album name}
-
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+}
+\value{
+Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
 }
 \description{
-This function takes a string and returns a data frame with track information
-from Spotify's search endpoint
+Get Spotify catalog information for a single track identified by its unique Spotify ID.
 }
-\examples{
-\dontrun{
-##### Get track uri for Radiohead - Kid A
-kid_a <- get_tracks(artist_name = "Radiohead", track_name = "Kid A", return_closest_track = TRUE)
-}
-}
-\keyword{search}
-\keyword{string}
-\keyword{track}
-\keyword{uri}

@@ -25,7 +25,6 @@ Development version (recommended)
 ```r
 devtools::install_github('charlie86/spotifyr')
 ```
-The development version now includes functions from the `geniusR` package from [Josiah Parry](https://github.com/JosiahParry/geniusR).
 
 CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra time to submit and pass CRAN checks)
 ```r
@@ -62,26 +61,31 @@ beatles %>%
 
 ### Get your most recently played tracks
 ```{r}
+library(lubridate)
+
 get_my_recently_played(limit = 5) %>% 
-    select(track_name, artist_name, album_name, played_at_utc) %>% 
+    mutate(artist.name = map_chr(track.artists, function(x) x$name[1]),
+           played_at = as_datetime(played_at)) %>% 
+    select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
 ```
 
 
 ### Find your all time favorite artists
 ```{r}
-get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
-    select(artist_name, artist_genres) %>% 
+get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit = 5) %>% 
+    select(name, genres) %>% 
     rowwise %>% 
-    mutate(artist_genres = paste(artist_genres, collapse = ', ')) %>% 
+    mutate(genres = paste(genres, collapse = ', ')) %>% 
     ungroup %>% 
     kable()
 ```
 
 ### Find your favorite tracks at the moment
 ```{r}
-get_my_top_tracks(time_range = 'short_term', limit = 5) %>% 
-    select(track_name, artist_name, album_name) %>% 
+get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit = 5) %>% 
+    mutate(artist.name = map_chr(artists, function(x) x$name[1])) %>% 
+    select(name, artist.name, album.name) %>% 
     kable()
 ```
 
@@ -109,9 +113,6 @@ ggplot(joy, aes(x = valence, y = album_name)) +
     theme_joy() +
     ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 ```
-
-## Parallelization
-`get_artist_audio_features()`, `get_artist_albums()`, `get_album_tracks()`, `get_playlist_tracks()`, and `get_user_playlists()` can run in parallel using the `furrr` package. To enable this feature, set `parallelize = TRUE`. You can also adjust the evaluation strategy by setting `future_plan`, which accepts a string matching one of the strategies implemented in `future::plan()` (defaults to `"multiprocess"`).
 
 ## Sentify: A Shiny app
 This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.

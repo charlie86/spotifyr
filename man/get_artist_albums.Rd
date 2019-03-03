@@ -2,30 +2,46 @@
 % Please edit documentation in R/artists.R
 \name{get_artist_albums}
 \alias{get_artist_albums}
-\title{Get Artist Albums}
+\title{Get Spotify catalog information for multiple artists identified by their Spotify IDs.}
 \usage{
-get_artist_albums(artist = NULL, album_types = "album",
-  return_closest_artist = TRUE,
-  access_token = get_spotify_access_token(), parallelize = FALSE,
-  future_plan = "multiprocess")
+get_artist_albums(id, include_groups = c("album", "single", "appears_on",
+  "compilation"), market = NULL, limit = 20, offset = 0,
+  authorization = get_spotify_access_token(),
+  include_meta_info = FALSE)
 }
 \arguments{
-\item{artist}{String of artist name or Spotify artist URI}
+\item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.}
 
-\item{album_types}{Character vector of album types to include. Valid values are "album", "single", "appears_on", and "compilation". Defaults to "album".}
+\item{include_groups}{Optional. A character vector of keywords that will be used to filter the response. If not supplied, all album types will be returned. Valid values are: \cr
+\code{"album"} \cr
+\code{"single"} \cr
+\code{"appears_on"} \cr
+\code{"compilation"} \cr
+For example: \code{include_groups = c("album", "single")}}
 
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{market}{Optional. \cr
+An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
+Supply this parameter to limit the response to one particular geographical market. For example, for albums available in Sweden: \code{market = "SE"}. \cr
+If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!}
 
-\item{parallelize}{Boolean determining to run in parallel or not. Defaults to \code{FALSE}.}
+\item{limit}{Optional. \cr
+Maximum number of results to return. \cr
+Default: 20 \cr
+Minimum: 1 \cr
+Maximum: 50 \cr}
 
-\item{future_plan}{String determining how `future()`s are resolved when `parallelize == TRUE`. Defaults to \code{multiprocess}.}
+\item{offset}{Optional. \cr
+The index of the first album to return. \cr
+Default: 0 (i.e., the first album). \cr
+Use with limit to get the next set of albums.}
+
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+}
+\value{
+Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
 }
 \description{
-This function returns an artist's discography on Spotify
+Get Spotify catalog information for multiple artists identified by their Spotify IDs.
 }
-\examples{
-\dontrun{
-albums <- get_artist_albums('radiohead')
-}
-}
-\keyword{albums}

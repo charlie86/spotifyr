@@ -2,34 +2,18 @@
 % Please edit documentation in R/tracks.R
 \name{get_track_audio_features}
 \alias{get_track_audio_features}
-\title{Get audio features from one or more tracks on Spotify}
+\title{Get audio feature information for a single track identified by its unique Spotify ID.}
 \usage{
-get_track_audio_features(tracks,
-  access_token = get_spotify_access_token())
+get_track_audio_features(ids, authorization = get_spotify_access_token())
 }
 \arguments{
-\item{tracks}{May be directly given as a ataframe containing a column `track_uri`, corresponding to Spotify Album URIs.
-Can be output from \code{\link{get_album_tracks}} or \code{\link{get_playlist_tracks}},
-or alternatively as a character vector of valid URIs.}
+\item{ids}{Required. A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} of the tracks. Maximum: 100 IDs.}
 
-\item{access_token}{Spotify Web API token. Defaults to \code{\link{get_spotify_access_token()}}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+}
+\value{
+Returns a data frame of results containing track audio features data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis//} for more information.
 }
 \description{
-This function returns audio features from a dataframe of tracks on Spotify
+Get audio feature information for a single track identified by its unique Spotify ID.
 }
-\examples{
-\dontrun{
-##### Get tracks for all of Radiohead's albums
-albums <- get_artist_albums('radiohead')
-tracks <- get_album_tracks(albums)
-radiohead_audio_features <- get_track_audio_features(tracks)
-
-##### Get tracks for all of Barack Obama's playlists
-playlists <- get_user_playlists('barackobama')
-tracks <- get_playlist_tracks(playlists)
-obama_audio_features <- get_track_audio_features(tracks)
-}
-}
-\keyword{audio}
-\keyword{features}
-\keyword{track}

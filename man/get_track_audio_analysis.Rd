@@ -2,28 +2,18 @@
 % Please edit documentation in R/tracks.R
 \name{get_track_audio_analysis}
 \alias{get_track_audio_analysis}
-\title{Get track audio analysis by URI}
+\title{Get a detailed audio analysis for a single track identified by its unique Spotify ID.}
 \usage{
-get_track_audio_analysis(track_uri,
-  access_token = get_spotify_access_token())
+get_track_audio_analysis(id, authorization = get_spotify_access_token())
 }
 \arguments{
-\item{track_uri}{A string with a track URI}
+\item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.}
 
-\item{access_token}{Spotify Web API token. Defaults to spotifyr::get_spotify_access_token()}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+}
+\value{
+Returns a data frame of results containing track audio analysis data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis//} for more information.
 }
 \description{
-This function takes a track URI and returns a list containing an audio analysis object
-from Spotify's audio analysis endpoint
+Get a detailed audio analysis for a single track identified by its unique Spotify ID.
 }
-\examples{
-\dontrun{
-##### Get track uri for Radiohead - Kid A
-kid_a <- get_tracks(artist_name = "Radiohead", track_name = "Kid A", return_closest_track = TRUE)
-kid_a_audio_analysis <- get_track_audio_analysis(kid_a$track_uri)
-}
-}
-\keyword{search}
-\keyword{string}
-\keyword{track}
-\keyword{uri}

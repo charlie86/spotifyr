@@ -23,9 +23,6 @@ Development version (recommended)
 devtools::install_github('charlie86/spotifyr')
 ```
 
-The development version now includes functions from the `geniusR`
-package from [Josiah Parry](https://github.com/JosiahParry/geniusR).
-
 CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra
 time to submit and pass CRAN checks)
 
@@ -74,64 +71,74 @@ beatles %>%
     kable()
 ```
 
-| key\_mode |  n |
-| :-------- | -: |
-| G major   | 92 |
-| D major   | 89 |
-| C major   | 81 |
-| E major   | 77 |
-| A major   | 72 |
+| key\_mode |   n |
+| :-------- | --: |
+| D major   | 184 |
+| G major   | 113 |
+| A major   |  76 |
+| C major   |  76 |
+| A minor   |  72 |
 
 ### Get your most recently played tracks
 
 ``` r
+library(lubridate)
+#> 
+#> Attaching package: 'lubridate'
+#> The following object is masked from 'package:base':
+#> 
+#>     date
+
 get_my_recently_played(limit = 5) %>% 
-    select(track_name, artist_name, album_name, played_at_utc) %>% 
+    mutate(artist.name = map_chr(track.artists, function(x) x$name[1]),
+           played_at = as_datetime(played_at)) %>% 
+    select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
 ```
 
-| track\_name                                 | artist\_name  | album\_name                                          | played\_at\_utc     |
-| :------------------------------------------ | :------------ | :--------------------------------------------------- | :------------------ |
-| Call Me                                     | Blondie       | Call Me                                              | 2019-02-17 17:21:00 |
-| Biggest Part Of Me (45 Version)             | Ambrosia      | Biggest Part Of Me / Livin’ On My Own \[Digital 45\] | 2019-02-17 02:15:22 |
-| Let’s Dance - Single Version \[Remastered\] | David Bowie   | Legacy                                               | 2019-02-17 02:12:27 |
-| Everywhere - 2017 Remaster                  | Fleetwood Mac | Tango In the Night (Deluxe)                          | 2019-02-17 02:11:11 |
-| Heart Of Glass - Special Mix                | Blondie       | Greatest Hits                                        | 2019-02-17 02:07:19 |
+| track.name                    | artist.name           | track.album.name                                        | played\_at          |
+| :---------------------------- | :-------------------- | :------------------------------------------------------ | :------------------ |
+| Plains                        | Deerhunter            | Why Hasn’t Everything Already Disappeared?              | 2019-03-02 23:59:35 |
+| In the Aeroplane Over the Sea | Neutral Milk Hotel    | In the Aeroplane Over the Sea                           | 2019-03-02 23:57:22 |
+| Harness Your Hopes - b-side   | Pavement              | Brighten The Corners: Nicene Creedence Ed.              | 2019-03-02 23:54:00 |
+| Paranoid Android              | Radiohead             | OK Computer                                             | 2019-03-02 23:50:10 |
+| 1979 - Remastered 2012        | The Smashing Pumpkins | Mellon Collie And The Infinite Sadness (Deluxe Edition) | 2019-03-02 23:47:02 |
 
 ### Find your all time favorite artists
 
 ``` r
-get_my_top_artists(time_range = 'long_term', limit = 5) %>% 
-    select(artist_name, artist_genres) %>% 
+get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit = 5) %>% 
+    select(name, genres) %>% 
     rowwise %>% 
-    mutate(artist_genres = paste(artist_genres, collapse = ', ')) %>% 
+    mutate(genres = paste(genres, collapse = ', ')) %>% 
     ungroup %>% 
     kable()
 ```
 
-| artist\_name | artist\_genres                                                                                                                     |
-| :----------- | :--------------------------------------------------------------------------------------------------------------------------------- |
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                         |
-| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                     |
-| Flying Lotus | alternative hip hop, chillwave, electronic, escape room, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
-| Teebs        | abstract beats, bass music, chillwave, wonky                                                                                       |
-| Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, trip hop                                                               |
+| name         | genres                                                                                                                                      |
+| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                                  |
+| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                              |
+| Flying Lotus | alternative hip hop, chillwave, electronic, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
+| Teebs        | abstract beats, bass music, chillwave, indietronica, wonky                                                                                  |
+| Aphex Twin   | ambient, electronic, intelligent dance music, trip hop                                                                                      |
 
 ### Find your favorite tracks at the moment
 
 ``` r
-get_my_top_tracks(time_range = 'short_term', limit = 5) %>% 
-    select(track_name, artist_name, album_name) %>% 
+get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit = 5) %>% 
+    mutate(artist.name = map_chr(artists, function(x) x$name[1])) %>% 
+    select(name, artist.name, album.name) %>% 
     kable()
 ```
 
-| track\_name                                       | artist\_name | album\_name |
-| :------------------------------------------------ | :----------- | :---------- |
-| Spanish Pipedream                                 | John Prine   | John Prine  |
-| Illegal Smile                                     | John Prine   | John Prine  |
-| Your Flag Decal Won’t Get You Into Heaven Anymore | John Prine   | John Prine  |
-| Holocene                                          | Bon Iver     | Bon Iver    |
-| Pretty Good                                       | John Prine   | John Prine  |
+| name              | artist.name     | album.name     |
+| :---------------- | :-------------- | :------------- |
+| Illegal Smile     | John Prine      | John Prine     |
+| Spanish Pipedream | John Prine      | John Prine     |
+| The Bends         | Earl Sweatshirt | Some Rap Songs |
+| Shattered Dreams  | Earl Sweatshirt | Some Rap Songs |
+| Nowhere2go        | Earl Sweatshirt | Some Rap Songs |
 
 ### What’s the most joyful Joy Division song?
 
@@ -184,16 +191,6 @@ ggplot(joy, aes(x = valence, y = album_name)) +
 ```
 
 ![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
-
-## Parallelization
-
-`get_artist_audio_features()`, `get_artist_albums()`,
-`get_album_tracks()`, `get_playlist_tracks()`, and
-`get_user_playlists()` can run in parallel using the `furrr` package. To
-enable this feature, set `parallelize = TRUE`. You can also adjust the
-evaluation strategy by setting `future_plan`, which accepts a string
-matching one of the strategies implemented in `future::plan()` (defaults
-to `"multiprocess"`).
 
 ## Sentify: A Shiny app
 
