@@ -7,10 +7,8 @@
 #'
 #' @docType package
 #' @name spotifyr
-#' @import purrr
-#' @import dplyr
-#' @import tidyr
-#' @import httr
+#' @importFrom purrr map map_df map2
+#' @importFrom httr RETRY GET accept_json authenticate config content oauth2.0_token oauth_app oauth_endpoint stop_for_status
 #' @importFrom rvest html_session html_node html_nodes html_text html_attr
 #' @importFrom tibble tribble
 #' @importFrom readr read_lines

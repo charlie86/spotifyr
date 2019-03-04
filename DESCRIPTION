@@ -1,5 +1,5 @@
 Package: spotifyr
-Title: R wrapper for the 'Spotify' Web API
+Title: R Wrapper for the 'Spotify' Web API
 Version: 2.0.0
 Authors@R: c(person("Charlie", "Thompson", email = "chuck@rcharlie.com", role = c("aut", "cre")), person("Josiah", "Parry", email = "josiah.parry@yahoo.com", role = "aut"), person("Donal", "Phipps", email = "donal.phipps@gmail.com", role = "aut"), person("Tom", "Wolff", email = "tom.wolff@duke.edu", role = "aut"))
 Description: An R wrapper for pulling data from the 'Spotify' Web API 

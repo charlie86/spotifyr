@@ -94,15 +94,16 @@ get_my_recently_played(limit = 5) %>%
            played_at = as_datetime(played_at)) %>% 
     select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
+#> Auto-refreshing stale OAuth token.
 ```
 
-| track.name                    | artist.name           | track.album.name                                        | played\_at          |
-| :---------------------------- | :-------------------- | :------------------------------------------------------ | :------------------ |
-| Plains                        | Deerhunter            | Why Hasn’t Everything Already Disappeared?              | 2019-03-02 23:59:35 |
-| In the Aeroplane Over the Sea | Neutral Milk Hotel    | In the Aeroplane Over the Sea                           | 2019-03-02 23:57:22 |
-| Harness Your Hopes - b-side   | Pavement              | Brighten The Corners: Nicene Creedence Ed.              | 2019-03-02 23:54:00 |
-| Paranoid Android              | Radiohead             | OK Computer                                             | 2019-03-02 23:50:10 |
-| 1979 - Remastered 2012        | The Smashing Pumpkins | Mellon Collie And The Infinite Sadness (Deluxe Edition) | 2019-03-02 23:47:02 |
+| track.name         | artist.name | track.album.name  | played\_at          |
+| :----------------- | :---------- | :---------------- | :------------------ |
+| Spanish Pipedream  | John Prine  | John Prine        | 2019-03-04 17:24:45 |
+| Every Single Thing | HOMESHAKE   | Fresh Air         | 2019-03-04 15:56:27 |
+| The Way U Do       | Shlohmo     | Vacation - Single | 2019-03-04 15:55:43 |
+| Still Life         | Shlohmo     | Rock Music        | 2019-03-04 15:28:35 |
+| Send Help          | Shlohmo     | Rock Music        | 2019-03-04 15:23:37 |
 
 ### Find your all time favorite artists
 
