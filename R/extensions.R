@@ -25,7 +25,7 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
     artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, authorization = authorization)
     num_loops_artist_albums <- ceiling(artist_albums$total / 20)
     if (num_loops_artist_albums > 1) {
-        res <- map_df(1:num_loops_artist_albums, function(this_loop) {
+        artist_albums <- map_df(1:num_loops_artist_albums, function(this_loop) {
             get_artist_albums(artist_id, include_groups = include_groups, offset = (this_loop - 1) * 20, authorization = authorization)
         })
     } else {
@@ -242,10 +242,9 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
 
     num_loops_user_playlists <- ceiling(user_playlist_info$total / 20)
     if (num_loops_user_playlists > 1) {
-        res <- map_df(1:num_loops_user_playlists, function(this_loop) {
+        user_playlists <- map_df(1:num_loops_user_playlists, function(this_loop) {
             get_user_playlists(username, offset = this_loop * 20, authorization = authorization)
         })
-        user_playlists <- rbind(user_playlist_info$items, res)
     } else {
         user_playlists <- user_playlist_info$items
     }
@@ -258,7 +257,7 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
         this_playlist_tracks <- get_playlist_tracks(this_playlist_id, include_meta_info = TRUE, authorization = authorization)
         num_loops_playlist_tracks <- ceiling(this_playlist_tracks$total / 20)
         if (num_loops_playlist_tracks > 1) {
-            res <- map_df(1:num_loops_playlist_tracks, function(this_loop) {
+            this_playlist_tracks <- map_df(1:num_loops_playlist_tracks, function(this_loop) {
                 get_playlist_tracks(this_playlist_id, offset = (this_loop - 1) * 20, authorization = authorization)
             })
         } else {
