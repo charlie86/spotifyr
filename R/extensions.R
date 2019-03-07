@@ -47,7 +47,7 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
         album_tracks <- get_album_tracks(this_album_id, include_meta_info = TRUE, authorization = authorization)
         num_loops_album_tracks <- ceiling(album_tracks$total / 20)
         if (num_loops_album_tracks > 1) {
-            res <- map_df(1:num_loops_album_tracks, function(this_loop) {
+            album_tracks <- map_df(1:num_loops_album_tracks, function(this_loop) {
                 get_album_tracks(this_album_id, offset = (this_loop - 1) * 20, authorization = authorization)
             })
         } else {
