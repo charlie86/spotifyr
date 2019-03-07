@@ -71,13 +71,13 @@ beatles %>%
     kable()
 ```
 
-| key\_mode |   n |
-| :-------- | --: |
-| D major   | 184 |
-| G major   | 113 |
-| A major   |  76 |
-| C major   |  76 |
-| A minor   |  72 |
+| key\_mode |  n |
+| :-------- | -: |
+| D major   | 24 |
+| G major   | 21 |
+| A major   | 13 |
+| F major   | 12 |
+| C major   | 11 |
 
 ### Get your most recently played tracks
 
@@ -94,16 +94,15 @@ get_my_recently_played(limit = 5) %>%
            played_at = as_datetime(played_at)) %>% 
     select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
-#> Auto-refreshing stale OAuth token.
 ```
 
-| track.name         | artist.name | track.album.name  | played\_at          |
-| :----------------- | :---------- | :---------------- | :------------------ |
-| Spanish Pipedream  | John Prine  | John Prine        | 2019-03-04 17:24:45 |
-| Every Single Thing | HOMESHAKE   | Fresh Air         | 2019-03-04 15:56:27 |
-| The Way U Do       | Shlohmo     | Vacation - Single | 2019-03-04 15:55:43 |
-| Still Life         | Shlohmo     | Rock Music        | 2019-03-04 15:28:35 |
-| Send Help          | Shlohmo     | Rock Music        | 2019-03-04 15:23:37 |
+| track.name    | artist.name  | track.album.name         | played\_at          |
+| :------------ | :----------- | :----------------------- | :------------------ |
+| Gwety Mernans | Aphex Twin   | Drukqs                   | 2019-03-06 23:41:51 |
+| 993           | Blawan       | Nutrition                | 2019-03-06 23:36:42 |
+| Clock Catcher | Flying Lotus | Cosmogramma              | 2019-03-06 23:30:38 |
+| CREP          | Slugabed     | sluga’s secret beat tape | 2019-03-06 23:29:25 |
+| Hype Up       | Machinedrum  | Hype Up                  | 2019-03-06 23:27:15 |
 
 ### Find your all time favorite artists
 
@@ -116,13 +115,13 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
     kable()
 ```
 
-| name         | genres                                                                                                                                      |
-| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                                  |
-| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                              |
-| Flying Lotus | alternative hip hop, chillwave, electronic, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
-| Teebs        | abstract beats, bass music, chillwave, indietronica, wonky                                                                                  |
-| Aphex Twin   | ambient, electronic, intelligent dance music, trip hop                                                                                      |
+| name         | genres                                                                                                                                                   |
+| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                                               |
+| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                           |
+| Flying Lotus | alternative hip hop, chillwave, electronic, escape room, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
+| Teebs        | bass music, chillwave, wonky                                                                                                                             |
+| Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, new rave, trip hop                                                                           |
 
 ### Find your favorite tracks at the moment
 
