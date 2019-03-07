@@ -20,6 +20,7 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
 
     if (return_closest_artist) {
         artist_id <- artist_ids$id[1]
+        artist_name <- artist_ids$name[1]
     }
 
     artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, authorization = authorization)
@@ -75,7 +76,9 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
         left_join(album_tracks, by = 'track_id')
 
     artist_albums %>%
-        select(album_id, album_type, album_images = images, album_release_date = release_date,
+        mutate(artist_name = artist_name,
+               artist_id = artist_id) %>%
+        select(artist_name, artist_id, album_id, album_type, album_images = images, album_release_date = release_date,
                album_release_year, album_release_date_precision = release_date_precision) %>%
         left_join(track_audio_features, by = 'album_id') %>%
         mutate(key_name = pitch_class_lookup[key + 1],

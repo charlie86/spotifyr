@@ -18,7 +18,8 @@ Imports:
   readr,
   rvest,
   stringr,
-  tibble
+  tibble,
+  genius
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
