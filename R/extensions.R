@@ -13,7 +13,6 @@
 #' @return
 #' Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
 #' @export
-
 get_artist_audio_features <- function(artist = NULL, include_groups = 'album', return_closest_artist = TRUE,
                                       dedupe_albums = TRUE, authorization = get_spotify_access_token()) {
 
@@ -24,7 +23,7 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
     }
 
     artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, authorization = authorization)
-    num_loops_artist_albums <- floor(artist_albums$total / 20)
+    num_loops_artist_albums <- ceiling(artist_albums$total / 20)
     if (num_loops_artist_albums > 1) {
         res <- map_df(1:num_loops_artist_albums, function(this_loop) {
             get_artist_albums(artist_id, include_groups = include_groups, offset = this_loop * 20, authorization = authorization)
@@ -47,7 +46,7 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
 
     album_tracks <- map_df(artist_albums$album_id, function(this_album_id) {
         album_tracks <- get_album_tracks(this_album_id, include_meta_info = TRUE, authorization = authorization)
-        num_loops_album_tracks <- floor(album_tracks$total / 20)
+        num_loops_album_tracks <- ceiling(album_tracks$total / 20)
         if (num_loops_album_tracks > 1) {
             res <- map_df(1:num_loops_album_tracks, function(this_loop) {
                 get_album_tracks(this_album_id, offset = this_loop * 20, authorization = authorization)
@@ -226,4 +225,68 @@ get_genre_artists <- function(genre = character(), market = NULL, limit = 20, of
         mutate(genre = genre)
 
     return(res)
+}
+
+#' Get audio feature information for a users' playlists
+#'
+#' @param username Required. String of Spotify username.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @return
+#' Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
+#' @export
+get_user_audio_features <- function(username = NULL, authorization = get_spotify_access_token()) {
+
+    user_playlist_info <- get_user_playlists(username, include_meta_info = TRUE)
+
+    if (user_playlist_info$total == 0) {
+        stop(str_glue('Error: cannot find any public playlists belonging to username {"username"}.'))
+    }
+
+    num_loops_user_playlists <- ceiling(user_playlist_info$total / 20)
+    if (num_loops_user_playlists > 1) {
+        res <- map_df(1:num_loops_user_playlists, function(this_loop) {
+            get_user_playlists(username, offset = this_loop * 20, authorization = authorization)
+        })
+        user_playlists <- rbind(user_playlist_info$items, res)
+    } else {
+        user_playlists <- user_playlist_info$items
+    }
+
+    user_playlists <- user_playlists %>%
+        rename(playlist_id = id,
+               playlist_name = name)
+
+    playlist_tracks <- map_df(user_playlists$playlist_id, function(this_playlist_id) {
+        this_playlist_tracks <- get_playlist_tracks(this_playlist_id, include_meta_info = TRUE, authorization = authorization)
+        num_loops_playlist_tracks <- ceiling(this_playlist_tracks$total / 20)
+        if (num_loops_playlist_tracks > 1) {
+            res <- map_df(1:num_loops_playlist_tracks, function(this_loop) {
+                get_playlist_tracks(this_playlist_id, offset = this_loop * 20, authorization = authorization)
+            })
+            this_playlist_tracks <- rbind(this_playlist_tracks$items, res)
+        } else {
+            this_playlist_tracks <- this_playlist_tracks$items
+        }
+
+        this_playlist_tracks <- this_playlist_tracks %>%
+            mutate(playlist_id = this_playlist_id,
+                   playlist_name = user_playlists$playlist_name[user_playlists$playlist_id == this_playlist_id])
+    })
+
+    dupe_columns <- c('duration_ms', 'type', 'uri', 'track_href')
+
+    num_loops_tracks <- ceiling(nrow(playlist_tracks) / 100)
+    track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
+        get_track_audio_features(playlist_tracks$track.id[((this_loop * 100) - 99):(this_loop * 100)], authorization = authorization)
+    }) %>%
+        select(-dupe_columns) %>%
+        rename(track.id = id) %>%
+        left_join(playlist_tracks, by = 'track.id') %>%
+        select(-c(playlist_name, primary_color))
+
+    user_playlists %>%
+        left_join(track_audio_features, by = 'playlist_id') %>%
+        mutate(key_name = pitch_class_lookup[key + 1],
+               mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
+               key_mode = paste(key_name, mode_name))
 }

@@ -123,7 +123,6 @@ get_my_playlists <- function(limit = 20, offset = 0, authorization = get_spotify
 #' @return
 #' Returns a data frame of results containing user playlist information. See the official \href{https://developer.spotify.com/documentation/web-api/reference/playlists/get-list-users-playlists/}{Spotify Web API documentation} for more information.
 #' @export
-
 get_user_playlists <- function(user_id, limit = 20, offset = 0, authorization = get_spotify_authorization_code(), include_meta_info = FALSE) {
     base_url <- 'https://api.spotify.com/v1/users'
     url <- str_glue('{base_url}/{user_id}/playlists')
