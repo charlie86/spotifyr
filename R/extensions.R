@@ -26,9 +26,8 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
     num_loops_artist_albums <- ceiling(artist_albums$total / 20)
     if (num_loops_artist_albums > 1) {
         res <- map_df(1:num_loops_artist_albums, function(this_loop) {
-            get_artist_albums(artist_id, include_groups = include_groups, offset = this_loop * 20, authorization = authorization)
+            get_artist_albums(artist_id, include_groups = include_groups, offset = (this_loop - 1) * 20, authorization = authorization)
         })
-        artist_albums <- rbind(artist_albums$items, res)
     } else {
         artist_albums <- artist_albums$items
     }
@@ -49,9 +48,8 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
         num_loops_album_tracks <- ceiling(album_tracks$total / 20)
         if (num_loops_album_tracks > 1) {
             res <- map_df(1:num_loops_album_tracks, function(this_loop) {
-                get_album_tracks(this_album_id, offset = this_loop * 20, authorization = authorization)
+                get_album_tracks(this_album_id, offset = (this_loop - 1) * 20, authorization = authorization)
             })
-            album_tracks <- rbind(album_tracks$items, res)
         } else {
             album_tracks <- album_tracks$items
         }
@@ -261,9 +259,8 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
         num_loops_playlist_tracks <- ceiling(this_playlist_tracks$total / 20)
         if (num_loops_playlist_tracks > 1) {
             res <- map_df(1:num_loops_playlist_tracks, function(this_loop) {
-                get_playlist_tracks(this_playlist_id, offset = this_loop * 20, authorization = authorization)
+                get_playlist_tracks(this_playlist_id, offset = (this_loop - 1) * 20, authorization = authorization)
             })
-            this_playlist_tracks <- rbind(this_playlist_tracks$items, res)
         } else {
             this_playlist_tracks <- this_playlist_tracks$items
         }

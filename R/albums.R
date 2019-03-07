@@ -104,6 +104,8 @@ get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, authoriz
 
     params <- list(
         market = market,
+        offset = offset,
+        limit = limit,
         access_token = authorization
     )
     url <- str_glue('{base_url}/{id}/tracks')
