@@ -38,7 +38,6 @@ get_album_data <- function(artist, albums = character(), authorization = get_spo
 
     # Acquire the lyrics for each track
     album_data <- artist_disco %>%
-        left_join(disco_audio_feats, by = 'track_uri') %>%
         left_join(album_lyrics, by = c('album_name', 'track_n'))
 
     return(album_data)
