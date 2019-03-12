@@ -43,6 +43,15 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 access_token <- get_spotify_access_token()
 ```
 
+#### Authorization code flow
+For certain functions and applications, you'll need to log in as a Spotify user. To do this, your Spotify Developer application needs to have a callback url. You can set this to whatever you want that will work with your application, but a good default option is `http://localhost:1410/` (see image below). For more information on authorization, visit the offical [Spotify Developer Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
+
+
+```{r, out.width = "75%", echo = FALSE}
+knitr::include_graphics('man/figures/spotifyr_auth_screenshot.png')
+```
+
+
 ## Usage
 ### What was The Beatles' favorite key?
 ```{r load_packages, message = FALSE, warning = FALSE, results = 'hide'}
@@ -60,7 +69,7 @@ beatles %>%
 ```
 
 ### Get your most recently played tracks
-```{r}
+```{r, message = FALSE}
 library(lubridate)
 
 get_my_recently_played(limit = 5) %>% 

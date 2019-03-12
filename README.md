@@ -52,6 +52,18 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 access_token <- get_spotify_access_token()
 ```
 
+#### Authorization code flow
+
+For certain functions and applications, you’ll need to log in as a
+Spotify user. To do this, your Spotify Developer application needs to
+have a callback url. You can set this to whatever you want that will
+work with your application, but a good default option is
+`http://localhost:1410/` (see image below). For more information on
+authorization, visit the offical [Spotify Developer
+Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
+
+<img src="man/figures/spotifyr_auth_screenshot.png" width="75%" />
+
 ## Usage
 
 ### What was The Beatles’ favorite key?
@@ -83,18 +95,12 @@ beatles %>%
 
 ``` r
 library(lubridate)
-#> 
-#> Attaching package: 'lubridate'
-#> The following object is masked from 'package:base':
-#> 
-#>     date
 
 get_my_recently_played(limit = 5) %>% 
     mutate(artist.name = map_chr(track.artists, function(x) x$name[1]),
            played_at = as_datetime(played_at)) %>% 
     select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
-#> Auto-refreshing stale OAuth token.
 ```
 
 | track.name                | artist.name | track.album.name | played\_at          |
@@ -180,7 +186,7 @@ ggplot(joy, aes(x = valence, y = album_name)) +
     ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 ```
 
-![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-10-1.png)<!-- -->
 
 ## Sentify: A Shiny app
 
