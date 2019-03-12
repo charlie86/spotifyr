@@ -94,15 +94,16 @@ get_my_recently_played(limit = 5) %>%
            played_at = as_datetime(played_at)) %>% 
     select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
+#> Auto-refreshing stale OAuth token.
 ```
 
-| track.name    | artist.name  | track.album.name         | played\_at          |
-| :------------ | :----------- | :----------------------- | :------------------ |
-| Gwety Mernans | Aphex Twin   | Drukqs                   | 2019-03-06 23:41:51 |
-| 993           | Blawan       | Nutrition                | 2019-03-06 23:36:42 |
-| Clock Catcher | Flying Lotus | Cosmogramma              | 2019-03-06 23:30:38 |
-| CREP          | Slugabed     | sluga’s secret beat tape | 2019-03-06 23:29:25 |
-| Hype Up       | Machinedrum  | Hype Up                  | 2019-03-06 23:27:15 |
+| track.name                | artist.name | track.album.name | played\_at          |
+| :------------------------ | :---------- | :--------------- | :------------------ |
+| Dollars & Cents           | Radiohead   | Amnesiac         | 2019-03-11 23:16:24 |
+| Morning Bell/Amnesiac     | Radiohead   | Amnesiac         | 2019-03-11 23:14:29 |
+| Pulk/Pull Revolving Doors | Radiohead   | Amnesiac         | 2019-03-11 23:11:14 |
+| Pyramid Song              | Radiohead   | Amnesiac         | 2019-03-11 23:07:06 |
+| Treefingers               | Radiohead   | Kid A            | 2019-03-11 23:02:17 |
 
 ### Find your all time favorite artists
 
@@ -117,10 +118,10 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
 
 | name         | genres                                                                                                                                                   |
 | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, permanent wave, rock                                                                               |
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, oxford indie, permanent wave, rock                                                                 |
 | Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                           |
 | Flying Lotus | alternative hip hop, chillwave, electronic, escape room, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
-| Teebs        | bass music, chillwave, wonky                                                                                                                             |
+| Teebs        | abstract beats, bass music, chillwave, wonky                                                                                                             |
 | Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, new rave, trip hop                                                                           |
 
 ### Find your favorite tracks at the moment
@@ -132,13 +133,13 @@ get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit =
     kable()
 ```
 
-| name              | artist.name     | album.name     |
-| :---------------- | :-------------- | :------------- |
-| Illegal Smile     | John Prine      | John Prine     |
-| Spanish Pipedream | John Prine      | John Prine     |
-| The Bends         | Earl Sweatshirt | Some Rap Songs |
-| Shattered Dreams  | Earl Sweatshirt | Some Rap Songs |
-| Nowhere2go        | Earl Sweatshirt | Some Rap Songs |
+| name             | artist.name     | album.name     |
+| :--------------- | :-------------- | :------------- |
+| Illegal Smile    | John Prine      | John Prine     |
+| Shattered Dreams | Earl Sweatshirt | Some Rap Songs |
+| The Bends        | Earl Sweatshirt | Some Rap Songs |
+| December 24      | Earl Sweatshirt | Some Rap Songs |
+| Loosie           | Earl Sweatshirt | Some Rap Songs |
 
 ### What’s the most joyful Joy Division song?
 
@@ -172,22 +173,11 @@ joy…
 
 ``` r
 library(ggjoy)
-#> Loading required package: ggridges
-#> 
-#> Attaching package: 'ggridges'
-#> The following object is masked from 'package:ggplot2':
-#> 
-#>     scale_discrete_manual
-#> The ggjoy package has been deprecated. Please switch over to the
-#> ggridges package, which provides the same functionality. Porting
-#> guidelines can be found here:
-#> https://github.com/clauswilke/ggjoy/blob/master/README.md
 
 ggplot(joy, aes(x = valence, y = album_name)) + 
     geom_joy() + 
     theme_joy() +
     ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
-#> Picking joint bandwidth of 0.106
 ```
 
 ![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->

@@ -105,7 +105,7 @@ joy %>%
 Now if only there was some way to plot joy...
 
 ### Joyplot of the emotional rollercoasters that are Joy Division's albums
-```{r}
+```{r, message = FALSE}
 library(ggjoy)
 
 ggplot(joy, aes(x = valence, y = album_name)) + 
