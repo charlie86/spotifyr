@@ -69,7 +69,10 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
 
     num_loops_tracks <- ceiling(nrow(album_tracks) / 100)
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
-        get_track_audio_features(album_tracks$track_id[((this_loop * 100) - 99):(this_loop * 100)], authorization = authorization)
+        track_ids <- album_tracks %>%
+            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
+            pull(track_id)
+        get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
         select(-dupe_columns) %>%
         rename(track_id = id) %>%
@@ -276,7 +279,10 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
 
     num_loops_tracks <- ceiling(nrow(playlist_tracks) / 100)
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
-        get_track_audio_features(playlist_tracks$track.id[((this_loop * 100) - 99):(this_loop * 100)], authorization = authorization)
+        track_ids <- playlist_tracks %>%
+            slice(playlist_tracks$track.id[((this_loop * 100) - 99):(this_loop * 100)]) %>%
+            pull(track.id)
+        get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
         select(-dupe_columns) %>%
         rename(track.id = id) %>%
@@ -288,4 +294,56 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
         mutate(key_name = pitch_class_lookup[key + 1],
                mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
                key_mode = paste(key_name, mode_name))
+}
+
+#' Get features and popularity for all of a given set of playlists on Spotify
+#'
+#' This function returns the popularity and audio features for every song for a given set of playlists on Spotify
+#' @param username String of Spotify username. Can be found on the Spotify app.
+#' @param playlist_uris Character vector of Spotify playlist uris. Can be found within the Spotify App
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @keywords track audio features playlists
+#' @export
+#' @examples
+#' \dontrun{
+#' playlist_username <- 'spotify'
+#' playlist_uris <- c('37i9dQZF1E9T1oFsQFg98K', '37i9dQZF1CyQNOI21QVf3p')
+#' playlist_audio_features <- get_playlist_audio_features(playlist_username, playlist_uris)
+#' }
+
+get_playlist_audio_features <- function(username, playlist_uris, authorization = get_spotify_access_token()) {
+
+    playlist_tracks <- map_df(playlist_uris, function(playlist_uri) {
+        this_playlist <- get_playlist(playlist_uri)
+        n_tracks <- this_playlist$tracks$total
+        num_loops <- ceiling(n_tracks / 100)
+        map_df(1:num_loops, function(this_loop) {
+            get_playlist_tracks(tmp$id, limit = 100, offset = (this_loop - 1) * 100, authorization = authorization) %>%
+                mutate(playlist_id = this_playlist$id,
+                       playlist_name = this_playlist$name,
+                       playlist_img = this_playlist$images$url[[1]],
+                       playlist_owner_name = this_playlist$owner$display_name,
+                       playlist_owner_id = this_playlist$owner$id)
+        })
+    })
+
+    dupe_columns <- c('duration_ms', 'type', 'uri', 'track_href')
+
+    num_loops_tracks <- ceiling(nrow(playlist_tracks) / 100)
+    track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
+        track_ids <- playlist_tracks %>%
+            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
+            pull(track.id)
+        get_track_audio_features(track_ids, authorization = authorization)
+    }) %>% select(-dupe_columns) %>%
+        rename(track.id = id)
+
+    playlist_audio_features <- track_audio_features %>%
+        left_join(playlist_tracks, by = 'track.id') %>%
+        mutate(key_name = pitch_class_lookup[key + 1],
+               mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
+               key_mode = paste(key_name, mode_name)) %>%
+        select(playlist_id, playlist_name, playlist_img, playlist_owner_name, playlist_owner_id, everything())
+
+    return(playlist_audio_features)
 }

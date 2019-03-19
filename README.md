@@ -17,17 +17,16 @@ information for a given Spotify User (including yourself\!).
 
 ## Installation
 
-Development version (recommended)
-
-``` r
-devtools::install_github('charlie86/spotifyr')
-```
-
-CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra
-time to submit and pass CRAN checks)
+CRAN version 2.1.0 (recommended)
 
 ``` r
 install.packages('spotifyr')
+```
+
+Development version
+
+``` r
+devtools::install_github('charlie86/spotifyr')
 ```
 
 ## Authentication
@@ -62,7 +61,7 @@ work with your application, but a good default option is
 authorization, visit the offical [Spotify Developer
 Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
 
-<img src="man/figures/spotifyr_auth_screenshot.png" width="75%" />
+<img src="man/figures/spotifyr_auth_screenshot.png" width="50%" />
 
 ## Usage
 
@@ -103,13 +102,13 @@ get_my_recently_played(limit = 5) %>%
     kable()
 ```
 
-| track.name                | artist.name | track.album.name | played\_at          |
-| :------------------------ | :---------- | :--------------- | :------------------ |
-| Dollars & Cents           | Radiohead   | Amnesiac         | 2019-03-11 23:16:24 |
-| Morning Bell/Amnesiac     | Radiohead   | Amnesiac         | 2019-03-11 23:14:29 |
-| Pulk/Pull Revolving Doors | Radiohead   | Amnesiac         | 2019-03-11 23:11:14 |
-| Pyramid Song              | Radiohead   | Amnesiac         | 2019-03-11 23:07:06 |
-| Treefingers               | Radiohead   | Kid A            | 2019-03-11 23:02:17 |
+| track.name             | artist.name  | track.album.name      | played\_at          |
+| :--------------------- | :----------- | :-------------------- | :------------------ |
+| Fat Lip                | Sum 41       | All Killer, No Filler | 2019-03-14 21:41:36 |
+| Mask Off               | Future       | FUTURE                | 2019-03-14 21:36:17 |
+| Comet                  | Flying Lotus | L.A. EP 3 X 3         | 2019-03-14 21:33:19 |
+| Infinitum - Re-finitum | Flying Lotus | L.A. EP 3 X 3         | 2019-03-14 21:31:17 |
+| Audio Track 5          | Actress      | Audio Track 5         | 2019-03-14 21:23:43 |
 
 ### Find your all time favorite artists
 
@@ -128,7 +127,7 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
 | Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                           |
 | Flying Lotus | alternative hip hop, chillwave, electronic, escape room, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
 | Teebs        | abstract beats, bass music, chillwave, wonky                                                                                                             |
-| Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, new rave, trip hop                                                                           |
+| Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, trip hop                                                                                     |
 
 ### Find your favorite tracks at the moment
 
@@ -145,7 +144,7 @@ get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit =
 | Shattered Dreams | Earl Sweatshirt | Some Rap Songs |
 | The Bends        | Earl Sweatshirt | Some Rap Songs |
 | December 24      | Earl Sweatshirt | Some Rap Songs |
-| Loosie           | Earl Sweatshirt | Some Rap Songs |
+| Cold Summers     | Earl Sweatshirt | Some Rap Songs |
 
 ### What’s the most joyful Joy Division song?
 

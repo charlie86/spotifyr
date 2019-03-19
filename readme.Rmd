@@ -21,14 +21,14 @@ knitr::opts_chunk$set(
 spotifyr is a wrapper for pulling track audio features and other information from Spotify's Web API in bulk. By automatically batching API requests, it allows you to enter an artist's name and retrieve their entire discography in seconds, along with Spotify's audio features and track/album popularity metrics. You can also pull song and playlist information for a given Spotify User (including yourself!).
 
 ## Installation
-Development version (recommended)
-```r
-devtools::install_github('charlie86/spotifyr')
-```
-
-CRAN version 1.0.0 (Note: this is somewhat outdated, as it takes extra time to submit and pass CRAN checks)
+CRAN version 2.1.0 (recommended)
 ```r
 install.packages('spotifyr')
+```
+
+Development version
+```r
+devtools::install_github('charlie86/spotifyr')
 ```
 
 ## Authentication
@@ -47,7 +47,7 @@ access_token <- get_spotify_access_token()
 For certain functions and applications, you'll need to log in as a Spotify user. To do this, your Spotify Developer application needs to have a callback url. You can set this to whatever you want that will work with your application, but a good default option is `http://localhost:1410/` (see image below). For more information on authorization, visit the offical [Spotify Developer Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
 
 
-```{r, out.width = "75%", echo = FALSE}
+```{r, out.width = "50%", echo = FALSE}
 knitr::include_graphics('man/figures/spotifyr_auth_screenshot.png')
 ```
 
