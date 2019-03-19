@@ -8,7 +8,7 @@
 
 ## Overview
 
-spotifyr is a wrapper for pulling track audio features and other
+spotifyr is an R wrapper for pulling track audio features and other
 information from Spotify’s Web API in bulk. By automatically batching
 API requests, it allows you to enter an artist’s name and retrieve their
 entire discography in seconds, along with Spotify’s audio features and
@@ -102,13 +102,13 @@ get_my_recently_played(limit = 5) %>%
     kable()
 ```
 
-| track.name             | artist.name  | track.album.name      | played\_at          |
-| :--------------------- | :----------- | :-------------------- | :------------------ |
-| Fat Lip                | Sum 41       | All Killer, No Filler | 2019-03-14 21:41:36 |
-| Mask Off               | Future       | FUTURE                | 2019-03-14 21:36:17 |
-| Comet                  | Flying Lotus | L.A. EP 3 X 3         | 2019-03-14 21:33:19 |
-| Infinitum - Re-finitum | Flying Lotus | L.A. EP 3 X 3         | 2019-03-14 21:31:17 |
-| Audio Track 5          | Actress      | Audio Track 5         | 2019-03-14 21:23:43 |
+| track.name                                               | artist.name | track.album.name      | played\_at          |
+| :------------------------------------------------------- | :---------- | :-------------------- | :------------------ |
+| Finally We Are No One                                    | múm         | Finally We Are No One | 2019-03-19 19:59:23 |
+| I Can’t Feel My Hand Any More, It’s Alright, Sleep Still | múm         | Finally We Are No One | 2019-03-19 19:54:15 |
+| Faraway Swimmingpool                                     | múm         | Finally We Are No One | 2019-03-19 19:48:35 |
+| Now There’s That Fear Again                              | múm         | Finally We Are No One | 2019-03-19 19:45:38 |
+| K/Half Noise                                             | múm         | Finally We Are No One | 2019-03-19 19:41:42 |
 
 ### Find your all time favorite artists
 
@@ -124,8 +124,8 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
 | name         | genres                                                                                                                                                   |
 | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Radiohead    | alternative rock, art rock, melancholia, modern rock, oxford indie, permanent wave, rock                                                                 |
-| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                           |
 | Flying Lotus | alternative hip hop, chillwave, electronic, escape room, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
+| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                           |
 | Teebs        | abstract beats, bass music, chillwave, wonky                                                                                                             |
 | Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, trip hop                                                                                     |
 
@@ -138,13 +138,13 @@ get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit =
     kable()
 ```
 
-| name             | artist.name     | album.name     |
-| :--------------- | :-------------- | :------------- |
-| Illegal Smile    | John Prine      | John Prine     |
-| Shattered Dreams | Earl Sweatshirt | Some Rap Songs |
-| The Bends        | Earl Sweatshirt | Some Rap Songs |
-| December 24      | Earl Sweatshirt | Some Rap Songs |
-| Cold Summers     | Earl Sweatshirt | Some Rap Songs |
+| name               | artist.name           | album.name         |
+| :----------------- | :-------------------- | :----------------- |
+| Illegal Smile      | John Prine            | John Prine         |
+| Shattered Dreams   | Earl Sweatshirt       | Some Rap Songs     |
+| December 24        | Earl Sweatshirt       | Some Rap Songs     |
+| Cold Summers       | Earl Sweatshirt       | Some Rap Songs     |
+| Are You a Glacier? | Salami Rose Joe Louis | Zlaty Sauce Nephew |
 
 ### What’s the most joyful Joy Division song?
 
