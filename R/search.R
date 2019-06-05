@@ -39,14 +39,6 @@
 #' }
 search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, authorization = get_spotify_access_token()) {
 
-    q <- 'joy division'
-    type = 'artist'
-    market = NULL
-    limit = 20
-    offset = 0
-    include_external = NULL
-    authorization = get_spotify_access_token()
-
     base_url <- 'https://api.spotify.com/v1/search'
 
     if (!is.character(q)) {
