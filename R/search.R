@@ -2,8 +2,7 @@
 #'
 #' Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string. For more information see the official \href{https://developer.spotify.com/documentation/web-api/reference/search/search/}{documentation}.
 #' @param q Required. \cr
-#' Search query keywords and optional field filters and operators. \cr
-#' For example: \code{q = "roadhouse+blues"}.
+#' Search query keywords and optional field filters and operators.
 #' @param type A character vector of item types to search across. \cr
 #' Valid types are \code{album}, \code{artist}, \code{playlist}, and \code{track}. \cr
 #' Search results include hits from all the specified item types. \cr
@@ -40,6 +39,14 @@
 #' }
 search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, authorization = get_spotify_access_token()) {
 
+    q <- 'joy division'
+    type = 'artist'
+    market = NULL
+    limit = 20
+    offset = 0
+    include_external = NULL
+    authorization = get_spotify_access_token()
+
     base_url <- 'https://api.spotify.com/v1/search'
 
     if (!is.character(q)) {
@@ -67,7 +74,7 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
     }
 
     params <- list(
-        q = str_replace_all(q, ' ', '+'),
+        q = q,
         type = paste(type, collapse = ','),
         market = market,
         limit = limit,
