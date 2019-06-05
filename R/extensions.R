@@ -318,7 +318,7 @@ get_playlist_audio_features <- function(username, playlist_uris, authorization =
         n_tracks <- this_playlist$tracks$total
         num_loops <- ceiling(n_tracks / 100)
         map_df(1:num_loops, function(this_loop) {
-            get_playlist_tracks(tmp$id, limit = 100, offset = (this_loop - 1) * 100, authorization = authorization) %>%
+            get_playlist_tracks(this_playlist$id, limit = 100, offset = (this_loop - 1) * 100, authorization = authorization) %>%
                 mutate(playlist_id = this_playlist$id,
                        playlist_name = this_playlist$name,
                        playlist_img = this_playlist$images$url[[1]],
