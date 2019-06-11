@@ -67,6 +67,11 @@ globalVars <- c(
 "track_url",
 "volume",
 "primary_color",
+"track_id",
+"track.id",
+"playlist_id",
+"playlist_owner_name",
+"playlist_owner_id",
 ".")
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines

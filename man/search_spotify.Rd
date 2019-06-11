@@ -10,8 +10,7 @@ search_spotify(q, type = c("album", "artist", "playlist", "track"),
 }
 \arguments{
 \item{q}{Required. \cr
-Search query keywords and optional field filters and operators. \cr
-For example: \code{q = "roadhouse+blues"}.}
+Search query keywords and optional field filters and operators.}
 
 \item{type}{A character vector of item types to search across. \cr
 Valid types are \code{album}, \code{artist}, \code{playlist}, and \code{track}. \cr
