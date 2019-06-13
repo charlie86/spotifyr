@@ -211,7 +211,7 @@ song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
 
 [KendRick
-LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/),
+LamaR](https://davidklaing.com/blog/2017/05/07/kendrick-lamar-data-science.html),
 David K. Laing
 
 [Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
