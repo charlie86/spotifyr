@@ -102,13 +102,13 @@ get_my_recently_played(limit = 5) %>%
     kable()
 ```
 
-| track.name                                               | artist.name | track.album.name      | played\_at          |
-| :------------------------------------------------------- | :---------- | :-------------------- | :------------------ |
-| Finally We Are No One                                    | múm         | Finally We Are No One | 2019-03-19 19:59:23 |
-| I Can’t Feel My Hand Any More, It’s Alright, Sleep Still | múm         | Finally We Are No One | 2019-03-19 19:54:15 |
-| Faraway Swimmingpool                                     | múm         | Finally We Are No One | 2019-03-19 19:48:35 |
-| Now There’s That Fear Again                              | múm         | Finally We Are No One | 2019-03-19 19:45:38 |
-| K/Half Noise                                             | múm         | Finally We Are No One | 2019-03-19 19:41:42 |
+| track.name                                 | artist.name | track.album.name | played\_at          |
+| :----------------------------------------- | :---------- | :--------------- | :------------------ |
+| Hardened Chord - Regis Remix               | Stave       | After the Social | 2019-07-12 19:04:29 |
+| Cells                                      | Blenk       | Shelter          | 2019-07-12 18:57:59 |
+| Suspension Of Consciousness - Original mix | Flaminia    | THEOTHERSIDE 01  | 2019-07-12 18:52:32 |
+| Kerala                                     | Bonobo      | Migration        | 2019-07-12 18:46:58 |
+| Linked                                     | Bonobo      | Linked           | 2019-07-12 18:45:31 |
 
 ### Find your all time favorite artists
 
@@ -121,13 +121,13 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
     kable()
 ```
 
-| name         | genres                                                                                                                                                   |
-| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, oxford indie, permanent wave, rock                                                                 |
-| Flying Lotus | alternative hip hop, chillwave, electronic, escape room, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, wonky |
-| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                           |
-| Teebs        | abstract beats, bass music, chillwave, wonky                                                                                                             |
-| Aphex Twin   | ambient, electronic, fourth world, intelligent dance music, trip hop                                                                                     |
+| name         | genres                                                                                                                                         |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| Radiohead    | alternative rock, art rock, melancholia, modern rock, oxford indie, permanent wave, rock                                                       |
+| Flying Lotus | alternative hip hop, escape room, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, jazztronica, wonky |
+| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                 |
+| Teebs        | abstract beats, bass music, chillwave, wonky                                                                                                   |
+| Pixies       | alternative rock, boston rock, garage rock, indie rock, modern rock, new wave, noise pop, permanent wave, rock                                 |
 
 ### Find your favorite tracks at the moment
 
@@ -138,13 +138,13 @@ get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit =
     kable()
 ```
 
-| name               | artist.name           | album.name         |
-| :----------------- | :-------------------- | :----------------- |
-| Illegal Smile      | John Prine            | John Prine         |
-| Shattered Dreams   | Earl Sweatshirt       | Some Rap Songs     |
-| December 24        | Earl Sweatshirt       | Some Rap Songs     |
-| Cold Summers       | Earl Sweatshirt       | Some Rap Songs     |
-| Are You a Glacier? | Salami Rose Joe Louis | Zlaty Sauce Nephew |
+| name                    | artist.name | album.name |
+| :---------------------- | :---------- | :--------- |
+| Impossible Knots        | Thom Yorke  | ANIMA      |
+| I Am a Very Rude Person | Thom Yorke  | ANIMA      |
+| Traffic                 | Thom Yorke  | ANIMA      |
+| Not The News            | Thom Yorke  | ANIMA      |
+| Runwayaway              | Thom Yorke  | ANIMA      |
 
 ### What’s the most joyful Joy Division song?
 
@@ -169,7 +169,7 @@ joy %>%
 | Colony - 2007 Remaster              |   0.808 |
 | Atrocity Exhibition - 2007 Remaster |   0.787 |
 | A Means to an End - 2007 Remaster   |   0.752 |
-| Interzone - 2007 Remastered Version |   0.746 |
+| Interzone - 2007 Remaster           |   0.746 |
 
 Now if only there was some way to plot
 joy…
@@ -211,7 +211,7 @@ song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
 
 [KendRick
-LamaR](https://davidklaing.github.io/kendrick-lamar-data-science/),
+LamaR](https://davidklaing.com/blog/2017/05/07/kendrick-lamar-data-science.html),
 David K. Laing
 
 [Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
