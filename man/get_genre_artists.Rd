@@ -31,7 +31,7 @@ Default: 0 (the first result). \cr
 Maximum offset (including limit): 10,000. \cr
 Use with limit to get the next page of search results.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \description{
 Get Spotify Catalog information about artists belonging to a given genre

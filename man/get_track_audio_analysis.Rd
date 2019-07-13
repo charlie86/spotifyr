@@ -9,7 +9,7 @@ get_track_audio_analysis(id, authorization = get_spotify_access_token())
 \arguments{
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
 Returns a data frame of results containing track audio analysis data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/} for more information.

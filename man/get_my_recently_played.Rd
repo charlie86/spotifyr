@@ -15,7 +15,7 @@ get_my_recently_played(limit = 20, after = NULL, before = NULL,
 
 \item{before}{Optional. A Unix timestamp in milliseconds. Returns all items before (but not including) this cursor position. If \code{before} is specified, \code{after} must not be specified.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"before"}, \code{"after"}, and \code{"limit"}. Defaults to \code{FALSE}.
 The access token must have the \code{user-read-recently-played} scope authorized in order to read the user's recently played tracks.}

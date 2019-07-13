@@ -111,7 +111,7 @@ get_artist_audio_features <- function(artist = NULL, include_groups = 'album', r
 #' Default: 0 (the first result). \cr
 #' Maximum offset (including limit): 10,000. \cr
 #' Use with limit to get the next page of search results.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search label artist
 #' @export
 #' @examples
@@ -182,7 +182,7 @@ get_label_artists <- function(label = character(), market = NULL, limit = 20, of
 #' Default: 0 (the first result). \cr
 #' Maximum offset (including limit): 10,000. \cr
 #' Use with limit to get the next page of search results.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search label artist
 #' @export
 #' @examples

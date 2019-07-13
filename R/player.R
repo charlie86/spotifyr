@@ -1,7 +1,7 @@
 #' Get the object currently being played on the user’s Spotify account.
 #'
 #' @param market An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' The access token must have the \code{user-read-currently-playing} and/or \code{user-read-playback-state} scope authorized in order to read information.
 #' @return
 #' Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
@@ -21,7 +21,7 @@ get_my_currently_playing <- function(market = NULL, authorization = get_spotify_
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param after Optional. A Unix timestamp in milliseconds. Returns all items after (but not including) this cursor position. If \code{after} is specified, \code{before} must not be specified.
 #' @param before Optional. A Unix timestamp in milliseconds. Returns all items before (but not including) this cursor position. If \code{before} is specified, \code{after} must not be specified.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"before"}, \code{"after"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' The access token must have the \code{user-read-recently-played} scope authorized in order to read the user's recently played tracks.
 #' @return

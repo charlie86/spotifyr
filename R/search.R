@@ -30,7 +30,7 @@
 #' Possible values: audio \cr
 #' If \code{include_external = "audio"} is specified the response will include any relevant audio content that is hosted externally. \cr
 #' By default external content is filtered out from responses.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search
 #' @export
 #' @examples

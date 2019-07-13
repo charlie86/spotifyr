@@ -3,7 +3,7 @@
 #' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
 #' @param country Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter to ensure that the category exists for a particular country.
 #' @param locale Optional. The desired language, consisting of an \href{http://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English).
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a list of results containing category information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
@@ -30,7 +30,7 @@ get_category <- function(category_id, country = NULL, locale = NULL, authorizati
 #' @param country Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing category playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
@@ -65,7 +65,7 @@ get_category_playlists <- function(category_id, country = NULL, limit = 20, offs
 #' @param country Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"country"}, \code{"offset"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing new releases. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
@@ -101,7 +101,7 @@ get_new_releases <- function(country = NULL, limit = 20, offset = 0, authorizati
 #' @param timestamp Optional. A timestamp in \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO 8601 format}: \code{yyyy-MM-ddTHH:mm:ss}. Use this parameter to specify the user’s local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: “2014-10-23T09:00:00” for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing featured playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
@@ -183,7 +183,7 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' @param seed_artists A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for seed artists. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
 #' @param seed_genres A character vector of any genres in the set of \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/#available-genre-seeds}{available genre seeds}. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
 #' @param seed_tracks A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for a seed track. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{Web API authorization Guide}{https://developer.spotify.com/documentation/general/guides/authorization-guide/} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_seeds_in_response Optional. Boolean for whether to include seed object in response. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results recommendations. See the official \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{Spotify Web API documentation} for more information.
