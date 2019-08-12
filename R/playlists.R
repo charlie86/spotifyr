@@ -196,12 +196,10 @@ create_playlist <- function(user_id, name, public = TRUE, collaborative = FALSE,
 
 add_tracks_to_playlist <- function(playlist_id, uris, position = NULL, authorization = get_spotify_authorization_code()) {
     base_url <- 'https://api.spotify.com/v1/playlists'
-    url <- str_glue('{base_url}/{playlist_id}/tracks')
+    url <- str_glue('{base_url}/{playlist_id}/tracks?uris={paste0(uris, collapse = ",")}')
     params <- list(
-        uris = uris,
         position = position
     )
-    cat(url)
     res <- RETRY('POST', url, body = params, config(token = authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
