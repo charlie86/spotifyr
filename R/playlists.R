@@ -30,7 +30,7 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, authorizatio
 #' Get full details of the tracks of a playlist owned by a Spotify user.
 #'
 #' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
-#' @param fields Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s description and URI: \code{fields = c("description", "uri")}. A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
+#' @param fields Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s creation date and album information: \code{fields = c("added_at", "track.album")}. A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
 #' \code{fields = "tracks.items(added_at,added_by.id)"}. Use multiple parentheses to drill down into nested objects, for example: \cr
 #' \code{fields = "tracks.items(track(name,href,album(name,href)))"}. Fields can be excluded by prefixing them with an exclamation mark, for example: \cr
 #' \code{fields = "tracks.items(track(name,href,album(!name,href)))"}.
@@ -54,7 +54,7 @@ get_playlist_tracks <- function(playlist_id, fields = NULL, limit = 100, offset 
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/tracks')
     params <- list(
-        fields = paste(fields, collapse = ','),
+        fields = paste0('items(', paste0(fields, collapse = ','), ')'),
         limit = limit,
         offset = offset,
         market = market,
@@ -201,6 +201,7 @@ add_tracks_to_playlist <- function(playlist_id, uris, position = NULL, authoriza
         uris = uris,
         position = position
     )
+    cat(url)
     res <- RETRY('POST', url, body = params, config(token = authorization), encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
