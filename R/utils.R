@@ -43,7 +43,7 @@ scopes <- c(
     'user-top-read',
     'user-read-private',
     'user-read-email',
-    'user-read-birthdate',
+    #'user-read-birthdate',
     'streaming',
     'user-modify-playback-state',
     'user-read-currently-playing',
@@ -51,6 +51,11 @@ scopes <- c(
     'user-follow-modify',
     'user-follow-read'
 )
+
+## scopes proposal
+# scopes <- read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>% 
+# html_nodes("code") %>% 
+# html_text() %>% unique()
 
 #' Remove duplicate album names
 #'
