@@ -32,25 +32,10 @@ verify_result <- function(res) {
 #'
 #' Vector of valid scopes for spotifyr::get_authorization_code()
 #' @export
-scopes <- c(
-    'user-library-read',
-    'user-library-modify',
-    'playlist-read-private',
-    'playlist-modify-public',
-    'playlist-modify-private',
-    'playlist-read-collaborative',
-    'user-read-recently-played',
-    'user-top-read',
-    'user-read-private',
-    'user-read-email',
-    'user-read-birthdate',
-    'streaming',
-    'user-modify-playback-state',
-    'user-read-currently-playing',
-    'user-read-playback-state',
-    'user-follow-modify',
-    'user-follow-read'
-)
+scopes <- xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
+    html_nodes('code') %>%
+    html_text() %>%
+    unique()
 
 #' Remove duplicate album names
 #'
