@@ -54,6 +54,7 @@ globalVars <- c(
 "disco_audio_feats",
 "data",
 "future_map_df",
+"map_chr",
 "is_collaboration",
 "key_name",
 "mode_name",

@@ -16,11 +16,25 @@
 get_artist_audio_features <- function(artist = NULL, include_groups = 'album', return_closest_artist = TRUE,
                                       dedupe_albums = TRUE, authorization = get_spotify_access_token()) {
 
-    artist_ids <- search_spotify(artist, 'artist', authorization = authorization)
+    if (is_uri(artist)) {
+        artist_info <- get_artist(artist, authorization = authorization)
+        artist_id <- artist_info$id
+        artist_name <- artist_info$name
+    } else {
+        artist_ids <- search_spotify(artist, 'artist', authorization = authorization)
 
-    if (return_closest_artist) {
-        artist_id <- artist_ids$id[1]
-        artist_name <- artist_ids$name[1]
+        if (return_closest_artist) {
+            artist_id <- artist_ids$id[1]
+            artist_name <- artist_ids$name[1]
+        } else {
+            choices <- map_chr(1:length(artist_ids$name), function(x) {
+                str_glue('[{x}] {artist_ids$name[x]}')
+            }) %>% paste0(collapse = '\n\t')
+            cat(str_glue('We found the following artists on Spotify matching "{artist}":\n\n\t{choices}\n\nPlease type the number corresponding to the artist you\'re interested in.'), sep  = '')
+            selection <- as.numeric(readline())
+            artist_id <- artist_ids$id[selection]
+            artist_name <- artist_ids$name[selection]
+        }
     }
 
     artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, authorization = authorization)
