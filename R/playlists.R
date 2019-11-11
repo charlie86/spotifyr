@@ -51,10 +51,11 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, authorizatio
 #' @export
 
 get_playlist_tracks <- function(playlist_id, fields = NULL, limit = 100, offset = 0, market = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/tracks')
     params <- list(
-        fields = paste0('items(', paste0(fields, collapse = ','), ')'),
+        fields = ifelse(!is.null(fields), paste0('items(', paste0(fields, collapse = ','), ')'), ''),
         limit = limit,
         offset = offset,
         market = market,
