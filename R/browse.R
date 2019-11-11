@@ -1,3 +1,31 @@
+#' Get a list of Spotify categories
+#'
+#' @param df (default TRUE). Should the results be formatted as a data frame? If FALSE, the full response JSON will be returned as a list.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#'
+#' @return
+#' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/} for more information.
+#' @export
+
+get_categories <- function(authorization = get_spotify_access_token(), df = TRUE) {
+
+    url <- 'https://api.spotify.com/v1/browse/categories'
+
+    params <- list(
+        access_token = authorization
+    )
+
+    res <- GET(url, query = params, encode = 'json')
+    stop_for_status(res)
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    if(df) res <- res$categories$items %>% select(id, name, everything())
+
+    return(res)
+}
+
+
 #' Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
 #'
 #' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
