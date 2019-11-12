@@ -31,13 +31,14 @@
 #' If \code{include_external = "audio"} is specified the response will include any relevant audio content that is hosted externally. \cr
 #' By default external content is filtered out from responses.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @keywords search
 #' @export
 #' @examples
 #' \dontrun{
 #' search_spotify('radiohead', 'artist')
 #' }
-search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, authorization = get_spotify_access_token()) {
+search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/search'
 
@@ -79,7 +80,7 @@ search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), 
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    if (length(type) == 1) {
+    if (!include_meta_info && length(type) == 1) {
         res <- res[[str_glue('{type}s')]]$items %>% as_tibble
     }
 
