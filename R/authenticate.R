@@ -1,8 +1,8 @@
 #' Get Spotify Access Token
 #'
 #' This function creates a Spotify access token.
-#' @param client_id Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"
-#' @param client_secret Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"
+#' @param client_id Defaults to System Environment variable "SPOTIFY_CLIENT_ID"
+#' @param client_secret Defaults to System Environment variable "SPOTIFY_CLIENT_SECRET"
 #' @keywords auth
 #' @export
 #' @examples
