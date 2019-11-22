@@ -8,9 +8,9 @@ get_spotify_access_token(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
   client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"))
 }
 \arguments{
-\item{client_id}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"}
+\item{client_id}{Defaults to System Environment variable "SPOTIFY_CLIENT_ID"}
 
-\item{client_secret}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"}
+\item{client_secret}{Defaults to System Environment variable "SPOTIFY_CLIENT_SECRET"}
 }
 \description{
 This function creates a Spotify access token.
