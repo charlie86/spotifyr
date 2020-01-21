@@ -21,10 +21,30 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, authorizatio
         market = market,
         access_token = authorization
     )
-    res <- RETRY('GET', url, query = params, encode = 'json')
-    stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
-    return(res)
+
+    # stopping is built into query_playlist()
+    init_query <- query_playlist(url)
+
+    # identify how many pages there are
+    n_pages <- ceiling(pluck(init_query, "tracks", "total")/100) - 1
+    # identify pagination offsets
+    offsets <- seq(from = 1, to = n_pages) * 100
+    # create page urls
+    page_urls <- str_glue("{url}/tracks?offset={offsets}&limit=100")
+    # query api
+    other_pages <- map(page_urls, query_playlist)
+    # merge the song track results
+    all_items <- bind_rows(
+        pluck(init_query, "tracks", "items"),
+        map_dfr(other_pages, pluck, "items")
+    )
+
+    # overwrite init_query item results
+    init_query[["tracks"]][["items"]] <- all_items
+
+    #return init_query object
+    structure(init_query, class = c("playlist", "list"))
+
 }
 
 #' Get full details of the tracks of a playlist owned by a Spotify user.
