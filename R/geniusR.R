@@ -18,7 +18,7 @@
 
 get_album_data <- function(artist, albums = character(), authorization = get_spotify_access_token()) {
 
-    artist_disco <- get_artist_audio_features(artist) %>%
+    artist_disco <- get_artist_audio_features(artist, authorization = authorization) %>%
         filter(tolower(album_name) %in% tolower(albums)) %>%
         group_by(album_name) %>%
         mutate(track_n = row_number()) %>%
