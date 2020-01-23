@@ -314,7 +314,10 @@ tidy.playlist <- function(x, ...) {
 
 
 
-# Printing method for playlist object
+#' Print method for playlist object
+#' @param x A playlist object generated from \code{get_playlist()}.
+#' @param ... Unused. 
+#' @export
 print.playlist <- function(x, ...) {
 
     to_show <- c("description", "tracks", "type", "href", "images", "public", "collaborative")
