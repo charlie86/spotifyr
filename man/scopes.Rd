@@ -4,7 +4,7 @@
 \name{scopes}
 \alias{scopes}
 \title{Valid scopes}
-\format{An object of class \code{character} of length 17.}
+\format{An object of class \code{character} of length 18.}
 \usage{
 scopes
 }

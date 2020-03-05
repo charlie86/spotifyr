@@ -235,6 +235,30 @@ add_tracks_to_playlist <- function(playlist_id, uris, position = NULL, authoriza
     return(res)
 }
 
+#' Remove one or more tracks from a user’s playlist.
+#'
+#' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
+#' @param uris Optional. A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add. For example \cr
+#' \code{uris = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"} \cr
+#' A maximum of 100 tracks can be removed in one request.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+#' Removing tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; removing tracks from the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @export
+
+remove_tracks_from_playlist <- function(playlist_id, uris, authorization = get_spotify_authorization_code()) {
+    base_url <- 'https://api.spotify.com/v1/playlists'
+    url <- str_glue('{base_url}/{playlist_id}/tracks/')
+
+    # For DELETE request params URIs should be put in body
+    uris_list <- lapply(uris, function(x) list(uri = x))
+    params <- toJSON(list(tracks = uris_list), auto_unbox = T)
+
+    res <- RETRY('DELETE', url, body = params, config(token = authorization), encode = 'json')
+    stop_for_status(res)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    return(res)
+}
+
 #' Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)
 #'
 #' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
@@ -316,7 +340,7 @@ tidy.playlist <- function(x, ...) {
 
 #' Print method for playlist object
 #' @param x A playlist object generated from \code{get_playlist()}.
-#' @param ... Unused. 
+#' @param ... Unused.
 #' @export
 print.playlist <- function(x, ...) {
 
