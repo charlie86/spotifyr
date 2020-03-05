@@ -14,7 +14,7 @@
 #' @importFrom tibble tribble
 #' @importFrom readr read_lines
 #' @importFrom stringr str_glue str_detect str_replace_all
-#' @importFrom jsonlite fromJSON
+#' @importFrom jsonlite fromJSON toJSON
 #' @importFrom lubridate year as_datetime
 #' @importFrom utils setTxtProgressBar txtProgressBar
 NULL
