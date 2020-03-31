@@ -294,7 +294,7 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
     num_loops_tracks <- ceiling(nrow(playlist_tracks) / 100)
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
         track_ids <- playlist_tracks %>%
-            slice(playlist_tracks$track.id[((this_loop * 100) - 99):(this_loop * 100)]) %>%
+            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
             pull(track.id)
         get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
