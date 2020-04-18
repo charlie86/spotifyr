@@ -15,7 +15,7 @@ get_categories <- function(authorization = get_spotify_access_token(), df = TRUE
         access_token = authorization
     )
 
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -44,7 +44,7 @@ get_category <- function(category_id, country = NULL, locale = NULL, authorizati
         locale = locale,
         access_token = authorization
     )
-    res <- RETRY('GET', url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
         as.data.frame(stringsAsFactors = FALSE)
@@ -79,7 +79,7 @@ get_category_playlists <- function(category_id, country = NULL, limit = 20, offs
         offset = offset,
         access_token = authorization
     )
-    res <- RETRY('GET', url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>% .$playlists
     if (!include_meta_info) {
@@ -113,7 +113,7 @@ get_new_releases <- function(country = NULL, limit = 20, offset = 0, authorizati
         offset = offset,
         access_token = authorization
     )
-    res <- RETRY('GET', base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>% .$albums
     if (!include_meta_info) {
@@ -151,7 +151,7 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
         offset = offset,
         access_token = authorization
     )
-    res <- RETRY('GET', base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     res$playlists$message <- res$message
@@ -329,7 +329,7 @@ get_recommendations <- function(limit = 20,
         access_token = authorization
     )
 
-    res <- RETRY('GET', base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     if (!include_seeds_in_response) {
