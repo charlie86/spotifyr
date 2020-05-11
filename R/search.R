@@ -4,7 +4,7 @@
 #' @param q Required. \cr
 #' Search query keywords and optional field filters and operators.
 #' @param type A character vector of item types to search across. \cr
-#' Valid types are \code{album}, \code{artist}, \code{playlist}, and \code{track}. \cr
+#' Valid types are \code{album}, \code{artist}, \code{playlist}, \code{track}, \code{show} and \code{episode}. \cr
 #' Search results include hits from all the specified item types. \cr
 #' For example: \code{q = "name:abacab"} and \code{type =c("album", "track")} returns both albums and tracks with \code{"abacab"} included in their name.
 #' @param market Optional. \cr
@@ -38,7 +38,7 @@
 #' \dontrun{
 #' search_spotify('radiohead', 'artist')
 #' }
-search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track'), market = NULL, limit = 20, offset = 0, include_external = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+search_spotify <- function(q, type = c('album', 'artist', 'playlist', 'track', 'show', 'episode'), market = NULL, limit = 20, offset = 0, include_external = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/search'
 
