@@ -7,7 +7,7 @@
 #' Valid types are \code{album}, \code{artist}, \code{playlist}, \code{track}, \code{show} and \code{episode}. \cr
 #' Search results include hits from all the specified item types. \cr
 #' For example: \code{q = "name:abacab"} and \code{type =c("album", "track")} returns both albums and tracks with \code{"abacab"} included in their name.
-#' @param market Optional. \cr
+#' @param market Optional (except for shows and episodes). \cr
 #' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
 #' If a country code is specified, only artists, albums, and tracks with content that is playable in that market is returned. \cr
 #' Note: \cr
