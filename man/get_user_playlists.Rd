@@ -4,9 +4,13 @@
 \alias{get_user_playlists}
 \title{Get a list of the playlists owned or followed by a Spotify user.}
 \usage{
-get_user_playlists(user_id, limit = 20, offset = 0,
+get_user_playlists(
+  user_id,
+  limit = 20,
+  offset = 0,
   authorization = get_spotify_authorization_code(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{user_id}{Required. The user's \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify user ID}.}

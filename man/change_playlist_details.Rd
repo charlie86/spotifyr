@@ -4,9 +4,14 @@
 \alias{change_playlist_details}
 \title{Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)}
 \usage{
-change_playlist_details(playlist_id, name = NULL, public = NULL,
-  collaborative = NULL, description = NULL,
-  authorization = get_spotify_authorization_code())
+change_playlist_details(
+  playlist_id,
+  name = NULL,
+  public = NULL,
+  collaborative = NULL,
+  description = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}

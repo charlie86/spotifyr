@@ -4,8 +4,11 @@
 \alias{get_album_data}
 \title{Retrieve artist discography with song lyrics and audio info}
 \usage{
-get_album_data(artist, albums = character(),
-  authorization = get_spotify_access_token())
+get_album_data(
+  artist,
+  albums = character(),
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization does not.}

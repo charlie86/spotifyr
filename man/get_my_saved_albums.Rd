@@ -4,9 +4,13 @@
 \alias{get_my_saved_albums}
 \title{Get Current User's Saved Albums}
 \usage{
-get_my_saved_albums(limit = 20, offset = 0, market = NULL,
+get_my_saved_albums(
+  limit = 20,
+  offset = 0,
+  market = NULL,
   authorization = get_spotify_authorization_code(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{limit}{Optional. \cr

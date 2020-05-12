@@ -4,9 +4,14 @@
 \alias{get_album_tracks}
 \title{Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.}
 \usage{
-get_album_tracks(id, limit = 20, offset = 0, market = NULL,
+get_album_tracks(
+  id,
+  limit = 20,
+  offset = 0,
+  market = NULL,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the album.}

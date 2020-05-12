@@ -355,7 +355,10 @@ get_recommendations <- function(limit = 20,
 #' @export
 #'
 #' @examples
-#' get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA" "3QRGYDFFUVb4qneE4DX1gR" "5daijadRuGwMA4HvhuOW9P" "020F5NN49ygwQzy0MjV7vb" "1gXU06BFeIcmkpBWisYCMB", "1msXkHv84LKikJGKcfdGBu"))
+#' \dontrun{
+#' get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR"))
+#' }
+
 get_recommendations_all <- function(track_ids, valence = NULL) {
     get_recs <- function(i, ids, vec_length, valence) {
         start <- i

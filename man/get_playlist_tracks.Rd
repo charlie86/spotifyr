@@ -4,10 +4,15 @@
 \alias{get_playlist_tracks}
 \title{Get full details of the tracks of a playlist owned by a Spotify user.}
 \usage{
-get_playlist_tracks(playlist_id, fields = NULL, limit = 100,
-  offset = 0, market = NULL,
+get_playlist_tracks(
+  playlist_id,
+  fields = NULL,
+  limit = 100,
+  offset = 0,
+  market = NULL,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}

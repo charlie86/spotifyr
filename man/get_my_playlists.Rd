@@ -4,9 +4,12 @@
 \alias{get_my_playlists}
 \title{Get a list of the playlists owned or followed by the current Spotify user.}
 \usage{
-get_my_playlists(limit = 20, offset = 0,
+get_my_playlists(
+  limit = 20,
+  offset = 0,
   authorization = get_spotify_authorization_code(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{limit}{Optional. \cr

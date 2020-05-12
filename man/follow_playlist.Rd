@@ -4,8 +4,11 @@
 \alias{follow_playlist}
 \title{Add the current user as a follower of a playlist.}
 \usage{
-follow_playlist(playlist_id, public = FALSE,
-  authorization = get_spotify_authorization_code())
+follow_playlist(
+  playlist_id,
+  public = FALSE,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist. Any playlist can be followed, regardless of its \href{https://developer.spotify.com/documentation/general/guides/working-with-playlists/#public-private-and-collaborative-status}{public/private status}, as long as you know its playlist ID.}

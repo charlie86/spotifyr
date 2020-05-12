@@ -267,6 +267,7 @@ change_playlist_details <- function(playlist_id, name = NULL, public = NULL, col
 #' \code{spotifyr::tidy()} extracts and tidies the data frame containing track level information that is returned from \code{get_playlist()} as a tibble.
 #'
 #' @param x A playlist object generated from
+#' @param ... Generic arguments to be passed
 #' @examples
 #' \dontrun{
 #' fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
@@ -316,7 +317,7 @@ tidy.playlist <- function(x, ...) {
 
 #' Print method for playlist object
 #' @param x A playlist object generated from \code{get_playlist()}.
-#' @param ... Unused. 
+#' @param ... Unused.
 #' @export
 print.playlist <- function(x, ...) {
 

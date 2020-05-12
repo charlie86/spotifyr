@@ -4,9 +4,12 @@
 \alias{get_artist_top_tracks}
 \title{Get Spotify catalog information about an artist’s top tracks by country.}
 \usage{
-get_artist_top_tracks(id, market = "US",
+get_artist_top_tracks(
+  id,
+  market = "US",
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.}

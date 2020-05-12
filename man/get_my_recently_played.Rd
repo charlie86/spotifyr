@@ -4,9 +4,13 @@
 \alias{get_my_recently_played}
 \title{Get Current User's Recently Played Tracks}
 \usage{
-get_my_recently_played(limit = 20, after = NULL, before = NULL,
+get_my_recently_played(
+  limit = 20,
+  after = NULL,
+  before = NULL,
   authorization = get_spotify_authorization_code(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}

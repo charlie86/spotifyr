@@ -4,8 +4,10 @@
 \alias{get_spotify_access_token}
 \title{Get Spotify Access Token}
 \usage{
-get_spotify_access_token(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
-  client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"))
+get_spotify_access_token(
+  client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
+  client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET")
+)
 }
 \arguments{
 \item{client_id}{Defaults to System Environment variable "SPOTIFY_CLIENT_ID"}

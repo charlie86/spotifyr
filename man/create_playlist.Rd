@@ -4,8 +4,14 @@
 \alias{create_playlist}
 \title{Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.)}
 \usage{
-create_playlist(user_id, name, public = TRUE, collaborative = FALSE,
-  description = NULL, authorization = get_spotify_authorization_code())
+create_playlist(
+  user_id,
+  name,
+  public = TRUE,
+  collaborative = FALSE,
+  description = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{user_id}{Required. The user's \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify user ID}.}

@@ -4,8 +4,11 @@
 \alias{transfer_my_playback}
 \title{Transfer playback to a new device and determine if it should start playing.}
 \usage{
-transfer_my_playback(device_ids, play = FALSE,
-  authorization = get_spotify_authorization_code())
+transfer_my_playback(
+  device_ids,
+  play = FALSE,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{device_ids}{Required. A character vector containing the ID of the device this on which playback should be started/transferred. Note: only a single device_id is currently supported.}

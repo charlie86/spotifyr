@@ -4,8 +4,11 @@
 \alias{set_my_volume}
 \title{Set the volume for the user’s current playback device.}
 \usage{
-set_my_volume(volume_percent, device_id = NULL,
-  authorization = get_spotify_authorization_code())
+set_my_volume(
+  volume_percent,
+  device_id = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{volume_percent}{Required. Integer. The volume to set. Must be a value from 0 to 100 inclusive.}

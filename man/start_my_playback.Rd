@@ -4,9 +4,14 @@
 \alias{start_my_playback}
 \title{Skips to previous track in the user’s queue.}
 \usage{
-start_my_playback(device_id = NULL, context_uri = NULL, uris = NULL,
-  offset = NULL, position_ms = NULL,
-  authorization = get_spotify_authorization_code())
+start_my_playback(
+  device_id = NULL,
+  context_uri = NULL,
+  uris = NULL,
+  offset = NULL,
+  position_ms = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{device_id}{Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.}

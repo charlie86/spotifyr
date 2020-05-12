@@ -4,8 +4,10 @@
 \alias{pause_my_playback}
 \title{Pause playback on the user’s account.}
 \usage{
-pause_my_playback(device_id = NULL,
-  authorization = get_spotify_authorization_code())
+pause_my_playback(
+  device_id = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{device_id}{Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.}

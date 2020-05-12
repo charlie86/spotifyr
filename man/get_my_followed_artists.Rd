@@ -4,9 +4,12 @@
 \alias{get_my_followed_artists}
 \title{Get the current user’s followed artists.}
 \usage{
-get_my_followed_artists(limit = 20, after = NULL,
+get_my_followed_artists(
+  limit = 20,
+  after = NULL,
   authorization = get_spotify_authorization_code(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}

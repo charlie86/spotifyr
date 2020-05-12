@@ -4,8 +4,12 @@
 \alias{get_playlist}
 \title{Get a playlist owned by a Spotify user.}
 \usage{
-get_playlist(playlist_id, fields = NULL, market = NULL,
-  authorization = get_spotify_access_token())
+get_playlist(
+  playlist_id,
+  fields = NULL,
+  market = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}

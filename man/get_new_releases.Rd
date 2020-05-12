@@ -4,9 +4,13 @@
 \alias{get_new_releases}
 \title{Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).}
 \usage{
-get_new_releases(country = NULL, limit = 20, offset = 0,
+get_new_releases(
+  country = NULL,
+  limit = 20,
+  offset = 0,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{country}{Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.}

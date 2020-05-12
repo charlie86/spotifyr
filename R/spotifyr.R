@@ -7,7 +7,6 @@
 #'
 #' @docType package
 #' @name spotifyr
-#' @import genius
 #' @importFrom purrr map map_df map2
 #' @importFrom httr RETRY GET accept_json authenticate config content oauth2.0_token oauth_app oauth_endpoint stop_for_status
 #' @importFrom rvest html_session html_node html_nodes html_text html_attr
@@ -16,7 +15,7 @@
 #' @importFrom stringr str_glue str_detect str_replace_all
 #' @importFrom jsonlite fromJSON
 #' @importFrom lubridate year as_datetime
-#' @importFrom utils setTxtProgressBar txtProgressBar
+#' @importFrom utils setTxtProgressBar txtProgressBar str
 NULL
 
 globalVars <- c(
@@ -73,6 +72,15 @@ globalVars <- c(
 "playlist_id",
 "playlist_owner_name",
 "playlist_owner_id",
+"added_at",
+"artist_names",
+"artists",
+"available_markets",
+"duration_ms",
+"genius_album",
+"popularity",
+"str",
+"track_number",
 ".")
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines

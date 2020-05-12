@@ -4,10 +4,16 @@
 \alias{search_spotify}
 \title{Search for an item}
 \usage{
-search_spotify(q, type = c("album", "artist", "playlist", "track"),
-  market = NULL, limit = 20, offset = 0, include_external = NULL,
+search_spotify(
+  q,
+  type = c("album", "artist", "playlist", "track"),
+  market = NULL,
+  limit = 20,
+  offset = 0,
+  include_external = NULL,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{q}{Required. \cr

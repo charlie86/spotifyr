@@ -4,8 +4,11 @@
 \alias{toggle_my_shuffle}
 \title{Toggle shuffle on or off for user’s playback.}
 \usage{
-toggle_my_shuffle(state, device_id = NULL,
-  authorization = get_spotify_authorization_code())
+toggle_my_shuffle(
+  state,
+  device_id = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{state}{Required. \cr

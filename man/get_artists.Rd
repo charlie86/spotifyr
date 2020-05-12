@@ -4,8 +4,11 @@
 \alias{get_artists}
 \title{Get Spotify catalog information for multiple artists identified by their Spotify IDs.}
 \usage{
-get_artists(ids, authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+get_artists(
+  ids,
+  authorization = get_spotify_access_token(),
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{ids}{Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the artists. Maximum: 50 IDs.}

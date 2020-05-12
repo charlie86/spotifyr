@@ -4,8 +4,10 @@
 \alias{unfollow_playlist}
 \title{Remove the current user as a follower of a playlist.}
 \usage{
-unfollow_playlist(playlist_id,
-  authorization = get_spotify_authorization_code())
+unfollow_playlist(
+  playlist_id,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist that is to be no longer followed.}

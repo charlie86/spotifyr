@@ -4,8 +4,7 @@
 \alias{get_album}
 \title{Get Spotify catalog information for a single album.}
 \usage{
-get_album(id, market = NULL,
-  authorization = get_spotify_access_token())
+get_album(id, market = NULL, authorization = get_spotify_access_token())
 }
 \arguments{
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the album.}

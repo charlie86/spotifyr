@@ -8,6 +8,8 @@ tidy(x, ...)
 }
 \arguments{
 \item{x}{A playlist object generated from}
+
+\item{...}{Generic arguments to be passed}
 }
 \description{
 \code{spotifyr::tidy()} extracts and tidies the data frame containing track level information that is returned from \code{get_playlist()} as a tibble.

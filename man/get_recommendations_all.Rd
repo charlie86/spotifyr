@@ -18,5 +18,7 @@ Returns a data frame containing recommendations from the Spotify API
 This is a wrapper for the get_recommendations() function, which provides a workaround for the limit of 5 seed tracks per recommendation call. The function splits a supplied vector of track IDs into subsets of length 5, then applies a get_recommendations() call, 5 tracks at a time. This should generate a data frame of recommended tracks, with length equal to the supplied vector of track ids.
 }
 \examples{
-get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA" "3QRGYDFFUVb4qneE4DX1gR" "5daijadRuGwMA4HvhuOW9P" "020F5NN49ygwQzy0MjV7vb" "1gXU06BFeIcmkpBWisYCMB", "1msXkHv84LKikJGKcfdGBu"))
+\dontrun{
+get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR"))
+}
 }
