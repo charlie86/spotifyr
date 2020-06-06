@@ -120,3 +120,21 @@ get_album_tracks <- function(id, limit = 20, offset = 0, market = NULL, authoriz
 
     return(res)
 }
+
+#' Save one or more albums to current user's collection
+#'
+#' Save one or more albums to current user's collection
+#'
+#' @param ids Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#'
+#' @export
+save_albums_to_my_library <- function(ids, authorization = get_spotify_authorization_code()) {
+    base_url <- "https://api.spotify.com/v1/me/albums"
+    url <- str_glue('{base_url}?ids={paste0(ids, collapse = ",")}')
+
+    res <- RETRY("PUT", url, config(token = authorization), encode = 'json')
+    stop_for_status(res)
+
+    return(res)
+}
