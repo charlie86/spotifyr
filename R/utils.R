@@ -49,8 +49,8 @@ dedupe_album_names <- function(df, album_name_col = 'album_name', album_release_
     album_dupe_regex <- '(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo)'
 
     base_album_names <- df %>%
-        mutate_('album_name_' = album_name_col,
-                'album_release_year_' = album_release_year_col) %>%
+        mutate(album_name_ = album_name_col,
+               album_release_year_ = album_release_year_col) %>%
         dplyr::filter(!duplicated(tolower(album_name_))) %>%
         mutate(base_album_name = gsub(str_glue(' \\(.*{album_dupe_regex}.*\\)'), '', tolower(album_name_)),
                base_album_name = gsub(str_glue(' \\[.*{album_dupe_regex}.*\\]'), '', base_album_name),
@@ -66,7 +66,7 @@ dedupe_album_names <- function(df, album_name_col = 'album_name', album_release_
         pull(album_name_)
 
     df %>%
-        mutate_('album_name_' = album_name_col) %>%
+        mutate(album_name_ = album_name_col) %>%
         filter(album_name_ %in% base_album_names) %>%
         select(-album_name_)
 }
