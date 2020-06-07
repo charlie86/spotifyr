@@ -118,6 +118,8 @@ get_tracks <- function(ids, market = NULL, authorization = get_spotify_access_to
 
 #' Save one or more tracks to a user's collection
 #'
+#' Save one or more tracks to a user's collection
+#'
 #' @param ids The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the tracks. Maximum: 50 IDs.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #'
@@ -127,6 +129,24 @@ save_tracks_to_my_library <- function(ids, authorization = get_spotify_authoriza
     url <- str_glue('{base_url}?ids={paste0(ids, collapse = ",")}')
 
     res <- RETRY("PUT", url, config(token = authorization), encode = 'json')
+    stop_for_status(res)
+
+    return(res)
+}
+
+#' Remove one or more tracks from a user's collection
+#'
+#' Remove one or more tracks from a user's collection
+#'
+#' @param ids The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the tracks. Maximum: 50 IDs.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#'
+#' @export
+remove_tracks_from_my_library <- function(ids, authorization = get_spotify_authorization_code()) {
+    base_url <- "https://api.spotify.com/v1/me/tracks"
+    url <- str_glue('{base_url}?ids={paste0(ids, collapse = ",")}')
+
+    res <- RETRY("DELETE", url, config(token = authorization), encode = 'json')
     stop_for_status(res)
 
     return(res)
