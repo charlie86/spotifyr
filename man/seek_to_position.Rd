@@ -4,8 +4,11 @@
 \alias{seek_to_position}
 \title{Seeks to the given position in the user’s currently playing track.}
 \usage{
-seek_to_position(position_ms, device_id = NULL,
-  authorization = get_spotify_authorization_code())
+seek_to_position(
+  position_ms,
+  device_id = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{position_ms}{Required. Integer indicating the position in milliseconds to seek to. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.}

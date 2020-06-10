@@ -4,9 +4,12 @@
 \alias{get_albums}
 \title{Get Spotify catalog information for multiple albums identified by their Spotify IDs.}
 \usage{
-get_albums(ids, market = NULL,
+get_albums(
+  ids,
+  market = NULL,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{ids}{Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 20 IDs.}

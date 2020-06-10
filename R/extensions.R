@@ -294,7 +294,7 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
     num_loops_tracks <- ceiling(nrow(playlist_tracks) / 100)
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
         track_ids <- playlist_tracks %>%
-            slice(playlist_tracks$track.id[((this_loop * 100) - 99):(this_loop * 100)]) %>%
+            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
             pull(track.id)
         get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
@@ -328,7 +328,7 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
 get_playlist_audio_features <- function(username, playlist_uris, authorization = get_spotify_access_token()) {
 
     playlist_tracks <- map_df(playlist_uris, function(playlist_uri) {
-        this_playlist <- get_playlist(playlist_uri)
+        this_playlist <- get_playlist(playlist_uri, authorization = authorization)
         n_tracks <- this_playlist$tracks$total
         num_loops <- ceiling(n_tracks / 100)
         map_df(1:num_loops, function(this_loop) {

@@ -4,8 +4,10 @@
 \alias{get_my_currently_playing}
 \title{Get the object currently being played on the user’s Spotify account.}
 \usage{
-get_my_currently_playing(market = NULL,
-  authorization = get_spotify_authorization_code())
+get_my_currently_playing(
+  market = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{market}{An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}

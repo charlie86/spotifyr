@@ -4,8 +4,12 @@
 \alias{add_tracks_to_playlist}
 \title{Add one or more tracks to a user’s playlist.}
 \usage{
-add_tracks_to_playlist(playlist_id, uris, position = NULL,
-  authorization = get_spotify_authorization_code())
+add_tracks_to_playlist(
+  playlist_id,
+  uris,
+  position = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}

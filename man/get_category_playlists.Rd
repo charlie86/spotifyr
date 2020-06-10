@@ -4,9 +4,14 @@
 \alias{get_category_playlists}
 \title{Get a list of Spotify playlists tagged with a particular category.}
 \usage{
-get_category_playlists(category_id, country = NULL, limit = 20,
-  offset = 0, authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+get_category_playlists(
+  category_id,
+  country = NULL,
+  limit = 20,
+  offset = 0,
+  authorization = get_spotify_access_token(),
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{category_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.}

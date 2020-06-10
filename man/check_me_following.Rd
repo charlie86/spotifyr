@@ -4,8 +4,7 @@
 \alias{check_me_following}
 \title{Check if Current User Follows Artists or Users}
 \usage{
-check_me_following(type, ids,
-  authorization = get_spotify_authorization_code())
+check_me_following(type, ids, authorization = get_spotify_authorization_code())
 }
 \arguments{
 \item{type}{Required. String of the ID type: either \code{"artist"} or \code{"user"}.}

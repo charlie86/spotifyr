@@ -4,8 +4,11 @@
 \alias{dedupe_album_names}
 \title{Remove duplicate album names}
 \usage{
-dedupe_album_names(df, album_name_col = "album_name",
-  album_release_year_col = "album_release_year")
+dedupe_album_names(
+  df,
+  album_name_col = "album_name",
+  album_release_year_col = "album_release_year"
+)
 }
 \arguments{
 \item{df}{Dataframe with album name}

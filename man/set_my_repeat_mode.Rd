@@ -4,8 +4,11 @@
 \alias{set_my_repeat_mode}
 \title{Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.}
 \usage{
-set_my_repeat_mode(state, device_id = NULL,
-  authorization = get_spotify_authorization_code())
+set_my_repeat_mode(
+  state,
+  device_id = NULL,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{state}{Required. \cr

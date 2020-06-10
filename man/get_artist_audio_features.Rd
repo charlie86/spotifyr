@@ -4,9 +4,13 @@
 \alias{get_artist_audio_features}
 \title{Get audio feature information for all or part of an artists' discography.}
 \usage{
-get_artist_audio_features(artist = NULL, include_groups = "album",
-  return_closest_artist = TRUE, dedupe_albums = TRUE,
-  authorization = get_spotify_access_token())
+get_artist_audio_features(
+  artist = NULL,
+  include_groups = "album",
+  return_closest_artist = TRUE,
+  dedupe_albums = TRUE,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{artist}{Required. String of either an artist name or an artist Spotify ID. If an artist name is provided, \code{search_spotify()} will be used to find a Spotify ID matching the name provided.}

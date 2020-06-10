@@ -4,8 +4,13 @@
 \alias{get_label_artists}
 \title{Search for artists by label}
 \usage{
-get_label_artists(label = character(), market = NULL, limit = 20,
-  offset = 0, authorization = get_spotify_access_token())
+get_label_artists(
+  label = character(),
+  market = NULL,
+  limit = 20,
+  offset = 0,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{label}{Required. \cr

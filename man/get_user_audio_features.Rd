@@ -4,8 +4,10 @@
 \alias{get_user_audio_features}
 \title{Get audio feature information for a users' playlists}
 \usage{
-get_user_audio_features(username = NULL,
-  authorization = get_spotify_access_token())
+get_user_audio_features(
+  username = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{username}{Required. String of Spotify username.}

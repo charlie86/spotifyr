@@ -4,8 +4,10 @@
 \alias{get_playlist_cover_image}
 \title{Get the current image associated with a specific playlist.}
 \usage{
-get_playlist_cover_image(playlist_id,
-  authorization = get_spotify_authorization_code())
+get_playlist_cover_image(
+  playlist_id,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}

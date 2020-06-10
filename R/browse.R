@@ -1,3 +1,31 @@
+#' Get a list of Spotify categories
+#'
+#' @param df (default TRUE). Should the results be formatted as a data frame? If FALSE, the full response JSON will be returned as a list.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#'
+#' @return
+#' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/} for more information.
+#' @export
+
+get_categories <- function(authorization = get_spotify_access_token(), df = TRUE) {
+
+    url <- 'https://api.spotify.com/v1/browse/categories'
+
+    params <- list(
+        access_token = authorization
+    )
+
+    res <- GET(url, query = params, encode = 'json')
+    stop_for_status(res)
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    if(df) res <- res$categories$items %>% select(id, name, everything())
+
+    return(res)
+}
+
+
 #' Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
 #'
 #' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
@@ -308,4 +336,43 @@ get_recommendations <- function(limit = 20,
         res <- res$tracks
     }
     return(res)
+}
+
+
+#' Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks
+#'
+#' @description
+#' This is a wrapper for the get_recommendations() function, which provides a workaround for the limit of 5 seed tracks per recommendation call. The function splits a supplied vector of track IDs into subsets of length 5, then applies a get_recommendations() call, 5 tracks at a time. This should generate a data frame of recommended tracks, with length equal to the supplied vector of track ids.
+#'
+#'
+#' @param track_ids
+#' A vector containing the IDs of the tracks you'd like recommendations for
+#' @param valence
+#' The target valence for the recommendations
+#'
+#' @return
+#' Returns a data frame containing recommendations from the Spotify API
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR"))
+#' }
+
+get_recommendations_all <- function(track_ids, valence = NULL) {
+    get_recs <- function(i, ids, vec_length, valence) {
+        start <- i
+        end <- ifelse(i + 4 > vec_length, vec_length, i+4)
+        seeds <- ids[c(start:end)]
+        recs <- get_recommendations(limit = end + 1 - start,
+                                    seed_tracks = seeds,
+                                    target_valence = valence)
+        recs
+    }
+
+    tracks_length <- length(track_ids)
+    tracks_seq <- seq(from = 1, to = tracks_length, by = 5)
+    all_recs <- map_df(tracks_seq,
+                       ~ get_recs(.x, track_ids, tracks_length, valence))
+    all_recs
 }

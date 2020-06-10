@@ -1,5 +1,9 @@
 #' Get a playlist owned by a Spotify user.
 #'
+#'@importFrom stringr str_glue
+#'@importFrom purrr pluck map map_dfr
+#'@importFrom dplyr bind_rows
+#'
 #' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
 #' @param fields Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s description and URI: \cr
 #' \code{fields = c("description", "uri")} \cr A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
@@ -21,10 +25,34 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, authorizatio
         market = market,
         access_token = authorization
     )
-    res <- RETRY('GET', url, query = params, encode = 'json')
-    stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
-    return(res)
+
+    # stopping is built into query_playlist()
+    init_query <- query_playlist(url, params = params)
+
+    if (!is.null(fields)) {
+        return(init_query)
+    } else {
+        # identify how many pages there are
+        n_pages <- ceiling(pluck(init_query, "tracks", "total")/100) - 1
+        # identify pagination offsets
+        offsets <- seq(from = 1, to = n_pages) * 100
+        # create page urls
+        page_urls <- str_glue("{url}/tracks?offset={offsets}&limit=100")
+        # query api
+        other_pages <- map(page_urls, query_playlist, params)
+        # merge the song track results
+        all_items <- bind_rows(
+            pluck(init_query, "tracks", "items"),
+            map_dfr(other_pages, pluck, "items")
+        )
+
+        # overwrite init_query item results
+        init_query[["tracks"]][["items"]] <- all_items
+
+        #return init_query object
+        structure(init_query, class = c("playlist", "list"))
+
+    }
 }
 
 #' Get full details of the tracks of a playlist owned by a Spotify user.
@@ -51,10 +79,11 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, authorizatio
 #' @export
 
 get_playlist_tracks <- function(playlist_id, fields = NULL, limit = 100, offset = 0, market = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/tracks')
     params <- list(
-        fields = paste0('items(', paste0(fields, collapse = ','), ')'),
+        fields = ifelse(!is.null(fields), paste0('items(', paste0(fields, collapse = ','), ')'), ''),
         limit = limit,
         offset = offset,
         market = market,
@@ -206,6 +235,30 @@ add_tracks_to_playlist <- function(playlist_id, uris, position = NULL, authoriza
     return(res)
 }
 
+#' Remove one or more tracks from a user’s playlist.
+#'
+#' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
+#' @param uris Optional. A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add. For example \cr
+#' \code{uris = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"} \cr
+#' A maximum of 100 tracks can be removed in one request.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+#' Removing tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; removing tracks from the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @export
+
+remove_tracks_from_playlist <- function(playlist_id, uris, authorization = get_spotify_authorization_code()) {
+    base_url <- 'https://api.spotify.com/v1/playlists'
+    url <- str_glue('{base_url}/{playlist_id}/tracks/')
+
+    # For DELETE request params URIs should be put in body
+    uris_list <- lapply(uris, function(x) list(uri = x))
+    params <- toJSON(list(tracks = uris_list), auto_unbox = T)
+
+    res <- RETRY('DELETE', url, body = params, config(token = authorization), encode = 'json')
+    stop_for_status(res)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    return(res)
+}
+
 #' Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)
 #'
 #' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
@@ -229,4 +282,78 @@ change_playlist_details <- function(playlist_id, name = NULL, public = NULL, col
     res <- RETRY('PUT', url, body = params, config(token = authorization), encode = 'json')
     stop_for_status(res)
     return(res)
+}
+
+
+
+#' Tidy a playlist
+#'
+#' \code{spotifyr::tidy()} extracts and tidies the data frame containing track level information that is returned from \code{get_playlist()} as a tibble.
+#'
+#' @param x A playlist object generated from
+#' @param ... Generic arguments to be passed
+#' @examples
+#' \dontrun{
+#' fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
+#' tidy(fall)
+#' }
+#'
+#'@importFrom purrr pluck map
+#'@importFrom stringr str_remove
+#'@importFrom dplyr as_tibble select mutate
+#'@importFrom janitor make_clean_names
+#' @export
+#'
+#'
+tidy <- function(x, ...) {
+    UseMethod("tidy")
+}
+
+#' @export
+tidy.playlist <- function(x, ...) {
+    # determine unneeded columns
+    # the added by features can all bne derived by the `added_by_uri` col
+    unneeded <- c("added_by_href", "added_by_uri", "added_by_external_urls_spotify",
+                  # album information can be fetched with get_album
+                  "album_uri", "album_href", "album_artists", "album_album_type",
+                  "album_images", "album_release_date", "album_release_date_precision",
+                  "album_total_tracks", "album_type", "album_external_urls_spotify",
+                  "album_available_markets",
+                  # do not need uri as that can be created from "spotify:{type}:{id}"
+                  "uri")
+
+    # clean col names
+    track_items <- pluck(x, "tracks", "items")
+    colnames(track_items) <- make_clean_names(str_remove(names(track_items), "track"))
+
+    tidied <- track_items %>%
+        # select(artists) %>%
+        mutate(artist_names = map(artists, pull, "name")) %>%
+        select(-unneeded) %>%
+        select(track_name = name, album_name, id,
+               artist_names, added_at, duration_ms, popularity, track_number,
+               available_markets, everything())
+
+    dplyr::as_tibble(tidied)
+}
+
+
+
+#' Print method for playlist object
+#' @param x A playlist object generated from \code{get_playlist()}.
+#' @param ... Unused.
+#' @export
+print.playlist <- function(x, ...) {
+
+    to_show <- c("description", "tracks", "type", "href", "images", "public", "collaborative")
+
+    frms <- format(c(
+        paste(x$name, "by", x$owner$display_name),
+        paste(x$tracks$total, "tracks"),
+        paste(x$followers$total, "followers"),
+        x$external_urls$spotify))
+
+    cat(frms, "\n", fill = TRUE)
+    str(x[to_show], 1, no.list = T, indent.str = "- ", comp.str = "")
+    invisible(x)
 }

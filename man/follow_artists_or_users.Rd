@@ -4,8 +4,11 @@
 \alias{follow_artists_or_users}
 \title{Add the current user as a follower of one or more artists or other Spotify users.}
 \usage{
-follow_artists_or_users(type, ids,
-  authorization = get_spotify_authorization_code())
+follow_artists_or_users(
+  type,
+  ids,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{type}{Required. The ID type: either \code{"artist"} or \code{"user"}.}

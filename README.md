@@ -4,7 +4,7 @@
 # spotifyr
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
-![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
+![](https://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=brightgreen)
 
 ## Overview
 

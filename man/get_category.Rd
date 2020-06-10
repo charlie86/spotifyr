@@ -4,8 +4,12 @@
 \alias{get_category}
 \title{Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).}
 \usage{
-get_category(category_id, country = NULL, locale = NULL,
-  authorization = get_spotify_access_token())
+get_category(
+  category_id,
+  country = NULL,
+  locale = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{category_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.}

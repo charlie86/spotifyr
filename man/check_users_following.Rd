@@ -4,8 +4,11 @@
 \alias{check_users_following}
 \title{Check if Users Follow a Playlist}
 \usage{
-check_users_following(playlist_id, ids,
-  authorization = get_spotify_authorization_code())
+check_users_following(
+  playlist_id,
+  ids,
+  authorization = get_spotify_authorization_code()
+)
 }
 \arguments{
 \item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist.}

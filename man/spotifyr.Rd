@@ -3,7 +3,6 @@
 \docType{package}
 \name{spotifyr}
 \alias{spotifyr}
-\alias{spotifyr-package}
 \title{\code{spotifyr} package}
 \description{
 A Quick and Easy Wrapper for Pulling Track Audio Features from Spotify's Web API in Bulk

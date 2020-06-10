@@ -4,8 +4,13 @@
 \alias{get_genre_artists}
 \title{Search for artists by genre}
 \usage{
-get_genre_artists(genre = character(), market = NULL, limit = 20,
-  offset = 0, authorization = get_spotify_access_token())
+get_genre_artists(
+  genre = character(),
+  market = NULL,
+  limit = 20,
+  offset = 0,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{genre}{Required. \cr

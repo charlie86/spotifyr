@@ -4,10 +4,14 @@
 \alias{get_my_top_artists_or_tracks}
 \title{Get the current user’s top artists or tracks based on calculated affinity.}
 \usage{
-get_my_top_artists_or_tracks(type = NULL, limit = 20, offset = 0,
+get_my_top_artists_or_tracks(
+  type = NULL,
+  limit = 20,
+  offset = 0,
   time_range = "medium_term",
   authorization = get_spotify_authorization_code(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{type}{Required. The type of entity to return. Valid values: \code{artists} or \code{tracks}.}

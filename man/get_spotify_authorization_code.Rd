@@ -4,10 +4,11 @@
 \alias{get_spotify_authorization_code}
 \title{Get Spotify authorization Code}
 \usage{
-
-  get_spotify_authorization_code(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
+get_spotify_authorization_code(
+  client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
   client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
-  scope = spotifyr::scopes)
+  scope = spotifyr::scopes
+)
 }
 \arguments{
 \item{client_id}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"}

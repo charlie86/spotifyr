@@ -70,3 +70,15 @@ dedupe_album_names <- function(df, album_name_col = 'album_name', album_release_
         filter(album_name_ %in% base_album_names) %>%
         select(-album_name_)
 }
+
+# Function for querying playlist API url
+# This function is used for pagination in the playlist api
+query_playlist <- function(url, params) {
+    res <- RETRY('GET', url, query = params, encode = 'json')
+    stop_for_status(res)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    res
+}
+
+# currently sourcing in make_clean_names rather than importing janitor entirely
+

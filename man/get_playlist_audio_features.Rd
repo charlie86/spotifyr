@@ -4,8 +4,11 @@
 \alias{get_playlist_audio_features}
 \title{Get features and popularity for all of a given set of playlists on Spotify}
 \usage{
-get_playlist_audio_features(username, playlist_uris,
-  authorization = get_spotify_access_token())
+get_playlist_audio_features(
+  username,
+  playlist_uris,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
 \item{username}{String of Spotify username. Can be found on the Spotify app.}
