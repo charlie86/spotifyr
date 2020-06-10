@@ -7,9 +7,11 @@
 check_my_saved_tracks(ids, authorization = get_spotify_authorization_code())
 }
 \arguments{
-\item{ids}{Required. A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.}
+\item{ids}{Required. \cr
+A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user.}
+\item{authorization}{Required. \cr
+A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user.}
 }
 \value{
 Returns a data frame of results containing track id and saved status. See \url{https://developer.spotify.com/documentation/web-api/reference/library/check-users-saved-albums/} for more information.
