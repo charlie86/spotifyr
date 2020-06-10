@@ -20,6 +20,9 @@ A valid access token from the Spotify Accounts service. See the \href{https://de
 \item{echo}{Optional.\cr
 Boolean indicating whether to return the response or work silently.}
 }
+\value{
+Returns a respinse status. See \url{https://developer.spotify.com/documentation/web-api/#response-status-codes} for more information.
+}
 \description{
 Delete one or more shows from current Spotify user’s library.\cr
 Changes to a user’s saved shows may not be visible in other Spotify applications immediately.

@@ -205,6 +205,8 @@ get_my_saved_tracks <- function(limit = 20, offset = 0, market = NULL, authoriza
 #' @param echo Optional.\cr
 #' Boolean indicating whether to return the response or work silently.
 #'
+#' @return
+#' Returns a respinse status. See \url{https://developer.spotify.com/documentation/web-api/#response-status-codes} for more information.
 #' @export
 
 remove_my_saved_albums <- function(ids, authorization = get_spotify_authorization_code(), echo =FALSE) {
@@ -222,8 +224,8 @@ remove_my_saved_albums <- function(ids, authorization = get_spotify_authorizatio
 
 #' Remove User's Saved Shows
 #'
-#'Delete one or more shows from current Spotify user’s library.\cr
-#'Changes to a user’s saved shows may not be visible in other Spotify applications immediately.
+#' Delete one or more shows from current Spotify user’s library.\cr
+#' Changes to a user’s saved shows may not be visible in other Spotify applications immediately.
 #'
 #' @param ids Required. \cr
 #' A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.
@@ -232,6 +234,8 @@ remove_my_saved_albums <- function(ids, authorization = get_spotify_authorizatio
 #' @param echo Optional.\cr
 #' Boolean indicating whether to return the response or work silently.
 #'
+#' @return
+#' Returns a respinse status. See \url{https://developer.spotify.com/documentation/web-api/#response-status-codes} for more information.
 #' @export
 
 remove_my_saved_shows <- function(ids, authorization = get_spotify_authorization_code(), echo =FALSE) {
@@ -249,8 +253,8 @@ remove_my_saved_shows <- function(ids, authorization = get_spotify_authorization
 
 #' Remove User's Saved Tracks
 #'
-#'Remove one or more tracks from the current user’s ‘Your Music’ library. \cr
-#'Changes to a user’s saved tracks may not be visible in other Spotify applications immediately.
+#' Remove one or more tracks from the current user’s ‘Your Music’ library. \cr
+#' Changes to a user’s saved tracks may not be visible in other Spotify applications immediately.
 #'
 #' @param ids Required. \cr
 #' A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.
@@ -259,6 +263,8 @@ remove_my_saved_shows <- function(ids, authorization = get_spotify_authorization
 #' @param echo Optional.\cr
 #' Boolean indicating whether to return the response or work silently.
 #'
+#' @return
+#' Returns a respinse status. See \url{https://developer.spotify.com/documentation/web-api/#response-status-codes} for more information.
 #' @export
 
 remove_my_saved_tracks <- function(ids, authorization = get_spotify_authorization_code(), echo =FALSE) {
@@ -267,6 +273,88 @@ remove_my_saved_tracks <- function(ids, authorization = get_spotify_authorizatio
     params <- toJSON(ids)
 
     res <- RETRY('DELETE', base_url, body = params, config(token = authorization), encode = 'json')
+    stop_for_status(res)
+
+    if (echo) {
+        return(res)
+    }
+}
+
+
+#' Save Albums for Current User
+#'
+#' Save one or more albums to the current user’s ‘Your Music’ library.
+#'
+#' @param ids Required. \cr
+#' A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.
+#' @param authorization Required. \cr
+#' A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user.
+#' @param echo Optional.\cr
+#' Boolean indicating whether to return the response or work silently.
+#'
+#' @return
+#' Returns a respinse status. See \url{https://developer.spotify.com/documentation/web-api/#response-status-codes} for more information.
+#' @export
+
+save_albums_to_library <- function(ids, authorization = get_spotify_authorization_code(), echo = FALSE){
+    base_url <- 'https://api.spotify.com/v1/me/albums'
+
+    params <- toJSON(ids)
+    res <- RETRY('PUT', base_url, body = params, config(token = authorization), encode = 'json')
+    stop_for_status(res)
+
+    if (echo) {
+        return(res)
+    }
+}
+
+#' Save Shows for Current User
+#'
+#' Save one or more shows to current Spotify user’s library.
+#'
+#' @param ids Required. \cr
+#' A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.
+#' @param authorization Required. \cr
+#' A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user.
+#' @param echo Optional.\cr
+#' Boolean indicating whether to return the response or work silently.
+#'
+#' @return
+#' Returns a respinse status. See \url{https://developer.spotify.com/documentation/web-api/#response-status-codes} for more information.
+#' @export
+
+save_shows_to_library <- function(ids, authorization = get_spotify_authorization_code(), echo = FALSE){
+    base_url <- 'https://api.spotify.com/v1/me/shows'
+
+    params <- toJSON(ids)
+    res <- RETRY('PUT', base_url, body = params, config(token = authorization), encode = 'json')
+    stop_for_status(res)
+
+    if (echo) {
+        return(res)
+    }
+}
+
+#' Save Tracks for Current User
+#'
+#' Save Tracks for User Save one or more tracks to the current user’s ‘Your Music’ library.
+#'
+#' @param ids Required. \cr
+#' A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the albums. Maximum: 50 IDs.
+#' @param authorization Required. \cr
+#' A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user.
+#' @param echo Optional.\cr
+#' Boolean indicating whether to return the response or work silently.
+#'
+#' @return
+#' Returns a respinse status. See \url{https://developer.spotify.com/documentation/web-api/#response-status-codes} for more information.
+#' @export
+
+save_tracks_to_library <- function(ids, authorization = get_spotify_authorization_code(), echo = FALSE){
+    base_url <- 'https://api.spotify.com/v1/me/tracks'
+
+    params <- toJSON(ids)
+    res <- RETRY('PUT', base_url, body = params, config(token = authorization), encode = 'json')
     stop_for_status(res)
 
     if (echo) {
