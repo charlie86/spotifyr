@@ -31,7 +31,7 @@ An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 cou
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a data frame of results containing user saved tracks information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-users-saved-tracks/} for more information.
 }
 \description{
 Get a list of the songs saved in the current Spotify user’s ‘Your Music’ library.
