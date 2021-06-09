@@ -29,8 +29,11 @@ get_categories <- function(authorization = get_spotify_access_token(), df = TRUE
 #' Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
 #'
 #' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
-#' @param country Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter to ensure that the category exists for a particular country.
-#' @param locale Optional. The desired language, consisting of an \href{http://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English).
+#' @param country Optional. A country: an
+#' \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter to ensure that the category exists for a particular country.
+#' @param locale Optional. The desired language, consisting of an
+#' \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an
+#' \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English).
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a list of results containing category information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
@@ -55,7 +58,7 @@ get_category <- function(category_id, country = NULL, locale = NULL, authorizati
 #' Get a list of Spotify playlists tagged with a particular category.
 #'
 #' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
-#' @param country Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
+#' @param country Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
@@ -90,7 +93,7 @@ get_category_playlists <- function(category_id, country = NULL, limit = 20, offs
 
 #' Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
 #'
-#' @param country Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
+#' @param country Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
@@ -124,9 +127,9 @@ get_new_releases <- function(country = NULL, limit = 20, offset = 0, authorizati
 
 #' Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).
 #'
-#' @param locale Optional. The desired language, consisting of an \href{http://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.
-#' @param country Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
-#' @param timestamp Optional. A timestamp in \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO 8601 format}: \code{yyyy-MM-ddTHH:mm:ss}. Use this parameter to specify the user’s local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: “2014-10-23T09:00:00” for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.
+#' @param locale Optional. The desired language, consisting of an \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.
+#' @param country Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
+#' @param timestamp Optional. A timestamp in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601 format}: \code{yyyy-MM-ddTHH:mm:ss}. Use this parameter to specify the user’s local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: “2014-10-23T09:00:00” for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
@@ -165,7 +168,7 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' Create a playlist-style listening experience based on seed artists, tracks and genres.
 #'
 #' @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.
-#' @param market Optional. An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{Track Relinking}. Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking, the generated results may not precisely match the filters applied. Original, non-relinked tracks are available via the \code{linked_from} attribute of the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{relinked track response}.
+#' @param market Optional. An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{Track Relinking}. Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking, the generated results may not precisely match the filters applied. Original, non-relinked tracks are available via the \code{linked_from} attribute of the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{relinked track response}.
 #' @param max_acousticness Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' acousticness.
 #' @param max_danceability Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' danceability.
 #' @param max_duration_ms Optional. Integer indicating a hard ceiling on recommended tracks' duration in milliseconds.
@@ -208,13 +211,17 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' @param target_tempo Optional. Numeric value indicating a target value for recommended tracks' tempo. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.
 #' @param target_time_signature Optional. Integer indicating a target value for recommended tracks' time signature. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.
 #' @param target_valence Optional. Numeric value between 0 and 1 indicating a target value for recommended tracks' valence. Tracks with the attribute values nearest to the target values will be preferred. For example, you might request \code{target_energy = 0.6} and \code{target_danceability = 0.8}. All target values will be weighed equally in ranking results.
-#' @param seed_artists A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for seed artists. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
-#' @param seed_genres A character vector of any genres in the set of \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/#available-genre-seeds}{available genre seeds}. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
-#' @param seed_tracks A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for a seed track. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
+#' @param seed_artists A character vector of
+#' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for seed artists. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
+#' @param seed_genres A character vector of any genres in the set of
+#' \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/#available-genre-seeds}{available genre seeds}. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
+#' @param seed_tracks A character vector of
+#' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for a seed track. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_seeds_in_response Optional. Boolean for whether to include seed object in response. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results recommendations. See the official \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{Spotify Web API documentation} for more information.
+#' Returns a data frame of results recommendations. See the official
+#' \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{Spotify Web API documentation} for more information.
 #' @export
 #'
 #' @examples
