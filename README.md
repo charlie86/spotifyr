@@ -3,8 +3,11 @@
 
 # spotifyr
 
+<!-- badges: start -->
+
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
-![](https://cranlogs.r-pkg.org/badges/grand-total/spotifyr?color=brightgreen)
+![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
+<!-- badges: end -->
 
 ## Overview
 
@@ -13,7 +16,7 @@ information from Spotify’s Web API in bulk. By automatically batching
 API requests, it allows you to enter an artist’s name and retrieve their
 entire discography in seconds, along with Spotify’s audio features and
 track/album popularity metrics. You can also pull song and playlist
-information for a given Spotify User (including yourself\!).
+information for a given Spotify User (including yourself!).
 
 ## Installation
 
@@ -51,7 +54,7 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 access_token <- get_spotify_access_token()
 ```
 
-#### Authorization code flow
+#### Authorization Code Flow
 
 For certain functions and applications, you’ll need to log in as a
 Spotify user. To do this, your Spotify Developer application needs to
@@ -65,7 +68,7 @@ Guide](https://developer.spotify.com/documentation/general/guides/authorization-
 
 ## Usage
 
-### What was The Beatles’ favorite key?
+### What Was the Beatles’ Favorite Key?
 
 ``` r
 library(spotifyr)
@@ -73,7 +76,8 @@ beatles <- get_artist_audio_features('the beatles')
 ```
 
 ``` r
-library(tidyverse)
+library(dplyr)
+library(purrr)
 library(knitr)
 
 beatles %>% 
@@ -82,13 +86,13 @@ beatles %>%
     kable()
 ```
 
-| key\_mode |  n |
-| :-------- | -: |
-| D major   | 24 |
-| G major   | 21 |
-| A major   | 13 |
-| F major   | 12 |
-| C major   | 11 |
+| key\_mode |   n |
+|:----------|----:|
+| D major   |  24 |
+| G major   |  21 |
+| A major   |  13 |
+| F major   |  12 |
+| C major   |  11 |
 
 ### Get your most recently played tracks
 
@@ -96,24 +100,28 @@ beatles %>%
 library(lubridate)
 
 get_my_recently_played(limit = 5) %>% 
-    mutate(artist.name = map_chr(track.artists, function(x) x$name[1]),
-           played_at = as_datetime(played_at)) %>% 
+    mutate(
+        artist.name = map_chr(track.artists, function(x) x$name[1]),
+        played_at = as_datetime(played_at)
+        ) %>% 
     select(track.name, artist.name, track.album.name, played_at) %>% 
     kable()
 ```
 
-| track.name                                 | artist.name | track.album.name | played\_at          |
-| :----------------------------------------- | :---------- | :--------------- | :------------------ |
-| Hardened Chord - Regis Remix               | Stave       | After the Social | 2019-07-12 19:04:29 |
-| Cells                                      | Blenk       | Shelter          | 2019-07-12 18:57:59 |
-| Suspension Of Consciousness - Original mix | Flaminia    | THEOTHERSIDE 01  | 2019-07-12 18:52:32 |
-| Kerala                                     | Bonobo      | Migration        | 2019-07-12 18:46:58 |
-| Linked                                     | Bonobo      | Linked           | 2019-07-12 18:45:31 |
+| track.name           | artist.name                      | track.album.name                 | played\_at          |
+|:---------------------|:---------------------------------|:---------------------------------|:--------------------|
+| Humbug Mountain Song | Fruit Bats                       | Absolute Loser                   | 2021-06-07 21:40:33 |
+| Texas Sun            | Khruangbin                       | Texas Sun                        | 2021-06-07 21:37:28 |
+| Dylan Thomas         | Better Oblivion Community Center | Better Oblivion Community Center | 2021-06-07 21:33:15 |
+| Hot & Heavy          | Lucy Dacus                       | Hot & Heavy                      | 2021-06-07 21:29:38 |
+| 7 Seconds            | Porridge Radio                   | 7 Seconds                        | 2021-06-07 21:25:27 |
 
-### Find your all time favorite artists
+### Find your all Time Favorite Artists
 
 ``` r
-get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit = 5) %>% 
+get_my_top_artists_or_tracks(type = 'artists', 
+                             time_range = 'long_term', 
+                             limit = 5) %>% 
     select(name, genres) %>% 
     rowwise %>% 
     mutate(genres = paste(genres, collapse = ', ')) %>% 
@@ -121,30 +129,34 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
     kable()
 ```
 
-| name         | genres                                                                                                                                         |
-| :----------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| Radiohead    | alternative rock, art rock, melancholia, modern rock, oxford indie, permanent wave, rock                                                       |
-| Flying Lotus | alternative hip hop, escape room, experimental hip hop, glitch, glitch hop, hip hop, indietronica, intelligent dance music, jazztronica, wonky |
-| Onra         | alternative hip hop, chillhop, trip hop, wonky                                                                                                 |
-| Teebs        | abstract beats, bass music, chillwave, wonky                                                                                                   |
-| Pixies       | alternative rock, boston rock, garage rock, indie rock, modern rock, new wave, noise pop, permanent wave, rock                                 |
+| name                | genres                                                                   |
+|:--------------------|:-------------------------------------------------------------------------|
+| Japanese Breakfast  | art pop, bubblegrunge, eugene indie, indie pop, indie rock, philly indie |
+| Haley Bonar         | melancholia, stomp and holler                                            |
+| Balthazar           | belgian indie, belgian rock, dutch indie, dutch rock, ghent indie        |
+| Buildings Breeding  | indie fuzzpop                                                            |
+| Angus & Julia Stone | australian indie folk, indie folk, stomp and holler                      |
 
 ### Find your favorite tracks at the moment
 
 ``` r
-get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit = 5) %>% 
-    mutate(artist.name = map_chr(artists, function(x) x$name[1])) %>% 
+get_my_top_artists_or_tracks(type = 'tracks', 
+                             time_range = 'short_term', 
+                             limit = 5) %>% 
+    mutate(
+        artist.name = map_chr(artists, function(x) x$name[1])
+        ) %>% 
     select(name, artist.name, album.name) %>% 
     kable()
 ```
 
-| name                    | artist.name | album.name |
-| :---------------------- | :---------- | :--------- |
-| Impossible Knots        | Thom Yorke  | ANIMA      |
-| I Am a Very Rude Person | Thom Yorke  | ANIMA      |
-| Traffic                 | Thom Yorke  | ANIMA      |
-| Not The News            | Thom Yorke  | ANIMA      |
-| Runwayaway              | Thom Yorke  | ANIMA      |
+| name           | artist.name   | album.name     |
+|:---------------|:--------------|:---------------|
+| Animal - Edit  | LUMP          | Animal         |
+| Hot & Heavy    | Lucy Dacus    | Hot & Heavy    |
+| Wrong with You | Tristen       | Wrong with You |
+| Sea Urchin     | Mystic Braves | Sea Urchin     |
+| Hot Motion     | Temples       | Hot Motion     |
 
 ### What’s the most joyful Joy Division song?
 
@@ -163,29 +175,33 @@ joy %>%
     kable()
 ```
 
-| track\_name                         | valence |
-| :---------------------------------- | ------: |
-| Passover - 2007 Remaster            |   0.941 |
-| Colony - 2007 Remaster              |   0.808 |
-| Atrocity Exhibition - 2007 Remaster |   0.787 |
-| A Means to an End - 2007 Remaster   |   0.752 |
-| Interzone - 2007 Remaster           |   0.746 |
+| track\_name                               | valence |
+|:------------------------------------------|--------:|
+| Passover - 2020 Digital Master            |   0.946 |
+| Colony - 2020 Digital Master              |   0.829 |
+| Atrocity Exhibition - 2020 Digital Master |   0.790 |
+| Isolation - 2020 Digital Master           |   0.778 |
+| A Means to an End - 2020 Digital Master   |   0.774 |
 
-Now if only there was some way to plot
-joy…
+Now if only there was some way to plot joy…
 
 ### Joyplot of the emotional rollercoasters that are Joy Division’s albums
 
 ``` r
-library(ggjoy)
+library(ggplot2)
+library(ggridges)
 
-ggplot(joy, aes(x = valence, y = album_name)) + 
-    geom_joy() + 
-    theme_joy() +
-    ggtitle("Joyplot of Joy Division's joy distributions", subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
+ggplot(
+    joy, 
+    aes(x = valence, y = album_name)
+    ) + 
+geom_density_ridges() + 
+theme_ridges() +
+labs(title = "Joyplot of Joy Division's joy distributions", 
+     subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 ```
 
-![](man/figures/README-unnamed-chunk-10-1.png)<!-- -->
+<img src="man/figures/README-joyplot-1.png" width="100%" />
 
 ## Sentify: A Shiny app
 
@@ -210,10 +226,6 @@ Elvers
 song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
 
-[KendRick
-LamaR](https://davidklaing.com/blog/2017/05/07/kendrick-lamar-data-science.html),
-David K. Laing
-
 [Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
 song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/),
 Filip Wästberg
@@ -237,6 +249,9 @@ Alyssa Goldberg
 [tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3), Simran
 Vatsa
 
-[Long Distance Calling: Data Science meets
-Post-Rock…](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/),
-Sebastian Kuhn
+## Code of Conduct
+
+Please note that the spotifyr project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

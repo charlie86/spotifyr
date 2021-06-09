@@ -2,7 +2,7 @@
 % Please edit documentation in R/authenticate.R
 \name{get_spotify_authorization_code}
 \alias{get_spotify_authorization_code}
-\title{Get Spotify authorization Code}
+\title{Get Spotify Authorization Code}
 \usage{
 get_spotify_authorization_code(
   client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
@@ -18,7 +18,7 @@ get_spotify_authorization_code(
 \item{scope}{Space delimited string of spotify scopes, found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default}
 }
 \description{
-This function creates a Spotify access token.
+This function creates a Spotify authorization code.
 }
 \examples{
 \dontrun{

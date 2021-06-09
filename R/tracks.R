@@ -22,15 +22,20 @@ get_track_audio_analysis <- function(id, authorization = get_spotify_access_toke
     return(res)
 }
 
-#' Get audio feature information for a single track identified by its unique Spotify ID.
+#' Get audio features of tracks
 #'
-#' @param ids Required. A comma-separated list of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} of the tracks. Maximum: 100 IDs.
+#' Get audio feature information for up to 100 tracks identified by their unique Spotify IDs.
+#'
+#' @param ids Required. A comma-separated list of the
+#' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} of the tracks. Maximum: 100 IDs.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
-#' Returns a data frame of results containing track audio features data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/} for more information.
+#' Returns a data frame of results containing track audio features data.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/} for more information.
 #' @export
 
-get_track_audio_features <- function(ids, authorization = get_spotify_access_token()) {
+get_track_audio_features <- function(ids,
+                                     authorization = get_spotify_access_token()) {
     stopifnot(length(ids) <= 100)
     base_url <- 'https://api.spotify.com/v1/audio-features'
     params <- list(
