@@ -16,6 +16,8 @@
 #' @export
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
+#' @importFrom dplyr mutate select filter left_join
+#' @importFrom tibble as_tibble
 
 
 get_album_data <- function(artist,
