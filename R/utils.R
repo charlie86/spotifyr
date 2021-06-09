@@ -2,6 +2,7 @@
 #'
 #' Check if a string matches the pattern of a Spotify URI
 #' @param s String to check
+#' @importFRom stringr str_detect
 #' @export
 is_uri <- function(s) {
     nchar(s) == 22 &
@@ -43,6 +44,8 @@ scopes <- xml2::read_html("https://developer.spotify.com/documentation/general/g
 #' @param df Dataframe with album name
 #' @param album_name_col String of field name containing album names
 #' @param album_release_year_col String of field name containing album release year
+#' @importFrom dplyr case_when pull all_of everything slice row_number n
+#' @importFrom tibble tibble
 #' @export
 dedupe_album_names <- function(df,
                                album_name_col = 'album_name',
@@ -76,6 +79,7 @@ dedupe_album_names <- function(df,
 # Function for querying playlist API url
 # This function is used for pagination in the playlist api
 query_playlist <- function(url, params) {
+
     res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)

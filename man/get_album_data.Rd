@@ -15,10 +15,13 @@ get_album_data(
 
 \item{albums}{A character vector of album names. Spelling matters, capitalization does not}
 
-\item{authorization}{Authorization token for Spotify web API. Defaults to \code{get_spotify_access_token()}}
+\item{authorization}{Authorization token for Spotify web API. Defaults to
+\code{get_spotify_access_token()}}
 }
 \description{
-Retrieve the entire discography of an artist with the lyrics of each song and the associated audio information. Returns the song data as a nested tibble. This way we can easily see each album, artist, and song title before expanding our data.
+Retrieve the entire discography of an artist with the lyrics of each song and the
+associated audio information. Returns the song data as a nested tibble.
+This way we can easily see each album, artist, and song title before expanding our data.
 }
 \examples{
 \dontrun{

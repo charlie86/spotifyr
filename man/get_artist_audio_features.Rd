@@ -13,9 +13,13 @@ get_artist_audio_features(
 )
 }
 \arguments{
-\item{artist}{Required. String of either an artist name or an artist Spotify ID. If an artist name is provided, \code{search_spotify()} will be used to find a Spotify ID matching the name provided.}
+\item{artist}{Required. String of either an artist name or an artist Spotify ID.
+If an artist name is provided, \code{search_spotify()} will be used to find a Spotify ID
+matching the name provided.}
 
-\item{include_groups}{Optional. A character vector of keywords that will be used to filter the response. Defaults to \code{"album"}. Valid values are: \cr
+\item{include_groups}{Optional. A character vector of keywords that will be used to filter
+ the response. Defaults to \code{"album"}.
+ Valid values are: \cr
 \code{"album"} \cr
 \code{"single"} \cr
 \code{"appears_on"} \cr
@@ -26,10 +30,12 @@ For example: \code{include_groups = c("album", "single")}}
 
 \item{dedupe_albums}{Optional. Boolean}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
+Returns a data frame of results containing track audio features data. See the
+\href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
 }
 \description{
 Get audio feature information for all or part of an artists' discography.

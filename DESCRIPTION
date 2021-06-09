@@ -32,7 +32,7 @@ Authors@R: c(
        )
        )
 Description: An R wrapper for pulling data from the 'Spotify' Web API 
-  <http://developer.spotify.com/web-api> in bulk. It allows you to enter 
+  <https://developer.spotify.com/documentation/web-api/> in bulk. It allows you to enter 
   an artist's name and retrieve their entire discography in seconds, along 
   with audio features and lyrics from Genius Lyrics <https://www.genius.com>. 
   You can also pull song and playlist information for a given 'Spotify' user.
@@ -60,6 +60,6 @@ RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 3.0.0),
     genius
-URL: http://github.com/charlie86/spotifyr
-BugReports: http://github.com/charlie86/spotifyr/issues
+URL: https://github.com/charlie86/spotifyr
+BugReports: https://github.com/charlie86/spotifyr/issues
 Config/testthat/edition: 3

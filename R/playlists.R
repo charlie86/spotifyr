@@ -181,7 +181,8 @@ get_my_playlists <- function(limit = 20, offset = 0, authorization = get_spotify
 #' Private playlists are only retrievable for the current user and requires the
 #' \code{playlist-read-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user. Note that this scope alone will not return collaborative playlists, even though they are always private. \cr
 #' Collaborative playlists are only retrievable for the current user and requires the
-#' \code{playlist-read-collaborative} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user.
+#' \code{playlist-read-collaborative}
+#' \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user.
 #' @param include_meta_info Optional. Boolean indicating whether to include full result,
 #' with meta information such as \code{"total"}, and \code{"limit"}.
 #' Defaults to \code{FALSE}.

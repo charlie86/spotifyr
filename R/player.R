@@ -1,10 +1,14 @@
 #' Get the object currently being played on the user’s Spotify account.
 #'
-#' @param market An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
+#' @param market An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}.
+#' Provide this parameter if you want to apply \
+#' href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-#' The access token must have the \code{user-read-currently-playing} and/or \code{user-read-playback-state} scope authorized in order to read information.
+#' The access token must have the
+#' \code{user-read-currently-playing} and/or \code{user-read-playback-state} scope authorized in order to read information.
 #' @return
-#' Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a data frame of results containing user profile information.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
 
 get_my_currently_playing <- function(market = NULL, authorization = get_spotify_authorization_code()) {
@@ -70,7 +74,9 @@ get_my_devices <- function(authorization = get_spotify_authorization_code()) {
 #' Returns a list containing user playback information. See the official Spotify Web API \href{https://developer.spotify.com/documentation/web-api/reference/player/get-information-about-the-users-current-playback/}{documentation} for more information.
 #' @export
 
-get_my_current_playback <- function(market = NULL, authorization = get_spotify_authorization_code()) {
+get_my_current_playback <- function(market = NULL,
+                                    authorization = get_spotify_authorization_code()
+                                    ) {
     base_url <- 'https://api.spotify.com/v1/me/player'
     params <- list(market = market)
     res <- RETRY('GET', base_url, config(token = authorization), query = params, encode = 'json')
@@ -99,9 +105,12 @@ pause_my_playback <- function(device_id = NULL, authorization = get_spotify_auth
 #' @param state Required. \cr
 #' \code{TRUE}: Shuffle user's playback \cr
 #' \code{FALSE} Do not shuffle user's playback
-#' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @param device_id Optional. The id of the device this command is targeting.
+#' If not supplied, the user’s currently active device is the target.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the \code{user-modify-playback-state} scope authorized
+#' in order to control playback.
 #' @export
 
 toggle_my_shuffle <- function(state, device_id = NULL, authorization = get_spotify_authorization_code()) {
@@ -128,7 +137,10 @@ toggle_my_shuffle <- function(state, device_id = NULL, authorization = get_spoti
 #' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
 #' @export
 
-set_my_repeat_mode <- function(state, device_id = NULL, authorization = get_spotify_authorization_code()) {
+set_my_repeat_mode <- function(state,
+                               device_id = NULL,
+                               authorization = get_spotify_authorization_code()
+                               ) {
     stopifnot(state %in% c('track', 'context', 'off'))
     stopifnot(length(state) == 1)
     base_url <- 'https://api.spotify.com/v1/me/player/repeat'
@@ -136,20 +148,30 @@ set_my_repeat_mode <- function(state, device_id = NULL, authorization = get_spot
         state = state,
         device_id = device_id
     )
-    res <- RETRY('PUT', base_url, config(token = authorization), query = params, encode = 'json')
+    res <- RETRY('PUT', base_url,
+                 config(token = authorization),
+                 query = params,
+                 encode = 'json')
     stop_for_status(res)
     return(res)
 }
 
 #' Set the volume for the user’s current playback device.
 #'
-#' @param volume_percent Required. Integer. The volume to set. Must be a value from 0 to 100 inclusive.
-#' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @param volume_percent Required. Integer. The volume to set.
+#'  Must be a value from 0 to 100 inclusive.
+#' @param device_id Optional. The id of the device this command is targeting.
+#' If not supplied, the user’s currently active device is the target.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the \code{user-modify-playback-state} scope authorized in order
+#' to control playback.
 #' @export
 
-set_my_volume <- function(volume_percent, device_id = NULL, authorization = get_spotify_authorization_code()) {
+set_my_volume <- function(volume_percent,
+                          device_id = NULL,
+                          authorization = get_spotify_authorization_code()
+                          ) {
     stopifnot(is.numeric(volume_percent))
     stopifnot(volume %in% seq(0, 100))
     stopifnot(length(volume) == 1)
@@ -237,13 +259,18 @@ start_my_playback <- function(device_id = NULL, context_uri = NULL, uris = NULL,
 #' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
 #' @export
 
-transfer_my_playback <- function(device_ids, play = FALSE, authorization = get_spotify_authorization_code()) {
+transfer_my_playback <- function(device_ids,
+                                 play = FALSE,
+                                 authorization = get_spotify_authorization_code()
+                                 ) {
     base_url <- 'https://api.spotify.com/v1/me/player/'
     params <- list(
         device_ids = list(device_ids),
         play = play
     )
-    res <- RETRY('PUT', base_url, config(token = authorization), body = params, encode = 'json')
+    res <- RETRY('PUT', base_url,
+                 config(token = authorization),
+                 body = params, encode = 'json')
     stop_for_status(res)
     return(res)
 }
@@ -267,7 +294,9 @@ seek_to_position <- function(position_ms, device_id = NULL, authorization = get_
         position_ms = position_ms,
         device_id = device_id
         )
-    res <- RETRY('PUT', base_url, config(token = authorization), query = params, encode = 'json')
+    res <- RETRY('PUT', base_url,
+                 config(token = authorization),
+                 query = params, encode = 'json')
     stop_for_status(res)
     return(res)
 }
