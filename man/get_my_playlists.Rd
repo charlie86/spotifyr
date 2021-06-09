@@ -31,7 +31,8 @@ Collaborative playlists are only retrievable for the current user and requires t
 \code{playlist-read-collaborative} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user.}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result,
-with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+with meta information such as \code{"total"}, and \code{"limit"}.
+Defaults to \code{FALSE}.}
 }
 \value{
 Returns a data frame of results containing user profile information.

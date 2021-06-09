@@ -189,14 +189,14 @@ Now if only there was some way to plot joy…
 
 ``` r
 library(ggplot2)
-library(ggjoy)
+library(ggridges)
 
 ggplot(
     joy, 
     aes(x = valence, y = album_name)
     ) + 
-geom_joy() + 
-theme_joy() +
+geom_density_ridges() + 
+theme_ridges() +
 labs(title = "Joyplot of Joy Division's joy distributions", 
      subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 ```
@@ -252,10 +252,6 @@ Alyssa Goldberg
 
 [tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3), Simran
 Vatsa
-
-[Long Distance Calling: Data Science meets
-Post-Rock…](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/),
-Sebastian Kuhn
 
 ## Code of Conduct
 

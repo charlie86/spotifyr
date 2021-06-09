@@ -50,7 +50,8 @@ Imports:
     stringr,
     tibble,
     janitor,
-    rlang
+    rlang,
+    ggridges
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
