@@ -16,7 +16,7 @@ get_category_playlists(
 \arguments{
 \item{category_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.}
 
-\item{country}{Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.}
+\item{country}{Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.}
 
 \item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}
 

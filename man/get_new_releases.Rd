@@ -13,7 +13,7 @@ get_new_releases(
 )
 }
 \arguments{
-\item{country}{Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.}
+\item{country}{Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.}
 
 \item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}
 
