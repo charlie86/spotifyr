@@ -18,10 +18,13 @@ knitr::opts_chunk$set(
 ```
 
 ## Overview
+
 spotifyr is an R wrapper for pulling track audio features and other information from Spotify's Web API in bulk. By automatically batching API requests, it allows you to enter an artist's name and retrieve their entire discography in seconds, along with Spotify's audio features and track/album popularity metrics. You can also pull song and playlist information for a given Spotify User (including yourself!).
 
 ## Installation
+
 CRAN version 2.1.0 (recommended)
+
 ```r
 install.packages('spotifyr')
 ```
@@ -32,6 +35,7 @@ devtools::install_github('charlie86/spotifyr')
 ```
 
 ## Authentication
+
 First, set up a Dev account with Spotify to access their Web API [here](https://developer.spotify.com/my-applications/#!/applications). This will give you your `Client ID` and `Client Secret`. Once you have those, you can pull your access token into R with `get_spotify_access_token()`. 
 
 The easiest way to authenticate is to set your credentials to the System Environment variables `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`. The default arguments to `get_spotify_access_token()` (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.
@@ -53,11 +57,14 @@ knitr::include_graphics('man/figures/spotifyr_auth_screenshot.png')
 
 
 ## Usage
+
 ### What was The Beatles' favorite key?
-```{r load_packages, message = FALSE, warning = FALSE, results = 'hide'}
+
+```{r load_packages, message=FALSE, warning=FALSE, results='hide'}
 library(spotifyr)
 beatles <- get_artist_audio_features('the beatles')
 ```
+
 ```{r, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(knitr)
@@ -91,6 +98,7 @@ get_my_top_artists_or_tracks(type = 'artists', time_range = 'long_term', limit =
 ```
 
 ### Find your favorite tracks at the moment
+
 ```{r}
 get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit = 5) %>% 
     mutate(artist.name = map_chr(artists, function(x) x$name[1])) %>% 
@@ -99,10 +107,12 @@ get_my_top_artists_or_tracks(type = 'tracks', time_range = 'short_term', limit =
 ```
 
 ### What's the most joyful Joy Division song?
+
 My favorite audio feature has to be "valence," a measure of musical positivity.
 ```{r, results = 'hide'}
 joy <- get_artist_audio_features('joy division')
 ```
+
 ```{r}
 joy %>% 
     arrange(-valence) %>% 
@@ -150,3 +160,7 @@ The coolest thing about making this package has definitely been seeing all the a
 [tayloR](https://medium.com/@simranvatsa5/taylor-f656e2a09cc3), Simran Vatsa
 
 [Long Distance Calling: Data Science meets Post-Rock...](https://sebastiankuhn.wordpress.com/2017/11/08/r-spotify-part-1-long-distance-calling/), Sebastian Kuhn
+
+## Code of Conduct
+
+Please note that the spotifyr project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

@@ -10,7 +10,8 @@
 #' get_spotify_access_token()
 #' }
 
-get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID'), client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET')) {
+get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID'),
+                                     client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET')) {
 
     post <- RETRY('POST', 'https://accounts.spotify.com/api/token',
                  accept_json(), authenticate(client_id, client_secret),
@@ -39,7 +40,9 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
 #' get_spotify_authorization_code()
 #' }
 
-get_spotify_authorization_code <- function(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"), client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"), scope = spotifyr::scopes) {
+get_spotify_authorization_code <- function(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
+                                           client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
+                                           scope = spotifyr::scopes) {
     endpoint <- oauth_endpoint(authorize = 'https://accounts.spotify.com/authorize', access = 'https://accounts.spotify.com/api/token')
     app <- oauth_app('spotifyr', client_id, client_secret)
     oauth2.0_token(endpoint = endpoint, app = app, scope = scope)

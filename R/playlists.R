@@ -5,7 +5,10 @@
 #'@importFrom dplyr bind_rows
 #'
 #' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
-#' @param fields Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s description and URI: \cr
+#' @param fields Optional.
+#' Filters for the query: a comma-separated list of the fields to return.
+#' If omitted, all fields are returned. For example, to get just the playlist’s description
+#' and URI: \cr
 #' \code{fields = c("description", "uri")} \cr A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
 #' \code{fields = "tracks.items(added_at,added_by.id)"} \cr Use multiple parentheses to drill down into nested objects, for example: \cr
 #' \code{fields = "tracks.items(track(name,href,album(name,href)))"} \cr Fields can be excluded by prefixing them with an exclamation mark, for example: \cr
@@ -17,7 +20,10 @@
 #' Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
 
-get_playlist <- function(playlist_id, fields = NULL, market = NULL, authorization = get_spotify_access_token()) {
+get_playlist <- function(playlist_id, fields = NULL,
+                         market = NULL,
+                         authorization = get_spotify_access_token()
+                         ) {
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}')
     params <- list(
@@ -78,7 +84,13 @@ get_playlist <- function(playlist_id, fields = NULL, market = NULL, authorizatio
 #' Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
 
-get_playlist_tracks <- function(playlist_id, fields = NULL, limit = 100, offset = 0, market = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_playlist_tracks <- function(playlist_id,
+                                fields = NULL,
+                                limit = 100,
+                                offset = 0,
+                                market = NULL,
+                                authorization = get_spotify_access_token(),
+                                include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/tracks')
@@ -109,13 +121,19 @@ get_playlist_tracks <- function(playlist_id, fields = NULL, limit = 100, offset 
 #' Maximum: 50 \cr
 #' @param offset Optional. \cr
 #' The index of the first playlist to return. \cr
-#' Default: 0 (the first object). Maximum offset: 100,000. Use with \code{limit} to get the next set of playlists.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-#' Private playlists are only retrievable for the current user and requires the \code{playlist-read-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user. Note that this scope alone will not return collaborative playlists, even though they are always private. \cr
-#' Collaborative playlists are only retrievable for the current user and requires the \code{playlist-read-collaborative} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user.
-#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
+#' Default: 0 (the first object). Maximum offset: 100,000. Use with \code{limit}
+#' to get the next set of playlists.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+#' Private playlists are only retrievable for the current user and requires the
+#' \code{playlist-read-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user. Note that this scope alone will not return collaborative playlists, even though they are always private. \cr
+#' Collaborative playlists are only retrievable for the current user and requires the
+#' \code{playlist-read-collaborative} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user.
+#' @param include_meta_info Optional. Boolean indicating whether to include full result,
+#' with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a data frame of results containing user profile information.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
 
 get_my_playlists <- function(limit = 20, offset = 0, authorization = get_spotify_authorization_code(), include_meta_info = FALSE) {
@@ -136,7 +154,8 @@ get_my_playlists <- function(limit = 20, offset = 0, authorization = get_spotify
 
 #' Get a list of the playlists owned or followed by a Spotify user.
 #'
-#' @param user_id Required. The user's \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify user ID}.
+#' @param user_id Required.
+#' The user's \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify user ID}.
 #' @param limit Optional. \cr
 #' Maximum number of playlists to return. \cr
 #' Default: 20 \cr
@@ -144,27 +163,43 @@ get_my_playlists <- function(limit = 20, offset = 0, authorization = get_spotify
 #' Maximum: 50 \cr
 #' @param offset Optional. \cr
 #' The index of the first playlist to return. \cr
-#' Default: 0 (the first object). Maximum offset: 100,000. Use with \code{limit} to get the next set of playlists.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-#' Private playlists are only retrievable for the current user and requires the \code{playlist-read-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user. Note that this scope alone will not return collaborative playlists, even though they are always private. \cr
-#' Collaborative playlists are only retrievable for the current user and requires the \code{playlist-read-collaborative} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user.
-#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
+#' Default: 0 (the first object). Maximum offset: 100,000. Use with \code{limit}
+#' to get the next set of playlists.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+#' Private playlists are only retrievable for the current user and requires the
+#' \code{playlist-read-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user. Note that this scope alone will not return collaborative playlists, even though they are always private. \cr
+#' Collaborative playlists are only retrievable for the current user and requires the
+#' \code{playlist-read-collaborative} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope} to have been authorized by the user.
+#' @param include_meta_info Optional. Boolean indicating whether to include full result,
+#' with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing user playlist information. See the official \href{https://developer.spotify.com/documentation/web-api/reference/playlists/get-list-users-playlists/}{Spotify Web API documentation} for more information.
+#' Returns a data frame of results containing user playlist information.
+#' See the official \href{https://developer.spotify.com/documentation/web-api/reference/playlists/get-list-users-playlists/}{Spotify Web API documentation} for more information.
 #' @export
-get_user_playlists <- function(user_id, limit = 20, offset = 0, authorization = get_spotify_authorization_code(), include_meta_info = FALSE) {
+get_user_playlists <- function(user_id,
+                               limit = 20,
+                               offset = 0,
+                               authorization = get_spotify_authorization_code(),
+                               include_meta_info = FALSE) {
     base_url <- 'https://api.spotify.com/v1/users'
     url <- str_glue('{base_url}/{user_id}/playlists')
     params <- list(
         limit = limit,
         offset = offset
     )
-    res <- RETRY('GET', url, query = params, config(token = authorization), encode = 'json')
+    res <- RETRY('GET', url,
+                 query = params,
+                 config(token = authorization),
+                 encode = 'json')
+
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
     if (!include_meta_info) {
         res <- res$items
     }
+
     return(res)
 }
 
@@ -218,8 +253,10 @@ create_playlist <- function(user_id, name, public = TRUE, collaborative = FALSE,
 #' @param uris Optional. A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add. For example \cr
 #' \code{uris = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"} \cr
 #' A maximum of 100 tracks can be added in one request.
-#' @param position Optional. Integer indicating the position to insert the tracks, a zero-based index. For example, to insert the tracks in the first position: \code{position = 0}; to insert the tracks in the third position: \code{position = 2} . If omitted, the tracks will be appended to the playlist. Tracks are added in the order they are listed in the query string or request body.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+#' @param position Optional. Integer indicating the position to insert the tracks,
+#' a zero-based index. For example, to insert the tracks in the first position: \code{position = 0}; to insert the tracks in the third position: \code{position = 2} . If omitted, the tracks will be appended to the playlist. Tracks are added in the order they are listed in the query string or request body.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 #' Adding tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; adding tracks to the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @export
 
@@ -270,7 +307,13 @@ remove_tracks_from_playlist <- function(playlist_id, uris, authorization = get_s
 #' Changing a public playlist for a user requires authorization of the \code{playlist-modify-public} scope; changing a private playlist requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @export
 
-change_playlist_details <- function(playlist_id, name = NULL, public = NULL, collaborative = NULL, description = NULL, authorization = get_spotify_authorization_code()) {
+change_playlist_details <- function(playlist_id,
+                                    name = NULL,
+                                    public = NULL,
+                                    collaborative = NULL,
+                                    description = NULL,
+                                    authorization = get_spotify_authorization_code()
+                                    ) {
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}')
     params <- list(
@@ -279,7 +322,10 @@ change_playlist_details <- function(playlist_id, name = NULL, public = NULL, col
         collaborative  = collaborative,
         description = description
     )
-    res <- RETRY('PUT', url, body = params, config(token = authorization), encode = 'json')
+    res <- RETRY('PUT', url,
+                 body = params,
+                 config(token = authorization),
+                 encode = 'json')
     stop_for_status(res)
     return(res)
 }
@@ -329,10 +375,14 @@ tidy.playlist <- function(x, ...) {
     tidied <- track_items %>%
         # select(artists) %>%
         mutate(artist_names = map(artists, pull, "name")) %>%
-        select(-unneeded) %>%
-        select(track_name = name, album_name, id,
-               artist_names, added_at, duration_ms, popularity, track_number,
-               available_markets, everything())
+        select( -all_of(unneeded) ) %>%
+        select(track_name = name,
+               album_name, id,
+               artist_names, added_at,
+               duration_ms, popularity, track_number,
+               available_markets,
+               everything() # everything else goes after available markets
+               )
 
     dplyr::as_tibble(tidied)
 }
@@ -351,7 +401,8 @@ print.playlist <- function(x, ...) {
         paste(x$name, "by", x$owner$display_name),
         paste(x$tracks$total, "tracks"),
         paste(x$followers$total, "followers"),
-        x$external_urls$spotify))
+        x$external_urls$spotify
+        ))
 
     cat(frms, "\n", fill = TRUE)
     str(x[to_show], 1, no.list = T, indent.str = "- ", comp.str = "")

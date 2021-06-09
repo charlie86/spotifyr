@@ -44,7 +44,9 @@ scopes <- xml2::read_html("https://developer.spotify.com/documentation/general/g
 #' @param album_name_col String of field name containing album names
 #' @param album_release_year_col String of field name containing album release year
 #' @export
-dedupe_album_names <- function(df, album_name_col = 'album_name', album_release_year_col = 'album_release_year') {
+dedupe_album_names <- function(df,
+                               album_name_col = 'album_name',
+                               album_release_year_col = 'album_release_year') {
 
     album_dupe_regex <- '(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo)'
 
