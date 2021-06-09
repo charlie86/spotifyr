@@ -1,6 +1,7 @@
 Package: spotifyr
 Title: R Wrapper for the 'Spotify' Web API
 Version: 2.1.2
+Date: 2021-06-09
 Authors@R: c(
     person(
       given = "Charlie", 
@@ -54,6 +55,9 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Suggests: testthat, genius
+Suggests: 
+    testthat (>= 3.0.0),
+    genius
 URL: http://github.com/charlie86/spotifyr
 BugReports: http://github.com/charlie86/spotifyr/issues
+Config/testthat/edition: 3

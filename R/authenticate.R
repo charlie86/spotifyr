@@ -24,12 +24,12 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
 
     access_token <- post$access_token
 
-    return(access_token)
+    access_token
 }
 
-#' Get Spotify authorization Code
+#' Get Spotify Authorization Code
 #'
-#' This function creates a Spotify access token.
+#' This function creates a Spotify authorization code.
 #' @param client_id Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"
 #' @param client_secret Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"
 #' @param scope Space delimited string of spotify scopes, found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default
@@ -40,9 +40,11 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
 #' get_spotify_authorization_code()
 #' }
 
-get_spotify_authorization_code <- function(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
-                                           client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
-                                           scope = spotifyr::scopes) {
+get_spotify_authorization_code <- function(
+        client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
+        client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
+        scope = spotifyr::scopes
+        ) {
     endpoint <- oauth_endpoint(authorize = 'https://accounts.spotify.com/authorize', access = 'https://accounts.spotify.com/api/token')
     app <- oauth_app('spotifyr', client_id, client_secret)
     oauth2.0_token(endpoint = endpoint, app = app, scope = scope)
