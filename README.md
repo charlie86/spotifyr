@@ -54,7 +54,7 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxx')
 access_token <- get_spotify_access_token()
 ```
 
-#### Authorization code flow
+#### Authorization Code Flow
 
 For certain functions and applications, you’ll need to log in as a
 Spotify user. To do this, your Spotify Developer application needs to
@@ -68,7 +68,7 @@ Guide](https://developer.spotify.com/documentation/general/guides/authorization-
 
 ## Usage
 
-### What was The Beatles’ favorite key?
+### What Was the Beatles’ Favorite Key?
 
 ``` r
 library(spotifyr)
@@ -116,7 +116,7 @@ get_my_recently_played(limit = 5) %>%
 | Hot & Heavy          | Lucy Dacus                       | Hot & Heavy                      | 2021-06-07 21:29:38 |
 | 7 Seconds            | Porridge Radio                   | 7 Seconds                        | 2021-06-07 21:25:27 |
 
-### Find your all time favorite artists
+### Find your all Time Favorite Artists
 
 ``` r
 get_my_top_artists_or_tracks(type = 'artists', 
@@ -225,10 +225,6 @@ Elvers
 [Blue Christmas: A data-driven search for the most depressing Christmas
 song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
-
-[KendRick
-LamaR](https://davidklaing.com/blog/2017/05/07/kendrick-lamar-data-science.html),
-David K. Laing
 
 [Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
 song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/),
