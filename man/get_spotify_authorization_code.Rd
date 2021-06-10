@@ -23,7 +23,7 @@ This function creates a Spotify authorization code.
 }
 \examples{
 \donttest{
-get_spotify_authorization_code()
+## get_spotify_authorization_code()
 }
 }
 \keyword{auth}
