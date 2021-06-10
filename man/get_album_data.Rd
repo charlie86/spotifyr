@@ -30,3 +30,4 @@ get_album_data(artist = "Wild child",
 }
 
 }
+\concept{lyrics functions}

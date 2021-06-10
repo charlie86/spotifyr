@@ -20,7 +20,7 @@
 #' @importFrom purrr possibly map_df
 #' @importFrom dplyr mutate select filter left_join ungroup rename
 #' @importFrom tibble as_tibble
-
+#' @family lyrics functions
 
 get_album_data <- function(artist,
                            albums = character(),
@@ -78,24 +78,34 @@ get_album_data <- function(artist,
 #' @importFrom dplyr mutate group_by filter distinct rename left_join ungroup
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
+#' @importFrom genius genius_album
+#' @importFrom rlang .data
+#' @family album functions
 
 get_discography <- function(artist,
                             authorization = get_spotify_access_token()
                             ) {
 
     # Identify All Albums for a single artist
-    artist_audio_features <- get_artist_audio_features(artist,
-                                                       authorization = authorization) %>%
-        group_by(album_name) %>%
+    artist_audio_features <- get_artist_audio_features(
+            artist,
+            authorization = authorization) %>%
+        group_by(.data$album_name) %>%
         mutate(track_n = row_number())
 
     # Identify each unique album name and artist pairing
     album_list <- artist_audio_features %>%
-        distinct(album_name) %>%
+        distinct(.data$album_name) %>%
         mutate(artist = artist)
 
     # Create possible_album for potential error handling
-    possible_album <- possibly(genius_album, otherwise = as_tibble())
+    empty_album <- tibble (
+        track_n  = NA_real_,
+        line = NA_real_,
+        lyric = NA_character_,
+        track_title = NA_character_
+    )
+    possible_album <- possibly(genius_album, otherwise = empty_album )
 
     album_lyrics <- map2(album_list$artist,
                          album_list$album_name,
@@ -108,8 +118,8 @@ get_discography <- function(artist,
                 tibble()
             }
         }) %>%
-        rename(lyrics = data) %>%
-        select(-track_title)
+        rename(lyrics = .data$data) %>%
+        select(-all_of("track_title"))
 
     # Acquire the lyrics for each track
     album_data <- artist_audio_features %>%

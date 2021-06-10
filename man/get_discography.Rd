@@ -20,3 +20,9 @@ rex_orange <- get_discography("Rex Orange County")
 unnest(rex_orange, data)
 }
 }
+\seealso{
+Other album functions: 
+\code{\link{get_albums}()},
+\code{\link{get_album}()}
+}
+\concept{album functions}
