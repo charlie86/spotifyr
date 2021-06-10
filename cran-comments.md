@@ -7,7 +7,9 @@
 
 ## R CMD check results
 
-## To reviewer
+0 errors v | 0 warnings v | 0 notes v
+
+## Re-release of archived CRAN package
 
 The package has been on CRAN for a very long time without changes, and eventually archived a short while ago, because it contained many deprecated dependencies, particularly ggjoy, which is no longer on CRAN. This is a long overdue minor release that fixes such issues without changing functionality.  This means fixing dozens of broken links, removing deprecated dependencies, and improving in many places non-standard evaluation to current best practices. 
 
