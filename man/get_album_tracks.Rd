@@ -38,8 +38,17 @@ An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 co
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing album data. See the official API \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-several-albums/}{documentation} for more information.
+Returns a data frame of results containing album data. See the official API
+\href{https://developer.spotify.com/documentation/web-api/reference/albums/get-several-albums/}{documentation} for more information.
 }
 \description{
 Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_playlist_tracks}()},
+\code{\link{get_track_audio_analysis}()},
+\code{\link{get_tracks}()},
+\code{\link{get_track}()}
+}
+\concept{track functions}

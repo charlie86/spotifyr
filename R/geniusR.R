@@ -10,7 +10,8 @@
 #' \code{get_spotify_access_token()}
 #' @examples
 #' \donttest{
-#' get_album_data("Wild child", "Expectations")
+#' get_album_data(artist = "Wild child",
+#'                albums = "Expectations")
 #' }
 #'
 #' @export
@@ -25,8 +26,11 @@ get_album_data <- function(artist,
                            authorization = get_spotify_access_token()
                            ) {
 
-    artist_disco <- get_artist_audio_features(artist, authorization = authorization) %>%
-        filter(tolower(album_name) %in% tolower(albums)) %>%
+    artist_disco <- get_artist_audio_features(
+             artist,
+             authorization = authorization
+             ) %>%
+        filter(tolower(.data$album_name) %in% tolower(albums)) %>%
         group_by(album_name) %>%
         mutate(track_n = row_number()) %>%
         ungroup()

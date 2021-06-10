@@ -32,6 +32,7 @@ Get Spotify catalog information for a single track identified by its unique Spot
 }
 \seealso{
 Other track functions: 
+\code{\link{get_album_tracks}()},
 \code{\link{get_playlist_tracks}()},
 \code{\link{get_track_audio_analysis}()},
 \code{\link{get_track}()}

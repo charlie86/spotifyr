@@ -20,6 +20,7 @@ Get a detailed audio analysis for a single track identified by its unique Spotif
 }
 \seealso{
 Other track functions: 
+\code{\link{get_album_tracks}()},
 \code{\link{get_playlist_tracks}()},
 \code{\link{get_tracks}()},
 \code{\link{get_track}()}

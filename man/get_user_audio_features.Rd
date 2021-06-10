@@ -12,11 +12,21 @@ get_user_audio_features(
 \arguments{
 \item{username}{Required. String of Spotify username.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
+Returns a data frame of results containing track audio features data. See the
+\href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
 }
 \description{
 Get audio feature information for a users' playlists
 }
+\seealso{
+Other musicology functions: 
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_features}()},
+\code{\link{pitch_class_lookup}}
+}
+\concept{musicology functions}

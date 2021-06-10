@@ -48,6 +48,7 @@ Get Spotify Catalog information about artists belonging to a given label.
 get_label_artists('brainfeeder')
 }
 }
+\concept{label functions}
 \keyword{artist}
 \keyword{label}
 \keyword{search}

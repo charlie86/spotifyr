@@ -20,6 +20,9 @@
 #' Retrieve information related to artists.
 #' @section track functions:
 #' Retrieve information related to individual song recordings (songs, concerts).
+#' @section album functions:
+#' Retrieve information about albums.
+#' See also \code{\link{get_album_tracks}}.
 #' @section playlist functions:
 #' Work with playlists.
 #' @section player functions:
@@ -28,6 +31,7 @@
 #' \code{\link{get_my_top_artists_or_tracks}}
 #' @section musicology functions:
 #' Functions related to the contents of the music.
+#' \code{\link{get_playlist_audio_features}}.
 #' @section search functions:
 #' Search for an artist, song or other keyword.
 NULL

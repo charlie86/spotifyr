@@ -12,8 +12,3 @@ verify_result(res)
 \description{
 Check API result for error codes
 }
-\seealso{
-Other musicology functions: 
-\code{\link{get_track_audio_features}()}
-}
-\concept{musicology functions}

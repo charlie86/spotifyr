@@ -46,6 +46,7 @@ Get Spotify Catalog information about artists belonging to a given genre
 get_genre_artists('wonky')
 }
 }
+\concept{genre functions}
 \keyword{artist}
 \keyword{label}
 \keyword{search}

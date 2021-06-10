@@ -21,6 +21,9 @@ Get audio feature information for up to 100 tracks identified by their unique Sp
 }
 \seealso{
 Other musicology functions: 
-\code{\link{verify_result}()}
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_playlist_audio_features}()},
+\code{\link{get_user_audio_features}()},
+\code{\link{pitch_class_lookup}}
 }
 \concept{musicology functions}

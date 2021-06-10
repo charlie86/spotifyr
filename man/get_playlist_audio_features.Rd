@@ -27,6 +27,14 @@ playlist_uris <- c('37i9dQZF1E9T1oFsQFg98K', '37i9dQZF1CyQNOI21QVf3p')
 playlist_audio_features <- get_playlist_audio_features(playlist_username, playlist_uris)
 }
 }
+\seealso{
+Other musicology functions: 
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_track_audio_features}()},
+\code{\link{get_user_audio_features}()},
+\code{\link{pitch_class_lookup}}
+}
+\concept{musicology functions}
 \keyword{audio}
 \keyword{features}
 \keyword{playlists}

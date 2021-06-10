@@ -25,7 +25,8 @@ This way we can easily see each album, artist, and song title before expanding o
 }
 \examples{
 \donttest{
-get_album_data("Wild child", "Expectations")
+get_album_data(artist = "Wild child",
+               albums = "Expectations")
 }
 
 }

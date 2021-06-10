@@ -21,3 +21,8 @@ See the \href{https://developer.spotify.com/documentation/web-api/reference/albu
 \description{
 Get Spotify catalog information for a single album.
 }
+\seealso{
+Other album functions: 
+\code{\link{get_albums}()}
+}
+\concept{album functions}

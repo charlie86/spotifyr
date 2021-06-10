@@ -21,6 +21,12 @@ Retrieve information related to artists.
 Retrieve information related to individual song recordings (songs, concerts).
 }
 
+\section{album functions}{
+
+Retrieve information about albums.
+See also \code{\link{get_album_tracks}}.
+}
+
 \section{playlist functions}{
 
 Work with playlists.
@@ -39,6 +45,7 @@ Interact with the user's devices and players.
 \section{musicology functions}{
 
 Functions related to the contents of the music.
+\code{\link{get_playlist_audio_features}}.
 }
 
 \section{search functions}{
