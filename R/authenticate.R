@@ -39,7 +39,7 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
 #' @export
 #' @examples
 #' \donttest{
-#' get_spotify_authorization_code()
+#' ## get_spotify_authorization_code()
 #' }
 
 get_spotify_authorization_code <- function(

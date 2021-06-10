@@ -32,7 +32,8 @@ For example: \code{include_groups = c("album", "single")}}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service.
 See the
-\href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
+Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
 Returns a data frame of results containing track audio features data. See the

@@ -1,7 +1,8 @@
 #' Retrieve artist discography with song lyrics and audio info
 #'
 #' Retrieve the entire discography of an artist with the lyrics of each song and the
-#' associated audio information. Returns the song data as a nested tibble (see \code{tidyr::\link[tidyr]{nest}}).
+#' associated audio information. Returns the song data as a nested tibble
+#' (see \code{tidyr::\link[tidyr]{nest}}).
 #' This way we can easily see each album, artist, and song title before expanding our data.
 #'
 #' @param artist The quoted name of the artist. Spelling matters, capitalization does not.
