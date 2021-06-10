@@ -6,7 +6,8 @@
 <!-- badges: start -->
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
-![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
+![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen) [![CRAN
+status](https://www.r-pkg.org/badges/version/spotifyr)](https://CRAN.R-project.org/package=spotifyr)
 <!-- badges: end -->
 
 ## Overview
@@ -110,11 +111,11 @@ get_my_recently_played(limit = 5) %>%
 
 | track.name           | artist.name                      | track.album.name                 | played\_at          |
 |:---------------------|:---------------------------------|:---------------------------------|:--------------------|
+| Deep In Love         | Bonny Light Horseman             | Bonny Light Horseman             | 2021-06-07 21:41:33 |
 | Humbug Mountain Song | Fruit Bats                       | Absolute Loser                   | 2021-06-07 21:40:33 |
 | Texas Sun            | Khruangbin                       | Texas Sun                        | 2021-06-07 21:37:28 |
 | Dylan Thomas         | Better Oblivion Community Center | Better Oblivion Community Center | 2021-06-07 21:33:15 |
 | Hot & Heavy          | Lucy Dacus                       | Hot & Heavy                      | 2021-06-07 21:29:38 |
-| 7 Seconds            | Porridge Radio                   | 7 Seconds                        | 2021-06-07 21:25:27 |
 
 ### Find your all Time Favorite Artists
 

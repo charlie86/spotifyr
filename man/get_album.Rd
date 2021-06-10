@@ -23,6 +23,7 @@ Get Spotify catalog information for a single album.
 }
 \seealso{
 Other album functions: 
-\code{\link{get_albums}()}
+\code{\link{get_albums}()},
+\code{\link{get_discography}()}
 }
 \concept{album functions}
