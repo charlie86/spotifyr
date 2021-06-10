@@ -171,7 +171,10 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' Create a playlist-style listening experience based on seed artists, tracks and genres.
 #'
 #' @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.
-#' @param market Optional. An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{Track Relinking}. Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking, the generated results may not precisely match the filters applied. Original, non-relinked tracks are available via the \code{linked_from} attribute of the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{relinked track response}.
+#' @param market Optional.
+#' An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}.
+#' Provide this parameter if you want to apply
+#' \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}. Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking, the generated results may not precisely match the filters applied. Original, non-relinked tracks are available via the \code{linked_from} attribute of the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{relinked track response}.
 #' @param max_acousticness Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' acousticness.
 #' @param max_danceability Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' danceability.
 #' @param max_duration_ms Optional. Integer indicating a hard ceiling on recommended tracks' duration in milliseconds.
