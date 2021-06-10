@@ -68,13 +68,12 @@ get_category <- function(category_id, country = NULL, locale = NULL, authorizati
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing category playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
-#' @export
-#'
 #' @examples
 #' \donttest{
 #' ## Get Brazilian party playlists
 #' get_category_playlists('party', country = 'BR')
 #' }
+#' @export
 
 get_category_playlists <- function(category_id, country = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
     base_url <- 'https://api.spotify.com/v1/browse/categories'
@@ -228,13 +227,10 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' @return
 #' Returns a data frame of results recommendations. See the official
 #' \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{Spotify Web API documentation} for more information.
-#' @export
-#'
 #' @examples
-#' \donttest{
-#' ## Get new Swedish music
-#' get_recommendations(market = 'SE')
-#' }
+#' \donttest{ get_recommendations(market = 'SE') }
+#' @family personalization functions
+#' @export
 
 get_recommendations <- function(limit = 20,
                                 market = NULL,
@@ -354,25 +350,28 @@ get_recommendations <- function(limit = 20,
 
 #' Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks
 #'
-#' @description
-#' This is a wrapper for the get_recommendations() function, which provides a workaround for the limit of 5 seed tracks per recommendation call. The function splits a supplied vector of track IDs into subsets of length 5, then applies a get_recommendations() call, 5 tracks at a time. This should generate a data frame of recommended tracks, with length equal to the supplied vector of track ids.
-#'
+#' This is a wrapper for the \code{\link{get_recommendations()}} function, which provides a workaround for
+#' the limit of 5 seed tracks per recommendation call. The function splits a supplied vector
+#' of track IDs into subsets of length 5, then applies a get_recommendations() call,
+#' 5 tracks at a time. This should generate a data frame of recommended tracks, with
+#' length equal to the supplied vector of track ids.
 #'
 #' @param track_ids
 #' A vector containing the IDs of the tracks you'd like recommendations for
 #' @param valence
 #' The target valence for the recommendations
-#'
 #' @return
 #' Returns a data frame containing recommendations from the Spotify API
-#' @export
-#'
 #' @examples
 #' \donttest{
 #' get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR"))
 #' }
+#' @family personalization functions
+#' @export
+
 
 get_recommendations_all <- function(track_ids, valence = NULL) {
+
     get_recs <- function(i, ids, vec_length, valence) {
         start <- i
         end <- ifelse(i + 4 > vec_length, vec_length, i+4)
@@ -384,7 +383,11 @@ get_recommendations_all <- function(track_ids, valence = NULL) {
     }
 
     tracks_length <- length(track_ids)
-    tracks_seq <- seq(from = 1, to = tracks_length, by = 5)
+
+    tracks_seq <- seq(from = 1,
+                      to = tracks_length,
+                      by = 5)
+
     all_recs <- map_df(tracks_seq,
                        ~ get_recs(.x, track_ids, tracks_length, valence))
     all_recs

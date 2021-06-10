@@ -169,8 +169,11 @@ Returns a data frame of results recommendations. See the official
 Create a playlist-style listening experience based on seed artists, tracks and genres.
 }
 \examples{
-\donttest{
-## Get new Swedish music
-get_recommendations(market = 'SE')
+\donttest{ get_recommendations(market = 'SE') }
 }
+\seealso{
+Other personalization functions: 
+\code{\link{get_my_top_artists_or_tracks}()},
+\code{\link{get_recommendations_all}()}
 }
+\concept{personalization functions}
