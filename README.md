@@ -227,13 +227,6 @@ Elvers
 song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
 
-[Vilken är Kents mest deprimerande låt? (What is Kent’s most depressing
-song?)](http://dataland.rbind.io/2017/11/07/vilken-%C3%A4r-kents-mest-deprimerande-lat/),
-Filip Wästberg
-
-[Чёрное зеркало Arcade Fire (Black Mirror Arcade
-Fire)](http://thesociety.ru/arcadefire), TheSociety
-
 [Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you
 feel sad when you hear “Love for both?” You’re not
 alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico),
