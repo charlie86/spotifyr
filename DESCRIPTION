@@ -36,7 +36,7 @@ Description: An R wrapper for pulling data from the 'Spotify' Web API
   an artist's name and retrieve their entire discography in seconds, along 
   with audio features and lyrics from Genius Lyrics <https://genius.com/>. 
   You can also pull song and playlist information for a given 'Spotify' user.
-Maintainer: Daniel Antal <daniel.antal@dataobservatory.eu>
+Maintainer: Daniel Antal <daniel.antal@ceemid.eu>
 Depends: R (>= 3.3.0)
 Imports:
     dplyr,

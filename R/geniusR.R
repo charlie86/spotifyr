@@ -1,7 +1,7 @@
 #' Retrieve artist discography with song lyrics and audio info
 #'
 #' Retrieve the entire discography of an artist with the lyrics of each song and the
-#' associated audio information. Returns the song data as a nested tibble (see \code{tidyr::\link[tidyr::nest]{nest}}).
+#' associated audio information. Returns the song data as a nested tibble (see \code{tidyr::\link[tidyr]{nest}}).
 #' This way we can easily see each album, artist, and song title before expanding our data.
 #'
 #' @param artist The quoted name of the artist. Spelling matters, capitalization does not.
@@ -13,14 +13,13 @@
 #' get_album_data(artist = "Wild child",
 #'                albums = "Expectations")
 #' }
-#'
 #' @export
 #' @importFrom tidyr nest unnest
 #' @importFrom genius genius_album
 #' @importFrom purrr possibly map_df
 #' @importFrom dplyr mutate select filter left_join ungroup rename
 #' @importFrom tibble as_tibble
-#' @return A nested tibble. See \code{tidyr::\link[tidyr::nest]{nest}}.
+#' @return A nested tibble. See \code{tidyr::\link[tidyr]{nest}}.
 #' @family lyrics functions
 
 get_album_data <- function(artist,
@@ -87,7 +86,7 @@ get_album_data <- function(artist,
 #' @importFrom purrr possibly
 #' @importFrom genius genius_album
 #' @importFrom rlang .data
-#' @return A nested tibble. See \code{tidyr::\link[tidyr::nest]{nest}}.
+#' @return A nested tibble. See \code{tidyr::\link[tidyr]{nest}}.
 #' @family album functions
 
 get_discography <- function(artist,

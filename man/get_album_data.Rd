@@ -19,11 +19,11 @@ get_album_data(
 \code{get_spotify_access_token()}}
 }
 \value{
-A nested tibble. See \code{tidyr::\link[tidyr::nest]{nest}}.
+A nested tibble. See \code{tidyr::\link[tidyr]{nest}}.
 }
 \description{
 Retrieve the entire discography of an artist with the lyrics of each song and the
-associated audio information. Returns the song data as a nested tibble (see \code{tidyr::\link[tidyr::nest]{nest}}).
+associated audio information. Returns the song data as a nested tibble (see \code{tidyr::\link[tidyr]{nest}}).
 This way we can easily see each album, artist, and song title before expanding our data.
 }
 \examples{
@@ -31,6 +31,5 @@ This way we can easily see each album, artist, and song title before expanding o
 get_album_data(artist = "Wild child",
                albums = "Expectations")
 }
-
 }
 \concept{lyrics functions}
