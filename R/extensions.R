@@ -55,6 +55,12 @@ get_artist_audio_features <- function(artist = NULL,
                                        include_meta_info = TRUE,
                                        authorization = authorization)
 
+
+    if (is.null(artist_albums$items) | length(artist_albums$items) ==0) {
+        stop("No artist found with artist_id='", artist_id, "'.")
+    }
+
+
     num_loops_artist_albums <- ceiling(artist_albums$total / 20)
 
     if (num_loops_artist_albums > 1) {
