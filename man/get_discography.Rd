@@ -13,7 +13,7 @@ get_discography(artist, authorization = get_spotify_access_token())
 Defaults to \code{get_spotify_access_token()}}
 }
 \value{
-A nested tibble. See \code{tidyr::\link[tidyr::nest]{nest}}.
+A nested tibble. See \code{tidyr::\link[tidyr]{nest}}.
 }
 \description{
 Retrieve the entire discography of an artist with the lyrics of each song and the

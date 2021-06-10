@@ -18,6 +18,10 @@
 #' @importFrom utils setTxtProgressBar txtProgressBar str
 #' @section artist functions:
 #' Retrieve information related to artists.
+#' \code{artist}: Get the data of a single artist.\cr
+#' \code{get_artists}: Get the data of multiple artist.\cr
+#' \code{get_related_artists}: Get that of related artist to an original artist.\cr
+#' \code{get_artist_albums}: Get artists who appear on an album.\cr
 #' @section track functions:
 #' Retrieve information related to individual song recordings (songs, concerts).
 #' @section album functions:
@@ -31,9 +35,13 @@
 #' \code{\link{get_my_top_artists_or_tracks}}
 #' @section musicology functions:
 #' Functions related to the contents of the music.
+#' @section lyrics functions:
+#' Functions related to the lyrics of the music, such as
+#' \code{get_album_data} and \code{get_discography}.
 #' \code{\link{get_playlist_audio_features}}.
 #' @section search functions:
-#' Search for an artist, song or other keyword.
+#' Search for an artist, song or other keyword.\cr
+#' The main function is \code{search_spotify}.
 NULL
 
 globalVars <- c(

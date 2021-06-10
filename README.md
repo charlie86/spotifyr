@@ -219,10 +219,6 @@ examples:
 [Exploring the Spotify API with R: A tutorial for beginners, by a
 beginner](https://msmith7161.github.io/what-is-speechiness/), Mia Smith
 
-[Sentiment analysis of musical taste: a cross-European
-comparison](http://paulelvers.com/post/emotionsineuropeanmusic/), Paul
-Elvers
-
 [Blue Christmas: A data-driven search for the most depressing Christmas
 song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
 Hudon
