@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
 ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
+[![CRAN status](https://www.r-pkg.org/badges/version/spotifyr)](https://CRAN.R-project.org/package=spotifyr)
 <!-- badges: end -->
 
 ## Overview
@@ -33,6 +34,7 @@ install.packages('spotifyr')
 ```
 
 Development version
+
 ```r
 devtools::install_github('charlie86/spotifyr')
 ```
