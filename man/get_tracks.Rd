@@ -24,8 +24,16 @@ Provide this parameter if you want to apply
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
+Returns a data frame of results containing track data.
+See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
 }
 \description{
 Get Spotify catalog information for a single track identified by its unique Spotify ID.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_playlist_tracks}()},
+\code{\link{get_track_audio_analysis}()},
+\code{\link{get_track}()}
+}
+\concept{track functions}

@@ -9,7 +9,7 @@
 #' @param authorization Authorization token for Spotify web API. Defaults to
 #' \code{get_spotify_access_token()}
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_album_data("Wild child", "Expectations")
 #' }
 #'
@@ -57,7 +57,7 @@ get_album_data <- function(artist,
 #' @param authorization Authorization token for Spotify web API. Defaults to \code{get_spotify_access_token()}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' rex_orange <- get_discography("Rex Orange County")
 #' unnest(rex_orange, data)
 #' }

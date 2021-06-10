@@ -14,10 +14,14 @@
 #' \code{fields = "tracks.items(track(name,href,album(name,href)))"} \cr Fields can be excluded by prefixing them with an exclamation mark, for example: \cr
 #' \code{fields = "tracks.items(track(name,href,album(!name,href)))"}
 #' @param market Optional. \cr
-#' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}.
+#' Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
-#' Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a data frame of results containing user profile information.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' @family playlist functions
 #' @export
 
 get_playlist <- function(playlist_id, fields = NULL,
@@ -92,6 +96,7 @@ get_playlist <- function(playlist_id, fields = NULL,
 #' @return
 #' Returns a data frame of results containing user profile information.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' @family track functions
 #' @export
 
 get_playlist_tracks <- function(playlist_id,
@@ -145,9 +150,13 @@ get_playlist_tracks <- function(playlist_id,
 #' @return
 #' Returns a data frame of results containing user profile information.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' @family playlist functions
 #' @export
 
-get_my_playlists <- function(limit = 20, offset = 0, authorization = get_spotify_authorization_code(), include_meta_info = FALSE) {
+get_my_playlists <- function(limit = 20,
+                             offset = 0,
+                             authorization = get_spotify_authorization_code(),
+                             include_meta_info = FALSE) {
     base_url <- 'https://api.spotify.com/v1/me/playlists'
     params <- list(
         limit = limit,
@@ -189,7 +198,9 @@ get_my_playlists <- function(limit = 20, offset = 0, authorization = get_spotify
 #' @return
 #' Returns a data frame of results containing user playlist information.
 #' See the official \href{https://developer.spotify.com/documentation/web-api/reference/playlists/get-list-users-playlists/}{Spotify Web API documentation} for more information.
+#' @family playlist functions
 #' @export
+
 get_user_playlists <- function(user_id,
                                limit = 20,
                                offset = 0,
@@ -243,6 +254,7 @@ get_playlist_cover_image <- function(playlist_id, authorization = get_spotify_au
 #' @param description Optional. String containing the playlist description as displayed in Spotify Clients and in the Web API.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 #' Creating a public playlist for a user requires authorization of the \code{playlist-modify-public} scope; creating a private playlist requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @family playlist functions
 #' @export
 
 create_playlist <- function(user_id, name, public = TRUE, collaborative = FALSE, description = NULL, authorization = get_spotify_authorization_code()) {
@@ -271,6 +283,7 @@ create_playlist <- function(user_id, name, public = TRUE, collaborative = FALSE,
 #' @param authorization Required. A valid access token from the Spotify Accounts service.
 #' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 #' Adding tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; adding tracks to the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @family playlist functions
 #' @export
 
 add_tracks_to_playlist <- function(playlist_id, uris, position = NULL, authorization = get_spotify_authorization_code()) {
@@ -293,6 +306,7 @@ add_tracks_to_playlist <- function(playlist_id, uris, position = NULL, authoriza
 #' A maximum of 100 tracks can be removed in one request.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 #' Removing tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; removing tracks from the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @family playlist functions
 #' @export
 
 remove_tracks_from_playlist <- function(playlist_id, uris, authorization = get_spotify_authorization_code()) {
@@ -318,6 +332,7 @@ remove_tracks_from_playlist <- function(playlist_id, uris, authorization = get_s
 #' @param description Optional. String containing the playlist description as displayed in Spotify Clients and in the Web API.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 #' Changing a public playlist for a user requires authorization of the \code{playlist-modify-public} scope; changing a private playlist requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @family playlist functions
 #' @export
 
 change_playlist_details <- function(playlist_id,
@@ -347,23 +362,24 @@ change_playlist_details <- function(playlist_id,
 
 #' Tidy a playlist
 #'
-#' \code{spotifyr::tidy()} extracts and tidies the data frame containing track level information that is returned from \code{get_playlist()} as a tibble.
+#' \code{spotifyr::tidy()} extracts and tidies the data frame containing track level
+#' information that is returned from \code{get_playlist()} as a tibble.
 #'
 #' @param x A playlist object generated from
 #' @param ... Generic arguments to be passed
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
 #' tidy(fall)
 #' }
 #'
-#'@importFrom purrr pluck map
-#'@importFrom stringr str_remove
-#'@importFrom dplyr as_tibble select mutate
-#'@importFrom janitor make_clean_names
+#' @importFrom purrr pluck map
+#' @importFrom stringr str_remove
+#' @importFrom dplyr as_tibble select mutate
+#' @importFrom janitor make_clean_names
+#' @family playlist functions
 #' @export
-#'
-#'
+
 tidy <- function(x, ...) {
     UseMethod("tidy")
 }

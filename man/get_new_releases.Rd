@@ -30,7 +30,7 @@ Returns a data frame of results containing new releases. See \url{https://develo
 Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
 }
 \examples{
-\dontrun{
+\donttest{
 ## Get new Swedish music
 get_new_releases(country = 'SE')
 }

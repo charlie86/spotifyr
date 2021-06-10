@@ -9,6 +9,7 @@
 #' @return
 #' Returns a data frame of results containing user profile information.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' @family player functions
 #' @export
 
 get_my_currently_playing <- function(market = NULL, authorization = get_spotify_authorization_code()) {
@@ -30,6 +31,7 @@ get_my_currently_playing <- function(market = NULL, authorization = get_spotify_
 #' The access token must have the \code{user-read-recently-played} scope authorized in order to read the user's recently played tracks.
 #' @return
 #' Returns a list or data frame of results containing the most recently played tracks for the current user.
+#' @family player functions
 #' @export
 
 get_my_recently_played <- function(limit = 20, after = NULL, before = NULL, authorization = get_spotify_authorization_code(), include_meta_info = FALSE) {
@@ -55,6 +57,7 @@ get_my_recently_played <- function(limit = 20, after = NULL, before = NULL, auth
 #' The access token must have the \code{user-read-playback-state} scope authorized in order to read information.
 #' @return
 #' Returns a data frame of results containing user device information. See the official Spotify Web API \href{https://developer.spotify.com/documentation/web-api/reference/player/get-a-users-available-devices/}{documentation} for more information.
+#' @family player functions
 #' @export
 
 get_my_devices <- function(authorization = get_spotify_authorization_code()) {
@@ -72,6 +75,7 @@ get_my_devices <- function(authorization = get_spotify_authorization_code()) {
 #' The access token must have the \code{user-read-playback-state} scope authorized in order to read information.
 #' @return
 #' Returns a list containing user playback information. See the official Spotify Web API \href{https://developer.spotify.com/documentation/web-api/reference/player/get-information-about-the-users-current-playback/}{documentation} for more information.
+#' @family player functions
 #' @export
 
 get_my_current_playback <- function(market = NULL,
@@ -90,6 +94,7 @@ get_my_current_playback <- function(market = NULL,
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @family player functions
 #' @export
 
 pause_my_playback <- function(device_id = NULL, authorization = get_spotify_authorization_code()) {
@@ -111,6 +116,7 @@ pause_my_playback <- function(device_id = NULL, authorization = get_spotify_auth
 #' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' The access token must have the \code{user-modify-playback-state} scope authorized
 #' in order to control playback.
+#' @family player functions
 #' @export
 
 toggle_my_shuffle <- function(state, device_id = NULL, authorization = get_spotify_authorization_code()) {
@@ -134,7 +140,9 @@ toggle_my_shuffle <- function(state, device_id = NULL, authorization = get_spoti
 #' \code{"off"} will turn repeat off
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' The access token must have the \code{user-modify-playback-state} scope authorized
+#' in order to control playback.
+#' @family player functions
 #' @export
 
 set_my_repeat_mode <- function(state,
@@ -190,6 +198,7 @@ set_my_volume <- function(volume_percent,
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @family player functions
 #' @export
 
 skip_my_playback <- function(device_id = NULL, authorization = get_spotify_authorization_code()) {
@@ -207,6 +216,7 @@ skip_my_playback <- function(device_id = NULL, authorization = get_spotify_autho
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @family player functions
 #' @export
 
 skip_my_playback_previous <- function(device_id = NULL, authorization = get_spotify_authorization_code()) {
@@ -223,16 +233,27 @@ skip_my_playback_previous <- function(device_id = NULL, authorization = get_spot
 #'
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
 #' @param context_uri Optional. String of the Spotify URI of the context to play. Valid contexts are albums, artists, playlists. Example \code{context_uri = "spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}.
-#' @param uris Optional. A character vector of the Spotify track URIs to play. For example: \code{"uris": c("spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M")}.
+#' @param uris Optional. A character vector of the Spotify track URIs to play.
+#' For example: \code{"uris": c("spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M")}.
 #' @param offset Optional. A named list indicating from where the context playback should start. Only available when \code{context_uri} corresponds to an album or playlist object, or when the \code{uris} parameter is used. \cr
-#' \code{"position"} is zero based and can't be negative. Example: \code{"offset" = list("position" = 5)}. \cr
-#' \code{"uri"} is a string representing the uri of the item to start at. Example: \code{"offset" = list("uri" = "spotify:track:1301WleyT98MSxVHPZCA6M")}.
+#' \code{"position"} is zero based and can't be negative. Example:
+#' \code{"offset" = list("position" = 5)}. \cr
+#' \code{"uri"} is a string representing the uri of the item to start at.
+#' Example: \code{"offset" = list("uri" = "spotify:track:1301WleyT98MSxVHPZCA6M")}.
 #' @param position_ms Optional. Integer indicating from what position to start playback. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' The access token must have the \code{user-modify-playback-state} scope authorized
+#' in order to control playback.
+#' @family player functions
 #' @export
 
-start_my_playback <- function(device_id = NULL, context_uri = NULL, uris = NULL, offset = NULL, position_ms = NULL, authorization = get_spotify_authorization_code()) {
+start_my_playback <- function(device_id = NULL,
+                              context_uri = NULL,
+                              uris = NULL,
+                              offset = NULL,
+                              position_ms = NULL,
+                              authorization = get_spotify_authorization_code()
+                              ) {
     base_url <- 'https://api.spotify.com/v1/me/player/play'
     query_params = list(
         device_id = device_id
@@ -254,9 +275,12 @@ start_my_playback <- function(device_id = NULL, context_uri = NULL, uris = NULL,
 #' @param play Optional. \cr
 #' \code{TRUE}: Ensure playback happens on new device \cr
 #' \code{FALSE} (default): keep the current playback state \cr
-#' Note that a value of \code{FALSE} for the \code{play} parameter when also transferring to another \code{device_id} will not pause playback. To ensure that playback is paused on the new device you should send a pause command to the currently active device before transferring to the new \code{device_id}.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' Note that a value of \code{FALSE} for the \code{play} parameter when also
+#' transferring to another \code{device_id} will not pause playback. To ensure that playback is paused on the new device you should send a pause command to the currently active device before transferring to the new \code{device_id}.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @family player functions
 #' @export
 
 transfer_my_playback <- function(device_ids,
@@ -279,11 +303,17 @@ transfer_my_playback <- function(device_ids,
 #'
 #' @param position_ms Required. Integer indicating the position in milliseconds to seek to. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the
+#' \code{user-modify-playback-state} scope authorized in order to control playback.
+#' @family player functions
 #' @export
 
-seek_to_position <- function(position_ms, device_id = NULL, authorization = get_spotify_authorization_code()) {
+seek_to_position <- function(position_ms,
+                             device_id = NULL,
+                             authorization = get_spotify_authorization_code()
+                             ) {
 
     stopifnot(is.numeric(position_ms))
     stopifnot(position_ms > 0)

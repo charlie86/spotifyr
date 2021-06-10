@@ -30,3 +30,15 @@ Changing a public playlist for a user requires authorization of the \code{playli
 \description{
 Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)
 }
+\seealso{
+Other playlist functions: 
+\code{\link{add_tracks_to_playlist}()},
+\code{\link{check_users_following}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{remove_tracks_from_playlist}()},
+\code{\link{tidy}()}
+}
+\concept{playlist functions}

@@ -5,7 +5,8 @@
 #' @param market Optional. \cr
 #' An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
 #' @return
-#' Returns a data frame of results containing album data. See the \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/}{official documentation} for more information.
+#' Returns a data frame of results containing album data.
+#' See the \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/}{official documentation} for more information.
 #' @export
 
 get_album <- function(id, market = NULL, authorization = get_spotify_access_token()) {

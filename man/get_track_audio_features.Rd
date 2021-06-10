@@ -19,3 +19,8 @@ See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/ge
 \description{
 Get audio feature information for up to 100 tracks identified by their unique Spotify IDs.
 }
+\seealso{
+Other musicology functions: 
+\code{\link{verify_result}()}
+}
+\concept{musicology functions}

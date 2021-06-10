@@ -32,13 +32,19 @@ Valid values: long_term (calculated from several years of data and including all
 as it becomes available), \code{medium_term} (approximately last 6 months),
 \code{short_term} (approximately last 4 weeks). Default: \code{medium_term}.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
-\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result,
+with meta information such as \code{"total"}, and \code{"limit"}.
+Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing track or album data. See the official API \href{https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/}{documentation} for more information.
+Returns a data frame of results containing track or album data.
+See the official API
+\href{https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/}{documentation} for more information.
 }
 \description{
 Get the current user’s top artists or tracks based on calculated affinity.
 }
+\concept{personalization functions}

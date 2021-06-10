@@ -20,3 +20,10 @@ Returns a data frame of results containing track data. See \url{https://develope
 \description{
 Get Spotify catalog information for a single track identified by its unique Spotify ID.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_playlist_tracks}()},
+\code{\link{get_track_audio_analysis}()},
+\code{\link{get_tracks}()}
+}
+\concept{track functions}

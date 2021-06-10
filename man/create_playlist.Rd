@@ -30,3 +30,15 @@ Creating a public playlist for a user requires authorization of the \code{playli
 \description{
 Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.)
 }
+\seealso{
+Other playlist functions: 
+\code{\link{add_tracks_to_playlist}()},
+\code{\link{change_playlist_details}()},
+\code{\link{check_users_following}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{remove_tracks_from_playlist}()},
+\code{\link{tidy}()}
+}
+\concept{playlist functions}

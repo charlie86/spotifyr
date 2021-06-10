@@ -50,3 +50,12 @@ Returns a data frame of results containing artist data. See \url{https://develop
 \description{
 Get Spotify catalog information for multiple artists identified by their Spotify IDs.
 }
+\seealso{
+Other artist functions: 
+\code{\link{get_artist_top_tracks}()},
+\code{\link{get_artists}()},
+\code{\link{get_artist}()},
+\code{\link{get_my_followed_artists}()},
+\code{\link{get_related_artists}()}
+}
+\concept{artist functions}

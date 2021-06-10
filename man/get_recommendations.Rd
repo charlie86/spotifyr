@@ -166,7 +166,7 @@ Returns a data frame of results recommendations. See the official
 Create a playlist-style listening experience based on seed artists, tracks and genres.
 }
 \examples{
-\dontrun{
+\donttest{
 ## Get new Swedish music
 get_recommendations(country = 'SE')
 }

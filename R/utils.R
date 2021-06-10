@@ -2,7 +2,7 @@
 #'
 #' Check if a string matches the pattern of a Spotify URI
 #' @param s String to check
-#' @importFRom stringr str_detect
+#' @importFrom stringr str_detect
 #' @export
 is_uri <- function(s) {
     nchar(s) == 22 &
@@ -22,6 +22,7 @@ pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A
 #'
 #' Check API result for error codes
 #' @param res API result ot check
+#' @family musicology functions
 #' @export
 verify_result <- function(res) {
     if (!is.null(res$error)) {

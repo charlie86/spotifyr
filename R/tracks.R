@@ -3,10 +3,13 @@
 #' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
-#' Returns a data frame of results containing track audio analysis data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/} for more information.
+#' Returns a data frame of results containing track audio analysis data.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/} for more information.
+#' @family track functions
 #' @export
 
-get_track_audio_analysis <- function(id, authorization = get_spotify_access_token()) {
+get_track_audio_analysis <- function(id,
+                                     authorization = get_spotify_access_token()) {
 
     base_url <- 'https://api.spotify.com/v1/audio-analysis'
 
@@ -32,10 +35,12 @@ get_track_audio_analysis <- function(id, authorization = get_spotify_access_toke
 #' @return
 #' Returns a data frame of results containing track audio features data.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/} for more information.
+#' @family musicology functions
 #' @export
 
 get_track_audio_features <- function(ids,
-                                     authorization = get_spotify_access_token()) {
+                                     authorization = get_spotify_access_token()
+                                     ) {
     stopifnot(length(ids) <= 100)
     base_url <- 'https://api.spotify.com/v1/audio-features'
     params <- list(
@@ -58,9 +63,12 @@ get_track_audio_features <- function(ids,
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
+#' @family track functions
 #' @export
 
-get_track <- function(id, market = NULL, authorization = get_spotify_access_token()) {
+get_track <- function(id,
+                      market = NULL,
+                      authorization = get_spotify_access_token()) {
 
     base_url <- 'https://api.spotify.com/v1/tracks'
 
@@ -75,10 +83,15 @@ get_track <- function(id, market = NULL, authorization = get_spotify_access_toke
         access_token = authorization
     )
     url <- str_glue('{base_url}/{id}')
-    res <- RETRY('GET', url, query = params, encode = 'json')
+
+    res <- RETRY('GET', url,
+                 query = params,
+                 encode = 'json')
+
     stop_for_status(res)
 
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+                    flatten = TRUE)
 
     return(res)
 }
@@ -93,10 +106,15 @@ get_track <- function(id, market = NULL, authorization = get_spotify_access_toke
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
+#' Returns a data frame of results containing track data.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
+#' @family track functions
 #' @export
 
-get_tracks <- function(ids, market = NULL, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_tracks <- function(ids,
+                       market = NULL,
+                       authorization = get_spotify_access_token(),
+                       include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/tracks'
 

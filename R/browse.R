@@ -1,13 +1,16 @@
 #' Get a list of Spotify categories
 #'
-#' @param df (default TRUE). Should the results be formatted as a data frame? If FALSE, the full response JSON will be returned as a list.
+#' @param df Should the results be formatted as a data frame?
+#' If \code{FALSE}, the full response JSON will be returned as a list; defaults to \code{TRUE}.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #'
 #' @return
-#' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/} for more information.
+#' Returns a data frame of results containing album data.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/} for more information.
 #' @export
 
-get_categories <- function(authorization = get_spotify_access_token(), df = TRUE) {
+get_categories <- function(authorization = get_spotify_access_token(),
+                           df = TRUE) {
 
     url <- 'https://api.spotify.com/v1/browse/categories'
 
@@ -68,7 +71,7 @@ get_category <- function(category_id, country = NULL, locale = NULL, authorizati
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' ## Get Brazilian party playlists
 #' get_category_playlists('party', country = 'BR')
 #' }
@@ -103,7 +106,7 @@ get_category_playlists <- function(category_id, country = NULL, limit = 20, offs
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' ## Get new Swedish music
 #' get_new_releases(country = 'SE')
 #' }
@@ -139,7 +142,7 @@ get_new_releases <- function(country = NULL, limit = 20, offset = 0, authorizati
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' ## Get new Swedish music
 #' get_featured_playlists(country = 'SE')
 #' }
@@ -225,7 +228,7 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' ## Get new Swedish music
 #' get_recommendations(country = 'SE')
 #' }
@@ -362,7 +365,7 @@ get_recommendations <- function(limit = 20,
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR"))
 #' }
 

@@ -7,7 +7,10 @@
 #' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. Modifying the list of artists or users the current user follows requires authorization of the \code{user-follow-modify} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @export
 
-follow_artists_or_users <- function(type, ids, authorization = get_spotify_authorization_code()) {
+follow_artists_or_users <- function(type,
+                                    ids,
+                                    authorization = get_spotify_authorization_code()
+                                    ) {
     base_url <- 'https://api.spotify.com/v1/me/following'
     query_params <- list(
         type = type,
@@ -20,10 +23,16 @@ follow_artists_or_users <- function(type, ids, authorization = get_spotify_autho
 
 #' Add the current user as a follower of a playlist.
 #'
-#' @param playlist_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist. Any playlist can be followed, regardless of its \href{https://developer.spotify.com/documentation/general/guides/working-with-playlists/#public-private-and-collaborative-status}{public/private status}, as long as you know its playlist ID.
-#' @param public Optional. Defaults to \code{TRUE}. If \code{TRUE} the playlist will be included in the user's public playlists, if \code{FALSE} it will remain private. o be able to follow playlists privately, the user must have granted the \code{playlist-modify-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope}.
+#' @param playlist_id Required.
+#' The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist. Any playlist can be followed, regardless of its \href{https://developer.spotify.com/documentation/general/guides/working-with-playlists/#public-private-and-collaborative-status}{public/private status}, as long as you know its playlist ID.
+#' @param public Optional. Defaults to \code{TRUE}.
+#' If \code{TRUE} the playlist will be included in the user's public playlists,
+#' if \code{FALSE} it will remain private. o be able to follow playlists privately, the user must have granted the \code{playlist-modify-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope}.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-#' Following a publicly followed playlist for a user requires authorization of the \code{playlist-modify-public} scope; following a privately followed playlist requires the \code{playlist-modify-private} scope. See See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}. \cr
+#' Following a publicly followed playlist for a user requires authorization of the
+#' \code{playlist-modify-public} scope; following a privately followed playlist requires the
+#' \code{playlist-modify-private} scope. See
+#' \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}. \cr
 #' Note that the scopes you provide relate only to whether the current user is following the playlist publicly or privately (i.e. showing others what they are following), not whether the playlist itself is public or private.
 #' @export
 
@@ -67,6 +76,7 @@ unfollow_playlist <- function(playlist_id,
 #' @param after Optional. The last artist ID retrieved from the previous request.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. Getting details of the artists or users the current user follows requires authorization of the \code{user-follow-read} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
+#' @family artist functions
 #' @export
 
 get_my_followed_artists <- function(limit = 20,
@@ -123,9 +133,14 @@ check_me_following <- function(type,
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. \cr
 #' Following a playlist can be done publicly or privately. Checking if a user publicly follows a playlist doesn’t require any scopes; if the user is publicly following the playlist, this endpoint returns \code{TRUE}. \cr
 #' Checking if the user is privately following a playlist is only possible for the current user when that user has granted access to the \code{playlist-read-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @importFrom tibble tibble
+#' @family playlist functions
 #' @export
 
-check_users_following <- function(playlist_id, ids, authorization = get_spotify_authorization_code()) {
+check_users_following <- function(playlist_id,
+                                  ids,
+                                  authorization = get_spotify_authorization_code()
+                                  ) {
 
     base_url <- 'https://api.spotify.com/v1/playlists'
     params <- list(

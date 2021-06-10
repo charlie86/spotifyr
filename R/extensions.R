@@ -47,7 +47,10 @@ get_artist_audio_features <- function(artist = NULL,
         }
     }
 
-    artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, authorization = authorization)
+    artist_albums <- get_artist_albums(artist_id,
+                                       include_groups = include_groups,
+                                       include_meta_info = TRUE,
+                                       authorization = authorization)
     num_loops_artist_albums <- ceiling(artist_albums$total / 20)
     if (num_loops_artist_albums > 1) {
         artist_albums <- map_df(1:num_loops_artist_albums, function(this_loop) {
@@ -135,14 +138,21 @@ get_artist_audio_features <- function(artist = NULL,
 #' Default: 0 (the first result). \cr
 #' Maximum offset (including limit): 10,000. \cr
 #' Use with limit to get the next page of search results.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required.
+#' A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search label artist
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_label_artists('brainfeeder')
 #' }
-get_label_artists <- function(label = character(), market = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token()) {
+get_label_artists <- function(label = character(),
+                              market = NULL,
+                              limit = 20,
+                              offset = 0,
+                              authorization = get_spotify_access_token()
+                              ) {
 
     base_url <- 'https://api.spotify.com/v1/search'
 
@@ -210,7 +220,7 @@ get_label_artists <- function(label = character(), market = NULL, limit = 20, of
 #' @keywords search label artist
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_genre_artists('wonky')
 #' }
 get_genre_artists <- function(genre = character(), market = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token()) {
@@ -329,7 +339,7 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
 #' @keywords track audio features playlists
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' playlist_username <- 'spotify'
 #' playlist_uris <- c('37i9dQZF1E9T1oFsQFg98K', '37i9dQZF1CyQNOI21QVf3p')
 #' playlist_audio_features <- get_playlist_audio_features(playlist_username, playlist_uris)

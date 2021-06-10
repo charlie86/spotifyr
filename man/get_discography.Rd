@@ -15,7 +15,7 @@ get_discography(artist, authorization = get_spotify_access_token())
 Retrieve the entire discography of an artist with the lyrics of each song and the associated audio information. Returns the song data as a nested tibble. This way we can easily see each album, artist, and song title before expanding our data.
 }
 \examples{
-\dontrun{
+\donttest{
 rex_orange <- get_discography("Rex Orange County")
 unnest(rex_orange, data)
 }

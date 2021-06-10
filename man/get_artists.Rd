@@ -11,15 +11,28 @@ get_artists(
 )
 }
 \arguments{
-\item{ids}{Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the artists. Maximum: 50 IDs.}
+\item{ids}{Required. A character vector of the
+\href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the artists. Maximum: 50 IDs.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
-\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result,
+with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
+Returns a data frame of results containing artist data.
+See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
 }
 \description{
 Get Spotify catalog information for multiple artists identified by their Spotify IDs.
 }
+\seealso{
+Other artist functions: 
+\code{\link{get_artist_albums}()},
+\code{\link{get_artist_top_tracks}()},
+\code{\link{get_artist}()},
+\code{\link{get_my_followed_artists}()},
+\code{\link{get_related_artists}()}
+}
+\concept{artist functions}

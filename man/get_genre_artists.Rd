@@ -42,7 +42,7 @@ Use with limit to get the next page of search results.}
 Get Spotify Catalog information about artists belonging to a given genre
 }
 \examples{
-\dontrun{
+\donttest{
 get_genre_artists('wonky')
 }
 }

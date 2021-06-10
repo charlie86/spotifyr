@@ -23,3 +23,15 @@ Removing tracks to the current user’s public playlists requires authorization 
 \description{
 Remove one or more tracks from a user’s playlist.
 }
+\seealso{
+Other playlist functions: 
+\code{\link{add_tracks_to_playlist}()},
+\code{\link{change_playlist_details}()},
+\code{\link{check_users_following}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{tidy}()}
+}
+\concept{playlist functions}
