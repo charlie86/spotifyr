@@ -233,7 +233,7 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' @examples
 #' \donttest{
 #' ## Get new Swedish music
-#' get_recommendations(country = 'SE')
+#' get_recommendations(market = 'SE')
 #' }
 
 get_recommendations <- function(limit = 20,

@@ -171,6 +171,6 @@ Create a playlist-style listening experience based on seed artists, tracks and g
 \examples{
 \donttest{
 ## Get new Swedish music
-get_recommendations(country = 'SE')
+get_recommendations(market = 'SE')
 }
 }
