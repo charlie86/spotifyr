@@ -169,6 +169,9 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 
 #' Create a playlist-style listening experience based on seed artists, tracks and genres.
 #'
+#' All parameters are optional, but at least one of
+#' \code{seed_artists}, \code{seed_tracks} and \code{seed_genres} must be given.
+#'
 #' @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.
 #' @param market Optional.
 #' An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}.
@@ -228,7 +231,7 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' Returns a data frame of results recommendations. See the official
 #' \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{Spotify Web API documentation} for more information.
 #' @examples
-#' \donttest{ get_recommendations(market = 'SE') }
+#' \donttest{ get_recommendations(market = 'SE', seed_genres = 'rock') }
 #' @family personalization functions
 #' @export
 
@@ -284,6 +287,10 @@ get_recommendations <- function(limit = 20,
 
     if (length(seed_artists) + length(seed_tracks) + length(seed_genres) > 5) {
         stop("Too many seed values. Up to 5 seed values may be provided in any combination of seed_artists, seed_tracks and seed_genres")
+    }
+
+    if ( all(is.null(seed_artists), is.null(seed_genres), is.null(seed_tracks)) ) {
+        stop ( "At least one of seed_artists, seed_genres or seed_tracks must be given." )
     }
 
     base_url <- 'https://api.spotify.com/v1/recommendations'
@@ -350,9 +357,9 @@ get_recommendations <- function(limit = 20,
 
 #' Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks
 #'
-#' This is a wrapper for the \code{\link{get_recommendations()}} function, which provides a workaround for
+#' This is a wrapper for the \code{\link{get_recommendations}} function, which provides a workaround for
 #' the limit of 5 seed tracks per recommendation call. The function splits a supplied vector
-#' of track IDs into subsets of length 5, then applies a get_recommendations() call,
+#' of track IDs into subsets of length 5, then applies a  \code{\link{get_recommendations}} call,
 #' 5 tracks at a time. This should generate a data frame of recommended tracks, with
 #' length equal to the supplied vector of track ids.
 #'
@@ -364,7 +371,9 @@ get_recommendations <- function(limit = 20,
 #' Returns a data frame containing recommendations from the Spotify API
 #' @examples
 #' \donttest{
-#' get_recommendations_all(c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR"))
+#' get_recommendations_all(
+#'    track_ids = c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR")
+#'    )
 #' }
 #' @family personalization functions
 #' @export

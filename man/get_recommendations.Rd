@@ -166,10 +166,11 @@ Returns a data frame of results recommendations. See the official
 \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{Spotify Web API documentation} for more information.
 }
 \description{
-Create a playlist-style listening experience based on seed artists, tracks and genres.
+All parameters are optional, but at least one of
+\code{seed_artists}, \code{seed_tracks} and \code{seed_genres} must be given.
 }
 \examples{
-\donttest{ get_recommendations(market = 'SE') }
+\donttest{ get_recommendations(market = 'SE', seed_genres = 'rock') }
 }
 \seealso{
 Other personalization functions: 
