@@ -26,7 +26,7 @@ Authors@R: c(
     person(
        given = "Daniel", 
        family = "Antal", 
-       email = "daniel.antal@dataobservatory.eu", 
+       email = "daniel.antal@ceemid.eu", 
        role = c("aut", "cre"),
        comment = c(ORCID = "0000-0001-7513-6760")
        )
