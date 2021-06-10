@@ -89,11 +89,11 @@ beatles %>%
 
 | key\_mode |   n |
 |:----------|----:|
-| D major   |  24 |
-| G major   |  21 |
-| A major   |  13 |
-| F major   |  12 |
-| C major   |  11 |
+| C major   | 104 |
+| D major   |  98 |
+| G major   |  82 |
+| A major   |  76 |
+| E major   |  62 |
 
 ### Get your most recently played tracks
 
@@ -179,10 +179,10 @@ joy %>%
 | track\_name                               | valence |
 |:------------------------------------------|--------:|
 | Passover - 2020 Digital Master            |   0.946 |
+| Passover - 2007 Remaster                  |   0.941 |
 | Colony - 2020 Digital Master              |   0.829 |
+| Colony - 2007 Remaster                    |   0.808 |
 | Atrocity Exhibition - 2020 Digital Master |   0.790 |
-| Isolation - 2020 Digital Master           |   0.778 |
-| A Means to an End - 2020 Digital Master   |   0.774 |
 
 Now if only there was some way to plot joy…
 
@@ -210,7 +210,7 @@ This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows
 you to visualize the energy and valence (musical positivity) of all of
 Spotify’s artists and playlists.
 
-## Dope stuff other people have done with spotifyr
+## Dope Stuff Other People Have Done with spotifyr
 
 The coolest thing about making this package has definitely been seeing
 all the awesome stuff other people have done with it. Here are a few
