@@ -15,13 +15,14 @@ get_spotify_authorization_code(
 
 \item{client_secret}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"}
 
-\item{scope}{Space delimited string of spotify scopes, found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default}
+\item{scope}{Space delimited string of spotify scopes,
+found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default}
 }
 \description{
 This function creates a Spotify authorization code.
 }
 \examples{
-\dontrun{
+\donttest{
 get_spotify_authorization_code()
 }
 }

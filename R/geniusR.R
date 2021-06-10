@@ -9,13 +9,16 @@
 #' @param authorization Authorization token for Spotify web API. Defaults to
 #' \code{get_spotify_access_token()}
 #' @examples
-#' \dontrun{
-#' get_album_data("Wild child", "Expectations")
+#' \donttest{
+#' get_album_data(artist = "Wild child",
+#'                albums = "Expectations")
 #' }
 #'
 #' @export
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr possibly
+#' @importFrom dplyr mutate select filter left_join
+#' @importFrom tibble as_tibble
 
 
 get_album_data <- function(artist,
@@ -23,8 +26,11 @@ get_album_data <- function(artist,
                            authorization = get_spotify_access_token()
                            ) {
 
-    artist_disco <- get_artist_audio_features(artist, authorization = authorization) %>%
-        filter(tolower(album_name) %in% tolower(albums)) %>%
+    artist_disco <- get_artist_audio_features(
+             artist,
+             authorization = authorization
+             ) %>%
+        filter(tolower(.data$album_name) %in% tolower(albums)) %>%
         group_by(album_name) %>%
         mutate(track_n = row_number()) %>%
         ungroup()
@@ -55,7 +61,7 @@ get_album_data <- function(artist,
 #' @param authorization Authorization token for Spotify web API. Defaults to \code{get_spotify_access_token()}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' rex_orange <- get_discography("Rex Orange County")
 #' unnest(rex_orange, data)
 #' }

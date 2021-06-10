@@ -12,8 +12,17 @@ get_track_audio_analysis(id, authorization = get_spotify_access_token())
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-Returns a data frame of results containing track audio analysis data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/} for more information.
+Returns a data frame of results containing track audio analysis data.
+See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/} for more information.
 }
 \description{
 Get a detailed audio analysis for a single track identified by its unique Spotify ID.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_album_tracks}()},
+\code{\link{get_playlist_tracks}()},
+\code{\link{get_tracks}()},
+\code{\link{get_track}()}
+}
+\concept{track functions}

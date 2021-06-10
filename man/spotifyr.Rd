@@ -11,3 +11,45 @@ A Quick and Easy Wrapper for Pulling Track Audio Features from Spotify's Web API
 See the README on
 \href{https://github.com/charlie86/spotifyr#readme}{GitHub}
 }
+\section{artist functions}{
+
+Retrieve information related to artists.
+}
+
+\section{track functions}{
+
+Retrieve information related to individual song recordings (songs, concerts).
+}
+
+\section{album functions}{
+
+Retrieve information about albums.
+See also \code{\link{get_album_tracks}}.
+}
+
+\section{playlist functions}{
+
+Work with playlists.
+}
+
+\section{player functions}{
+
+Interact with the user's devices and players.
+}
+
+\section{personalization functions}{
+
+\code{\link{get_my_top_artists_or_tracks}}
+}
+
+\section{musicology functions}{
+
+Functions related to the contents of the music.
+\code{\link{get_playlist_audio_features}}.
+}
+
+\section{search functions}{
+
+Search for an artist, song or other keyword.
+}
+

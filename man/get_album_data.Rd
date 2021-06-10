@@ -24,8 +24,9 @@ associated audio information. Returns the song data as a nested tibble.
 This way we can easily see each album, artist, and song title before expanding our data.
 }
 \examples{
-\dontrun{
-get_album_data("Wild child", "Expectations")
+\donttest{
+get_album_data(artist = "Wild child",
+               albums = "Expectations")
 }
 
 }

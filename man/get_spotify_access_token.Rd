@@ -18,7 +18,7 @@ get_spotify_access_token(
 This function creates a Spotify access token.
 }
 \examples{
-\dontrun{
+\donttest{
 get_spotify_access_token()
 }
 }

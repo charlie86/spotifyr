@@ -18,3 +18,18 @@ The access token must have the \code{user-modify-playback-state} scope authorize
 \description{
 Pause playback on the user’s account.
 }
+\seealso{
+Other player functions: 
+\code{\link{get_my_current_playback}()},
+\code{\link{get_my_currently_playing}()},
+\code{\link{get_my_devices}()},
+\code{\link{get_my_recently_played}()},
+\code{\link{seek_to_position}()},
+\code{\link{set_my_repeat_mode}()},
+\code{\link{skip_my_playback_previous}()},
+\code{\link{skip_my_playback}()},
+\code{\link{start_my_playback}()},
+\code{\link{toggle_my_shuffle}()},
+\code{\link{transfer_my_playback}()}
+}
+\concept{player functions}

@@ -28,3 +28,15 @@ Adding tracks to the current user’s public playlists requires authorization of
 \description{
 Add one or more tracks to a user’s playlist.
 }
+\seealso{
+Other playlist functions: 
+\code{\link{change_playlist_details}()},
+\code{\link{check_users_following}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{remove_tracks_from_playlist}()},
+\code{\link{tidy}()}
+}
+\concept{playlist functions}

@@ -46,3 +46,15 @@ See the official \href{https://developer.spotify.com/documentation/web-api/refer
 \description{
 Get a list of the playlists owned or followed by a Spotify user.
 }
+\seealso{
+Other playlist functions: 
+\code{\link{add_tracks_to_playlist}()},
+\code{\link{change_playlist_details}()},
+\code{\link{check_users_following}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{remove_tracks_from_playlist}()},
+\code{\link{tidy}()}
+}
+\concept{playlist functions}

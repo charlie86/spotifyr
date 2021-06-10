@@ -12,12 +12,25 @@ tidy(x, ...)
 \item{...}{Generic arguments to be passed}
 }
 \description{
-\code{spotifyr::tidy()} extracts and tidies the data frame containing track level information that is returned from \code{get_playlist()} as a tibble.
+\code{spotifyr::tidy()} extracts and tidies the data frame containing track level
+information that is returned from \code{get_playlist()} as a tibble.
 }
 \examples{
-\dontrun{
+\donttest{
 fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
 tidy(fall)
 }
 
 }
+\seealso{
+Other playlist functions: 
+\code{\link{add_tracks_to_playlist}()},
+\code{\link{change_playlist_details}()},
+\code{\link{check_users_following}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{remove_tracks_from_playlist}()}
+}
+\concept{playlist functions}

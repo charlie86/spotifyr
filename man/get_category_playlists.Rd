@@ -33,7 +33,7 @@ Returns a data frame of results containing category playlists. See \url{https://
 Get a list of Spotify playlists tagged with a particular category.
 }
 \examples{
-\dontrun{
+\donttest{
 ## Get Brazilian party playlists
 get_category_playlists('party', country = 'BR')
 }

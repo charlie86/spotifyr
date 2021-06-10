@@ -2,7 +2,7 @@
 #'
 #' Check if a string matches the pattern of a Spotify URI
 #' @param s String to check
-#' @importFRom stringr str_detect
+#' @importFrom stringr str_detect
 #' @export
 is_uri <- function(s) {
     nchar(s) == 22 &
@@ -15,6 +15,7 @@ is_uri <- function(s) {
 #' Pitch class notation lookup
 #'
 # Create lookup to classify key: https://developer.spotify.com/web-api/get-audio-features/
+#' @family musicology functions
 #' @export
 pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
 
@@ -23,6 +24,7 @@ pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A
 #' Check API result for error codes
 #' @param res API result ot check
 #' @export
+
 verify_result <- function(res) {
     if (!is.null(res$error)) {
         stop(str_glue('{res$error$message} ({res$error$status})'))
@@ -47,6 +49,7 @@ scopes <- xml2::read_html("https://developer.spotify.com/documentation/general/g
 #' @importFrom dplyr case_when pull all_of everything slice row_number n
 #' @importFrom tibble tibble
 #' @export
+
 dedupe_album_names <- function(df,
                                album_name_col = 'album_name',
                                album_release_year_col = 'album_release_year') {
@@ -54,26 +57,26 @@ dedupe_album_names <- function(df,
     album_dupe_regex <- '(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo)'
 
     base_album_names <- df %>%
-        mutate_('album_name_' = album_name_col,
-                'album_release_year_' = album_release_year_col) %>%
+        mutate( album_name_ = album_name_col,
+                album_release_year_ = album_release_year_col) %>%
         dplyr::filter(!duplicated(tolower(album_name_))) %>%
-        mutate(base_album_name = gsub(str_glue(' \\(.*{album_dupe_regex}.*\\)'), '', tolower(album_name_)),
-               base_album_name = gsub(str_glue(' \\[.*{album_dupe_regex}.*\\]'), '', base_album_name),
-               base_album_name = gsub(str_glue(':.*{album_dupe_regex}.*'), '', base_album_name),
-               base_album_name = gsub(str_glue(' - .*{album_dupe_regex}.*'), '', base_album_name),
-               base_album = tolower(album_name_) == base_album_name) %>%
-        group_by(base_album_name) %>%
-        dplyr::filter((album_release_year_ == min(album_release_year_)) | base_album) %>%
+        mutate(base_album_name = gsub(str_glue(' \\(.*{album_dupe_regex}.*\\)'), '', tolower(.data$album_name_)),
+               base_album_name = gsub(str_glue(' \\[.*{album_dupe_regex}.*\\]'), '', .data$base_album_name),
+               base_album_name = gsub(str_glue(':.*{album_dupe_regex}.*'), '', .data$base_album_name),
+               base_album_name = gsub(str_glue(' - .*{album_dupe_regex}.*'), '', .data$base_album_name),
+               base_album = tolower(.data$album_name_) == .data$base_album_name) %>%
+        group_by(.data$base_album_name) %>%
+        dplyr::filter((.data$album_release_year_ == min(.data$album_release_year_)) | base_album) %>%
         mutate(num_albums = n(),
-               num_base_albums = sum(base_album)) %>%
+               num_base_albums = sum(.data$base_album)) %>%
         ungroup() %>%
-        dplyr::filter((base_album == 1) |((num_base_albums == 0 | num_base_albums > 1) & row_number() == 1)) %>%
-        pull(album_name_)
+        dplyr::filter((.data$base_album == 1) |((.data$num_base_albums == 0 | .data$num_base_albums > 1) & row_number() == 1)) %>%
+        pull(.data$album_name_)
 
     df %>%
-        mutate_('album_name_' = album_name_col) %>%
-        filter(album_name_ %in% base_album_names) %>%
-        select(-album_name_)
+        mutate(album_name_ = album_name_col) %>%
+        filter(.data$album_name_ %in% base_album_names) %>%
+        select(-all_of("album_name_"))
 }
 
 # Function for querying playlist API url

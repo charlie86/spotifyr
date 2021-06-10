@@ -6,3 +6,6 @@
 * Remove good examples from README if they are broken links.
 * Add pkgdown package reference website.
 
+# spotifyr 2.1.3
+* Further documentation improvements, adding sections to the documentation.
+* Fixing dedupe_album_names(). Adding assertion to get_artist_audio_features() for reported issue with non-existing artist.

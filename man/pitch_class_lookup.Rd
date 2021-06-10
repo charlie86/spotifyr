@@ -13,4 +13,12 @@ pitch_class_lookup
 \description{
 Pitch class notation lookup
 }
+\seealso{
+Other musicology functions: 
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_features}()},
+\code{\link{get_user_audio_features}()}
+}
+\concept{musicology functions}
 \keyword{datasets}

@@ -19,3 +19,11 @@ See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/ge
 \description{
 Get audio feature information for up to 100 tracks identified by their unique Spotify IDs.
 }
+\seealso{
+Other musicology functions: 
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_playlist_audio_features}()},
+\code{\link{get_user_audio_features}()},
+\code{\link{pitch_class_lookup}}
+}
+\concept{musicology functions}

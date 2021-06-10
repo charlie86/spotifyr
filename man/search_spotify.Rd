@@ -2,7 +2,7 @@
 % Please edit documentation in R/search.R
 \name{search_spotify}
 \alias{search_spotify}
-\title{Search for an item}
+\title{Search for an Item}
 \usage{
 search_spotify(
   q,
@@ -48,19 +48,23 @@ Use with limit to get the next page of search results.}
 
 \item{include_external}{Optional. \cr
 Possible values: audio \cr
-If \code{include_external = "audio"} is specified the response will include any relevant audio content that is hosted externally. \cr
+If \code{include_external = "audio"} is specified the response will include any
+relevant audio content that is hosted externally. \cr
 By default external content is filtered out from responses.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \description{
-Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string. For more information see the official \href{https://developer.spotify.com/documentation/web-api/reference/search/search/}{documentation}.
+Get Spotify Catalog information about artists, albums, tracks or playlists that match a
+keyword string. For more information see the official
+\href{https://developer.spotify.com/documentation/web-api/reference/search/search/}{documentation}.
 }
 \examples{
-\dontrun{
+\donttest{
 search_spotify('radiohead', 'artist')
 }
 }
-\keyword{search}
+\concept{search functions}

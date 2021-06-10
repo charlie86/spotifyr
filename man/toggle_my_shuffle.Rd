@@ -26,3 +26,18 @@ in order to control playback.}
 \description{
 Toggle shuffle on or off for user’s playback.
 }
+\seealso{
+Other player functions: 
+\code{\link{get_my_current_playback}()},
+\code{\link{get_my_currently_playing}()},
+\code{\link{get_my_devices}()},
+\code{\link{get_my_recently_played}()},
+\code{\link{pause_my_playback}()},
+\code{\link{seek_to_position}()},
+\code{\link{set_my_repeat_mode}()},
+\code{\link{skip_my_playback_previous}()},
+\code{\link{skip_my_playback}()},
+\code{\link{start_my_playback}()},
+\code{\link{transfer_my_playback}()}
+}
+\concept{player functions}

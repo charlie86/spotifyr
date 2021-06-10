@@ -11,14 +11,17 @@
 #' \code{"appears_on"} \cr
 #' \code{"compilation"} \cr
 #' For example: \code{include_groups = c("album", "single")}
-#' @param return_closest_artist Optional. Boolean
-#' @param dedupe_albums Optional. Boolean
+#' @param return_closest_artist Optional. Boolean.
+#' @param dedupe_albums Optional. Boolean.
 #' @param authorization Required. A valid access token from the Spotify Accounts service.
 #' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing track audio features data. See the
 #' \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
+#' @family musicology functions
+#' @importFrom rlang .data
 #' @export
+
 get_artist_audio_features <- function(artist = NULL,
                                       include_groups = 'album',
                                       return_closest_artist = TRUE,
@@ -47,33 +50,56 @@ get_artist_audio_features <- function(artist = NULL,
         }
     }
 
-    artist_albums <- get_artist_albums(artist_id, include_groups = include_groups, include_meta_info = TRUE, authorization = authorization)
+    artist_albums <- get_artist_albums(artist_id,
+                                       include_groups = include_groups,
+                                       include_meta_info = TRUE,
+                                       authorization = authorization)
+
+
+    if (is.null(artist_albums$items) | length(artist_albums$items) ==0) {
+        stop("No artist found with artist_id='", artist_id, "'.")
+    }
+
+
     num_loops_artist_albums <- ceiling(artist_albums$total / 20)
+
     if (num_loops_artist_albums > 1) {
         artist_albums <- map_df(1:num_loops_artist_albums, function(this_loop) {
-            get_artist_albums(artist_id, include_groups = include_groups, offset = (this_loop - 1) * 20, authorization = authorization)
+            get_artist_albums(artist_id,
+                              include_groups = include_groups,
+                              offset = (this_loop - 1) * 20,
+                              authorization = authorization)
         })
     } else {
         artist_albums <- artist_albums$items
     }
 
     artist_albums <- artist_albums %>%
-        rename(album_id = id,
-               album_name = name) %>%
-        mutate(album_release_year = case_when(release_date_precision == 'year' ~ suppressWarnings(as.numeric(release_date)),
-                                              release_date_precision == 'day' ~ year(as.Date(release_date, '%Y-%m-%d', origin = '1970-01-01')),
-                                              TRUE ~ as.numeric(NA)))
+        rename(album_id = .data$id,
+               album_name = .data$name) %>%
+        mutate(album_release_year = case_when(
+            release_date_precision == 'year' ~ suppressWarnings(as.numeric(.data$release_date)),
+            release_date_precision == 'day' ~ year(
+                          as.Date(.data$release_date, '%Y-%m-%d',
+                                  origin = '1970-01-01')),
+            TRUE ~ as.numeric(NA))
+            )
 
     if (dedupe_albums) {
-        artist_albums <- dedupe_album_names(artist_albums)
+        artist_albums <- dedupe_album_names(df = artist_albums)
     }
 
     album_tracks <- map_df(artist_albums$album_id, function(this_album_id) {
-        album_tracks <- get_album_tracks(this_album_id, include_meta_info = TRUE, authorization = authorization)
+        album_tracks <- get_album_tracks(this_album_id,
+                                         include_meta_info = TRUE,
+                                         authorization = authorization)
+
         num_loops_album_tracks <- ceiling(album_tracks$total / 20)
         if (num_loops_album_tracks > 1) {
             album_tracks <- map_df(1:num_loops_album_tracks, function(this_loop) {
-                get_album_tracks(this_album_id, offset = (this_loop - 1) * 20, authorization = authorization)
+                get_album_tracks(this_album_id,
+                                 offset = (this_loop - 1) * 20,
+                                 authorization = authorization)
             })
         } else {
             album_tracks <- album_tracks$items
@@ -92,24 +118,30 @@ get_artist_audio_features <- function(artist = NULL,
     dupe_columns <- c('duration_ms', 'type', 'uri', 'track_href')
 
     num_loops_tracks <- ceiling(nrow(album_tracks) / 100)
+
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
         track_ids <- album_tracks %>%
             slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
-            pull(track_id)
+            pull(.data$track_id)
         get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
-        select(-dupe_columns) %>%
-        rename(track_id = id) %>%
+        select(-all_of( dupe_columns )) %>%
+        rename(track_id = .data$id) %>%
         left_join(album_tracks, by = 'track_id')
 
     artist_albums %>%
         mutate(artist_name = artist_name,
                artist_id = artist_id) %>%
-        select(artist_name, artist_id, album_id, album_type, album_images = images, album_release_date = release_date,
-               album_release_year, album_release_date_precision = release_date_precision) %>%
+        select(.data$artist_name, .data$artist_id, .data$album_id, .data$album_type,
+               album_images = .data$images,
+               album_release_date = .data$release_date,
+               .data$album_release_year,
+               album_release_date_precision = .data$release_date_precision) %>%
         left_join(track_audio_features, by = 'album_id') %>%
         mutate(key_name = pitch_class_lookup[key + 1],
-               mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
+               mode_name = case_when(mode == 1 ~ 'major',
+                                     mode == 0 ~ 'minor',
+                                     TRUE ~ as.character(NA)),
                key_mode = paste(key_name, mode_name))
 }
 
@@ -135,14 +167,23 @@ get_artist_audio_features <- function(artist = NULL,
 #' Default: 0 (the first result). \cr
 #' Maximum offset (including limit): 10,000. \cr
 #' Use with limit to get the next page of search results.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required.
+#' A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search label artist
 #' @export
+#' @family label functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_label_artists('brainfeeder')
 #' }
-get_label_artists <- function(label = character(), market = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token()) {
+
+get_label_artists <- function(label = character(),
+                              market = NULL,
+                              limit = 20,
+                              offset = 0,
+                              authorization = get_spotify_access_token()
+                              ) {
 
     base_url <- 'https://api.spotify.com/v1/search'
 
@@ -208,12 +249,18 @@ get_label_artists <- function(label = character(), market = NULL, limit = 20, of
 #' Use with limit to get the next page of search results.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords search label artist
+#' @family genre functions
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' get_genre_artists('wonky')
 #' }
-get_genre_artists <- function(genre = character(), market = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token()) {
+
+get_genre_artists <- function(genre = character(),
+                              market = NULL,
+                              limit = 20,
+                              offset = 0,
+                              authorization = get_spotify_access_token()) {
 
     base_url <- 'https://api.spotify.com/v1/search'
 
@@ -258,13 +305,20 @@ get_genre_artists <- function(genre = character(), market = NULL, limit = 20, of
 #' Get audio feature information for a users' playlists
 #'
 #' @param username Required. String of Spotify username.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
-#' Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
+#' Returns a data frame of results containing track audio features data. See the
+#' \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
+#' @family musicology functions
 #' @export
-get_user_audio_features <- function(username = NULL, authorization = get_spotify_access_token()) {
 
-    user_playlist_info <- get_user_playlists(username, include_meta_info = TRUE)
+get_user_audio_features <- function(username = NULL,
+                                    authorization = get_spotify_access_token()
+                                    ) {
+
+    user_playlist_info <- get_user_playlists(username,
+                                             include_meta_info = TRUE)
 
     if (user_playlist_info$total == 0) {
         stop(str_glue('Error: cannot find any public playlists belonging to username {"username"}.'))
@@ -328,14 +382,18 @@ get_user_audio_features <- function(username = NULL, authorization = get_spotify
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords track audio features playlists
 #' @export
+#' @family musicology functions
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' playlist_username <- 'spotify'
 #' playlist_uris <- c('37i9dQZF1E9T1oFsQFg98K', '37i9dQZF1CyQNOI21QVf3p')
 #' playlist_audio_features <- get_playlist_audio_features(playlist_username, playlist_uris)
 #' }
 
-get_playlist_audio_features <- function(username, playlist_uris, authorization = get_spotify_access_token()) {
+get_playlist_audio_features <- function(username,
+                                        playlist_uris,
+                                        authorization = get_spotify_access_token()
+                                        ) {
 
     playlist_tracks <- map_df(playlist_uris, function(playlist_uri) {
         this_playlist <- get_playlist(playlist_uri, authorization = authorization)

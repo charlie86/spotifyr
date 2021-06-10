@@ -15,8 +15,14 @@ An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 co
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-Returns a data frame of results containing album data. See the \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/}{official documentation} for more information.
+Returns a data frame of results containing album data.
+See the \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/}{official documentation} for more information.
 }
 \description{
 Get Spotify catalog information for a single album.
 }
+\seealso{
+Other album functions: 
+\code{\link{get_albums}()}
+}
+\concept{album functions}

@@ -16,6 +16,24 @@
 #' @importFrom jsonlite fromJSON toJSON
 #' @importFrom lubridate year as_datetime
 #' @importFrom utils setTxtProgressBar txtProgressBar str
+#' @section artist functions:
+#' Retrieve information related to artists.
+#' @section track functions:
+#' Retrieve information related to individual song recordings (songs, concerts).
+#' @section album functions:
+#' Retrieve information about albums.
+#' See also \code{\link{get_album_tracks}}.
+#' @section playlist functions:
+#' Work with playlists.
+#' @section player functions:
+#' Interact with the user's devices and players.
+#' @section personalization functions:
+#' \code{\link{get_my_top_artists_or_tracks}}
+#' @section musicology functions:
+#' Functions related to the contents of the music.
+#' \code{\link{get_playlist_audio_features}}.
+#' @section search functions:
+#' Search for an artist, song or other keyword.
 NULL
 
 globalVars <- c(
@@ -38,6 +56,7 @@ globalVars <- c(
 "playlist_uri",
 "preview_url",
 "href",
+"id",
 "album_id",
 "images",
 "release_date",

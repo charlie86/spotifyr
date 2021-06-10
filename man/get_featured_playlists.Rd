@@ -36,7 +36,7 @@ Returns a data frame of results containing featured playlists. See \url{https://
 Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).
 }
 \examples{
-\dontrun{
+\donttest{
 ## Get new Swedish music
 get_featured_playlists(country = 'SE')
 }

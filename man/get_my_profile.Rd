@@ -11,7 +11,8 @@ get_my_profile(authorization = get_spotify_authorization_code())
 Reading the user’s email address requires the \code{user-read-email} scope; reading country and product subscription level requires the \code{user-read-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
 }
 \value{
-Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a data frame of results containing user profile information.
+See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
 Get detailed profile information about the current user (including the current user’s username).
