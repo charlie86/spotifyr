@@ -109,13 +109,13 @@ get_my_recently_played(limit = 5) %>%
     kable()
 ```
 
-| track.name           | artist.name                      | track.album.name                 | played\_at          |
-|:---------------------|:---------------------------------|:---------------------------------|:--------------------|
-| Deep In Love         | Bonny Light Horseman             | Bonny Light Horseman             | 2021-06-07 21:41:33 |
-| Humbug Mountain Song | Fruit Bats                       | Absolute Loser                   | 2021-06-07 21:40:33 |
-| Texas Sun            | Khruangbin                       | Texas Sun                        | 2021-06-07 21:37:28 |
-| Dylan Thomas         | Better Oblivion Community Center | Better Oblivion Community Center | 2021-06-07 21:33:15 |
-| Hot & Heavy          | Lucy Dacus                       | Hot & Heavy                      | 2021-06-07 21:29:38 |
+| track.name           | artist.name      | track.album.name     | played\_at          |
+|:---------------------|:-----------------|:---------------------|:--------------------|
+| Wrong with You       | Tristen          | Wrong with You       | 2021-06-10 20:17:24 |
+| Animal - Edit        | LUMP             | Animal               | 2021-06-10 20:13:21 |
+| Streets Of Your Town | DOPE LEMON       | Streets Of Your Town | 2021-06-10 18:23:00 |
+| Human                | Freedom Fry      | Human                | 2021-06-10 18:20:40 |
+| Gorgon               | Juliana Hatfield | Gorgon               | 2021-06-10 18:17:11 |
 
 ### Find your all Time Favorite Artists
 
@@ -225,7 +225,7 @@ Hudon
 
 [Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you
 feel sad when you hear “Love for both?” You’re not
-alone)](http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico),
+alone)](https://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico),
 Rui Barros, Rádio Renascença
 
 [Using Data to Find the Angriest Death Grips

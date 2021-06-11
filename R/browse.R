@@ -67,7 +67,8 @@ get_category <- function(category_id, country = NULL, locale = NULL, authorizati
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing category playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a data frame of results containing category playlists.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @examples
 #' \donttest{
 #' ## Get Brazilian party playlists
@@ -176,7 +177,11 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' @param market Optional.
 #' An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}.
 #' Provide this parameter if you want to apply
-#' \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}. Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking, the generated results may not precisely match the filters applied. Original, non-relinked tracks are available via the \code{linked_from} attribute of the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{relinked track response}.
+#' \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}.
+#' Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking,
+#' the generated results may not precisely match the filters applied. Original, non-relinked tracks
+#' are available via the \code{linked_from} attribute of
+#' the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{relinked track response}.
 #' @param max_acousticness Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' acousticness.
 #' @param max_danceability Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' danceability.
 #' @param max_duration_ms Optional. Integer indicating a hard ceiling on recommended tracks' duration in milliseconds.
