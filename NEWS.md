@@ -12,3 +12,4 @@
 
 # spotifyr 2.2.0
 * Release candidate for CRAN.
+* Resubmitted after reformatting two (possibly) invalid urls.
