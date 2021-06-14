@@ -11,7 +11,7 @@ get_my_devices(authorization = get_spotify_authorization_code())
 The access token must have the \code{user-read-playback-state} scope authorized in order to read information.}
 }
 \value{
-Returns a data frame of results containing user device information.
+Returns a data frame of results containing user device information. \cr
 See the official Spotify Web API
 \href{https://developer.spotify.com/documentation/web-api/reference/player/get-a-users-available-devices/}{documentation} for more information.
 }

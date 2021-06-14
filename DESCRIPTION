@@ -20,7 +20,8 @@ Authors@R: c(
        given = "Josiah", 
        family = "Parry", 
        email = "josiah.parry@yahoo.com", 
-       role = "aut"
+       role = "aut", 
+       comment = c(ORCID = "0000-0001-9910-865X")
        ), 
     person(
       given = "Donal", 

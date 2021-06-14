@@ -26,6 +26,11 @@ get_my_saved_albums <- function(limit = 20,
                                 authorization = get_spotify_authorization_code(),
                                 include_meta_info = FALSE) {
 
+   validate_parameters(limit=limit,
+                       offset=offset,
+                       market=market,
+                       include_meta_info = include_meta_info )
+
     base_url <- 'https://api.spotify.com/v1/me/albums'
     if (!is.null(market)) {
         if (str_detect(market, '^[[:alpha:]]{2}$')) {
@@ -83,12 +88,10 @@ get_my_saved_tracks <- function(limit = 20,
                                 authorization = get_spotify_authorization_code(),
                                 include_meta_info = FALSE) {
 
+    validate_parameters(market=market, limit=limit, offset = offset, include_meta_info)
+
     base_url <- 'https://api.spotify.com/v1/me/tracks'
-    if (!is.null(market)) {
-        if (str_detect(market, '^[[:alpha:]]{2}$')) {
-            stop('"market" must be an ISO 3166-1 alpha-2 country code')
-        }
-    }
+
 
     params <- list(
         limit = limit,

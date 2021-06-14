@@ -161,12 +161,13 @@ the response will revert to the current UTC time.</p></td>
     <tr>
       <th>limit</th>
       <td><p>Optional. The maximum number of items to return.
-Default: 20. Minimum: 1. Maximum: 50.</p></td>
+Default to <code>20</code>. Minimum: 1. Maximum: 50.</p></td>
     </tr>
     <tr>
       <th>offset</th>
       <td><p>Optional. The index of the first item to return.
-Default: 0 (the first object). Use with <code>limit</code> to get the next set of items.</p></td>
+Defaults to <code>0</code>, i.e., the first object.
+Use with <code>limit</code> to get the next set of items.</p></td>
     </tr>
     <tr>
       <th>authorization</th>
@@ -191,7 +192,7 @@ See <a href='https://developer.spotify.com/documentation/web-api/reference/users
 <span class='fu'>get_featured_playlists</span><span class='op'>(</span>
    country <span class='op'>=</span> <span class='st'>'BE'</span>,
    locale <span class='op'>=</span> <span class='st'>"nl_BE"</span> <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in content(.): could not find function "content"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: "market" must be an ISO 3166-1 alpha-2 country code</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

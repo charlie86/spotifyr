@@ -8,6 +8,10 @@
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
 ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen) [![CRAN
 status](https://www.r-pkg.org/badges/version/spotifyr)](https://CRAN.R-project.org/package=spotifyr)
+[![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/spotifyr)](https://cran.r-project.org/package=spotifyr)
+[![metacran
+downloads](https://cranlogs.r-pkg.org/badges/spotifyr)](https://cran.r-project.org/package=spotifyr)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4946780.svg)](https://doi.org/10.5281/zenodo.4946780)
 <!-- badges: end -->
 
 ## Overview
@@ -21,7 +25,7 @@ information for a given Spotify User (including yourself!).
 
 ## Installation
 
-CRAN version 2.1.0 (recommended)
+CRAN version 2.1.1 (recommended)
 
 ``` r
 install.packages('spotifyr')
@@ -105,27 +109,29 @@ get_my_recently_played(limit = 5) %>%
         artist.name = map_chr(track.artists, function(x) x$name[1]),
         played_at = as_datetime(played_at)
         ) %>% 
-    select(track.name, artist.name, track.album.name, played_at) %>% 
+    select(
+      all_of(c("track.name", "artist.name", "track.album.name", "played_at"))
+      ) %>% 
     kable()
 ```
 
-| track.name           | artist.name      | track.album.name     | played\_at          |
-|:---------------------|:-----------------|:---------------------|:--------------------|
-| Wrong with You       | Tristen          | Wrong with You       | 2021-06-10 20:17:24 |
-| Animal - Edit        | LUMP             | Animal               | 2021-06-10 20:13:21 |
-| Streets Of Your Town | DOPE LEMON       | Streets Of Your Town | 2021-06-10 18:23:00 |
-| Human                | Freedom Fry      | Human                | 2021-06-10 18:20:40 |
-| Gorgon               | Juliana Hatfield | Gorgon               | 2021-06-10 18:17:11 |
+| track.name           | artist.name | track.album.name     | played\_at          |
+|:---------------------|:------------|:---------------------|:--------------------|
+| A Case of You        | Tristen     | A Case of You        | 2021-06-14 09:54:44 |
+| Paper Cup            | Real Estate | Paper Cup            | 2021-06-10 20:20:11 |
+| Wrong with You       | Tristen     | Wrong with You       | 2021-06-10 20:17:24 |
+| Animal - Edit        | LUMP        | Animal               | 2021-06-10 20:13:21 |
+| Streets Of Your Town | DOPE LEMON  | Streets Of Your Town | 2021-06-10 18:23:00 |
 
-### Find your all Time Favorite Artists
+### Find Your All Time Favorite Artists
 
 ``` r
 get_my_top_artists_or_tracks(type = 'artists', 
                              time_range = 'long_term', 
                              limit = 5) %>% 
-    select(name, genres) %>% 
+    select(.data$name, .data$genres) %>% 
     rowwise %>% 
-    mutate(genres = paste(genres, collapse = ', ')) %>% 
+    mutate(genres = paste(.data$genres, collapse = ', ')) %>% 
     ungroup %>% 
     kable()
 ```
@@ -151,13 +157,13 @@ get_my_top_artists_or_tracks(type = 'tracks',
     kable()
 ```
 
-| name           | artist.name   | album.name     |
-|:---------------|:--------------|:---------------|
-| Animal - Edit  | LUMP          | Animal         |
-| Hot & Heavy    | Lucy Dacus    | Hot & Heavy    |
-| Wrong with You | Tristen       | Wrong with You |
-| Sea Urchin     | Mystic Braves | Sea Urchin     |
-| Hot Motion     | Temples       | Hot Motion     |
+| name          | artist.name   | album.name  |
+|:--------------|:--------------|:------------|
+| Hot & Heavy   | Lucy Dacus    | Hot & Heavy |
+| Sea Urchin    | Mystic Braves | Sea Urchin  |
+| Human         | Freedom Fry   | Human       |
+| Hot Motion    | Temples       | Hot Motion  |
+| Animal - Edit | LUMP          | Animal      |
 
 ### What’s the most joyful Joy Division song?
 
@@ -171,7 +177,7 @@ joy <- get_artist_audio_features('joy division')
 ``` r
 joy %>% 
     arrange(-valence) %>% 
-    select(track_name, valence) %>% 
+    select(.data$track_name, .data$valence) %>% 
     head(5) %>% 
     kable()
 ```

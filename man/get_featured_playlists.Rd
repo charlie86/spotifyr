@@ -33,10 +33,11 @@ If there were no featured playlists (or there is no data) at the specified time,
 the response will revert to the current UTC time.}
 
 \item{limit}{Optional. The maximum number of items to return.
-Default: 20. Minimum: 1. Maximum: 50.}
+Default to \code{20}. Minimum: 1. Maximum: 50.}
 
 \item{offset}{Optional. The index of the first item to return.
-Default: 0 (the first object). Use with \code{limit} to get the next set of items.}
+Defaults to \code{0}, i.e., the first object.
+Use with \code{limit} to get the next set of items.}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 

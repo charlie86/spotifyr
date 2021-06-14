@@ -1,12 +1,15 @@
 #' Get a list of Spotify categories
 #'
 #' @param df Should the results be formatted as a data frame?
-#' If \code{FALSE}, the full response JSON will be returned as a list; defaults to \code{TRUE}.
+#' If \code{FALSE}, the full response JSON will be returned as a list; defaults to
+#' \code{TRUE}.
 #' @param authorization Required. A valid access token from the Spotify Accounts service.
 #' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing album data.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/} for more information.
+#' @importFrom dplyr select everything
+#' @importFrom rlang .data
 #' @export
 
 get_categories <- function(authorization = get_spotify_access_token(),
@@ -23,7 +26,8 @@ get_categories <- function(authorization = get_spotify_access_token(),
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    if(df) res <- res$categories$items %>% select(id, name, everything())
+    if(df) res <- res$categories$items %>%
+        select(.data$id, .data$name, everything())
 
     return(res)
 }
@@ -46,8 +50,13 @@ get_category <- function(category_id,
                          country = NULL,
                          locale = NULL,
                          authorization = get_spotify_access_token()) {
+
+    validate_parameters ( country = country,
+                          locale = locale )
+
     base_url <- 'https://api.spotify.com/v1/browse/categories'
     url <- str_glue('{base_url}/{category_id}')
+
     params <- list(
         country = country,
         locale = locale,
@@ -55,10 +64,12 @@ get_category <- function(category_id,
     )
     res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
-        as.data.frame(stringsAsFactors = FALSE)
 
-    return(res)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+                    flatten = TRUE) %>%
+        as_tibble ()
+
+  res
 }
 
 
@@ -90,6 +101,11 @@ get_category_playlists <- function(category_id = "party",
                                    offset = 0,
                                    authorization = get_spotify_access_token(),
                                    include_meta_info = FALSE ) {
+
+    validate_parameters ( country = country,
+                          offset = offset,
+                          limit = limit,
+                          include_meta_info = include_meta_info)
 
     base_url <- 'https://api.spotify.com/v1/browse/categories'
     query_url <- str_glue('{base_url}/{category_id}/playlists')
@@ -148,6 +164,12 @@ get_new_releases <- function(country = NULL,
                              authorization = get_spotify_access_token(),
                              include_meta_info = FALSE) {
 
+    validate_parameters ( country = country,
+                          offset = offset,
+                          limit = limit,
+                          include_meta_info = include_meta_info)
+
+
     base_url <- 'https://api.spotify.com/v1/browse/new-releases'
 
     params <- list(
@@ -196,9 +218,10 @@ get_new_releases <- function(country = NULL,
 #' If there were no featured playlists (or there is no data) at the specified time,
 #' the response will revert to the current UTC time.
 #' @param limit Optional. The maximum number of items to return.
-#' Default: 20. Minimum: 1. Maximum: 50.
+#' Default to \code{20}. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return.
-#' Default: 0 (the first object). Use with \code{limit} to get the next set of items.
+#' Defaults to \code{0}, i.e., the first object.
+#' Use with \code{limit} to get the next set of items.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
@@ -223,6 +246,14 @@ get_featured_playlists <- function(locale = NULL,
                                    authorization = get_spotify_access_token(),
                                    include_meta_info = FALSE) {
 
+    validate_parameters ( country = country,
+                          offset = offset,
+                          limit = limit,
+                          locale = locale,
+                          include_meta_info = include_meta_info
+    )
+
+
     base_url <- 'https://api.spotify.com/v1/browse/featured-playlists'
 
     params <- list(
@@ -240,7 +271,9 @@ get_featured_playlists <- function(locale = NULL,
 
     stop_for_status(res)
 
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    res <- fromJSON(content(res, as = 'text',
+                            encoding = 'UTF-8'),
+                    flatten = TRUE)
 
     res$playlists$message <- res$message
     playlists <- res$playlists
@@ -384,7 +417,14 @@ get_recommendations <- function(limit = 20,
         stop ( "At least one of seed_artists, seed_genres or seed_tracks must be given." )
     }
 
+    if (!is.null(market)) {
+        validate_market(market)
+    }
+
+    validate_limit(limit)
+
     base_url <- 'https://api.spotify.com/v1/recommendations'
+
     params <- list(
         limit = limit,
         market = market,

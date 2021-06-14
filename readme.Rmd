@@ -19,11 +19,9 @@ knitr::opts_chunk$set(
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
 ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
 [![CRAN status](https://www.r-pkg.org/badges/version/spotifyr)](https://CRAN.R-project.org/package=spotifyr)
-[![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/iotables)](https://cran.r-project.org/package=iotables)
-[![metacran downloads](https://cranlogs.r-pkg.org/badges/iotables)](https://cran.r-project.org/package=iotables)
-[![license](https://img.shields.io/badge/license-MIT + file LICENSE-lightgrey.svg)](https://choosealicense.com/)
-[![Follow rOpenGov](https://img.shields.io/twitter/follow/ropengov.svg?style=social)](https://twitter.com/intent/follow?screen_name=ropengov) 
-[![Follow author](https://img.shields.io/twitter/follow/antaldaniel.svg?style=social)](https://twitter.com/intent/follow?screen_name=antaldaniel)
+[![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/spotifyr)](https://cran.r-project.org/package=spotifyr)
+[![metacran downloads](https://cranlogs.r-pkg.org/badges/spotifyr)](https://cran.r-project.org/package=spotifyr)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4946780.svg)](https://doi.org/10.5281/zenodo.4946780)
 <!-- badges: end -->
 
 ## Overview
@@ -32,7 +30,7 @@ spotifyr is an R wrapper for pulling track audio features and other information 
 
 ## Installation
 
-CRAN version 2.1.0 (recommended)
+CRAN version 2.1.1 (recommended)
 
 ```r
 install.packages('spotifyr')
@@ -97,20 +95,22 @@ get_my_recently_played(limit = 5) %>%
         artist.name = map_chr(track.artists, function(x) x$name[1]),
         played_at = as_datetime(played_at)
         ) %>% 
-    select(track.name, artist.name, track.album.name, played_at) %>% 
+    select(
+      all_of(c("track.name", "artist.name", "track.album.name", "played_at"))
+      ) %>% 
     kable()
 ```
 
 
-### Find your all Time Favorite Artists
+### Find Your All Time Favorite Artists
 
 ```{r my-top-artists}
 get_my_top_artists_or_tracks(type = 'artists', 
                              time_range = 'long_term', 
                              limit = 5) %>% 
-    select(name, genres) %>% 
+    select(.data$name, .data$genres) %>% 
     rowwise %>% 
-    mutate(genres = paste(genres, collapse = ', ')) %>% 
+    mutate(genres = paste(.data$genres, collapse = ', ')) %>% 
     ungroup %>% 
     kable()
 ```
@@ -139,7 +139,7 @@ joy <- get_artist_audio_features('joy division')
 ```{r show-joy}
 joy %>% 
     arrange(-valence) %>% 
-    select(track_name, valence) %>% 
+    select(.data$track_name, .data$valence) %>% 
     head(5) %>% 
     kable()
 ```

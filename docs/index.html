@@ -84,7 +84,7 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>CRAN version 2.1.0 (recommended)</p>
+<p>CRAN version 2.1.1 (recommended)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'spotifyr'</span><span class="op">)</span></code></pre></div>
 <p>Development version</p>
@@ -166,7 +166,9 @@
         artist.name <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">track.artists</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
         played_at <span class="op">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">played_at</span><span class="op">)</span>
         <span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">track.name</span>, <span class="va">artist.name</span>, <span class="va">track.album.name</span>, <span class="va">played_at</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>
+      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"track.name"</span>, <span class="st">"artist.name"</span>, <span class="st">"track.album.name"</span>, <span class="st">"played_at"</span><span class="op">)</span><span class="op">)</span>
+      <span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -176,6 +178,18 @@
 <th align="left">played_at</th>
 </tr></thead>
 <tbody>
+<tr class="odd">
+<td align="left">A Case of You</td>
+<td align="left">Tristen</td>
+<td align="left">A Case of You</td>
+<td align="left">2021-06-14 09:54:44</td>
+</tr>
+<tr class="even">
+<td align="left">Paper Cup</td>
+<td align="left">Real Estate</td>
+<td align="left">Paper Cup</td>
+<td align="left">2021-06-10 20:20:11</td>
+</tr>
 <tr class="odd">
 <td align="left">Wrong with You</td>
 <td align="left">Tristen</td>
@@ -194,31 +208,19 @@
 <td align="left">Streets Of Your Town</td>
 <td align="left">2021-06-10 18:23:00</td>
 </tr>
-<tr class="even">
-<td align="left">Human</td>
-<td align="left">Freedom Fry</td>
-<td align="left">Human</td>
-<td align="left">2021-06-10 18:20:40</td>
-</tr>
-<tr class="odd">
-<td align="left">Gorgon</td>
-<td align="left">Juliana Hatfield</td>
-<td align="left">Gorgon</td>
-<td align="left">2021-06-10 18:17:11</td>
-</tr>
 </tbody>
 </table>
 </div>
 <div id="find-your-all-time-favorite-artists" class="section level3">
 <h3 class="hasAnchor">
-<a href="#find-your-all-time-favorite-artists" class="anchor"></a>Find your all Time Favorite Artists</h3>
+<a href="#find-your-all-time-favorite-artists" class="anchor"></a>Find Your All Time Favorite Artists</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/get_my_top_artists_or_tracks.html">get_my_top_artists_or_tracks</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">'artists'</span>, 
                              time_range <span class="op">=</span> <span class="st">'long_term'</span>, 
                              limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">genres</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">genres</span><span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="va">rowwise</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>genres <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">genres</span>, collapse <span class="op">=</span> <span class="st">', '</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>genres <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">genres</span>, collapse <span class="op">=</span> <span class="st">', '</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="va">ungroup</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -274,19 +276,9 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Animal - Edit</td>
-<td align="left">LUMP</td>
-<td align="left">Animal</td>
-</tr>
-<tr class="even">
 <td align="left">Hot &amp; Heavy</td>
 <td align="left">Lucy Dacus</td>
 <td align="left">Hot &amp; Heavy</td>
-</tr>
-<tr class="odd">
-<td align="left">Wrong with You</td>
-<td align="left">Tristen</td>
-<td align="left">Wrong with You</td>
 </tr>
 <tr class="even">
 <td align="left">Sea Urchin</td>
@@ -294,9 +286,19 @@
 <td align="left">Sea Urchin</td>
 </tr>
 <tr class="odd">
+<td align="left">Human</td>
+<td align="left">Freedom Fry</td>
+<td align="left">Human</td>
+</tr>
+<tr class="even">
 <td align="left">Hot Motion</td>
 <td align="left">Temples</td>
 <td align="left">Hot Motion</td>
+</tr>
+<tr class="odd">
+<td align="left">Animal - Edit</td>
+<td align="left">LUMP</td>
+<td align="left">Animal</td>
 </tr>
 </tbody>
 </table>
@@ -310,7 +312,7 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">joy</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">valence</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">track_name</span>, <span class="va">valence</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">track_name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">valence</span><span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -416,7 +418,7 @@
 <ul class="list-unstyled">
 <li>Charlie Thompson <br><small class="roles"> Author </small>  </li>
 <li>Daniel Antal <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-7513-6760" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Josiah Parry <br><small class="roles"> Author </small>  </li>
+<li>Josiah Parry <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9910-865X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Donal Phipps <br><small class="roles"> Author </small>  </li>
 <li>Tom Wolff <br><small class="roles"> Author </small>  </li>
 </ul>
@@ -427,6 +429,9 @@
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=spotifyr"><img src="http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://CRAN.R-project.org/package=spotifyr"><img src="https://www.r-pkg.org/badges/version/spotifyr" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/package=spotifyr"><img src="https://www.r-pkg.org/badges/ago/spotifyr" alt="CRAN_time_from_release"></a></li>
+<li><a href="https://cran.r-project.org/package=spotifyr"><img src="https://cranlogs.r-pkg.org/badges/spotifyr" alt="metacran downloads"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.4946780"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4946780.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>
