@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tidy a playlist — tidy • spotifyr</title>
+<title>Tidy a Playlist — tidy • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Tidy a playlist — tidy" />
-<meta property="og:description" content="spotifyr::tidy() extracts and tidies the data frame containing track level
-information that is returned from get_playlist() as a tibble." />
+<meta property="og:title" content="Tidy a Playlist — tidy" />
+<meta property="og:description" content="tidy extracts and tidies the data frame containing track level
+information that is returned from get_playlist as a tibble." />
 
 
 
@@ -73,7 +73,7 @@ information that is returned from get_playlist() as a tibble." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -112,31 +112,41 @@ information that is returned from get_playlist() as a tibble." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tidy a playlist</h1>
+    <h1>Tidy a Playlist</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/playlists.R'><code>R/playlists.R</code></a></small>
     <div class="hidden name"><code>tidy.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>spotifyr::tidy()</code> extracts and tidies the data frame containing track level
-information that is returned from <code><a href='get_playlist.html'>get_playlist()</a></code> as a tibble.</p>
+    <p><code>tidy</code> extracts and tidies the data frame containing track level
+information that is returned from <code><a href='get_playlist.html'>get_playlist</a></code> as a tibble.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tidy</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>tidy</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for playlist</span>
+<span class='fu'>tidy</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='co'># S3 method for playlist</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A playlist object generated from</p></td>
+      <td><p>A playlist object generated from <code><a href='get_playlist.html'>get_playlist()</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Generic arguments to be passed</p></td>
+      <td><p>Unused.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Return or print a tidy version a tibble containing the track level
+information that is returned from <code><a href='get_playlist.html'>get_playlist</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other playlist functions: 
@@ -160,7 +170,7 @@ information that is returned from <code><a href='get_playlist.html'>get_playlist
 #&gt; <span style='color: #BCBCBC;'> 2</span> Yam Yam     Yam Yam      1j56M~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>216</span>038          0
 #&gt; <span style='color: #BCBCBC;'> 3</span> Drown       Much Love    7KmIS~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>180</span>200          0
 #&gt; <span style='color: #BCBCBC;'> 4</span> Q&amp;A         Lighght      0bcqu~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>191</span>880         35
-#&gt; <span style='color: #BCBCBC;'> 5</span> Potential   Freshman     21Iat~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>133</span>076         12
+#&gt; <span style='color: #BCBCBC;'> 5</span> Potential   Freshman     21Iat~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>133</span>076         13
 #&gt; <span style='color: #BCBCBC;'> 6</span> keeping up  keeping up   0hNYL~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>229</span>407         49
 #&gt; <span style='color: #BCBCBC;'> 7</span> Cleveland,~ Cleveland, ~ 6hdNp~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>290</span>776          0
 #&gt; <span style='color: #BCBCBC;'> 8</span> No Halo     You're Not ~ 7Cw8H~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>170</span>004         47
@@ -172,7 +182,20 @@ information that is returned from <code><a href='get_playlist.html'>get_playlist
 #&gt; <span style='color: #949494;'>#   episode &lt;lgl&gt;, explicit &lt;lgl&gt;, href &lt;chr&gt;, is_local_2 &lt;lgl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   preview_url &lt;chr&gt;, track &lt;lgl&gt;, type &lt;chr&gt;, album_id &lt;chr&gt;,</span>
 #&gt; <span style='color: #949494;'>#   external_ids_isrc &lt;chr&gt;, external_urls_spotify &lt;chr&gt;,</span>
-#&gt; <span style='color: #949494;'>#   video_thumbnail_url &lt;lgl&gt;</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #949494;'>#   video_thumbnail_url &lt;lgl&gt;</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fall</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Fall by Josiah D. Parry                                  
+#&gt; 32 tracks                                                
+#&gt; 6 followers                                              
+#&gt; https://open.spotify.com/playlist/4GSV6uJzlbtTCPJhnVU1o8 
+#&gt; 
+#&gt; - description  : chr ""
+#&gt; - tracks       :List of 7
+#&gt; - type         : chr "playlist"
+#&gt; - href         : chr "https://api.spotify.com/v1/playlists/4GSV6uJzlbtTCPJhnVU1o8"
+#&gt; - images       :'data.frame':	3 obs. of  3 variables:
+#&gt; - public       : logi TRUE
+#&gt; - collaborative: logi FALSE</div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

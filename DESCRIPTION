@@ -51,7 +51,8 @@ Imports:
     rlang,
     ggridges,
     magrittr,
-    genius
+    genius,
+    assertthat
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

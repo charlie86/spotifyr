@@ -2,23 +2,35 @@
 % Please edit documentation in R/playlists.R
 \name{tidy}
 \alias{tidy}
-\title{Tidy a playlist}
+\alias{tidy.playlist}
+\alias{print.playlist}
+\title{Tidy a Playlist}
 \usage{
 tidy(x, ...)
+
+\method{tidy}{playlist}(x, ...)
+
+\method{print}{playlist}(x, ...)
 }
 \arguments{
-\item{x}{A playlist object generated from}
+\item{x}{A playlist object generated from \code{get_playlist()}.}
 
-\item{...}{Generic arguments to be passed}
+\item{...}{Unused.}
+}
+\value{
+Return or print a tidy version a tibble containing the track level
+information that is returned from \code{\link{get_playlist}}.
 }
 \description{
-\code{spotifyr::tidy()} extracts and tidies the data frame containing track level
-information that is returned from \code{get_playlist()} as a tibble.
+\code{\link{tidy}} extracts and tidies the data frame containing track level
+information that is returned from \code{\link{get_playlist}} as a tibble.
 }
 \examples{
 \donttest{
 fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
 tidy(fall)
+
+print(fall)
 }
 
 }

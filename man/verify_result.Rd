@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{verify_result}
 \alias{verify_result}
-\title{Verify API result}
+\title{Verify API Result}
 \usage{
 verify_result(res)
 }
@@ -14,6 +14,6 @@ A meaningful error message if communication with the Spotify Web API was not
 successful.
 }
 \description{
-Check API result for error codes
+Check API result for error codes.
 }
 \keyword{internal}

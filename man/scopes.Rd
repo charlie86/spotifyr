@@ -3,14 +3,22 @@
 \docType{data}
 \name{scopes}
 \alias{scopes}
-\title{Valid scopes}
+\title{Valid Authorization Scopes}
 \format{
 An object of class \code{character} of length 19.
 }
 \usage{
 scopes
 }
-\description{
-Vector of valid scopes for spotifyr::get_authorization_code()
+\value{
+A character vector of valid authorization scopes for the Spotify Web API.
+See \href{https://developer.spotify.com/documentation/general/guides/scopes/}{Spotify Web API Authorization Scopes}
 }
+\description{
+A vector of valid scopes for \code{\link{get_authorization_code}}
+}
+\examples{
+scopes()
+}
+\concept{authorization functions}
 \keyword{datasets}
