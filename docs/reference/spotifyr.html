@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -165,7 +165,11 @@ See also <code><a href='get_album_tracks.html'>get_album_tracks</a></code>.</p>
 
     
 
-<p>Functions related to the contents of the music.</p>
+<p>Functions related to the contents of the music.
+<code>get_artist_audio_features</code> <br />
+<code>get_playlist_audio_features</code> <br />
+<code>get_user_audio_features</code> <br />
+<code>get_genre_artists</code> <br /></p>
     <h2 class="hasAnchor" id="lyrics-functions"><a class="anchor" href="#lyrics-functions"></a>lyrics functions</h2>
 
     
@@ -179,6 +183,15 @@ See also <code><a href='get_album_tracks.html'>get_album_tracks</a></code>.</p>
 
 <p>Search for an artist, song or other keyword.<br />
 The main function is <code>search_spotify</code>.</p>
+    <h2 class="hasAnchor" id="authentication-functions"><a class="anchor" href="#authentication-functions"></a>authentication functions</h2>
+
+    
+
+<p>Helper functions to provide authentication function for requests.
+Never reveal in public documents, markdown files the returned values of these
+functions:
+<code>get_spotify_authorization_code</code>
+<code>get_spotify_access_token</code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

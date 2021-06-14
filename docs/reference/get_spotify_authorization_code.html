@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -140,15 +140,23 @@
     <tr>
       <th>scope</th>
       <td><p>Space delimited string of spotify scopes,
-found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default</p></td>
+found here: https://developer.spotify.com/documentation/general/guides/scopes/.
+All scopes are selected by default</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The Spotify Web API authorization code as a character string.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other authentication functions: 
+<code><a href='get_spotify_access_token.html'>get_spotify_access_token</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'>## get_spotify_authorization_code()</span>
-<span class='co'># }</span>
+<span class='va'>authorization</span> <span class='op'>&lt;-</span> <span class='fu'>get_spotify_authorization_code</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Waiting for authentication in browser...</span></div><div class='output co'>#&gt; <span class='message'>Press Esc/Ctrl + C to abort</span></div><div class='output co'>#&gt; <span class='message'>Authentication complete.</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
