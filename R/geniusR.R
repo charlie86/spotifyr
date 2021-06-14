@@ -5,14 +5,10 @@
 #' This way we can easily see each album, artist, and song title before expanding our data.
 #' @param artist The quoted name of the artist. Spelling matters, capitalization does not.
 #' @param authorization Authorization token for Spotify web API.
-#' Defaults to \code{get_spotify_access_token()}#'
+#' Defaults to \code{get_spotify_access_token()}.
 #' @examples
 #' \donttest{
 #' rex_orange <- get_discography("Rex Orange County")
-#'
-#' ## You can unnest it with
-#' ## tidyr::unnest(rex_orange, data)
-#'
 #' }
 #' @export
 #' @importFrom dplyr mutate group_by filter distinct rename left_join ungroup

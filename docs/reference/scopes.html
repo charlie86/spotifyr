@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Valid Authorization Scopes — scopes" />
-<meta property="og:description" content="A vector of valid scopes for get_authorization_code" />
+<meta property="og:description" content="A vector of valid scopes for get_spotify_authorization_code." />
 
 
 
@@ -117,15 +117,12 @@
     </div>
 
     <div class="ref-description">
-    <p>A vector of valid scopes for <code>get_authorization_code</code></p>
+    <p>A vector of valid scopes for <code><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='va'>scopes</span></pre>
+    <pre class="usage"><span class='fu'>scopes</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>An object of class <code>character</code> of length 19.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A character vector of valid authorization scopes for the Spotify Web API.
@@ -133,7 +130,16 @@ See <a href='https://developer.spotify.com/documentation/general/guides/scopes/'
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>scopes</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in scopes(): could not find function "scopes"</span></div></pre>
+</div><div class='output co'>#&gt;  [1] "ugc-image-upload"            "user-read-recently-played"  
+#&gt;  [3] "user-read-playback-state"    "user-top-read"              
+#&gt;  [5] "app-remote-control"          "playlist-modify-public"     
+#&gt;  [7] "user-modify-playback-state"  "playlist-modify-private"    
+#&gt;  [9] "user-follow-modify"          "user-read-currently-playing"
+#&gt; [11] "user-follow-read"            "user-library-modify"        
+#&gt; [13] "user-read-playback-position" "playlist-read-private"      
+#&gt; [15] "user-read-email"             "user-read-private"          
+#&gt; [17] "user-library-read"           "playlist-read-collaborative"
+#&gt; [19] "streaming"                  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

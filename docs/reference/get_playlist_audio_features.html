@@ -155,6 +155,7 @@ See the <a href='https://developer.spotify.com/documentation/general/guides/auth
     <div class='dont-index'><p>Other musicology functions: 
 <code><a href='get_artist_audio_features.html'>get_artist_audio_features</a>()</code>,
 <code><a href='get_genre_artists.html'>get_genre_artists</a>()</code>,
+<code><a href='get_track_audio_analysis.html'>get_track_audio_analysis</a>()</code>,
 <code><a href='get_track_audio_features.html'>get_track_audio_features</a>()</code>,
 <code><a href='get_user_audio_features.html'>get_user_audio_features</a>()</code></p></div>
 
@@ -163,7 +164,7 @@ See the <a href='https://developer.spotify.com/documentation/general/guides/auth
 <span class='va'>playlist_username</span> <span class='op'>&lt;-</span> <span class='st'>'spotify'</span>
 <span class='va'>playlist_uris</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'37i9dQZF1E9T1oFsQFg98K'</span>, <span class='st'>'37i9dQZF1CyQNOI21QVf3p'</span><span class='op'>)</span>
 <span class='va'>playlist_audio_features</span> <span class='op'>&lt;-</span> <span class='fu'>get_playlist_audio_features</span><span class='op'>(</span><span class='va'>playlist_username</span>, <span class='va'>playlist_uris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1.3 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error in get_spotify_access_token(): </span></div><div class='input'><span class='co'># }</span>
+<span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
