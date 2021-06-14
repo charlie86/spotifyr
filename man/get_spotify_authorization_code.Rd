@@ -20,10 +20,12 @@ found here: https://developer.spotify.com/documentation/general/guides/scopes/.
 All scopes are selected by default}
 }
 \value{
-The Spotify Web API authorization code as a character string.
+The Spotify Web API Token2.0 reference class object (see
+ \code{httr::\link[httr]{oauth2.0_token}}), or an error message.
 }
 \description{
 This function creates a Spotify authorization code.
+See \code{httr::\link[httr]{oauth2.0_token}}.
 }
 \examples{
 \donttest{
