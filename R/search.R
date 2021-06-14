@@ -38,6 +38,8 @@
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @export
 #' @family search functions
+#' @return A tibble with detailed information about the searched album, artist, playlist, track or
+#' their combination.
 #' @examples
 #' \donttest{
 #' search_spotify('radiohead', 'artist')

@@ -48,7 +48,7 @@ Interact with the user's devices and players.
 
 \section{musicology functions}{
 
-Functions related to the contents of the music.
+Functions related to the contents of the music.\cr
 \code{get_artist_audio_features} \cr
 \code{get_playlist_audio_features} \cr
 \code{get_user_audio_features} \cr
@@ -72,7 +72,7 @@ The main function is \code{search_spotify}.
 
 Helper functions to provide authentication function for requests.
 Never reveal in public documents, markdown files the returned values of these
-functions:
+functions: \cr
 \code{get_spotify_authorization_code}
 \code{get_spotify_access_token}.
 }
