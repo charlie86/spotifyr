@@ -161,6 +161,7 @@ get_my_playlists <- function(limit = 20,
                              offset = 0,
                              authorization = get_spotify_authorization_code(),
                              include_meta_info = FALSE) {
+
     base_url <- 'https://api.spotify.com/v1/me/playlists'
     params <- list(
         limit = limit,
@@ -415,7 +416,7 @@ remove_tracks_from_playlist <- function(playlist_id,
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
                     flatten = TRUE)
 
-    return(res)
+    res
 }
 
 #' Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)
@@ -461,10 +462,10 @@ change_playlist_details <- function(playlist_id,
 
 
 
-#' Tidy a playlist
+#' Tidy a Playlist
 #'
-#' \code{spotifyr::tidy()} extracts and tidies the data frame containing track level
-#' information that is returned from \code{get_playlist()} as a tibble.
+#' \code{\link{tidy}} extracts and tidies the data frame containing track level
+#' information that is returned from \code{\link{get_playlist}} as a tibble.
 #'
 #' @param x A playlist object generated from
 #' @param ... Generic arguments to be passed
@@ -472,6 +473,8 @@ change_playlist_details <- function(playlist_id,
 #' \donttest{
 #' fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
 #' tidy(fall)
+#'
+#' print(fall)
 #' }
 #'
 #' @importFrom purrr pluck map
@@ -479,6 +482,8 @@ change_playlist_details <- function(playlist_id,
 #' @importFrom dplyr as_tibble select mutate
 #' @importFrom janitor make_clean_names
 #' @family playlist functions
+#' @return Return or print a tidy version a tibble containing the track level
+#' information that is returned from \code{\link{get_playlist}}.
 #' @export
 
 tidy <- function(x, ...) {
@@ -486,6 +491,7 @@ tidy <- function(x, ...) {
 }
 
 #' @export
+#' @rdname tidy
 tidy.playlist <- function(x, ...) {
     # determine unneeded columns
     # the added by features can all bne derived by the `added_by_uri` col
@@ -522,7 +528,9 @@ tidy.playlist <- function(x, ...) {
 #' Print method for playlist object
 #' @param x A playlist object generated from \code{get_playlist()}.
 #' @param ... Unused.
+#' @rdname tidy
 #' @export
+
 print.playlist <- function(x, ...) {
 
     to_show <- c("description", "tracks", "type", "href", "images", "public", "collaborative")

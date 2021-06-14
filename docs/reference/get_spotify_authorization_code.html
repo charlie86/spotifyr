@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
     <pre class="usage"><span class='fu'>get_spotify_authorization_code</span><span class='op'>(</span>
   client_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"SPOTIFY_CLIENT_ID"</span><span class='op'>)</span>,
   client_secret <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"SPOTIFY_CLIENT_SECRET"</span><span class='op'>)</span>,
-  scope <span class='op'>=</span> <span class='fu'>spotifyr</span><span class='fu'>::</span><span class='va'><a href='scopes.html'>scopes</a></span>
+  scope <span class='op'>=</span> <span class='fu'><a href='scopes.html'>scopes</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -140,14 +140,22 @@
     <tr>
       <th>scope</th>
       <td><p>Space delimited string of spotify scopes,
-found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default</p></td>
+found here: https://developer.spotify.com/documentation/general/guides/scopes/.
+All scopes are selected by default</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The Spotify Web API authorization code as a character string.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other authentication functions: 
+<code><a href='get_spotify_access_token.html'>get_spotify_access_token</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'>## get_spotify_authorization_code()</span>
+<span class='va'>authorization</span> <span class='op'>&lt;-</span> <span class='fu'>get_spotify_authorization_code</span><span class='op'>(</span><span class='op'>)</span>
 <span class='co'># }</span>
 </div></pre>
   </div>

@@ -10,7 +10,7 @@ get_discography(artist, authorization = get_spotify_access_token())
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization does not.}
 
 \item{authorization}{Authorization token for Spotify web API.
-Defaults to \code{get_spotify_access_token()}#'}
+Defaults to \code{get_spotify_access_token()}.}
 }
 \value{
 A nested tibble. See \code{tidyr::\link[tidyr]{nest}}.
@@ -23,10 +23,6 @@ This way we can easily see each album, artist, and song title before expanding o
 \examples{
 \donttest{
 rex_orange <- get_discography("Rex Orange County")
-
-## You can unnest it with
-## tidyr::unnest(rex_orange, data)
-
 }
 }
 \seealso{

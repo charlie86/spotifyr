@@ -14,12 +14,19 @@ get_spotify_access_token(
 
 \item{client_secret}{Defaults to System Environment variable "SPOTIFY_CLIENT_SECRET"}
 }
+\value{
+The Spotify Access Token of the current user or a meaningful error message.
+}
 \description{
 This function creates a Spotify access token.
 }
 \examples{
 \donttest{
-get_spotify_access_token()
+token <- get_spotify_access_token()
 }
 }
-\keyword{auth}
+\seealso{
+Other authentication functions: 
+\code{\link{get_spotify_authorization_code}()}
+}
+\concept{authentication functions}

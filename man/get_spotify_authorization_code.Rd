@@ -7,7 +7,7 @@
 get_spotify_authorization_code(
   client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
   client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
-  scope = spotifyr::scopes
+  scope = scopes()
 )
 }
 \arguments{
@@ -16,14 +16,22 @@ get_spotify_authorization_code(
 \item{client_secret}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"}
 
 \item{scope}{Space delimited string of spotify scopes,
-found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default}
+found here: https://developer.spotify.com/documentation/general/guides/scopes/.
+All scopes are selected by default}
+}
+\value{
+The Spotify Web API authorization code as a character string.
 }
 \description{
 This function creates a Spotify authorization code.
 }
 \examples{
 \donttest{
-## get_spotify_authorization_code()
+authorization <- get_spotify_authorization_code()
 }
 }
-\keyword{auth}
+\seealso{
+Other authentication functions: 
+\code{\link{get_spotify_access_token}()}
+}
+\concept{authentication functions}

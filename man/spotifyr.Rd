@@ -14,15 +14,18 @@ See the README on
 \section{artist functions}{
 
 Retrieve information related to artists.
-\code{artist}: Get the data of a single artist.\cr
-\code{get_artists}: Get the data of multiple artist.\cr
-\code{get_related_artists}: Get that of related artist to an original artist.\cr
-\code{get_artist_albums}: Get artists who appear on an album.\cr
+\code{\link{get_artist}}: Get the data of a single artist.\cr
+\code{\link{get_artists}}: Get the data of multiple artist.\cr
+\code{\link{get_related_artists}}: Get that of related artist to an original artist.\cr
+\code{\link{get_artist_albums}}: Get artists who appear on an album.\cr
 }
 
 \section{track functions}{
 
 Retrieve information related to individual song recordings (songs, concerts).
+\code{\link{get_track}} \cr
+\code{\link{get_tracks}} \cr
+\code{\link{get_playlist_tracks}} \cr
 }
 
 \section{album functions}{
@@ -33,7 +36,10 @@ See also \code{\link{get_album_tracks}}.
 
 \section{playlist functions}{
 
-Work with playlists.
+Work with playlists.\cr
+\code{\link{add_tracks_to_playlist}} \cr
+\code{\link{change_playlist_details}} \cr
+\code{\link{get_user_playlists}} \cr
 }
 
 \section{player functions}{
@@ -48,19 +54,32 @@ Interact with the user's devices and players.
 
 \section{musicology functions}{
 
-Functions related to the contents of the music.
+Functions related to the contents of the music.\cr
+\code{\link{get_track_audio_analysis}} \cr
+\code{\link{get_artist_audio_features}} \cr
+\code{\link{get_playlist_audio_features}} \cr
+\code{\link{get_user_audio_features}}\cr
+\code{\link{get_genre_artists}} \cr
 }
 
 \section{lyrics functions}{
 
-Functions related to the lyrics of the music, such as
-\code{get_album_data} and \code{get_discography}.
-\code{\link{get_playlist_audio_features}}.
+Functions related to the lyrics of the music, such as \cr
+\code{\link{get_discography}}.
 }
 
 \section{search functions}{
 
 Search for an artist, song or other keyword.\cr
-The main function is \code{search_spotify}.
+The main function is \code{\link{search_spotify}}.
+}
+
+\section{authentication functions}{
+
+Helper functions to provide authentication function for requests.
+Never reveal in public documents, markdown files the returned values of these
+functions: \cr
+\code{\link{get_spotify_authorization_code}} \cr
+\code{\link{get_spotify_access_token}}.
 }
 

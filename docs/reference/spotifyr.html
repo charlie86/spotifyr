@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -131,15 +131,18 @@
     
 
 <p>Retrieve information related to artists.
-<code>artist</code>: Get the data of a single artist.<br />
-<code>get_artists</code>: Get the data of multiple artist.<br />
-<code>get_related_artists</code>: Get that of related artist to an original artist.<br />
-<code>get_artist_albums</code>: Get artists who appear on an album.<br /></p>
+<code><a href='get_artist.html'>get_artist</a></code>: Get the data of a single artist.<br />
+<code><a href='get_artists.html'>get_artists</a></code>: Get the data of multiple artist.<br />
+<code><a href='get_related_artists.html'>get_related_artists</a></code>: Get that of related artist to an original artist.<br />
+<code><a href='get_artist_albums.html'>get_artist_albums</a></code>: Get artists who appear on an album.<br /></p>
     <h2 class="hasAnchor" id="track-functions"><a class="anchor" href="#track-functions"></a>track functions</h2>
 
     
 
-<p>Retrieve information related to individual song recordings (songs, concerts).</p>
+<p>Retrieve information related to individual song recordings (songs, concerts).
+<code><a href='get_track.html'>get_track</a></code> <br />
+<code><a href='get_tracks.html'>get_tracks</a></code> <br />
+<code><a href='get_playlist_tracks.html'>get_playlist_tracks</a></code> <br /></p>
     <h2 class="hasAnchor" id="album-functions"><a class="anchor" href="#album-functions"></a>album functions</h2>
 
     
@@ -150,7 +153,10 @@ See also <code><a href='get_album_tracks.html'>get_album_tracks</a></code>.</p>
 
     
 
-<p>Work with playlists.</p>
+<p>Work with playlists.<br />
+<code><a href='add_tracks_to_playlist.html'>add_tracks_to_playlist</a></code> <br />
+<code><a href='change_playlist_details.html'>change_playlist_details</a></code> <br />
+<code><a href='get_user_playlists.html'>get_user_playlists</a></code> <br /></p>
     <h2 class="hasAnchor" id="player-functions"><a class="anchor" href="#player-functions"></a>player functions</h2>
 
     
@@ -165,20 +171,33 @@ See also <code><a href='get_album_tracks.html'>get_album_tracks</a></code>.</p>
 
     
 
-<p>Functions related to the contents of the music.</p>
+<p>Functions related to the contents of the music.<br />
+<code><a href='get_track_audio_analysis.html'>get_track_audio_analysis</a></code> <br />
+<code><a href='get_artist_audio_features.html'>get_artist_audio_features</a></code> <br />
+<code><a href='get_playlist_audio_features.html'>get_playlist_audio_features</a></code> <br />
+<code><a href='get_user_audio_features.html'>get_user_audio_features</a></code><br />
+<code><a href='get_genre_artists.html'>get_genre_artists</a></code> <br /></p>
     <h2 class="hasAnchor" id="lyrics-functions"><a class="anchor" href="#lyrics-functions"></a>lyrics functions</h2>
 
     
 
-<p>Functions related to the lyrics of the music, such as
-<code>get_album_data</code> and <code>get_discography</code>.
-<code><a href='get_playlist_audio_features.html'>get_playlist_audio_features</a></code>.</p>
+<p>Functions related to the lyrics of the music, such as <br />
+<code><a href='get_discography.html'>get_discography</a></code>.</p>
     <h2 class="hasAnchor" id="search-functions"><a class="anchor" href="#search-functions"></a>search functions</h2>
 
     
 
 <p>Search for an artist, song or other keyword.<br />
-The main function is <code>search_spotify</code>.</p>
+The main function is <code><a href='search_spotify.html'>search_spotify</a></code>.</p>
+    <h2 class="hasAnchor" id="authentication-functions"><a class="anchor" href="#authentication-functions"></a>authentication functions</h2>
+
+    
+
+<p>Helper functions to provide authentication function for requests.
+Never reveal in public documents, markdown files the returned values of these
+functions: <br />
+<code><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></code> <br />
+<code><a href='get_spotify_access_token.html'>get_spotify_access_token</a></code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

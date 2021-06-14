@@ -13,7 +13,10 @@
 The following (possibly) invalid URLs:
 * http://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico
 * https://developer.spotify.com/documentation/general/guides/track-relinking-guide
-were fixed. 
+were fixed.
+* Return values were documented, even when they are only called for side effects.
+* There was one example, for get_spotify_access_token(), which was accidentally commented out with #, this is fixed.
+* The description is fixed (and made more consistent with current functionality.)
 
 ## Re-release of archived CRAN package
 

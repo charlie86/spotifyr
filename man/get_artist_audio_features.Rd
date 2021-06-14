@@ -2,7 +2,7 @@
 % Please edit documentation in R/extensions.R
 \name{get_artist_audio_features}
 \alias{get_artist_audio_features}
-\title{Get audio feature information for all or part of an artists' discography.}
+\title{Get Audio Features For Artists' Discography}
 \usage{
 get_artist_audio_features(
   artist = NULL,
@@ -45,7 +45,9 @@ Get audio feature information for all or part of an artists' discography.
 }
 \seealso{
 Other musicology functions: 
+\code{\link{get_genre_artists}()},
 \code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_analysis}()},
 \code{\link{get_track_audio_features}()},
 \code{\link{get_user_audio_features}()}
 }

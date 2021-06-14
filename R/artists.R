@@ -23,7 +23,7 @@ get_artist <- function(id,
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information for multiple artists identified by their Spotify IDs.
@@ -40,7 +40,9 @@ get_artist <- function(id,
 #' @family artist functions
 #' @export
 
-get_artists <- function(ids, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_artists <- function(ids,
+                        authorization = get_spotify_access_token(),
+                        include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/artists'
 
@@ -48,6 +50,7 @@ get_artists <- function(ids, authorization = get_spotify_access_token(), include
         ids = paste(ids, collapse = ','),
         access_token = authorization
     )
+
     res <- GET(base_url, query = params, encode = 'json')
     stop_for_status(res)
 
@@ -57,7 +60,7 @@ get_artists <- function(ids, authorization = get_spotify_access_token(), include
         res <- res$artists
     }
 
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information for multiple artists identified by their Spotify IDs.
@@ -115,7 +118,7 @@ get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears
     if (!include_meta_info) {
         res <- res$items
     }
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information about an artist’s top tracks by country.
@@ -155,7 +158,7 @@ get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify
         res <- res$tracks
     }
 
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.
@@ -185,5 +188,5 @@ get_related_artists <- function(id, authorization = get_spotify_access_token(), 
         res <- res$artists
     }
 
-    return(res)
+    res
 }

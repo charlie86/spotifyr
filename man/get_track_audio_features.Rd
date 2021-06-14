@@ -22,7 +22,9 @@ Get audio feature information for up to 100 tracks identified by their unique Sp
 \seealso{
 Other musicology functions: 
 \code{\link{get_artist_audio_features}()},
+\code{\link{get_genre_artists}()},
 \code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_analysis}()},
 \code{\link{get_user_audio_features}()}
 }
 \concept{musicology functions}

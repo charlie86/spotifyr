@@ -2,7 +2,7 @@
 % Please edit documentation in R/users_profile.R
 \name{get_user_profile}
 \alias{get_user_profile}
-\title{Get public profile information about a Spotify user.}
+\title{Get User Public Profile Information}
 \usage{
 get_user_profile(user_id, authorization = get_spotify_access_token())
 }

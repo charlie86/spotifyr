@@ -5,7 +5,7 @@
 #' @return
 #' Returns a data frame of results containing track audio analysis data.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/} for more information.
-#' @family track functions
+#' @family musicology functions
 #' @export
 
 get_track_audio_analysis <- function(id,
@@ -22,7 +22,7 @@ get_track_audio_analysis <- function(id,
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    return(res)
+    res
 }
 
 #' Get audio features of tracks
@@ -52,7 +52,7 @@ get_track_audio_features <- function(ids,
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
         .$audio_features %>%
         as_tibble()
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information for a single track identified by its unique Spotify ID.
@@ -93,7 +93,7 @@ get_track <- function(id,
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
                     flatten = TRUE)
 
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information for a single track identified by its unique Spotify ID.
@@ -138,5 +138,5 @@ get_tracks <- function(ids,
         res <- res$tracks
     }
 
-    return(res)
+    res
 }

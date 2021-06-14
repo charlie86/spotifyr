@@ -57,6 +57,10 @@ See the \href{https://developer.spotify.com/documentation/general/guides/authori
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
+\value{
+A tibble with detailed information about the searched album, artist, playlist, track or
+their combination.
+}
 \description{
 Get Spotify Catalog information about artists, albums, tracks or playlists that match a
 keyword string. For more information see the official

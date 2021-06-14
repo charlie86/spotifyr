@@ -2,7 +2,7 @@
 % Please edit documentation in R/extensions.R
 \name{get_user_audio_features}
 \alias{get_user_audio_features}
-\title{Get audio feature information for a users' playlists}
+\title{Get User Playlist Audio Features}
 \usage{
 get_user_audio_features(
   username = NULL,
@@ -25,7 +25,9 @@ Get audio feature information for a users' playlists.
 \seealso{
 Other musicology functions: 
 \code{\link{get_artist_audio_features}()},
+\code{\link{get_genre_artists}()},
 \code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_analysis}()},
 \code{\link{get_track_audio_features}()}
 }
 \concept{musicology functions}

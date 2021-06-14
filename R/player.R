@@ -103,20 +103,33 @@ get_my_current_playback <- function(market = NULL,
     return(res)
 }
 
-#' Pause playback on the user’s account.
+#' Pause Playback
 #'
-#' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-#' The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.
+#' Pause playback on the user’s device.
+#'
+#' @param device_id Optional. The id of the device this command is targeting.
+#' If not supplied, the user’s currently active device is the target.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+#' The access token must have the \code{user-modify-playback-state} scope authorized in order
+#' to control playback.
 #' @family player functions
+#' @return The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+#' error message if the operation was not successful.
 #' @export
 
-pause_my_playback <- function(device_id = NULL, authorization = get_spotify_authorization_code()) {
-    base_url <- 'https://api.spotify.com/v1/me/player/pause'
+pause_my_playback <- function(device_id = NULL,
+                              authorization = get_spotify_authorization_code()
+                              ) {
+
+  base_url <- 'https://api.spotify.com/v1/me/player/pause'
     params <- list(device_id = device_id)
-    res <- RETRY('PUT', base_url, config(token = authorization), query = params, encode = 'json')
+    res <- RETRY('PUT', base_url,
+                 config(token = authorization),
+                 query = params,
+                 encode = 'json')
     stop_for_status(res)
-    return(res)
+    res
 }
 
 #' Toggle shuffle on or off for user’s playback.

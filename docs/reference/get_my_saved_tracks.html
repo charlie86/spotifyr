@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a User's Saved Tracks — get_my_saved_tracks • spotifyr</title>
+<title>Get User's Saved Tracks — get_my_saved_tracks • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Get a User's Saved Tracks — get_my_saved_tracks" />
+<meta property="og:title" content="Get User's Saved Tracks — get_my_saved_tracks" />
 <meta property="og:description" content="Get a list of the songs saved in the current Spotify user’s ‘Your Music’ library." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a User's Saved Tracks</h1>
+    <h1>Get User's Saved Tracks</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/library.R'><code>R/library.R</code></a></small>
     <div class="hidden name"><code>get_my_saved_tracks.Rd</code></div>
     </div>
@@ -152,11 +152,13 @@ An <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2
     </tr>
     <tr>
       <th>authorization</th>
-      <td><p>Required. A valid access token from the Spotify Accounts service. See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user.</p></td>
+      <td><p>Required. A valid access token from the Spotify Accounts service.
+See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user.</p></td>
     </tr>
     <tr>
       <th>include_meta_info</th>
-      <td><p>Optional. Boolean indicating whether to include full result, with meta information such as <code>"total"</code>, and <code>"limit"</code>. Defaults to <code>FALSE</code>.</p></td>
+      <td><p>Optional. Boolean indicating whether to include full result,
+with meta information such as <code>"total"</code>, and <code>"limit"</code>. Defaults to <code>FALSE</code>.</p></td>
     </tr>
     </table>
 

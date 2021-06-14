@@ -5,6 +5,7 @@
 #' @importFrom stringr str_detect
 #' @return A boolean if the provided URI matches the Spotify URI criteria.
 #' @keywords internal
+
 is_uri <- function(s) {
     nchar(s) == 22 &
         !str_detect(s, ' ') &
@@ -20,27 +21,40 @@ is_uri <- function(s) {
 #' @return A character vector of the pitch class names
 pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
 
-#' Verify API result
+#' Verify API Result
 #'
-#' Check API result for error codes
+#' Check API result for error codes.
+#'
 #' @param res API result ot check
 #' @keywords internal
 #' @return A meaningful error message if communication with the Spotify Web API was not
 #' successful.
+
 verify_result <- function(res) {
     if (!is.null(res$error)) {
         stop(str_glue('{res$error$message} ({res$error$status})'))
     }
 }
 
-#' Valid scopes
+#' Valid Authorization Scopes
 #'
-#' Vector of valid scopes for spotifyr::get_authorization_code()
+#' A vector of valid scopes for \code{\link{get_spotify_authorization_code}}.
+#'
+#' @family authorization functions
+#' @examples
+#' scopes()
+#' @return A character vector of valid authorization scopes for the Spotify Web API.
+#' See \href{https://developer.spotify.com/documentation/general/guides/scopes/}{Spotify Web API Authorization Scopes}
 #' @export
-scopes <- xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
-    html_nodes('code') %>%
-    html_text() %>%
+#' @importFrom xml2 read_html
+#' @importFrom rvest html_text html_elements
+
+scopes <- function() {
+    xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
+    rvest::html_elements('code') %>%
+    rvest::html_text() %>%
     unique()
+    }
 
 #' Remove duplicate album names
 #'
@@ -90,6 +104,7 @@ dedupe_album_names <- function(df,
 #' @importFrom httr RETRY
 #' @importFrom jsonlite fromJSON
 #' @keywords internal
+
 query_playlist <- function(url, params) {
 
     res <- RETRY('GET', url, query = params, encode = 'json')
