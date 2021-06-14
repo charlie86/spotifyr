@@ -52,7 +52,8 @@ Imports:
     ggridges,
     magrittr,
     genius,
-    assertthat
+    assertthat,
+    xml2
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
