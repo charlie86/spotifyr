@@ -17,8 +17,12 @@ remove_tracks_from_playlist(
 \code{uris = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"} \cr
 A maximum of 100 tracks can be removed in one request.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-Removing tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; removing tracks from the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+Removing tracks to the current user’s public playlists requires authorization of the
+\code{playlist-modify-public} scope; removing tracks from the current user’s private
+playlist (including collaborative playlists) requires the \code{playlist-modify-private}
+scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
 }
 \value{
 The response from the Spotify Web API on the

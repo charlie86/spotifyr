@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.) — create_playlist • spotifyr</title>
+<title>Create Playlist for User — create_playlist • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.) — create_playlist" />
-<meta property="og:description" content="Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.)" />
+<meta property="og:title" content="Create Playlist for User — create_playlist" />
+<meta property="og:description" content="Create a playlist for a Spotify user.
+The playlist will be empty until you add tracks." />
 
 
 
@@ -72,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,13 +112,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.)</h1>
+    <h1>Create Playlist for User</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/playlists.R'><code>R/playlists.R</code></a></small>
     <div class="hidden name"><code>create_playlist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.)</p>
+    <p>Create a playlist for a Spotify user.
+The playlist will be empty until you add tracks.</p>
     </div>
 
     <pre class="usage"><span class='fu'>create_playlist</span><span class='op'>(</span>
@@ -159,6 +161,10 @@ Creating a public playlist for a user requires authorization of the <code>playli
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the <code>POST</code> request, with a meaningful
+error message if the operation was not successful.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other playlist functions: 

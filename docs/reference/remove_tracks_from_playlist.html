@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove one or more tracks from a user’s playlist. — remove_tracks_from_playlist • spotifyr</title>
+<title>Remove Tracks from User’s Playlist — remove_tracks_from_playlist • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Remove one or more tracks from a user’s playlist. — remove_tracks_from_playlist" />
+<meta property="og:title" content="Remove Tracks from User’s Playlist — remove_tracks_from_playlist" />
 <meta property="og:description" content="Remove one or more tracks from a user’s playlist." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove one or more tracks from a user’s playlist.</h1>
+    <h1>Remove Tracks from User’s Playlist</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/playlists.R'><code>R/playlists.R</code></a></small>
     <div class="hidden name"><code>remove_tracks_from_playlist.Rd</code></div>
     </div>
@@ -141,11 +141,19 @@ A maximum of 100 tracks can be removed in one request.</p></td>
     </tr>
     <tr>
       <th>authorization</th>
-      <td><p>Required. A valid access token from the Spotify Accounts service. See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
-Removing tracks to the current user’s public playlists requires authorization of the <code>playlist-modify-public</code> scope; removing tracks from the current user’s private playlist (including collaborative playlists) requires the <code>playlist-modify-private</code> scope. See <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>.</p></td>
+      <td><p>Required. A valid access token from the Spotify Accounts service.
+See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
+Removing tracks to the current user’s public playlists requires authorization of the
+<code>playlist-modify-public</code> scope; removing tracks from the current user’s private
+playlist (including collaborative playlists) requires the <code>playlist-modify-private</code>
+scope. See <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the
+<code>DELETE</code> request, with a meaningful error message if the operation was not successful.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other playlist functions: 

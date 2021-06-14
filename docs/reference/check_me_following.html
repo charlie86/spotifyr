@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if Current User Follows Artists or Users — check_me_following • spotifyr</title>
+<title>Check Me Following — check_me_following • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Check if Current User Follows Artists or Users — check_me_following" />
-<meta property="og:description" content="Check if Current User Follows Artists or Users" />
+<meta property="og:title" content="Check Me Following — check_me_following" />
+<meta property="og:description" content="Check if the current user is following specific artists or users." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if Current User Follows Artists or Users</h1>
+    <h1>Check Me Following</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/follow.R'><code>R/follow.R</code></a></small>
     <div class="hidden name"><code>check_me_following.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check if Current User Follows Artists or Users</p>
+    <p>Check if the current user is following specific artists or users.</p>
     </div>
 
     <pre class="usage"><span class='fu'>check_me_following</span><span class='op'>(</span><span class='va'>type</span>, <span class='va'>ids</span>, authorization <span class='op'>=</span> <span class='fu'><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
@@ -140,6 +140,10 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame containing three columns, <code>"type"</code>, the <code>"id"</code> of the
+artist or users and <code>"is_following"</code> as a logical, boolean variable.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

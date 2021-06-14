@@ -322,12 +322,10 @@ create_playlist <- function(user_id,
 #' @param uris Optional. A character vector of
 #' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add.
 #' For example: \cr
-#' \code{uris = c("61H97kuKIpi6kJQRnUEIlh", "2q6vlgBJ432KeZZNt2ZZBV")} \cr
+#' uris = c("61H97kuKIpi6kJQRnUEIlh", "2q6vlgBJ432KeZZNt2ZZBV")\cr
 #' A maximum of 100 tracks can be added in one request.
 #' The uris will be formed as
-#' \code{
-#' uris = c("spotify%3Atrack%3A61H97kuKIpi6kJQRnUEIlh", "spotify%3Atrack%3A2q6vlgBJ432KeZZNt2ZZBV")
-#' }.
+#' uris = c("spotify%3Atrack%3A61H97kuKIpi6kJQRnUEIlh", "spotify%3Atrack%3A2q6vlgBJ432KeZZNt2ZZBV").
 #' If you have the \code{"spotify:track:"} preffix in your vector it will
 #' not be duplicated, otherwise it will be added.
 #' @param position Optional. Integer indicating the position to insert the tracks,
@@ -384,8 +382,12 @@ add_tracks_to_playlist <- function(playlist_id,
 #' @param uris Optional. A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add. For example \cr
 #' \code{uris = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"} \cr
 #' A maximum of 100 tracks can be removed in one request.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-#' Removing tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; removing tracks from the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+#' Removing tracks to the current user’s public playlists requires authorization of the
+#' \code{playlist-modify-public} scope; removing tracks from the current user’s private
+#' playlist (including collaborative playlists) requires the \code{playlist-modify-private}
+#' scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @family playlist functions
 #' @return The response from the Spotify Web API on the
 #' \code{DELETE} request, with a meaningful error message if the operation was not successful.

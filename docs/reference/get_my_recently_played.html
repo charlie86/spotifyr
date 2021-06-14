@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -133,30 +133,39 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>limit</th>
-      <td><p>Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p></td>
+      <td><p>Optional. The maximum number of items to return. Default: 20. Minimum: 1.
+Maximum: 50.</p></td>
     </tr>
     <tr>
       <th>after</th>
-      <td><p>Optional. A Unix timestamp in milliseconds. Returns all items after (but not including) this cursor position. If <code>after</code> is specified, <code>before</code> must not be specified.</p></td>
+      <td><p>Optional. A Unix timestamp in milliseconds. Returns all items after
+(but not including) this cursor position. If <code>after</code> is specified, <code>before</code> must not
+be specified.</p></td>
     </tr>
     <tr>
       <th>before</th>
-      <td><p>Optional. A Unix timestamp in milliseconds. Returns all items before (but not including) this cursor position. If <code>before</code> is specified, <code>after</code> must not be specified.</p></td>
+      <td><p>Optional. A Unix timestamp in milliseconds. Returns all items before
+(but not including) this cursor position. If <code>before</code> is specified, <code>after</code> must not
+be specified.</p></td>
     </tr>
     <tr>
       <th>authorization</th>
-      <td><p>Required. A valid access token from the Spotify Accounts service. See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization guide</a> for more details. Defaults to <code><a href='get_spotify_access_token.html'>spotifyr::get_spotify_access_token()</a></code>. The access token must have been issued on behalf of the current user. <br /></p></td>
+      <td><p>Required. A valid access token from the Spotify Accounts service. See the
+<a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization guide</a> for more details. Defaults to <code><a href='get_spotify_access_token.html'>spotifyr::get_spotify_access_token()</a></code>. The access token must have been issued on behalf of the current user. <br /></p></td>
     </tr>
     <tr>
       <th>include_meta_info</th>
-      <td><p>Optional. Boolean indicating whether to include full result, with meta information such as <code>"before"</code>, <code>"after"</code>, and <code>"limit"</code>. Defaults to <code>FALSE</code>.
-The access token must have the <code>user-read-recently-played</code> scope authorized in order to read the user's recently played tracks.</p></td>
+      <td><p>Optional. Boolean indicating whether to include full result,
+with meta information such as <code>"before"</code>, <code>"after"</code>, and <code>"limit"</code>. Defaults to <code>FALSE</code>.
+The access token must have the <code>user-read-recently-played</code> scope authorized in order to
+read the user's recently played tracks.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a list or data frame of results containing the most recently played tracks for the current user.</p>
+    <p>Returns a list or data frame of results containing the most recently played tracks for the
+current user.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other player functions: 
