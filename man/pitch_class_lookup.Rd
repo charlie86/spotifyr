@@ -10,15 +10,10 @@ An object of class \code{character} of length 12.
 \usage{
 pitch_class_lookup
 }
+\value{
+A character vector of the pitch class names
+}
 \description{
 Pitch class notation lookup
 }
-\seealso{
-Other musicology functions: 
-\code{\link{get_artist_audio_features}()},
-\code{\link{get_playlist_audio_features}()},
-\code{\link{get_track_audio_features}()},
-\code{\link{get_user_audio_features}()}
-}
-\concept{musicology functions}
-\keyword{datasets}
+\keyword{internal}

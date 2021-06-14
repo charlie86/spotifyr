@@ -38,8 +38,12 @@ Use with limit to get the next page of search results.}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
+\value{
+A data frame of the artists belonging to the genre with data and metadata about the
+artists in a tibble.
+}
 \description{
-Get Spotify Catalog information about artists belonging to a given genre
+Get Spotify Catalog information about artists belonging to a given genre.
 }
 \examples{
 \donttest{
@@ -47,6 +51,3 @@ get_genre_artists('wonky')
 }
 }
 \concept{genre functions}
-\keyword{artist}
-\keyword{label}
-\keyword{search}

@@ -2,11 +2,11 @@
 % Please edit documentation in R/follow.R
 \name{follow_artists_or_users}
 \alias{follow_artists_or_users}
-\title{Add the current user as a follower of one or more artists or other Spotify users.}
+\title{Add Current User as Follower Artists or Other Users}
 \usage{
 follow_artists_or_users(
   type,
-  ids,
+  ids = NULL,
   authorization = get_spotify_authorization_code()
 )
 }
@@ -18,6 +18,10 @@ follow_artists_or_users(
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service.
 See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. Modifying the list of artists or users the current user follows requires authorization of the \code{user-follow-modify} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
+}
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
 }
 \description{
 Add the current user as a follower of one or more artists or other Spotify users.

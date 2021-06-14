@@ -2,7 +2,7 @@
 % Please edit documentation in R/player.R
 \name{set_my_repeat_mode}
 \alias{set_my_repeat_mode}
-\title{Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.}
+\title{Set User Playback Mode}
 \usage{
 set_my_repeat_mode(
   state,
@@ -23,8 +23,13 @@ set_my_repeat_mode(
 The access token must have the \code{user-modify-playback-state} scope authorized
 in order to control playback.}
 }
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
+}
 \description{
-Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.
+Set the repeat mode for the user’s playback.
+Options are repeat-track, repeat-context, and off.
 }
 \seealso{
 Other player functions: 

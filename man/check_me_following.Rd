@@ -2,7 +2,7 @@
 % Please edit documentation in R/follow.R
 \name{check_me_following}
 \alias{check_me_following}
-\title{Check if Current User Follows Artists or Users}
+\title{Check Me Following}
 \usage{
 check_me_following(type, ids, authorization = get_spotify_authorization_code())
 }
@@ -14,6 +14,10 @@ check_me_following(type, ids, authorization = get_spotify_authorization_code())
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. Getting details of the artists or users the current user follows requires authorization of the \code{user-follow-read} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
 }
+\value{
+A data frame containing three columns, \code{"type"}, the \code{"id"} of the
+artist or users and \code{"is_following"} as a logical, boolean variable.
+}
 \description{
-Check if Current User Follows Artists or Users
+Check if the current user is following specific artists or users.
 }

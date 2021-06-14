@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_recommendations_all}
 \alias{get_recommendations_all}
-\title{Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks}
+\title{Get Recommendations for Unlimited Vector of Track IDs}
 \usage{
 get_recommendations_all(track_ids, valence = NULL)
 }
@@ -12,9 +12,13 @@ get_recommendations_all(track_ids, valence = NULL)
 \item{valence}{The target valence for the recommendations}
 }
 \value{
-Returns a data frame containing recommendations from the Spotify API
+Returns a data frame containing binded recommendations from the Spotify API in a
+single data frame.
 }
 \description{
+Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks
+}
+\details{
 This is a wrapper for the \code{\link{get_recommendations}} function, which provides a workaround for
 the limit of 5 seed tracks per recommendation call. The function splits a supplied vector
 of track IDs into subsets of length 5, then applies a  \code{\link{get_recommendations}} call,

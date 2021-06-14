@@ -2,7 +2,7 @@
 % Please edit documentation in R/follow.R
 \name{unfollow_playlist}
 \alias{unfollow_playlist}
-\title{Remove the current user as a follower of a playlist.}
+\title{Remove Current User from Followers of Playlist.}
 \usage{
 unfollow_playlist(
   playlist_id,
@@ -14,9 +14,17 @@ unfollow_playlist(
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 Unfollowing a publicly followed playlist for a user requires authorization of the
-\code{playlist-modify-public} scope; unfollowing a privately followed playlist requires the \code{playlist-modify-private} scope. See See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}. \cr
-Note that the scopes you provide relate only to whether the current user is following the playlist publicly or privately (i.e. showing others what they are following), not whether the playlist itself is public or private.}
+\code{playlist-modify-public} scope; unfollowing a privately followed playlist requires the
+\code{playlist-modify-private} scope. See
+\href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}. \cr
+Note that the scopes you provide relate only to whether the current user is following the
+playlist publicly or privately (i.e. showing others what they are following),
+not whether the playlist itself is public or private.}
+}
+\value{
+The response from the Spotify Web API on the \code{DELETE} request, with a meaningful
+error message if the operation was not successful.
 }
 \description{
-Remove the current user as a follower of a playlist.
+Remove Current User from Followers of Playlist.
 }

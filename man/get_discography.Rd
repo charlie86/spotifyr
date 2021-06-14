@@ -2,7 +2,7 @@
 % Please edit documentation in R/geniusR.R
 \name{get_discography}
 \alias{get_discography}
-\title{Retrieve artist discography with song lyrics and audio info}
+\title{Retrieve Artist Discography with Song Lyrics and Audio Info}
 \usage{
 get_discography(artist, authorization = get_spotify_access_token())
 }
@@ -10,7 +10,7 @@ get_discography(artist, authorization = get_spotify_access_token())
 \item{artist}{The quoted name of the artist. Spelling matters, capitalization does not.}
 
 \item{authorization}{Authorization token for Spotify web API.
-Defaults to \code{get_spotify_access_token()}}
+Defaults to \code{get_spotify_access_token()}#'}
 }
 \value{
 A nested tibble. See \code{tidyr::\link[tidyr]{nest}}.
