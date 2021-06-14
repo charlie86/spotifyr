@@ -37,6 +37,7 @@ playlist_audio_features <- get_playlist_audio_features(playlist_username, playli
 Other musicology functions: 
 \code{\link{get_artist_audio_features}()},
 \code{\link{get_genre_artists}()},
+\code{\link{get_track_audio_analysis}()},
 \code{\link{get_track_audio_features}()},
 \code{\link{get_user_audio_features}()}
 }

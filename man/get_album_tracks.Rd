@@ -47,7 +47,6 @@ Get Spotify catalog information about an album’s tracks. Optional parameters c
 \seealso{
 Other track functions: 
 \code{\link{get_playlist_tracks}()},
-\code{\link{get_track_audio_analysis}()},
 \code{\link{get_tracks}()},
 \code{\link{get_track}()}
 }

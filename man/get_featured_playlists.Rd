@@ -38,7 +38,6 @@ Get a list of Spotify featured playlists
 }
 \examples{
 \donttest{
-## Get new Swedish music
-get_featured_playlists(country = 'SE')
+fp <- get_featured_playlists(country = 'SE')
 }
 }

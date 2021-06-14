@@ -5,7 +5,7 @@
 #' @return
 #' Returns a data frame of results containing track audio analysis data.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-analysis/} for more information.
-#' @family track functions
+#' @family musicology functions
 #' @export
 
 get_track_audio_analysis <- function(id,

@@ -112,7 +112,7 @@ get_category_playlists <- function(category_id, country = NULL, limit = 20, offs
 #' @examples
 #' \donttest{
 #' ## Get new Swedish music
-#' get_new_releases(country = 'SE')
+#' nr <- get_new_releases(country = 'SE')
 #' }
 
 get_new_releases <- function(country = NULL,
@@ -120,7 +120,9 @@ get_new_releases <- function(country = NULL,
                              offset = 0,
                              authorization = get_spotify_access_token(),
                              include_meta_info = FALSE) {
+
     base_url <- 'https://api.spotify.com/v1/browse/new-releases'
+
     params <- list(
         country = country,
         limit = limit,
@@ -128,8 +130,14 @@ get_new_releases <- function(country = NULL,
         access_token = authorization
     )
     res <- RETRY('GET', base_url, query = params, encode = 'json')
+
     stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>% .$albums
+
+    res <- fromJSON(content(res, as = 'text',
+                            encoding = 'UTF-8'),
+                    flatten = TRUE)
+
+    res <- res$albums
     if (!include_meta_info) {
         res <- res$items
     }
@@ -151,11 +159,9 @@ get_new_releases <- function(country = NULL,
 #' @return
 #' Returns a data frame of results containing featured playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
-#'
 #' @examples
 #' \donttest{
-#' ## Get new Swedish music
-#' get_featured_playlists(country = 'SE')
+#' fp <- get_featured_playlists(country = 'SE')
 #' }
 
 get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token(), include_meta_info = FALSE) {

@@ -33,6 +33,6 @@ Get a list of new album releases featured in Spotify (shown, for example, on a S
 \examples{
 \donttest{
 ## Get new Swedish music
-get_new_releases(country = 'SE')
+nr <- get_new_releases(country = 'SE')
 }
 }

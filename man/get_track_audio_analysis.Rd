@@ -19,10 +19,11 @@ See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/ge
 Get a detailed audio analysis for a single track identified by its unique Spotify ID.
 }
 \seealso{
-Other track functions: 
-\code{\link{get_album_tracks}()},
-\code{\link{get_playlist_tracks}()},
-\code{\link{get_tracks}()},
-\code{\link{get_track}()}
+Other musicology functions: 
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_genre_artists}()},
+\code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_features}()},
+\code{\link{get_user_audio_features}()}
 }
-\concept{track functions}
+\concept{musicology functions}
