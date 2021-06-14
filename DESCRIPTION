@@ -7,30 +7,34 @@ Authors@R: c(
       given = "Charlie", 
       family = "Thompson", 
       email = "chuck@rcharlie.com", 
-      role = c("aut")), 
-    person(
-       given = "Josiah", 
-       family = "Parry", 
-       email = "josiah.parry@yahoo.com", 
-       role = "aut"), 
-    person(
-      given = "Donal", 
-      family = "Phipps", 
-      email = "donal.phipps@gmail.com", 
-      role = "aut"), 
-    person(
-       given  = "Tom", 
-       family = "Wolff", 
-       email = "tom.wolff@duke.edu", 
-       role = "aut"), 
+      role = c("aut")
+      ), 
     person(
        given = "Daniel", 
        family = "Antal", 
        email = "daniel.antal@ceemid.eu", 
        role = c("aut", "cre"),
        comment = c(ORCID = "0000-0001-7513-6760")
+       ),   
+    person(
+       given = "Josiah", 
+       family = "Parry", 
+       email = "josiah.parry@yahoo.com", 
+       role = "aut"
+       ), 
+    person(
+      given = "Donal", 
+      family = "Phipps", 
+      email = "donal.phipps@gmail.com", 
+      role = "aut"
+      ), 
+    person(
+       given  = "Tom", 
+       family = "Wolff", 
+       email = "tom.wolff@duke.edu", 
+       role = "aut"
        )
-       )
+   )
 Description: An R wrapper for pulling data from the 'Spotify' Web API 
   <https://developer.spotify.com/documentation/web-api/> in bulk, or post items on a
   'Spotify' user's playlist.
