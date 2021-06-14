@@ -17,3 +17,4 @@
 # spotifyr 2.2.1
 * All functions in the documentation have well-specified return values.
 * Assertions are made with assertthat for more meaningful error messages.
+* Release candidate for CRAN.
