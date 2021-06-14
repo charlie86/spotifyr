@@ -13,7 +13,8 @@
 #' }
 
 get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID'),
-                                     client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET')) {
+                                     client_secret = Sys.getenv('SPOTIFY_CLIENT_SECRET')
+                                     ) {
 
     post <- RETRY('POST', 'https://accounts.spotify.com/api/token',
                  accept_json(),

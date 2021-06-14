@@ -12,7 +12,7 @@ set_my_volume(
 }
 \arguments{
 \item{volume_percent}{Required integer value. The volume to set.
-Must be a value from 0 to 100 inclusive. Defaults to \code{50}}
+Must be a value from 0 to 100 inclusive. Defaults to \code{50}.}
 
 \item{device_id}{Optional. The id of the device this command is targeting.
 If not supplied, the user’s currently active device is the target.}

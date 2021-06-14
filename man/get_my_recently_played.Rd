@@ -17,7 +17,8 @@ get_my_recently_played(
 Maximum: 50.}
 
 \item{after}{Optional. A Unix timestamp in milliseconds. Returns all items after
-(but not including) this cursor position. If \code{after} is specified, \code{before} must not
+(but not including) this cursor position.
+If \code{after} is specified, \code{before} must not
 be specified.}
 
 \item{before}{Optional. A Unix timestamp in milliseconds. Returns all items before

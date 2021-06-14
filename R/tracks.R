@@ -41,18 +41,25 @@ get_track_audio_analysis <- function(id,
 get_track_audio_features <- function(ids,
                                      authorization = get_spotify_access_token()
                                      ) {
-    stopifnot(length(ids) <= 100)
+    assertthat::assert_that(
+        length(ids) <= 100,
+        msg = "Too long ids vector. The maximum length of the length of the ids vector is 100."
+    )
+
     base_url <- 'https://api.spotify.com/v1/audio-features'
+
     params <- list(
         access_token = authorization,
         ids = paste0(ids, collapse = ',')
     )
+
     res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
-        .$audio_features %>%
-        as_tibble()
-    res
+
+    features <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    features <- features$audio_features %>% as_tibble()
+
+    features
 }
 
 #' Get Spotify catalog information for a single track identified by its unique Spotify ID.
@@ -73,9 +80,7 @@ get_track <- function(id,
     base_url <- 'https://api.spotify.com/v1/tracks'
 
     if (!is.null(market)) {
-        if (!str_detect(market, '^[[:alpha:]]{2}$')) {
-            stop('"market" must be an ISO 3166-1 alpha-2 country code')
-        }
+      validate_market(market)
     }
 
     params <- list(
@@ -119,9 +124,7 @@ get_tracks <- function(ids,
     base_url <- 'https://api.spotify.com/v1/tracks'
 
     if (!is.null(market)) {
-        if (!str_detect(market, '^[[:alpha:]]{2}$')) {
-            stop('"market" must be an ISO 3166-1 alpha-2 country code')
-        }
+        validate_market(market)
     }
 
     params <- list(
@@ -129,10 +132,12 @@ get_tracks <- function(ids,
         market = market,
         access_token = authorization
     )
+
     res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
 
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+                    flatten = TRUE)
 
     if (!include_meta_info) {
         res <- res$tracks

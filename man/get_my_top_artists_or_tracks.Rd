@@ -2,10 +2,10 @@
 % Please edit documentation in R/personalization.R
 \name{get_my_top_artists_or_tracks}
 \alias{get_my_top_artists_or_tracks}
-\title{Get the current user’s top artists or tracks based on calculated affinity.}
+\title{Get User’s Top Artists or Tracks}
 \usage{
 get_my_top_artists_or_tracks(
-  type = NULL,
+  type = "artists",
   limit = 20,
   offset = 0,
   time_range = "medium_term",
@@ -15,7 +15,7 @@ get_my_top_artists_or_tracks(
 }
 \arguments{
 \item{type}{Required. The type of entity to return.
-Valid values: \code{artists} or \code{tracks}.}
+Defaults to \code{artists}, the valid alternative is \code{tracks}.}
 
 \item{limit}{Optional. \cr
 Maximum number of results to return. \cr
@@ -43,7 +43,7 @@ Defaults to \code{FALSE}.}
 \value{
 Returns a data frame of results containing track or album data.
 See the official API
-\href{https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/}{documentation} for more information.
+\href{https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-top-artists-and-tracks}{documentation} for more information.
 }
 \description{
 Get the current user’s top artists or tracks based on calculated affinity.

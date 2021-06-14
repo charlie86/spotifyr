@@ -17,10 +17,7 @@ follow_artists_or_users <- function(type,
                                     authorization = get_spotify_authorization_code()
                                     ) {
 
-    assertthat::assert_that(
-        type %in% c("artist", "user"),
-        msg = "The type parameter must be either 'artist' or 'user'."
-    )
+    validate_parameters ( artist_or_user = type )
 
     base_url <- 'https://api.spotify.com/v1/me/following'
 
@@ -42,7 +39,7 @@ follow_artists_or_users <- function(type,
     stop_for_status(res)
     res
 
-    }
+}
 
 #' Add Current User to Followers of Playlist.
 #'
@@ -101,9 +98,12 @@ follow_playlist <- function(playlist_id,
 unfollow_playlist <- function(playlist_id,
                               authorization = get_spotify_authorization_code()
                               ) {
+
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/followers')
-    res <- RETRY('DELETE', url, config(token = authorization), encode = 'json')
+
+    res <- RETRY('DELETE', url,
+                 config(token = authorization), encode = 'json')
 
     stop_for_status(res)
 
@@ -128,6 +128,9 @@ get_my_followed_artists <- function(limit = 20,
                                     after = NULL,
                                     authorization = get_spotify_authorization_code(),
                                     include_meta_info = FALSE) {
+
+    validate_parameters ( limit = limit,
+                          include_meta_info = include_meta_info)
 
     base_url <- 'https://api.spotify.com/v1/me/following'
 
@@ -168,29 +171,28 @@ check_me_following <- function(type,
                                ids,
                                authorization = get_spotify_authorization_code()) {
 
-    assertthat::assert_that(
-        type %in% c("artist", "user"),
-        msg = "The type parameter must be either 'artist' or 'user'."
-    )
+ validate_parameters ( artist_or_user = type )
 
-    base_url <- 'https://api.spotify.com/v1/me/following/contains'
+ base_url <- 'https://api.spotify.com/v1/me/following/contains'
 
-    params <- list(
-        type = type,
-        ids = paste0(ids, collapse = ',')
-    )
+ params <- list(
+     type = type,
+     ids = paste0(ids, collapse = ',')
+ )
 
-    res <- RETRY('GET', base_url,
-                 query = params,
-                 config(token = authorization),
-                 encode = 'json')
+ res <- RETRY('GET', base_url,
+              query = params,
+              config(token = authorization),
+              encode = 'json')
 
-    stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+ stop_for_status(res)
 
-    tibble(type = type,
-           id = ids,
-           is_following = res)
+ res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+                 flatten = TRUE)
+
+ tibble(type = type,
+        id = ids,
+        is_following = res)
 
 }
 

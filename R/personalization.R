@@ -1,9 +1,9 @@
-#' Get the current user’s top artists or tracks based on calculated affinity.
+#' Get User’s Top Artists or Tracks
 #'
 #' Get the current user’s top artists or tracks based on calculated affinity.
 #'
 #' @param type Required. The type of entity to return.
-#' Valid values: \code{artists} or \code{tracks}.
+#' Defaults to \code{artists}, the valid alternative is \code{tracks}.
 #' @param limit Optional. \cr
 #' Maximum number of results to return. \cr
 #' Default: 20 \cr
@@ -25,37 +25,24 @@
 #' @return
 #' Returns a data frame of results containing track or album data.
 #' See the official API
-#' \href{https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/}{documentation} for more information.
+#' \href{https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-top-artists-and-tracks}{documentation} for more information.
 #' @family personalization functions
 #' @export
 
-get_my_top_artists_or_tracks <- function(type = NULL,
+get_my_top_artists_or_tracks <- function(type = 'artists',
                                          limit = 20,
                                          offset = 0,
                                          time_range = 'medium_term',
                                          authorization = get_spotify_authorization_code(),
                                          include_meta_info = FALSE) {
 
-    assertthat::assert_that(
-        type %in% c("artist", "user"),
-        msg = "The type parameter must be either 'artist' or 'user'."
-    )
 
-    if (!type %in% c('artists', 'tracks')) {
-        stop('"type" must be one of "artists" or "tracks"')
-    }
-
-    if ((limit < 1 | limit > 50) | !is.numeric(limit)) {
-        stop('"limit" must be an integer between 1 and 50')
-    }
-
-    if ((offset < 0 | offset > 10000) | !is.numeric(offset)) {
-        stop('"offset" must be an integer between 1 and 10,000')
-    }
-
-    if (!time_range %in% c('short_term', 'medium_term', 'long_term')) {
-        stop('"type" must be one of "short_term", "medium_term", or "long_term"')
-    }
+ ## Assertions in assertions.R
+    validate_parameters(limit=limit,
+                        offset=offset,
+                        time_range=time_range,
+                        artists_or_tracks = type,
+                        include_meta_info = include_meta_info)
 
     base_url <- 'https://api.spotify.com/v1/me/top'
 

@@ -396,362 +396,363 @@ the <a href='https://developer.spotify.com/documentation/general/guides/track-re
 <code><a href='get_recommendations_all.html'>get_recommendations_all</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'> <span class='fu'>get_recommendations</span><span class='op'>(</span>market <span class='op'>=</span> <span class='st'>'SE'</span>, seed_genres <span class='op'>=</span> <span class='st'>'rock'</span><span class='op'>)</span> 
-</div><div class='output co'>#&gt;                                                                                                                                                                                                              artists
-#&gt; 1                     https://api.spotify.com/v1/artists/0PFtn5NtBbbUNbU9EAmIWF, 0PFtn5NtBbbUNbU9EAmIWF, TOTO, artist, spotify:artist:0PFtn5NtBbbUNbU9EAmIWF, https://open.spotify.com/artist/0PFtn5NtBbbUNbU9EAmIWF
-#&gt; 2           https://api.spotify.com/v1/artists/00YTqRClk82aMchQQpYMd5, 00YTqRClk82aMchQQpYMd5, Our Last Night, artist, spotify:artist:00YTqRClk82aMchQQpYMd5, https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5
-#&gt; 3                   https://api.spotify.com/v1/artists/3jOstUTkEu2JkjvRdBA5Gu, 3jOstUTkEu2JkjvRdBA5Gu, Weezer, artist, spotify:artist:3jOstUTkEu2JkjvRdBA5Gu, https://open.spotify.com/artist/3jOstUTkEu2JkjvRdBA5Gu
-#&gt; 4         https://api.spotify.com/v1/artists/00tVTdpEhQQw1bqdu8RCx2, 00tVTdpEhQQw1bqdu8RCx2, Blue Öyster Cult, artist, spotify:artist:00tVTdpEhQQw1bqdu8RCx2, https://open.spotify.com/artist/00tVTdpEhQQw1bqdu8RCx2
-#&gt; 5             https://api.spotify.com/v1/artists/776Uo845nYHJpNaStv1Ds4, 776Uo845nYHJpNaStv1Ds4, Jimi Hendrix, artist, spotify:artist:776Uo845nYHJpNaStv1Ds4, https://open.spotify.com/artist/776Uo845nYHJpNaStv1Ds4
-#&gt; 6                https://api.spotify.com/v1/artists/7oPftvlwr6VrsViSDV7fJY, 7oPftvlwr6VrsViSDV7fJY, Green Day, artist, spotify:artist:7oPftvlwr6VrsViSDV7fJY, https://open.spotify.com/artist/7oPftvlwr6VrsViSDV7fJY
-#&gt; 7              https://api.spotify.com/v1/artists/165ZgPlLkK7bf5bDoFc6Sb, 165ZgPlLkK7bf5bDoFc6Sb, Limp Bizkit, artist, spotify:artist:165ZgPlLkK7bf5bDoFc6Sb, https://open.spotify.com/artist/165ZgPlLkK7bf5bDoFc6Sb
-#&gt; 8              https://api.spotify.com/v1/artists/568ZhdwyaiCyOGJRtNYhWf, 568ZhdwyaiCyOGJRtNYhWf, Deep Purple, artist, spotify:artist:568ZhdwyaiCyOGJRtNYhWf, https://open.spotify.com/artist/568ZhdwyaiCyOGJRtNYhWf
-#&gt; 9                 https://api.spotify.com/v1/artists/6Ghvu1VvMGScGpOUJBAHNH, 6Ghvu1VvMGScGpOUJBAHNH, Deftones, artist, spotify:artist:6Ghvu1VvMGScGpOUJBAHNH, https://open.spotify.com/artist/6Ghvu1VvMGScGpOUJBAHNH
-#&gt; 10                   https://api.spotify.com/v1/artists/3JaAGmSTpJK35DqWrDUzBz, 3JaAGmSTpJK35DqWrDUzBz, Sweet, artist, spotify:artist:3JaAGmSTpJK35DqWrDUzBz, https://open.spotify.com/artist/3JaAGmSTpJK35DqWrDUzBz
-#&gt; 11             https://api.spotify.com/v1/artists/0cc6vw3VN8YlIcvr1v7tBL, 0cc6vw3VN8YlIcvr1v7tBL, Mötley Crüe, artist, spotify:artist:0cc6vw3VN8YlIcvr1v7tBL, https://open.spotify.com/artist/0cc6vw3VN8YlIcvr1v7tBL
-#&gt; 12               https://api.spotify.com/v1/artists/2cnMpRsOVqtPMfq7YiFE6K, 2cnMpRsOVqtPMfq7YiFE6K, Van Halen, artist, spotify:artist:2cnMpRsOVqtPMfq7YiFE6K, https://open.spotify.com/artist/2cnMpRsOVqtPMfq7YiFE6K
-#&gt; 13       https://api.spotify.com/v1/artists/4NiJW4q9ichVqL1aUsgGAN, 4NiJW4q9ichVqL1aUsgGAN, A Day To Remember, artist, spotify:artist:4NiJW4q9ichVqL1aUsgGAN, https://open.spotify.com/artist/4NiJW4q9ichVqL1aUsgGAN
-#&gt; 14 https://api.spotify.com/v1/artists/5t28BP42x2axFnqOOMg3CM, 5t28BP42x2axFnqOOMg3CM, Five Finger Death Punch, artist, spotify:artist:5t28BP42x2axFnqOOMg3CM, https://open.spotify.com/artist/5t28BP42x2axFnqOOMg3CM
-#&gt; 15               https://api.spotify.com/v1/artists/3TOqt5oJwL9BE2NG9MEwDa, 3TOqt5oJwL9BE2NG9MEwDa, Disturbed, artist, spotify:artist:3TOqt5oJwL9BE2NG9MEwDa, https://open.spotify.com/artist/3TOqt5oJwL9BE2NG9MEwDa
-#&gt; 16           https://api.spotify.com/v1/artists/08GQAI4eElDnROBrJRGE0X, 08GQAI4eElDnROBrJRGE0X, Fleetwood Mac, artist, spotify:artist:08GQAI4eElDnROBrJRGE0X, https://open.spotify.com/artist/08GQAI4eElDnROBrJRGE0X
-#&gt; 17           https://api.spotify.com/v1/artists/2otRZcOVNcmdkZ5nEoogy6, 2otRZcOVNcmdkZ5nEoogy6, Dead by April, artist, spotify:artist:2otRZcOVNcmdkZ5nEoogy6, https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6
-#&gt; 18       https://api.spotify.com/v1/artists/4F84IBURUo98rz4r61KF70, 4F84IBURUo98rz4r61KF70, The White Stripes, artist, spotify:artist:4F84IBURUo98rz4r61KF70, https://open.spotify.com/artist/4F84IBURUo98rz4r61KF70
-#&gt; 19     https://api.spotify.com/v1/artists/74eX4C98E4FCrAMl39qRsJ, 74eX4C98E4FCrAMl39qRsJ, Theory of a Deadman, artist, spotify:artist:74eX4C98E4FCrAMl39qRsJ, https://open.spotify.com/artist/74eX4C98E4FCrAMl39qRsJ
-#&gt; 20            https://api.spotify.com/v1/artists/10Z7WzKMeIdNBKexi1YarP, 10Z7WzKMeIdNBKexi1YarP, Fame on Fire, artist, spotify:artist:10Z7WzKMeIdNBKexi1YarP, https://open.spotify.com/artist/10Z7WzKMeIdNBKexi1YarP
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>get_recommendations</span><span class='op'>(</span>market <span class='op'>=</span> <span class='st'>'SE'</span>, seed_genres <span class='op'>=</span> <span class='st'>'rock'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                                                                                                                                                                                                            artists
+#&gt; 1                  https://api.spotify.com/v1/artists/74oJ4qxwOZvX6oSsu1DGnw, 74oJ4qxwOZvX6oSsu1DGnw, Cream, artist, spotify:artist:74oJ4qxwOZvX6oSsu1DGnw, https://open.spotify.com/artist/74oJ4qxwOZvX6oSsu1DGnw
+#&gt; 2               https://api.spotify.com/v1/artists/6gZq1Q6bdOxsUPUG1TaFbF, 6gZq1Q6bdOxsUPUG1TaFbF, Godsmack, artist, spotify:artist:6gZq1Q6bdOxsUPUG1TaFbF, https://open.spotify.com/artist/6gZq1Q6bdOxsUPUG1TaFbF
+#&gt; 3  https://api.spotify.com/v1/artists/40Yq4vzPs9VNUrIBG5Jr2i, 40Yq4vzPs9VNUrIBG5Jr2i, The Smashing Pumpkins, artist, spotify:artist:40Yq4vzPs9VNUrIBG5Jr2i, https://open.spotify.com/artist/40Yq4vzPs9VNUrIBG5Jr2i
+#&gt; 4       https://api.spotify.com/v1/artists/25Maank76ry2Tmbi2Ql1SF, 25Maank76ry2Tmbi2Ql1SF, The Interrupters, artist, spotify:artist:25Maank76ry2Tmbi2Ql1SF, https://open.spotify.com/artist/25Maank76ry2Tmbi2Ql1SF
+#&gt; 5      https://api.spotify.com/v1/artists/0u3d5PM2FuEuG5QuUdt8mT, 0u3d5PM2FuEuG5QuUdt8mT, Hands Like Houses, artist, spotify:artist:0u3d5PM2FuEuG5QuUdt8mT, https://open.spotify.com/artist/0u3d5PM2FuEuG5QuUdt8mT
+#&gt; 6                     https://api.spotify.com/v1/artists/51Blml2LZPmy7TTiAg47vQ, 51Blml2LZPmy7TTiAg47vQ, U2, artist, spotify:artist:51Blml2LZPmy7TTiAg47vQ, https://open.spotify.com/artist/51Blml2LZPmy7TTiAg47vQ
+#&gt; 7    https://api.spotify.com/v1/artists/2UazAtjfzqBF0Nho2awK4z, 2UazAtjfzqBF0Nho2awK4z, Stone Temple Pilots, artist, spotify:artist:2UazAtjfzqBF0Nho2awK4z, https://open.spotify.com/artist/2UazAtjfzqBF0Nho2awK4z
+#&gt; 8         https://api.spotify.com/v1/artists/00YTqRClk82aMchQQpYMd5, 00YTqRClk82aMchQQpYMd5, Our Last Night, artist, spotify:artist:00YTqRClk82aMchQQpYMd5, https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5
+#&gt; 9          https://api.spotify.com/v1/artists/2otRZcOVNcmdkZ5nEoogy6, 2otRZcOVNcmdkZ5nEoogy6, Dead by April, artist, spotify:artist:2otRZcOVNcmdkZ5nEoogy6, https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6
+#&gt; 10              https://api.spotify.com/v1/artists/22RISwgVJyZu9lpqAcv1F5, 22RISwgVJyZu9lpqAcv1F5, Blossoms, artist, spotify:artist:22RISwgVJyZu9lpqAcv1F5, https://open.spotify.com/artist/22RISwgVJyZu9lpqAcv1F5
+#&gt; 11             https://api.spotify.com/v1/artists/70BYFdaZbEKbeauJ670ysI, 70BYFdaZbEKbeauJ670ysI, Shinedown, artist, spotify:artist:70BYFdaZbEKbeauJ670ysI, https://open.spotify.com/artist/70BYFdaZbEKbeauJ670ysI
+#&gt; 12           https://api.spotify.com/v1/artists/5xUf6j4upBrXZPg6AI4MRK, 5xUf6j4upBrXZPg6AI4MRK, Soundgarden, artist, spotify:artist:5xUf6j4upBrXZPg6AI4MRK, https://open.spotify.com/artist/5xUf6j4upBrXZPg6AI4MRK
+#&gt; 13              https://api.spotify.com/v1/artists/2kO6mP0olFJGGh6kvUdNC8, 2kO6mP0olFJGGh6kvUdNC8, Des Rocs, artist, spotify:artist:2kO6mP0olFJGGh6kvUdNC8, https://open.spotify.com/artist/2kO6mP0olFJGGh6kvUdNC8
+#&gt; 14             https://api.spotify.com/v1/artists/4o0pNHbyj36LPvukNqEug0, 4o0pNHbyj36LPvukNqEug0, The Maine, artist, spotify:artist:4o0pNHbyj36LPvukNqEug0, https://open.spotify.com/artist/4o0pNHbyj36LPvukNqEug0
+#&gt; 15      https://api.spotify.com/v1/artists/2xiIXseIJcq3nG7C8fHeBj, 2xiIXseIJcq3nG7C8fHeBj, Three Days Grace, artist, spotify:artist:2xiIXseIJcq3nG7C8fHeBj, https://open.spotify.com/artist/2xiIXseIJcq3nG7C8fHeBj
+#&gt; 16     https://api.spotify.com/v1/artists/3eqjTLE0HfPfh78zjh6TqT, 3eqjTLE0HfPfh78zjh6TqT, Bruce Springsteen, artist, spotify:artist:3eqjTLE0HfPfh78zjh6TqT, https://open.spotify.com/artist/3eqjTLE0HfPfh78zjh6TqT
+#&gt; 17                 https://api.spotify.com/v1/artists/1nTJnNxTJmEiZSYf8ScLQ8, 1nTJnNxTJmEiZSYf8ScLQ8, Smile, artist, spotify:artist:1nTJnNxTJmEiZSYf8ScLQ8, https://open.spotify.com/artist/1nTJnNxTJmEiZSYf8ScLQ8
+#&gt; 18                  https://api.spotify.com/v1/artists/0ofhRkasSdhp6LUs7tFcF7, 0ofhRkasSdhp6LUs7tFcF7, WSTR, artist, spotify:artist:0ofhRkasSdhp6LUs7tFcF7, https://open.spotify.com/artist/0ofhRkasSdhp6LUs7tFcF7
+#&gt; 19       https://api.spotify.com/v1/artists/64tNsm6TnZe2zpcMVMOoHL, 64tNsm6TnZe2zpcMVMOoHL, Alice In Chains, artist, spotify:artist:64tNsm6TnZe2zpcMVMOoHL, https://open.spotify.com/artist/64tNsm6TnZe2zpcMVMOoHL
+#&gt; 20             https://api.spotify.com/v1/artists/1w5Kfo2jwwIPruYS2UWh56, 1w5Kfo2jwwIPruYS2UWh56, Pearl Jam, artist, spotify:artist:1w5Kfo2jwwIPruYS2UWh56, https://open.spotify.com/artist/1w5Kfo2jwwIPruYS2UWh56
 #&gt;    disc_number duration_ms explicit
-#&gt; 1            1      235546    FALSE
-#&gt; 2            1      238181    FALSE
-#&gt; 3            1      195893    FALSE
-#&gt; 4            1      271000    FALSE
-#&gt; 5            1      146573    FALSE
-#&gt; 6            1      224760    FALSE
-#&gt; 7            1      272973     TRUE
-#&gt; 8            1      366136    FALSE
-#&gt; 9            1      214760    FALSE
-#&gt; 10           1      241746    FALSE
-#&gt; 11           1      281960    FALSE
-#&gt; 12           1      227693    FALSE
-#&gt; 13           1      202640    FALSE
-#&gt; 14           1      209703     TRUE
-#&gt; 15           1      252002    FALSE
-#&gt; 16           1      257800    FALSE
-#&gt; 17           1      265226    FALSE
-#&gt; 18           1      231733    FALSE
-#&gt; 19           1      219360     TRUE
-#&gt; 20           1      236250    FALSE
+#&gt; 1            2      258466    FALSE
+#&gt; 2            1      282653    FALSE
+#&gt; 3            2      266200    FALSE
+#&gt; 4            1      170453    FALSE
+#&gt; 5            1      207200    FALSE
+#&gt; 6            1      295515    FALSE
+#&gt; 7            1      176546    FALSE
+#&gt; 8            1      238181    FALSE
+#&gt; 9            1      265226    FALSE
+#&gt; 10           1      222488    FALSE
+#&gt; 11           1      233986    FALSE
+#&gt; 12           1      283026    FALSE
+#&gt; 13           1      207141    FALSE
+#&gt; 14           1      192825    FALSE
+#&gt; 15           1      231480    FALSE
+#&gt; 16           1      155880    FALSE
+#&gt; 17           1      196840    FALSE
+#&gt; 18           1      208179    FALSE
+#&gt; 19           1      149466    FALSE
+#&gt; 20           1      318226    FALSE
 #&gt;                                                        href
-#&gt; 1  https://api.spotify.com/v1/tracks/4aVuWgvD0X63hcOCnZtNFA
-#&gt; 2  https://api.spotify.com/v1/tracks/506YO37JuV40cnjeVuwlGD
-#&gt; 3  https://api.spotify.com/v1/tracks/2jz1bw1p0WQj0PDnVDP0uY
-#&gt; 4  https://api.spotify.com/v1/tracks/3fkPMWQ6cBNBLuFcPyMS8s
-#&gt; 5  https://api.spotify.com/v1/tracks/1ntxpzIUbSsizvuAy6lTYY
-#&gt; 6  https://api.spotify.com/v1/tracks/19YmvsVCetCBeVj6O2mljR
-#&gt; 7  https://api.spotify.com/v1/tracks/2gSVKxPDww9Eep5rdvtdem
-#&gt; 8  https://api.spotify.com/v1/tracks/3uMmllZo1AfoEnVT4ENCD3
-#&gt; 9  https://api.spotify.com/v1/tracks/1158ckiB5S4cpsdYHDB9IF
-#&gt; 10 https://api.spotify.com/v1/tracks/61ZVP6ytLwYnbLonbJtzR6
-#&gt; 11 https://api.spotify.com/v1/tracks/41wWrTueWew7qUU0Ru87Mp
-#&gt; 12 https://api.spotify.com/v1/tracks/0TaT50ZZxT4ytZxuqkE3A9
-#&gt; 13 https://api.spotify.com/v1/tracks/4JsDHMv5PVO8N07DbDq33r
-#&gt; 14 https://api.spotify.com/v1/tracks/0nqIqABZcujg05mkixJV60
-#&gt; 15 https://api.spotify.com/v1/tracks/3jjU4Pky1ja5J1onU6ei4T
-#&gt; 16 https://api.spotify.com/v1/tracks/0ofHAoxe9vBkTCp2UQIavz
-#&gt; 17 https://api.spotify.com/v1/tracks/4cfEA7zQhaQpkhUFonoOPw
-#&gt; 18 https://api.spotify.com/v1/tracks/3dPQuX8Gs42Y7b454ybpMR
-#&gt; 19 https://api.spotify.com/v1/tracks/6kp8F9FpHXzjga2MeRDSG8
-#&gt; 20 https://api.spotify.com/v1/tracks/54SMw8TnDcuieolVRXBmni
-#&gt;                        id is_local is_playable                           name
-#&gt; 1  4aVuWgvD0X63hcOCnZtNFA    FALSE        TRUE                  Hold the Line
-#&gt; 2  506YO37JuV40cnjeVuwlGD    FALSE        TRUE                  Common Ground
-#&gt; 3  2jz1bw1p0WQj0PDnVDP0uY    FALSE        TRUE              Feels Like Summer
-#&gt; 4  3fkPMWQ6cBNBLuFcPyMS8s    FALSE        TRUE                Burnin' for You
-#&gt; 5  1ntxpzIUbSsizvuAy6lTYY    FALSE        TRUE              Crosstown Traffic
-#&gt; 6  19YmvsVCetCBeVj6O2mljR    FALSE        TRUE                Still Breathing
-#&gt; 7  2gSVKxPDww9Eep5rdvtdem    FALSE        TRUE                         My Way
-#&gt; 8  3uMmllZo1AfoEnVT4ENCD3    FALSE        TRUE Highway Star - Remastered 2012
-#&gt; 9  1158ckiB5S4cpsdYHDB9IF    FALSE        TRUE       My Own Summer (Shove It)
-#&gt; 10 61ZVP6ytLwYnbLonbJtzR6    FALSE        TRUE             The Ballroom Blitz
-#&gt; 11 41wWrTueWew7qUU0Ru87Mp    FALSE        TRUE                      Wild Side
-#&gt; 12 0TaT50ZZxT4ytZxuqkE3A9    FALSE        TRUE         Why Can't This Be Love
-#&gt; 13 4JsDHMv5PVO8N07DbDq33r    FALSE        TRUE                     All I Want
-#&gt; 14 0nqIqABZcujg05mkixJV60    FALSE        TRUE                      Sham Pain
-#&gt; 15 3jjU4Pky1ja5J1onU6ei4T    FALSE        TRUE               The Vengeful One
-#&gt; 16 0ofHAoxe9vBkTCp2UQIavz    FALSE        TRUE         Dreams - 2004 Remaster
-#&gt; 17 4cfEA7zQhaQpkhUFonoOPw    FALSE        TRUE                Crying Over You
-#&gt; 18 3dPQuX8Gs42Y7b454ybpMR    FALSE        TRUE              Seven Nation Army
-#&gt; 19 6kp8F9FpHXzjga2MeRDSG8    FALSE        TRUE                Bitch Came Back
-#&gt; 20 54SMw8TnDcuieolVRXBmni    FALSE        TRUE                   Shape of You
-#&gt;    popularity
-#&gt; 1          77
-#&gt; 2          51
-#&gt; 3          58
-#&gt; 4          68
-#&gt; 5          60
-#&gt; 6          62
-#&gt; 7          71
-#&gt; 8          68
-#&gt; 9          70
-#&gt; 10         45
-#&gt; 11         66
-#&gt; 12         66
-#&gt; 13         65
-#&gt; 14         59
-#&gt; 15         67
-#&gt; 16         85
-#&gt; 17         55
-#&gt; 18         83
-#&gt; 19         63
-#&gt; 20         55
+#&gt; 1  https://api.spotify.com/v1/tracks/6PUabSMXmPnZna361Wwmf7
+#&gt; 2  https://api.spotify.com/v1/tracks/5uGsG0LfotfWDq6hql4h53
+#&gt; 3  https://api.spotify.com/v1/tracks/5QLHGv0DfpeXLNFo7SFEy1
+#&gt; 4  https://api.spotify.com/v1/tracks/60FJeNTK5edr72G2xtCWuP
+#&gt; 5  https://api.spotify.com/v1/tracks/2optm7JeCh2iEM502qFLUX
+#&gt; 6  https://api.spotify.com/v1/tracks/6ADSaE87h8Y3lccZlBJdXH
+#&gt; 7  https://api.spotify.com/v1/tracks/4fjsOdrWMaKf70x21h5XbX
+#&gt; 8  https://api.spotify.com/v1/tracks/506YO37JuV40cnjeVuwlGD
+#&gt; 9  https://api.spotify.com/v1/tracks/4cfEA7zQhaQpkhUFonoOPw
+#&gt; 10 https://api.spotify.com/v1/tracks/5pVbLYTdihSKd8Kylfhwa7
+#&gt; 11 https://api.spotify.com/v1/tracks/1TRr8Pp2uOqL24fMHpJyV3
+#&gt; 12 https://api.spotify.com/v1/tracks/1wlKw9NAWVWpx7OIAyg9EA
+#&gt; 13 https://api.spotify.com/v1/tracks/481idAnpIOHEjR4YPsbA0y
+#&gt; 14 https://api.spotify.com/v1/tracks/47ojH5LeQhl1ZltSAHBEFF
+#&gt; 15 https://api.spotify.com/v1/tracks/0M955bMOoilikPXwKLYpoi
+#&gt; 16 https://api.spotify.com/v1/tracks/3PzsbWSQdLCKDLxn7YZfkM
+#&gt; 17 https://api.spotify.com/v1/tracks/69VE5kmfqG4dJSkrB1OtCI
+#&gt; 18 https://api.spotify.com/v1/tracks/4Jl3syKPuB2YFZZhsSeniv
+#&gt; 19 https://api.spotify.com/v1/tracks/4A065x9kJt955eGVqf813g
+#&gt; 20 https://api.spotify.com/v1/tracks/62nQ8UZVqR2RMvkJHkcO2o
+#&gt;                        id is_local is_playable
+#&gt; 1  6PUabSMXmPnZna361Wwmf7    FALSE        TRUE
+#&gt; 2  5uGsG0LfotfWDq6hql4h53    FALSE        TRUE
+#&gt; 3  5QLHGv0DfpeXLNFo7SFEy1    FALSE        TRUE
+#&gt; 4  60FJeNTK5edr72G2xtCWuP    FALSE        TRUE
+#&gt; 5  2optm7JeCh2iEM502qFLUX    FALSE        TRUE
+#&gt; 6  6ADSaE87h8Y3lccZlBJdXH    FALSE        TRUE
+#&gt; 7  4fjsOdrWMaKf70x21h5XbX    FALSE        TRUE
+#&gt; 8  506YO37JuV40cnjeVuwlGD    FALSE        TRUE
+#&gt; 9  4cfEA7zQhaQpkhUFonoOPw    FALSE        TRUE
+#&gt; 10 5pVbLYTdihSKd8Kylfhwa7    FALSE        TRUE
+#&gt; 11 1TRr8Pp2uOqL24fMHpJyV3    FALSE        TRUE
+#&gt; 12 1wlKw9NAWVWpx7OIAyg9EA    FALSE        TRUE
+#&gt; 13 481idAnpIOHEjR4YPsbA0y    FALSE        TRUE
+#&gt; 14 47ojH5LeQhl1ZltSAHBEFF    FALSE        TRUE
+#&gt; 15 0M955bMOoilikPXwKLYpoi    FALSE        TRUE
+#&gt; 16 3PzsbWSQdLCKDLxn7YZfkM    FALSE        TRUE
+#&gt; 17 69VE5kmfqG4dJSkrB1OtCI    FALSE        TRUE
+#&gt; 18 4Jl3syKPuB2YFZZhsSeniv    FALSE        TRUE
+#&gt; 19 4A065x9kJt955eGVqf813g    FALSE        TRUE
+#&gt; 20 62nQ8UZVqR2RMvkJHkcO2o    FALSE        TRUE
+#&gt;                                                  name popularity
+#&gt; 1                                   Crossroads - Live         57
+#&gt; 2                                              Voodoo         66
+#&gt; 3                              1979 - Remastered 2012         76
+#&gt; 4                                      She's Kerosene         60
+#&gt; 5                                             Monster         48
+#&gt; 6                    With Or Without You - Remastered         79
+#&gt; 7                            Vasoline - 2019 Remaster         62
+#&gt; 8                                       Common Ground         51
+#&gt; 9                                     Crying Over You         55
+#&gt; 10 There's A Reason Why (I Never Returned Your Calls)         57
+#&gt; 11                                   Sound of Madness         42
+#&gt; 12                                 Fell On Black Days         67
+#&gt; 13                           Let Me Live / Let Me Die         64
+#&gt; 14                                    Don't Come Down         55
+#&gt; 15                        I Hate Everything About You         72
+#&gt; 16                                        I'm On Fire         75
+#&gt; 17                     Doing All Right - ...Revisited         55
+#&gt; 18                                   Eastbound &amp; Down         48
+#&gt; 19                                         Them Bones         67
+#&gt; 20                                             Jeremy         72
 #&gt;                                                                                                    preview_url
-#&gt; 1  https://p.scdn.co/mp3-preview/ae5b5990efb6105af7ccf2d5b2690c1bdb08cdf3?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 2  https://p.scdn.co/mp3-preview/dba3fc2354613666047a632d23854a17751f03ec?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 3  https://p.scdn.co/mp3-preview/530a0fa1eaf7bc59c46b4695610be07e7ce80d12?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 4  https://p.scdn.co/mp3-preview/7df1a3c5045bdde3deed8f62414e5bfe086feda8?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 5  https://p.scdn.co/mp3-preview/1497a8c3e9977b13b43f41a83ac33b3884b3ce82?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 6  https://p.scdn.co/mp3-preview/43872cebf1362055bf4fc1997ccb1992e2996b0d?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 7                                                                                                         &lt;NA&gt;
-#&gt; 8                                                                                                         &lt;NA&gt;
-#&gt; 9  https://p.scdn.co/mp3-preview/8d311acfa67d329ce5eec2dbcf336c330c70533a?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 10 https://p.scdn.co/mp3-preview/8a8bd2a0ca2db5a0637e01fa80a0d8bf3cf7d6e3?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 11 https://p.scdn.co/mp3-preview/d00f10e517b0d9b47ee4f14abfbe375adbc40d9c?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 12 https://p.scdn.co/mp3-preview/618e555b21c1a4f3819a86c6fd838e92e022be72?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 13                                                                                                        &lt;NA&gt;
-#&gt; 14 https://p.scdn.co/mp3-preview/795470dd9a181e2aa86ad517856e532e67b84971?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 15 https://p.scdn.co/mp3-preview/5a2d57f9cc6e6d4fde4e618dd47666535f7c1a55?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 16 https://p.scdn.co/mp3-preview/40d1f6d82f16b05b62aae47e8e130de04b407fc8?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 1                                                                                                         &lt;NA&gt;
+#&gt; 2                                                                                                         &lt;NA&gt;
+#&gt; 3                                                                                                         &lt;NA&gt;
+#&gt; 4  https://p.scdn.co/mp3-preview/b3211d53964127b425ed63b29effe0347e139101?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 5  https://p.scdn.co/mp3-preview/e5f9a1c79b0a9cee5cdbb2e19fd95a6c71d6e9aa?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 6                                                                                                         &lt;NA&gt;
+#&gt; 7  https://p.scdn.co/mp3-preview/a8e4886ecfbf049afcbe90c74d5313d15f7c5e53?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 8  https://p.scdn.co/mp3-preview/dba3fc2354613666047a632d23854a17751f03ec?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 9                                                                                                         &lt;NA&gt;
+#&gt; 10                                                                                                        &lt;NA&gt;
+#&gt; 11 https://p.scdn.co/mp3-preview/26186c5152e1f647a1b47148fef1799019c8d563?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 12                                                                                                        &lt;NA&gt;
+#&gt; 13 https://p.scdn.co/mp3-preview/b3dc80e33929b9b9b351bb77ebd6bdced8eb1784?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 14 https://p.scdn.co/mp3-preview/e0363988e76f3a7daeeca603535ae60924c545a7?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 15 https://p.scdn.co/mp3-preview/8893669447625edf76339cdd67a338dad034a7ea?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 16 https://p.scdn.co/mp3-preview/f3bae9928744d8a6840dc8bf43a5ed1416adadff?cid=125a10da5fa94687b3d0913168bc3698
 #&gt; 17                                                                                                        &lt;NA&gt;
-#&gt; 18 https://p.scdn.co/mp3-preview/9ca99ae29be0130196f0f2257b6d88ede85f7099?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 19 https://p.scdn.co/mp3-preview/3a3dd902b854edb960023224574ab781740c43c9?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 20 https://p.scdn.co/mp3-preview/752d58f11d845a4462a7d2878ce35757be8906b9?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 18 https://p.scdn.co/mp3-preview/53f484b80f067ff7f0c880afea2ca08382e35e7f?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 19 https://p.scdn.co/mp3-preview/2d7ef6644acd2336ddb7176b56c35f4935106416?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 20 https://p.scdn.co/mp3-preview/c5742cc09643dc0704b397d938b425c575f89b57?cid=125a10da5fa94687b3d0913168bc3698
 #&gt;    track_number  type                                  uri album.album_type
-#&gt; 1             9 track spotify:track:4aVuWgvD0X63hcOCnZtNFA            ALBUM
-#&gt; 2             6 track spotify:track:506YO37JuV40cnjeVuwlGD            ALBUM
-#&gt; 3             3 track spotify:track:2jz1bw1p0WQj0PDnVDP0uY            ALBUM
-#&gt; 4             2 track spotify:track:3fkPMWQ6cBNBLuFcPyMS8s            ALBUM
-#&gt; 5             3 track spotify:track:1ntxpzIUbSsizvuAy6lTYY            ALBUM
-#&gt; 6             7 track spotify:track:19YmvsVCetCBeVj6O2mljR            ALBUM
-#&gt; 7             5 track spotify:track:2gSVKxPDww9Eep5rdvtdem            ALBUM
-#&gt; 8             1 track spotify:track:3uMmllZo1AfoEnVT4ENCD3            ALBUM
-#&gt; 9             1 track spotify:track:1158ckiB5S4cpsdYHDB9IF            ALBUM
-#&gt; 10            9 track spotify:track:61ZVP6ytLwYnbLonbJtzR6      COMPILATION
-#&gt; 11            1 track spotify:track:41wWrTueWew7qUU0Ru87Mp            ALBUM
-#&gt; 12            2 track spotify:track:0TaT50ZZxT4ytZxuqkE3A9            ALBUM
-#&gt; 13            2 track spotify:track:4JsDHMv5PVO8N07DbDq33r            ALBUM
-#&gt; 14            4 track spotify:track:0nqIqABZcujg05mkixJV60            ALBUM
-#&gt; 15            3 track spotify:track:3jjU4Pky1ja5J1onU6ei4T            ALBUM
-#&gt; 16            2 track spotify:track:0ofHAoxe9vBkTCp2UQIavz            ALBUM
-#&gt; 17            1 track spotify:track:4cfEA7zQhaQpkhUFonoOPw            ALBUM
-#&gt; 18            1 track spotify:track:3dPQuX8Gs42Y7b454ybpMR            ALBUM
-#&gt; 19            2 track spotify:track:6kp8F9FpHXzjga2MeRDSG8            ALBUM
-#&gt; 20            1 track spotify:track:54SMw8TnDcuieolVRXBmni           SINGLE
-#&gt;                                                                                                                                                                                                        album.artists
-#&gt; 1                     https://api.spotify.com/v1/artists/0PFtn5NtBbbUNbU9EAmIWF, 0PFtn5NtBbbUNbU9EAmIWF, TOTO, artist, spotify:artist:0PFtn5NtBbbUNbU9EAmIWF, https://open.spotify.com/artist/0PFtn5NtBbbUNbU9EAmIWF
-#&gt; 2           https://api.spotify.com/v1/artists/00YTqRClk82aMchQQpYMd5, 00YTqRClk82aMchQQpYMd5, Our Last Night, artist, spotify:artist:00YTqRClk82aMchQQpYMd5, https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5
-#&gt; 3                   https://api.spotify.com/v1/artists/3jOstUTkEu2JkjvRdBA5Gu, 3jOstUTkEu2JkjvRdBA5Gu, Weezer, artist, spotify:artist:3jOstUTkEu2JkjvRdBA5Gu, https://open.spotify.com/artist/3jOstUTkEu2JkjvRdBA5Gu
-#&gt; 4         https://api.spotify.com/v1/artists/00tVTdpEhQQw1bqdu8RCx2, 00tVTdpEhQQw1bqdu8RCx2, Blue Öyster Cult, artist, spotify:artist:00tVTdpEhQQw1bqdu8RCx2, https://open.spotify.com/artist/00tVTdpEhQQw1bqdu8RCx2
-#&gt; 5             https://api.spotify.com/v1/artists/776Uo845nYHJpNaStv1Ds4, 776Uo845nYHJpNaStv1Ds4, Jimi Hendrix, artist, spotify:artist:776Uo845nYHJpNaStv1Ds4, https://open.spotify.com/artist/776Uo845nYHJpNaStv1Ds4
-#&gt; 6                https://api.spotify.com/v1/artists/7oPftvlwr6VrsViSDV7fJY, 7oPftvlwr6VrsViSDV7fJY, Green Day, artist, spotify:artist:7oPftvlwr6VrsViSDV7fJY, https://open.spotify.com/artist/7oPftvlwr6VrsViSDV7fJY
-#&gt; 7              https://api.spotify.com/v1/artists/165ZgPlLkK7bf5bDoFc6Sb, 165ZgPlLkK7bf5bDoFc6Sb, Limp Bizkit, artist, spotify:artist:165ZgPlLkK7bf5bDoFc6Sb, https://open.spotify.com/artist/165ZgPlLkK7bf5bDoFc6Sb
-#&gt; 8              https://api.spotify.com/v1/artists/568ZhdwyaiCyOGJRtNYhWf, 568ZhdwyaiCyOGJRtNYhWf, Deep Purple, artist, spotify:artist:568ZhdwyaiCyOGJRtNYhWf, https://open.spotify.com/artist/568ZhdwyaiCyOGJRtNYhWf
-#&gt; 9                 https://api.spotify.com/v1/artists/6Ghvu1VvMGScGpOUJBAHNH, 6Ghvu1VvMGScGpOUJBAHNH, Deftones, artist, spotify:artist:6Ghvu1VvMGScGpOUJBAHNH, https://open.spotify.com/artist/6Ghvu1VvMGScGpOUJBAHNH
-#&gt; 10                   https://api.spotify.com/v1/artists/3JaAGmSTpJK35DqWrDUzBz, 3JaAGmSTpJK35DqWrDUzBz, Sweet, artist, spotify:artist:3JaAGmSTpJK35DqWrDUzBz, https://open.spotify.com/artist/3JaAGmSTpJK35DqWrDUzBz
-#&gt; 11             https://api.spotify.com/v1/artists/0cc6vw3VN8YlIcvr1v7tBL, 0cc6vw3VN8YlIcvr1v7tBL, Mötley Crüe, artist, spotify:artist:0cc6vw3VN8YlIcvr1v7tBL, https://open.spotify.com/artist/0cc6vw3VN8YlIcvr1v7tBL
-#&gt; 12               https://api.spotify.com/v1/artists/2cnMpRsOVqtPMfq7YiFE6K, 2cnMpRsOVqtPMfq7YiFE6K, Van Halen, artist, spotify:artist:2cnMpRsOVqtPMfq7YiFE6K, https://open.spotify.com/artist/2cnMpRsOVqtPMfq7YiFE6K
-#&gt; 13       https://api.spotify.com/v1/artists/4NiJW4q9ichVqL1aUsgGAN, 4NiJW4q9ichVqL1aUsgGAN, A Day To Remember, artist, spotify:artist:4NiJW4q9ichVqL1aUsgGAN, https://open.spotify.com/artist/4NiJW4q9ichVqL1aUsgGAN
-#&gt; 14 https://api.spotify.com/v1/artists/5t28BP42x2axFnqOOMg3CM, 5t28BP42x2axFnqOOMg3CM, Five Finger Death Punch, artist, spotify:artist:5t28BP42x2axFnqOOMg3CM, https://open.spotify.com/artist/5t28BP42x2axFnqOOMg3CM
-#&gt; 15               https://api.spotify.com/v1/artists/3TOqt5oJwL9BE2NG9MEwDa, 3TOqt5oJwL9BE2NG9MEwDa, Disturbed, artist, spotify:artist:3TOqt5oJwL9BE2NG9MEwDa, https://open.spotify.com/artist/3TOqt5oJwL9BE2NG9MEwDa
-#&gt; 16           https://api.spotify.com/v1/artists/08GQAI4eElDnROBrJRGE0X, 08GQAI4eElDnROBrJRGE0X, Fleetwood Mac, artist, spotify:artist:08GQAI4eElDnROBrJRGE0X, https://open.spotify.com/artist/08GQAI4eElDnROBrJRGE0X
-#&gt; 17           https://api.spotify.com/v1/artists/2otRZcOVNcmdkZ5nEoogy6, 2otRZcOVNcmdkZ5nEoogy6, Dead by April, artist, spotify:artist:2otRZcOVNcmdkZ5nEoogy6, https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6
-#&gt; 18       https://api.spotify.com/v1/artists/4F84IBURUo98rz4r61KF70, 4F84IBURUo98rz4r61KF70, The White Stripes, artist, spotify:artist:4F84IBURUo98rz4r61KF70, https://open.spotify.com/artist/4F84IBURUo98rz4r61KF70
-#&gt; 19     https://api.spotify.com/v1/artists/74eX4C98E4FCrAMl39qRsJ, 74eX4C98E4FCrAMl39qRsJ, Theory of a Deadman, artist, spotify:artist:74eX4C98E4FCrAMl39qRsJ, https://open.spotify.com/artist/74eX4C98E4FCrAMl39qRsJ
-#&gt; 20            https://api.spotify.com/v1/artists/10Z7WzKMeIdNBKexi1YarP, 10Z7WzKMeIdNBKexi1YarP, Fame on Fire, artist, spotify:artist:10Z7WzKMeIdNBKexi1YarP, https://open.spotify.com/artist/10Z7WzKMeIdNBKexi1YarP
+#&gt; 1             1 track spotify:track:6PUabSMXmPnZna361Wwmf7            ALBUM
+#&gt; 2            12 track spotify:track:5uGsG0LfotfWDq6hql4h53            ALBUM
+#&gt; 3             5 track spotify:track:5QLHGv0DfpeXLNFo7SFEy1            ALBUM
+#&gt; 4             3 track spotify:track:60FJeNTK5edr72G2xtCWuP            ALBUM
+#&gt; 5             2 track spotify:track:2optm7JeCh2iEM502qFLUX            ALBUM
+#&gt; 6             3 track spotify:track:6ADSaE87h8Y3lccZlBJdXH            ALBUM
+#&gt; 7             2 track spotify:track:4fjsOdrWMaKf70x21h5XbX            ALBUM
+#&gt; 8             6 track spotify:track:506YO37JuV40cnjeVuwlGD            ALBUM
+#&gt; 9             1 track spotify:track:4cfEA7zQhaQpkhUFonoOPw            ALBUM
+#&gt; 10            1 track spotify:track:5pVbLYTdihSKd8Kylfhwa7            ALBUM
+#&gt; 11            2 track spotify:track:1TRr8Pp2uOqL24fMHpJyV3            ALBUM
+#&gt; 12            3 track spotify:track:1wlKw9NAWVWpx7OIAyg9EA            ALBUM
+#&gt; 13            1 track spotify:track:481idAnpIOHEjR4YPsbA0y           SINGLE
+#&gt; 14            1 track spotify:track:47ojH5LeQhl1ZltSAHBEFF            ALBUM
+#&gt; 15            3 track spotify:track:0M955bMOoilikPXwKLYpoi            ALBUM
+#&gt; 16            6 track spotify:track:3PzsbWSQdLCKDLxn7YZfkM            ALBUM
+#&gt; 17            3 track spotify:track:69VE5kmfqG4dJSkrB1OtCI            ALBUM
+#&gt; 18            6 track spotify:track:4Jl3syKPuB2YFZZhsSeniv            ALBUM
+#&gt; 19            1 track spotify:track:4A065x9kJt955eGVqf813g            ALBUM
+#&gt; 20            6 track spotify:track:62nQ8UZVqR2RMvkJHkcO2o            ALBUM
+#&gt;                                                                                                                                                                                                      album.artists
+#&gt; 1                  https://api.spotify.com/v1/artists/74oJ4qxwOZvX6oSsu1DGnw, 74oJ4qxwOZvX6oSsu1DGnw, Cream, artist, spotify:artist:74oJ4qxwOZvX6oSsu1DGnw, https://open.spotify.com/artist/74oJ4qxwOZvX6oSsu1DGnw
+#&gt; 2               https://api.spotify.com/v1/artists/6gZq1Q6bdOxsUPUG1TaFbF, 6gZq1Q6bdOxsUPUG1TaFbF, Godsmack, artist, spotify:artist:6gZq1Q6bdOxsUPUG1TaFbF, https://open.spotify.com/artist/6gZq1Q6bdOxsUPUG1TaFbF
+#&gt; 3  https://api.spotify.com/v1/artists/40Yq4vzPs9VNUrIBG5Jr2i, 40Yq4vzPs9VNUrIBG5Jr2i, The Smashing Pumpkins, artist, spotify:artist:40Yq4vzPs9VNUrIBG5Jr2i, https://open.spotify.com/artist/40Yq4vzPs9VNUrIBG5Jr2i
+#&gt; 4       https://api.spotify.com/v1/artists/25Maank76ry2Tmbi2Ql1SF, 25Maank76ry2Tmbi2Ql1SF, The Interrupters, artist, spotify:artist:25Maank76ry2Tmbi2Ql1SF, https://open.spotify.com/artist/25Maank76ry2Tmbi2Ql1SF
+#&gt; 5      https://api.spotify.com/v1/artists/0u3d5PM2FuEuG5QuUdt8mT, 0u3d5PM2FuEuG5QuUdt8mT, Hands Like Houses, artist, spotify:artist:0u3d5PM2FuEuG5QuUdt8mT, https://open.spotify.com/artist/0u3d5PM2FuEuG5QuUdt8mT
+#&gt; 6                     https://api.spotify.com/v1/artists/51Blml2LZPmy7TTiAg47vQ, 51Blml2LZPmy7TTiAg47vQ, U2, artist, spotify:artist:51Blml2LZPmy7TTiAg47vQ, https://open.spotify.com/artist/51Blml2LZPmy7TTiAg47vQ
+#&gt; 7    https://api.spotify.com/v1/artists/2UazAtjfzqBF0Nho2awK4z, 2UazAtjfzqBF0Nho2awK4z, Stone Temple Pilots, artist, spotify:artist:2UazAtjfzqBF0Nho2awK4z, https://open.spotify.com/artist/2UazAtjfzqBF0Nho2awK4z
+#&gt; 8         https://api.spotify.com/v1/artists/00YTqRClk82aMchQQpYMd5, 00YTqRClk82aMchQQpYMd5, Our Last Night, artist, spotify:artist:00YTqRClk82aMchQQpYMd5, https://open.spotify.com/artist/00YTqRClk82aMchQQpYMd5
+#&gt; 9          https://api.spotify.com/v1/artists/2otRZcOVNcmdkZ5nEoogy6, 2otRZcOVNcmdkZ5nEoogy6, Dead by April, artist, spotify:artist:2otRZcOVNcmdkZ5nEoogy6, https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6
+#&gt; 10              https://api.spotify.com/v1/artists/22RISwgVJyZu9lpqAcv1F5, 22RISwgVJyZu9lpqAcv1F5, Blossoms, artist, spotify:artist:22RISwgVJyZu9lpqAcv1F5, https://open.spotify.com/artist/22RISwgVJyZu9lpqAcv1F5
+#&gt; 11             https://api.spotify.com/v1/artists/70BYFdaZbEKbeauJ670ysI, 70BYFdaZbEKbeauJ670ysI, Shinedown, artist, spotify:artist:70BYFdaZbEKbeauJ670ysI, https://open.spotify.com/artist/70BYFdaZbEKbeauJ670ysI
+#&gt; 12           https://api.spotify.com/v1/artists/5xUf6j4upBrXZPg6AI4MRK, 5xUf6j4upBrXZPg6AI4MRK, Soundgarden, artist, spotify:artist:5xUf6j4upBrXZPg6AI4MRK, https://open.spotify.com/artist/5xUf6j4upBrXZPg6AI4MRK
+#&gt; 13              https://api.spotify.com/v1/artists/2kO6mP0olFJGGh6kvUdNC8, 2kO6mP0olFJGGh6kvUdNC8, Des Rocs, artist, spotify:artist:2kO6mP0olFJGGh6kvUdNC8, https://open.spotify.com/artist/2kO6mP0olFJGGh6kvUdNC8
+#&gt; 14             https://api.spotify.com/v1/artists/4o0pNHbyj36LPvukNqEug0, 4o0pNHbyj36LPvukNqEug0, The Maine, artist, spotify:artist:4o0pNHbyj36LPvukNqEug0, https://open.spotify.com/artist/4o0pNHbyj36LPvukNqEug0
+#&gt; 15      https://api.spotify.com/v1/artists/2xiIXseIJcq3nG7C8fHeBj, 2xiIXseIJcq3nG7C8fHeBj, Three Days Grace, artist, spotify:artist:2xiIXseIJcq3nG7C8fHeBj, https://open.spotify.com/artist/2xiIXseIJcq3nG7C8fHeBj
+#&gt; 16     https://api.spotify.com/v1/artists/3eqjTLE0HfPfh78zjh6TqT, 3eqjTLE0HfPfh78zjh6TqT, Bruce Springsteen, artist, spotify:artist:3eqjTLE0HfPfh78zjh6TqT, https://open.spotify.com/artist/3eqjTLE0HfPfh78zjh6TqT
+#&gt; 17                 https://api.spotify.com/v1/artists/1dfeR4HaWDbWqFHLkxsg1d, 1dfeR4HaWDbWqFHLkxsg1d, Queen, artist, spotify:artist:1dfeR4HaWDbWqFHLkxsg1d, https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d
+#&gt; 18                  https://api.spotify.com/v1/artists/0ofhRkasSdhp6LUs7tFcF7, 0ofhRkasSdhp6LUs7tFcF7, WSTR, artist, spotify:artist:0ofhRkasSdhp6LUs7tFcF7, https://open.spotify.com/artist/0ofhRkasSdhp6LUs7tFcF7
+#&gt; 19       https://api.spotify.com/v1/artists/64tNsm6TnZe2zpcMVMOoHL, 64tNsm6TnZe2zpcMVMOoHL, Alice In Chains, artist, spotify:artist:64tNsm6TnZe2zpcMVMOoHL, https://open.spotify.com/artist/64tNsm6TnZe2zpcMVMOoHL
+#&gt; 20             https://api.spotify.com/v1/artists/1w5Kfo2jwwIPruYS2UWh56, 1w5Kfo2jwwIPruYS2UWh56, Pearl Jam, artist, spotify:artist:1w5Kfo2jwwIPruYS2UWh56, https://open.spotify.com/artist/1w5Kfo2jwwIPruYS2UWh56
 #&gt;                                                  album.href
-#&gt; 1  https://api.spotify.com/v1/albums/1mnu4hYvdwQgZXcNvtJ3D3
-#&gt; 2  https://api.spotify.com/v1/albums/482Zolwz9ekvPD4kfj8BGo
-#&gt; 3  https://api.spotify.com/v1/albums/3EwfQtjvyRAXsPWAKO5FDP
-#&gt; 4  https://api.spotify.com/v1/albums/7v4kEpVtppoMm80m43lGzt
-#&gt; 5  https://api.spotify.com/v1/albums/5z090LQztiqh13wYspQvKQ
-#&gt; 6  https://api.spotify.com/v1/albums/5a3LqvNt2nv1B4aRKXmgOV
-#&gt; 7  https://api.spotify.com/v1/albums/5mi7FKaWE5CtcOjdyxScA7
-#&gt; 8  https://api.spotify.com/v1/albums/32NQ56VZDTXSH3SMv4XSGN
-#&gt; 9  https://api.spotify.com/v1/albums/7o4UsmV37Sg5It2Eb7vHzu
-#&gt; 10 https://api.spotify.com/v1/albums/710mrF7sQJjTraiDVjVE49
-#&gt; 11 https://api.spotify.com/v1/albums/0Tnve4bDxyiBCRaj03qO8z
-#&gt; 12 https://api.spotify.com/v1/albums/5Ew5vOg3PYyT9QUPCrdIZq
-#&gt; 13 https://api.spotify.com/v1/albums/6I2SUr0MolRUiDEcZAbSWm
-#&gt; 14 https://api.spotify.com/v1/albums/2IA9d7atwNgtiS6Tpv9WKt
-#&gt; 15 https://api.spotify.com/v1/albums/1ROVEUk4lc2vD4a0IN1TWS
-#&gt; 16 https://api.spotify.com/v1/albums/0BwWUstDMUbgq2NYONRqlu
-#&gt; 17 https://api.spotify.com/v1/albums/3rgz4IjijsFvJwqicCqle3
-#&gt; 18 https://api.spotify.com/v1/albums/6D9urpsOWWKtYvF6PaorGE
-#&gt; 19 https://api.spotify.com/v1/albums/2JUpjRRxWKUZwVwY9sTXS1
-#&gt; 20 https://api.spotify.com/v1/albums/4eYjV7ET5e8iOtyxg5CLNq
+#&gt; 1  https://api.spotify.com/v1/albums/0zrtTZC7yY2TOEhnbJzSb9
+#&gt; 2  https://api.spotify.com/v1/albums/1w7vC8hjYXhK1fS5cM2fUM
+#&gt; 3  https://api.spotify.com/v1/albums/55RhFRyQFihIyGf61MgcfV
+#&gt; 4  https://api.spotify.com/v1/albums/6AoWkAFBSNlX63z1fJVNIL
+#&gt; 5  https://api.spotify.com/v1/albums/2qtLF5Z8OxMV919Knbi3oo
+#&gt; 6  https://api.spotify.com/v1/albums/5y6wlw1LnqFnQFruMeiwGU
+#&gt; 7  https://api.spotify.com/v1/albums/57lcTrUlYgfMIPvBUsVU6h
+#&gt; 8  https://api.spotify.com/v1/albums/482Zolwz9ekvPD4kfj8BGo
+#&gt; 9  https://api.spotify.com/v1/albums/3rgz4IjijsFvJwqicCqle3
+#&gt; 10 https://api.spotify.com/v1/albums/0yO5Mwu2oDdGbeRFpAaBGa
+#&gt; 11 https://api.spotify.com/v1/albums/661dSFpYtPulSNDZZLkokq
+#&gt; 12 https://api.spotify.com/v1/albums/29sTacnS0qA9xri6YS8xLA
+#&gt; 13 https://api.spotify.com/v1/albums/0fnAV8la7b1AZjAfY1oyXZ
+#&gt; 14 https://api.spotify.com/v1/albums/2jStuYeaRty1cwxjoxfo9K
+#&gt; 15 https://api.spotify.com/v1/albums/13topfW33NjnACjnRiZBX7
+#&gt; 16 https://api.spotify.com/v1/albums/0PMasrHdpaoIRuHuhHp72O
+#&gt; 17 https://api.spotify.com/v1/albums/6i6folBtxKV28WX3msQ4FE
+#&gt; 18 https://api.spotify.com/v1/albums/4gw6oQ9Yk4m6mreJi6oGAV
+#&gt; 19 https://api.spotify.com/v1/albums/58NXIEYqmq5dQHg9nV9duM
+#&gt; 20 https://api.spotify.com/v1/albums/5B4PYA7wNN4WdEXdIJu58a
 #&gt;                  album.id
-#&gt; 1  1mnu4hYvdwQgZXcNvtJ3D3
-#&gt; 2  482Zolwz9ekvPD4kfj8BGo
-#&gt; 3  3EwfQtjvyRAXsPWAKO5FDP
-#&gt; 4  7v4kEpVtppoMm80m43lGzt
-#&gt; 5  5z090LQztiqh13wYspQvKQ
-#&gt; 6  5a3LqvNt2nv1B4aRKXmgOV
-#&gt; 7  5mi7FKaWE5CtcOjdyxScA7
-#&gt; 8  32NQ56VZDTXSH3SMv4XSGN
-#&gt; 9  7o4UsmV37Sg5It2Eb7vHzu
-#&gt; 10 710mrF7sQJjTraiDVjVE49
-#&gt; 11 0Tnve4bDxyiBCRaj03qO8z
-#&gt; 12 5Ew5vOg3PYyT9QUPCrdIZq
-#&gt; 13 6I2SUr0MolRUiDEcZAbSWm
-#&gt; 14 2IA9d7atwNgtiS6Tpv9WKt
-#&gt; 15 1ROVEUk4lc2vD4a0IN1TWS
-#&gt; 16 0BwWUstDMUbgq2NYONRqlu
-#&gt; 17 3rgz4IjijsFvJwqicCqle3
-#&gt; 18 6D9urpsOWWKtYvF6PaorGE
-#&gt; 19 2JUpjRRxWKUZwVwY9sTXS1
-#&gt; 20 4eYjV7ET5e8iOtyxg5CLNq
+#&gt; 1  0zrtTZC7yY2TOEhnbJzSb9
+#&gt; 2  1w7vC8hjYXhK1fS5cM2fUM
+#&gt; 3  55RhFRyQFihIyGf61MgcfV
+#&gt; 4  6AoWkAFBSNlX63z1fJVNIL
+#&gt; 5  2qtLF5Z8OxMV919Knbi3oo
+#&gt; 6  5y6wlw1LnqFnQFruMeiwGU
+#&gt; 7  57lcTrUlYgfMIPvBUsVU6h
+#&gt; 8  482Zolwz9ekvPD4kfj8BGo
+#&gt; 9  3rgz4IjijsFvJwqicCqle3
+#&gt; 10 0yO5Mwu2oDdGbeRFpAaBGa
+#&gt; 11 661dSFpYtPulSNDZZLkokq
+#&gt; 12 29sTacnS0qA9xri6YS8xLA
+#&gt; 13 0fnAV8la7b1AZjAfY1oyXZ
+#&gt; 14 2jStuYeaRty1cwxjoxfo9K
+#&gt; 15 13topfW33NjnACjnRiZBX7
+#&gt; 16 0PMasrHdpaoIRuHuhHp72O
+#&gt; 17 6i6folBtxKV28WX3msQ4FE
+#&gt; 18 4gw6oQ9Yk4m6mreJi6oGAV
+#&gt; 19 58NXIEYqmq5dQHg9nV9duM
+#&gt; 20 5B4PYA7wNN4WdEXdIJu58a
 #&gt;                                                                                                                                                                                                                        album.images
-#&gt; 1  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273f903e62767a0e22e33b7af83, https://i.scdn.co/image/ab67616d00001e02f903e62767a0e22e33b7af83, https://i.scdn.co/image/ab67616d00004851f903e62767a0e22e33b7af83, 640, 300, 64
-#&gt; 2  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273c3becb63afa2b5f9a1c7623d, https://i.scdn.co/image/ab67616d00001e02c3becb63afa2b5f9a1c7623d, https://i.scdn.co/image/ab67616d00004851c3becb63afa2b5f9a1c7623d, 640, 300, 64
-#&gt; 3  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273f04ed0e9d5af8b1b5f011b2f, https://i.scdn.co/image/ab67616d00001e02f04ed0e9d5af8b1b5f011b2f, https://i.scdn.co/image/ab67616d00004851f04ed0e9d5af8b1b5f011b2f, 640, 300, 64
-#&gt; 4  640, 300, 64, https://i.scdn.co/image/ab67616d0000b2736895da04b237964b95c2a166, https://i.scdn.co/image/ab67616d00001e026895da04b237964b95c2a166, https://i.scdn.co/image/ab67616d000048516895da04b237964b95c2a166, 640, 300, 64
-#&gt; 5  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273522088789d49e216d9818292, https://i.scdn.co/image/ab67616d00001e02522088789d49e216d9818292, https://i.scdn.co/image/ab67616d00004851522088789d49e216d9818292, 640, 300, 64
-#&gt; 6  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273af71e889d130283bcd08b8a7, https://i.scdn.co/image/ab67616d00001e02af71e889d130283bcd08b8a7, https://i.scdn.co/image/ab67616d00004851af71e889d130283bcd08b8a7, 640, 300, 64
-#&gt; 7  640, 300, 64, https://i.scdn.co/image/ab67616d0000b2734a31b146c7cf07705d912efe, https://i.scdn.co/image/ab67616d00001e024a31b146c7cf07705d912efe, https://i.scdn.co/image/ab67616d000048514a31b146c7cf07705d912efe, 640, 300, 64
-#&gt; 8  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273a729c9c3dec04b99d889c66f, https://i.scdn.co/image/ab67616d00001e02a729c9c3dec04b99d889c66f, https://i.scdn.co/image/ab67616d00004851a729c9c3dec04b99d889c66f, 640, 300, 64
-#&gt; 9  640, 300, 64, https://i.scdn.co/image/ab67616d0000b2730b1129853982ea17845d4eb6, https://i.scdn.co/image/ab67616d00001e020b1129853982ea17845d4eb6, https://i.scdn.co/image/ab67616d000048510b1129853982ea17845d4eb6, 640, 300, 64
-#&gt; 10 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273a087b55c20710d687320737a, https://i.scdn.co/image/ab67616d00001e02a087b55c20710d687320737a, https://i.scdn.co/image/ab67616d00004851a087b55c20710d687320737a, 640, 300, 64
-#&gt; 11 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273a226e31b10f88c83e00e828a, https://i.scdn.co/image/ab67616d00001e02a226e31b10f88c83e00e828a, https://i.scdn.co/image/ab67616d00004851a226e31b10f88c83e00e828a, 640, 300, 64
-#&gt; 12 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273def8994935a955331c21bc12, https://i.scdn.co/image/ab67616d00001e02def8994935a955331c21bc12, https://i.scdn.co/image/ab67616d00004851def8994935a955331c21bc12, 640, 300, 64
-#&gt; 13 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2739233270031da763169e5f96c, https://i.scdn.co/image/ab67616d00001e029233270031da763169e5f96c, https://i.scdn.co/image/ab67616d000048519233270031da763169e5f96c, 640, 300, 64
-#&gt; 14 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273fb94cdee49bcfbbefa8400ee, https://i.scdn.co/image/ab67616d00001e02fb94cdee49bcfbbefa8400ee, https://i.scdn.co/image/ab67616d00004851fb94cdee49bcfbbefa8400ee, 640, 300, 64
-#&gt; 15 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273a58c62e75b82e9c3b47d9ef3, https://i.scdn.co/image/ab67616d00001e02a58c62e75b82e9c3b47d9ef3, https://i.scdn.co/image/ab67616d00004851a58c62e75b82e9c3b47d9ef3, 640, 300, 64
-#&gt; 16 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273e52a59a28efa4773dd2bfe1b, https://i.scdn.co/image/ab67616d00001e02e52a59a28efa4773dd2bfe1b, https://i.scdn.co/image/ab67616d00004851e52a59a28efa4773dd2bfe1b, 640, 300, 64
-#&gt; 17 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273387e3fe93a12844cf969399e, https://i.scdn.co/image/ab67616d00001e02387e3fe93a12844cf969399e, https://i.scdn.co/image/ab67616d00004851387e3fe93a12844cf969399e, 640, 300, 64
-#&gt; 18 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273a69f71a8794e2d867a52f98f, https://i.scdn.co/image/ab67616d00001e02a69f71a8794e2d867a52f98f, https://i.scdn.co/image/ab67616d00004851a69f71a8794e2d867a52f98f, 640, 300, 64
-#&gt; 19 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2731994d4fee1588a93a1c31745, https://i.scdn.co/image/ab67616d00001e021994d4fee1588a93a1c31745, https://i.scdn.co/image/ab67616d000048511994d4fee1588a93a1c31745, 640, 300, 64
-#&gt; 20 640, 300, 64, https://i.scdn.co/image/ab67616d0000b27336af4da408a79320bb873b49, https://i.scdn.co/image/ab67616d00001e0236af4da408a79320bb873b49, https://i.scdn.co/image/ab67616d0000485136af4da408a79320bb873b49, 640, 300, 64
-#&gt;                                           album.name album.release_date
-#&gt; 1                                               Toto         1978-10-10
-#&gt; 2                                  Selective Hearing         2017-06-09
-#&gt; 3                                   Pacific Daydream         2017-10-27
-#&gt; 4                             Fire of Unknown Origin         1981-10-23
-#&gt; 5                                  Electric Ladyland         1968-10-25
-#&gt; 6                                   Revolution Radio         2016-10-07
-#&gt; 7  Chocolate Starfish And The Hot Dog Flavored Water         2000-10-17
-#&gt; 8                          Machine Head (Remastered)         1972-03-25
-#&gt; 9                                     Around the Fur         1997-10-27
-#&gt; 10                                        Sweet Best               1976
-#&gt; 11                               Girls, Girls, Girls               1987
-#&gt; 12                                              5150         1986-03-24
-#&gt; 13                        What Separates Me From You         2010-11-16
-#&gt; 14                     And Justice for None (Deluxe)         2018-05-18
-#&gt; 15                     Immortalized (Deluxe Edition)         2015-08-15
-#&gt; 16                            Rumours (Super Deluxe)         1977-02-04
-#&gt; 17                                    Worlds Collide         2017-04-07
-#&gt; 18                                          Elephant         2003-04-01
-#&gt; 19                 The Truth Is... (Special Edition)         2011-07-08
-#&gt; 20                                      Shape of You         2017-01-29
+#&gt; 1  640, 300, 64, https://i.scdn.co/image/ab67616d0000b2735c7731f5acdcb2d02d78b7ee, https://i.scdn.co/image/ab67616d00001e025c7731f5acdcb2d02d78b7ee, https://i.scdn.co/image/ab67616d000048515c7731f5acdcb2d02d78b7ee, 640, 300, 64
+#&gt; 2  640, 300, 64, https://i.scdn.co/image/ab67616d0000b27382a891641608e2f2d6c3a8b8, https://i.scdn.co/image/ab67616d00001e0282a891641608e2f2d6c3a8b8, https://i.scdn.co/image/ab67616d0000485182a891641608e2f2d6c3a8b8, 640, 300, 64
+#&gt; 3  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273431ac6e6f393acf475730ec6, https://i.scdn.co/image/ab67616d00001e02431ac6e6f393acf475730ec6, https://i.scdn.co/image/ab67616d00004851431ac6e6f393acf475730ec6, 640, 300, 64
+#&gt; 4  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273c9c292d93a9d27c4762cb559, https://i.scdn.co/image/ab67616d00001e02c9c292d93a9d27c4762cb559, https://i.scdn.co/image/ab67616d00004851c9c292d93a9d27c4762cb559, 640, 300, 64
+#&gt; 5  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273f9bb3fff4e660ec5ba66af40, https://i.scdn.co/image/ab67616d00001e02f9bb3fff4e660ec5ba66af40, https://i.scdn.co/image/ab67616d00004851f9bb3fff4e660ec5ba66af40, 640, 300, 64
+#&gt; 6  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273b7bea3d01f04e6d0408d2afe, https://i.scdn.co/image/ab67616d00001e02b7bea3d01f04e6d0408d2afe, https://i.scdn.co/image/ab67616d00004851b7bea3d01f04e6d0408d2afe, 640, 300, 64
+#&gt; 7  640, 300, 64, https://i.scdn.co/image/ab67616d0000b2736db0b75182c54680392aaa20, https://i.scdn.co/image/ab67616d00001e026db0b75182c54680392aaa20, https://i.scdn.co/image/ab67616d000048516db0b75182c54680392aaa20, 640, 300, 64
+#&gt; 8  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273c3becb63afa2b5f9a1c7623d, https://i.scdn.co/image/ab67616d00001e02c3becb63afa2b5f9a1c7623d, https://i.scdn.co/image/ab67616d00004851c3becb63afa2b5f9a1c7623d, 640, 300, 64
+#&gt; 9  640, 300, 64, https://i.scdn.co/image/ab67616d0000b273387e3fe93a12844cf969399e, https://i.scdn.co/image/ab67616d00001e02387e3fe93a12844cf969399e, https://i.scdn.co/image/ab67616d00004851387e3fe93a12844cf969399e, 640, 300, 64
+#&gt; 10 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2732889f5b28a2acdf603bfcd8a, https://i.scdn.co/image/ab67616d00001e022889f5b28a2acdf603bfcd8a, https://i.scdn.co/image/ab67616d000048512889f5b28a2acdf603bfcd8a, 640, 300, 64
+#&gt; 11 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273a24befd5cbb5a31f0ac9eacb, https://i.scdn.co/image/ab67616d00001e02a24befd5cbb5a31f0ac9eacb, https://i.scdn.co/image/ab67616d00004851a24befd5cbb5a31f0ac9eacb, 640, 300, 64
+#&gt; 12 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273ae6d8e36136353d550b2587d, https://i.scdn.co/image/ab67616d00001e02ae6d8e36136353d550b2587d, https://i.scdn.co/image/ab67616d00004851ae6d8e36136353d550b2587d, 640, 300, 64
+#&gt; 13 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2732eb4ba21c445087266c23823, https://i.scdn.co/image/ab67616d00001e022eb4ba21c445087266c23823, https://i.scdn.co/image/ab67616d000048512eb4ba21c445087266c23823, 640, 300, 64
+#&gt; 14 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273dc0cb47f6cee440cf6221a76, https://i.scdn.co/image/ab67616d00001e02dc0cb47f6cee440cf6221a76, https://i.scdn.co/image/ab67616d00004851dc0cb47f6cee440cf6221a76, 640, 300, 64
+#&gt; 15 640, 300, 64, https://i.scdn.co/image/ab67616d0000b27377922eaa071fb388270f203f, https://i.scdn.co/image/ab67616d00001e0277922eaa071fb388270f203f, https://i.scdn.co/image/ab67616d0000485177922eaa071fb388270f203f, 640, 300, 64
+#&gt; 16 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273a7865e686c36a4adda6c9978, https://i.scdn.co/image/ab67616d00001e02a7865e686c36a4adda6c9978, https://i.scdn.co/image/ab67616d00004851a7865e686c36a4adda6c9978, 640, 300, 64
+#&gt; 17 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b, https://i.scdn.co/image/ab67616d00001e02e8b066f70c206551210d902b, https://i.scdn.co/image/ab67616d00004851e8b066f70c206551210d902b, 640, 300, 64
+#&gt; 18 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2736965cb863cb6fa5f93459805, https://i.scdn.co/image/ab67616d00001e026965cb863cb6fa5f93459805, https://i.scdn.co/image/ab67616d000048516965cb863cb6fa5f93459805, 640, 300, 64
+#&gt; 19 640, 300, 64, https://i.scdn.co/image/ab67616d0000b27331ea2c36c5da3979177127b1, https://i.scdn.co/image/ab67616d00001e0231ea2c36c5da3979177127b1, https://i.scdn.co/image/ab67616d0000485131ea2c36c5da3979177127b1, 640, 300, 64
+#&gt; 20 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273d400d27cba05bb0545533864, https://i.scdn.co/image/ab67616d00001e02d400d27cba05bb0545533864, https://i.scdn.co/image/ab67616d00004851d400d27cba05bb0545533864, 640, 300, 64
+#&gt;                                                 album.name album.release_date
+#&gt; 1                                           Wheels Of Fire         1968-07-01
+#&gt; 2                                                 Godsmack         1998-01-01
+#&gt; 3  Mellon Collie And The Infinite Sadness (Deluxe Edition)               1995
+#&gt; 4                                     Fight the Good Fight         2018-06-29
+#&gt; 5                                                    Anon.         2018-10-12
+#&gt; 6                           The Joshua Tree (Super Deluxe)         1987-03-03
+#&gt; 7                                   Purple (2019 Remaster)         1994-06-07
+#&gt; 8                                        Selective Hearing         2017-06-09
+#&gt; 9                                           Worlds Collide         2017-04-07
+#&gt; 10                                  Cool Like You (Deluxe)         2018-04-27
+#&gt; 11                                    The Sound of Madness         2008-06-23
+#&gt; 12                           Superunknown (Deluxe Edition)         1994-03-09
+#&gt; 13                                     Let the Vultures In         2018-11-02
+#&gt; 14                                    Lovely Little Lonely         2017-04-07
+#&gt; 15                                        Three Days Grace         2003-04-19
+#&gt; 16                                      Born In The U.S.A.         1984-06-04
+#&gt; 17             Bohemian Rhapsody (The Original Soundtrack)         2018-10-19
+#&gt; 18                                 Red, Green Or Inbetween         2017-01-20
+#&gt; 19                                                    Dirt         1992-09-29
+#&gt; 20                                                     Ten         1991-08-27
 #&gt;    album.release_date_precision album.total_tracks album.type
-#&gt; 1                           day                 10      album
-#&gt; 2                           day                  7      album
-#&gt; 3                           day                 10      album
-#&gt; 4                           day                  9      album
-#&gt; 5                           day                 16      album
-#&gt; 6                           day                 12      album
-#&gt; 7                           day                 15      album
-#&gt; 8                           day                  8      album
-#&gt; 9                           day                 10      album
-#&gt; 10                         year                 22      album
-#&gt; 11                         year                 15      album
-#&gt; 12                          day                  9      album
-#&gt; 13                          day                 10      album
-#&gt; 14                          day                 16      album
-#&gt; 15                          day                 16      album
-#&gt; 16                          day                 58      album
-#&gt; 17                          day                 11      album
-#&gt; 18                          day                 14      album
-#&gt; 19                          day                 18      album
-#&gt; 20                          day                  1      album
+#&gt; 1                           day                 13      album
+#&gt; 2                           day                 12      album
+#&gt; 3                          year                 92      album
+#&gt; 4                           day                 12      album
+#&gt; 5                           day                 10      album
+#&gt; 6                           day                 49      album
+#&gt; 7                           day                 11      album
+#&gt; 8                           day                  7      album
+#&gt; 9                           day                 11      album
+#&gt; 10                          day                 22      album
+#&gt; 11                          day                 11      album
+#&gt; 12                          day                 32      album
+#&gt; 13                          day                  5      album
+#&gt; 14                          day                 12      album
+#&gt; 15                          day                 12      album
+#&gt; 16                          day                 12      album
+#&gt; 17                          day                 22      album
+#&gt; 18                          day                 11      album
+#&gt; 19                          day                 13      album
+#&gt; 20                          day                 11      album
 #&gt;                               album.uri
-#&gt; 1  spotify:album:1mnu4hYvdwQgZXcNvtJ3D3
-#&gt; 2  spotify:album:482Zolwz9ekvPD4kfj8BGo
-#&gt; 3  spotify:album:3EwfQtjvyRAXsPWAKO5FDP
-#&gt; 4  spotify:album:7v4kEpVtppoMm80m43lGzt
-#&gt; 5  spotify:album:5z090LQztiqh13wYspQvKQ
-#&gt; 6  spotify:album:5a3LqvNt2nv1B4aRKXmgOV
-#&gt; 7  spotify:album:5mi7FKaWE5CtcOjdyxScA7
-#&gt; 8  spotify:album:32NQ56VZDTXSH3SMv4XSGN
-#&gt; 9  spotify:album:7o4UsmV37Sg5It2Eb7vHzu
-#&gt; 10 spotify:album:710mrF7sQJjTraiDVjVE49
-#&gt; 11 spotify:album:0Tnve4bDxyiBCRaj03qO8z
-#&gt; 12 spotify:album:5Ew5vOg3PYyT9QUPCrdIZq
-#&gt; 13 spotify:album:6I2SUr0MolRUiDEcZAbSWm
-#&gt; 14 spotify:album:2IA9d7atwNgtiS6Tpv9WKt
-#&gt; 15 spotify:album:1ROVEUk4lc2vD4a0IN1TWS
-#&gt; 16 spotify:album:0BwWUstDMUbgq2NYONRqlu
-#&gt; 17 spotify:album:3rgz4IjijsFvJwqicCqle3
-#&gt; 18 spotify:album:6D9urpsOWWKtYvF6PaorGE
-#&gt; 19 spotify:album:2JUpjRRxWKUZwVwY9sTXS1
-#&gt; 20 spotify:album:4eYjV7ET5e8iOtyxg5CLNq
+#&gt; 1  spotify:album:0zrtTZC7yY2TOEhnbJzSb9
+#&gt; 2  spotify:album:1w7vC8hjYXhK1fS5cM2fUM
+#&gt; 3  spotify:album:55RhFRyQFihIyGf61MgcfV
+#&gt; 4  spotify:album:6AoWkAFBSNlX63z1fJVNIL
+#&gt; 5  spotify:album:2qtLF5Z8OxMV919Knbi3oo
+#&gt; 6  spotify:album:5y6wlw1LnqFnQFruMeiwGU
+#&gt; 7  spotify:album:57lcTrUlYgfMIPvBUsVU6h
+#&gt; 8  spotify:album:482Zolwz9ekvPD4kfj8BGo
+#&gt; 9  spotify:album:3rgz4IjijsFvJwqicCqle3
+#&gt; 10 spotify:album:0yO5Mwu2oDdGbeRFpAaBGa
+#&gt; 11 spotify:album:661dSFpYtPulSNDZZLkokq
+#&gt; 12 spotify:album:29sTacnS0qA9xri6YS8xLA
+#&gt; 13 spotify:album:0fnAV8la7b1AZjAfY1oyXZ
+#&gt; 14 spotify:album:2jStuYeaRty1cwxjoxfo9K
+#&gt; 15 spotify:album:13topfW33NjnACjnRiZBX7
+#&gt; 16 spotify:album:0PMasrHdpaoIRuHuhHp72O
+#&gt; 17 spotify:album:6i6folBtxKV28WX3msQ4FE
+#&gt; 18 spotify:album:4gw6oQ9Yk4m6mreJi6oGAV
+#&gt; 19 spotify:album:58NXIEYqmq5dQHg9nV9duM
+#&gt; 20 spotify:album:5B4PYA7wNN4WdEXdIJu58a
 #&gt;                              album.external_urls.spotify external_ids.isrc
-#&gt; 1  https://open.spotify.com/album/1mnu4hYvdwQgZXcNvtJ3D3      USSM17800444
-#&gt; 2  https://open.spotify.com/album/482Zolwz9ekvPD4kfj8BGo      GBDMT1600259
-#&gt; 3  https://open.spotify.com/album/3EwfQtjvyRAXsPWAKO5FDP      USAT21700603
-#&gt; 4  https://open.spotify.com/album/7v4kEpVtppoMm80m43lGzt      USSM10017652
-#&gt; 5  https://open.spotify.com/album/5z090LQztiqh13wYspQvKQ      USQX90900737
-#&gt; 6  https://open.spotify.com/album/5a3LqvNt2nv1B4aRKXmgOV      USRE11600432
-#&gt; 7  https://open.spotify.com/album/5mi7FKaWE5CtcOjdyxScA7      USIR10001177
-#&gt; 8  https://open.spotify.com/album/32NQ56VZDTXSH3SMv4XSGN      GBDXG1200002
-#&gt; 9  https://open.spotify.com/album/7o4UsmV37Sg5It2Eb7vHzu      USMV29700142
-#&gt; 10 https://open.spotify.com/album/710mrF7sQJjTraiDVjVE49      GBARL7300027
-#&gt; 11 https://open.spotify.com/album/0Tnve4bDxyiBCRaj03qO8z      USBY29900189
-#&gt; 12 https://open.spotify.com/album/5Ew5vOg3PYyT9QUPCrdIZq      USWB10902261
-#&gt; 13 https://open.spotify.com/album/6I2SUr0MolRUiDEcZAbSWm      USVIC1060302
-#&gt; 14 https://open.spotify.com/album/2IA9d7atwNgtiS6Tpv9WKt      US5Z51800005
-#&gt; 15 https://open.spotify.com/album/1ROVEUk4lc2vD4a0IN1TWS      USRE11500172
-#&gt; 16 https://open.spotify.com/album/0BwWUstDMUbgq2NYONRqlu      USWB11301111
-#&gt; 17 https://open.spotify.com/album/3rgz4IjijsFvJwqicCqle3      SEUM71601951
-#&gt; 18 https://open.spotify.com/album/6D9urpsOWWKtYvF6PaorGE      USVT10300001
-#&gt; 19 https://open.spotify.com/album/2JUpjRRxWKUZwVwY9sTXS1      NLA321191095
-#&gt; 20 https://open.spotify.com/album/4eYjV7ET5e8iOtyxg5CLNq      TCACX1729283
+#&gt; 1  https://open.spotify.com/album/0zrtTZC7yY2TOEhnbJzSb9      GBA076800010
+#&gt; 2  https://open.spotify.com/album/1w7vC8hjYXhK1fS5cM2fUM      USUR19980188
+#&gt; 3  https://open.spotify.com/album/55RhFRyQFihIyGf61MgcfV      USVI21200910
+#&gt; 4  https://open.spotify.com/album/6AoWkAFBSNlX63z1fJVNIL      USHEL1801003
+#&gt; 5  https://open.spotify.com/album/2qtLF5Z8OxMV919Knbi3oo      USHR21811202
+#&gt; 6  https://open.spotify.com/album/5y6wlw1LnqFnQFruMeiwGU      GBUM70709792
+#&gt; 7  https://open.spotify.com/album/57lcTrUlYgfMIPvBUsVU6h      USRH11901675
+#&gt; 8  https://open.spotify.com/album/482Zolwz9ekvPD4kfj8BGo      GBDMT1600259
+#&gt; 9  https://open.spotify.com/album/3rgz4IjijsFvJwqicCqle3      SEUM71601951
+#&gt; 10 https://open.spotify.com/album/0yO5Mwu2oDdGbeRFpAaBGa      GBUM71706179
+#&gt; 11 https://open.spotify.com/album/661dSFpYtPulSNDZZLkokq      USAT20802280
+#&gt; 12 https://open.spotify.com/album/29sTacnS0qA9xri6YS8xLA      USAM19400003
+#&gt; 13 https://open.spotify.com/album/0fnAV8la7b1AZjAfY1oyXZ      GBKPL1812549
+#&gt; 14 https://open.spotify.com/album/2jStuYeaRty1cwxjoxfo9K      QMEU31700194
+#&gt; 15 https://open.spotify.com/album/13topfW33NjnACjnRiZBX7      USJI10300075
+#&gt; 16 https://open.spotify.com/album/0PMasrHdpaoIRuHuhHp72O      USSM18400411
+#&gt; 17 https://open.spotify.com/album/6i6folBtxKV28WX3msQ4FE      GBUM71805971
+#&gt; 18 https://open.spotify.com/album/4gw6oQ9Yk4m6mreJi6oGAV      USZZ81610031
+#&gt; 19 https://open.spotify.com/album/58NXIEYqmq5dQHg9nV9duM      USSM19200799
+#&gt; 20 https://open.spotify.com/album/5B4PYA7wNN4WdEXdIJu58a      USSM19100674
 #&gt;                                    external_urls.spotify
-#&gt; 1  https://open.spotify.com/track/4aVuWgvD0X63hcOCnZtNFA
-#&gt; 2  https://open.spotify.com/track/506YO37JuV40cnjeVuwlGD
-#&gt; 3  https://open.spotify.com/track/2jz1bw1p0WQj0PDnVDP0uY
-#&gt; 4  https://open.spotify.com/track/3fkPMWQ6cBNBLuFcPyMS8s
-#&gt; 5  https://open.spotify.com/track/1ntxpzIUbSsizvuAy6lTYY
-#&gt; 6  https://open.spotify.com/track/19YmvsVCetCBeVj6O2mljR
-#&gt; 7  https://open.spotify.com/track/2gSVKxPDww9Eep5rdvtdem
-#&gt; 8  https://open.spotify.com/track/3uMmllZo1AfoEnVT4ENCD3
-#&gt; 9  https://open.spotify.com/track/1158ckiB5S4cpsdYHDB9IF
-#&gt; 10 https://open.spotify.com/track/61ZVP6ytLwYnbLonbJtzR6
-#&gt; 11 https://open.spotify.com/track/41wWrTueWew7qUU0Ru87Mp
-#&gt; 12 https://open.spotify.com/track/0TaT50ZZxT4ytZxuqkE3A9
-#&gt; 13 https://open.spotify.com/track/4JsDHMv5PVO8N07DbDq33r
-#&gt; 14 https://open.spotify.com/track/0nqIqABZcujg05mkixJV60
-#&gt; 15 https://open.spotify.com/track/3jjU4Pky1ja5J1onU6ei4T
-#&gt; 16 https://open.spotify.com/track/0ofHAoxe9vBkTCp2UQIavz
-#&gt; 17 https://open.spotify.com/track/4cfEA7zQhaQpkhUFonoOPw
-#&gt; 18 https://open.spotify.com/track/3dPQuX8Gs42Y7b454ybpMR
-#&gt; 19 https://open.spotify.com/track/6kp8F9FpHXzjga2MeRDSG8
-#&gt; 20 https://open.spotify.com/track/54SMw8TnDcuieolVRXBmni
+#&gt; 1  https://open.spotify.com/track/6PUabSMXmPnZna361Wwmf7
+#&gt; 2  https://open.spotify.com/track/5uGsG0LfotfWDq6hql4h53
+#&gt; 3  https://open.spotify.com/track/5QLHGv0DfpeXLNFo7SFEy1
+#&gt; 4  https://open.spotify.com/track/60FJeNTK5edr72G2xtCWuP
+#&gt; 5  https://open.spotify.com/track/2optm7JeCh2iEM502qFLUX
+#&gt; 6  https://open.spotify.com/track/6ADSaE87h8Y3lccZlBJdXH
+#&gt; 7  https://open.spotify.com/track/4fjsOdrWMaKf70x21h5XbX
+#&gt; 8  https://open.spotify.com/track/506YO37JuV40cnjeVuwlGD
+#&gt; 9  https://open.spotify.com/track/4cfEA7zQhaQpkhUFonoOPw
+#&gt; 10 https://open.spotify.com/track/5pVbLYTdihSKd8Kylfhwa7
+#&gt; 11 https://open.spotify.com/track/1TRr8Pp2uOqL24fMHpJyV3
+#&gt; 12 https://open.spotify.com/track/1wlKw9NAWVWpx7OIAyg9EA
+#&gt; 13 https://open.spotify.com/track/481idAnpIOHEjR4YPsbA0y
+#&gt; 14 https://open.spotify.com/track/47ojH5LeQhl1ZltSAHBEFF
+#&gt; 15 https://open.spotify.com/track/0M955bMOoilikPXwKLYpoi
+#&gt; 16 https://open.spotify.com/track/3PzsbWSQdLCKDLxn7YZfkM
+#&gt; 17 https://open.spotify.com/track/69VE5kmfqG4dJSkrB1OtCI
+#&gt; 18 https://open.spotify.com/track/4Jl3syKPuB2YFZZhsSeniv
+#&gt; 19 https://open.spotify.com/track/4A065x9kJt955eGVqf813g
+#&gt; 20 https://open.spotify.com/track/62nQ8UZVqR2RMvkJHkcO2o
 #&gt;                                            linked_from.href
 #&gt; 1                                                      &lt;NA&gt;
 #&gt; 2                                                      &lt;NA&gt;
 #&gt; 3                                                      &lt;NA&gt;
 #&gt; 4                                                      &lt;NA&gt;
-#&gt; 5                                                      &lt;NA&gt;
-#&gt; 6                                                      &lt;NA&gt;
-#&gt; 7                                                      &lt;NA&gt;
+#&gt; 5  https://api.spotify.com/v1/tracks/5apUdi1b0lvZw574hq1Fsr
+#&gt; 6  https://api.spotify.com/v1/tracks/4ha9ajL4Kz98uldAfuos6p
+#&gt; 7  https://api.spotify.com/v1/tracks/5vCE0xRLIEG1Zej2tgWFDb
 #&gt; 8                                                      &lt;NA&gt;
 #&gt; 9                                                      &lt;NA&gt;
 #&gt; 10                                                     &lt;NA&gt;
-#&gt; 11 https://api.spotify.com/v1/tracks/57ivEAWqHTUcTYeXc5lRvd
-#&gt; 12                                                     &lt;NA&gt;
-#&gt; 13 https://api.spotify.com/v1/tracks/3imITUqEhkebNbOoS1yrWm
+#&gt; 11                                                     &lt;NA&gt;
+#&gt; 12 https://api.spotify.com/v1/tracks/6B4JGMaqe1LaEMlsVzNdNM
+#&gt; 13 https://api.spotify.com/v1/tracks/2UKMqNCVsHrAYzBZMA0rxL
 #&gt; 14                                                     &lt;NA&gt;
 #&gt; 15                                                     &lt;NA&gt;
 #&gt; 16                                                     &lt;NA&gt;
 #&gt; 17                                                     &lt;NA&gt;
-#&gt; 18 https://api.spotify.com/v1/tracks/1jNOi6m3Hn8nLEeHCp5Msr
+#&gt; 18 https://api.spotify.com/v1/tracks/4NNzO1RQqdYzQXTISmHZDe
 #&gt; 19                                                     &lt;NA&gt;
 #&gt; 20                                                     &lt;NA&gt;
 #&gt;            linked_from.id linked_from.type                      linked_from.uri
@@ -759,20 +760,20 @@ the <a href='https://developer.spotify.com/documentation/general/guides/track-re
 #&gt; 2                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 3                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 4                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
-#&gt; 5                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
-#&gt; 6                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
-#&gt; 7                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
+#&gt; 5  5apUdi1b0lvZw574hq1Fsr            track spotify:track:5apUdi1b0lvZw574hq1Fsr
+#&gt; 6  4ha9ajL4Kz98uldAfuos6p            track spotify:track:4ha9ajL4Kz98uldAfuos6p
+#&gt; 7  5vCE0xRLIEG1Zej2tgWFDb            track spotify:track:5vCE0xRLIEG1Zej2tgWFDb
 #&gt; 8                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 9                    &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 10                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
-#&gt; 11 57ivEAWqHTUcTYeXc5lRvd            track spotify:track:57ivEAWqHTUcTYeXc5lRvd
-#&gt; 12                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
-#&gt; 13 3imITUqEhkebNbOoS1yrWm            track spotify:track:3imITUqEhkebNbOoS1yrWm
+#&gt; 11                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
+#&gt; 12 6B4JGMaqe1LaEMlsVzNdNM            track spotify:track:6B4JGMaqe1LaEMlsVzNdNM
+#&gt; 13 2UKMqNCVsHrAYzBZMA0rxL            track spotify:track:2UKMqNCVsHrAYzBZMA0rxL
 #&gt; 14                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 15                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 16                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 17                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
-#&gt; 18 1jNOi6m3Hn8nLEeHCp5Msr            track spotify:track:1jNOi6m3Hn8nLEeHCp5Msr
+#&gt; 18 4NNzO1RQqdYzQXTISmHZDe            track spotify:track:4NNzO1RQqdYzQXTISmHZDe
 #&gt; 19                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt; 20                   &lt;NA&gt;             &lt;NA&gt;                                 &lt;NA&gt;
 #&gt;                        linked_from.external_urls.spotify
@@ -780,22 +781,23 @@ the <a href='https://developer.spotify.com/documentation/general/guides/track-re
 #&gt; 2                                                   &lt;NA&gt;
 #&gt; 3                                                   &lt;NA&gt;
 #&gt; 4                                                   &lt;NA&gt;
-#&gt; 5                                                   &lt;NA&gt;
-#&gt; 6                                                   &lt;NA&gt;
-#&gt; 7                                                   &lt;NA&gt;
+#&gt; 5  https://open.spotify.com/track/5apUdi1b0lvZw574hq1Fsr
+#&gt; 6  https://open.spotify.com/track/4ha9ajL4Kz98uldAfuos6p
+#&gt; 7  https://open.spotify.com/track/5vCE0xRLIEG1Zej2tgWFDb
 #&gt; 8                                                   &lt;NA&gt;
 #&gt; 9                                                   &lt;NA&gt;
 #&gt; 10                                                  &lt;NA&gt;
-#&gt; 11 https://open.spotify.com/track/57ivEAWqHTUcTYeXc5lRvd
-#&gt; 12                                                  &lt;NA&gt;
-#&gt; 13 https://open.spotify.com/track/3imITUqEhkebNbOoS1yrWm
+#&gt; 11                                                  &lt;NA&gt;
+#&gt; 12 https://open.spotify.com/track/6B4JGMaqe1LaEMlsVzNdNM
+#&gt; 13 https://open.spotify.com/track/2UKMqNCVsHrAYzBZMA0rxL
 #&gt; 14                                                  &lt;NA&gt;
 #&gt; 15                                                  &lt;NA&gt;
 #&gt; 16                                                  &lt;NA&gt;
 #&gt; 17                                                  &lt;NA&gt;
-#&gt; 18 https://open.spotify.com/track/1jNOi6m3Hn8nLEeHCp5Msr
+#&gt; 18 https://open.spotify.com/track/4NNzO1RQqdYzQXTISmHZDe
 #&gt; 19                                                  &lt;NA&gt;
-#&gt; 20                                                  &lt;NA&gt;</div></pre>
+#&gt; 20                                                  &lt;NA&gt;</div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -807,7 +809,7 @@ the <a href='https://developer.spotify.com/documentation/general/guides/track-re
 
       <footer>
       <div class="copyright">
-  <p>Developed by Charlie Thompson, Josiah Parry, Donal Phipps, Tom Wolff, Daniel Antal.</p>
+  <p>Developed by Charlie Thompson, Daniel Antal, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">

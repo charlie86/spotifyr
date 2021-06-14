@@ -14,7 +14,10 @@
 get_my_profile <- function(authorization = get_spotify_authorization_code()) {
 
     base_url <- 'https://api.spotify.com/v1/me/'
-    res <- RETRY('GET', base_url, config(token = authorization), encode = 'json')
+
+    res <- RETRY('GET', base_url,
+                 config(token = authorization),
+                 encode = 'json')
 
     stop_for_status(res)
 

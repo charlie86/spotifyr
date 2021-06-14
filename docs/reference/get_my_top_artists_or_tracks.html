@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the current user’s top artists or tracks based on calculated affinity. — get_my_top_artists_or_tracks • spotifyr</title>
+<title>Get User’s Top Artists or Tracks — get_my_top_artists_or_tracks • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Get the current user’s top artists or tracks based on calculated affinity. — get_my_top_artists_or_tracks" />
+<meta property="og:title" content="Get User’s Top Artists or Tracks — get_my_top_artists_or_tracks" />
 <meta property="og:description" content="Get the current user’s top artists or tracks based on calculated affinity." />
 
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the current user’s top artists or tracks based on calculated affinity.</h1>
+    <h1>Get User’s Top Artists or Tracks</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/personalization.R'><code>R/personalization.R</code></a></small>
     <div class="hidden name"><code>get_my_top_artists_or_tracks.Rd</code></div>
     </div>
@@ -121,7 +121,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_my_top_artists_or_tracks</span><span class='op'>(</span>
-  type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  type <span class='op'>=</span> <span class='st'>"artists"</span>,
   limit <span class='op'>=</span> <span class='fl'>20</span>,
   offset <span class='op'>=</span> <span class='fl'>0</span>,
   time_range <span class='op'>=</span> <span class='st'>"medium_term"</span>,
@@ -135,7 +135,7 @@
     <tr>
       <th>type</th>
       <td><p>Required. The type of entity to return.
-Valid values: <code>artists</code> or <code>tracks</code>.</p></td>
+Defaults to <code>artists</code>, the valid alternative is <code>tracks</code>.</p></td>
     </tr>
     <tr>
       <th>limit</th>
@@ -176,7 +176,7 @@ Defaults to <code>FALSE</code>.</p></td>
 
     <p>Returns a data frame of results containing track or album data.
 See the official API
-<a href='https://developer.spotify.com/documentation/web-api/reference/personalization/get-users-top-artists-and-tracks/'>documentation</a> for more information.</p>
+<a href='https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-users-top-artists-and-tracks'>documentation</a> for more information.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other personalization functions: 
@@ -194,7 +194,7 @@ See the official API
 
       <footer>
       <div class="copyright">
-  <p>Developed by Charlie Thompson, Josiah Parry, Donal Phipps, Tom Wolff, Daniel Antal.</p>
+  <p>Developed by Charlie Thompson, Daniel Antal, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">
