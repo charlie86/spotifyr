@@ -14,7 +14,7 @@ See the README on
 \section{artist functions}{
 
 Retrieve information related to artists.
-\code{\link{artist}}: Get the data of a single artist.\cr
+\code{\link{get_artist}}: Get the data of a single artist.\cr
 \code{\link{get_artists}}: Get the data of multiple artist.\cr
 \code{\link{get_related_artists}}: Get that of related artist to an original artist.\cr
 \code{\link{get_artist_albums}}: Get artists who appear on an album.\cr
@@ -39,7 +39,6 @@ See also \code{\link{get_album_tracks}}.
 Work with playlists.\cr
 \code{\link{add_tracks_to_playlist}} \cr
 \code{\link{change_playlist_details}} \cr
-\code{\link{get_user_playlist}} \cr
 \code{\link{get_user_playlists}} \cr
 }
 
@@ -66,9 +65,7 @@ Functions related to the contents of the music.\cr
 \section{lyrics functions}{
 
 Functions related to the lyrics of the music, such as \cr
-\code{\link{get_album_data}} \cr
 \code{\link{get_discography}}.
-\code{\link{get_playlist_audio_features}}.
 }
 
 \section{search functions}{

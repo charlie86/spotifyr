@@ -38,7 +38,7 @@ verify_result <- function(res) {
 
 #' Valid Authorization Scopes
 #'
-#' A vector of valid scopes for \code{\link{get_authorization_code}}
+#' A vector of valid scopes for \code{\link{get_spotify_authorization_code}}.
 #'
 #' @family authorization functions
 #' @examples
@@ -48,10 +48,12 @@ verify_result <- function(res) {
 #' @export
 #' @importFrom xml2 read_html
 
-scopes <- xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
+scopes <- function() {
+    xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
     html_nodes('code') %>%
     html_text() %>%
     unique()
+    }
 
 #' Remove duplicate album names
 #'
