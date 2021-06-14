@@ -2,7 +2,7 @@
 % Please edit documentation in R/extensions.R
 \name{get_genre_artists}
 \alias{get_genre_artists}
-\title{Search for artists by genre}
+\title{Search for Artists by Genre}
 \usage{
 get_genre_artists(
   genre = character(),
@@ -50,4 +50,11 @@ Get Spotify Catalog information about artists belonging to a given genre.
 get_genre_artists('wonky')
 }
 }
-\concept{genre functions}
+\seealso{
+Other musicology functions: 
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_features}()},
+\code{\link{get_user_audio_features}()}
+}
+\concept{musicology functions}

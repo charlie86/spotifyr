@@ -161,6 +161,7 @@ get_my_playlists <- function(limit = 20,
                              offset = 0,
                              authorization = get_spotify_authorization_code(),
                              include_meta_info = FALSE) {
+
     base_url <- 'https://api.spotify.com/v1/me/playlists'
     params <- list(
         limit = limit,
@@ -415,7 +416,7 @@ remove_tracks_from_playlist <- function(playlist_id,
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
                     flatten = TRUE)
 
-    return(res)
+    res
 }
 
 #' Change a playlist’s name and public/private state. (The user must, of course, own the playlist.)

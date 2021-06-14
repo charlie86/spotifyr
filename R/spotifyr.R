@@ -35,6 +35,10 @@
 #' \code{\link{get_my_top_artists_or_tracks}}
 #' @section musicology functions:
 #' Functions related to the contents of the music.
+#' \code{get_artist_audio_features} \cr
+#' \code{get_playlist_audio_features} \cr
+#' \code{get_user_audio_features} \cr
+#' \code{get_genre_artists} \cr
 #' @section lyrics functions:
 #' Functions related to the lyrics of the music, such as
 #' \code{get_album_data} and \code{get_discography}.
@@ -42,6 +46,12 @@
 #' @section search functions:
 #' Search for an artist, song or other keyword.\cr
 #' The main function is \code{search_spotify}.
+#' @section authentication functions:
+#' Helper functions to provide authentication function for requests.
+#' Never reveal in public documents, markdown files the returned values of these
+#' functions:
+#' \code{get_spotify_authorization_code}
+#' \code{get_spotify_access_token}.
 NULL
 
 globalVars <- c(

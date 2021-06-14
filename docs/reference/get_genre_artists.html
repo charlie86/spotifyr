@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Search for artists by genre — get_genre_artists • spotifyr</title>
+<title>Search for Artists by Genre — get_genre_artists • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Search for artists by genre — get_genre_artists" />
+<meta property="og:title" content="Search for Artists by Genre — get_genre_artists" />
 <meta property="og:description" content="Get Spotify Catalog information about artists belonging to a given genre." />
 
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Search for artists by genre</h1>
+    <h1>Search for Artists by Genre</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/extensions.R'><code>R/extensions.R</code></a></small>
     <div class="hidden name"><code>get_genre_artists.Rd</code></div>
     </div>
@@ -172,11 +172,18 @@ Use with limit to get the next page of search results.</p></td>
 
     <p>A data frame of the artists belonging to the genre with data and metadata about the
 artists in a tibble.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other musicology functions: 
+<code><a href='get_artist_audio_features.html'>get_artist_audio_features</a>()</code>,
+<code><a href='get_playlist_audio_features.html'>get_playlist_audio_features</a>()</code>,
+<code><a href='get_track_audio_features.html'>get_track_audio_features</a>()</code>,
+<code><a href='get_user_audio_features.html'>get_user_audio_features</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>get_genre_artists</span><span class='op'>(</span><span class='st'>'wonky'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1.9 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error in get_spotify_access_token(): </span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1.2 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error in get_spotify_access_token(): </span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

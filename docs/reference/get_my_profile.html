@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get detailed profile information about the current user (including the current user’s username). — get_my_profile • spotifyr</title>
+<title>Get User Profile Information — get_my_profile • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Get detailed profile information about the current user (including the current user’s username). — get_my_profile" />
-<meta property="og:description" content="Get detailed profile information about the current user (including the current user’s username)." />
+<meta property="og:title" content="Get User Profile Information — get_my_profile" />
+<meta property="og:description" content="Get detailed profile information about the current user
+(including the current user’s username)." />
 
 
 
@@ -72,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,13 +112,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get detailed profile information about the current user (including the current user’s username).</h1>
+    <h1>Get User Profile Information</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/users_profile.R'><code>R/users_profile.R</code></a></small>
     <div class="hidden name"><code>get_my_profile.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get detailed profile information about the current user (including the current user’s username).</p>
+    <p>Get detailed profile information about the current user
+(including the current user’s username).</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_my_profile</span><span class='op'>(</span>authorization <span class='op'>=</span> <span class='fu'><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
@@ -127,7 +129,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>authorization</th>
-      <td><p>Required. A valid access token from the Spotify Accounts service. See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
+      <td><p>Required. A valid access token from the Spotify Accounts service.
+See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
 Reading the user’s email address requires the <code>user-read-email</code> scope; reading country and product subscription level requires the <code>user-read-private</code> scope. See <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>.</p></td>
     </tr>
     </table>

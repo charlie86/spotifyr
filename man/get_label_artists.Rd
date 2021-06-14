@@ -40,6 +40,9 @@ Use with limit to get the next page of search results.}
 A valid access token from the Spotify Accounts service.
 See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
+\value{
+A data frame with the label information of the artists.
+}
 \description{
 Get Spotify Catalog information about artists belonging to a given label.
 }
