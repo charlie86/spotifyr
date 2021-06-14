@@ -28,7 +28,8 @@ For example: \code{include_groups = c("album", "single")}}
 
 \item{return_closest_artist}{Optional. Boolean.}
 
-\item{dedupe_albums}{Optional. Boolean.}
+\item{dedupe_albums}{Optional. Logical, boolean parameter, defaults to
+\code{TRUE}.}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service.
 See the
@@ -46,7 +47,6 @@ Get audio feature information for all or part of an artists' discography.
 Other musicology functions: 
 \code{\link{get_playlist_audio_features}()},
 \code{\link{get_track_audio_features}()},
-\code{\link{get_user_audio_features}()},
-\code{\link{pitch_class_lookup}}
+\code{\link{get_user_audio_features}()}
 }
 \concept{musicology functions}

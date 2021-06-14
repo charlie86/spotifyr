@@ -2,7 +2,7 @@
 % Please edit documentation in R/playlists.R
 \name{get_user_playlists}
 \alias{get_user_playlists}
-\title{Get a list of the playlists owned or followed by a Spotify user.}
+\title{Get List of User Playlists}
 \usage{
 get_user_playlists(
   user_id,

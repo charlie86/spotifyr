@@ -2,7 +2,7 @@
 % Please edit documentation in R/player.R
 \name{skip_my_playback}
 \alias{skip_my_playback}
-\title{Skips to next track in the user’s queue.}
+\title{Skips to Next Track}
 \usage{
 skip_my_playback(
   device_id = NULL,
@@ -10,10 +10,17 @@ skip_my_playback(
 )
 }
 \arguments{
-\item{device_id}{Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.}
+\item{device_id}{Optional. The id of the device this command is targeting. If not supplied,
+the user’s currently active device is the target.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+The access token must have the \code{user-modify-playback-state} scope authorized in order
+to control playback.}
+}
+\value{
+The response from the Spotify Web API on the \code{POST} request, with a meaningful
+error message if the operation was not successful.
 }
 \description{
 Skips to next track in the user’s queue.

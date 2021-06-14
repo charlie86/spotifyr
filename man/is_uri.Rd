@@ -9,6 +9,10 @@ is_uri(s)
 \arguments{
 \item{s}{String to check}
 }
+\value{
+A boolean if the provided URI matches the Spotify URI criteria.
+}
 \description{
 Check if a string matches the pattern of a Spotify URI
 }
+\keyword{internal}

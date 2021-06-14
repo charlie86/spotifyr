@@ -2,7 +2,7 @@
 % Please edit documentation in R/follow.R
 \name{follow_playlist}
 \alias{follow_playlist}
-\title{Add the current user as a follower of a playlist.}
+\title{Add Current User to Followers of Playlist.}
 \usage{
 follow_playlist(
   playlist_id,
@@ -25,6 +25,10 @@ Following a publicly followed playlist for a user requires authorization of the
 \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}. \cr
 Note that the scopes you provide relate only to whether the current user is following the playlist publicly or privately (i.e. showing others what they are following), not whether the playlist itself is public or private.}
 }
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
+}
 \description{
-Add the current user as a follower of a playlist.
+Add Current User to Followers of Playlist.
 }

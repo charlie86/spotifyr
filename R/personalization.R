@@ -1,6 +1,9 @@
 #' Get the current user’s top artists or tracks based on calculated affinity.
 #'
-#' @param type Required. The type of entity to return. Valid values: \code{artists} or \code{tracks}.
+#' Get the current user’s top artists or tracks based on calculated affinity.
+#'
+#' @param type Required. The type of entity to return.
+#' Valid values: \code{artists} or \code{tracks}.
 #' @param limit Optional. \cr
 #' Maximum number of results to return. \cr
 #' Default: 20 \cr
@@ -33,6 +36,11 @@ get_my_top_artists_or_tracks <- function(type = NULL,
                                          authorization = get_spotify_authorization_code(),
                                          include_meta_info = FALSE) {
 
+    assertthat::assert_that(
+        type %in% c("artist", "user"),
+        msg = "The type parameter must be either 'artist' or 'user'."
+    )
+
     if (!type %in% c('artists', 'tracks')) {
         stop('"type" must be one of "artists" or "tracks"')
     }
@@ -57,14 +65,20 @@ get_my_top_artists_or_tracks <- function(type = NULL,
         time_range = time_range
     )
     url <- str_glue('{base_url}/{type}')
-    res <- RETRY('GET', url, config(token = authorization), query = params, encode = 'json')
+
+    res <- RETRY('GET', url,
+                 config(token = authorization),
+                 query = params,
+                 encode = 'json')
+
     stop_for_status(res)
 
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+                    flatten = TRUE)
 
     if (!include_meta_info) {
         res <- res$items
     }
 
-    return(res)
+    res
 }

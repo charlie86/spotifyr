@@ -2,7 +2,7 @@
 % Please edit documentation in R/follow.R
 \name{get_my_followed_artists}
 \alias{get_my_followed_artists}
-\title{Get the current user’s followed artists.}
+\title{Get My Followed Artists}
 \usage{
 get_my_followed_artists(
   limit = 20,
@@ -18,7 +18,12 @@ get_my_followed_artists(
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. Getting details of the artists or users the current user follows requires authorization of the \code{user-follow-read} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
 
-\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result,
+with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+}
+\value{
+A data frame containing my followed artists with some of full information about
+the followed artists.
 }
 \description{
 Get the current user’s followed artists.

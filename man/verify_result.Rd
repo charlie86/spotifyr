@@ -9,6 +9,11 @@ verify_result(res)
 \arguments{
 \item{res}{API result ot check}
 }
+\value{
+A meaningful error message if communication with the Spotify Web API was not
+successful.
+}
 \description{
 Check API result for error codes
 }
+\keyword{internal}

@@ -33,6 +33,10 @@ Example: \code{"offset" = list("uri" = "spotify:track:1301WleyT98MSxVHPZCA6M")}.
 The access token must have the \code{user-modify-playback-state} scope authorized
 in order to control playback.}
 }
+\value{
+The response from the Spotify Web API on the \code{POST} request, with a meaningful
+error message if the operation was not successful.
+}
 \description{
 Skips to previous track in the user’s queue.
 }

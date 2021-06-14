@@ -23,6 +23,10 @@ transferring to another \code{device_id} will not pause playback. To ensure that
 See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
 }
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
+}
 \description{
 Transfer playback to a new device and determine if it should start playing.
 }

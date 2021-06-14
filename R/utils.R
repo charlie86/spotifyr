@@ -3,7 +3,8 @@
 #' Check if a string matches the pattern of a Spotify URI
 #' @param s String to check
 #' @importFrom stringr str_detect
-#' @export
+#' @return A boolean if the provided URI matches the Spotify URI criteria.
+#' @keywords internal
 is_uri <- function(s) {
     nchar(s) == 22 &
         !str_detect(s, ' ') &
@@ -15,16 +16,17 @@ is_uri <- function(s) {
 #' Pitch class notation lookup
 #'
 # Create lookup to classify key: https://developer.spotify.com/web-api/get-audio-features/
-#' @family musicology functions
-#' @export
+#' @keywords internal
+#' @return A character vector of the pitch class names
 pitch_class_lookup <- c('C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B')
 
 #' Verify API result
 #'
 #' Check API result for error codes
 #' @param res API result ot check
-#' @export
-
+#' @keywords internal
+#' @return A meaningful error message if communication with the Spotify Web API was not
+#' successful.
 verify_result <- function(res) {
     if (!is.null(res$error)) {
         stop(str_glue('{res$error$message} ({res$error$status})'))
@@ -42,12 +44,15 @@ scopes <- xml2::read_html("https://developer.spotify.com/documentation/general/g
 
 #' Remove duplicate album names
 #'
-#' Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc)
-#' @param df Dataframe with album name
+#' Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc).
+#'
+#' @param df Data frame with album name
 #' @param album_name_col String of field name containing album names
 #' @param album_release_year_col String of field name containing album release year
 #' @importFrom dplyr case_when pull all_of everything slice row_number n
 #' @importFrom tibble tibble
+#' @return The original data frame with distinct \code{album_name} rows, keeping as much as
+#' possible the original album release (and not re-releases.)
 #' @export
 
 dedupe_album_names <- function(df,
@@ -58,7 +63,8 @@ dedupe_album_names <- function(df,
 
     base_album_names <- df %>%
         mutate( album_name_ = album_name_col,
-                album_release_year_ = album_release_year_col) %>%
+                album_release_year_ = album_release_year_col
+                ) %>%
         dplyr::filter(!duplicated(tolower(album_name_))) %>%
         mutate(base_album_name = gsub(str_glue(' \\(.*{album_dupe_regex}.*\\)'), '', tolower(.data$album_name_)),
                base_album_name = gsub(str_glue(' \\[.*{album_dupe_regex}.*\\]'), '', .data$base_album_name),
@@ -81,11 +87,16 @@ dedupe_album_names <- function(df,
 
 # Function for querying playlist API url
 # This function is used for pagination in the playlist api
+#' @importFrom httr RETRY
+#' @importFrom jsonlite fromJSON
+#' @keywords internal
 query_playlist <- function(url, params) {
 
     res <- RETRY('GET', url, query = params, encode = 'json')
     stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+                    flatten = TRUE)
     res
 }
 

@@ -1,6 +1,6 @@
 Package: spotifyr
 Title: R Wrapper for the 'Spotify' Web API
-Version: 2.2.0
+Version: 2.2.1
 Date: 2021-06-09
 Authors@R: c(
     person(
@@ -32,10 +32,8 @@ Authors@R: c(
        )
        )
 Description: An R wrapper for pulling data from the 'Spotify' Web API 
-  <https://developer.spotify.com/documentation/web-api/> in bulk. It allows you to enter 
-  an artist's name and retrieve their entire discography in seconds, along 
-  with audio features and lyrics from Genius Lyrics. 
-  You can also pull song and playlist information for a given 'Spotify' user.
+  <https://developer.spotify.com/documentation/web-api/> in bulk, or post items on a
+  'Spotify' user's playlist.
 Maintainer: Daniel Antal <daniel.antal@ceemid.eu>
 Depends: R (>= 3.3.0)
 Imports:

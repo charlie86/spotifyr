@@ -2,8 +2,8 @@
 #'
 #' @param df Should the results be formatted as a data frame?
 #' If \code{FALSE}, the full response JSON will be returned as a list; defaults to \code{TRUE}.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
-#'
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing album data.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/} for more information.
@@ -42,7 +42,10 @@ get_categories <- function(authorization = get_spotify_access_token(),
 #' Returns a list of results containing category information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
 
-get_category <- function(category_id, country = NULL, locale = NULL, authorization = get_spotify_access_token()) {
+get_category <- function(category_id,
+                         country = NULL,
+                         locale = NULL,
+                         authorization = get_spotify_access_token()) {
     base_url <- 'https://api.spotify.com/v1/browse/categories'
     url <- str_glue('{base_url}/{category_id}')
     params <- list(
@@ -54,6 +57,7 @@ get_category <- function(category_id, country = NULL, locale = NULL, authorizati
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>%
         as.data.frame(stringsAsFactors = FALSE)
+
     return(res)
 }
 
@@ -102,16 +106,20 @@ get_category_playlists <- function(category_id, country = NULL, limit = 20, offs
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"country"}, \code{"offset"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing new releases. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a data frame of results containing new releases.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
-#'
 #' @examples
 #' \donttest{
 #' ## Get new Swedish music
 #' get_new_releases(country = 'SE')
 #' }
 
-get_new_releases <- function(country = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_new_releases <- function(country = NULL,
+                             limit = 20,
+                             offset = 0,
+                             authorization = get_spotify_access_token(),
+                             include_meta_info = FALSE) {
     base_url <- 'https://api.spotify.com/v1/browse/new-releases'
     params <- list(
         country = country,
@@ -128,7 +136,10 @@ get_new_releases <- function(country = NULL, limit = 20, offset = 0, authorizati
     return(res)
 }
 
-#' Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).
+#' Get List of Spotify Featured Playlists
+#'
+#' Get a list of Spotify featured playlists
+#' (as shown, for example, on a Spotify player’s ‘Browse’ tab)
 #'
 #' @param locale Optional. The desired language, consisting of an \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.
 #' @param country Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
@@ -165,7 +176,8 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
     if (!include_meta_info) {
         res <- res$items
     }
-    return(res)
+
+    res
 }
 
 #' Create a playlist-style listening experience based on seed artists, tracks and genres.
@@ -356,10 +368,13 @@ get_recommendations <- function(limit = 20,
     if (!include_seeds_in_response) {
         res <- res$tracks
     }
-    return(res)
+
+    res
 }
 
 
+#' Get Recommendations for Unlimited Vector of Track IDs
+#'
 #' Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks
 #'
 #' This is a wrapper for the \code{\link{get_recommendations}} function, which provides a workaround for
@@ -373,7 +388,8 @@ get_recommendations <- function(limit = 20,
 #' @param valence
 #' The target valence for the recommendations
 #' @return
-#' Returns a data frame containing recommendations from the Spotify API
+#' Returns a data frame containing binded recommendations from the Spotify API in a
+#' single data frame.
 #' @examples
 #' \donttest{
 #' get_recommendations_all(

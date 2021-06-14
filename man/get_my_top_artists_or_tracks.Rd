@@ -14,7 +14,8 @@ get_my_top_artists_or_tracks(
 )
 }
 \arguments{
-\item{type}{Required. The type of entity to return. Valid values: \code{artists} or \code{tracks}.}
+\item{type}{Required. The type of entity to return.
+Valid values: \code{artists} or \code{tracks}.}
 
 \item{limit}{Optional. \cr
 Maximum number of results to return. \cr

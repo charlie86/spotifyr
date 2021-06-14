@@ -23,6 +23,10 @@ See the \href{https://developer.spotify.com/documentation/general/guides/authori
 The access token must have the \code{user-modify-playback-state} scope authorized
 in order to control playback.}
 }
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
+}
 \description{
 Toggle shuffle on or off for user’s playback.
 }

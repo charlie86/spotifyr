@@ -12,7 +12,8 @@
 #' \code{"compilation"} \cr
 #' For example: \code{include_groups = c("album", "single")}
 #' @param return_closest_artist Optional. Boolean.
-#' @param dedupe_albums Optional. Boolean.
+#' @param dedupe_albums Optional. Logical, boolean parameter, defaults to
+#' \code{TRUE}.
 #' @param authorization Required. A valid access token from the Spotify Accounts service.
 #' See the
 #' \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
@@ -172,7 +173,6 @@ get_artist_audio_features <- function(artist = NULL,
 #' @param authorization Required.
 #' A valid access token from the Spotify Accounts service.
 #' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
-#' @keywords search label artist
 #' @export
 #' @family label functions
 #' @examples
@@ -229,7 +229,8 @@ get_label_artists <- function(label = character(),
 
 #' Search for artists by genre
 #'
-#' Get Spotify Catalog information about artists belonging to a given genre
+#' Get Spotify Catalog information about artists belonging to a given genre.
+#'
 #' @param genre Required. \cr
 #' String of genre name to search for \cr
 #' For example: \code{genre = "wonky"}.
@@ -250,8 +251,9 @@ get_label_artists <- function(label = character(),
 #' Maximum offset (including limit): 10,000. \cr
 #' Use with limit to get the next page of search results.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
-#' @keywords search label artist
 #' @family genre functions
+#' @return A data frame of the artists belonging to the genre with data and metadata about the
+#' artists in a tibble.
 #' @export
 #' @examples
 #' \donttest{
@@ -292,19 +294,28 @@ get_genre_artists <- function(genre = character(),
         offset = offset,
         access_token = authorization
     )
-    print(params)
+
+    params
+
     res <- RETRY('GET', base_url, query = params, encode = 'json')
     stop_for_status(res)
 
+    res
+
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
-    res <- res[['artists']]$items %>%
+
+    artists <- res$artists
+
+    artists <- artists$items %>%
         as_tibble() %>%
         mutate(genre = genre)
 
-    return(res)
+    artists
 }
 
 #' Get audio feature information for a users' playlists
+#'
+#' Get audio feature information for a users' playlists.
 #'
 #' @param username Required. String of Spotify username.
 #' @param authorization Required. A valid access token from the Spotify Accounts service.
@@ -327,17 +338,20 @@ get_user_audio_features <- function(username = NULL,
     }
 
     num_loops_user_playlists <- ceiling(user_playlist_info$total / 20)
+
     if (num_loops_user_playlists > 1) {
         user_playlists <- map_df(1:num_loops_user_playlists, function(this_loop) {
-            get_user_playlists(username, offset = this_loop * 20, authorization = authorization)
+            get_user_playlists(username,
+                               offset = this_loop * 20,
+                               authorization = authorization)
         })
     } else {
         user_playlists <- user_playlist_info$items
     }
 
     user_playlists <- user_playlists %>%
-        rename(playlist_id = id,
-               playlist_name = name)
+        rename(playlist_id = .data$id,
+               playlist_name =  .data$name)
 
     playlist_tracks <- map_df(user_playlists$playlist_id, function(this_playlist_id) {
         this_playlist_tracks <- get_playlist_tracks(this_playlist_id, include_meta_info = TRUE, authorization = authorization)
@@ -358,33 +372,42 @@ get_user_audio_features <- function(username = NULL,
     dupe_columns <- c('duration_ms', 'type', 'uri', 'track_href')
 
     num_loops_tracks <- ceiling(nrow(playlist_tracks) / 100)
+
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
         track_ids <- playlist_tracks %>%
             slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
             pull(track.id)
         get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
-        select(-dupe_columns) %>%
-        rename(track.id = id) %>%
+        select(-all_of( dupe_columns )) %>%
+        rename(track.id = .data$id) %>%
         left_join(playlist_tracks, by = 'track.id') %>%
         select(-c(playlist_name, primary_color))
 
     user_playlists %>%
         left_join(track_audio_features, by = 'playlist_id') %>%
-        mutate(key_name = pitch_class_lookup[key + 1],
-               mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
-               key_mode = paste(key_name, mode_name))
+        mutate(key_name = pitch_class_lookup[.data$key + 1],
+               mode_name = case_when(.data$mode == 1 ~ 'major',
+                                     .data$mode == 0 ~ 'minor',
+                                     TRUE ~ as.character(NA)),
+               key_mode = paste(.data$key_name, .data$mode_name)
+               )
 }
 
-#' Get features and popularity for all of a given set of playlists on Spotify
+#' Get Features and Popularity of Playlists on Spotify
 #'
-#' This function returns the popularity and audio features for every song for a given set of playlists on Spotify
+#' This function returns the popularity and audio features for every song for a given set of
+#' playlists on Spotify
+#'
 #' @param username String of Spotify username. Can be found on the Spotify app.
-#' @param playlist_uris Character vector of Spotify playlist uris. Can be found within the Spotify App
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param playlist_uris Character vector of Spotify playlist uris.
+#' Can be found within the Spotify App
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @keywords track audio features playlists
 #' @export
 #' @family musicology functions
+#' @return A data frame with the audio featurees and popularity variables of playlists.
 #' @examples
 #' \donttest{
 #' playlist_username <- 'spotify'
@@ -425,9 +448,13 @@ get_playlist_audio_features <- function(username,
     playlist_audio_features <- track_audio_features %>%
         left_join(playlist_tracks, by = 'track.id') %>%
         mutate(key_name = pitch_class_lookup[key + 1],
-               mode_name = case_when(mode == 1 ~ 'major', mode == 0 ~ 'minor', TRUE ~ as.character(NA)),
-               key_mode = paste(key_name, mode_name)) %>%
+               mode_name = case_when(
+                   .data$mode == 1 ~ 'major',
+                   .data$mode == 0 ~ 'minor',
+                   TRUE ~ as.character(NA)),
+               key_mode = paste(.data$key_name, .data$mode_name)
+               ) %>%
         select(playlist_id, playlist_name, playlist_img, playlist_owner_name, playlist_owner_id, everything())
 
-    return(playlist_audio_features)
+    playlist_audio_features
 }

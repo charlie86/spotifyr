@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_featured_playlists}
 \alias{get_featured_playlists}
-\title{Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).}
+\title{Get List of Spotify Featured Playlists}
 \usage{
 get_featured_playlists(
   locale = NULL,
@@ -33,7 +33,8 @@ get_featured_playlists(
 Returns a data frame of results containing featured playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
-Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).
+Get a list of Spotify featured playlists
+(as shown, for example, on a Spotify player’s ‘Browse’ tab)
 }
 \examples{
 \donttest{

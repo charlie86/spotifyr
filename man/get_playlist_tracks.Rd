@@ -2,7 +2,7 @@
 % Please edit documentation in R/playlists.R
 \name{get_playlist_tracks}
 \alias{get_playlist_tracks}
-\title{Get full details of the tracks of a playlist owned by a Spotify user.}
+\title{Get Details of User Playlist Tracks.}
 \usage{
 get_playlist_tracks(
   playlist_id,
