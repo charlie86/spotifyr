@@ -41,8 +41,10 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
 #' found here: https://developer.spotify.com/documentation/general/guides/scopes/.
 #' All scopes are selected by default
 #' @export
-#' @return The Spotify Web API authorization code as a character string.
+#' @return The Spotify Web API Token2.0 reference class object, or an error message.
 #' @family authentication functions
+#' @importFrom httr oauth2.0_token oauth_endpoint
+#' @importFrom purrr safely
 #' @examples
 #' \donttest{
 #' authorization <- get_spotify_authorization_code()
@@ -59,7 +61,13 @@ get_spotify_authorization_code <- function(
 
     app <- oauth_app('spotifyr', client_id, client_secret)
 
-    oauth2.0_token(endpoint = endpoint,
-                   app = app,
-                   scope = scope)
+    token <- purrr::safely(.f=oauth2.0_token)(endpoint = endpoint,
+                                     app = app,
+                                     scope = scope)
+
+    if (!is.null(token$error)) {
+        token$error
+    } else {
+      token$result
+    }
 }
