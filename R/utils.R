@@ -47,11 +47,12 @@ verify_result <- function(res) {
 #' See \href{https://developer.spotify.com/documentation/general/guides/scopes/}{Spotify Web API Authorization Scopes}
 #' @export
 #' @importFrom xml2 read_html
+#' @importFrom rvest html_text html_elements
 
 scopes <- function() {
     xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
-    html_nodes('code') %>%
-    html_text() %>%
+    rvest::html_elements('code') %>%
+    rvest::html_text() %>%
     unique()
     }
 
