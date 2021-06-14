@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab). — get_new_releases • spotifyr</title>
+<title>Get New Releases — get_new_releases • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab). — get_new_releases" />
-<meta property="og:description" content="Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab)." />
+<meta property="og:title" content="Get New Releases — get_new_releases" />
+<meta property="og:description" content="Get a list of new album releases featured in Spotify (shown, for example,
+on a Spotify player’s “Browse” tab)." />
 
 
 
@@ -111,13 +112,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).</h1>
+    <h1>Get New Releases</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/browse.R'><code>R/browse.R</code></a></small>
     <div class="hidden name"><code>get_new_releases.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).</p>
+    <p>Get a list of new album releases featured in Spotify (shown, for example,
+on a Spotify player’s “Browse” tab).</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_new_releases</span><span class='op'>(</span>
@@ -133,7 +135,10 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>country</th>
-      <td><p>Optional. A country: an <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.</p></td>
+      <td><p>Optional. A country: an
+<a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>.
+Provide this parameter if you want the list of returned items to be relevant to a
+particular country. If omitted, the returned items will be relevant to all countries.</p></td>
     </tr>
     <tr>
       <th>limit</th>
@@ -155,14 +160,14 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a data frame of results containing new releases.
-See <a href='https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/'>https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/</a> for more information.</p>
+    <p>Returns a data frame of results containing new releases. <br />
+See <a href='https://developer.spotify.com/documentation/web-api/reference/#category-browse'>https://developer.spotify.com/documentation/web-api/reference/#category-browse</a> for more information.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'>## Get new Swedish music</span>
-<span class='va'>nr</span> <span class='op'>&lt;-</span> <span class='fu'>get_new_releases</span><span class='op'>(</span>country <span class='op'>=</span> <span class='st'>'SE'</span><span class='op'>)</span>
-<span class='co'># }</span>
+<span class='fu'>get_new_releases</span><span class='op'>(</span>country <span class='op'>=</span> <span class='st'>'SE'</span>, limit <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in content(.): could not find function "content"</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -175,7 +180,7 @@ See <a href='https://developer.spotify.com/documentation/web-api/reference/users
 
       <footer>
       <div class="copyright">
-  <p>Developed by Charlie Thompson, Josiah Parry, Donal Phipps, Tom Wolff, Daniel Antal.</p>
+  <p>Developed by Charlie Thompson, Daniel Antal, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">

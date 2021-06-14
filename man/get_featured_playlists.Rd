@@ -15,22 +15,36 @@ get_featured_playlists(
 )
 }
 \arguments{
-\item{locale}{Optional. The desired language, consisting of an \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.}
+\item{locale}{Optional. The desired language, consisting of an
+\href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and
+an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.}
 
-\item{country}{Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.}
+\item{country}{Optional. A country: an
+\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
+Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.}
 
-\item{timestamp}{Optional. A timestamp in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601 format}: \code{yyyy-MM-ddTHH:mm:ss}. Use this parameter to specify the user’s local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: “2014-10-23T09:00:00” for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.}
+\item{timestamp}{Optional.
+A timestamp in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601 format}:
+\code{yyyy-MM-ddTHH:mm:ss}. Use this parameter to specify the user’s local time to get
+results tailored for that specific date and time in the day.
+If not provided, the response defaults to the current UTC time.
+Example: “2014-10-23T09:00:00” for a user whose local time is 9AM.
+If there were no featured playlists (or there is no data) at the specified time,
+the response will revert to the current UTC time.}
 
-\item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}
+\item{limit}{Optional. The maximum number of items to return.
+Default: 20. Minimum: 1. Maximum: 50.}
 
-\item{offset}{Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.}
+\item{offset}{Optional. The index of the first item to return.
+Default: 0 (the first object). Use with \code{limit} to get the next set of items.}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing featured playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a data frame of results containing featured playlists. \cr
+See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
 Get a list of Spotify featured playlists
@@ -38,6 +52,11 @@ Get a list of Spotify featured playlists
 }
 \examples{
 \donttest{
-fp <- get_featured_playlists(country = 'SE')
+
+## Get Flemish-Dutch playlists from Belgium:
+
+get_featured_playlists(
+   country = 'BE',
+   locale = "nl_BE" )
 }
 }

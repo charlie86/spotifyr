@@ -64,55 +64,82 @@ get_category <- function(category_id,
 
 #' Get a list of Spotify playlists tagged with a particular category.
 #'
-#' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
-#' @param country Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
-#' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-#' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
+#' @param category_id Required. The
+#' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
+#' @param country Optional. A country: an
+#' \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
+#' @param limit Optional. The maximum number of items to return.
+#' Defaults to \code{20}. Minimum: 1. Maximum: 50.
+#' @param offset Optional. The index of the first item to return.
+#' Defaults to \code{0}, the first object. Use with \code{limit} to get the next set of items.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
+#' @importFrom stringr str_glue
 #' @return
 #' Returns a data frame of results containing category playlists.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @examples
 #' \donttest{
-#' ## Get Brazilian party playlists
 #' get_category_playlists('party', country = 'BR')
 #' }
 #' @export
 
-get_category_playlists <- function(category_id, country = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_category_playlists <- function(category_id = "party",
+                                   country = NULL,
+                                   limit = 20,
+                                   offset = 0,
+                                   authorization = get_spotify_access_token(),
+                                   include_meta_info = FALSE ) {
+
     base_url <- 'https://api.spotify.com/v1/browse/categories'
-    url <- str_glue('{base_url}/{category_id}/playlists')
+    query_url <- str_glue('{base_url}/{category_id}/playlists')
+
     params <- list(
         country = country,
         limit = limit,
         offset = offset,
         access_token = authorization
     )
-    res <- RETRY('GET', url, query = params, encode = 'json')
+
+    res <- RETRY('GET', query_url,
+                 query = params,
+                 encode = 'json')
+
     stop_for_status(res)
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE) %>% .$playlists
+
+    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+                    flatten = TRUE)
+
+    playlists <- res$playlists
+
     if (!include_meta_info) {
-        res <- res$items
+        playlists <- playlists$items
     }
-    return(res)
+
+    playlists
 }
 
-#' Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
+#' Get New Releases
 #'
-#' @param country Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
+#' Get a list of new album releases featured in Spotify (shown, for example,
+#' on a Spotify player’s “Browse” tab).
+#'
+#' @param country Optional. A country: an
+#' \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
+#' Provide this parameter if you want the list of returned items to be relevant to a
+#' particular country. If omitted, the returned items will be relevant to all countries.
 #' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"country"}, \code{"offset"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing new releases.
-#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a data frame of results containing new releases. \cr
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/#category-browse} for more information.
 #' @export
 #' @examples
 #' \donttest{
 #' ## Get new Swedish music
-#' nr <- get_new_releases(country = 'SE')
+#' get_new_releases(country = 'SE', limit = 5)
 #' }
 
 get_new_releases <- function(country = NULL,
@@ -129,7 +156,10 @@ get_new_releases <- function(country = NULL,
         offset = offset,
         access_token = authorization
     )
-    res <- RETRY('GET', base_url, query = params, encode = 'json')
+
+    res <- RETRY('GET', base_url,
+                 query = params,
+                 encode = 'json')
 
     stop_for_status(res)
 
@@ -137,11 +167,13 @@ get_new_releases <- function(country = NULL,
                             encoding = 'UTF-8'),
                     flatten = TRUE)
 
-    res <- res$albums
+
+    albums <- res$albums
     if (!include_meta_info) {
-        res <- res$items
+        albums <- albums$items
     }
-    return(res)
+
+    albums
 }
 
 #' Get List of Spotify Featured Playlists
@@ -149,23 +181,50 @@ get_new_releases <- function(country = NULL,
 #' Get a list of Spotify featured playlists
 #' (as shown, for example, on a Spotify player’s ‘Browse’ tab)
 #'
-#' @param locale Optional. The desired language, consisting of an \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.
-#' @param country Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
-#' @param timestamp Optional. A timestamp in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601 format}: \code{yyyy-MM-ddTHH:mm:ss}. Use this parameter to specify the user’s local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: “2014-10-23T09:00:00” for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.
-#' @param limit Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-#' @param offset Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.
+#' @param locale Optional. The desired language, consisting of an
+#' \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and
+#' an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.
+#' @param country Optional. A country: an
+#' \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
+#' Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.
+#' @param timestamp Optional.
+#' A timestamp in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601 format}:
+#' \code{yyyy-MM-ddTHH:mm:ss}. Use this parameter to specify the user’s local time to get
+#' results tailored for that specific date and time in the day.
+#' If not provided, the response defaults to the current UTC time.
+#' Example: “2014-10-23T09:00:00” for a user whose local time is 9AM.
+#' If there were no featured playlists (or there is no data) at the specified time,
+#' the response will revert to the current UTC time.
+#' @param limit Optional. The maximum number of items to return.
+#' Default: 20. Minimum: 1. Maximum: 50.
+#' @param offset Optional. The index of the first item to return.
+#' Default: 0 (the first object). Use with \code{limit} to get the next set of items.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing featured playlists. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a data frame of results containing featured playlists. \cr
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
 #' @examples
 #' \donttest{
-#' fp <- get_featured_playlists(country = 'SE')
+#'
+#' ## Get Flemish-Dutch playlists from Belgium:
+#'
+#' get_featured_playlists(
+#'    country = 'BE',
+#'    locale = "nl_BE" )
 #' }
 
-get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_featured_playlists <- function(locale = NULL,
+                                   country = NULL,
+                                   timestamp = NULL,
+                                   limit = 20,
+                                   offset = 0,
+                                   authorization = get_spotify_access_token(),
+                                   include_meta_info = FALSE) {
+
     base_url <- 'https://api.spotify.com/v1/browse/featured-playlists'
+
     params <- list(
         locale = locale,
         country = country,
@@ -174,16 +233,23 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
         offset = offset,
         access_token = authorization
     )
-    res <- RETRY('GET', base_url, query = params, encode = 'json')
+
+    res <- RETRY('GET', base_url,
+                 query = params,
+                 encode = 'json')
+
     stop_for_status(res)
+
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+
     res$playlists$message <- res$message
-    res <- res$playlists
+    playlists <- res$playlists
+
     if (!include_meta_info) {
-        res <- res$items
+        playlists <- playlists$items
     }
 
-    res
+    playlists
 }
 
 #' Create a playlist-style listening experience based on seed artists, tracks and genres.
@@ -254,7 +320,9 @@ get_featured_playlists <- function(locale = NULL, country = NULL, timestamp = NU
 #' Returns a data frame of results recommendations. See the official
 #' \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{Spotify Web API documentation} for more information.
 #' @examples
-#' \donttest{ get_recommendations(market = 'SE', seed_genres = 'rock') }
+#' \donttest{
+#' get_recommendations(market = 'SE', seed_genres = 'rock')
+#' }
 #' @family personalization functions
 #' @export
 

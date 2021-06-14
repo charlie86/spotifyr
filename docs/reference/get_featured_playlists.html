@@ -137,23 +137,36 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>locale</th>
-      <td><p>Optional. The desired language, consisting of an <a href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a> language code and an <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if <code>locale</code> is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</p></td>
+      <td><p>Optional. The desired language, consisting of an
+<a href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a> language code and
+an <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if <code>locale</code> is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</p></td>
     </tr>
     <tr>
       <th>country</th>
-      <td><p>Optional. A country: an <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.</p></td>
+      <td><p>Optional. A country: an
+<a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>.
+Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.</p></td>
     </tr>
     <tr>
       <th>timestamp</th>
-      <td><p>Optional. A timestamp in <a href='https://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 format</a>: <code>yyyy-MM-ddTHH:mm:ss</code>. Use this parameter to specify the user’s local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time. Example: “2014-10-23T09:00:00” for a user whose local time is 9AM. If there were no featured playlists (or there is no data) at the specified time, the response will revert to the current UTC time.</p></td>
+      <td><p>Optional.
+A timestamp in <a href='https://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 format</a>:
+<code>yyyy-MM-ddTHH:mm:ss</code>. Use this parameter to specify the user’s local time to get
+results tailored for that specific date and time in the day.
+If not provided, the response defaults to the current UTC time.
+Example: “2014-10-23T09:00:00” for a user whose local time is 9AM.
+If there were no featured playlists (or there is no data) at the specified time,
+the response will revert to the current UTC time.</p></td>
     </tr>
     <tr>
       <th>limit</th>
-      <td><p>Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</p></td>
+      <td><p>Optional. The maximum number of items to return.
+Default: 20. Minimum: 1. Maximum: 50.</p></td>
     </tr>
     <tr>
       <th>offset</th>
-      <td><p>Optional. The index of the first item to return. Default: 0 (the first object). Use with <code>limit</code> to get the next set of items.</p></td>
+      <td><p>Optional. The index of the first item to return.
+Default: 0 (the first object). Use with <code>limit</code> to get the next set of items.</p></td>
     </tr>
     <tr>
       <th>authorization</th>
@@ -167,12 +180,18 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a data frame of results containing featured playlists. See <a href='https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/'>https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/</a> for more information.</p>
+    <p>Returns a data frame of results containing featured playlists. <br />
+See <a href='https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/'>https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/</a> for more information.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='va'>fp</span> <span class='op'>&lt;-</span> <span class='fu'>get_featured_playlists</span><span class='op'>(</span>country <span class='op'>=</span> <span class='st'>'SE'</span><span class='op'>)</span>
-<span class='co'># }</span>
+
+<span class='co'>## Get Flemish-Dutch playlists from Belgium:</span>
+
+<span class='fu'>get_featured_playlists</span><span class='op'>(</span>
+   country <span class='op'>=</span> <span class='st'>'BE'</span>,
+   locale <span class='op'>=</span> <span class='st'>"nl_BE"</span> <span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in content(.): could not find function "content"</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -185,7 +204,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Charlie Thompson, Josiah Parry, Donal Phipps, Tom Wolff, Daniel Antal.</p>
+  <p>Developed by Charlie Thompson, Daniel Antal, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">

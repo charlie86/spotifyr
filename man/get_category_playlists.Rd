@@ -5,7 +5,7 @@
 \title{Get a list of Spotify playlists tagged with a particular category.}
 \usage{
 get_category_playlists(
-  category_id,
+  category_id = "party",
   country = NULL,
   limit = 20,
   offset = 0,
@@ -14,13 +14,17 @@ get_category_playlists(
 )
 }
 \arguments{
-\item{category_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.}
+\item{category_id}{Required. The
+\href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.}
 
-\item{country}{Optional. A country: an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.}
+\item{country}{Optional. A country: an
+\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.}
 
-\item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}
+\item{limit}{Optional. The maximum number of items to return.
+Defaults to \code{20}. Minimum: 1. Maximum: 50.}
 
-\item{offset}{Optional. The index of the first item to return. Default: 0 (the first object). Use with \code{limit} to get the next set of items.}
+\item{offset}{Optional. The index of the first item to return.
+Defaults to \code{0}, the first object. Use with \code{limit} to get the next set of items.}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
@@ -35,7 +39,6 @@ Get a list of Spotify playlists tagged with a particular category.
 }
 \examples{
 \donttest{
-## Get Brazilian party playlists
 get_category_playlists('party', country = 'BR')
 }
 }

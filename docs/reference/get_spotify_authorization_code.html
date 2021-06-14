@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Get Spotify Authorization Code — get_spotify_authorization_code" />
-<meta property="og:description" content="This function creates a Spotify authorization code." />
+<meta property="og:description" content="This function creates a Spotify authorization code.
+See httr::oauth2.0_token." />
 
 
 
@@ -117,7 +118,8 @@
     </div>
 
     <div class="ref-description">
-    <p>This function creates a Spotify authorization code.</p>
+    <p>This function creates a Spotify authorization code.
+See <code>httr::<a href='https://httr.r-lib.org/reference/oauth2.0_token.html'>oauth2.0_token</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_spotify_authorization_code</span><span class='op'>(</span>
@@ -147,7 +149,8 @@ All scopes are selected by default</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The Spotify Web API authorization code as a character string.</p>
+    <p>The Spotify Web API Token2.0 reference class object (see
+ <code>httr::<a href='https://httr.r-lib.org/reference/oauth2.0_token.html'>oauth2.0_token</a></code>), or an error message.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other authentication functions: 
@@ -156,7 +159,7 @@ All scopes are selected by default</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='va'>authorization</span> <span class='op'>&lt;-</span> <span class='fu'>get_spotify_authorization_code</span><span class='op'>(</span><span class='op'>)</span>
-<span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in oauth_endpoint(authorize = "https://accounts.spotify.com/authorize",     access = "https://accounts.spotify.com/api/token"): could not find function "oauth_endpoint"</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -169,7 +172,7 @@ All scopes are selected by default</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Charlie Thompson, Josiah Parry, Donal Phipps, Tom Wolff, Daniel Antal.</p>
+  <p>Developed by Charlie Thompson, Daniel Antal, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">
