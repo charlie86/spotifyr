@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the current image associated with a specific playlist. — get_playlist_cover_image • spotifyr</title>
+<title>Get Image Associated with Playlist — get_playlist_cover_image • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Get the current image associated with a specific playlist. — get_playlist_cover_image" />
+<meta property="og:title" content="Get Image Associated with Playlist — get_playlist_cover_image" />
 <meta property="og:description" content="Get the current image associated with a specific playlist." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the current image associated with a specific playlist.</h1>
+    <h1>Get Image Associated with Playlist</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/playlists.R'><code>R/playlists.R</code></a></small>
     <div class="hidden name"><code>get_playlist_cover_image.Rd</code></div>
     </div>
@@ -134,14 +134,18 @@
     </tr>
     <tr>
       <th>authorization</th>
-      <td><p>Required. A valid access token from the Spotify Accounts service. See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
-Current playlist image for both Public and Private playlists of any user are retrievable on provision of a valid access token.</p></td>
+      <td><p>Required. A valid access token from the Spotify Accounts service.
+See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
+Current playlist image for both Public and Private playlists of any user are retrievable on
+provision of a valid access token.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a data frame of results containing playlist cover image information. See the official <a href='https://developer.spotify.com/documentation/web-api/reference/playlists/get-playlist-cover/'>Spotify Web API Documentation</a> for more information.</p>
+    <p>Returns a data frame of results containing playlist cover image information.
+See the official
+<a href='https://developer.spotify.com/documentation/web-api/reference/playlists/get-playlist-cover/'>Spotify Web API Documentation</a> for more information.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

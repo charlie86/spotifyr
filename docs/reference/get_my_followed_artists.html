@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the current user’s followed artists. — get_my_followed_artists • spotifyr</title>
+<title>Get My Followed Artists — get_my_followed_artists • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Get the current user’s followed artists. — get_my_followed_artists" />
+<meta property="og:title" content="Get My Followed Artists — get_my_followed_artists" />
 <meta property="og:description" content="Get the current user’s followed artists." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the current user’s followed artists.</h1>
+    <h1>Get My Followed Artists</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/follow.R'><code>R/follow.R</code></a></small>
     <div class="hidden name"><code>get_my_followed_artists.Rd</code></div>
     </div>
@@ -144,10 +144,15 @@
     </tr>
     <tr>
       <th>include_meta_info</th>
-      <td><p>Optional. Boolean indicating whether to include full result, with meta information such as <code>"total"</code>, and <code>"limit"</code>. Defaults to <code>FALSE</code>.</p></td>
+      <td><p>Optional. Boolean indicating whether to include full result,
+with meta information such as <code>"total"</code>, and <code>"limit"</code>. Defaults to <code>FALSE</code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame containing my followed artists with some of full information about
+the followed artists.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other artist functions: 

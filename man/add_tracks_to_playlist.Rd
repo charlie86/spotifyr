@@ -19,12 +19,10 @@ for the playlist.}
 \item{uris}{Optional. A character vector of
 \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add.
 For example: \cr
-\code{uris = c("61H97kuKIpi6kJQRnUEIlh", "2q6vlgBJ432KeZZNt2ZZBV")} \cr
+uris = c("61H97kuKIpi6kJQRnUEIlh", "2q6vlgBJ432KeZZNt2ZZBV")\cr
 A maximum of 100 tracks can be added in one request.
 The uris will be formed as
-\code{
-uris = c("spotify%3Atrack%3A61H97kuKIpi6kJQRnUEIlh", "spotify%3Atrack%3A2q6vlgBJ432KeZZNt2ZZBV")
-}.
+uris = c("spotify%3Atrack%3A61H97kuKIpi6kJQRnUEIlh", "spotify%3Atrack%3A2q6vlgBJ432KeZZNt2ZZBV").
 If you have the \code{"spotify:track:"} preffix in your vector it will
 not be duplicated, otherwise it will be added.}
 

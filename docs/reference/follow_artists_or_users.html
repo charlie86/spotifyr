@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add the current user as a follower of one or more artists or other Spotify users. — follow_artists_or_users • spotifyr</title>
+<title>Add Current User as Follower Artists or Other Users — follow_artists_or_users • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Add the current user as a follower of one or more artists or other Spotify users. — follow_artists_or_users" />
+<meta property="og:title" content="Add Current User as Follower Artists or Other Users — follow_artists_or_users" />
 <meta property="og:description" content="Add the current user as a follower of one or more artists or other Spotify users." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add the current user as a follower of one or more artists or other Spotify users.</h1>
+    <h1>Add Current User as Follower Artists or Other Users</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/follow.R'><code>R/follow.R</code></a></small>
     <div class="hidden name"><code>follow_artists_or_users.Rd</code></div>
     </div>
@@ -122,7 +122,7 @@
 
     <pre class="usage"><span class='fu'>follow_artists_or_users</span><span class='op'>(</span>
   <span class='va'>type</span>,
-  <span class='va'>ids</span>,
+  ids <span class='op'>=</span> <span class='cn'>NULL</span>,
   authorization <span class='op'>=</span> <span class='fu'><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
@@ -145,6 +145,10 @@ See the <a href='https://developer.spotify.com/documentation/general/guides/auth
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the <code>PUT</code> request, with a meaningful
+error message if the operation was not successful.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

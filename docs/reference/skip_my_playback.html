@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Skips to next track in the user’s queue. — skip_my_playback • spotifyr</title>
+<title>Skips to Next Track — skip_my_playback • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Skips to next track in the user’s queue. — skip_my_playback" />
+<meta property="og:title" content="Skips to Next Track — skip_my_playback" />
 <meta property="og:description" content="Skips to next track in the user’s queue." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Skips to next track in the user’s queue.</h1>
+    <h1>Skips to Next Track</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/player.R'><code>R/player.R</code></a></small>
     <div class="hidden name"><code>skip_my_playback.Rd</code></div>
     </div>
@@ -130,15 +130,22 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>device_id</th>
-      <td><p>Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.</p></td>
+      <td><p>Optional. The id of the device this command is targeting. If not supplied,
+the user’s currently active device is the target.</p></td>
     </tr>
     <tr>
       <th>authorization</th>
-      <td><p>Required. A valid access token from the Spotify Accounts service. See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_access_token.html'>spotifyr::get_spotify_access_token()</a></code>. The access token must have been issued on behalf of the current user. <br />
-The access token must have the <code>user-modify-playback-state</code> scope authorized in order to control playback.</p></td>
+      <td><p>Required. A valid access token from the Spotify Accounts service.
+See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_access_token.html'>spotifyr::get_spotify_access_token()</a></code>. The access token must have been issued on behalf of the current user. <br />
+The access token must have the <code>user-modify-playback-state</code> scope authorized in order
+to control playback.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the <code>POST</code> request, with a meaningful
+error message if the operation was not successful.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other player functions: 

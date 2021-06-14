@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks — get_recommendations_all • spotifyr</title>
+<title>Get Recommendations for Unlimited Vector of Track IDs — get_recommendations_all • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,12 +39,8 @@
 
 
 
-<meta property="og:title" content="Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks — get_recommendations_all" />
-<meta property="og:description" content="This is a wrapper for the get_recommendations function, which provides a workaround for
-the limit of 5 seed tracks per recommendation call. The function splits a supplied vector
-of track IDs into subsets of length 5, then applies a  get_recommendations call,
-5 tracks at a time. This should generate a data frame of recommended tracks, with
-length equal to the supplied vector of track ids." />
+<meta property="og:title" content="Get Recommendations for Unlimited Vector of Track IDs — get_recommendations_all" />
+<meta property="og:description" content="Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks" />
 
 
 
@@ -76,7 +72,7 @@ length equal to the supplied vector of track ids." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -115,17 +111,13 @@ length equal to the supplied vector of track ids." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks</h1>
+    <h1>Get Recommendations for Unlimited Vector of Track IDs</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/browse.R'><code>R/browse.R</code></a></small>
     <div class="hidden name"><code>get_recommendations_all.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is a wrapper for the <code><a href='get_recommendations.html'>get_recommendations</a></code> function, which provides a workaround for
-the limit of 5 seed tracks per recommendation call. The function splits a supplied vector
-of track IDs into subsets of length 5, then applies a  <code><a href='get_recommendations.html'>get_recommendations</a></code> call,
-5 tracks at a time. This should generate a data frame of recommended tracks, with
-length equal to the supplied vector of track ids.</p>
+    <p>Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_recommendations_all</span><span class='op'>(</span><span class='va'>track_ids</span>, valence <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -145,7 +137,15 @@ length equal to the supplied vector of track ids.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a data frame containing recommendations from the Spotify API</p>
+    <p>Returns a data frame containing binded recommendations from the Spotify API in a
+single data frame.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a wrapper for the <code><a href='get_recommendations.html'>get_recommendations</a></code> function, which provides a workaround for
+the limit of 5 seed tracks per recommendation call. The function splits a supplied vector
+of track IDs into subsets of length 5, then applies a  <code><a href='get_recommendations.html'>get_recommendations</a></code> call,
+5 tracks at a time. This should generate a data frame of recommended tracks, with
+length equal to the supplied vector of track ids.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other personalization functions: 
@@ -157,57 +157,7 @@ length equal to the supplied vector of track ids.</p>
 <span class='fu'>get_recommendations_all</span><span class='op'>(</span>
    track_ids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"5VIpLopHgolKcSSj7JPCMA"</span>, <span class='st'>"3QRGYDFFUVb4qneE4DX1gR"</span><span class='op'>)</span>
    <span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                                                                                                                                                                   artists
-#&gt; 1          https://api.spotify.com/v1/artists/4kswme1Kl2NXRCJ326f14n, 4kswme1Kl2NXRCJ326f14n, WIES, artist, spotify:artist:4kswme1Kl2NXRCJ326f14n, https://open.spotify.com/artist/4kswme1Kl2NXRCJ326f14n
-#&gt; 2 https://api.spotify.com/v1/artists/02YLJJnWC7YQVixkjEBRn7, 02YLJJnWC7YQVixkjEBRn7, Billie Marten, artist, spotify:artist:02YLJJnWC7YQVixkjEBRn7, https://open.spotify.com/artist/02YLJJnWC7YQVixkjEBRn7
-#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        available_markets
-#&gt; 1 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
-#&gt; 2 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
-#&gt;   disc_number duration_ms explicit
-#&gt; 1           1      186093    FALSE
-#&gt; 2           1      288493    FALSE
-#&gt;                                                       href
-#&gt; 1 https://api.spotify.com/v1/tracks/1tXLnT5iIyCxe2Kc3M9wH4
-#&gt; 2 https://api.spotify.com/v1/tracks/35ZHHlrMKr7CijbD239b0g
-#&gt;                       id is_local                       name popularity
-#&gt; 1 1tXLnT5iIyCxe2Kc3M9wH4    FALSE        Soms Is Het Te Laat         39
-#&gt; 2 35ZHHlrMKr7CijbD239b0g    FALSE Milk &amp; Honey - Alt Version         51
-#&gt;                                                                                                   preview_url
-#&gt; 1 https://p.scdn.co/mp3-preview/66eb058f4f0a1502db6f1ecd83b2523e9caf1c96?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 2 https://p.scdn.co/mp3-preview/191491ef53ac90e04660c3c0c9f7c4a399f958da?cid=125a10da5fa94687b3d0913168bc3698
-#&gt;   track_number  type                                  uri album.album_type
-#&gt; 1            1 track spotify:track:1tXLnT5iIyCxe2Kc3M9wH4           SINGLE
-#&gt; 2           18 track spotify:track:35ZHHlrMKr7CijbD239b0g            ALBUM
-#&gt;                                                                                                                                                                                             album.artists
-#&gt; 1          https://api.spotify.com/v1/artists/4kswme1Kl2NXRCJ326f14n, 4kswme1Kl2NXRCJ326f14n, WIES, artist, spotify:artist:4kswme1Kl2NXRCJ326f14n, https://open.spotify.com/artist/4kswme1Kl2NXRCJ326f14n
-#&gt; 2 https://api.spotify.com/v1/artists/02YLJJnWC7YQVixkjEBRn7, 02YLJJnWC7YQVixkjEBRn7, Billie Marten, artist, spotify:artist:02YLJJnWC7YQVixkjEBRn7, https://open.spotify.com/artist/02YLJJnWC7YQVixkjEBRn7
-#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  album.available_markets
-#&gt; 1 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
-#&gt; 2 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
-#&gt;                                                 album.href
-#&gt; 1 https://api.spotify.com/v1/albums/5lttYzHsiNIQAW0DUuGL5K
-#&gt; 2 https://api.spotify.com/v1/albums/3WHmv6ghPoM7oA0rP6jMkT
-#&gt;                 album.id
-#&gt; 1 5lttYzHsiNIQAW0DUuGL5K
-#&gt; 2 3WHmv6ghPoM7oA0rP6jMkT
-#&gt;                                                                                                                                                                                                                       album.images
-#&gt; 1 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273517502e40f7cd1cab9908889, https://i.scdn.co/image/ab67616d00001e02517502e40f7cd1cab9908889, https://i.scdn.co/image/ab67616d00004851517502e40f7cd1cab9908889, 640, 300, 64
-#&gt; 2 640, 300, 64, https://i.scdn.co/image/ab67616d0000b273792675f3474149244b0a65a2, https://i.scdn.co/image/ab67616d00001e02792675f3474149244b0a65a2, https://i.scdn.co/image/ab67616d00004851792675f3474149244b0a65a2, 640, 300, 64
-#&gt;                                      album.name album.release_date
-#&gt; 1                           Soms Is Het Te Laat         2019-09-13
-#&gt; 2 Writing of Blues and Yellows (Deluxe Version)         2016-09-23
-#&gt;   album.release_date_precision album.total_tracks album.type
-#&gt; 1                          day                  1      album
-#&gt; 2                          day                 18      album
-#&gt;                              album.uri
-#&gt; 1 spotify:album:5lttYzHsiNIQAW0DUuGL5K
-#&gt; 2 spotify:album:3WHmv6ghPoM7oA0rP6jMkT
-#&gt;                             album.external_urls.spotify external_ids.isrc
-#&gt; 1 https://open.spotify.com/album/5lttYzHsiNIQAW0DUuGL5K      NLSB71900160
-#&gt; 2 https://open.spotify.com/album/3WHmv6ghPoM7oA0rP6jMkT      GBARL1600841
-#&gt;                                   external_urls.spotify
-#&gt; 1 https://open.spotify.com/track/1tXLnT5iIyCxe2Kc3M9wH4
-#&gt; 2 https://open.spotify.com/track/35ZHHlrMKr7CijbD239b0g</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error in get_spotify_access_token(): </span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

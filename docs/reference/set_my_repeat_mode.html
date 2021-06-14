@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off. — set_my_repeat_mode • spotifyr</title>
+<title>Set User Playback Mode — set_my_repeat_mode • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off. — set_my_repeat_mode" />
-<meta property="og:description" content="Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off." />
+<meta property="og:title" content="Set User Playback Mode — set_my_repeat_mode" />
+<meta property="og:description" content="Set the repeat mode for the user’s playback.
+Options are repeat-track, repeat-context, and off." />
 
 
 
@@ -72,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,13 +112,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.</h1>
+    <h1>Set User Playback Mode</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/player.R'><code>R/player.R</code></a></small>
     <div class="hidden name"><code>set_my_repeat_mode.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Set the repeat mode for the user’s playback. Options are repeat-track, repeat-context, and off.</p>
+    <p>Set the repeat mode for the user’s playback.
+Options are repeat-track, repeat-context, and off.</p>
     </div>
 
     <pre class="usage"><span class='fu'>set_my_repeat_mode</span><span class='op'>(</span>
@@ -149,6 +151,10 @@ in order to control playback.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the <code>PUT</code> request, with a meaningful
+error message if the operation was not successful.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other player functions: 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add one or more tracks to a user’s playlist. — add_tracks_to_playlist • spotifyr</title>
+<title>Add Tracks to User’s Playlist — add_tracks_to_playlist • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Add one or more tracks to a user’s playlist. — add_tracks_to_playlist" />
+<meta property="og:title" content="Add Tracks to User’s Playlist — add_tracks_to_playlist" />
 <meta property="og:description" content="Add one or more tracks to a user’s playlist." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add one or more tracks to a user’s playlist.</h1>
+    <h1>Add Tracks to User’s Playlist</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/playlists.R'><code>R/playlists.R</code></a></small>
     <div class="hidden name"><code>add_tracks_to_playlist.Rd</code></div>
     </div>
@@ -132,27 +132,45 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>playlist_id</th>
-      <td><p>Required. The <a href='https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids'>Spotify ID</a> for the playlist.</p></td>
+      <td><p>Required. The
+<a href='https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids'>Spotify ID</a>
+for the playlist.</p></td>
     </tr>
     <tr>
       <th>uris</th>
-      <td><p>Optional. A character vector of <a href='https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids'>Spotify track URIs</a> to add. For example <br />
-<code>uris = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"</code> <br />
-A maximum of 100 tracks can be added in one request.</p></td>
+      <td><p>Optional. A character vector of
+<a href='https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids'>Spotify track URIs</a> to add.
+For example: <br />
+uris = c("61H97kuKIpi6kJQRnUEIlh", "2q6vlgBJ432KeZZNt2ZZBV")<br />
+A maximum of 100 tracks can be added in one request.
+The uris will be formed as
+uris = c("spotify<!-- %3Atrack%3A61H97kuKIpi6kJQRnUEIlh", "spotify%3Atrack%3A2q6vlgBJ432KeZZNt2ZZBV"). -->
+If you have the <code>"spotify:track:"</code> preffix in your vector it will
+not be duplicated, otherwise it will be added.</p></td>
     </tr>
     <tr>
       <th>position</th>
       <td><p>Optional. Integer indicating the position to insert the tracks,
-a zero-based index. For example, to insert the tracks in the first position: <code>position = 0</code>; to insert the tracks in the third position: <code>position = 2</code> . If omitted, the tracks will be appended to the playlist. Tracks are added in the order they are listed in the query string or request body.</p></td>
+a zero-based index. For example, to insert the tracks in the first position:
+<code>position = 0</code>; to insert the tracks in the third position:
+ <code>position = 2</code>. If omitted, the tracks will be appended to the playlist.
+ Tracks are added in the order they are listed in the query string or request body.</p></td>
     </tr>
     <tr>
       <th>authorization</th>
       <td><p>Required. A valid access token from the Spotify Accounts service.
-See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
-Adding tracks to the current user’s public playlists requires authorization of the <code>playlist-modify-public</code> scope; adding tracks to the current user’s private playlist (including collaborative playlists) requires the <code>playlist-modify-private</code> scope. See <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>.</p></td>
+See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>.
+The access token must have been issued on behalf of the current user. <br />
+Adding tracks to the current user’s public playlists requires authorization of the
+<code>playlist-modify-public</code> scope; adding tracks to the current user’s private
+playlist (including collaborative playlists) requires the <code>playlist-modify-private</code> scope. See <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the
+<code>POST</code> request, with a meaningful error message if the operation was not successful.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other playlist functions: 

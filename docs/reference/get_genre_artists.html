@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Search for artists by genre — get_genre_artists" />
-<meta property="og:description" content="Get Spotify Catalog information about artists belonging to a given genre" />
+<meta property="og:description" content="Get Spotify Catalog information about artists belonging to a given genre." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Get Spotify Catalog information about artists belonging to a given genre</p>
+    <p>Get Spotify Catalog information about artists belonging to a given genre.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_genre_artists</span><span class='op'>(</span>
@@ -168,52 +168,15 @@ Use with limit to get the next page of search results.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame of the artists belonging to the genre with data and metadata about the
+artists in a tibble.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>get_genre_artists</span><span class='op'>(</span><span class='st'>'wonky'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $q
-#&gt; [1] "genre:\"wonky\""
-#&gt; 
-#&gt; $type
-#&gt; [1] "artist"
-#&gt; 
-#&gt; $market
-#&gt; NULL
-#&gt; 
-#&gt; $limit
-#&gt; [1] 20
-#&gt; 
-#&gt; $offset
-#&gt; [1] 0
-#&gt; 
-#&gt; $access_token
-#&gt; [1] "BQAOfMqk7tJS1V0AuLRGYEc9My79pR_TNDm0eZ5G1Ib3nj1rJgFV3adG-4bjv6EhvvDei-TQXMeX9prxqxo"
-#&gt; </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 20 x 12</span>
-#&gt;    genres  href    id     images name  popularity type  uri    external_urls.sp~
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            
-#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 29XOe~ <span style='color: #949494;'>&lt;df [</span>~ Flyi~         67 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 17Zu0~ <span style='color: #949494;'>&lt;df [</span>~ Knxw~         63 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 3VwKS~ <span style='color: #949494;'>&lt;df [</span>~ TOKi~         60 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2wouN~ <span style='color: #949494;'>&lt;df [</span>~ Com ~         56 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1PmVy~ <span style='color: #949494;'>&lt;df [</span>~ Lorn          58 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 4GcpB~ <span style='color: #949494;'>&lt;df [</span>~ Mnds~         56 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 3NUtp~ <span style='color: #949494;'>&lt;df [</span>~ Moun~         59 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 6y80I~ <span style='color: #949494;'>&lt;df [</span>~ Shlo~         54 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 0IVap~ <span style='color: #949494;'>&lt;df [</span>~ Nosa~         53 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1AEcp~ <span style='color: #949494;'>&lt;df [</span>~ DaM-~         52 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>11</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 0uCCB~ <span style='color: #949494;'>&lt;df [</span>~ Buri~         57 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>12</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2DcAd~ <span style='color: #949494;'>&lt;df [</span>~ Dirt~         49 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>13</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2wPDb~ <span style='color: #949494;'>&lt;df [</span>~ Oneo~         55 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>14</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2L2un~ <span style='color: #949494;'>&lt;df [</span>~ Teebs         50 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>15</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 06xa1~ <span style='color: #949494;'>&lt;df [</span>~ Mach~         53 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>16</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2sAlo~ <span style='color: #949494;'>&lt;df [</span>~ Onra          51 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>17</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1iqXh~ <span style='color: #949494;'>&lt;df [</span>~ xxyy~         48 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>18</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1MSxO~ <span style='color: #949494;'>&lt;df [</span>~ Phot~         49 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>19</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 3i7IU~ <span style='color: #949494;'>&lt;df [</span>~ Jonw~         48 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>20</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 6olWb~ <span style='color: #949494;'>&lt;df [</span>~ Huds~         51 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #949494;'># ... with 3 more variables: followers.href &lt;lgl&gt;, followers.total &lt;int&gt;,</span>
-#&gt; <span style='color: #949494;'>#   genre &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1.9 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error in get_spotify_access_token(): </span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

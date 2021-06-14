@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add the current user as a follower of a playlist. — follow_playlist • spotifyr</title>
+<title>Add Current User to Followers of Playlist. — follow_playlist • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Add the current user as a follower of a playlist. — follow_playlist" />
-<meta property="og:description" content="Add the current user as a follower of a playlist." />
+<meta property="og:title" content="Add Current User to Followers of Playlist. — follow_playlist" />
+<meta property="og:description" content="Add Current User to Followers of Playlist." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add the current user as a follower of a playlist.</h1>
+    <h1>Add Current User to Followers of Playlist.</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/follow.R'><code>R/follow.R</code></a></small>
     <div class="hidden name"><code>follow_playlist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Add the current user as a follower of a playlist.</p>
+    <p>Add Current User to Followers of Playlist.</p>
     </div>
 
     <pre class="usage"><span class='fu'>follow_playlist</span><span class='op'>(</span>
@@ -151,6 +151,10 @@ Note that the scopes you provide relate only to whether the current user is foll
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the <code>PUT</code> request, with a meaningful
+error message if the operation was not successful.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

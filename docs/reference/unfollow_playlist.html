@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove the current user as a follower of a playlist. — unfollow_playlist • spotifyr</title>
+<title>Remove Current User from Followers of Playlist. — unfollow_playlist • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Remove the current user as a follower of a playlist. — unfollow_playlist" />
-<meta property="og:description" content="Remove the current user as a follower of a playlist." />
+<meta property="og:title" content="Remove Current User from Followers of Playlist. — unfollow_playlist" />
+<meta property="og:description" content="Remove Current User from Followers of Playlist." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,13 +111,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove the current user as a follower of a playlist.</h1>
+    <h1>Remove Current User from Followers of Playlist.</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/follow.R'><code>R/follow.R</code></a></small>
     <div class="hidden name"><code>unfollow_playlist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Remove the current user as a follower of a playlist.</p>
+    <p>Remove Current User from Followers of Playlist.</p>
     </div>
 
     <pre class="usage"><span class='fu'>unfollow_playlist</span><span class='op'>(</span>
@@ -136,11 +136,19 @@
       <th>authorization</th>
       <td><p>Required. A valid access token from the Spotify Accounts service. See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details. Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
 Unfollowing a publicly followed playlist for a user requires authorization of the
-<code>playlist-modify-public</code> scope; unfollowing a privately followed playlist requires the <code>playlist-modify-private</code> scope. See See <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>. <br />
-Note that the scopes you provide relate only to whether the current user is following the playlist publicly or privately (i.e. showing others what they are following), not whether the playlist itself is public or private.</p></td>
+<code>playlist-modify-public</code> scope; unfollowing a privately followed playlist requires the
+<code>playlist-modify-private</code> scope. See
+<a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>. <br />
+Note that the scopes you provide relate only to whether the current user is following the
+playlist publicly or privately (i.e. showing others what they are following),
+not whether the playlist itself is public or private.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the <code>DELETE</code> request, with a meaningful
+error message if the operation was not successful.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

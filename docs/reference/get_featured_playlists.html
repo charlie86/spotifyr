@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab). — get_featured_playlists • spotifyr</title>
+<title>Get List of Spotify Featured Playlists — get_featured_playlists • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab). — get_featured_playlists" />
-<meta property="og:description" content="Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab)." />
+<meta property="og:title" content="Get List of Spotify Featured Playlists — get_featured_playlists" />
+<meta property="og:description" content="Get a list of Spotify featured playlists
+(as shown, for example, on a Spotify player’s ‘Browse’ tab)" />
 
 
 
@@ -72,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,13 +112,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).</h1>
+    <h1>Get List of Spotify Featured Playlists</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/browse.R'><code>R/browse.R</code></a></small>
     <div class="hidden name"><code>get_featured_playlists.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).</p>
+    <p>Get a list of Spotify featured playlists
+(as shown, for example, on a Spotify player’s ‘Browse’ tab)</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_featured_playlists</span><span class='op'>(</span>
@@ -171,175 +173,7 @@
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'>## Get new Swedish music</span>
 <span class='fu'>get_featured_playlists</span><span class='op'>(</span>country <span class='op'>=</span> <span class='st'>'SE'</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    collaborative
-#&gt; 1          FALSE
-#&gt; 2          FALSE
-#&gt; 3          FALSE
-#&gt; 4          FALSE
-#&gt; 5          FALSE
-#&gt; 6          FALSE
-#&gt; 7          FALSE
-#&gt; 8          FALSE
-#&gt; 9          FALSE
-#&gt; 10         FALSE
-#&gt; 11         FALSE
-#&gt; 12         FALSE
-#&gt;                                                                           description
-#&gt; 1                                  Äntligen fredag! Ny musik! Happy New Music Friday!
-#&gt; 2                                       It's Hits - bästa och största hitsen just nu.
-#&gt; 3                          Ricky Rich och Blizzy återförenas i Studio 100. Lyssna nu!
-#&gt; 4                                            De senaste hitsen du behöver ha koll på.
-#&gt; 5                                                 Akustiskt soundtrack till sommaren.
-#&gt; 6                                         Det bästa från svensk &amp; internationell pop.
-#&gt; 7                   Hör guldkornen från indievärlden just nu. Cover: Linn Koch-Emmery
-#&gt; 8                                        Här hör du de bästa svenska låtarna just nu.
-#&gt; 9  Våra bästa lokala stjärnor hela vägen från Kalix till Höör. Cover: Lars Winnerbäck
-#&gt; 10                                                             Låtar som är On Point.
-#&gt; 11                             Aktuell musik med etablerade och intressanta artister.
-#&gt; 12                                                    Svenska visor från förr och nu.
-#&gt;                                                           href
-#&gt; 1  https://api.spotify.com/v1/playlists/37i9dQZF1DXcecv7ESbOPu
-#&gt; 2  https://api.spotify.com/v1/playlists/37i9dQZF1DWTMYgB8TqtmR
-#&gt; 3  https://api.spotify.com/v1/playlists/37i9dQZF1DWXfgo3OOonqa
-#&gt; 4  https://api.spotify.com/v1/playlists/37i9dQZF1DXc4CrXgl8cum
-#&gt; 5  https://api.spotify.com/v1/playlists/37i9dQZF1DWWGRfB2jBjnV
-#&gt; 6  https://api.spotify.com/v1/playlists/37i9dQZF1DX7FV7CCq9byu
-#&gt; 7  https://api.spotify.com/v1/playlists/37i9dQZF1DWVwRuJjs9A3S
-#&gt; 8  https://api.spotify.com/v1/playlists/37i9dQZF1DX0ekBHz1NmKS
-#&gt; 9  https://api.spotify.com/v1/playlists/37i9dQZF1DWTmWCffxdqas
-#&gt; 10 https://api.spotify.com/v1/playlists/37i9dQZF1DX9jjafmzFEux
-#&gt; 11 https://api.spotify.com/v1/playlists/37i9dQZF1DX9kaiEDpvmoR
-#&gt; 12 https://api.spotify.com/v1/playlists/37i9dQZF1DXbknicFbzYx6
-#&gt;                        id
-#&gt; 1  37i9dQZF1DXcecv7ESbOPu
-#&gt; 2  37i9dQZF1DWTMYgB8TqtmR
-#&gt; 3  37i9dQZF1DWXfgo3OOonqa
-#&gt; 4  37i9dQZF1DXc4CrXgl8cum
-#&gt; 5  37i9dQZF1DWWGRfB2jBjnV
-#&gt; 6  37i9dQZF1DX7FV7CCq9byu
-#&gt; 7  37i9dQZF1DWVwRuJjs9A3S
-#&gt; 8  37i9dQZF1DX0ekBHz1NmKS
-#&gt; 9  37i9dQZF1DWTmWCffxdqas
-#&gt; 10 37i9dQZF1DX9jjafmzFEux
-#&gt; 11 37i9dQZF1DX9kaiEDpvmoR
-#&gt; 12 37i9dQZF1DXbknicFbzYx6
-#&gt;                                                                      images
-#&gt; 1  NA, https://i.scdn.co/image/ab67706f0000000357d3303a4e079b77c0eac4f0, NA
-#&gt; 2  NA, https://i.scdn.co/image/ab67706f00000003919243ea2d9c07a9469d5a91, NA
-#&gt; 3  NA, https://i.scdn.co/image/ab67706f00000003bb5fd9b8c70b6cf891a32b69, NA
-#&gt; 4  NA, https://i.scdn.co/image/ab67706f00000003810ab08ceb5bd9b0f573fa2d, NA
-#&gt; 5  NA, https://i.scdn.co/image/ab67706f00000003fe8b30220314a252351f1281, NA
-#&gt; 6  NA, https://i.scdn.co/image/ab67706f000000038263753d219cd7a51bdc49a5, NA
-#&gt; 7  NA, https://i.scdn.co/image/ab67706f00000003ad9e874972627fb2ecaf9fce, NA
-#&gt; 8  NA, https://i.scdn.co/image/ab67706f0000000340c523fe54ca813cacc2edc8, NA
-#&gt; 9  NA, https://i.scdn.co/image/ab67706f00000003b3706762de7098797567657e, NA
-#&gt; 10 NA, https://i.scdn.co/image/ab67706f000000033e2583d069841fae66ae47d6, NA
-#&gt; 11 NA, https://i.scdn.co/image/ab67706f000000035678172609436a286a6e8a54, NA
-#&gt; 12 NA, https://i.scdn.co/image/ab67706f000000033e97a2abad7762e55e444210, NA
-#&gt;                       name primary_color public
-#&gt; 1  New Music Friday Sweden            NA     NA
-#&gt; 2         It's Hits Sweden            NA     NA
-#&gt; 3                      100            NA     NA
-#&gt; 4   Get Your Hits Together            NA     NA
-#&gt; 5          Akustisk Sommar            NA     NA
-#&gt; 6                   Ny Pop            NA     NA
-#&gt; 7         Indie Highlights            NA     NA
-#&gt; 8           Made in Sweden            NA     NA
-#&gt; 9     Från norr till söder            NA     NA
-#&gt; 10                on point            NA     NA
-#&gt; 11                Aktuellt            NA     NA
-#&gt; 12          Visa och vemod            NA     NA
-#&gt;                                                             snapshot_id
-#&gt; 1  MTYyMzM2MjQwMCwwMDAwMDMwNTAwMDAwMTc5ZjdmMDZmOTgwMDAwMDE3OWY1NTA5ZmEz
-#&gt; 2  MTYyMzQwMTI4NiwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 3  MTYyMzQwMTI5NCwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 4  MTYyMzQwMTMyNiwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 5  MTYyMzQwMTI4NiwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 6  MTYyMzM2MjQwMCwwMDAwMDQwMDAwMDAwMTc5ZjdmMDZmYWQwMDAwMDE3OWY3OThjMjhk
-#&gt; 7  MTYyMzQwMTI4NiwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 8  MTYyMzQwMTI4NiwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 9  MTYyMzQwMTMwMSwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 10 MTYyMzQwMTI4OCwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 11 MTYyMzQwMTI4NSwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt; 12 MTYyMzQwMTI4NSwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl
-#&gt;        type                                     uri
-#&gt; 1  playlist spotify:playlist:37i9dQZF1DXcecv7ESbOPu
-#&gt; 2  playlist spotify:playlist:37i9dQZF1DWTMYgB8TqtmR
-#&gt; 3  playlist spotify:playlist:37i9dQZF1DWXfgo3OOonqa
-#&gt; 4  playlist spotify:playlist:37i9dQZF1DXc4CrXgl8cum
-#&gt; 5  playlist spotify:playlist:37i9dQZF1DWWGRfB2jBjnV
-#&gt; 6  playlist spotify:playlist:37i9dQZF1DX7FV7CCq9byu
-#&gt; 7  playlist spotify:playlist:37i9dQZF1DWVwRuJjs9A3S
-#&gt; 8  playlist spotify:playlist:37i9dQZF1DX0ekBHz1NmKS
-#&gt; 9  playlist spotify:playlist:37i9dQZF1DWTmWCffxdqas
-#&gt; 10 playlist spotify:playlist:37i9dQZF1DX9jjafmzFEux
-#&gt; 11 playlist spotify:playlist:37i9dQZF1DX9kaiEDpvmoR
-#&gt; 12 playlist spotify:playlist:37i9dQZF1DXbknicFbzYx6
-#&gt;                                       external_urls.spotify owner.display_name
-#&gt; 1  https://open.spotify.com/playlist/37i9dQZF1DXcecv7ESbOPu            Spotify
-#&gt; 2  https://open.spotify.com/playlist/37i9dQZF1DWTMYgB8TqtmR            Spotify
-#&gt; 3  https://open.spotify.com/playlist/37i9dQZF1DWXfgo3OOonqa            Spotify
-#&gt; 4  https://open.spotify.com/playlist/37i9dQZF1DXc4CrXgl8cum            Spotify
-#&gt; 5  https://open.spotify.com/playlist/37i9dQZF1DWWGRfB2jBjnV            Spotify
-#&gt; 6  https://open.spotify.com/playlist/37i9dQZF1DX7FV7CCq9byu            Spotify
-#&gt; 7  https://open.spotify.com/playlist/37i9dQZF1DWVwRuJjs9A3S            Spotify
-#&gt; 8  https://open.spotify.com/playlist/37i9dQZF1DX0ekBHz1NmKS            Spotify
-#&gt; 9  https://open.spotify.com/playlist/37i9dQZF1DWTmWCffxdqas            Spotify
-#&gt; 10 https://open.spotify.com/playlist/37i9dQZF1DX9jjafmzFEux            Spotify
-#&gt; 11 https://open.spotify.com/playlist/37i9dQZF1DX9kaiEDpvmoR            Spotify
-#&gt; 12 https://open.spotify.com/playlist/37i9dQZF1DXbknicFbzYx6            Spotify
-#&gt;                                  owner.href owner.id owner.type
-#&gt; 1  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 2  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 3  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 4  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 5  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 6  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 7  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 8  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 9  https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 10 https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 11 https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt; 12 https://api.spotify.com/v1/users/spotify  spotify       user
-#&gt;               owner.uri           owner.external_urls.spotify
-#&gt; 1  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 2  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 3  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 4  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 5  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 6  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 7  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 8  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 9  spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 10 spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 11 spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt; 12 spotify:user:spotify https://open.spotify.com/user/spotify
-#&gt;                                                           tracks.href
-#&gt; 1  https://api.spotify.com/v1/playlists/37i9dQZF1DXcecv7ESbOPu/tracks
-#&gt; 2  https://api.spotify.com/v1/playlists/37i9dQZF1DWTMYgB8TqtmR/tracks
-#&gt; 3  https://api.spotify.com/v1/playlists/37i9dQZF1DWXfgo3OOonqa/tracks
-#&gt; 4  https://api.spotify.com/v1/playlists/37i9dQZF1DXc4CrXgl8cum/tracks
-#&gt; 5  https://api.spotify.com/v1/playlists/37i9dQZF1DWWGRfB2jBjnV/tracks
-#&gt; 6  https://api.spotify.com/v1/playlists/37i9dQZF1DX7FV7CCq9byu/tracks
-#&gt; 7  https://api.spotify.com/v1/playlists/37i9dQZF1DWVwRuJjs9A3S/tracks
-#&gt; 8  https://api.spotify.com/v1/playlists/37i9dQZF1DX0ekBHz1NmKS/tracks
-#&gt; 9  https://api.spotify.com/v1/playlists/37i9dQZF1DWTmWCffxdqas/tracks
-#&gt; 10 https://api.spotify.com/v1/playlists/37i9dQZF1DX9jjafmzFEux/tracks
-#&gt; 11 https://api.spotify.com/v1/playlists/37i9dQZF1DX9kaiEDpvmoR/tracks
-#&gt; 12 https://api.spotify.com/v1/playlists/37i9dQZF1DXbknicFbzYx6/tracks
-#&gt;    tracks.total
-#&gt; 1           105
-#&gt; 2            50
-#&gt; 3            85
-#&gt; 4            80
-#&gt; 5            75
-#&gt; 6            70
-#&gt; 7            80
-#&gt; 8           100
-#&gt; 9            60
-#&gt; 10           75
-#&gt; 11           70
-#&gt; 12           55</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1.2 seconds...</span></div><div class='output co'>#&gt; <span class='message'>Request failed [400]. Retrying in 1 seconds...</span></div><div class='output co'>#&gt; <span class='error'>Error in get_spotify_access_token(): </span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

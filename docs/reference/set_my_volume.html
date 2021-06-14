@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Set the volume for the user’s current playback device. — set_my_volume • spotifyr</title>
+<title>Set User Device Volume — set_my_volume • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Set the volume for the user’s current playback device. — set_my_volume" />
+<meta property="og:title" content="Set User Device Volume — set_my_volume" />
 <meta property="og:description" content="Set the volume for the user’s current playback device." />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Set the volume for the user’s current playback device.</h1>
+    <h1>Set User Device Volume</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/player.R'><code>R/player.R</code></a></small>
     <div class="hidden name"><code>set_my_volume.Rd</code></div>
     </div>
@@ -121,7 +121,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>set_my_volume</span><span class='op'>(</span>
-  <span class='va'>volume_percent</span>,
+  volume_percent <span class='op'>=</span> <span class='fl'>50</span>,
   device_id <span class='op'>=</span> <span class='cn'>NULL</span>,
   authorization <span class='op'>=</span> <span class='fu'><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
@@ -131,8 +131,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>volume_percent</th>
-      <td><p>Required. Integer. The volume to set.
-Must be a value from 0 to 100 inclusive.</p></td>
+      <td><p>Required integer value. The volume to set.
+Must be a value from 0 to 100 inclusive. Defaults to <code>50</code></p></td>
     </tr>
     <tr>
       <th>device_id</th>
@@ -148,6 +148,10 @@ to control playback.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The response from the Spotify Web API on the <code>PUT</code> request, with a meaningful
+error message if the operation was not successful.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

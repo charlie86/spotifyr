@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Check if Users Follow a Playlist — check_users_following" />
-<meta property="og:description" content="Check if Users Follow a Playlist" />
+<meta property="og:description" content="Check if particular users are following a particular playlist." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Check if Users Follow a Playlist</p>
+    <p>Check if particular users are following a particular playlist.</p>
     </div>
 
     <pre class="usage"><span class='fu'>check_users_following</span><span class='op'>(</span>
@@ -145,6 +145,12 @@ Checking if the user is privately following a playlist is only possible for the 
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame containing three columns,<br />
+<code>"user_id"</code> for the particular users, <br />
+<code>"playlist_id"</code> for the particular playlists, <br />
+<code>"is_following"</code> as a logical, boolean variable.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other playlist functions: 

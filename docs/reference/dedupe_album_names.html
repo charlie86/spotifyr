@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Remove duplicate album names — dedupe_album_names" />
-<meta property="og:description" content="Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc)" />
+<meta property="og:description" content="Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc)." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
       </span>
     </div>
 
@@ -117,7 +117,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc)</p>
+    <p>Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc).</p>
     </div>
 
     <pre class="usage"><span class='fu'>dedupe_album_names</span><span class='op'>(</span>
@@ -131,7 +131,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>Dataframe with album name</p></td>
+      <td><p>Data frame with album name</p></td>
     </tr>
     <tr>
       <th>album_name_col</th>
@@ -143,6 +143,10 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The original data frame with distinct <code>album_name</code> rows, keeping as much as
+possible the original album release (and not re-releases.)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
