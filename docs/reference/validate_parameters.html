@@ -173,12 +173,22 @@ Use with <code>limit</code> to get the next set of items.</p></td>
       <th>locale</th>
       <td><p>Optional. The desired language, consisting of an
 <a href='https://en.wikipedia.org/wiki/ISO_639-1'>ISO 639-1</a> language code and
-an <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if <code>locale</code> is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The <code>locale</code> parameter, combined with the <code>country</code> parameter, may give odd results if not carefully matched. For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden but as German language strings.</p></td>
+an <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a>, joined by an underscore. For example: <code>es_MX</code>, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if <code>locale</code> is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The <code>locale</code> parameter,
+combined with the <code>country</code> parameter, may give odd results if not carefully matched.
+For example <code>country=SE&amp;locale=de_DE</code> will return a list of categories relevant to Sweden
+but as German language strings.</p></td>
     </tr>
     <tr>
       <th>volume_percent</th>
       <td><p>Required integer value. The volume to set.
 Must be a value from 0 to 100 inclusive. Defaults to <code>50</code>.</p></td>
+    </tr>
+    <tr>
+      <th>time_range</th>
+      <td><p>Optional. Over what time frame the affinities are computed.
+Valid values: long_term (calculated from several years of data and including all new data
+as it becomes available), <code>medium_term</code> (approximately last 6 months),
+<code>short_term</code> (approximately last 4 weeks). Default: <code>medium_term</code>.</p></td>
     </tr>
     <tr>
       <th>position_ms</th>
@@ -204,7 +214,6 @@ with meta information such as <code>"total"</code>, and <code>"limit"</code>. De
     <p>These assertions are called from various wrapper functions.  However, you can also call this
 function directly to make sure that you are adding (programatically) the correct
 parameters to a call.</p>
-
 <p>All <code>validate_parameters</code> parameters default to <code>NULL</code>.
 Asserts the correct parameter values for any values that are not <code>NULL</code>.</p>
 

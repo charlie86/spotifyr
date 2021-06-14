@@ -39,10 +39,18 @@ Use with \code{limit} to get the next set of items.}
 
 \item{locale}{Optional. The desired language, consisting of an
 \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and
-an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.}
+an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter,
+combined with the \code{country} parameter, may give odd results if not carefully matched.
+For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden
+but as German language strings.}
 
 \item{volume_percent}{Required integer value. The volume to set.
 Must be a value from 0 to 100 inclusive. Defaults to \code{50}.}
+
+\item{time_range}{Optional. Over what time frame the affinities are computed.
+Valid values: long_term (calculated from several years of data and including all new data
+as it becomes available), \code{medium_term} (approximately last 6 months),
+\code{short_term} (approximately last 4 weeks). Default: \code{medium_term}.}
 
 \item{position_ms}{Optional. Integer indicating from what position to start playback. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.}
 
@@ -63,7 +71,6 @@ API call parameters.
 These assertions are called from various wrapper functions.  However, you can also call this
 function directly to make sure that you are adding (programatically) the correct
 parameters to a call.
-
 
 All \code{\link{validate_parameters}} parameters default to \code{NULL}.
 Asserts the correct parameter values for any values that are not \code{NULL}.

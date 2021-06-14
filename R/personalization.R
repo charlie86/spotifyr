@@ -37,7 +37,7 @@ get_my_top_artists_or_tracks <- function(type = 'artists',
                                          include_meta_info = FALSE) {
 
 
-    ## Assertions in assertions.R
+ ## Assertions in assertions.R
     validate_parameters(limit=limit,
                         offset=offset,
                         time_range=time_range,

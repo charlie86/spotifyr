@@ -9,7 +9,10 @@ validate_locale(locale)
 \arguments{
 \item{locale}{Optional. The desired language, consisting of an
 \href{https://en.wikipedia.org/wiki/ISO_639-1}{ISO 639-1} language code and
-an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter, combined with the \code{country} parameter, may give odd results if not carefully matched. For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden but as German language strings.}
+an \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}, joined by an underscore. For example: \code{es_MX}, meaning "Spanish (Mexico)". Provide this parameter if you want the category strings returned in a particular language. Note that, if \code{locale} is not supplied, or if the specified language is not available, the category strings returned will be in the Spotify default language (American English). The \code{locale} parameter,
+combined with the \code{country} parameter, may give odd results if not carefully matched.
+For example \code{country=SE&locale=de_DE} will return a list of categories relevant to Sweden
+but as German language strings.}
 }
 \value{
 A boolean if the parameter matches the Spotify Web API parameter range.

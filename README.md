@@ -6,8 +6,7 @@
 <!-- badges: start -->
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen)](https://cran.r-project.org/package=spotifyr)
-![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen) [![CRAN
-status](https://www.r-pkg.org/badges/version/spotifyr)](https://CRAN.R-project.org/package=spotifyr)
+![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
 [![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/spotifyr)](https://cran.r-project.org/package=spotifyr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/spotifyr)](https://cran.r-project.org/package=spotifyr)

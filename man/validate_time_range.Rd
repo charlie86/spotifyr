@@ -6,6 +6,12 @@
 \usage{
 validate_time_range(time_range)
 }
+\arguments{
+\item{time_range}{Optional. Over what time frame the affinities are computed.
+Valid values: long_term (calculated from several years of data and including all new data
+as it becomes available), \code{medium_term} (approximately last 6 months),
+\code{short_term} (approximately last 4 weeks). Default: \code{medium_term}.}
+}
 \value{
 A boolean if the parameter matches the Spotify Web API parameter range.
 }
