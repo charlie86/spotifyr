@@ -18,7 +18,7 @@ get_artist <- function(id,
         access_token = authorization
     )
     url <- str_glue('{base_url}/{id}')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -51,7 +51,7 @@ get_artists <- function(ids,
         access_token = authorization
     )
 
-    res <- GET(base_url, query = params, encode = 'json')
+    res <- RETRY(verb = 'GET', base_url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -110,7 +110,7 @@ get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears
         access_token = authorization
     )
     url <- str_glue('{base_url}/{id}/albums')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -149,7 +149,7 @@ get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify
         access_token = authorization
     )
     url <- str_glue('{base_url}/{id}/top-tracks')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -179,7 +179,7 @@ get_related_artists <- function(id, authorization = get_spotify_access_token(), 
         access_token = authorization
     )
     url <- str_glue('{base_url}/{id}/related-artists')
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)

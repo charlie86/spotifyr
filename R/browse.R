@@ -21,7 +21,7 @@ get_categories <- function(authorization = get_spotify_access_token(),
         access_token = authorization
     )
 
-    res <- GET(url, query = params, encode = 'json')
+    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
@@ -62,7 +62,7 @@ get_category <- function(category_id,
         locale = locale,
         access_token = authorization
     )
-    res <- RETRY('GET', url, query = params, encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
@@ -117,9 +117,7 @@ get_category_playlists <- function(category_id = "party",
         access_token = authorization
     )
 
-    res <- RETRY('GET', query_url,
-                 query = params,
-                 encode = 'json')
+    res <- RETRY('GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
 
     stop_for_status(res)
 
@@ -179,9 +177,7 @@ get_new_releases <- function(country = NULL,
         access_token = authorization
     )
 
-    res <- RETRY('GET', base_url,
-                 query = params,
-                 encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
 
     stop_for_status(res)
 
@@ -265,9 +261,7 @@ get_featured_playlists <- function(locale = NULL,
         access_token = authorization
     )
 
-    res <- RETRY('GET', base_url,
-                 query = params,
-                 encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
 
     stop_for_status(res)
 
@@ -476,7 +470,7 @@ get_recommendations <- function(limit = 20,
         access_token = authorization
     )
 
-    res <- RETRY('GET', base_url, query = params, encode = 'json')
+    res <- RETRY('GET', base_url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
     stop_for_status(res)
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
     if (!include_seeds_in_response) {
