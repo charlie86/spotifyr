@@ -17,4 +17,8 @@
 # spotifyr 2.2.1
 * All functions in the documentation have well-specified return values.
 * Assertions are made with assertthat for more meaningful error messages. Use `validate_parameters()`.
-* Release candidate for CRAN.
+* Released on CRAN.
+
+# spotifyr 2.2.2
+* Fixes bug [#152](https://github.com/charlie86/spotifyr/issues/152). Thanks for the report, [\@pham-thomas](https://github.com/pham-thomas)!
+* Incorporates better API call, thanks for the valuable contribution,  [\@annnvv](https://github.com/annnvv)

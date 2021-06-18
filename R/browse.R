@@ -90,7 +90,7 @@ get_category <- function(category_id,
 #' Returns a data frame of results containing category playlists.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @examples
-#' \donttest{
+#' \donttest{3
 #' get_category_playlists('party', country = 'BR')
 #' }
 #' @export
