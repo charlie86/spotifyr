@@ -29,7 +29,7 @@ get_my_saved_albums <- function(limit = 20,
    validate_parameters(limit=limit,
                        offset=offset,
                        market=market,
-                       include_meta_info = include_meta_info )
+                       include_meta_info=include_meta_info )
 
     base_url <- 'https://api.spotify.com/v1/me/albums'
     if (!is.null(market)) {
@@ -88,10 +88,12 @@ get_my_saved_tracks <- function(limit = 20,
                                 authorization = get_spotify_authorization_code(),
                                 include_meta_info = FALSE) {
 
-    validate_parameters(market=market, limit=limit, offset = offset, include_meta_info)
+    validate_parameters(market=market,
+                        limit=limit,
+                        offset = offset,
+                        include_meta_info = include_meta_info)
 
     base_url <- 'https://api.spotify.com/v1/me/tracks'
-
 
     params <- list(
         limit = limit,
@@ -101,7 +103,8 @@ get_my_saved_tracks <- function(limit = 20,
 
     res <- RETRY('GET', base_url, query = params,
                  config(token = authorization),
-                 encode = 'json')
+                 encode = 'json',
+                 terminate_on = c(401, 403, 404))
 
     stop_for_status(res)
 
