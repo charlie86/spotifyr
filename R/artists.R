@@ -3,10 +3,14 @@
 #' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
-#' Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
+#' Returns a data frame of results containing album data.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
+#' @family artist functions
 #' @export
 
-get_artist <- function(id, authorization = get_spotify_access_token()) {
+get_artist <- function(id,
+                       authorization = get_spotify_access_token()
+                       ) {
 
     base_url <- 'https://api.spotify.com/v1/artists'
 
@@ -19,19 +23,26 @@ get_artist <- function(id, authorization = get_spotify_access_token()) {
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
 
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information for multiple artists identified by their Spotify IDs.
 #'
-#' @param ids Required. A character vector of the \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the artists. Maximum: 50 IDs.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
-#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
+#' @param ids Required. A character vector of the
+#' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for the artists. Maximum: 50 IDs.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param include_meta_info Optional. Boolean indicating whether to include full result,
+#' with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
-#' Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
+#' Returns a data frame of results containing artist data.
+#' See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
+#' @family artist functions
 #' @export
 
-get_artists <- function(ids, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_artists <- function(ids,
+                        authorization = get_spotify_access_token(),
+                        include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/artists'
 
@@ -39,6 +50,7 @@ get_artists <- function(ids, authorization = get_spotify_access_token(), include
         ids = paste(ids, collapse = ','),
         access_token = authorization
     )
+
     res <- GET(base_url, query = params, encode = 'json')
     stop_for_status(res)
 
@@ -48,7 +60,7 @@ get_artists <- function(ids, authorization = get_spotify_access_token(), include
         res <- res$artists
     }
 
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information for multiple artists identified by their Spotify IDs.
@@ -77,6 +89,7 @@ get_artists <- function(ids, authorization = get_spotify_access_token(), include
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
+#' @family artist functions
 #' @export
 
 get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears_on', 'compilation'), market = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
@@ -105,7 +118,7 @@ get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears
     if (!include_meta_info) {
         res <- res$items
     }
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information about an artist’s top tracks by country.
@@ -118,6 +131,7 @@ get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
+#' @family artist functions
 #' @export
 
 get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify_access_token(), include_meta_info = FALSE) {
@@ -144,7 +158,7 @@ get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify
         res <- res$tracks
     }
 
-    return(res)
+    res
 }
 
 #' Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.
@@ -154,6 +168,7 @@ get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
+#' @family artist functions
 #' @export
 
 get_related_artists <- function(id, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
@@ -173,5 +188,5 @@ get_related_artists <- function(id, authorization = get_spotify_access_token(), 
         res <- res$artists
     }
 
-    return(res)
+    res
 }

@@ -10,7 +10,10 @@ An object of class \code{character} of length 12.
 \usage{
 pitch_class_lookup
 }
+\value{
+A character vector of the pitch class names
+}
 \description{
 Pitch class notation lookup
 }
-\keyword{datasets}
+\keyword{internal}

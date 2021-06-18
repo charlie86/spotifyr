@@ -2,7 +2,7 @@
 % Please edit documentation in R/extensions.R
 \name{get_playlist_audio_features}
 \alias{get_playlist_audio_features}
-\title{Get features and popularity for all of a given set of playlists on Spotify}
+\title{Get Features and Popularity of Playlists on Spotify}
 \usage{
 get_playlist_audio_features(
   username,
@@ -13,20 +13,35 @@ get_playlist_audio_features(
 \arguments{
 \item{username}{String of Spotify username. Can be found on the Spotify app.}
 
-\item{playlist_uris}{Character vector of Spotify playlist uris. Can be found within the Spotify App}
+\item{playlist_uris}{Character vector of Spotify playlist uris.
+Can be found within the Spotify App}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+}
+\value{
+A data frame with the audio featurees and popularity variables of playlists.
 }
 \description{
-This function returns the popularity and audio features for every song for a given set of playlists on Spotify
+This function returns the popularity and audio features for every song for a given set of
+playlists on Spotify
 }
 \examples{
-\dontrun{
+\donttest{
 playlist_username <- 'spotify'
 playlist_uris <- c('37i9dQZF1E9T1oFsQFg98K', '37i9dQZF1CyQNOI21QVf3p')
 playlist_audio_features <- get_playlist_audio_features(playlist_username, playlist_uris)
 }
 }
+\seealso{
+Other musicology functions: 
+\code{\link{get_artist_audio_features}()},
+\code{\link{get_genre_artists}()},
+\code{\link{get_track_audio_analysis}()},
+\code{\link{get_track_audio_features}()},
+\code{\link{get_user_audio_features}()}
+}
+\concept{musicology functions}
 \keyword{audio}
 \keyword{features}
 \keyword{playlists}

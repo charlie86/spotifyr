@@ -2,21 +2,29 @@
 % Please edit documentation in R/player.R
 \name{set_my_volume}
 \alias{set_my_volume}
-\title{Set the volume for the user’s current playback device.}
+\title{Set User Device Volume}
 \usage{
 set_my_volume(
-  volume_percent,
+  volume_percent = 50,
   device_id = NULL,
   authorization = get_spotify_authorization_code()
 )
 }
 \arguments{
-\item{volume_percent}{Required. Integer. The volume to set. Must be a value from 0 to 100 inclusive.}
+\item{volume_percent}{Required integer value. The volume to set.
+Must be a value from 0 to 100 inclusive. Defaults to \code{50}.}
 
-\item{device_id}{Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.}
+\item{device_id}{Optional. The id of the device this command is targeting.
+If not supplied, the user’s currently active device is the target.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+The access token must have the \code{user-modify-playback-state} scope authorized in order
+to control playback.}
+}
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
 }
 \description{
 Set the volume for the user’s current playback device.

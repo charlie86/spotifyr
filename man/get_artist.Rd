@@ -12,8 +12,18 @@ get_artist(id, authorization = get_spotify_access_token())
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-Returns a data frame of results containing album data. See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
+Returns a data frame of results containing album data.
+See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
 }
 \description{
 Get Spotify catalog information for a single artist identified by their unique Spotify ID.
 }
+\seealso{
+Other artist functions: 
+\code{\link{get_artist_albums}()},
+\code{\link{get_artist_top_tracks}()},
+\code{\link{get_artists}()},
+\code{\link{get_my_followed_artists}()},
+\code{\link{get_related_artists}()}
+}
+\concept{artist functions}

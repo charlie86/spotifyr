@@ -19,6 +19,24 @@ check_users_following(
 Following a playlist can be done publicly or privately. Checking if a user publicly follows a playlist doesn’t require any scopes; if the user is publicly following the playlist, this endpoint returns \code{TRUE}. \cr
 Checking if the user is privately following a playlist is only possible for the current user when that user has granted access to the \code{playlist-read-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
 }
-\description{
-Check if Users Follow a Playlist
+\value{
+A data frame containing three columns,\cr
+\code{"user_id"} for the particular users, \cr
+\code{"playlist_id"} for the particular playlists, \cr
+\code{"is_following"} as a logical, boolean variable.
 }
+\description{
+Check if particular users are following a particular playlist.
+}
+\seealso{
+Other playlist functions: 
+\code{\link{add_tracks_to_playlist}()},
+\code{\link{change_playlist_details}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{remove_tracks_from_playlist}()},
+\code{\link{tidy}()}
+}
+\concept{playlist functions}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/follow.R
 \name{follow_playlist}
 \alias{follow_playlist}
-\title{Add the current user as a follower of a playlist.}
+\title{Add Current User to Followers of Playlist.}
 \usage{
 follow_playlist(
   playlist_id,
@@ -11,14 +11,24 @@ follow_playlist(
 )
 }
 \arguments{
-\item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist. Any playlist can be followed, regardless of its \href{https://developer.spotify.com/documentation/general/guides/working-with-playlists/#public-private-and-collaborative-status}{public/private status}, as long as you know its playlist ID.}
+\item{playlist_id}{Required.
+The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} of the playlist. Any playlist can be followed, regardless of its \href{https://developer.spotify.com/documentation/general/guides/working-with-playlists/#public-private-and-collaborative-status}{public/private status}, as long as you know its playlist ID.}
 
-\item{public}{Optional. Defaults to \code{TRUE}. If \code{TRUE} the playlist will be included in the user's public playlists, if \code{FALSE} it will remain private. o be able to follow playlists privately, the user must have granted the \code{playlist-modify-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope}.}
+\item{public}{Optional. Defaults to \code{TRUE}.
+If \code{TRUE} the playlist will be included in the user's public playlists,
+if \code{FALSE} it will remain private. o be able to follow playlists privately, the user must have granted the \code{playlist-modify-private} \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{scope}.}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-Following a publicly followed playlist for a user requires authorization of the \code{playlist-modify-public} scope; following a privately followed playlist requires the \code{playlist-modify-private} scope. See See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}. \cr
+Following a publicly followed playlist for a user requires authorization of the
+\code{playlist-modify-public} scope; following a privately followed playlist requires the
+\code{playlist-modify-private} scope. See
+\href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}. \cr
 Note that the scopes you provide relate only to whether the current user is following the playlist publicly or privately (i.e. showing others what they are following), not whether the playlist itself is public or private.}
 }
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
+}
 \description{
-Add the current user as a follower of a playlist.
+Add Current User to Followers of Playlist.
 }

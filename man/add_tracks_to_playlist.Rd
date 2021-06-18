@@ -2,7 +2,7 @@
 % Please edit documentation in R/playlists.R
 \name{add_tracks_to_playlist}
 \alias{add_tracks_to_playlist}
-\title{Add one or more tracks to a user’s playlist.}
+\title{Add Tracks to User’s Playlist}
 \usage{
 add_tracks_to_playlist(
   playlist_id,
@@ -12,17 +12,49 @@ add_tracks_to_playlist(
 )
 }
 \arguments{
-\item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}
+\item{playlist_id}{Required. The
+\href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID}
+for the playlist.}
 
-\item{uris}{Optional. A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add. For example \cr
-\code{uris = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"} \cr
-A maximum of 100 tracks can be added in one request.}
+\item{uris}{Optional. A character vector of
+\href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify track URIs} to add.
+For example: \cr
+uris = c("61H97kuKIpi6kJQRnUEIlh", "2q6vlgBJ432KeZZNt2ZZBV")\cr
+A maximum of 100 tracks can be added in one request.
+The uris will be formed as
+uris = c("spotify%3Atrack%3A61H97kuKIpi6kJQRnUEIlh", "spotify%3Atrack%3A2q6vlgBJ432KeZZNt2ZZBV").
+If you have the \code{"spotify:track:"} preffix in your vector it will
+not be duplicated, otherwise it will be added.}
 
-\item{position}{Optional. Integer indicating the position to insert the tracks, a zero-based index. For example, to insert the tracks in the first position: \code{position = 0}; to insert the tracks in the third position: \code{position = 2} . If omitted, the tracks will be appended to the playlist. Tracks are added in the order they are listed in the query string or request body.}
+\item{position}{Optional. Integer indicating the position to insert the tracks,
+a zero-based index. For example, to insert the tracks in the first position:
+\code{position = 0}; to insert the tracks in the third position:
+ \code{position = 2}. If omitted, the tracks will be appended to the playlist.
+ Tracks are added in the order they are listed in the query string or request body.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-Adding tracks to the current user’s public playlists requires authorization of the \code{playlist-modify-public} scope; adding tracks to the current user’s private playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}.
+The access token must have been issued on behalf of the current user. \cr
+Adding tracks to the current user’s public playlists requires authorization of the
+\code{playlist-modify-public} scope; adding tracks to the current user’s private
+playlist (including collaborative playlists) requires the \code{playlist-modify-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
+}
+\value{
+The response from the Spotify Web API on the
+\code{POST} request, with a meaningful error message if the operation was not successful.
 }
 \description{
 Add one or more tracks to a user’s playlist.
 }
+\seealso{
+Other playlist functions: 
+\code{\link{change_playlist_details}()},
+\code{\link{check_users_following}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{remove_tracks_from_playlist}()},
+\code{\link{tidy}()}
+}
+\concept{playlist functions}

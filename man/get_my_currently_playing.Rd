@@ -10,14 +10,33 @@ get_my_currently_playing(
 )
 }
 \arguments{
-\item{market}{An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
+\item{market}{An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}.
+Provide this parameter if you want to apply \
+href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-The access token must have the \code{user-read-currently-playing} and/or \code{user-read-playback-state} scope authorized in order to read information.}
+The access token must have the
+\code{user-read-currently-playing} and/or \code{user-read-playback-state} scope authorized in order to read information.}
 }
 \value{
-Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a data frame of results containing user profile information.
+See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
 Get the object currently being played on the user’s Spotify account.
 }
+\seealso{
+Other player functions: 
+\code{\link{get_my_current_playback}()},
+\code{\link{get_my_devices}()},
+\code{\link{get_my_recently_played}()},
+\code{\link{pause_my_playback}()},
+\code{\link{seek_to_position}()},
+\code{\link{set_my_repeat_mode}()},
+\code{\link{skip_my_playback_previous}()},
+\code{\link{skip_my_playback}()},
+\code{\link{start_my_playback}()},
+\code{\link{toggle_my_shuffle}()},
+\code{\link{transfer_my_playback}()}
+}
+\concept{player functions}

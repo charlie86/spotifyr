@@ -15,6 +15,25 @@ skip_my_playback_previous(
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
 }
+\value{
+The response from the Spotify Web API on the \code{POST} request, with a meaningful
+error message if the operation was not successful.
+}
 \description{
 Skips to previous track in the user’s queue.
 }
+\seealso{
+Other player functions: 
+\code{\link{get_my_current_playback}()},
+\code{\link{get_my_currently_playing}()},
+\code{\link{get_my_devices}()},
+\code{\link{get_my_recently_played}()},
+\code{\link{pause_my_playback}()},
+\code{\link{seek_to_position}()},
+\code{\link{set_my_repeat_mode}()},
+\code{\link{skip_my_playback}()},
+\code{\link{start_my_playback}()},
+\code{\link{toggle_my_shuffle}()},
+\code{\link{transfer_my_playback}()}
+}
+\concept{player functions}

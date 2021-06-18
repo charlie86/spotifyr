@@ -31,15 +31,23 @@ Maximum offset (including limit): 10,000. \cr
 Use with limit to get the next page of albums.}
 
 \item{market}{Optional. \cr
-An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
+An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing album data. See the official API \href{https://developer.spotify.com/documentation/web-api/reference/albums/get-several-albums/}{documentation} for more information.
+Returns a data frame of results containing album data. See the official API
+\href{https://developer.spotify.com/documentation/web-api/reference/albums/get-several-albums/}{documentation} for more information.
 }
 \description{
 Get Spotify catalog information about an album’s tracks. Optional parameters can be used to limit the number of tracks returned.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_playlist_tracks}()},
+\code{\link{get_tracks}()},
+\code{\link{get_track}()}
+}
+\concept{track functions}

@@ -16,11 +16,32 @@ transfer_my_playback(
 \item{play}{Optional. \cr
 \code{TRUE}: Ensure playback happens on new device \cr
 \code{FALSE} (default): keep the current playback state \cr
-Note that a value of \code{FALSE} for the \code{play} parameter when also transferring to another \code{device_id} will not pause playback. To ensure that playback is paused on the new device you should send a pause command to the currently active device before transferring to the new \code{device_id}.}
+Note that a value of \code{FALSE} for the \code{play} parameter when also
+transferring to another \code{device_id} will not pause playback. To ensure that playback is paused on the new device you should send a pause command to the currently active device before transferring to the new \code{device_id}.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
+}
+\value{
+The response from the Spotify Web API on the \code{PUT} request, with a meaningful
+error message if the operation was not successful.
 }
 \description{
 Transfer playback to a new device and determine if it should start playing.
 }
+\seealso{
+Other player functions: 
+\code{\link{get_my_current_playback}()},
+\code{\link{get_my_currently_playing}()},
+\code{\link{get_my_devices}()},
+\code{\link{get_my_recently_played}()},
+\code{\link{pause_my_playback}()},
+\code{\link{seek_to_position}()},
+\code{\link{set_my_repeat_mode}()},
+\code{\link{skip_my_playback_previous}()},
+\code{\link{skip_my_playback}()},
+\code{\link{start_my_playback}()},
+\code{\link{toggle_my_shuffle}()}
+}
+\concept{player functions}

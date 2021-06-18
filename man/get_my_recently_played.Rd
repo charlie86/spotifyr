@@ -13,20 +13,45 @@ get_my_recently_played(
 )
 }
 \arguments{
-\item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}
+\item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1.
+Maximum: 50.}
 
-\item{after}{Optional. A Unix timestamp in milliseconds. Returns all items after (but not including) this cursor position. If \code{after} is specified, \code{before} must not be specified.}
+\item{after}{Optional. A Unix timestamp in milliseconds. Returns all items after
+(but not including) this cursor position.
+If \code{after} is specified, \code{before} must not
+be specified.}
 
-\item{before}{Optional. A Unix timestamp in milliseconds. Returns all items before (but not including) this cursor position. If \code{before} is specified, \code{after} must not be specified.}
+\item{before}{Optional. A Unix timestamp in milliseconds. Returns all items before
+(but not including) this cursor position. If \code{before} is specified, \code{after} must not
+be specified.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the
+\href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr}
 
-\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"before"}, \code{"after"}, and \code{"limit"}. Defaults to \code{FALSE}.
-The access token must have the \code{user-read-recently-played} scope authorized in order to read the user's recently played tracks.}
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result,
+with meta information such as \code{"before"}, \code{"after"}, and \code{"limit"}. Defaults to \code{FALSE}.
+The access token must have the \code{user-read-recently-played} scope authorized in order to
+read the user's recently played tracks.}
 }
 \value{
-Returns a list or data frame of results containing the most recently played tracks for the current user.
+Returns a list or data frame of results containing the most recently played tracks for the
+current user.
 }
 \description{
 Get Current User's Recently Played Tracks
 }
+\seealso{
+Other player functions: 
+\code{\link{get_my_current_playback}()},
+\code{\link{get_my_currently_playing}()},
+\code{\link{get_my_devices}()},
+\code{\link{pause_my_playback}()},
+\code{\link{seek_to_position}()},
+\code{\link{set_my_repeat_mode}()},
+\code{\link{skip_my_playback_previous}()},
+\code{\link{skip_my_playback}()},
+\code{\link{start_my_playback}()},
+\code{\link{toggle_my_shuffle}()},
+\code{\link{transfer_my_playback}()}
+}
+\concept{player functions}

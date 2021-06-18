@@ -2,7 +2,7 @@
 % Please edit documentation in R/playlists.R
 \name{get_playlist_tracks}
 \alias{get_playlist_tracks}
-\title{Get full details of the tracks of a playlist owned by a Spotify user.}
+\title{Get Details of User Playlist Tracks.}
 \usage{
 get_playlist_tracks(
   playlist_id,
@@ -15,9 +15,12 @@ get_playlist_tracks(
 )
 }
 \arguments{
-\item{playlist_id}{Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}
+\item{playlist_id}{Required.
+The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.}
 
-\item{fields}{Optional. Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. For example, to get just the playlist’s creation date and album information: \code{fields = c("added_at", "track.album")}. A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
+\item{fields}{Optional. Filters for the query: a comma-separated list of the fields
+to return. If omitted, all fields are returned.
+For example, to get just the playlist’s creation date and album information: \code{fields = c("added_at", "track.album")}. A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: \cr
 \code{fields = "tracks.items(added_at,added_by.id)"}. Use multiple parentheses to drill down into nested objects, for example: \cr
 \code{fields = "tracks.items(track(name,href,album(name,href)))"}. Fields can be excluded by prefixing them with an exclamation mark, for example: \cr
 \code{fields = "tracks.items(track(name,href,album(!name,href)))"}.}
@@ -33,15 +36,28 @@ The index of the first track to return. \cr
 Default: 0 (the first object). \cr}
 
 \item{market}{Optional. \cr
-An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
+An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}.
+Provide this parameter if you want to apply
+\href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
-\item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
+\item{include_meta_info}{Optional. Boolean indicating whether to include full result,
+with meta information such as \code{"total"}, and \code{"limit"}.
+Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a data frame of results containing user profile information.
+See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
 Get full details of the tracks of a playlist owned by a Spotify user.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_album_tracks}()},
+\code{\link{get_tracks}()},
+\code{\link{get_track}()}
+}
+\concept{track functions}

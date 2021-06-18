@@ -18,17 +18,40 @@ start_my_playback(
 
 \item{context_uri}{Optional. String of the Spotify URI of the context to play. Valid contexts are albums, artists, playlists. Example \code{context_uri = "spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}.}
 
-\item{uris}{Optional. A character vector of the Spotify track URIs to play. For example: \code{"uris": c("spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M")}.}
+\item{uris}{Optional. A character vector of the Spotify track URIs to play.
+For example: \code{"uris": c("spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M")}.}
 
 \item{offset}{Optional. A named list indicating from where the context playback should start. Only available when \code{context_uri} corresponds to an album or playlist object, or when the \code{uris} parameter is used. \cr
-\code{"position"} is zero based and can't be negative. Example: \code{"offset" = list("position" = 5)}. \cr
-\code{"uri"} is a string representing the uri of the item to start at. Example: \code{"offset" = list("uri" = "spotify:track:1301WleyT98MSxVHPZCA6M")}.}
+\code{"position"} is zero based and can't be negative. Example:
+\code{"offset" = list("position" = 5)}. \cr
+\code{"uri"} is a string representing the uri of the item to start at.
+Example: \code{"offset" = list("uri" = "spotify:track:1301WleyT98MSxVHPZCA6M")}.}
 
 \item{position_ms}{Optional. Integer indicating from what position to start playback. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
-The access token must have the \code{user-modify-playback-state} scope authorized in order to control playback.}
+The access token must have the \code{user-modify-playback-state} scope authorized
+in order to control playback.}
+}
+\value{
+The response from the Spotify Web API on the \code{POST} request, with a meaningful
+error message if the operation was not successful.
 }
 \description{
 Skips to previous track in the user’s queue.
 }
+\seealso{
+Other player functions: 
+\code{\link{get_my_current_playback}()},
+\code{\link{get_my_currently_playing}()},
+\code{\link{get_my_devices}()},
+\code{\link{get_my_recently_played}()},
+\code{\link{pause_my_playback}()},
+\code{\link{seek_to_position}()},
+\code{\link{set_my_repeat_mode}()},
+\code{\link{skip_my_playback_previous}()},
+\code{\link{skip_my_playback}()},
+\code{\link{toggle_my_shuffle}()},
+\code{\link{transfer_my_playback}()}
+}
+\concept{player functions}
