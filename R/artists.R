@@ -18,7 +18,13 @@ get_artist <- function(id,
         access_token = authorization
     )
     url <- str_glue('{base_url}/{id}')
-    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
+
+    res <- RETRY(verb = 'GET', url,
+                 query = params,
+                 encode = 'json',
+                 terminate_on = c(401, 403, 404)
+                 )
+
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
