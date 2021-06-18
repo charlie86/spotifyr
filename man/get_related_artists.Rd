@@ -4,8 +4,11 @@
 \alias{get_related_artists}
 \title{Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.}
 \usage{
-get_related_artists(id, authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+get_related_artists(
+  id,
+  authorization = get_spotify_access_token(),
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.}
@@ -20,3 +23,12 @@ Returns a data frame of results containing artist data. See \url{https://develop
 \description{
 Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.
 }
+\seealso{
+Other artist functions: 
+\code{\link{get_artist_albums}()},
+\code{\link{get_artist_top_tracks}()},
+\code{\link{get_artists}()},
+\code{\link{get_artist}()},
+\code{\link{get_my_followed_artists}()}
+}
+\concept{artist functions}

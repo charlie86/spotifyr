@@ -4,23 +4,36 @@
 \alias{get_tracks}
 \title{Get Spotify catalog information for a single track identified by its unique Spotify ID.}
 \usage{
-get_tracks(ids, market = NULL,
+get_tracks(
+  ids,
+  market = NULL,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{ids}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.}
 
 \item{market}{Optional. \cr
-An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
+An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}.
+Provide this parameter if you want to apply
+\href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing track data. See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
+Returns a data frame of results containing track data.
+See \url{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-tracks/} for more information.
 }
 \description{
 Get Spotify catalog information for a single track identified by its unique Spotify ID.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_album_tracks}()},
+\code{\link{get_playlist_tracks}()},
+\code{\link{get_track}()}
+}
+\concept{track functions}

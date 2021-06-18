@@ -4,38 +4,78 @@
 \alias{get_recommendations}
 \title{Create a playlist-style listening experience based on seed artists, tracks and genres.}
 \usage{
-get_recommendations(limit = 20, market = NULL, seed_artists = NULL,
-  seed_genres = NULL, seed_tracks = NULL, max_acousticness = NULL,
-  max_danceability = NULL, max_duration_ms = NULL, max_energy = NULL,
-  max_instrumentalness = NULL, max_key = NULL, max_liveness = NULL,
-  max_loudness = NULL, max_mode = NULL, max_popularity = NULL,
-  max_speechiness = NULL, max_tempo = NULL,
-  max_time_signature = NULL, max_valence = NULL,
-  min_acousticness = NULL, min_danceability = NULL,
-  min_duration_ms = NULL, min_energy = NULL,
-  min_instrumentalness = NULL, min_key = NULL, min_liveness = NULL,
-  min_loudness = NULL, min_mode = NULL, min_popularity = NULL,
-  min_speechiness = NULL, min_tempo = NULL,
-  min_time_signature = NULL, min_valence = NULL,
-  target_acousticness = NULL, target_danceability = NULL,
-  target_duration_ms = NULL, target_energy = NULL,
-  target_instrumentalness = NULL, target_key = NULL,
-  target_liveness = NULL, target_loudness = NULL, target_mode = NULL,
-  target_popularity = NULL, target_speechiness = NULL,
-  target_tempo = NULL, target_time_signature = NULL,
-  target_valence = NULL, authorization = get_spotify_access_token(),
-  include_seeds_in_response = FALSE)
+get_recommendations(
+  limit = 20,
+  market = NULL,
+  seed_artists = NULL,
+  seed_genres = NULL,
+  seed_tracks = NULL,
+  max_acousticness = NULL,
+  max_danceability = NULL,
+  max_duration_ms = NULL,
+  max_energy = NULL,
+  max_instrumentalness = NULL,
+  max_key = NULL,
+  max_liveness = NULL,
+  max_loudness = NULL,
+  max_mode = NULL,
+  max_popularity = NULL,
+  max_speechiness = NULL,
+  max_tempo = NULL,
+  max_time_signature = NULL,
+  max_valence = NULL,
+  min_acousticness = NULL,
+  min_danceability = NULL,
+  min_duration_ms = NULL,
+  min_energy = NULL,
+  min_instrumentalness = NULL,
+  min_key = NULL,
+  min_liveness = NULL,
+  min_loudness = NULL,
+  min_mode = NULL,
+  min_popularity = NULL,
+  min_speechiness = NULL,
+  min_tempo = NULL,
+  min_time_signature = NULL,
+  min_valence = NULL,
+  target_acousticness = NULL,
+  target_danceability = NULL,
+  target_duration_ms = NULL,
+  target_energy = NULL,
+  target_instrumentalness = NULL,
+  target_key = NULL,
+  target_liveness = NULL,
+  target_loudness = NULL,
+  target_mode = NULL,
+  target_popularity = NULL,
+  target_speechiness = NULL,
+  target_tempo = NULL,
+  target_time_signature = NULL,
+  target_valence = NULL,
+  authorization = get_spotify_access_token(),
+  include_seeds_in_response = FALSE
+)
 }
 \arguments{
 \item{limit}{Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.}
 
-\item{market}{Optional. An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}. Provide this parameter if you want to apply \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{Track Relinking}. Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking, the generated results may not precisely match the filters applied. Original, non-relinked tracks are available via the \code{linked_from} attribute of the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide}{relinked track response}.}
+\item{market}{Optional.
+An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}.
+Provide this parameter if you want to apply
+\href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}.
+Because \code{min_*}, \code{max_*} and \code{target_*} are applied to pools before relinking,
+the generated results may not precisely match the filters applied. Original, non-relinked tracks
+are available via the \code{linked_from} attribute of
+the \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{relinked track response}.}
 
-\item{seed_artists}{A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for seed artists. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.}
+\item{seed_artists}{A character vector of
+\href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for seed artists. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.}
 
-\item{seed_genres}{A character vector of any genres in the set of \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/#available-genre-seeds}{available genre seeds}. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.}
+\item{seed_genres}{A character vector of any genres in the set of
+\href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/#available-genre-seeds}{available genre seeds}. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.}
 
-\item{seed_tracks}{A character vector of \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for a seed track. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.}
+\item{seed_tracks}{A character vector of
+\href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify IDs} for a seed track. Up to 5 seed values may be provided in any combination of \code{seed_artists}, \code{seed_tracks} and \code{seed_genres}.}
 
 \item{max_acousticness}{Optional. Numeric value between 0 and 1 indicating a hard ceiling on recommended tracks' acousticness.}
 
@@ -126,14 +166,21 @@ get_recommendations(limit = 20, market = NULL, seed_artists = NULL,
 \item{include_seeds_in_response}{Optional. Boolean for whether to include seed object in response. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results recommendations. See the official \href{https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/}{Spotify Web API documentation} for more information.
+Returns a data frame of results recommendations. See the official
+\href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{Spotify Web API documentation} for more information.
 }
 \description{
-Create a playlist-style listening experience based on seed artists, tracks and genres.
+All parameters are optional, but at least one of
+\code{seed_artists}, \code{seed_tracks} and \code{seed_genres} must be given.
 }
 \examples{
-\dontrun{
-## Get new Swedish music
-get_recommendations(country = 'SE')
+\donttest{
+get_recommendations(market = 'SE', seed_genres = 'rock')
 }
 }
+\seealso{
+Other personalization functions: 
+\code{\link{get_my_top_artists_or_tracks}()},
+\code{\link{get_recommendations_all}()}
+}
+\concept{personalization functions}
