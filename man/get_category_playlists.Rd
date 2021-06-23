@@ -38,7 +38,7 @@ See \url{https://developer.spotify.com/documentation/web-api/reference/users-pro
 Get a list of Spotify playlists tagged with a particular category.
 }
 \examples{
-\donttest{
+\donttest{3
 get_category_playlists('party', country = 'BR')
 }
 }
