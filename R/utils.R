@@ -50,7 +50,7 @@ verify_result <- function(res) {
 #' @importFrom rvest html_text html_elements
 
 scopes <- function() {
-    xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
+    xml2::read_html("https://developer.spotify.com/documentation/general/guides/authorization/scopes/") %>%
     rvest::html_elements('code') %>%
     rvest::html_text() %>%
     unique()
