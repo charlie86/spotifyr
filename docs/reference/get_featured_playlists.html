@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get List of Spotify Featured Playlists — get_featured_playlists • spotifyr</title>
+<title>Get list of Spotify featured playlists — get_featured_playlists • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Get List of Spotify Featured Playlists — get_featured_playlists" />
+<meta property="og:title" content="Get list of Spotify featured playlists — get_featured_playlists" />
 <meta property="og:description" content="Get a list of Spotify featured playlists
 (as shown, for example, on a Spotify player’s ‘Browse’ tab)" />
 
@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.3</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get List of Spotify Featured Playlists</h1>
+    <h1>Get list of Spotify featured playlists</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/browse.R'><code>R/browse.R</code></a></small>
     <div class="hidden name"><code>get_featured_playlists.Rd</code></div>
     </div>
@@ -192,7 +192,136 @@ See <a href='https://developer.spotify.com/documentation/web-api/reference/users
 <span class='fu'>get_featured_playlists</span><span class='op'>(</span>
    country <span class='op'>=</span> <span class='st'>'BE'</span>,
    locale <span class='op'>=</span> <span class='st'>"nl_BE"</span> <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error: "market" must be an ISO 3166-1 alpha-2 country code</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt;   collaborative
+#&gt; 1         FALSE
+#&gt; 2         FALSE
+#&gt; 3         FALSE
+#&gt; 4         FALSE
+#&gt; 5         FALSE
+#&gt; 6         FALSE
+#&gt; 7         FALSE
+#&gt; 8         FALSE
+#&gt; 9         FALSE
+#&gt;                                                                                     description
+#&gt; 1                                 50 Hits van dit moment - 50 hits du moment. Cover: Ed Sheeran
+#&gt; 2         Restez au courant des nouveaux titres et des tubes d'ici et ailleurs. Cover: Stromae.
+#&gt; 3                                                   Voel je goed met deze tijdloze Happy Tunes!
+#&gt; 4                         #PlayLocal - #ikluisterbelgisch - Support local artists from Belgium.
+#&gt; 5                  Le meilleur de la musique d'hier et d'aujourd'hui pour une journée parfaite.
+#&gt; 6                                        De beste BE Rap - Le Meilleur du Rap Belge. Cover: Cm2
+#&gt; 7                 Indie, Alternative en Rock met een randje in één playlist. Cover: Sam Fender.
+#&gt; 8                                          De grootste dance hits van het moment. Cover: ACRAZE
+#&gt; 9 Meezingen met de beste Vlaamse hits, levensliederen en Vlaams Populair. Cover: Regi, Pauline.
+#&gt;                                                          href
+#&gt; 1 https://api.spotify.com/v1/playlists/37i9dQZF1DX1kfybUJZB6S
+#&gt; 2 https://api.spotify.com/v1/playlists/37i9dQZF1DWSq1nQilUgG8
+#&gt; 3 https://api.spotify.com/v1/playlists/37i9dQZF1DX9u7XXOp0l5L
+#&gt; 4 https://api.spotify.com/v1/playlists/37i9dQZF1DX3S2ONCFIYHU
+#&gt; 5 https://api.spotify.com/v1/playlists/37i9dQZF1DXdrln2UyZD7F
+#&gt; 6 https://api.spotify.com/v1/playlists/37i9dQZF1DXadhN5awWZtL
+#&gt; 7 https://api.spotify.com/v1/playlists/37i9dQZF1DX6MUrG3NBYtM
+#&gt; 8 https://api.spotify.com/v1/playlists/37i9dQZF1DWTwCImwcYjDL
+#&gt; 9 https://api.spotify.com/v1/playlists/37i9dQZF1DX4UF20jxFQBv
+#&gt;                       id
+#&gt; 1 37i9dQZF1DX1kfybUJZB6S
+#&gt; 2 37i9dQZF1DWSq1nQilUgG8
+#&gt; 3 37i9dQZF1DX9u7XXOp0l5L
+#&gt; 4 37i9dQZF1DX3S2ONCFIYHU
+#&gt; 5 37i9dQZF1DXdrln2UyZD7F
+#&gt; 6 37i9dQZF1DXadhN5awWZtL
+#&gt; 7 37i9dQZF1DX6MUrG3NBYtM
+#&gt; 8 37i9dQZF1DWTwCImwcYjDL
+#&gt; 9 37i9dQZF1DX4UF20jxFQBv
+#&gt;                                                                     images
+#&gt; 1 NA, https://i.scdn.co/image/ab67706f00000003549425b60973e7535f2c35e7, NA
+#&gt; 2 NA, https://i.scdn.co/image/ab67706f000000033f0411d3e2f5e7edaf7c536e, NA
+#&gt; 3 NA, https://i.scdn.co/image/ab67706f00000003a0fd265253193b45c182952e, NA
+#&gt; 4 NA, https://i.scdn.co/image/ab67706f0000000342a05b2638ede42490c38ee3, NA
+#&gt; 5 NA, https://i.scdn.co/image/ab67706f000000035b4f2aef35a9228d3d036730, NA
+#&gt; 6 NA, https://i.scdn.co/image/ab67706f000000032928bb42b72927df076bdd0e, NA
+#&gt; 7 NA, https://i.scdn.co/image/ab67706f00000003f61f4abec452d09c256e4812, NA
+#&gt; 8 NA, https://i.scdn.co/image/ab67706f00000003f22bf24433d4015daf90e1a8, NA
+#&gt; 9 NA, https://i.scdn.co/image/ab67706f000000036428f54ff234fe5ae8777ec3, NA
+#&gt;                       name primary_color public
+#&gt; 1              Hot Hits BE            NA     NA
+#&gt; 2           Restez Branché            NA     NA
+#&gt; 3              Happy Tunes            NA     NA
+#&gt; 4          Made In Belgium            NA     NA
+#&gt; 5         La vie est belle            NA     NA
+#&gt; 6                  Code 32            NA     NA
+#&gt; 7 Alternative All Lined Up            NA     NA
+#&gt; 8                360 Dance            NA     NA
+#&gt; 9        Vlaanderen Boven!            NA     NA
+#&gt;                                                            snapshot_id     type
+#&gt; 1 MTYzNTQ1ODQwMCwwMDAwMDBhMTAwMDAwMTdjYzhlYWJmOWMwMDAwMDE3Y2M3OTI4YTJk playlist
+#&gt; 2 MTYzNTI1NzE5MSwwMDAwMDA2MzAwMDAwMTdjYmNlYzhiMGEwMDAwMDE3Y2EzNTExYzM5 playlist
+#&gt; 3 MTYzNTg3MTU2OCwwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl playlist
+#&gt; 4 MTYzNTUxNzAwOCwwMDAwMDA5ZTAwMDAwMTdjY2M2OTBjMjMwMDAwMDE3N2E0Yzk0YmQy playlist
+#&gt; 5 MTYzNTIwMjQ0MCwwMDAwMDExZTAwMDAwMTdjYjlhOTFiOTgwMDAwMDE3Yzc1NTA2NjBj playlist
+#&gt; 6 MTYzNTQ1ODQwMCwwMDAwMDI1ZTAwMDAwMTdjYzhlYWJmYTYwMDAwMDE3Y2M2OWIwYjk1 playlist
+#&gt; 7 MTYzMzY0NDA2MCwwMDAwMDFmZDAwMDAwMTdjNWNjNjFkZjEwMDAwMDE3YzVhMzA2ZDIw playlist
+#&gt; 8 MTYzNTQyNjE3OCwwMDAwMDI0MjAwMDAwMTdjYzZmZjE1YTYwMDAwMDE3YzVmM2ZmYjE4 playlist
+#&gt; 9 MTYzNTQ1ODQwMCwwMDAwMDAyYjAwMDAwMTdjYzhlYWJmOTYwMDAwMDE3YzNjMDFkNzUz playlist
+#&gt;                                       uri
+#&gt; 1 spotify:playlist:37i9dQZF1DX1kfybUJZB6S
+#&gt; 2 spotify:playlist:37i9dQZF1DWSq1nQilUgG8
+#&gt; 3 spotify:playlist:37i9dQZF1DX9u7XXOp0l5L
+#&gt; 4 spotify:playlist:37i9dQZF1DX3S2ONCFIYHU
+#&gt; 5 spotify:playlist:37i9dQZF1DXdrln2UyZD7F
+#&gt; 6 spotify:playlist:37i9dQZF1DXadhN5awWZtL
+#&gt; 7 spotify:playlist:37i9dQZF1DX6MUrG3NBYtM
+#&gt; 8 spotify:playlist:37i9dQZF1DWTwCImwcYjDL
+#&gt; 9 spotify:playlist:37i9dQZF1DX4UF20jxFQBv
+#&gt;                                      external_urls.spotify owner.display_name
+#&gt; 1 https://open.spotify.com/playlist/37i9dQZF1DX1kfybUJZB6S            Spotify
+#&gt; 2 https://open.spotify.com/playlist/37i9dQZF1DWSq1nQilUgG8            Spotify
+#&gt; 3 https://open.spotify.com/playlist/37i9dQZF1DX9u7XXOp0l5L            Spotify
+#&gt; 4 https://open.spotify.com/playlist/37i9dQZF1DX3S2ONCFIYHU            Spotify
+#&gt; 5 https://open.spotify.com/playlist/37i9dQZF1DXdrln2UyZD7F            Spotify
+#&gt; 6 https://open.spotify.com/playlist/37i9dQZF1DXadhN5awWZtL            Spotify
+#&gt; 7 https://open.spotify.com/playlist/37i9dQZF1DX6MUrG3NBYtM            Spotify
+#&gt; 8 https://open.spotify.com/playlist/37i9dQZF1DWTwCImwcYjDL            Spotify
+#&gt; 9 https://open.spotify.com/playlist/37i9dQZF1DX4UF20jxFQBv            Spotify
+#&gt;                                 owner.href owner.id owner.type
+#&gt; 1 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 2 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 3 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 4 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 5 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 6 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 7 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 8 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt; 9 https://api.spotify.com/v1/users/spotify  spotify       user
+#&gt;              owner.uri           owner.external_urls.spotify
+#&gt; 1 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 2 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 3 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 4 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 5 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 6 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 7 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 8 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt; 9 spotify:user:spotify https://open.spotify.com/user/spotify
+#&gt;                                                          tracks.href
+#&gt; 1 https://api.spotify.com/v1/playlists/37i9dQZF1DX1kfybUJZB6S/tracks
+#&gt; 2 https://api.spotify.com/v1/playlists/37i9dQZF1DWSq1nQilUgG8/tracks
+#&gt; 3 https://api.spotify.com/v1/playlists/37i9dQZF1DX9u7XXOp0l5L/tracks
+#&gt; 4 https://api.spotify.com/v1/playlists/37i9dQZF1DX3S2ONCFIYHU/tracks
+#&gt; 5 https://api.spotify.com/v1/playlists/37i9dQZF1DXdrln2UyZD7F/tracks
+#&gt; 6 https://api.spotify.com/v1/playlists/37i9dQZF1DXadhN5awWZtL/tracks
+#&gt; 7 https://api.spotify.com/v1/playlists/37i9dQZF1DX6MUrG3NBYtM/tracks
+#&gt; 8 https://api.spotify.com/v1/playlists/37i9dQZF1DWTwCImwcYjDL/tracks
+#&gt; 9 https://api.spotify.com/v1/playlists/37i9dQZF1DX4UF20jxFQBv/tracks
+#&gt;   tracks.total
+#&gt; 1           50
+#&gt; 2           75
+#&gt; 3          100
+#&gt; 4          150
+#&gt; 5           60
+#&gt; 6           50
+#&gt; 7          104
+#&gt; 8           70
+#&gt; 9           76</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

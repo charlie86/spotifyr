@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get User Playlist — get_playlist • spotifyr</title>
+<title>Get Spotify catalog information about an show's episodes. Optional parameters can be used to limit the number of episodes returned. — get_show_episodes • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get User Playlist — get_playlist" />
-<meta property="og:description" content="Get a playlist owned by a Spotify user." />
+<meta property="og:title" content="Get Spotify catalog information about an show's episodes. Optional parameters can be used to limit the number of episodes returned. — get_show_episodes" />
+<meta property="og:description" content="Get Spotify catalog information about an show's episodes. Optional parameters can be used to limit the number of episodes returned." />
 
 
 
@@ -111,68 +111,73 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get User Playlist</h1>
-    <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/playlists.R'><code>R/playlists.R</code></a></small>
-    <div class="hidden name"><code>get_playlist.Rd</code></div>
+    <h1>Get Spotify catalog information about an show's episodes. Optional parameters can be used to limit the number of episodes returned.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/shows.R'><code>R/shows.R</code></a></small>
+    <div class="hidden name"><code>get_show_episodes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get a playlist owned by a Spotify user.</p>
+    <p>Get Spotify catalog information about an show's episodes. Optional parameters can be used to limit the number of episodes returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_playlist</span><span class='op'>(</span>
-  <span class='va'>playlist_id</span>,
-  fields <span class='op'>=</span> <span class='cn'>NULL</span>,
+    <pre class="usage"><span class='fu'>get_show_episodes</span><span class='op'>(</span>
+  <span class='va'>id</span>,
+  limit <span class='op'>=</span> <span class='fl'>20</span>,
+  offset <span class='op'>=</span> <span class='fl'>0</span>,
   market <span class='op'>=</span> <span class='cn'>NULL</span>,
-  authorization <span class='op'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span><span class='op'>(</span><span class='op'>)</span>
+  authorization <span class='op'>=</span> <span class='fu'><a href='get_spotify_authorization_code.html'>get_spotify_authorization_code</a></span><span class='op'>(</span><span class='op'>)</span>,
+  include_meta_info <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>playlist_id</th>
-      <td><p>Required. The <a href='https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids'>Spotify ID</a> for the playlist.</p></td>
+      <th>id</th>
+      <td><p>Required. The <a href='https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids'>Spotify ID</a> for the show.</p></td>
     </tr>
     <tr>
-      <th>fields</th>
-      <td><p>Optional.
-Filters for the query: a comma-separated list of the fields to return.
-If omitted, all fields are returned. For example, to get just the playlist’s description
-and URI: <br />
-<code>fields = c("description", "uri")</code> <br /> A dot separator can be used to specify non-reoccurring fields, while parentheses can be used to specify reoccurring fields within objects. For example, to get just the added date and user ID of the adder: <br />
-<code>fields = "tracks.items(added_at,added_by.id)"</code> <br /> Use multiple parentheses to drill down into nested objects, for example: <br />
-<code>fields = "tracks.items(track(name,href,album(name,href)))"</code> <br /> Fields can be excluded by prefixing them with an exclamation mark, for example: <br />
-<code>fields = "tracks.items(track(name,href,album(!name,href)))"</code></p></td>
+      <th>limit</th>
+      <td><p>Optional. <br />
+Maximum number of results to return. <br />
+Default: 20 <br />
+Minimum: 1 <br />
+Maximum: 50 <br /></p></td>
+    </tr>
+    <tr>
+      <th>offset</th>
+      <td><p>Optional. <br />
+The index of the first album to return. <br />
+Default: 0 (the first album). <br />
+Maximum offset (including limit): 10,000. <br />
+Use with limit to get the next set of episodes.</p></td>
     </tr>
     <tr>
       <th>market</th>
       <td><p>Optional. <br />
-An ISO 3166-1 alpha-2 country code or the string <code>"from_token"</code>.
-Provide this parameter if you want to apply <a href='https://developer.spotify.com/documentation/general/guides/track-relinking-guide/'>Track Relinking</a></p></td>
+An <a href='https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2 country code</a> or the string
+<code>"from_token"</code>. If a country code is specified, only shows and episodes that are available in that market will be returned.
+If a valid user access token is specified in the request header, the country associated with the user account will take priority over
+this parameter.</p></td>
     </tr>
     <tr>
       <th>authorization</th>
-      <td><p>Required. A valid access token from the Spotify Accounts service.
-See the <a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization guide</a> for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to <code><a href='get_spotify_access_token.html'>spotifyr::get_spotify_access_token()</a></code></p></td>
+      <td><p>Required. A valid access token from the Spotify Accounts service. See the
+<a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/'>Web API authorization Guide</a> for more details.
+Defaults to <code><a href='get_spotify_authorization_code.html'>spotifyr::get_spotify_authorization_code()</a></code>. The access token must have been issued on behalf of the current user. <br />
+Reading the user’s resume points on episode objects requires the user-read-playback-position scope. See
+<a href='https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes'>Using Scopes</a>.</p></td>
+    </tr>
+    <tr>
+      <th>include_meta_info</th>
+      <td><p>Optional. Boolean indicating whether to include full result, with meta information such as <code>"total"</code>,
+and <code>"limit"</code>. Defaults to <code>FALSE</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a data frame of results containing user profile information.
-See <a href='https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/'>https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/</a> for more information.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other playlist functions: 
-<code><a href='add_tracks_to_playlist.html'>add_tracks_to_playlist</a>()</code>,
-<code><a href='change_playlist_details.html'>change_playlist_details</a>()</code>,
-<code><a href='check_users_following.html'>check_users_following</a>()</code>,
-<code><a href='create_playlist.html'>create_playlist</a>()</code>,
-<code><a href='get_my_playlists.html'>get_my_playlists</a>()</code>,
-<code><a href='get_user_playlists.html'>get_user_playlists</a>()</code>,
-<code><a href='remove_tracks_from_playlist.html'>remove_tracks_from_playlist</a>()</code>,
-<code><a href='tidy.html'>tidy</a>()</code></p></div>
+    <p>Returns a data frame of results containing show data. See the official API <a href='https://developer.spotify.com/documentation/web-api/reference/shows/get-shows-episodes/'>documentation</a> for more information.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

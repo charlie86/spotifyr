@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.3</span>
       </span>
     </div>
 
@@ -185,28 +185,28 @@ artists in a tibble.</p>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>get_genre_artists</span><span class='op'>(</span><span class='st'>'wonky'</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 20 x 12</span>
-#&gt;    genres  href    id     images name  popularity type  uri    external_urls.sp~
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            
-#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 29XOe~ <span style='color: #949494;'>&lt;df [</span>~ Flyi~         66 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 17Zu0~ <span style='color: #949494;'>&lt;df [</span>~ Knxw~         63 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 3VwKS~ <span style='color: #949494;'>&lt;df [</span>~ TOKi~         60 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2wouN~ <span style='color: #949494;'>&lt;df [</span>~ Com ~         56 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1PmVy~ <span style='color: #949494;'>&lt;df [</span>~ Lorn          58 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 4GcpB~ <span style='color: #949494;'>&lt;df [</span>~ Mnds~         57 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 6y80I~ <span style='color: #949494;'>&lt;df [</span>~ Shlo~         54 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 3NUtp~ <span style='color: #949494;'>&lt;df [</span>~ Moun~         58 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 0IVap~ <span style='color: #949494;'>&lt;df [</span>~ Nosa~         52 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1AEcp~ <span style='color: #949494;'>&lt;df [</span>~ DaM-~         52 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>11</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 0uCCB~ <span style='color: #949494;'>&lt;df [</span>~ Buri~         56 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>12</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2DcAd~ <span style='color: #949494;'>&lt;df [</span>~ Dirt~         49 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>13</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2wPDb~ <span style='color: #949494;'>&lt;df [</span>~ Oneo~         55 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>14</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2L2un~ <span style='color: #949494;'>&lt;df [</span>~ Teebs         49 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>15</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 06xa1~ <span style='color: #949494;'>&lt;df [</span>~ Mach~         52 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>16</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1MSxO~ <span style='color: #949494;'>&lt;df [</span>~ Phot~         48 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>17</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 2sAlo~ <span style='color: #949494;'>&lt;df [</span>~ Onra          51 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>18</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 1iqXh~ <span style='color: #949494;'>&lt;df [</span>~ xxyy~         47 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>19</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 3i7IU~ <span style='color: #949494;'>&lt;df [</span>~ Jonw~         48 arti~ spoti~ https://open.spo~
-#&gt; <span style='color: #BCBCBC;'>20</span> <span style='color: #949494;'>&lt;chr [</span>~ https:~ 5wZOr~ <span style='color: #949494;'>&lt;df [</span>~ Lone          50 arti~ spoti~ https://open.spo~
+#&gt;    genres     href   id     images name  popularity type  uri   external_urls.s~
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           
+#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>&lt;chr [6]&gt;</span>  https~ 17Zu0~ <span style='color: #949494;'>&lt;df [</span>~ Knxw~         62 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>&lt;chr [12]&gt;</span> https~ 29XOe~ <span style='color: #949494;'>&lt;df [</span>~ Flyi~         63 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>&lt;chr [7]&gt;</span>  https~ 3VwKS~ <span style='color: #949494;'>&lt;df [</span>~ TOKi~         59 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>&lt;chr [2]&gt;</span>  https~ 1PmVy~ <span style='color: #949494;'>&lt;df [</span>~ Lorn          57 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>&lt;chr [8]&gt;</span>  https~ 3NUtp~ <span style='color: #949494;'>&lt;df [</span>~ Moun~         57 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>&lt;chr [8]&gt;</span>  https~ 6y80I~ <span style='color: #949494;'>&lt;df [</span>~ Shlo~         52 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>&lt;chr [6]&gt;</span>  https~ 0IVap~ <span style='color: #949494;'>&lt;df [</span>~ Nosa~         51 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>&lt;chr [9]&gt;</span>  https~ 4GcpB~ <span style='color: #949494;'>&lt;df [</span>~ Mnds~         52 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>&lt;chr [3]&gt;</span>  https~ 1AEcp~ <span style='color: #949494;'>&lt;df [</span>~ DaM-~         51 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>&lt;chr [5]&gt;</span>  https~ 2AR42~ <span style='color: #949494;'>&lt;df [</span>~ Floa~         54 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>11</span> <span style='color: #949494;'>&lt;chr [10]&gt;</span> https~ 5wZOr~ <span style='color: #949494;'>&lt;df [</span>~ Lone          53 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>12</span> <span style='color: #949494;'>&lt;chr [3]&gt;</span>  https~ 2DcAd~ <span style='color: #949494;'>&lt;df [</span>~ Dirt~         47 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>13</span> <span style='color: #949494;'>&lt;chr [6]&gt;</span>  https~ 0uCCB~ <span style='color: #949494;'>&lt;df [</span>~ Buri~         54 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>14</span> <span style='color: #949494;'>&lt;chr [4]&gt;</span>  https~ 6e7BQ~ <span style='color: #949494;'>&lt;df [</span>~ Karr~         50 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>15</span> <span style='color: #949494;'>&lt;chr [4]&gt;</span>  https~ 2L2un~ <span style='color: #949494;'>&lt;df [</span>~ Teebs         48 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>16</span> <span style='color: #949494;'>&lt;chr [2]&gt;</span>  https~ 1MSxO~ <span style='color: #949494;'>&lt;df [</span>~ Phot~         47 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>17</span> <span style='color: #949494;'>&lt;chr [12]&gt;</span> https~ 06xa1~ <span style='color: #949494;'>&lt;df [</span>~ Mach~         51 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>18</span> <span style='color: #949494;'>&lt;chr [3]&gt;</span>  https~ 3i7IU~ <span style='color: #949494;'>&lt;df [</span>~ Jonw~         47 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>19</span> <span style='color: #949494;'>&lt;chr [1]&gt;</span>  https~ 1iqXh~ <span style='color: #949494;'>&lt;df [</span>~ xxyy~         45 arti~ spot~ https://open.sp~
+#&gt; <span style='color: #BCBCBC;'>20</span> <span style='color: #949494;'>&lt;chr [2]&gt;</span>  https~ 47V6n~ <span style='color: #949494;'>&lt;df [</span>~ Robo~         51 arti~ spot~ https://open.sp~
 #&gt; <span style='color: #949494;'># ... with 3 more variables: followers.href &lt;lgl&gt;, followers.total &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   genre &lt;chr&gt;</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
