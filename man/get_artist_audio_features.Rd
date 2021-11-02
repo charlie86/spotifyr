@@ -10,7 +10,6 @@ get_artist_audio_features(
   return_closest_artist = TRUE,
   dedupe_albums = TRUE,
   market = NULL,
-  limit = 20,
   authorization = get_spotify_access_token()
 )
 }
@@ -38,8 +37,6 @@ An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
 Supply this parameter to limit the response to one particular geographical market.
 For example, for albums available in Sweden: \code{market = "SE"}. \cr
 If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!}
-
-\item{limit}{Optional. \cr}
 
 \item{authorization}{Required. A valid access token from the Spotify Accounts service.
 See the

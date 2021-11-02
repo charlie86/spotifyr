@@ -25,4 +25,5 @@
 
 # spotifyr 2.2.3
 * Fixes [#160](https://github.com/charlie86/spotifyr/issues/160)   Thanks for reporting by [\@dwh1142](https://github.com/dwh1142) and fixing the scopes ,[\@bradisbrad](https://github.com/bradisbrad).
+* Fixes [#161](https://github.com/charlie86/spotifyr/issues/161) with the bug fix provided by [\@apsteinmetz](https://github.com/apsteinmetz). Thank you!
 * More consistent error messages for `get_artist_audio_features()`, which needs to be re-written together with `get_artist_albums()` for more consistency in the function API.
