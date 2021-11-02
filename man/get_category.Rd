@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_category}
 \alias{get_category}
-\title{Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).}
+\title{Get a single category used to tag items}
 \usage{
 get_category(
   category_id,

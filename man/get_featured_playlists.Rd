@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_featured_playlists}
 \alias{get_featured_playlists}
-\title{Get List of Spotify Featured Playlists}
+\title{Get list of Spotify featured playlists}
 \usage{
 get_featured_playlists(
   locale = NULL,

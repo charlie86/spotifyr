@@ -57,7 +57,9 @@ get_recommendations(
 )
 }
 \arguments{
-\item{limit}{Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.}
+\item{limit}{Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly
+restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for
+such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.}
 
 \item{market}{Optional.
 An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}.

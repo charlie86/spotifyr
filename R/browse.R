@@ -1,10 +1,11 @@
-#' Get a list of Spotify categories
+#' @title Get a list of Spotify categories
 #'
 #' @param df Should the results be formatted as a data frame?
 #' If \code{FALSE}, the full response JSON will be returned as a list; defaults to
 #' \code{TRUE}.
 #' @param authorization Required. A valid access token from the Spotify Accounts service.
-#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
+#' Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing album data.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/browse/get-list-categories/} for more information.
@@ -33,7 +34,9 @@ get_categories <- function(authorization = get_spotify_access_token(),
 }
 
 
-#' Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+#' @title Get a single category used to tag items
+#'
+#' @description Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
 #'
 #' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
 #' @param country Optional. A country: an
@@ -62,10 +65,16 @@ get_category <- function(category_id,
         locale = locale,
         access_token = authorization
     )
-    res <- RETRY('GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
+    res <- RETRY('GET', url,
+                 query = params,
+                 encode = 'json',
+                 terminate_on = c(401, 403, 404))
+
     stop_for_status(res)
 
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
+    res <- fromJSON(content(res,
+                            as = 'text',
+                            encoding = 'UTF-8'),
                     flatten = TRUE) %>%
         as_tibble ()
 
@@ -73,7 +82,7 @@ get_category <- function(category_id,
 }
 
 
-#' Get a list of Spotify playlists tagged with a particular category
+#' @title Get a list of Spotify playlists tagged with a particular category
 #'
 #' @param category_id Required. The
 #' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
@@ -83,14 +92,17 @@ get_category <- function(category_id,
 #' Defaults to \code{20}. Minimum: 1. Maximum: 50.
 #' @param offset Optional. The index of the first item to return.
 #' Defaults to \code{0}, the first object. Use with \code{limit} to get the next set of items.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
-#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
+#' @param authorization Required. A valid access token from the Spotify Accounts service.
+#' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details.
+#' Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and
+#' \code{"limit"}. Defaults to \code{FALSE}.
 #' @importFrom stringr str_glue
 #' @return
 #' Returns a data frame of results containing category playlists.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @examples
-#' \donttest{3
+#' \donttest{
 #' get_category_playlists('party', country = 'BR')
 #' }
 #' @export
@@ -139,9 +151,9 @@ get_category_playlists <- function(category_id = "party",
     playlists
 }
 
-#' Get New Releases
+#' @title Get new releases
 #'
-#' Get a list of new album releases featured in Spotify (shown, for example,
+#' @description Get a list of new album releases featured in Spotify (shown, for example,
 #' on a Spotify player’s “Browse” tab).
 #'
 #' @param country Optional. A country: an
@@ -200,9 +212,9 @@ get_new_releases <- function(country = NULL,
     albums
 }
 
-#' Get List of Spotify Featured Playlists
+#' @title Get list of Spotify featured playlists
 #'
-#' Get a list of Spotify featured playlists
+#' @description Get a list of Spotify featured playlists
 #' (as shown, for example, on a Spotify player’s ‘Browse’ tab)
 #'
 #' @param locale Optional. The desired language, consisting of an
@@ -285,12 +297,14 @@ get_featured_playlists <- function(locale = NULL,
     playlists
 }
 
-#' Create a playlist-style listening experience based on seed artists, tracks and genres.
+#' @title Create a playlist-style listening experience based on seed artists, tracks and genres.
 #'
-#' All parameters are optional, but at least one of
+#' @description All parameters are optional, but at least one of
 #' \code{seed_artists}, \code{seed_tracks} and \code{seed_genres} must be given.
 #'
-#' @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.
+#' @param limit Optional. The target size of the list of recommended tracks. For seeds with unusually small pools or when highly
+#' restrictive filtering is applied, it may be impossible to generate the requested number of recommended tracks. Debugging information for
+#' such cases is available in the response. Default: 20. Minimum: 1. Maximum: 100.
 #' @param market Optional.
 #' An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{from_token}.
 #' Provide this parameter if you want to apply
@@ -487,11 +501,11 @@ get_recommendations <- function(limit = 20,
 }
 
 
-#' Get Recommendations for Unlimited Vector of Track IDs
+#' @title Get recommendations for unlimited vector of track IDs
 #'
-#' Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks
+#' @description Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks
 #'
-#' This is a wrapper for the \code{\link{get_recommendations}} function, which provides a workaround for
+#' @details This is a wrapper for the \code{\link{get_recommendations}} function, which provides a workaround for
 #' the limit of 5 seed tracks per recommendation call. The function splits a supplied vector
 #' of track IDs into subsets of length 5, then applies a  \code{\link{get_recommendations}} call,
 #' 5 tracks at a time. This should generate a data frame of recommended tracks, with

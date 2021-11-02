@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_recommendations_all}
 \alias{get_recommendations_all}
-\title{Get Recommendations for Unlimited Vector of Track IDs}
+\title{Get recommendations for unlimited vector of track IDs}
 \usage{
 get_recommendations_all(track_ids, valence = NULL)
 }

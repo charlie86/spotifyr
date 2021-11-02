@@ -29,7 +29,7 @@ Maximum offset (including limit): 10,000. \cr
 Use with limit to get the next set of episodes.}
 
 \item{market}{Optional. \cr
-An \href{httpa://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string
+An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string
 \code{"from_token"}. If a country code is specified, only shows and episodes that are available in that market will be returned.
 If a valid user access token is specified in the request header, the country associated with the user account will take priority over
 this parameter.}
