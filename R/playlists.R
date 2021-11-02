@@ -353,7 +353,7 @@ add_tracks_to_playlist <- function(playlist_id,
 
     uris <- ifelse ( ! grepl( "spotify%3Atrack%3A", gsub(":", "%3A", uris)),
              paste0("spotify%3Atrack%3A", uris),
-             uris)
+             gsub(":", "%3A", uris))
 
     base_url <- 'https://api.spotify.com/v1/playlists'
     url <- str_glue('{base_url}/{playlist_id}/tracks?uris={paste0(uris, collapse = ",")}')
