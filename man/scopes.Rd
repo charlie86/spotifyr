@@ -8,7 +8,7 @@ scopes()
 }
 \value{
 A character vector of valid authorization scopes for the Spotify Web API.
-See \href{https://developer.spotify.com/documentation/general/guides/scopes/}{Spotify Web API Authorization Scopes}
+See \href{https://developer.spotify.com/documentation/general/guides/authorization/scopes/}{Spotify Web API Authorization Scopes}
 }
 \description{
 A vector of valid scopes for \code{\link{get_spotify_authorization_code}}.

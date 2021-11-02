@@ -13,6 +13,11 @@
 #' \code{"appears_on"} \cr
 #' \code{"compilation"} \cr
 #' For example: \code{include_groups = c("album", "single")}
+#' @param market Optional. \cr
+#' An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
+#' Supply this parameter to limit the response to one particular geographical market.
+#' For example, for albums available in Sweden: \code{market = "SE"}. \cr
+#' If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!
 #' @param return_closest_artist Optional. Boolean.
 #' @param dedupe_albums Optional. Logical, boolean parameter, defaults to
 #' \code{TRUE}.
@@ -31,15 +36,21 @@ get_artist_audio_features <- function(artist = NULL,
                                       include_groups = 'album',
                                       return_closest_artist = TRUE,
                                       dedupe_albums = TRUE,
+                                      market = NULL,
                                       authorization = get_spotify_access_token()
                                       ) {
+
+    artist_id <- NULL
 
     if (is_uri(artist)) {
         artist_info <- get_artist(artist, authorization = authorization)
         artist_id <- artist_info$id
         artist_name <- artist_info$name
     } else {
-        artist_ids <- search_spotify(artist, 'artist', authorization = authorization)
+        # Try to find an artist  with this ID
+        artist_ids <- search_spotify(
+            artist, 'artist',
+            authorization = authorization)
 
         if (return_closest_artist) {
             artist_id <- artist_ids$id[1]
@@ -55,14 +66,20 @@ get_artist_audio_features <- function(artist = NULL,
         }
     }
 
-    artist_albums <- get_artist_albums(artist_id,
+
+    if (is.null(artist_id)) {
+        stop("No artist found with artist_id='", artist_id, "'.")
+    }
+
+    artist_albums <- get_artist_albums(id = artist_id,
                                        include_groups = include_groups,
                                        include_meta_info = TRUE,
+                                       market = market,
                                        authorization = authorization)
 
 
-    if (is.null(artist_albums$items) | length(artist_albums$items) ==0) {
-        stop("No artist found with artist_id='", artist_id, "'.")
+    if (is.null(artist_albums$items) | length(artist_albums$items)==0) {
+        stop("No albums found with with artist_id='", artist_id, "'.")
     }
 
 
@@ -264,7 +281,10 @@ get_playlist_audio_features <- function(username,
         n_tracks <- this_playlist$tracks$total
         num_loops <- ceiling(n_tracks / 100)
         map_df(1:num_loops, function(this_loop) {
-            get_playlist_tracks(this_playlist$id, limit = 100, offset = (this_loop - 1) * 100, authorization = authorization) %>%
+            get_playlist_tracks(this_playlist$id,
+                                limit = 100,
+                                offset = (this_loop - 1) * 100,
+                                authorization = authorization) %>%
                 mutate(playlist_id = this_playlist$id,
                        playlist_name = this_playlist$name,
                        playlist_img = this_playlist$images$url[[1]],

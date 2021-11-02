@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_category_playlists}
 \alias{get_category_playlists}
-\title{Get a list of Spotify playlists tagged with a particular category.}
+\title{Get a list of Spotify playlists tagged with a particular category}
 \usage{
 get_category_playlists(
   category_id = "party",
@@ -35,7 +35,7 @@ Returns a data frame of results containing category playlists.
 See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
-Get a list of Spotify playlists tagged with a particular category.
+Get a list of Spotify playlists tagged with a particular category
 }
 \examples{
 \donttest{3

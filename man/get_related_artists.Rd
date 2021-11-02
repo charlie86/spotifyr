@@ -2,7 +2,8 @@
 % Please edit documentation in R/artists.R
 \name{get_related_artists}
 \alias{get_related_artists}
-\title{Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.}
+\title{Get Spotify catalog information about artists similar to a given artist.
+Similarity is based on analysis of the Spotify community’s listening history.}
 \usage{
 get_related_artists(
   id,
@@ -21,7 +22,8 @@ get_related_artists(
 Returns a data frame of results containing artist data. See \url{https://developer.spotify.com/documentation/web-api/reference/artists/get-several-artists/} for more information.
 }
 \description{
-Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.
+Get Spotify catalog information about artists similar to a given artist.
+Similarity is based on analysis of the Spotify community’s listening history.
 }
 \seealso{
 Other artist functions: 

@@ -98,7 +98,12 @@ get_artists <- function(ids,
 #' @family artist functions
 #' @export
 
-get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears_on', 'compilation'), market = NULL, limit = 20, offset = 0, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_artist_albums <- function(id,
+                              include_groups = c('album', 'single', 'appears_on', 'compilation'),
+                              market = NULL,
+                              limit = 20, offset = 0,
+                              authorization = get_spotify_access_token(),
+                              include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/artists'
 
@@ -115,11 +120,19 @@ get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears
         offset = offset,
         access_token = authorization
     )
+
     url <- str_glue('{base_url}/{id}/albums')
-    res <- RETRY(verb = 'GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
+
+    res <- RETRY(verb = 'GET', url,
+                 query = params,
+                 encode = 'json', terminate_on = c(401, 403, 404))
+
     stop_for_status(res)
 
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'), flatten = TRUE)
+    res <- fromJSON(
+        content(res, as = 'text', encoding = 'UTF-8'),
+        flatten = TRUE
+        )
 
     if (!include_meta_info) {
         res <- res$items
@@ -140,7 +153,10 @@ get_artist_albums <- function(id, include_groups = c('album', 'single', 'appears
 #' @family artist functions
 #' @export
 
-get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_artist_top_tracks <- function(id,
+                                  market = 'US',
+                                  authorization = get_spotify_access_token(),
+                                  include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/artists'
 
@@ -167,7 +183,8 @@ get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify
     res
 }
 
-#' Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.
+#' Get Spotify catalog information about artists similar to a given artist.
+#' Similarity is based on analysis of the Spotify community’s listening history.
 #'
 #' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
@@ -177,7 +194,9 @@ get_artist_top_tracks <- function(id, market = 'US', authorization = get_spotify
 #' @family artist functions
 #' @export
 
-get_related_artists <- function(id, authorization = get_spotify_access_token(), include_meta_info = FALSE) {
+get_related_artists <- function(id,
+                                authorization = get_spotify_access_token(),
+                                include_meta_info = FALSE) {
 
     base_url <- 'https://api.spotify.com/v1/artists'
 

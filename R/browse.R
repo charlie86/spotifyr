@@ -73,7 +73,7 @@ get_category <- function(category_id,
 }
 
 
-#' Get a list of Spotify playlists tagged with a particular category.
+#' Get a list of Spotify playlists tagged with a particular category
 #'
 #' @param category_id Required. The
 #' \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
@@ -117,12 +117,18 @@ get_category_playlists <- function(category_id = "party",
         access_token = authorization
     )
 
-    res <- RETRY('GET', url, query = params, encode = 'json', terminate_on = c(401, 403, 404))
+    res <- RETRY('GET', query_url,
+                 query = params,
+                 encode = 'json', terminate_on = c(401, 403, 404))
 
     stop_for_status(res)
 
     res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
                     flatten = TRUE)
+
+    if (is.null(res$playlists) | length(res$playlists)==0) {
+      stop("No playlist was returned.")
+    }
 
     playlists <- res$playlists
 
