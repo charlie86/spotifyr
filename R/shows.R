@@ -4,12 +4,18 @@
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 #' Reading the user’s resume points on episode objects requires the user-read-playback-position scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @param market Optional. \cr
-#' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. If a country code is specified, only shows and episodes that are available in that market will be returned. If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.
+#' An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}.
+#' If a country code is specified, only shows and episodes that are available in that market will be returned.
+#' If a valid user access token is specified in the request header, the country associated with the user account will take priority over this
+#' parameter.
 #' @return
-#' Returns a data frame of results containing show data. See the \href{https://developer.spotify.com/documentation/web-api/reference/shows/get-a-show/}{official documentation} for more information.
+#' Returns a data frame of results containing show data.
+#' See the \href{https://developer.spotify.com/documentation/web-api/reference/shows/get-a-show/}{official documentation} for more information.
 #' @export
 
-get_show <- function(id, market = NULL, authorization = get_spotify_authorization_code()) {
+get_show <- function(id,
+                     market = NULL,
+                     authorization = get_spotify_authorization_code()) {
 
   base_url <- 'https://api.spotify.com/v1/shows'
 
@@ -37,7 +43,7 @@ get_show <- function(id, market = NULL, authorization = get_spotify_authorizatio
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 #' Reading the user’s resume points on episode objects requires the user-read-playback-position scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @param market Optional. \cr
-#' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. If a country code is specified, only shows and episodes that are available in that market will be returned. If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.
+#' An \href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. If a country code is specified, only shows and episodes that are available in that market will be returned. If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.
 #' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing show data. See \url{https://developer.spotify.com/documentation/web-api/reference/shows/get-several-shows/} for more information.
@@ -72,8 +78,11 @@ get_shows <- function(ids, market = NULL, authorization = get_spotify_authorizat
 #' Get Spotify catalog information about an show's episodes. Optional parameters can be used to limit the number of episodes returned.
 #'
 #' @param id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the show.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
-#' Reading the user’s resume points on episode objects requires the user-read-playback-position scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the
+#' \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
+#' Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+#' Reading the user’s resume points on episode objects requires the user-read-playback-position scope. See
+#' \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.
 #' @param limit Optional. \cr
 #' Maximum number of results to return. \cr
 #' Default: 20 \cr
@@ -85,8 +94,12 @@ get_shows <- function(ids, market = NULL, authorization = get_spotify_authorizat
 #' Maximum offset (including limit): 10,000. \cr
 #' Use with limit to get the next set of episodes.
 #' @param market Optional. \cr
-#' An \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string \code{"from_token"}. If a country code is specified, only shows and episodes that are available in that market will be returned. If a valid user access token is specified in the request header, the country associated with the user account will take priority over this parameter.
-#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.
+#' An \href{httpa://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code} or the string
+#' \code{"from_token"}. If a country code is specified, only shows and episodes that are available in that market will be returned.
+#' If a valid user access token is specified in the request header, the country associated with the user account will take priority over
+#' this parameter.
+#' @param include_meta_info Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"},
+#' and \code{"limit"}. Defaults to \code{FALSE}.
 #' @return
 #' Returns a data frame of results containing show data. See the official API \href{https://developer.spotify.com/documentation/web-api/reference/shows/get-shows-episodes/}{documentation} for more information.
 #' @export
