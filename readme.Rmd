@@ -29,7 +29,7 @@ spotifyr is an R wrapper for pulling track audio features and other information 
 
 ## Installation
 
-CRAN version 2.1.1 (recommended)
+CRAN version 2.2.3 (recommended)
 
 ```r
 install.packages('spotifyr')

@@ -24,7 +24,7 @@ information for a given Spotify User (including yourself!).
 
 ## Installation
 
-CRAN version 2.1.1 (recommended)
+CRAN version 2.2.3 (recommended)
 
 ``` r
 install.packages('spotifyr')
