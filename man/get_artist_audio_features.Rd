@@ -9,6 +9,7 @@ get_artist_audio_features(
   include_groups = "album",
   return_closest_artist = TRUE,
   dedupe_albums = TRUE,
+  market = NULL,
   authorization = get_spotify_access_token()
 )
 }
@@ -31,10 +32,18 @@ For example: \code{include_groups = c("album", "single")}}
 \item{dedupe_albums}{Optional. Logical, boolean parameter, defaults to
 \code{TRUE}.}
 
+\item{market}{Optional. \cr
+An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
+Supply this parameter to limit the response to one particular geographical market.
+For example, for albums available in Sweden: \code{market = "SE"}. \cr
+If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!}
+
 \item{authorization}{Required. A valid access token from the Spotify Accounts service.
 See the
 \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
 Defaults to \code{spotifyr::get_spotify_access_token()}}
+
+\item{limit}{Optional. \cr}
 }
 \value{
 Returns a data frame of results containing track audio features data. See the
