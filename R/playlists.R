@@ -351,7 +351,7 @@ add_tracks_to_playlist <- function(playlist_id,
                                    authorization = get_spotify_authorization_code()
                                    ) {
 
-    uris <- ifelse ( ! grepl( "spotify%3Atrack%3A", uris),
+    uris <- ifelse ( ! grepl( "spotify%3Atrack%3A", gsub(":", "%3A", uris)),
              paste0("spotify%3Atrack%3A", uris),
              uris)
 
