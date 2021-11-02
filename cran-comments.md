@@ -1,4 +1,5 @@
 ## Test environments
+
 * local R installation, R 4.1.0 on Windows 10
 * win-builder (devel, release)
 * Fedora Linux, R-devel, clang, gfortran on rhub

@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 ![](http://cranlogs.r-pkg.org/badges/spotifyr?color=brightgreen)
 [![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/spotifyr)](https://cran.r-project.org/package=spotifyr)
 [![metacran downloads](https://cranlogs.r-pkg.org/badges/spotifyr)](https://cran.r-project.org/package=spotifyr)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4946780.svg)](https://doi.org/10.5281/zenodo.4946780)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5638489.svg)](https://doi.org/10.5281/zenodo.5638489)
 <!-- badges: end -->
 
 ## Overview
@@ -174,7 +174,7 @@ The coolest thing about making this package has definitely been seeing all the a
 
 [Sente-se triste quando ouve "Amar pelos dois"? Não é o único (Do you feel sad when you hear "Love for both?" You're not alone)](https://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico), Rui Barros, Rádio Renascença
 
-[Using Data to Find the Angriest Death Grips Song](https://towardsdatascience.com/angriest-death-grips-data-anger-502168c1c2f0), Evan Oppenheimer
+[Using Data to Find the Angriest Death Grips Song](https://medium.com/@evanopp/angriest-death-grips-data-anger-502168c1c2f0), Evan Oppenheimer
 
 [Hierarchical clustering of David Bowie records](https://twitter.com/WireMonkey/status/1009915034246565891?s=19), Alyssa Goldberg
 
