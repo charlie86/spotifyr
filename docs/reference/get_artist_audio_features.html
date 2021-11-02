@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.3</span>
       </span>
     </div>
 
@@ -125,6 +125,7 @@
   include_groups <span class='op'>=</span> <span class='st'>"album"</span>,
   return_closest_artist <span class='op'>=</span> <span class='cn'>TRUE</span>,
   dedupe_albums <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  market <span class='op'>=</span> <span class='cn'>NULL</span>,
   authorization <span class='op'>=</span> <span class='fu'><a href='get_spotify_access_token.html'>get_spotify_access_token</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
@@ -156,6 +157,14 @@ For example: <code>include_groups = c("album", "single")</code></p></td>
       <th>dedupe_albums</th>
       <td><p>Optional. Logical, boolean parameter, defaults to
 <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>market</th>
+      <td><p>Optional. <br />
+An ISO 3166-1 alpha-2 country code or the string <code>"from_token"</code>. <br />
+Supply this parameter to limit the response to one particular geographical market.
+For example, for albums available in Sweden: <code>market = "SE"</code>. <br />
+If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!</p></td>
     </tr>
     <tr>
       <th>authorization</th>

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.3</span>
       </span>
     </div>
 
@@ -133,24 +133,24 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">C major</td>
-<td align="right">104</td>
+<td align="left">D major</td>
+<td align="right">115</td>
 </tr>
 <tr class="even">
-<td align="left">D major</td>
-<td align="right">98</td>
+<td align="left">C major</td>
+<td align="right">111</td>
 </tr>
 <tr class="odd">
 <td align="left">G major</td>
-<td align="right">82</td>
+<td align="right">90</td>
 </tr>
 <tr class="even">
 <td align="left">A major</td>
-<td align="right">76</td>
+<td align="right">80</td>
 </tr>
 <tr class="odd">
 <td align="left">E major</td>
-<td align="right">62</td>
+<td align="right">68</td>
 </tr>
 </tbody>
 </table>
@@ -160,17 +160,24 @@
 <a href="#get-your-most-recently-played-tracks" class="anchor"></a>Get your most recently played tracks</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<span class="co">#&gt; Warning: package 'lubridate' was built under R version 4.1.1</span>
 
 <span class="fu"><a href="reference/get_my_recently_played.html">get_my_recently_played</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
         artist.name <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">track.artists</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
-        played_at <span class="op">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">played_at</span><span class="op">)</span>
+        played_at <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">played_at</span><span class="op">)</span>
         <span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>
       <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"track.name"</span>, <span class="st">"artist.name"</span>, <span class="st">"track.album.name"</span>, <span class="st">"played_at"</span><span class="op">)</span><span class="op">)</span>
       <span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="18%">
+<col width="7%">
+<col width="60%">
+<col width="12%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">track.name</th>
 <th align="left">artist.name</th>
@@ -179,34 +186,34 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">A Case of You</td>
-<td align="left">Tristen</td>
-<td align="left">A Case of You</td>
-<td align="left">2021-06-14 09:54:44</td>
+<td align="left">Look For Me (I’ll Be Around)</td>
+<td align="left">Neko Case</td>
+<td align="left">Blacklisted</td>
+<td align="left">2021-11-01 17:16:12</td>
 </tr>
 <tr class="even">
-<td align="left">Paper Cup</td>
-<td align="left">Real Estate</td>
-<td align="left">Paper Cup</td>
-<td align="left">2021-06-10 20:20:11</td>
+<td align="left">Don’t Forget Me</td>
+<td align="left">Neko Case</td>
+<td align="left">Middle Cyclone</td>
+<td align="left">2021-11-01 17:12:50</td>
 </tr>
 <tr class="odd">
-<td align="left">Wrong with You</td>
-<td align="left">Tristen</td>
-<td align="left">Wrong with You</td>
-<td align="left">2021-06-10 20:17:24</td>
+<td align="left">Magpie to the Morning</td>
+<td align="left">Neko Case</td>
+<td align="left">The Worse Things Get, The Harder I Fight, The Harder I Fight, The More I Love You (Deluxe Edition)</td>
+<td align="left">2021-11-01 17:09:42</td>
 </tr>
 <tr class="even">
-<td align="left">Animal - Edit</td>
-<td align="left">LUMP</td>
-<td align="left">Animal</td>
-<td align="left">2021-06-10 20:13:21</td>
+<td align="left">Margaret vs. Pauline</td>
+<td align="left">Neko Case</td>
+<td align="left">Fox Confessor Brings The Flood (Bonus Track Version)</td>
+<td align="left">2021-11-01 17:06:45</td>
 </tr>
 <tr class="odd">
-<td align="left">Streets Of Your Town</td>
-<td align="left">DOPE LEMON</td>
-<td align="left">Streets Of Your Town</td>
-<td align="left">2021-06-10 18:23:00</td>
+<td align="left">Runnin’ Out Of Fools</td>
+<td align="left">Neko Case</td>
+<td align="left">Blacklisted</td>
+<td align="left">2021-11-01 17:03:52</td>
 </tr>
 </tbody>
 </table>
@@ -224,10 +231,6 @@
     <span class="va">ungroup</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
-<colgroup>
-<col width="22%">
-<col width="77%">
-</colgroup>
 <thead><tr class="header">
 <th align="left">name</th>
 <th align="left">genres</th>
@@ -235,23 +238,23 @@
 <tbody>
 <tr class="odd">
 <td align="left">Japanese Breakfast</td>
-<td align="left">art pop, bubblegrunge, eugene indie, indie pop, indie rock, philly indie</td>
+<td align="left">art pop, eugene indie, indie pop, philly indie</td>
 </tr>
 <tr class="even">
+<td align="left">Balthazar</td>
+<td align="left">belgian indie, belgian rock, dutch indie, ghent indie</td>
+</tr>
+<tr class="odd">
 <td align="left">Haley Bonar</td>
 <td align="left">melancholia, stomp and holler</td>
 </tr>
-<tr class="odd">
-<td align="left">Balthazar</td>
-<td align="left">belgian indie, belgian rock, dutch indie, dutch rock, ghent indie</td>
-</tr>
 <tr class="even">
-<td align="left">Buildings Breeding</td>
-<td align="left">indie fuzzpop</td>
-</tr>
-<tr class="odd">
 <td align="left">Angus &amp; Julia Stone</td>
 <td align="left">australian indie folk, indie folk, stomp and holler</td>
+</tr>
+<tr class="odd">
+<td align="left">Buildings Breeding</td>
+<td align="left">indie fuzzpop</td>
 </tr>
 </tbody>
 </table>
@@ -269,6 +272,11 @@
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">artist.name</span>, <span class="va">album.name</span><span class="op">)</span> <span class="op">%&gt;%</span> 
     <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="43%">
+<col width="17%">
+<col width="39%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">name</th>
 <th align="left">artist.name</th>
@@ -276,29 +284,29 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Hot &amp; Heavy</td>
-<td align="left">Lucy Dacus</td>
-<td align="left">Hot &amp; Heavy</td>
+<td align="left">Can’t Walk That Back</td>
+<td align="left">Tristen</td>
+<td align="left">Can’t Walk That Back</td>
 </tr>
 <tr class="even">
-<td align="left">Sea Urchin</td>
-<td align="left">Mystic Braves</td>
-<td align="left">Sea Urchin</td>
+<td align="left">You’re Too Weird</td>
+<td align="left">Fruit Bats</td>
+<td align="left">Tripper</td>
 </tr>
 <tr class="odd">
-<td align="left">Human</td>
-<td align="left">Freedom Fry</td>
-<td align="left">Human</td>
+<td align="left">California (All the Way)</td>
+<td align="left">Luna</td>
+<td align="left">Bewitched</td>
 </tr>
 <tr class="even">
-<td align="left">Hot Motion</td>
-<td align="left">Temples</td>
-<td align="left">Hot Motion</td>
+<td align="left">Don’t Blame Your Daughter (Diamonds)</td>
+<td align="left">The Cardigans</td>
+<td align="left">Super Extra Gravity (Remastered)</td>
 </tr>
 <tr class="odd">
-<td align="left">Animal - Edit</td>
-<td align="left">LUMP</td>
-<td align="left">Animal</td>
+<td align="left">Born In The ’70s</td>
+<td align="left">Fruit Bats</td>
+<td align="left">Spelled In Bones</td>
 </tr>
 </tbody>
 </table>
@@ -375,7 +383,7 @@
 <p><a href="https://msmith7161.github.io/what-is-speechiness/">Exploring the Spotify API with R: A tutorial for beginners, by a beginner</a>, Mia Smith</p>
 <p><a href="https://caitlinhudon.com/2017/12/22/blue-christmas/">Blue Christmas: A data-driven search for the most depressing Christmas song</a>, Caitlin Hudon</p>
 <p><a href="https://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico">Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you feel sad when you hear “Love for both?” You’re not alone)</a>, Rui Barros, Rádio Renascença</p>
-<p><a href="https://towardsdatascience.com/angriest-death-grips-data-anger-502168c1c2f0">Using Data to Find the Angriest Death Grips Song</a>, Evan Oppenheimer</p>
+<p><a href="https://medium.com/@evanopp/angriest-death-grips-data-anger-502168c1c2f0">Using Data to Find the Angriest Death Grips Song</a>, Evan Oppenheimer</p>
 <p><a href="https://twitter.com/WireMonkey/status/1009915034246565891?s=19">Hierarchical clustering of David Bowie records</a>, Alyssa Goldberg</p>
 <p><a href="https://medium.com/@simranvatsa5/taylor-f656e2a09cc3">tayloR</a>, Simran Vatsa</p>
 </div>
@@ -430,7 +438,7 @@
 <li><a href="https://cran.r-project.org/package=spotifyr"><img src="http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://cran.r-project.org/package=spotifyr"><img src="https://www.r-pkg.org/badges/ago/spotifyr" alt="CRAN_time_from_release"></a></li>
 <li><a href="https://cran.r-project.org/package=spotifyr"><img src="https://cranlogs.r-pkg.org/badges/spotifyr" alt="metacran downloads"></a></li>
-<li><a href="https://doi.org/10.5281/zenodo.4946780"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4946780.svg" alt="DOI"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.5638489"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5638489.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>

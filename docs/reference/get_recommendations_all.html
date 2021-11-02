@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Recommendations for Unlimited Vector of Track IDs — get_recommendations_all • spotifyr</title>
+<title>Get recommendations for unlimited vector of track IDs — get_recommendations_all • spotifyr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Get Recommendations for Unlimited Vector of Track IDs — get_recommendations_all" />
+<meta property="og:title" content="Get recommendations for unlimited vector of track IDs — get_recommendations_all" />
 <meta property="og:description" content="Get recommendations for a submitted vector of track IDs, with no limit on the number of seed tracks" />
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.3</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Recommendations for Unlimited Vector of Track IDs</h1>
+    <h1>Get recommendations for unlimited vector of track IDs</h1>
     <small class="dont-index">Source: <a href='https://github.com/charlie86/spotifyr/blob/master/R/browse.R'><code>R/browse.R</code></a></small>
     <div class="hidden name"><code>get_recommendations_all.Rd</code></div>
     </div>
@@ -157,57 +157,54 @@ length equal to the supplied vector of track ids.</p>
 <span class='fu'>get_recommendations_all</span><span class='op'>(</span>
    track_ids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"5VIpLopHgolKcSSj7JPCMA"</span>, <span class='st'>"3QRGYDFFUVb4qneE4DX1gR"</span><span class='op'>)</span>
    <span class='op'>)</span>
-</div><div class='output co'>#&gt;                                                                                                                                                                                                        artists
-#&gt; 1 https://api.spotify.com/v1/artists/7MoIc5s9KXolCBH1fy9kkw, 7MoIc5s9KXolCBH1fy9kkw, Japanese Breakfast, artist, spotify:artist:7MoIc5s9KXolCBH1fy9kkw, https://open.spotify.com/artist/7MoIc5s9KXolCBH1fy9kkw
-#&gt; 2      https://api.spotify.com/v1/artists/12fRkVfO2fUsz1QHgDAG3g, 12fRkVfO2fUsz1QHgDAG3g, Julia Jacklin, artist, spotify:artist:12fRkVfO2fUsz1QHgDAG3g, https://open.spotify.com/artist/12fRkVfO2fUsz1QHgDAG3g
-#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    available_markets
-#&gt; 1 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
-#&gt; 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 AG, BB, BS, BZ, CR, DM, DO, GD, GT, HN, HT, JM, KN, LC, MX, NI, PA, SV, TT, US, VC
+</div><div class='output co'>#&gt;                                                                                                                                                                                                  artists
+#&gt; 1      https://api.spotify.com/v1/artists/5ZMwoAjeDtLJ0XRwRTgaK8, 5ZMwoAjeDtLJ0XRwRTgaK8, Quantic, artist, spotify:artist:5ZMwoAjeDtLJ0XRwRTgaK8, https://open.spotify.com/artist/5ZMwoAjeDtLJ0XRwRTgaK8
+#&gt; 2 https://api.spotify.com/v1/artists/2cCUtGK9sDU2EoElnk0GNB, 2cCUtGK9sDU2EoElnk0GNB, The National, artist, spotify:artist:2cCUtGK9sDU2EoElnk0GNB, https://open.spotify.com/artist/2cCUtGK9sDU2EoElnk0GNB
+#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        available_markets
+#&gt; 1 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
+#&gt; 2     AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
 #&gt;   disc_number duration_ms explicit
-#&gt; 1           1      213986    FALSE
-#&gt; 2           1      307613    FALSE
+#&gt; 1           1      205816    FALSE
+#&gt; 2           1      198653    FALSE
 #&gt;                                                       href
-#&gt; 1 https://api.spotify.com/v1/tracks/0De8H4o9xzPtjRp9dns0L5
-#&gt; 2 https://api.spotify.com/v1/tracks/0xhHw3EIyZ05mboRXpJWxs
-#&gt;                       id is_local   name popularity
-#&gt; 1 0De8H4o9xzPtjRp9dns0L5    FALSE Boyish         57
-#&gt; 2 0xhHw3EIyZ05mboRXpJWxs    FALSE   Body         43
+#&gt; 1 https://api.spotify.com/v1/tracks/7oTPUMeartrRlIDGKpgIa3
+#&gt; 2 https://api.spotify.com/v1/tracks/6ApsMLGIa9zw446CrqxcEi
+#&gt;                       id is_local                name popularity
+#&gt; 1 7oTPUMeartrRlIDGKpgIa3    FALSE    Theme from Selva         42
+#&gt; 2 6ApsMLGIa9zw446CrqxcEi    FALSE Never Tear Us Apart         48
 #&gt;                                                                                                   preview_url
-#&gt; 1 https://p.scdn.co/mp3-preview/044a4c45ce15cf0b37758a7cf5a2e82a0909c8fa?cid=125a10da5fa94687b3d0913168bc3698
-#&gt; 2 https://p.scdn.co/mp3-preview/9eade9cb2c53b2ef7584de694a0750a962c93639?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 1 https://p.scdn.co/mp3-preview/508be4b2e2856081d5c19b5fa11bfe855138411e?cid=125a10da5fa94687b3d0913168bc3698
+#&gt; 2 https://p.scdn.co/mp3-preview/0f749afe323b4db57b1bee990a435d061d6500f7?cid=125a10da5fa94687b3d0913168bc3698
 #&gt;   track_number  type                                  uri album.album_type
-#&gt; 1            6 track spotify:track:0De8H4o9xzPtjRp9dns0L5            ALBUM
-#&gt; 2            1 track spotify:track:0xhHw3EIyZ05mboRXpJWxs            ALBUM
-#&gt;                                                                                                                                                                                                  album.artists
-#&gt; 1 https://api.spotify.com/v1/artists/7MoIc5s9KXolCBH1fy9kkw, 7MoIc5s9KXolCBH1fy9kkw, Japanese Breakfast, artist, spotify:artist:7MoIc5s9KXolCBH1fy9kkw, https://open.spotify.com/artist/7MoIc5s9KXolCBH1fy9kkw
-#&gt; 2      https://api.spotify.com/v1/artists/12fRkVfO2fUsz1QHgDAG3g, 12fRkVfO2fUsz1QHgDAG3g, Julia Jacklin, artist, spotify:artist:12fRkVfO2fUsz1QHgDAG3g, https://open.spotify.com/artist/12fRkVfO2fUsz1QHgDAG3g
-#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              album.available_markets
-#&gt; 1 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
-#&gt; 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 AG, BB, BS, BZ, CR, DM, DO, GD, GT, HN, HT, JM, KN, LC, MX, NI, PA, SV, TT, US, VC
+#&gt; 1            1 track spotify:track:7oTPUMeartrRlIDGKpgIa3           SINGLE
+#&gt; 2            1 track spotify:track:6ApsMLGIa9zw446CrqxcEi           SINGLE
+#&gt;                                                                                                                                                                                            album.artists
+#&gt; 1      https://api.spotify.com/v1/artists/5ZMwoAjeDtLJ0XRwRTgaK8, 5ZMwoAjeDtLJ0XRwRTgaK8, Quantic, artist, spotify:artist:5ZMwoAjeDtLJ0XRwRTgaK8, https://open.spotify.com/artist/5ZMwoAjeDtLJ0XRwRTgaK8
+#&gt; 2 https://api.spotify.com/v1/artists/2cCUtGK9sDU2EoElnk0GNB, 2cCUtGK9sDU2EoElnk0GNB, The National, artist, spotify:artist:2cCUtGK9sDU2EoElnk0GNB, https://open.spotify.com/artist/2cCUtGK9sDU2EoElnk0GNB
+#&gt;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  album.available_markets
+#&gt; 1 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
+#&gt; 2     AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RU, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VN, VU, WS, XK, ZA, ZM, ZW
 #&gt;                                                 album.href
-#&gt; 1 https://api.spotify.com/v1/albums/6AOaqWipm2Zk0oBp0uUey2
-#&gt; 2 https://api.spotify.com/v1/albums/4u3aIyQbywYaxgF7TcXuIu
+#&gt; 1 https://api.spotify.com/v1/albums/6ht7LwHxyNVk8gkqGaK6mM
+#&gt; 2 https://api.spotify.com/v1/albums/3aM9iFr4aGdb9S275yWRZk
 #&gt;                 album.id
-#&gt; 1 6AOaqWipm2Zk0oBp0uUey2
-#&gt; 2 4u3aIyQbywYaxgF7TcXuIu
+#&gt; 1 6ht7LwHxyNVk8gkqGaK6mM
+#&gt; 2 3aM9iFr4aGdb9S275yWRZk
 #&gt;                                                                                                                                                                                                                       album.images
-#&gt; 1 640, 300, 64, https://i.scdn.co/image/ab67616d0000b27397e74e852b3ccf09aebc917c, https://i.scdn.co/image/ab67616d00001e0297e74e852b3ccf09aebc917c, https://i.scdn.co/image/ab67616d0000485197e74e852b3ccf09aebc917c, 640, 300, 64
-#&gt; 2 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2732fca2b6f420ec6044327ec2d, https://i.scdn.co/image/ab67616d00001e022fca2b6f420ec6044327ec2d, https://i.scdn.co/image/ab67616d000048512fca2b6f420ec6044327ec2d, 640, 300, 64
-#&gt;                        album.name album.release_date
-#&gt; 1 Soft Sounds from Another Planet         2017-07-14
-#&gt; 2                        Crushing         2019-02-22
-#&gt;   album.release_date_precision album.total_tracks album.type
-#&gt; 1                          day                 12      album
-#&gt; 2                          day                 10      album
-#&gt;                              album.uri
-#&gt; 1 spotify:album:6AOaqWipm2Zk0oBp0uUey2
-#&gt; 2 spotify:album:4u3aIyQbywYaxgF7TcXuIu
+#&gt; 1 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2738c8b77c4332ee057419e64f2, https://i.scdn.co/image/ab67616d00001e028c8b77c4332ee057419e64f2, https://i.scdn.co/image/ab67616d000048518c8b77c4332ee057419e64f2, 640, 300, 64
+#&gt; 2 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2736c7c62f8fc8b0b40ddd3e916, https://i.scdn.co/image/ab67616d00001e026c7c62f8fc8b0b40ddd3e916, https://i.scdn.co/image/ab67616d000048516c7c62f8fc8b0b40ddd3e916, 640, 300, 64
+#&gt;            album.name album.release_date album.release_date_precision
+#&gt; 1    Theme from Selva         2020-10-30                          day
+#&gt; 2 Never Tear Us Apart         2020-02-28                          day
+#&gt;   album.total_tracks album.type                            album.uri
+#&gt; 1                  2      album spotify:album:6ht7LwHxyNVk8gkqGaK6mM
+#&gt; 2                  1      album spotify:album:3aM9iFr4aGdb9S275yWRZk
 #&gt;                             album.external_urls.spotify external_ids.isrc
-#&gt; 1 https://open.spotify.com/album/6AOaqWipm2Zk0oBp0uUey2      USJ5G1713306
-#&gt; 2 https://open.spotify.com/album/4u3aIyQbywYaxgF7TcXuIu      GBKZV1800115
+#&gt; 1 https://open.spotify.com/album/6ht7LwHxyNVk8gkqGaK6mM      FRX762008971
+#&gt; 2 https://open.spotify.com/album/3aM9iFr4aGdb9S275yWRZk      AUOXM2000036
 #&gt;                                   external_urls.spotify
-#&gt; 1 https://open.spotify.com/track/0De8H4o9xzPtjRp9dns0L5
-#&gt; 2 https://open.spotify.com/track/0xhHw3EIyZ05mboRXpJWxs</div><div class='input'><span class='co'># }</span>
+#&gt; 1 https://open.spotify.com/track/7oTPUMeartrRlIDGKpgIa3
+#&gt; 2 https://open.spotify.com/track/6ApsMLGIa9zw446CrqxcEi</div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -73,7 +73,7 @@ information that is returned from get_playlist as a tibble." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.3</span>
       </span>
     </div>
 
@@ -164,18 +164,18 @@ information that is returned from <code><a href='get_playlist.html'>get_playlist
 <span class='va'>fall</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_playlist.html'>get_playlist</a></span><span class='op'>(</span><span class='st'>"4GSV6uJzlbtTCPJhnVU1o8"</span><span class='op'>)</span>
 <span class='fu'>tidy</span><span class='op'>(</span><span class='va'>fall</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 64 x 26</span>
-#&gt;    track_name  album_name   id     artist_names added_at  duration_ms popularity
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> Alibis      Mona         5KsJd~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>216</span>280          8
-#&gt; <span style='color: #BCBCBC;'> 2</span> Yam Yam     Yam Yam      1j56M~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>216</span>038          0
-#&gt; <span style='color: #BCBCBC;'> 3</span> Drown       Much Love    7KmIS~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>180</span>200          0
-#&gt; <span style='color: #BCBCBC;'> 4</span> Q&amp;A         Lighght      0bcqu~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>191</span>880         35
-#&gt; <span style='color: #BCBCBC;'> 5</span> Potential   Freshman     21Iat~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>133</span>076         13
-#&gt; <span style='color: #BCBCBC;'> 6</span> keeping up  keeping up   0hNYL~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>229</span>407         49
-#&gt; <span style='color: #BCBCBC;'> 7</span> Cleveland,~ Cleveland, ~ 6hdNp~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>290</span>776          0
-#&gt; <span style='color: #BCBCBC;'> 8</span> No Halo     You're Not ~ 7Cw8H~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>170</span>004         47
-#&gt; <span style='color: #BCBCBC;'> 9</span> Direction   Luna &amp; the ~ 29XEt~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>170</span>306          0
-#&gt; <span style='color: #BCBCBC;'>10</span> Halos       Natural, Ev~ 4pnQ8~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08-~      <span style='text-decoration: underline;'>262</span>226         23
+#&gt;    track_name    album_name  id     artist_names added_at duration_ms popularity
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Alibis        Mona        5KsJd~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>216</span>280          7
+#&gt; <span style='color: #BCBCBC;'> 2</span> Yam Yam       Yam Yam     1j56M~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>216</span>038          0
+#&gt; <span style='color: #BCBCBC;'> 3</span> Drown         Much Love   7KmIS~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>180</span>200          0
+#&gt; <span style='color: #BCBCBC;'> 4</span> Q&amp;A           Lighght     0bcqu~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>191</span>880         16
+#&gt; <span style='color: #BCBCBC;'> 5</span> Potential     Freshman    21Iat~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>133</span>076         13
+#&gt; <span style='color: #BCBCBC;'> 6</span> keeping up    keeping up  0hNYL~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>229</span>407         49
+#&gt; <span style='color: #BCBCBC;'> 7</span> Cleveland, OH Cleveland,~ 6hdNp~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>290</span>776          0
+#&gt; <span style='color: #BCBCBC;'> 8</span> No Halo       You're Not~ 7Cw8H~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>170</span>004         48
+#&gt; <span style='color: #BCBCBC;'> 9</span> Direction     Luna &amp; the~ 29XEt~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>170</span>306          0
+#&gt; <span style='color: #BCBCBC;'>10</span> Halos         Natural, E~ 4pnQ8~ <span style='color: #949494;'>&lt;chr [1]&gt;</span>    2019-08~      <span style='text-decoration: underline;'>262</span>226         22
 #&gt; <span style='color: #949494;'># ... with 54 more rows, and 19 more variables: track_number &lt;int&gt;,</span>
 #&gt; <span style='color: #949494;'>#   available_markets &lt;list&gt;, is_local &lt;lgl&gt;, primary_color &lt;lgl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   added_by_id &lt;chr&gt;, added_by_type &lt;chr&gt;, artists &lt;list&gt;, disc_number &lt;int&gt;,</span>
