@@ -2,7 +2,7 @@
 % Please edit documentation in R/browse.R
 \name{get_new_releases}
 \alias{get_new_releases}
-\title{Get New Releases}
+\title{Get new releases}
 \usage{
 get_new_releases(
   country = NULL,

@@ -10,7 +10,7 @@
 [![CRAN\_time\_from\_release](https://www.r-pkg.org/badges/ago/spotifyr)](https://cran.r-project.org/package=spotifyr)
 [![metacran
 downloads](https://cranlogs.r-pkg.org/badges/spotifyr)](https://cran.r-project.org/package=spotifyr)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4946780.svg)](https://doi.org/10.5281/zenodo.4946780)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5638489.svg)](https://doi.org/10.5281/zenodo.5638489)
 <!-- badges: end -->
 
 ## Overview
@@ -92,16 +92,17 @@ beatles %>%
 
 | key\_mode |   n |
 |:----------|----:|
-| C major   | 104 |
-| D major   |  98 |
-| G major   |  82 |
-| A major   |  76 |
-| E major   |  62 |
+| D major   | 115 |
+| C major   | 111 |
+| G major   |  90 |
+| A major   |  80 |
+| E major   |  68 |
 
 ### Get your most recently played tracks
 
 ``` r
 library(lubridate)
+#> Warning: package 'lubridate' was built under R version 4.1.1
 
 get_my_recently_played(limit = 5) %>% 
     mutate(
@@ -114,13 +115,13 @@ get_my_recently_played(limit = 5) %>%
     kable()
 ```
 
-| track.name           | artist.name | track.album.name     | played\_at          |
-|:---------------------|:------------|:---------------------|:--------------------|
-| A Case of You        | Tristen     | A Case of You        | 2021-06-14 09:54:44 |
-| Paper Cup            | Real Estate | Paper Cup            | 2021-06-10 20:20:11 |
-| Wrong with You       | Tristen     | Wrong with You       | 2021-06-10 20:17:24 |
-| Animal - Edit        | LUMP        | Animal               | 2021-06-10 20:13:21 |
-| Streets Of Your Town | DOPE LEMON  | Streets Of Your Town | 2021-06-10 18:23:00 |
+| track.name                   | artist.name | track.album.name                                                                                   | played\_at          |
+|:-----------------------------|:------------|:---------------------------------------------------------------------------------------------------|:--------------------|
+| Look For Me (I’ll Be Around) | Neko Case   | Blacklisted                                                                                        | 2021-11-01 17:16:12 |
+| Don’t Forget Me              | Neko Case   | Middle Cyclone                                                                                     | 2021-11-01 17:12:50 |
+| Magpie to the Morning        | Neko Case   | The Worse Things Get, The Harder I Fight, The Harder I Fight, The More I Love You (Deluxe Edition) | 2021-11-01 17:09:42 |
+| Margaret vs. Pauline         | Neko Case   | Fox Confessor Brings The Flood (Bonus Track Version)                                               | 2021-11-01 17:06:45 |
+| Runnin’ Out Of Fools         | Neko Case   | Blacklisted                                                                                        | 2021-11-01 17:03:52 |
 
 ### Find Your All Time Favorite Artists
 
@@ -135,13 +136,13 @@ get_my_top_artists_or_tracks(type = 'artists',
     kable()
 ```
 
-| name                | genres                                                                   |
-|:--------------------|:-------------------------------------------------------------------------|
-| Japanese Breakfast  | art pop, bubblegrunge, eugene indie, indie pop, indie rock, philly indie |
-| Haley Bonar         | melancholia, stomp and holler                                            |
-| Balthazar           | belgian indie, belgian rock, dutch indie, dutch rock, ghent indie        |
-| Buildings Breeding  | indie fuzzpop                                                            |
-| Angus & Julia Stone | australian indie folk, indie folk, stomp and holler                      |
+| name                | genres                                                |
+|:--------------------|:------------------------------------------------------|
+| Japanese Breakfast  | art pop, eugene indie, indie pop, philly indie        |
+| Balthazar           | belgian indie, belgian rock, dutch indie, ghent indie |
+| Haley Bonar         | melancholia, stomp and holler                         |
+| Angus & Julia Stone | australian indie folk, indie folk, stomp and holler   |
+| Buildings Breeding  | indie fuzzpop                                         |
 
 ### Find your favorite tracks at the moment
 
@@ -156,13 +157,13 @@ get_my_top_artists_or_tracks(type = 'tracks',
     kable()
 ```
 
-| name          | artist.name   | album.name  |
-|:--------------|:--------------|:------------|
-| Hot & Heavy   | Lucy Dacus    | Hot & Heavy |
-| Sea Urchin    | Mystic Braves | Sea Urchin  |
-| Human         | Freedom Fry   | Human       |
-| Hot Motion    | Temples       | Hot Motion  |
-| Animal - Edit | LUMP          | Animal      |
+| name                                 | artist.name   | album.name                       |
+|:-------------------------------------|:--------------|:---------------------------------|
+| Can’t Walk That Back                 | Tristen       | Can’t Walk That Back             |
+| You’re Too Weird                     | Fruit Bats    | Tripper                          |
+| California (All the Way)             | Luna          | Bewitched                        |
+| Don’t Blame Your Daughter (Diamonds) | The Cardigans | Super Extra Gravity (Remastered) |
+| Born In The ’70s                     | Fruit Bats    | Spelled In Bones                 |
 
 ### What’s the most joyful Joy Division song?
 
@@ -234,7 +235,7 @@ alone)](https://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelo
 Rui Barros, Rádio Renascença
 
 [Using Data to Find the Angriest Death Grips
-Song](https://towardsdatascience.com/angriest-death-grips-data-anger-502168c1c2f0),
+Song](https://medium.com/@evanopp/angriest-death-grips-data-anger-502168c1c2f0),
 Evan Oppenheimer
 
 [Hierarchical clustering of David Bowie
