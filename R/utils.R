@@ -44,13 +44,13 @@ verify_result <- function(res) {
 #' @examples
 #' scopes()
 #' @return A character vector of valid authorization scopes for the Spotify Web API.
-#' See \href{https://developer.spotify.com/documentation/general/guides/scopes/}{Spotify Web API Authorization Scopes}
+#' See \href{https://developer.spotify.com/documentation/general/guides/authorization/scopes/}{Spotify Web API Authorization Scopes}
 #' @export
 #' @importFrom xml2 read_html
 #' @importFrom rvest html_text html_elements
 
 scopes <- function() {
-    xml2::read_html("https://developer.spotify.com/documentation/general/guides/scopes/") %>%
+    xml2::read_html("https://developer.spotify.com/documentation/general/guides/authorization/scopes/") %>%
     rvest::html_elements('code') %>%
     rvest::html_text() %>%
     unique()
