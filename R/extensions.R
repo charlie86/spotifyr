@@ -38,6 +38,7 @@ get_artist_audio_features <- function(artist = NULL,
                                       return_closest_artist = TRUE,
                                       dedupe_albums = TRUE,
                                       market = NULL,
+                                      limit = 20,
                                       authorization = get_spotify_access_token()
                                       ) {
 
@@ -48,7 +49,10 @@ get_artist_audio_features <- function(artist = NULL,
         artist_id <- artist_info$id
         artist_name <- artist_info$name
     } else {
-        artist_ids <- search_spotify(artist, 'artist', authorization = authorization)
+        # Try to find an artist  with this ID
+        artist_ids <- search_spotify(
+            artist, 'artist',
+            authorization = authorization)
 
         if (return_closest_artist) {
             artist_id <- artist_ids$id[1]
@@ -279,7 +283,10 @@ get_playlist_audio_features <- function(username,
         n_tracks <- this_playlist$tracks$total
         num_loops <- ceiling(n_tracks / 100)
         map_df(1:num_loops, function(this_loop) {
-            get_playlist_tracks(this_playlist$id, limit = 100, offset = (this_loop - 1) * 100, authorization = authorization) %>%
+            get_playlist_tracks(this_playlist$id,
+                                limit = 100,
+                                offset = (this_loop - 1) * 100,
+                                authorization = authorization) %>%
                 mutate(playlist_id = this_playlist$id,
                        playlist_name = this_playlist$name,
                        playlist_img = this_playlist$images$url[[1]],
