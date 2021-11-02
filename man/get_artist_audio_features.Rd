@@ -10,6 +10,7 @@ get_artist_audio_features(
   return_closest_artist = TRUE,
   dedupe_albums = TRUE,
   market = NULL,
+  limit = 20,
   authorization = get_spotify_access_token()
 )
 }
@@ -38,12 +39,12 @@ Supply this parameter to limit the response to one particular geographical marke
 For example, for albums available in Sweden: \code{market = "SE"}. \cr
 If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!}
 
+\item{limit}{Optional. \cr}
+
 \item{authorization}{Required. A valid access token from the Spotify Accounts service.
 See the
 \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
 Defaults to \code{spotifyr::get_spotify_access_token()}}
-
-\item{limit}{Optional. \cr}
 }
 \value{
 Returns a data frame of results containing track audio features data. See the

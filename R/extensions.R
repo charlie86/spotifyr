@@ -18,7 +18,6 @@
 #' Supply this parameter to limit the response to one particular geographical market.
 #' For example, for albums available in Sweden: \code{market = "SE"}. \cr
 #' If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!
-#' @param limit Optional. \cr
 #' @param return_closest_artist Optional. Boolean.
 #' @param dedupe_albums Optional. Logical, boolean parameter, defaults to
 #' \code{TRUE}.
@@ -38,7 +37,6 @@ get_artist_audio_features <- function(artist = NULL,
                                       return_closest_artist = TRUE,
                                       dedupe_albums = TRUE,
                                       market = NULL,
-                                      limit = 20,
                                       authorization = get_spotify_access_token()
                                       ) {
 
