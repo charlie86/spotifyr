@@ -2,17 +2,20 @@
 % Please edit documentation in R/users_profile.R
 \name{get_my_profile}
 \alias{get_my_profile}
-\title{Get detailed profile information about the current user (including the current user’s username).}
+\title{Get User Profile Information}
 \usage{
 get_my_profile(authorization = get_spotify_authorization_code())
 }
 \arguments{
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_authorization_code()}. The access token must have been issued on behalf of the current user. \cr
 Reading the user’s email address requires the \code{user-read-email} scope; reading country and product subscription level requires the \code{user-read-private} scope. See \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/#list-of-scopes}{Using Scopes}.}
 }
 \value{
-Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a data frame of results containing user profile information.
+See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
-Get detailed profile information about the current user (including the current user’s username).
+Get detailed profile information about the current user
+(including the current user’s username).
 }

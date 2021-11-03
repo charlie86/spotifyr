@@ -2,14 +2,21 @@
 % Please edit documentation in R/browse.R
 \name{get_new_releases}
 \alias{get_new_releases}
-\title{Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).}
+\title{Get new releases}
 \usage{
-get_new_releases(country = NULL, limit = 20, offset = 0,
+get_new_releases(
+  country = NULL,
+  limit = 20,
+  offset = 0,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
-\item{country}{Optional. A country: an \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}. Provide this parameter if you want the list of returned items to be relevant to a particular country. If omitted, the returned items will be relevant to all countries.}
+\item{country}{Optional. A country: an
+\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2 country code}.
+Provide this parameter if you want the list of returned items to be relevant to a
+particular country. If omitted, the returned items will be relevant to all countries.}
 
 \item{limit}{Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.}
 
@@ -20,14 +27,16 @@ get_new_releases(country = NULL, limit = 20, offset = 0,
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"country"}, \code{"offset"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
 \value{
-Returns a data frame of results containing new releases. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+Returns a data frame of results containing new releases. \cr
+See \url{https://developer.spotify.com/documentation/web-api/reference/#category-browse} for more information.
 }
 \description{
-Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
+Get a list of new album releases featured in Spotify (shown, for example,
+on a Spotify player’s “Browse” tab).
 }
 \examples{
-\dontrun{
+\donttest{
 ## Get new Swedish music
-get_new_releases(country = 'SE')
+get_new_releases(country = 'SE', limit = 5)
 }
 }

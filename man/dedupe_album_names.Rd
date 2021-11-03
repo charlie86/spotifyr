@@ -4,16 +4,23 @@
 \alias{dedupe_album_names}
 \title{Remove duplicate album names}
 \usage{
-dedupe_album_names(df, album_name_col = "album_name",
-  album_release_year_col = "album_release_year")
+dedupe_album_names(
+  df,
+  album_name_col = "album_name",
+  album_release_year_col = "album_release_year"
+)
 }
 \arguments{
-\item{df}{Dataframe with album name}
+\item{df}{Data frame with album name}
 
 \item{album_name_col}{String of field name containing album names}
 
 \item{album_release_year_col}{String of field name containing album release year}
 }
+\value{
+The original data frame with distinct \code{album_name} rows, keeping as much as
+possible the original album release (and not re-releases.)
+}
 \description{
-Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc)
+Use fuzzy matching to remove duplicate album names (including reissues, remasters, etc).
 }

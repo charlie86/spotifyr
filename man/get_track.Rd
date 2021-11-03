@@ -4,8 +4,7 @@
 \alias{get_track}
 \title{Get Spotify catalog information for a single track identified by its unique Spotify ID.}
 \usage{
-get_track(id, market = NULL,
-  authorization = get_spotify_access_token())
+get_track(id, market = NULL, authorization = get_spotify_access_token())
 }
 \arguments{
 \item{id}{The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the track.}
@@ -21,3 +20,10 @@ Returns a data frame of results containing track data. See \url{https://develope
 \description{
 Get Spotify catalog information for a single track identified by its unique Spotify ID.
 }
+\seealso{
+Other track functions: 
+\code{\link{get_album_tracks}()},
+\code{\link{get_playlist_tracks}()},
+\code{\link{get_tracks}()}
+}
+\concept{track functions}

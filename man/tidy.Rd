@@ -2,20 +2,47 @@
 % Please edit documentation in R/playlists.R
 \name{tidy}
 \alias{tidy}
-\title{Tidy a playlist}
+\alias{tidy.playlist}
+\alias{print.playlist}
+\title{Tidy a Playlist}
 \usage{
 tidy(x, ...)
+
+\method{tidy}{playlist}(x, ...)
+
+\method{print}{playlist}(x, ...)
 }
 \arguments{
-\item{x}{A playlist object generated from}
+\item{x}{A playlist object generated from \code{get_playlist()}.}
+
+\item{...}{Unused.}
+}
+\value{
+Return or print a tidy version a tibble containing the track level
+information that is returned from \code{\link{get_playlist}}.
 }
 \description{
-\code{spotifyr::tidy()} extracts and tidies the data frame containing track level information that is returned from \code{get_playlist()} as a tibble.
+\code{\link{tidy}} extracts and tidies the data frame containing track level
+information that is returned from \code{\link{get_playlist}} as a tibble.
 }
 \examples{
-\dontrun{
+\donttest{
 fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
 tidy(fall)
+
+print(fall)
 }
 
 }
+\seealso{
+Other playlist functions: 
+\code{\link{add_tracks_to_playlist}()},
+\code{\link{change_playlist_details}()},
+\code{\link{check_users_following}()},
+\code{\link{create_playlist}()},
+\code{\link{get_my_playlists}()},
+\code{\link{get_playlist}()},
+\code{\link{get_user_playlists}()},
+\code{\link{remove_tracks_from_playlist}()}
+}
+\concept{playlist functions}

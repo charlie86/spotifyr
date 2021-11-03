@@ -2,17 +2,19 @@
 % Please edit documentation in R/users_profile.R
 \name{get_user_profile}
 \alias{get_user_profile}
-\title{Get public profile information about a Spotify user.}
+\title{Get User Public Profile Information}
 \usage{
 get_user_profile(user_id, authorization = get_spotify_access_token())
 }
 \arguments{
 \item{user_id}{Required. The user's \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify user ID}.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required.
+A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-Returns a data frame of results containing user profile information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-users-profile/} for more information.
+Returns a data frame of results containing user profile information.
+See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-users-profile/} for more information.
 }
 \description{
 Get public profile information about a Spotify user.

@@ -2,26 +2,38 @@
 % Please edit documentation in R/authenticate.R
 \name{get_spotify_authorization_code}
 \alias{get_spotify_authorization_code}
-\title{Get Spotify authorization Code}
+\title{Get Spotify Authorization Code}
 \usage{
-
-  get_spotify_authorization_code(client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
+get_spotify_authorization_code(
+  client_id = Sys.getenv("SPOTIFY_CLIENT_ID"),
   client_secret = Sys.getenv("SPOTIFY_CLIENT_SECRET"),
-  scope = spotifyr::scopes)
+  scope = scopes()
+)
 }
 \arguments{
 \item{client_id}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"}
 
 \item{client_secret}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"}
 
-\item{scope}{Space delimited string of spotify scopes, found here: https://developer.spotify.com/documentation/general/guides/scopes/. All scopes are selected by default}
+\item{scope}{Space delimited string of spotify scopes,
+found here: https://developer.spotify.com/documentation/general/guides/scopes/.
+All scopes are selected by default}
+}
+\value{
+The Spotify Web API Token2.0 reference class object (see
+ \code{httr::\link[httr]{oauth2.0_token}}), or an error message.
 }
 \description{
-This function creates a Spotify access token.
+This function creates a Spotify authorization code.
+See \code{httr::\link[httr]{oauth2.0_token}}.
 }
 \examples{
-\dontrun{
-get_spotify_authorization_code()
+\donttest{
+authorization <- get_spotify_authorization_code()
 }
 }
-\keyword{auth}
+\seealso{
+Other authentication functions: 
+\code{\link{get_spotify_access_token}()}
+}
+\concept{authentication functions}

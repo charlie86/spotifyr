@@ -2,12 +2,18 @@
 % Please edit documentation in R/search.R
 \name{search_spotify}
 \alias{search_spotify}
-\title{Search for an item}
+\title{Search for an Item}
 \usage{
-search_spotify(q, type = c("album", "artist", "playlist", "track"),
-  market = NULL, limit = 20, offset = 0, include_external = NULL,
+search_spotify(
+  q,
+  type = c("album", "artist", "playlist", "track"),
+  market = NULL,
+  limit = 20,
+  offset = 0,
+  include_external = NULL,
   authorization = get_spotify_access_token(),
-  include_meta_info = FALSE)
+  include_meta_info = FALSE
+)
 }
 \arguments{
 \item{q}{Required. \cr
@@ -42,19 +48,27 @@ Use with limit to get the next page of search results.}
 
 \item{include_external}{Optional. \cr
 Possible values: audio \cr
-If \code{include_external = "audio"} is specified the response will include any relevant audio content that is hosted externally. \cr
+If \code{include_external = "audio"} is specified the response will include any
+relevant audio content that is hosted externally. \cr
 By default external content is filtered out from responses.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 
 \item{include_meta_info}{Optional. Boolean indicating whether to include full result, with meta information such as \code{"total"}, and \code{"limit"}. Defaults to \code{FALSE}.}
 }
+\value{
+A tibble with detailed information about the searched album, artist, playlist, track or
+their combination.
+}
 \description{
-Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string. For more information see the official \href{https://developer.spotify.com/documentation/web-api/reference/search/search/}{documentation}.
+Get Spotify Catalog information about artists, albums, tracks or playlists that match a
+keyword string. For more information see the official
+\href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{documentation}.
 }
 \examples{
-\dontrun{
+\donttest{
 search_spotify('radiohead', 'artist')
 }
 }
-\keyword{search}
+\concept{search functions}

@@ -2,31 +2,60 @@
 % Please edit documentation in R/extensions.R
 \name{get_artist_audio_features}
 \alias{get_artist_audio_features}
-\title{Get audio feature information for all or part of an artists' discography.}
+\title{Get Audio Features For Artists' Discography}
 \usage{
-get_artist_audio_features(artist = NULL, include_groups = "album",
-  return_closest_artist = TRUE, dedupe_albums = TRUE,
-  authorization = get_spotify_access_token())
+get_artist_audio_features(
+  artist = NULL,
+  include_groups = "album",
+  return_closest_artist = TRUE,
+  dedupe_albums = TRUE,
+  market = NULL,
+  authorization = get_spotify_access_token()
+)
 }
 \arguments{
-\item{artist}{Required. String of either an artist name or an artist Spotify ID. If an artist name is provided, \code{search_spotify()} will be used to find a Spotify ID matching the name provided.}
+\item{artist}{Required. String of either an artist name or an artist Spotify ID.
+If an artist name is provided, \code{search_spotify()} will be used to find a Spotify ID
+matching the name provided.}
 
-\item{include_groups}{Optional. A character vector of keywords that will be used to filter the response. Defaults to \code{"album"}. Valid values are: \cr
+\item{include_groups}{Optional. A character vector of keywords that will be used to filter
+ the response. Defaults to \code{"album"}.
+ Valid values are: \cr
 \code{"album"} \cr
 \code{"single"} \cr
 \code{"appears_on"} \cr
 \code{"compilation"} \cr
 For example: \code{include_groups = c("album", "single")}}
 
-\item{return_closest_artist}{Optional. Boolean}
+\item{return_closest_artist}{Optional. Boolean.}
 
-\item{dedupe_albums}{Optional. Boolean}
+\item{dedupe_albums}{Optional. Logical, boolean parameter, defaults to
+\code{TRUE}.}
 
-\item{authorization}{Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
+\item{market}{Optional. \cr
+An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
+Supply this parameter to limit the response to one particular geographical market.
+For example, for albums available in Sweden: \code{market = "SE"}. \cr
+If not given, results will be returned for all markets and you are likely to get duplicate results per album, one for each market in which the album is available!}
+
+\item{authorization}{Required. A valid access token from the Spotify Accounts service.
+See the
+\href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
+Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-Returns a data frame of results containing track audio features data. See the \href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
+Returns a data frame of results containing track audio features data. See the
+\href{https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/}{Spotify Web API documentation} for more information.
 }
 \description{
 Get audio feature information for all or part of an artists' discography.
 }
+\seealso{
+Other musicology functions: 
+\code{\link{get_genre_artists}()},
+\code{\link{get_playlist_audio_features}()},
+\code{\link{get_track_audio_analysis}()},
+\code{\link{get_track_audio_features}()},
+\code{\link{get_user_audio_features}()}
+}
+\concept{musicology functions}
