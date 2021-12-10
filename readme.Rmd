@@ -161,6 +161,34 @@ labs(title = "Joyplot of Joy Division's joy distributions",
      subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 ```
 
+## Use it with dplyr pipelines
+
+You can wrap the functions exported in this package in a little helper, that you
+can then map over a dataframe.
+
+Credit for this approach goes to https://mirr.netlify.app/audio-features-spotify.html
+
+```{r dplyr, message=FALSE}
+df <- tribble(
+  ~track, ~artist, ~album,
+  "You’re Too Weird", "Fruit Bats", "Tripper",
+  "Can’t Walk That Back", "Tristen", "Can’t Walk That Back",
+)
+
+track_spotify_id <- function(artist, track, album, type = c("track")) {
+  search_results <- search_spotify(sprintf("artist:%s track:%s album:%s", artist, track, album), type = type)
+  return(search_results$id[[1]])
+}
+
+# Don't fail on error, but return a meaningful response
+possible_search <- possibly(track_spotify_id, otherwise = NA)
+
+df %>%
+  mutate(album = gsub('\\:.*', "", album)) %>% # if album contains a colon, take only the first substring up to it
+  mutate(sid = pmap(list(artist, track, album), possible_search)) %>% 
+  unnest(sid)
+```
+
 ## Sentify: A Shiny app
 This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.
 
