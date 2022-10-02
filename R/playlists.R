@@ -40,8 +40,9 @@ get_playlist <- function(playlist_id, fields = NULL,
 
     # stopping is built into query_playlist()
     init_query <- query_playlist(url, params = params)
-
+    # identify how many pages there are
     total_tracks <- pluck(init_query, "tracks", "total")
+    n_pages <- total_tracks %/% 100
     if (!is.null(fields) && !total_tracks > 100) {
         return(init_query)
     } else {
