@@ -58,11 +58,9 @@ get_playlist <- function(playlist_id, fields = NULL,
 
         # overwrite init_query item results
         init_query[["tracks"]][["items"]] <- all_items
-
-        #return init_query object
-        structure(init_query, class = c("playlist", "list"))
-
     }
+    #return init_query object
+    structure(init_query, class = c("playlist", "list"))
 }
 
 #' Get Details of User Playlist Tracks.
