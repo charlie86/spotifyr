@@ -42,12 +42,8 @@ get_playlist <- function(playlist_id, fields = NULL,
     init_query <- query_playlist(url, params = params)
     # identify how many pages there are
     total_tracks <- pluck(init_query, "tracks", "total")
-    n_pages <- total_tracks %/% 100
-    if (!is.null(fields) && !total_tracks > 100) {
-        return(init_query)
-    } else {
-        # identify how many pages there are
-        n_pages <- ceiling(pluck(init_query, "tracks", "total")/100) - 1
+    if (total_tracks > 100) {
+        n_pages <- total_tracks %/% 100
         # identify pagination offsets
         offsets <- seq(from = 1, to = n_pages) * 100
         # create page urls
