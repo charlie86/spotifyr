@@ -357,7 +357,8 @@ add_tracks_to_playlist <- function(playlist_id,
     url <- str_glue('{base_url}/{playlist_id}/tracks')
 
     params <- list(
-        position = position
+        position = position,
+        uris = uris
     )
 
     res <- RETRY('POST', url, body = params,
