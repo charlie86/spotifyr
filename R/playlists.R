@@ -40,12 +40,10 @@ get_playlist <- function(playlist_id, fields = NULL,
 
     # stopping is built into query_playlist()
     init_query <- query_playlist(url, params = params)
-
-    if (!is.null(fields)) {
-        return(init_query)
-    } else {
-        # identify how many pages there are
-        n_pages <- ceiling(pluck(init_query, "tracks", "total")/100) - 1
+    # identify how many pages there are
+    total_tracks <- pluck(init_query, "tracks", "total")
+    if (total_tracks > 100) {
+        n_pages <- total_tracks %/% 100
         # identify pagination offsets
         offsets <- seq(from = 1, to = n_pages) * 100
         # create page urls
@@ -60,11 +58,9 @@ get_playlist <- function(playlist_id, fields = NULL,
 
         # overwrite init_query item results
         init_query[["tracks"]][["items"]] <- all_items
-
-        #return init_query object
-        structure(init_query, class = c("playlist", "list"))
-
     }
+    #return init_query object
+    structure(init_query, class = c("playlist", "list"))
 }
 
 #' Get Details of User Playlist Tracks.
