@@ -1,7 +1,7 @@
 Package: spotifyr
 Title: R Wrapper for the 'Spotify' Web API
-Version: 2.2.3
-Date: 2021-11-02
+Version: 2.2.3.0001
+Date: 2022-12-13
 Authors@R: c(
     person(
       given = "Charlie", 
@@ -12,7 +12,7 @@ Authors@R: c(
     person(
        given = "Daniel", 
        family = "Antal", 
-       email = "daniel.antal@ceemid.eu", 
+       email = "daniel.antal@dataobservatory.eu", 
        role = c("aut", "cre"),
        comment = c(ORCID = "0000-0001-7513-6760")
        ),   
@@ -39,7 +39,7 @@ Authors@R: c(
 Description: An R wrapper for pulling data from the 'Spotify' Web API 
   <https://developer.spotify.com/documentation/web-api/> in bulk, or post items on a
   'Spotify' user's playlist.
-Maintainer: Daniel Antal <daniel.antal@ceemid.eu>
+Maintainer: Daniel Antal <daniel.antal@dataobservatory.eu>
 Depends: R (>= 3.3.0)
 Imports:
     dplyr,
@@ -59,7 +59,7 @@ Imports:
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: 
     ggridges,
     testthat (>= 3.0.0)
