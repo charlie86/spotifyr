@@ -97,28 +97,31 @@ get_artist_audio_features <- function(artist = NULL,
     }
 
     artist_albums <- artist_albums %>%
-        rename(album_id = .data$id,
-               album_name = .data$name) %>%
-        mutate(album_release_year = case_when(
-            release_date_precision == 'year' ~ suppressWarnings(as.numeric(.data$release_date)),
-            release_date_precision == 'day' ~ year(
-                          as.Date(.data$release_date, '%Y-%m-%d',
-                                  origin = '1970-01-01')),
-            TRUE ~ as.numeric(NA))
-            )
+        dplyr::rename(
+          album_id = .data$id,
+          album_name = .data$name
+        ) %>%
+        dplyr::mutate(
+          album_release_year = case_when(
+              release_date_precision == 'year' ~ suppressWarnings(as.numeric(.data$release_date)),
+              release_date_precision == 'day' ~ lubridate::year(
+                            as.Date(.data$release_date, '%Y-%m-%d',
+                                    origin = '1970-01-01')),
+              TRUE ~ as.numeric(NA))
+        )
 
     if (dedupe_albums) {
         artist_albums <- dedupe_album_names(df = artist_albums)
     }
 
-    album_tracks <- map_df(artist_albums$album_id, function(this_album_id) {
+    album_tracks <- purrr::map_df(artist_albums$album_id, function(this_album_id) {
         album_tracks <- get_album_tracks(this_album_id,
                                          include_meta_info = TRUE,
                                          authorization = authorization)
 
         num_loops_album_tracks <- ceiling(album_tracks$total / 20)
         if (num_loops_album_tracks > 1) {
-            album_tracks <- map_df(1:num_loops_album_tracks, function(this_loop) {
+            album_tracks <- purrr::map_df(1:num_loops_album_tracks, function(this_loop) {
                 get_album_tracks(this_album_id,
                                  offset = (this_loop - 1) * 20,
                                  authorization = authorization)
@@ -128,13 +131,17 @@ get_artist_audio_features <- function(artist = NULL,
         }
 
         album_tracks <- album_tracks %>%
-            mutate(album_id = this_album_id,
-                   album_name = artist_albums$album_name[artist_albums$album_id == this_album_id]) %>%
-            rename(track_name = name,
-                   track_uri = uri,
-                   track_preview_url = preview_url,
-                   track_href = href,
-                   track_id = id)
+            dplyr::mutate(
+              album_id = this_album_id,
+              album_name = artist_albums$album_name[artist_albums$album_id == this_album_id]
+            ) %>%
+            dplyr::rename(
+              track_name = name,
+              track_uri = uri,
+              track_preview_url = preview_url,
+              track_href = href,
+              track_id = id
+            )
     })
 
     dupe_columns <- c('duration_ms', 'type', 'uri', 'track_href')
@@ -143,24 +150,31 @@ get_artist_audio_features <- function(artist = NULL,
 
     track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
         track_ids <- album_tracks %>%
-            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
-            pull(.data$track_id)
+            dplyr::slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
+            dplyr::pull(.data$track_id)
         get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
-        select(-all_of( dupe_columns )) %>%
-        rename(track_id = .data$id) %>%
-        left_join(album_tracks, by = 'track_id')
+        dplyr::select(-dplyr::all_of( dupe_columns )) %>%
+        dplyr::rename(track_id = .data$id) %>%
+        dplyr::left_join(album_tracks, by = 'track_id')
 
     artist_albums %>%
-        mutate(artist_name = artist_name,
-               artist_id = artist_id) %>%
-        select(.data$artist_name, .data$artist_id, .data$album_id, .data$album_type,
-               album_images = .data$images,
-               album_release_date = .data$release_date,
-               .data$album_release_year,
-               album_release_date_precision = .data$release_date_precision) %>%
-        left_join(track_audio_features, by = 'album_id') %>%
-        mutate(key_name = pitch_class_lookup[key + 1],
+        dplyr::mutate(
+          artist_name = artist_name,
+          artist_id = artist_id
+        ) %>%
+        dplyr::select(
+          .data$artist_name,
+          .data$artist_id,
+          .data$album_id,
+          .data$album_type,
+          album_images = .data$images,
+          album_release_date = .data$release_date,
+          .data$album_release_year,
+          album_release_date_precision = .data$release_date_precision
+        ) %>%
+        dplyr::left_join(track_audio_features, by = 'album_id') %>%
+        dplyr::mutate(key_name = pitch_class_lookup[key + 1],
                mode_name = case_when(mode == 1 ~ 'major',
                                      mode == 0 ~ 'minor',
                                      TRUE ~ as.character(NA)),
@@ -206,14 +220,14 @@ get_user_audio_features <- function(username = NULL,
     }
 
     user_playlists <- user_playlists %>%
-        rename(playlist_id = .data$id,
+        dplyr::rename(playlist_id = .data$id,
                playlist_name =  .data$name)
 
-    playlist_tracks <- map_df(user_playlists$playlist_id, function(this_playlist_id) {
+    playlist_tracks <- purrr::map_df(user_playlists$playlist_id, function(this_playlist_id) {
         this_playlist_tracks <- get_playlist_tracks(this_playlist_id, include_meta_info = TRUE, authorization = authorization)
         num_loops_playlist_tracks <- ceiling(this_playlist_tracks$total / 20)
         if (num_loops_playlist_tracks > 1) {
-            this_playlist_tracks <- map_df(1:num_loops_playlist_tracks, function(this_loop) {
+            this_playlist_tracks <- purrr::map_df(1:num_loops_playlist_tracks, function(this_loop) {
                 get_playlist_tracks(this_playlist_id, offset = (this_loop - 1) * 20, authorization = authorization)
             })
         } else {
@@ -235,15 +249,15 @@ get_user_audio_features <- function(username = NULL,
             pull(track.id)
         get_track_audio_features(track_ids, authorization = authorization)
     }) %>%
-        select(-all_of( dupe_columns )) %>%
-        rename(track.id = .data$id) %>%
-        left_join(playlist_tracks, by = 'track.id') %>%
-        select(-c(playlist_name, primary_color))
+        dplyr::select(-dplyr::all_of( dupe_columns )) %>%
+        dplyr::rename(track.id = .data$id) %>%
+        dplyr::left_join(playlist_tracks, by = 'track.id') %>%
+        dplyr::select(-c(playlist_name, primary_color))
 
     user_playlists %>%
-        left_join(track_audio_features, by = 'playlist_id') %>%
-        mutate(key_name = pitch_class_lookup[.data$key + 1],
-               mode_name = case_when(.data$mode == 1 ~ 'major',
+        dplyr::left_join(track_audio_features, by = 'playlist_id') %>%
+        dplyr::mutate(key_name = pitch_class_lookup[.data$key + 1],
+               mode_name = dplyr::case_when(.data$mode == 1 ~ 'major',
                                      .data$mode == 0 ~ 'minor',
                                      TRUE ~ as.character(NA)),
                key_mode = paste(.data$key_name, .data$mode_name)
@@ -276,44 +290,46 @@ get_playlist_audio_features <- function(username,
                                         authorization = get_spotify_access_token()
                                         ) {
 
-    playlist_tracks <- map_df(playlist_uris, function(playlist_uri) {
+    playlist_tracks <- purrr::map_df(playlist_uris, function(playlist_uri) {
         this_playlist <- get_playlist(playlist_uri, authorization = authorization)
         n_tracks <- this_playlist$tracks$total
         num_loops <- ceiling(n_tracks / 100)
-        map_df(1:num_loops, function(this_loop) {
+        purrr::map_df(1:num_loops, function(this_loop) {
             get_playlist_tracks(this_playlist$id,
                                 limit = 100,
                                 offset = (this_loop - 1) * 100,
                                 authorization = authorization) %>%
-                mutate(playlist_id = this_playlist$id,
-                       playlist_name = this_playlist$name,
-                       playlist_img = this_playlist$images$url[[1]],
-                       playlist_owner_name = this_playlist$owner$display_name,
-                       playlist_owner_id = this_playlist$owner$id)
+                dplyr::mutate(
+                  playlist_id = this_playlist$id,
+                  playlist_name = this_playlist$name,
+                  playlist_img = this_playlist$images$url[[1]],
+                  playlist_owner_name = this_playlist$owner$display_name,
+                  playlist_owner_id = this_playlist$owner$id
+                )
         })
     })
 
     dupe_columns <- c('duration_ms', 'type', 'uri', 'track_href')
 
     num_loops_tracks <- ceiling(nrow(playlist_tracks) / 100)
-    track_audio_features <- map_df(1:num_loops_tracks, function(this_loop) {
+    track_audio_features <- purrr::map_df(1:num_loops_tracks, function(this_loop) {
         track_ids <- playlist_tracks %>%
-            slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
-            pull(track.id)
+            dplyr::slice(((this_loop * 100) - 99):(this_loop * 100)) %>%
+            dplyr::pull(track.id)
         get_track_audio_features(track_ids, authorization = authorization)
-    }) %>% select(-dupe_columns) %>%
-        rename(track.id = id)
+    }) %>% dplyr::select(-dupe_columns) %>%
+        dplyr::rename(track.id = id)
 
     playlist_audio_features <- track_audio_features %>%
-        left_join(playlist_tracks, by = 'track.id') %>%
-        mutate(key_name = pitch_class_lookup[key + 1],
-               mode_name = case_when(
+        dplyr::left_join(playlist_tracks, by = 'track.id') %>%
+        dplyr::mutate(key_name = pitch_class_lookup[key + 1],
+               mode_name = dplyr::case_when(
                    .data$mode == 1 ~ 'major',
                    .data$mode == 0 ~ 'minor',
                    TRUE ~ as.character(NA)),
                key_mode = paste(.data$key_name, .data$mode_name)
                ) %>%
-        select(playlist_id, playlist_name, playlist_img, playlist_owner_name, playlist_owner_id, everything())
+        dplyr::select(playlist_id, playlist_name, playlist_img, playlist_owner_name, playlist_owner_id, everything())
 
     playlist_audio_features
 }

@@ -16,7 +16,6 @@
 #' }
 #' @export
 #' @importFrom tidyr nest unnest
-#' @importFrom genius genius_album
 #' @importFrom purrr possibly map_df
 #' @importFrom dplyr mutate select filter left_join ungroup rename
 #' @importFrom tibble as_tibble
@@ -32,38 +31,11 @@ get_album_data <- function(artist,
         artist,
         authorization = authorization
     ) %>%
-        filter(tolower(.data$album_name) %in% tolower(albums)) %>%
-        group_by(album_name) %>%
-        mutate(track_n = row_number()) %>%
-        ungroup()
+        dplyr::filter(tolower(.data$album_name) %in% tolower(albums)) %>%
+        dplyr::group_by(album_name) %>%
+        dplyr::mutate(track_n = dplyr::row_number()) %>%
+        dplyr::ungroup()
 
-    # Identify each unique album name and artist pairing
-    album_list <- artist_disco %>%
-        distinct(album_name) %>%
-        mutate(artist = artist)
-    # Create possible_album for potential error handling
-    empty_album <- tibble (
-        track_n  = NA_real_,
-        line = NA_real_,
-        lyric = NA_character_,
-        track_title = NA_character_
-    )
-    possible_album <- possibly(genius::genius_album, otherwise = empty_album ) #as_tibble is not allowed
-    #PA <- possible_album(album_list$artist[1], album_list$album_name[1])
+    artist_disco
 
-
-    album_lyrics <- map2(album_list$artist, album_list$album_name,
-                         function(x, y) possible_album(x, y) %>% mutate(album_name = y)) %>%
-        map_df(function(x) nest(x, -all_of(c("track_title", "track_n", "album_name")))) %>%
-        rename(lyrics = .data$data) %>%
-        select(-all_of("track_title"))
-
-    names ( album_lyrics )
-    names ( artist_disco )
-
-    # Acquire the lyrics for each track
-    album_data <- artist_disco %>%
-        left_join(album_lyrics, by = c('album_name', 'track_n'))
-
-    album_data
 }

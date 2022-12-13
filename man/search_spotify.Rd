@@ -6,7 +6,7 @@
 \usage{
 search_spotify(
   q,
-  type = c("album", "artist", "playlist", "track"),
+  type = c("album", "artist", "playlist", "track", "show", "episode"),
   market = NULL,
   limit = 20,
   offset = 0,
@@ -20,11 +20,11 @@ search_spotify(
 Search query keywords and optional field filters and operators.}
 
 \item{type}{A character vector of item types to search across. \cr
-Valid types are \code{album}, \code{artist}, \code{playlist}, and \code{track}. \cr
+Valid types are \code{album}, \code{artist}, \code{playlist}, \code{track}, \code{show} and \code{episode}. \cr
 Search results include hits from all the specified item types. \cr
 For example: \code{q = "name:abacab"} and \code{type =c("album", "track")} returns both albums and tracks with \code{"abacab"} included in their name.}
 
-\item{market}{Optional. \cr
+\item{market}{Optional (except for shows and episodes). \cr
 An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}. \cr
 If a country code is specified, only artists, albums, and tracks with content that is playable in that market is returned. \cr
 Note: \cr
