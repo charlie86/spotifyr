@@ -34,6 +34,11 @@ Authors@R: c(
        family = "Wolff", 
        email = "tom.wolff@duke.edu", 
        role = "aut"
+       ), 
+    person(
+       given  = "Stephen", 
+       family = " Holsenbeck", 
+       role = "ctb"
        )
    )
 Description: An R wrapper for pulling data from the 'Spotify' Web API 
