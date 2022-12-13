@@ -46,9 +46,6 @@
 #' \code{\link{get_playlist_audio_features}} \cr
 #' \code{\link{get_user_audio_features}}\cr
 #' \code{\link{get_genre_artists}} \cr
-#' @section lyrics functions:
-#' Functions related to the lyrics of the music, such as \cr
-#' \code{\link{get_discography}}.
 #' @section search functions:
 #' Search for an artist, song or other keyword.\cr
 #' The main function is \code{\link{search_spotify}}.
@@ -120,7 +117,6 @@ globalVars <- c(
 "artists",
 "available_markets",
 "duration_ms",
-"genius_album",
 "popularity",
 "str",
 "track_number",

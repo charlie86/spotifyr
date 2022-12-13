@@ -23,7 +23,7 @@ uris = c("61H97kuKIpi6kJQRnUEIlh", "2q6vlgBJ432KeZZNt2ZZBV")\cr
 A maximum of 100 tracks can be added in one request.
 The uris will be formed as
 uris = c("spotify%3Atrack%3A61H97kuKIpi6kJQRnUEIlh", "spotify%3Atrack%3A2q6vlgBJ432KeZZNt2ZZBV").
-If you have the \code{"spotify:track:"} preffix in your vector it will
+If you have the \code{"spotify:track:"} prefix in your vector it will
 not be duplicated, otherwise it will be added.}
 
 \item{position}{Optional. Integer indicating the position to insert the tracks,

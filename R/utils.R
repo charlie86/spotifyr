@@ -69,34 +69,35 @@ scopes <- function() {
 #' possible the original album release (and not re-releases.)
 #' @export
 
-dedupe_album_names <- function(df,
-                               album_name_col = 'album_name',
-                               album_release_year_col = 'album_release_year') {
+dedupe_album_names <- function(df, album_name_col = 'album_name', album_release_year_col = 'album_release_year') {
 
     album_dupe_regex <- '(deluxe|international|anniversary|version|edition|remaster|re-master|live|mono|stereo)'
 
     base_album_names <- df %>%
-        mutate( album_name_ = album_name_col,
-                album_release_year_ = album_release_year_col
-                ) %>%
+        dplyr::mutate(
+          album_name_ = album_name_col,
+          album_release_year_ = album_release_year_col
+        ) %>%
         dplyr::filter(!duplicated(tolower(album_name_))) %>%
-        mutate(base_album_name = gsub(str_glue(' \\(.*{album_dupe_regex}.*\\)'), '', tolower(.data$album_name_)),
-               base_album_name = gsub(str_glue(' \\[.*{album_dupe_regex}.*\\]'), '', .data$base_album_name),
-               base_album_name = gsub(str_glue(':.*{album_dupe_regex}.*'), '', .data$base_album_name),
-               base_album_name = gsub(str_glue(' - .*{album_dupe_regex}.*'), '', .data$base_album_name),
-               base_album = tolower(.data$album_name_) == .data$base_album_name) %>%
-        group_by(.data$base_album_name) %>%
+        dplyr::mutate(
+          base_album_name = gsub(str_glue(' \\(.*{album_dupe_regex}.*\\)'), '', tolower(.data$album_name_)),
+          base_album_name = gsub(str_glue(' \\[.*{album_dupe_regex}.*\\]'), '', .data$base_album_name),
+          base_album_name = gsub(str_glue(':.*{album_dupe_regex}.*'), '', .data$base_album_name),
+          base_album_name = gsub(str_glue(' - .*{album_dupe_regex}.*'), '', .data$base_album_name),
+          base_album = tolower(.data$album_name_) == .data$base_album_name
+        ) %>%
+        dplyr::group_by(.data$base_album_name) %>%
         dplyr::filter((.data$album_release_year_ == min(.data$album_release_year_)) | base_album) %>%
-        mutate(num_albums = n(),
+        dplyr::mutate(num_albums = dplyr::n(),
                num_base_albums = sum(.data$base_album)) %>%
-        ungroup() %>%
+        dplyr::ungroup() %>%
         dplyr::filter((.data$base_album == 1) |((.data$num_base_albums == 0 | .data$num_base_albums > 1) & row_number() == 1)) %>%
-        pull(.data$album_name_)
+        dplyr::pull(.data$album_name_)
 
     df %>%
-        mutate(album_name_ = album_name_col) %>%
-        filter(.data$album_name_ %in% base_album_names) %>%
-        select(-all_of("album_name_"))
+        dplyr::mutate(album_name_ = album_name_col) %>%
+        dplyr::filter(.data$album_name_ %in% base_album_names) %>%
+        dplyr::select(-dplyr::all_of("album_name_"))
 }
 
 # Function for querying playlist API url
@@ -108,10 +109,13 @@ dedupe_album_names <- function(df,
 query_playlist <- function(url, params) {
 
     res <- RETRY('GET', url, query = params, encode = 'json')
-    stop_for_status(res)
+    httr::stop_for_status(res)
 
-    res <- fromJSON(content(res, as = 'text', encoding = 'UTF-8'),
-                    flatten = TRUE)
+    res <- jsonlite::fromJSON(
+      httr::content(res, as = 'text', encoding = 'UTF-8'),
+      flatten = TRUE
+    )
+
     res
 }
 

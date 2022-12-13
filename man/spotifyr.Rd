@@ -62,12 +62,6 @@ Functions related to the contents of the music.\cr
 \code{\link{get_genre_artists}} \cr
 }
 
-\section{lyrics functions}{
-
-Functions related to the lyrics of the music, such as \cr
-\code{\link{get_discography}}.
-}
-
 \section{search functions}{
 
 Search for an artist, song or other keyword.\cr
