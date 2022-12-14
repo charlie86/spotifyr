@@ -37,8 +37,8 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
 #' This function creates a Spotify authorization code.
 #' See \code{httr::\link[httr]{oauth2.0_token}}.
 #'
-#' @param client_id Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"
-#' @param client_secret Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"
+#' @param client_id Defaults to System Environment variable "SPOTIFY_CLIENT_ID"
+#' @param client_secret Defaults to System Environment variable "SPOTIFY_CLIENT_SECRET"
 #' @param scope Space delimited string of spotify scopes,
 #' found here: https://developer.spotify.com/documentation/general/guides/scopes/.
 #' All scopes are selected by default

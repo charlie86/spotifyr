@@ -1,4 +1,4 @@
-#' Asssertion for Correct API Requests.
+#' Assertion for Correct API Requests.
 #'
 #' Assertions are made to give early and precise error messages for wrong
 #' API call parameters.
@@ -97,7 +97,7 @@ validate_type_artists_or_tracks <- function (artists_or_tracks) {
 
 }
 
-#' Validate limit paramater
+#' Validate limit parameter
 #'
 #' @inheritParams validate_parameters
 #' @return A boolean if the parameter matches the Spotify Web API parameter range.
@@ -188,7 +188,7 @@ validate_volume_percent <- function(volume_percent) {
 
 }
 
-#' validate state paramater
+#' validate state parameter
 #'
 #' @inheritParams validate_parameters
 #' @return A boolean if the parameter matches the Spotify Web API parameter range.

@@ -277,7 +277,7 @@ get_user_audio_features <- function(username = NULL,
 #' @keywords track audio features playlists
 #' @export
 #' @family musicology functions
-#' @return A data frame with the audio featurees and popularity variables of playlists.
+#' @return A data frame with the audio features and popularity variables of playlists.
 #' @examples
 #' \donttest{
 #' playlist_username <- 'spotify'
