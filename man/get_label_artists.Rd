@@ -47,7 +47,7 @@ A data frame with the label information of the artists.
 Get Spotify Catalog information about artists belonging to a given label.
 }
 \examples{
-\donttest{
+\dontrun{
 get_label_artists('brainfeeder')
 }
 }

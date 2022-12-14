@@ -26,7 +26,7 @@ information that is returned from \code{\link{get_playlist}}.
 information that is returned from \code{\link{get_playlist}} as a tibble.
 }
 \examples{
-\donttest{
+\dontrun{
 fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
 tidy(fall)
 

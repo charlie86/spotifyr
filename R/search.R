@@ -41,7 +41,7 @@
 #' @return A tibble with detailed information about the searched album, artist, playlist, track or
 #' their combination.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' search_spotify('radiohead', 'artist')
 #' }
 
@@ -143,7 +143,7 @@ search_spotify <- function(q,
 #' @family label functions
 #' @return A data frame with the label information of the artists.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' get_label_artists('brainfeeder')
 #' }
 
@@ -230,7 +230,7 @@ get_label_artists <- function(label = character(),
 #' artists in a tibble.
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' get_genre_artists('wonky')
 #' }
 

@@ -465,7 +465,7 @@ change_playlist_details <- function(playlist_id,
 #' @param x A playlist object generated from
 #' @param ... Generic arguments to be passed
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' fall <- get_playlist("4GSV6uJzlbtTCPJhnVU1o8")
 #' tidy(fall)
 #'

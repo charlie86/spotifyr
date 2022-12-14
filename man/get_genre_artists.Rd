@@ -46,7 +46,7 @@ artists in a tibble.
 Get Spotify Catalog information about artists belonging to a given genre.
 }
 \examples{
-\donttest{
+\dontrun{
 get_genre_artists('wonky')
 }
 }

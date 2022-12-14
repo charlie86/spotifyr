@@ -27,7 +27,7 @@ This function returns the popularity and audio features for every song for a giv
 playlists on Spotify
 }
 \examples{
-\donttest{
+\dontrun{
 playlist_username <- 'spotify'
 playlist_uris <- c('37i9dQZF1E9T1oFsQFg98K', '37i9dQZF1CyQNOI21QVf3p')
 playlist_audio_features <- get_playlist_audio_features(playlist_username, playlist_uris)

@@ -8,7 +8,7 @@
 #' @export
 #' @return The Spotify Access Token of the current user or a meaningful error message.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' token <- get_spotify_access_token()
 #' }
 
@@ -49,7 +49,7 @@ get_spotify_access_token <- function(client_id = Sys.getenv('SPOTIFY_CLIENT_ID')
 #' @importFrom httr oauth2.0_token oauth_endpoint
 #' @importFrom purrr safely
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' authorization <- get_spotify_authorization_code()
 #' }
 

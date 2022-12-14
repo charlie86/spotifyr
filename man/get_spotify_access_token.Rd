@@ -21,7 +21,7 @@ The Spotify Access Token of the current user or a meaningful error message.
 This function creates a Spotify access token.
 }
 \examples{
-\donttest{
+\dontrun{
 token <- get_spotify_access_token()
 }
 }

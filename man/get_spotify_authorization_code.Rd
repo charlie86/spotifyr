@@ -28,7 +28,7 @@ This function creates a Spotify authorization code.
 See \code{httr::\link[httr]{oauth2.0_token}}.
 }
 \examples{
-\donttest{
+\dontrun{
 authorization <- get_spotify_authorization_code()
 }
 }

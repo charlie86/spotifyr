@@ -67,7 +67,7 @@ keyword string. For more information see the official
 \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{documentation}.
 }
 \examples{
-\donttest{
+\dontrun{
 search_spotify('radiohead', 'artist')
 }
 }

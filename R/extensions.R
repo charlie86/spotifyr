@@ -279,7 +279,7 @@ get_user_audio_features <- function(username = NULL,
 #' @family musicology functions
 #' @return A data frame with the audio features and popularity variables of playlists.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' playlist_username <- 'spotify'
 #' playlist_uris <- c('37i9dQZF1E9T1oFsQFg98K', '37i9dQZF1CyQNOI21QVf3p')
 #' playlist_audio_features <- get_playlist_audio_features(playlist_username, playlist_uris)
