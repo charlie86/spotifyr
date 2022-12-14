@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -54,7 +50,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/charlie86/spotifyr/">
+  <a href="https://github.com/charlie86/spotifyr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -71,61 +67,61 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="spotifyr" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#spotifyr" class="anchor"></a>spotifyr</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="spotifyr">spotifyr<a class="anchor" aria-label="anchor" href="#spotifyr"></a>
+</h1></div>
 <!-- badges: start -->
 
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>spotifyr is an R wrapper for pulling track audio features and other information from Spotify’s Web API in bulk. By automatically batching API requests, it allows you to enter an artist’s name and retrieve their entire discography in seconds, along with Spotify’s audio features and track/album popularity metrics. You can also pull song and playlist information for a given Spotify User (including yourself!).</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>CRAN version 2.1.1 (recommended)</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>CRAN version 2.2.3 (recommended)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'spotifyr'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'spotifyr'</span><span class="op">)</span></span></code></pre></div>
 <p>Development version</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">'charlie86/spotifyr'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'charlie86/spotifyr'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="authentication" class="section level2">
-<h2 class="hasAnchor">
-<a href="#authentication" class="anchor"></a>Authentication</h2>
-<p>First, set up a Dev account with Spotify to access their Web API <a href="https://developer.spotify.com/my-applications/#!/applications">here</a>. This will give you your <code>Client ID</code> and <code>Client Secret</code>. Once you have those, you can pull your access token into R with <code><a href="reference/get_spotify_access_token.html">get_spotify_access_token()</a></code>.</p>
+<div class="section level2">
+<h2 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a>
+</h2>
+<p>First, set up a Dev account with Spotify to access their Web API <a href="https://developer.spotify.com/my-applications/#!/applications" class="external-link">here</a>. This will give you your <code>Client ID</code> and <code>Client Secret</code>. Once you have those, you can pull your access token into R with <code><a href="reference/get_spotify_access_token.html">get_spotify_access_token()</a></code>.</p>
 <p>The easiest way to authenticate is to set your credentials to the System Environment variables <code>SPOTIFY_CLIENT_ID</code> and <code>SPOTIFY_CLIENT_SECRET</code>. The default arguments to <code><a href="reference/get_spotify_access_token.html">get_spotify_access_token()</a></code> (and all other functions in this package) will refer to those. Alternatively, you can set them manually and make sure to explicitly refer to your access token in each subsequent function call.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>SPOTIFY_CLIENT_ID <span class="op">=</span> <span class="st">'xxxxxxxxxxxxxxxxxxxxx'</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>SPOTIFY_CLIENT_SECRET <span class="op">=</span> <span class="st">'xxxxxxxxxxxxxxxxxxxxx'</span><span class="op">)</span>
-
-<span class="va">access_token</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_spotify_access_token.html">get_spotify_access_token</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="authorization-code-flow" class="section level4">
-<h4 class="hasAnchor">
-<a href="#authorization-code-flow" class="anchor"></a>Authorization Code Flow</h4>
-<p>For certain functions and applications, you’ll need to log in as a Spotify user. To do this, your Spotify Developer application needs to have a callback url. You can set this to whatever you want that will work with your application, but a good default option is <code>http://localhost:1410/</code> (see image below). For more information on authorization, visit the offical <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/">Spotify Developer Guide</a>.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>SPOTIFY_CLIENT_ID <span class="op">=</span> <span class="st">'xxxxxxxxxxxxxxxxxxxxx'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>SPOTIFY_CLIENT_SECRET <span class="op">=</span> <span class="st">'xxxxxxxxxxxxxxxxxxxxx'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">access_token</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_spotify_access_token.html">get_spotify_access_token</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="authorization-code-flow">Authorization Code Flow<a class="anchor" aria-label="anchor" href="#authorization-code-flow"></a>
+</h4>
+<p>For certain functions and applications, you’ll need to log in as a Spotify user. To do this, your Spotify Developer application needs to have a callback url. You can set this to whatever you want that will work with your application, but a good default option is <code>http://localhost:1410/</code> (see image below). For more information on authorization, visit the offical <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/" class="external-link">Spotify Developer Guide</a>.</p>
 <p><img src="reference/figures/spotifyr_auth_screenshot.png" width="50%"></p>
 </div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<div id="what-was-the-beatles-favorite-key" class="section level3">
-<h3 class="hasAnchor">
-<a href="#what-was-the-beatles-favorite-key" class="anchor"></a>What Was the Beatles’ Favorite Key?</h3>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<div class="section level3">
+<h3 id="what-was-the-beatles-favorite-key">What Was the Beatles’ Favorite Key?<a class="anchor" aria-label="anchor" href="#what-was-the-beatles-favorite-key"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/charlie86/spotifyr">spotifyr</a></span><span class="op">)</span>
-<span class="va">beatles</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span><span class="op">(</span><span class="st">'the beatles'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/charlie86/spotifyr" class="external-link">spotifyr</a></span><span class="op">)</span></span>
+<span><span class="va">beatles</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span><span class="op">(</span><span class="st">'the beatles'</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
-
-<span class="va">beatles</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">key_mode</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">beatles</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">key_mode</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">key_mode</th>
@@ -155,22 +151,22 @@
 </tbody>
 </table>
 </div>
-<div id="get-your-most-recently-played-tracks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#get-your-most-recently-played-tracks" class="anchor"></a>Get your most recently played tracks</h3>
+<div class="section level3">
+<h3 id="get-your-most-recently-played-tracks">Get your most recently played tracks<a class="anchor" aria-label="anchor" href="#get-your-most-recently-played-tracks"></a>
+</h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
-<span class="co">#&gt; Warning: package 'lubridate' was built under R version 4.1.1</span>
-
-<span class="fu"><a href="reference/get_my_recently_played.html">get_my_recently_played</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
-        artist.name <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">track.artists</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,
-        played_at <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">played_at</span><span class="op">)</span>
-        <span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>
-      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"track.name"</span>, <span class="st">"artist.name"</span>, <span class="st">"track.album.name"</span>, <span class="st">"played_at"</span><span class="op">)</span><span class="op">)</span>
-      <span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: package 'lubridate' was built under R version 4.1.1</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/get_my_recently_played.html">get_my_recently_played</a></span><span class="op">(</span>limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>        artist.name <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">track.artists</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>        played_at <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html" class="external-link">as_datetime</a></span><span class="op">(</span><span class="va">played_at</span><span class="op">)</span></span>
+<span>        <span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html" class="external-link">all_of</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"track.name"</span>, <span class="st">"artist.name"</span>, <span class="st">"track.album.name"</span>, <span class="st">"played_at"</span><span class="op">)</span><span class="op">)</span></span>
+<span>      <span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="18%">
@@ -218,19 +214,23 @@
 </tbody>
 </table>
 </div>
-<div id="find-your-all-time-favorite-artists" class="section level3">
-<h3 class="hasAnchor">
-<a href="#find-your-all-time-favorite-artists" class="anchor"></a>Find Your All Time Favorite Artists</h3>
+<div class="section level3">
+<h3 id="find-your-all-time-favorite-artists">Find Your All Time Favorite Artists<a class="anchor" aria-label="anchor" href="#find-your-all-time-favorite-artists"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/get_my_top_artists_or_tracks.html">get_my_top_artists_or_tracks</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">'artists'</span>, 
-                             time_range <span class="op">=</span> <span class="st">'long_term'</span>, 
-                             limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">genres</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="va">rowwise</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>genres <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">genres</span>, collapse <span class="op">=</span> <span class="st">', '</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="va">ungroup</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_my_top_artists_or_tracks.html">get_my_top_artists_or_tracks</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">'artists'</span>, </span>
+<span>                             time_range <span class="op">=</span> <span class="st">'long_term'</span>, </span>
+<span>                             limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">genres</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="va">rowwise</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>genres <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">genres</span>, collapse <span class="op">=</span> <span class="st">', '</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="va">ungroup</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="27%">
+<col width="72%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">name</th>
 <th align="left">genres</th>
@@ -259,18 +259,18 @@
 </tbody>
 </table>
 </div>
-<div id="find-your-favorite-tracks-at-the-moment" class="section level3">
-<h3 class="hasAnchor">
-<a href="#find-your-favorite-tracks-at-the-moment" class="anchor"></a>Find your favorite tracks at the moment</h3>
+<div class="section level3">
+<h3 id="find-your-favorite-tracks-at-the-moment">Find your favorite tracks at the moment<a class="anchor" aria-label="anchor" href="#find-your-favorite-tracks-at-the-moment"></a>
+</h3>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/get_my_top_artists_or_tracks.html">get_my_top_artists_or_tracks</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">'tracks'</span>, 
-                             time_range <span class="op">=</span> <span class="st">'short_term'</span>, 
-                             limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
-        artist.name <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">artists</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-        <span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">artist.name</span>, <span class="va">album.name</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_my_top_artists_or_tracks.html">get_my_top_artists_or_tracks</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">'tracks'</span>, </span>
+<span>                             time_range <span class="op">=</span> <span class="st">'short_term'</span>, </span>
+<span>                             limit <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>        artist.name <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="va">artists</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">$</span><span class="va">name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>        <span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">artist.name</span>, <span class="va">album.name</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="43%">
@@ -311,18 +311,18 @@
 </tbody>
 </table>
 </div>
-<div id="whats-the-most-joyful-joy-division-song" class="section level3">
-<h3 class="hasAnchor">
-<a href="#whats-the-most-joyful-joy-division-song" class="anchor"></a>What’s the most joyful Joy Division song?</h3>
+<div class="section level3">
+<h3 id="whats-the-most-joyful-joy-division-song">What’s the most joyful Joy Division song?<a class="anchor" aria-label="anchor" href="#whats-the-most-joyful-joy-division-song"></a>
+</h3>
 <p>My favorite audio feature has to be “valence,” a measure of musical positivity.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">joy</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span><span class="op">(</span><span class="st">'joy division'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">joy</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_artist_audio_features.html">get_artist_audio_features</a></span><span class="op">(</span><span class="st">'joy division'</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">joy</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">valence</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">track_name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">valence</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">joy</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">valence</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">.data</span><span class="op">$</span><span class="va">track_name</span>, <span class="va">.data</span><span class="op">$</span><span class="va">valence</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">track_name</th>
@@ -353,104 +353,115 @@
 </table>
 <p>Now if only there was some way to plot joy…</p>
 </div>
-<div id="joyplot-of-the-emotional-rollercoasters-that-are-joy-divisions-albums" class="section level3">
-<h3 class="hasAnchor">
-<a href="#joyplot-of-the-emotional-rollercoasters-that-are-joy-divisions-albums" class="anchor"></a>Joyplot of the emotional rollercoasters that are Joy Division’s albums</h3>
+<div class="section level3">
+<h3 id="joyplot-of-the-emotional-rollercoasters-that-are-joy-divisions-albums">Joyplot of the emotional rollercoasters that are Joy Division’s albums<a class="anchor" aria-label="anchor" href="#joyplot-of-the-emotional-rollercoasters-that-are-joy-divisions-albums"></a>
+</h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggridges/">ggridges</a></span><span class="op">)</span>
-
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
-    <span class="va">joy</span>, 
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valence</span>, y <span class="op">=</span> <span class="va">album_name</span><span class="op">)</span>
-    <span class="op">)</span> <span class="op">+</span> 
-<span class="fu"><a href="https://wilkelab.org/ggridges/reference/geom_density_ridges.html">geom_density_ridges</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-<span class="fu"><a href="https://wilkelab.org/ggridges/reference/theme_ridges.html">theme_ridges</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Joyplot of Joy Division's joy distributions"</span>, 
-     subtitle <span class="op">=</span> <span class="st">"Based on valence pulled from Spotify's Web API with spotifyr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://wilkelab.org/ggridges/" class="external-link">ggridges</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
+<span>    <span class="va">joy</span>, </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valence</span>, y <span class="op">=</span> <span class="va">album_name</span><span class="op">)</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span> </span>
+<span><span class="fu"><a href="https://wilkelab.org/ggridges/reference/geom_density_ridges.html" class="external-link">geom_density_ridges</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span><span class="fu"><a href="https://wilkelab.org/ggridges/reference/theme_ridges.html" class="external-link">theme_ridges</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Joyplot of Joy Division's joy distributions"</span>, </span>
+<span>     subtitle <span class="op">=</span> <span class="st">"Based on valence pulled from Spotify's Web API with spotifyr"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-joyplot-1.png" width="100%"></p>
 </div>
 </div>
-<div id="sentify-a-shiny-app" class="section level2">
-<h2 class="hasAnchor">
-<a href="#sentify-a-shiny-app" class="anchor"></a>Sentify: A Shiny app</h2>
-<p>This <a href="http://rcharlie.net/sentify/">app</a>, powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify’s artists and playlists.</p>
+<div class="section level2">
+<h2 id="sentify-a-shiny-app">Sentify: A Shiny app<a class="anchor" aria-label="anchor" href="#sentify-a-shiny-app"></a>
+</h2>
+<p>This <a href="http://rcharlie.net/sentify/" class="external-link">app</a>, powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify’s artists and playlists.</p>
 </div>
-<div id="dope-stuff-other-people-have-done-with-spotifyr" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dope-stuff-other-people-have-done-with-spotifyr" class="anchor"></a>Dope Stuff Other People Have Done with spotifyr</h2>
+<div class="section level2">
+<h2 id="dope-stuff-other-people-have-done-with-spotifyr">Dope Stuff Other People Have Done with spotifyr<a class="anchor" aria-label="anchor" href="#dope-stuff-other-people-have-done-with-spotifyr"></a>
+</h2>
 <p>The coolest thing about making this package has definitely been seeing all the awesome stuff other people have done with it. Here are a few examples:</p>
-<p><a href="https://msmith7161.github.io/what-is-speechiness/">Exploring the Spotify API with R: A tutorial for beginners, by a beginner</a>, Mia Smith</p>
-<p><a href="https://caitlinhudon.com/2017/12/22/blue-christmas/">Blue Christmas: A data-driven search for the most depressing Christmas song</a>, Caitlin Hudon</p>
-<p><a href="https://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico">Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you feel sad when you hear “Love for both?” You’re not alone)</a>, Rui Barros, Rádio Renascença</p>
-<p><a href="https://medium.com/@evanopp/angriest-death-grips-data-anger-502168c1c2f0">Using Data to Find the Angriest Death Grips Song</a>, Evan Oppenheimer</p>
-<p><a href="https://twitter.com/WireMonkey/status/1009915034246565891?s=19">Hierarchical clustering of David Bowie records</a>, Alyssa Goldberg</p>
-<p><a href="https://medium.com/@simranvatsa5/taylor-f656e2a09cc3">tayloR</a>, Simran Vatsa</p>
+<p><a href="https://msmith7161.github.io/what-is-speechiness/" class="external-link">Exploring the Spotify API with R: A tutorial for beginners, by a beginner</a>, Mia Smith</p>
+<p><a href="https://caitlinhudon.com/2017/12/22/blue-christmas/" class="external-link">Blue Christmas: A data-driven search for the most depressing Christmas song</a>, Caitlin Hudon</p>
+<p><a href="https://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico" class="external-link">Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you feel sad when you hear “Love for both?” You’re not alone)</a>, Rui Barros, Rádio Renascença</p>
+<p><a href="https://medium.com/@evanopp/angriest-death-grips-data-anger-502168c1c2f0" class="external-link">Using Data to Find the Angriest Death Grips Song</a>, Evan Oppenheimer</p>
+<p><a href="https://twitter.com/WireMonkey/status/1009915034246565891?s=19" class="external-link">Hierarchical clustering of David Bowie records</a>, Alyssa Goldberg</p>
+<p><a href="https://medium.com/@simranvatsa5/taylor-f656e2a09cc3" class="external-link">tayloR</a>, Simran Vatsa</p>
 </div>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the spotifyr project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
+<p>Please note that the spotifyr project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=spotifyr">https://​cloud.r-project.org/​package=spotifyr</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/charlie86/spotifyr/">https://​github.com/​charlie86/​spotifyr/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/charlie86/spotifyr/issues">https://​github.com/​charlie86/​spotifyr/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=spotifyr" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/charlie86/spotifyr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/charlie86/spotifyr/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Charlie Thompson <br><small class="roles"> Author </small>  </li>
-<li>Daniel Antal <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-7513-6760" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Josiah Parry <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9910-865X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Donal Phipps <br><small class="roles"> Author </small>  </li>
-<li>Tom Wolff <br><small class="roles"> Author </small>  </li>
+<li><a href="authors.html#citation">Citing spotifyr</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=spotifyr"><img src="http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://cran.r-project.org/package=spotifyr"><img src="https://www.r-pkg.org/badges/ago/spotifyr" alt="CRAN_time_from_release"></a></li>
-<li><a href="https://cran.r-project.org/package=spotifyr"><img src="https://cranlogs.r-pkg.org/badges/spotifyr" alt="metacran downloads"></a></li>
-<li><a href="https://doi.org/10.5281/zenodo.5638489"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5638489.svg" alt="DOI"></a></li>
+<li>Charlie Thompson <br><small class="roles"> Author </small>  </li>
+<li>Daniel Antal <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-7513-6760" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Josiah Parry <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-9910-865X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Donal Phipps <br><small class="roles"> Author </small>  </li>
+<li>Tom Wolff <br><small class="roles"> Author </small>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=spotifyr" class="external-link"><img src="http://www.r-pkg.org/badges/version/spotifyr?color=brightgreen" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=spotifyr" class="external-link"><img src="https://www.r-pkg.org/badges/ago/spotifyr" alt="CRAN_time_from_release"></a></li>
+<li><a href="https://cran.r-project.org/package=spotifyr" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/spotifyr" alt="metacran downloads"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.5638489" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.5638489.svg" alt="DOI"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Charlie Thompson, Daniel Antal, Josiah Parry, Donal Phipps, Tom Wolff.</p>
+  <p></p>
+<p>Developed by Charlie Thompson, Daniel Antal, Josiah Parry, Donal Phipps, Tom Wolff.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -458,6 +469,8 @@
 
   
 
+
+  
 
   </body>
 </html>

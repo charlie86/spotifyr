@@ -27,5 +27,6 @@ get_category(
 Returns a list of results containing category information. See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 }
 \description{
-Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+Get a single category used to tag items in Spotify (on, for example,
+the Spotify player’s “Browse” tab).
 }

@@ -1,6 +1,6 @@
-#' Get User Playlist
+#' @title Get User Playlist
 #'
-#' Get a playlist owned by a Spotify user.
+#' @description Get a playlist owned by a Spotify user.
 #'
 #' @importFrom stringr str_glue
 #' @importFrom purrr pluck map map_dfr
@@ -63,9 +63,9 @@ get_playlist <- function(playlist_id, fields = NULL,
     structure(init_query, class = c("playlist", "list"))
 }
 
-#' Get Details of User Playlist Tracks.
+#' @title Get Details of User Playlist Tracks.
 #'
-#' Get full details of the tracks of a playlist owned by a Spotify user.
+#' @description Get full details of the tracks of a playlist owned by a Spotify user.
 #' @param playlist_id Required.
 #' The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the playlist.
 #' @param fields Optional. Filters for the query: a comma-separated list of the fields

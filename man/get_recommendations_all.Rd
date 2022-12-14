@@ -26,7 +26,7 @@ of track IDs into subsets of length 5, then applies a  \code{\link{get_recommend
 length equal to the supplied vector of track ids.
 }
 \examples{
-\donttest{
+\dontrun{
 get_recommendations_all(
    track_ids = c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR")
    )

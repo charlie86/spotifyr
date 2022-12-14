@@ -36,7 +36,8 @@ get_categories <- function(authorization = get_spotify_access_token(),
 
 #' @title Get a single category used to tag items
 #'
-#' @description Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+#' @description Get a single category used to tag items in Spotify (on, for example,
+#' the Spotify player’s “Browse” tab).
 #'
 #' @param category_id Required. The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the category.
 #' @param country Optional. A country: an
@@ -102,7 +103,7 @@ get_category <- function(category_id,
 #' Returns a data frame of results containing category playlists.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' get_category_playlists('party', country = 'BR')
 #' }
 #' @export
@@ -169,7 +170,7 @@ get_category_playlists <- function(category_id = "party",
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/#category-browse} for more information.
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' ## Get new Swedish music
 #' get_new_releases(country = 'SE', limit = 5)
 #' }
@@ -243,7 +244,7 @@ get_new_releases <- function(country = NULL,
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'
 #' ## Get Flemish-Dutch playlists from Belgium:
 #'
@@ -367,7 +368,7 @@ get_featured_playlists <- function(locale = NULL,
 #' Returns a data frame of results recommendations. See the official
 #' \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{Spotify Web API documentation} for more information.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' get_recommendations(market = 'SE', seed_genres = 'rock')
 #' }
 #' @family personalization functions
@@ -519,7 +520,7 @@ get_recommendations <- function(limit = 20,
 #' Returns a data frame containing binded recommendations from the Spotify API in a
 #' single data frame.
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' get_recommendations_all(
 #'    track_ids = c("5VIpLopHgolKcSSj7JPCMA", "3QRGYDFFUVb4qneE4DX1gR")
 #'    )

@@ -52,7 +52,7 @@ Get a list of Spotify featured playlists
 (as shown, for example, on a Spotify player’s ‘Browse’ tab)
 }
 \examples{
-\donttest{
+\dontrun{
 
 ## Get Flemish-Dutch playlists from Belgium:
 

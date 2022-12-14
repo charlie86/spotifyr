@@ -176,7 +176,7 @@ All parameters are optional, but at least one of
 \code{seed_artists}, \code{seed_tracks} and \code{seed_genres} must be given.
 }
 \examples{
-\donttest{
+\dontrun{
 get_recommendations(market = 'SE', seed_genres = 'rock')
 }
 }

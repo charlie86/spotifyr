@@ -35,7 +35,7 @@ Get a list of new album releases featured in Spotify (shown, for example,
 on a Spotify player’s “Browse” tab).
 }
 \examples{
-\donttest{
+\dontrun{
 ## Get new Swedish music
 get_new_releases(country = 'SE', limit = 5)
 }

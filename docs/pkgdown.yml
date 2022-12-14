@@ -1,6 +1,6 @@
-pandoc: 2.11.4
-pkgdown: 1.6.1
+pandoc: '2.18'
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-11-02T16:45Z
+last_built: 2022-12-13T16:22Z
 
