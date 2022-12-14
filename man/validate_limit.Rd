@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertions.R
 \name{validate_limit}
 \alias{validate_limit}
-\title{Validate limit paramater}
+\title{Validate limit parameter}
 \usage{
 validate_limit(limit)
 }
@@ -14,6 +14,6 @@ Default to \code{20}. Minimum: 1. Maximum: 50.}
 A boolean if the parameter matches the Spotify Web API parameter range.
 }
 \description{
-Validate limit paramater
+Validate limit parameter
 }
 \keyword{internal}

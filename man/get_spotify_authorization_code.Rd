@@ -11,9 +11,9 @@ get_spotify_authorization_code(
 )
 }
 \arguments{
-\item{client_id}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_ID"}
+\item{client_id}{Defaults to System Environment variable "SPOTIFY_CLIENT_ID"}
 
-\item{client_secret}{Defaults to System Envioronment variable "SPOTIFY_CLIENT_SECRET"}
+\item{client_secret}{Defaults to System Environment variable "SPOTIFY_CLIENT_SECRET"}
 
 \item{scope}{Space delimited string of spotify scopes,
 found here: https://developer.spotify.com/documentation/general/guides/scopes/.

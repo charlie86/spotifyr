@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertions.R
 \name{validate_parameters}
 \alias{validate_parameters}
-\title{Asssertion for Correct API Requests.}
+\title{Assertion for Correct API Requests.}
 \usage{
 validate_parameters(
   artists_or_tracks = NULL,

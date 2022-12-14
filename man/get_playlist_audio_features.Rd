@@ -20,7 +20,7 @@ Can be found within the Spotify App}
 See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}}
 }
 \value{
-A data frame with the audio featurees and popularity variables of playlists.
+A data frame with the audio features and popularity variables of playlists.
 }
 \description{
 This function returns the popularity and audio features for every song for a given set of

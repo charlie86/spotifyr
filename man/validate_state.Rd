@@ -2,7 +2,7 @@
 % Please edit documentation in R/assertions.R
 \name{validate_state}
 \alias{validate_state}
-\title{validate state paramater}
+\title{validate state parameter}
 \usage{
 validate_state(state)
 }
@@ -14,6 +14,6 @@ validate_state(state)
 A boolean if the parameter matches the Spotify Web API parameter range.
 }
 \description{
-validate state paramater
+validate state parameter
 }
 \keyword{internal}
