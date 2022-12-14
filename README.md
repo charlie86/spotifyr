@@ -210,12 +210,6 @@ labs(title = "Joyplot of Joy Division's joy distributions",
 
 <img src="man/figures/README-joyplot-1.png" width="100%" />
 
-## Sentify: A Shiny app
-
-This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows
-you to visualize the energy and valence (musical positivity) of all of
-Spotify’s artists and playlists.
-
 ## Dope Stuff Other People Have Done with spotifyr
 
 The coolest thing about making this package has definitely been seeing

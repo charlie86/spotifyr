@@ -161,9 +161,6 @@ labs(title = "Joyplot of Joy Division's joy distributions",
      subtitle = "Based on valence pulled from Spotify's Web API with spotifyr")
 ```
 
-## Sentify: A Shiny app
-This [app](http://rcharlie.net/sentify/), powered by spotifyr, allows you to visualize the energy and valence (musical positivity) of all of Spotify's artists and playlists.
-
 ## Dope Stuff Other People Have Done with spotifyr
 
 The coolest thing about making this package has definitely been seeing all the awesome stuff other people have done with it. Here are a few examples:
