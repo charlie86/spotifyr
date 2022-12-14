@@ -20,12 +20,13 @@
 #' @param authorization Required. A valid access token from the Spotify Accounts service.
 #' See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Both Public and Private playlists belonging to any user are retrievable on provision of a valid access token. Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
-#' Returns a data frame of results containing user profile information.
-#' See \url{https://developer.spotify.com/documentation/web-api/reference/users-profile/get-current-users-profile/} for more information.
+#' Returns a list containing the data about the playlist.
+#' See \url{https://developer.spotify.com/console/get-playlist/} for more information.
 #' @family playlist functions
 #' @export
 
-get_playlist <- function(playlist_id, fields = NULL,
+get_playlist <- function(playlist_id,
+                         fields = NULL,
                          market = NULL,
                          authorization = get_spotify_access_token()
                          ) {

@@ -1,7 +1,8 @@
 #' Get Spotify catalog information for a single artist identified by their unique Spotify ID.
 #'
 #' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details.
+#' Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @return
 #' Returns a data frame of results containing album data.
 #' See \url{https://developer.spotify.com/documentation/web-api/reference/albums/get-album/} for more information.
@@ -99,7 +100,8 @@ get_artists <- function(ids,
 #' @export
 
 get_artist_albums <- function(id,
-                              include_groups = c('album', 'single', 'appears_on', 'compilation'),
+                              include_groups = c('album', 'single', 'appears_on',
+                                                 'compilation'),
                               market = NULL,
                               limit = 20, offset = 0,
                               authorization = get_spotify_access_token(),
@@ -140,7 +142,7 @@ get_artist_albums <- function(id,
     res
 }
 
-#' Get Spotify catalog information about an artist’s top tracks by country.
+#' @title Get Spotify catalog information about an artist’s top tracks by country.
 #'
 #' @param id The \href{https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids}{Spotify ID} for the artist.
 #' @param market Required. \cr

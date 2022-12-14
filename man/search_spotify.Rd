@@ -2,7 +2,7 @@
 % Please edit documentation in R/search.R
 \name{search_spotify}
 \alias{search_spotify}
-\title{Search for an Item}
+\title{Search for an item}
 \usage{
 search_spotify(
   q,

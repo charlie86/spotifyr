@@ -1,6 +1,6 @@
-#' Search for an Item
+#' @title Search for an item
 #'
-#' Get Spotify Catalog information about artists, albums, tracks or playlists that match a
+#' @description Get Spotify Catalog information about artists, albums, tracks or playlists that match a
 #' keyword string. For more information see the official
 #' \href{https://developer.spotify.com/documentation/web-api/reference/#category-search}{documentation}.
 #' @param q Required. \cr
@@ -201,9 +201,9 @@ get_label_artists <- function(label = character(),
     res
 }
 
-#' Search for Artists by Genre
+#' @title Search for Artists by Genre
 #'
-#' Get Spotify Catalog information about artists belonging to a given genre.
+#' @description Get Spotify Catalog information about artists belonging to a given genre.
 #'
 #' @param genre Required. \cr
 #' String of genre name to search for \cr
@@ -224,10 +224,12 @@ get_label_artists <- function(label = character(),
 #' Default: 0 (the first result). \cr
 #' Maximum offset (including limit): 10,000. \cr
 #' Use with limit to get the next page of search results.
-#' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}
+#' @param authorization Required. A valid access token from the Spotify Accounts
+#' service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details.
+#' Defaults to \code{spotifyr::get_spotify_access_token()}
 #' @family musicology functions
-#' @return A data frame of the artists belonging to the genre with data and metadata about the
-#' artists in a tibble.
+#' @return A data frame of the artists belonging to the genre with data and
+#' metadata about the artists in a tibble.
 #' @export
 #' @examples
 #' \dontrun{
@@ -265,15 +267,14 @@ get_genre_artists <- function(genre = character(),
     )
 
     params <- list(
-        q = str_replace_all(str_glue('genre:"{genre}"'), ' ', '+'),
+        #q = str_replace_all(str_glue('genre:"{genre}"'), ' ', ' '),
+        q = str_glue('genre:"{genre}"'),
         type = 'artist',
         market = market,
         limit = limit,
         offset = offset,
         access_token = authorization
     )
-
-    params
 
     res <- RETRY('GET', base_url, query = params, encode = 'json')
 
