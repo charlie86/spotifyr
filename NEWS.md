@@ -25,7 +25,7 @@
 * Released on CRAN.
 
 # spotifyr 2.2.2
-* Fixes bug [#152](https://github.com/charlie86/spotifyr/issues/152). Thanks for the report, [\@pham-thomas](https://github.com/pham-thomas)!
+* Fixes bug [#152](https://github.com/charlie86/spotifyr/issues/152). Thanks for the report, _@pham-thomas_!
 * Incorporates better API call, thanks for the valuable contribution,  [\@annnvv](https://github.com/annnvv).
 
 # spotifyr 2.2.3

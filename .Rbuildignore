@@ -25,3 +25,4 @@
 ^_pkgdown\.yml$
 
 ^cran-comments\.md$
+^codemeta\.json$

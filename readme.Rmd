@@ -167,7 +167,7 @@ The coolest thing about making this package has definitely been seeing all the a
 
 [Exploring the Spotify API with R: A tutorial for beginners, by a beginner](https://msmith7161.github.io/what-is-speechiness/), Mia Smith
 
-[Blue Christmas: A data-driven search for the most depressing Christmas song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin Hudon
+[Blue Christmas: A data-driven search for the most depressing Christmas song](https://www.caitlinhudon.com/posts/2017/12/22/blue-christmas), Caitlin Hudon
 
 [Sente-se triste quando ouve "Amar pelos dois"? Não é o único (Do you feel sad when you hear "Love for both?" You're not alone)](https://rr.sapo.pt/especial/112355/sente-se-triste-quando-ouve-amar-pelos-dois-nao-e-o-unico), Rui Barros, Rádio Renascença
 

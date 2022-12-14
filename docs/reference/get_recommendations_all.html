@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.3.0001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.4</span>
       </span>
     </div>
 
@@ -90,59 +90,11 @@ length equal to the supplied vector of track ids.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="fu">get_recommendations_all</span><span class="op">(</span></span></span>
 <span class="r-in"><span>   track_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"5VIpLopHgolKcSSj7JPCMA"</span>, <span class="st">"3QRGYDFFUVb4qneE4DX1gR"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>   <span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                   artists</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   https://api.spotify.com/v1/artists/3kjuyTCjPG1WMFCiyc5IuB, 3kjuyTCjPG1WMFCiyc5IuB, Arcade Fire, artist, spotify:artist:3kjuyTCjPG1WMFCiyc5IuB, https://open.spotify.com/artist/3kjuyTCjPG1WMFCiyc5IuB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://api.spotify.com/v1/artists/3KlPjpVKfm6vESPL46NDCh, 3KlPjpVKfm6vESPL46NDCh, Indigo Sparke, artist, spotify:artist:3KlPjpVKfm6vESPL46NDCh, https://open.spotify.com/artist/3KlPjpVKfm6vESPL46NDCh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                available_markets</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CD, CG, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, ET, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TJ, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VE, VN, VU, WS, XK, ZA, ZM, ZW</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CD, CG, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TJ, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VE, VN, VU, WS, XK, ZA, ZM, ZW</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   disc_number duration_ms explicit</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1           1      287240    FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2           1      206950    FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                       href</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://api.spotify.com/v1/tracks/1rOlTL4pKQ9Y1fURua4AJR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://api.spotify.com/v1/tracks/0q0Vlb5g3DV8pysqIllbiR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       id is_local                  name popularity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1rOlTL4pKQ9Y1fURua4AJR    FALSE     My Body Is a Cage         61</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 0q0Vlb5g3DV8pysqIllbiR    FALSE Everything Everything         35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                   preview_url</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://p.scdn.co/mp3-preview/cf1f881824d5c087480911530229051ef3519831?cid=0e73e430c7814968988cd21c104bf113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://p.scdn.co/mp3-preview/2b69522cf997bf8b58a153955ded73b4d9a98cc7?cid=0e73e430c7814968988cd21c104bf113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   track_number  type                                  uri album.album_type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1           11 track spotify:track:1rOlTL4pKQ9Y1fURua4AJR            ALBUM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            9 track spotify:track:0q0Vlb5g3DV8pysqIllbiR            ALBUM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                             album.artists</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   https://api.spotify.com/v1/artists/3kjuyTCjPG1WMFCiyc5IuB, 3kjuyTCjPG1WMFCiyc5IuB, Arcade Fire, artist, spotify:artist:3kjuyTCjPG1WMFCiyc5IuB, https://open.spotify.com/artist/3kjuyTCjPG1WMFCiyc5IuB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://api.spotify.com/v1/artists/3KlPjpVKfm6vESPL46NDCh, 3KlPjpVKfm6vESPL46NDCh, Indigo Sparke, artist, spotify:artist:3KlPjpVKfm6vESPL46NDCh, https://open.spotify.com/artist/3KlPjpVKfm6vESPL46NDCh</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          album.available_markets</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CD, CG, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TJ, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VE, VN, VU, WS, XK, ZA, ZM, ZW</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 AD, AE, AG, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BN, BO, BR, BS, BT, BW, BY, BZ, CA, CD, CG, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, ES, ET, FI, FJ, FM, FR, GA, GB, GD, GE, GH, GM, GN, GQ, GR, GT, GW, GY, HK, HN, HR, HT, HU, ID, IE, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KH, KI, KM, KN, KR, KW, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MG, MH, MK, ML, MN, MO, MR, MT, MU, MV, MW, MX, MY, MZ, NA, NE, NG, NI, NL, NO, NP, NR, NZ, OM, PA, PE, PG, PH, PK, PL, PS, PT, PW, PY, QA, RO, RS, RW, SA, SB, SC, SE, SG, SI, SK, SL, SM, SN, SR, ST, SV, SZ, TD, TG, TH, TJ, TL, TN, TO, TR, TT, TV, TW, TZ, UA, UG, US, UY, UZ, VC, VE, VN, VU, WS, XK, ZA, ZM, ZW</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 album.href</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://api.spotify.com/v1/albums/4GT6uZod4p5RiDMOVHOMme</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://api.spotify.com/v1/albums/6akscmS833btWR5O7F5BMJ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 album.id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 4GT6uZod4p5RiDMOVHOMme</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 6akscmS833btWR5O7F5BMJ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                       album.images</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2739e0e42aa866e5fa167b19608, https://i.scdn.co/image/ab67616d00001e029e0e42aa866e5fa167b19608, https://i.scdn.co/image/ab67616d000048519e0e42aa866e5fa167b19608, 640, 300, 64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 640, 300, 64, https://i.scdn.co/image/ab67616d0000b2732a8081249b6090274b9d4823, https://i.scdn.co/image/ab67616d00001e022a8081249b6090274b9d4823, https://i.scdn.co/image/ab67616d000048512a8081249b6090274b9d4823, 640, 300, 64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   album.name album.release_date album.release_date_precision album.total_tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Neon Bible               2007                         year                 11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2       Echo         2021-02-19                          day                  9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   album.type                            album.uri</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      album spotify:album:4GT6uZod4p5RiDMOVHOMme</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      album spotify:album:6akscmS833btWR5O7F5BMJ</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                             album.external_urls.spotify external_ids.isrc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://open.spotify.com/album/4GT6uZod4p5RiDMOVHOMme      USMRG0728510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://open.spotify.com/album/6akscmS833btWR5O7F5BMJ      AUSXI1900009</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   external_urls.spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://open.spotify.com/track/1rOlTL4pKQ9Y1fURua4AJR</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://open.spotify.com/track/0q0Vlb5g3DV8pysqIllbiR</span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>

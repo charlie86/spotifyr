@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.3.0001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.4</span>
       </span>
     </div>
 
@@ -118,34 +118,9 @@ artists in a tibble.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="fu">get_genre_artists</span><span class="op">(</span><span class="st">'wonky'</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 12</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    genres href    id    images name  popul…¹ type  uri   exter…² follo…³ follo…⁴</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> &lt;chr&gt;  https:… 17Zu… &lt;df&gt;   Knxw…      62 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">197</span>184</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> &lt;chr&gt;  https:… 3VwK… &lt;df&gt;   TOKi…      55 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">289</span>191</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> &lt;chr&gt;  https:… 29XO… &lt;df&gt;   Flyi…      57 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">710</span>889</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> &lt;chr&gt;  https:… 1PmV… &lt;df&gt;   Lorn       54 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">269</span>578</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> &lt;chr&gt;  https:… 2L2u… &lt;df&gt;   Teebs      50 arti… spot… https:… <span style="color: #BB0000;">NA</span>        <span style="text-decoration: underline;">95</span>668</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> &lt;chr&gt;  https:… 4Gcp… &lt;df&gt;   Mnds…      49 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">136</span>332</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> &lt;chr&gt;  https:… 3ikK… &lt;df&gt;   TOBA…      44 arti… spot… https:… <span style="color: #BB0000;">NA</span>        <span style="text-decoration: underline;">75</span>477</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> &lt;chr&gt;  https:… 0IVa… &lt;df&gt;   Nosa…      49 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">198</span>733</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> &lt;chr&gt;  https:… 3NUt… &lt;df&gt;   Moun…      54 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">298</span>805</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> &lt;chr&gt;  https:… 2DcA… &lt;df&gt;   Dirt…      46 arti… spot… https:… <span style="color: #BB0000;">NA</span>        <span style="text-decoration: underline;">48</span>389</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> &lt;chr&gt;  https:… 6y80… &lt;df&gt;   Shlo…      48 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">237</span>344</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> &lt;chr&gt;  https:… 2AR4… &lt;df&gt;   Floa…      51 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">280</span>666</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> &lt;chr&gt;  https:… 6olW… &lt;df&gt;   Huds…      50 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">130</span>100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> &lt;chr&gt;  https:… 6gU7… &lt;df&gt;   DJ H…      48 arti… spot… https:… <span style="color: #BB0000;">NA</span>        <span style="text-decoration: underline;">25</span>203</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> &lt;chr&gt;  https:… 2EDn… &lt;df&gt;   Jnei…      45 arti… spot… https:… <span style="color: #BB0000;">NA</span>         <span style="text-decoration: underline;">8</span>195</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> &lt;chr&gt;  https:… 0uCC… &lt;df&gt;   Buri…      51 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">391</span>123</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> &lt;chr&gt;  https:… 6e7B… &lt;df&gt;   Karr…      46 arti… spot… https:… <span style="color: #BB0000;">NA</span>        <span style="text-decoration: underline;">39</span>633</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> &lt;chr&gt;  https:… 06xa… &lt;df&gt;   Mach…      48 arti… spot… https:… <span style="color: #BB0000;">NA</span>       <span style="text-decoration: underline;">105</span>309</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> &lt;chr&gt;  https:… 1AEc… &lt;df&gt;   DāM-…      45 arti… spot… https:… <span style="color: #BB0000;">NA</span>        <span style="text-decoration: underline;">48</span>816</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> &lt;chr&gt;  https:… 47V6… &lt;df&gt;   Robo…      49 arti… spot… https:… <span style="color: #BB0000;">NA</span>        <span style="text-decoration: underline;">53</span>086</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: genre &lt;chr&gt;, and abbreviated variable names</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ¹​popularity, ²​external_urls.spotify, ³​followers.href, ⁴​followers.total</span></span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>

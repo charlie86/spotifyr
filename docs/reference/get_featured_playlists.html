@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">spotifyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.3.0001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.4</span>
       </span>
     </div>
 
@@ -122,144 +122,14 @@ Use with <code>limit</code> to get the next set of items.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Get Flemish-Dutch playlists from Belgium:</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_featured_playlists</span><span class="op">(</span></span></span>
 <span class="r-in"><span>   country <span class="op">=</span> <span class="st">'BE'</span>,</span></span>
 <span class="r-in"><span>   locale <span class="op">=</span> <span class="st">"nl_BE"</span> <span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   collaborative</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                      description</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                              50 Hits van dit moment - 50 hits du moment. Cover: Meghan Trainor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2              Restez au courant des nouveaux titres et des tubes d'ici et ailleurs. Cover: Nour</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                                                    Voel je goed met deze tijdloze Happy Tunes!</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                      Luister naar muziek uit België - Listen music made in Belgium. #playlocal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                   Le meilleur de la musique d'hier et d'aujourd'hui pour une journée parfaite.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                                       DIKKE full album in Code 32! The best BE rap in Code 32.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7               Indie, Alternative en Rock met een randje in één playlist. Cover: Orange Skyline</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                                            De grootste dance hits van het moment! Cover: Jengi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 Meezingen met de beste Vlaamse hits, levensliederen en Vlaams Populair. Cover: Pommelien Thijs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                          href</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://api.spotify.com/v1/playlists/37i9dQZF1DX1kfybUJZB6S</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://api.spotify.com/v1/playlists/37i9dQZF1DWSq1nQilUgG8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 https://api.spotify.com/v1/playlists/37i9dQZF1DX9u7XXOp0l5L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 https://api.spotify.com/v1/playlists/37i9dQZF1DX3S2ONCFIYHU</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 https://api.spotify.com/v1/playlists/37i9dQZF1DXdrln2UyZD7F</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 https://api.spotify.com/v1/playlists/37i9dQZF1DXadhN5awWZtL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 https://api.spotify.com/v1/playlists/37i9dQZF1DX6MUrG3NBYtM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 https://api.spotify.com/v1/playlists/37i9dQZF1DWTwCImwcYjDL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 https://api.spotify.com/v1/playlists/37i9dQZF1DX4UF20jxFQBv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 37i9dQZF1DX1kfybUJZB6S</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 37i9dQZF1DWSq1nQilUgG8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 37i9dQZF1DX9u7XXOp0l5L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 37i9dQZF1DX3S2ONCFIYHU</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 37i9dQZF1DXdrln2UyZD7F</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 37i9dQZF1DXadhN5awWZtL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 37i9dQZF1DX6MUrG3NBYtM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 37i9dQZF1DWTwCImwcYjDL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 37i9dQZF1DX4UF20jxFQBv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                     images</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 NA, https://i.scdn.co/image/ab67706f00000003fdb580e113383783b674d3d2, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 NA, https://i.scdn.co/image/ab67706f00000003af80586535c6916023ea2c69, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 NA, https://i.scdn.co/image/ab67706f0000000380e48e10df93b4f887cb969d, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 NA, https://i.scdn.co/image/ab67706f0000000374ef3354f9509a43988a935a, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 NA, https://i.scdn.co/image/ab67706f00000003ed570b97eecf4d3d33e49b9b, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 NA, https://i.scdn.co/image/ab67706f00000003a9cbde5ae99dae8a4c199a98, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 NA, https://i.scdn.co/image/ab67706f0000000359e296d727972950f33a771e, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 NA, https://i.scdn.co/image/ab67706f0000000373b1aaa0d39ca5e41a39aa3e, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 NA, https://i.scdn.co/image/ab67706f00000003721f1c2543cb0cd4184d6915, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       name primary_color public</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1              Hot Hits BE            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2           Restez Branché            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3              Happy Tunes            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         Made In  Belgium            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         La vie est belle            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                  Code 32            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 Alternative All Lined Up            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8                360 Dance            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9        Vlaanderen Boven!            NA     NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                            snapshot_id     type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 MTY3MDU0MDQwMCwwMDAwMDAwMDBkZTllMGVkNWJkOTFmMzg2MGY3NjBiYzA5NWM2OWY3 playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 MTY3MDU0MDQwMCwwMDAwMDAwMDhlNzIzMzJhOTQ1YWM5OTIwODI4YzU0MmI3MDIzYjU4 playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 MTY3MDQyODQyOSwwMDAwMDAwMGRkZDNhZjU5NTNkMGI2ZDBjZjA4MWMwMWViNDRjN2Yw playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 MTY3MDU5MjI1OSwwMDAwMDAwMDljMWVjNzYwZjc0NjgwNTkwZjJlODM3ODkxNWQ2Y2Yx playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 MTY3MDM5OTgzNywwMDAwMDAwMDIzM2NlZDA0OTBhMmE4NGZmMDdkMjc1OGJiMzM4OGVk playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 MTY3MDU0MDQ2MCwwMDAwMDAwMDhlM2E2NDdhZTFiN2MwYjc3MTFmYTA0ZmVmNzNhNjYx playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 MTY2NzUxNjQwMCwwMDAwMDAwMDFmNzUzNjA3OTUxNjY4YTY5NzQxMDY3NTFiYTE2MDQ3 playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 MTY3MDkzMjk1MSwwMDAwMDAwMDhiZTdkYThlOTBhNDQyNzA1N2I4NTg5NGFiYmJjMzBi playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 MTY3MDMxNTU4MiwwMDAwMDAwMDljMmM5NzA4ZDlmM2ZiOTljMGVlNzExOWY4ODZmYThi playlist</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                       uri</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 spotify:playlist:37i9dQZF1DX1kfybUJZB6S</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 spotify:playlist:37i9dQZF1DWSq1nQilUgG8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 spotify:playlist:37i9dQZF1DX9u7XXOp0l5L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 spotify:playlist:37i9dQZF1DX3S2ONCFIYHU</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 spotify:playlist:37i9dQZF1DXdrln2UyZD7F</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 spotify:playlist:37i9dQZF1DXadhN5awWZtL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 spotify:playlist:37i9dQZF1DX6MUrG3NBYtM</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 spotify:playlist:37i9dQZF1DWTwCImwcYjDL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 spotify:playlist:37i9dQZF1DX4UF20jxFQBv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                      external_urls.spotify owner.display_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://open.spotify.com/playlist/37i9dQZF1DX1kfybUJZB6S            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://open.spotify.com/playlist/37i9dQZF1DWSq1nQilUgG8            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 https://open.spotify.com/playlist/37i9dQZF1DX9u7XXOp0l5L            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 https://open.spotify.com/playlist/37i9dQZF1DX3S2ONCFIYHU            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 https://open.spotify.com/playlist/37i9dQZF1DXdrln2UyZD7F            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 https://open.spotify.com/playlist/37i9dQZF1DXadhN5awWZtL            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 https://open.spotify.com/playlist/37i9dQZF1DX6MUrG3NBYtM            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 https://open.spotify.com/playlist/37i9dQZF1DWTwCImwcYjDL            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 https://open.spotify.com/playlist/37i9dQZF1DX4UF20jxFQBv            Spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                 owner.href owner.id owner.type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 https://api.spotify.com/v1/users/spotify  spotify       user</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              owner.uri           owner.external_urls.spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 spotify:user:spotify https://open.spotify.com/user/spotify</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                          tracks.href</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 https://api.spotify.com/v1/playlists/37i9dQZF1DX1kfybUJZB6S/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 https://api.spotify.com/v1/playlists/37i9dQZF1DWSq1nQilUgG8/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 https://api.spotify.com/v1/playlists/37i9dQZF1DX9u7XXOp0l5L/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 https://api.spotify.com/v1/playlists/37i9dQZF1DX3S2ONCFIYHU/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 https://api.spotify.com/v1/playlists/37i9dQZF1DXdrln2UyZD7F/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 https://api.spotify.com/v1/playlists/37i9dQZF1DXadhN5awWZtL/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 https://api.spotify.com/v1/playlists/37i9dQZF1DX6MUrG3NBYtM/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8 https://api.spotify.com/v1/playlists/37i9dQZF1DWTwCImwcYjDL/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9 https://api.spotify.com/v1/playlists/37i9dQZF1DX4UF20jxFQBv/tracks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   tracks.total</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1           50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2           92</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3          100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4           90</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5           60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6           69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7          100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8           60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9           75</span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>

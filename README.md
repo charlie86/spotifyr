@@ -220,7 +220,7 @@ examples:
 beginner](https://msmith7161.github.io/what-is-speechiness/), Mia Smith
 
 [Blue Christmas: A data-driven search for the most depressing Christmas
-song](https://caitlinhudon.com/2017/12/22/blue-christmas/), Caitlin
+song](https://www.caitlinhudon.com/posts/2017/12/22/blue-christmas), Caitlin
 Hudon
 
 [Sente-se triste quando ouve “Amar pelos dois”? Não é o único (Do you
