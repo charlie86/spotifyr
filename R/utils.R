@@ -41,6 +41,7 @@ verify_result <- function(res) {
 #' A vector of valid scopes for \code{\link{get_spotify_authorization_code}}.
 #'
 #' @family authorization functions
+#' @param exclude_SOA Boolean indicating whether to exclude 'Spotify Open Access' (SOA) scopes, which are only available for approved partners. Defaults to \code{TRUE}.
 #' @examples
 #' scopes()
 #' @return A character vector of valid authorization scopes for the Spotify Web API.
@@ -49,12 +50,15 @@ verify_result <- function(res) {
 #' @importFrom xml2 read_html
 #' @importFrom rvest html_text html_elements
 
-scopes <- function() {
-    xml2::read_html("https://developer.spotify.com/documentation/general/guides/authorization/scopes/") %>%
-    rvest::html_elements('code') %>%
-    rvest::html_text() %>%
-    unique()
-    }
+scopes <- function(exclude_SOA = TRUE) {
+    res <-
+        xml2::read_html("https://developer.spotify.com/documentation/general/guides/authorization/scopes/") %>%
+        rvest::html_elements('code') %>%
+        rvest::html_text() %>%
+        unique()
+    if (exclude_SOA) res <- grep("soa", res, invert = TRUE, value = TRUE, fixed = TRUE)
+    res
+}
 
 #' Remove duplicate album names
 #'
