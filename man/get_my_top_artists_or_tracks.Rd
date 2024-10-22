@@ -50,7 +50,7 @@ Get the current user’s top artists or tracks based on calculated affinity.
 }
 \seealso{
 Other personalization functions: 
-\code{\link{get_recommendations_all}()},
-\code{\link{get_recommendations}()}
+\code{\link{get_recommendations}()},
+\code{\link{get_recommendations_all}()}
 }
 \concept{personalization functions}
