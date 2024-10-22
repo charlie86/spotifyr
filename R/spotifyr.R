@@ -5,7 +5,6 @@
 #' See the README on
 #' \href{https://github.com/charlie86/spotifyr#readme}{GitHub}
 #'
-#' @docType package
 #' @name spotifyr
 #' @importFrom purrr map map_df map2
 #' @importFrom httr RETRY GET accept_json authenticate config content oauth2.0_token oauth_app oauth_endpoint stop_for_status
@@ -55,6 +54,7 @@
 #' functions: \cr
 #' \code{\link{get_spotify_authorization_code}} \cr
 #' \code{\link{get_spotify_access_token}}.
+"_PACKAGE"
 NULL
 
 globalVars <- c(

@@ -2,6 +2,7 @@
 % Please edit documentation in R/spotifyr.R
 \docType{package}
 \name{spotifyr}
+\alias{spotifyr-package}
 \alias{spotifyr}
 \title{\code{spotifyr} package}
 \description{
@@ -77,3 +78,28 @@ functions: \cr
 \code{\link{get_spotify_access_token}}.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/charlie86/spotifyr}
+  \item Report bugs at \url{https://github.com/charlie86/spotifyr/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Daniel Antal \email{daniel.antal@dataobservatory.eu} (\href{https://orcid.org/0000-0001-7513-6760}{ORCID})
+
+Authors:
+\itemize{
+  \item Charlie Thompson \email{chuck@rcharlie.com}
+  \item Josiah Parry \email{josiah.parry@yahoo.com} (\href{https://orcid.org/0000-0001-9910-865X}{ORCID})
+  \item Donal Phipps \email{donal.phipps@gmail.com}
+  \item Tom Wolff \email{tom.wolff@duke.edu}
+}
+
+Other contributors:
+\itemize{
+  \item Stephen Holsenbeck [contributor]
+}
+
+}

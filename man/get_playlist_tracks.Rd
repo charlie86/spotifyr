@@ -57,7 +57,7 @@ Get full details of the tracks of a playlist owned by a Spotify user.
 \seealso{
 Other track functions: 
 \code{\link{get_album_tracks}()},
-\code{\link{get_tracks}()},
-\code{\link{get_track}()}
+\code{\link{get_track}()},
+\code{\link{get_tracks}()}
 }
 \concept{track functions}

@@ -30,10 +30,10 @@ Get the current user’s followed artists.
 }
 \seealso{
 Other artist functions: 
+\code{\link{get_artist}()},
 \code{\link{get_artist_albums}()},
 \code{\link{get_artist_top_tracks}()},
 \code{\link{get_artists}()},
-\code{\link{get_artist}()},
 \code{\link{get_related_artists}()}
 }
 \concept{artist functions}

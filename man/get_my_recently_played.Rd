@@ -48,8 +48,8 @@ Other player functions:
 \code{\link{pause_my_playback}()},
 \code{\link{seek_to_position}()},
 \code{\link{set_my_repeat_mode}()},
-\code{\link{skip_my_playback_previous}()},
 \code{\link{skip_my_playback}()},
+\code{\link{skip_my_playback_previous}()},
 \code{\link{start_my_playback}()},
 \code{\link{toggle_my_shuffle}()},
 \code{\link{transfer_my_playback}()}

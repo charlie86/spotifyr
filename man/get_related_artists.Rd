@@ -27,10 +27,10 @@ Similarity is based on analysis of the Spotify community’s listening history.
 }
 \seealso{
 Other artist functions: 
+\code{\link{get_artist}()},
 \code{\link{get_artist_albums}()},
 \code{\link{get_artist_top_tracks}()},
 \code{\link{get_artists}()},
-\code{\link{get_artist}()},
 \code{\link{get_my_followed_artists}()}
 }
 \concept{artist functions}
