@@ -1,8 +1,8 @@
-#' Get the object currently being played on the user’s Spotify account.
+#' @title Get the object currently being played on the user’s Spotify account.
 #'
 #' @param market An ISO 3166-1 alpha-2 country code or the string \code{"from_token"}.
-#' Provide this parameter if you want to apply \
-#' href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
+#' Provide this parameter if you want to apply
+#' \href{https://developer.spotify.com/documentation/general/guides/track-relinking-guide/}{Track Relinking}
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization guide} for more details.
 #' Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
 #' The access token must have the
@@ -297,9 +297,9 @@ set_my_volume <- function(volume_percent = 50,
   res
 }
 
-#' Skips to Next Track
+#' @title Skips to Next Track
 #'
-#' Skips to next track in the user’s queue.
+#' @description Skips to next track in the user’s queue.
 #'
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied,
 #' the user’s currently active device is the target.
@@ -329,7 +329,7 @@ skip_my_playback <- function(device_id = NULL,
     res
 }
 
-#' Skips to previous track in the user’s queue.
+#' @title Skips to previous track in the user’s queue.
 #'
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
 #' @param authorization Required. A valid access token from the Spotify Accounts service. See the \href{https://developer.spotify.com/documentation/general/guides/authorization-guide/}{Web API authorization Guide} for more details. Defaults to \code{spotifyr::get_spotify_access_token()}. The access token must have been issued on behalf of the current user. \cr
@@ -356,7 +356,7 @@ skip_my_playback_previous <- function(device_id = NULL,
 
 }
 
-#' Skips to previous track in the user’s queue.
+#' @title Skips to previous track in the user’s queue.
 #'
 #' @param device_id Optional. The id of the device this command is targeting. If not supplied, the user’s currently active device is the target.
 #' @param context_uri Optional. String of the Spotify URI of the context to play. Valid contexts are albums, artists, playlists. Example \code{context_uri = "spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}.
@@ -406,7 +406,7 @@ start_my_playback <- function(device_id = NULL,
   res
 }
 
-#' Transfer playback to a new device and determine if it should start playing.
+#' @title Transfer playback to a new device and determine if it should start playing.
 #'
 #' @param device_ids Required. A character vector containing the ID of the device this on which playback should be started/transferred. Note: only a single device_id is currently supported.
 #' @param play Optional. \cr
