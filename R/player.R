@@ -384,7 +384,7 @@ start_my_playback <- function(device_id = NULL,
   )
   body_params <- list(
     context_uri = context_uri,
-    uris = uris,
+    uris = I(uris),
     offset = offset,
     position_ms = position_ms
   )
