@@ -138,7 +138,6 @@ get_artist_audio_features <- function(artist = NULL,
             dplyr::rename(
               track_name = name,
               track_uri = uri,
-              track_preview_url = preview_url,
               track_href = href,
               track_id = id
             )
