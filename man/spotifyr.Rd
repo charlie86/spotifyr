@@ -100,6 +100,7 @@ Authors:
 Other contributors:
 \itemize{
   \item Stephen Holsenbeck [contributor]
+  \item Peter Harrison [contributor]
 }
 
 }

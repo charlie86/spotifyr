@@ -39,7 +39,12 @@ Authors@R: c(
        given  = "Stephen", 
        family = " Holsenbeck", 
        role = "ctb"
-       )
+       ), 
+    person(
+       given = "Peter", 
+       family = "Harrison",
+       role = "ctb"
+    )
    )
 Description: An R wrapper for pulling data from the 'Spotify' Web API 
   <https://developer.spotify.com/documentation/web-api/> in bulk, or post items on a
