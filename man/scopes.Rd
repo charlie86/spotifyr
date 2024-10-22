@@ -4,7 +4,10 @@
 \alias{scopes}
 \title{Valid Authorization Scopes}
 \usage{
-scopes()
+scopes(exclude_SOA = TRUE)
+}
+\arguments{
+\item{exclude_SOA}{Boolean indicating whether to exclude 'Spotify Open Access' (SOA) scopes, which are only available for approved partners. Defaults to \code{TRUE}.}
 }
 \value{
 A character vector of valid authorization scopes for the Spotify Web API.
