@@ -1,7 +1,7 @@
 Package: spotifyr
 Title: R Wrapper for the 'Spotify' Web API
-Version: 2.2.4.0001
-Date: 2022-12-14
+Version: 2.2.5
+Date: 2024-10-22
 Authors@R: c(
     person(
       given = "Charlie", 
