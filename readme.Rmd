@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 [![CRAN_time_from_release](https://www.r-pkg.org/badges/ago/spotifyr)](https://cran.r-project.org/package=spotifyr)
 [![metacran downloads](https://cranlogs.r-pkg.org/badges/spotifyr)](https://cran.r-project.org/package=spotifyr)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5638489.svg)](https://doi.org/10.5281/zenodo.5638489)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 <!-- badges: end -->
  
 ## Overview
