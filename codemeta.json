@@ -7,13 +7,13 @@
   "codeRepository": "https://github.com/charlie86/spotifyr",
   "issueTracker": "https://github.com/charlie86/spotifyr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.4.0 (2024-04-24 ucrt)",
   "author": [
     {
       "@type": "Person",
@@ -52,7 +52,12 @@
     {
       "@type": "Person",
       "givenName": "Stephen",
-      "familyName": " Holsenbeck"
+      "familyName": "Holsenbeck"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Peter",
+      "familyName": "Harrison"
     }
   ],
   "maintainer": [
@@ -280,7 +285,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "606.248KB",
+  "fileSize": "615.75KB",
   "releaseNotes": "https://github.com/charlie86/spotifyr/blob/master/NEWS.md",
   "readme": "https://github.com/charlie86/spotifyr/blob/master/README.md",
   "keywords": ["spotify", "music-information-retrieval"]

@@ -1,3 +1,7 @@
+# spotifyr 2.1.5
+
+* Minor fixes from [@pmcharrison](https://github.com/pmcharrison).
+
 # spotifyr 2.1.4
 
 * Minor improvements from [@yogat3ch](https://github.com/yogat3ch) for long playlists [PR186](https://github.com/charlie86/spotifyr/pull/186) and playlists with 0 songs [PR183.](https://github.com/charlie86/spotifyr/pull/183)
